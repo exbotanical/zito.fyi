@@ -1,0 +1,162 @@
+*,
+::after,
+::before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:root {
+  --base: 0.8rem;
+  --width: 960px;
+  --grid-gutter: var(--base);
+  --grid-height: calc(var(--base) * 2);
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: #fff;
+  color: #000;
+  font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+  font-size: $main-font-lg;
+  line-height: 1.78;
+}
+
+main {
+  max-width: calc(var(--width) * 1.5);
+  margin: 0 auto;
+}
+
+a {
+  color: $main-accent-color;
+  text-decoration: none;
+}
+
+a:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+a:focus,
+a:hover {
+  color: $main-accent-active;
+  text-decoration: none;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin-top: 1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #000;
+  font-family: Cabin, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.3rem;
+}
+
+p {
+  margin: 0 0 0.8rem;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+button,
+input,
+textarea {
+  color: inherit;
+  font: inherit;
+}
+
+textarea {
+  resize: none;
+}
+
+input,
+textarea {
+  padding: 0.5rem 1.25rem;
+  border: 1px solid $main-info-color;
+  margin-bottom: 0.5rem;
+  border-radius: 2px;
+  color: $main-dark-color;
+  line-height: 1.5;
+
+  &::-ms-expand {
+    border: 0;
+    background-color: transparent;
+  }
+
+  &::-moz-placeholder,
+  &::-webkit-input-placeholder,
+  &:-ms-input-placeholder {
+    color: $main-dark-color;
+  }
+
+  &:focus {
+    border-color: $main-secondary-active;
+    outline: 0;
+  }
+
+  &:not(:focus):invalid {
+    color: $main-error-color;
+  }
+}
+
+li {
+  list-style: none;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0.3rem;
+}
+
+table,
+th,
+td {
+  border: 1px solid $main-dark-color;
+}
+
+table {
+  border-collapse: collapse;
+  border-radius: 0.25em 0.25em 0 0;
+}
+
+th {
+  padding: 0.5em 1em;
+  text-align: left;
+}
+
+td {
+  padding: 0.65em 1em;
+}
+
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (min-width: $main-mobile-and-tablet) {
+  main {
+    margin-top: calc(var(--grid-height) * 4.5);
+    margin-left: 240px;
+  }
+}

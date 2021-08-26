@@ -10,7 +10,7 @@ import App from './App.vue';
 
 /* Global Components */
 import fa from '@/plugins/icon';
-import BlogContainer from '@/layout/BlogContainer.vue';
+import PostContainer from '@/layout/PostContainer.vue';
 
 /* Global Error Handlers */
 import debug from '@/plugins/debug';
@@ -38,7 +38,7 @@ const app = createApp(App)
 
 /* Global Components */
 app.component('FAIcon', fa());
-app.component('BlogContainer', BlogContainer);
+app.component('PostContainer', PostContainer);
 
 /*************************************
  *

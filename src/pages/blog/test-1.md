@@ -6,8 +6,6 @@ imgSrc: https://lh3.googleusercontent.com/proxy/zTGJP5IN0gemAWIQSWBlux6de3TkbMNU
 slug: test-1
 ---
 
-# test 1
-
 ```haskell
 reciprocal :: Int -> (String, Int)
 reciprocal n | n > 1 = ('0' : '.' : digits, recur)

@@ -1,0 +1,8 @@
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: stretch;
+  padding: $grid-height;
+  position: relative;
+  width: 100vw;
+}

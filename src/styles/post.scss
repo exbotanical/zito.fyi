@@ -1,0 +1,33 @@
+.posts-header {
+  margin-top: calc(3 * $grid-height + $grid-gutter);
+  margin-bottom: calc(2 * $grid-height + $grid-gutter);
+}
+
+.posts {
+  list-style: none;
+  padding: 0;
+
+  time {
+    display: block;
+    text-align: right;
+    font-size: 0.5em;
+    line-height: 1em;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .post {
+    margin-bottom: calc(2 * $grid-height);
+  }
+
+  .continue {
+    text-align: right;
+  }
+
+  .error {
+    color: $main-error-color;
+    margin-bottom: 1rem;
+  }
+}

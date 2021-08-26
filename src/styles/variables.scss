@@ -7,7 +7,10 @@ $main-success-color: #50fa7b;
 $main-error-color: #f55;
 $main-warn-color: #f1fa8c;
 $main-info-color: #6272a4;
-$main-dark-color: #44475a;
+
+$main-background-color: #282a36;
+$main-line-color: #44475a;
+$main-foreground-color: #f8f8f2;
 
 /* Breakpoints */
 $main-mobile: 600px;
@@ -16,176 +19,53 @@ $main-tablet: 800px;
 $main-tablet-and-desktop: 1000px;
 
 /* Font Sizes */
-$main-font-sm:0.8em;
-$main-font-md:1em;
-$main-font-lg:1.2em;
+$main-font-sm: 0.8rem;
+$main-font-md: 1rem;
+$main-font-lg: 1.2rem;
 
-/* Mixins */
+$main-font-width: 300;
+$main-font-weight: 300;
+$main-font-slant: 0;
+$main-font-weight-bold: 700;
 
-// drop-cap type
-@mixin drop-cap($el) {
-  #{$el}:first-of-type::first-letter {
-    @media screen and (min-width: $main-mobile-and-tablet) {
-      padding-right: 7px;
-      margin-top: -10px;
-      margin-left: -10px;
-      float: left;
-      font-family: "Gentium Book Basic", serif;
-      font-size: 8rem;
-      font-weight: bold;
-      line-height: 1em;
-    }
+/* Layout */
+$main-header-height: 3rem;
+
+$noise-size: 64;
+
+$grid-gutter: var(--base);
+$grid-height: calc(2 * var(--base));
+
+$heading-line-height: 1;
+$heading-size: 500;
+$heading-quad: 0;
+$heading-bevl: 0;
+$heading-oval: 1000;
+
+$title-size: 0;
+$title-quad: 0;
+$title-bevl: 0;
+$title-oval: 0;
+
+$subheading-size: 0;
+$subheading-quad: 0;
+$subheading-bevl: 0;
+$subheading-oval: 0;
+
+:root {
+  --base: 0.8rem;
+  --noise-size: 64;
+  --width: 960px;
+}
+
+@media (max-width: 720px) {
+  :root {
+    --base: 0.5rem;
   }
 }
 
-/* Custom Attrs */
-
-/* TOOLTIP */
-$_local-tooltip-color: #333;
-
-[tooltip] {
-  position: relative;
-}
-
-[tooltip]::before,
-[tooltip]::after {
-  position: absolute;
-  display: none;
-  font-size: 0.9em;
-  line-height: 1;
-  opacity: 0;
-  pointer-events: none;
-  text-transform: none;
-  user-select: none;
-}
-
-[tooltip]::before {
-  z-index: 1001;
-  border: 5px solid transparent;
-  content: '';
-}
-
-[tooltip]::after {
-  z-index: 1000;
-  overflow: hidden;
-  min-width: 3em;
-  max-width: 21em;
-  padding: 1ch 1.5ch;
-  background: $_local-tooltip-color;
-  border-radius: 0.3ch;
-  box-shadow: 0 1em 2em -0.5em rgba(0, 0, 0, 0.35);
-  color: #fff;
-  content: attr(tooltip);
-  font-family: Helvetica, sans-serif;
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-[tooltip]:hover::before,
-[tooltip]:hover::after {
-  display: block;
-}
-
-[tooltip='']::before,
-[tooltip='']::after {
-  display: none !important;
-}
-
-/* FLOW: UP */
-[tooltip]:not([flow])::before,
-[tooltip][flow^="up"]::before {
-  bottom: 100%;
-  border-top-color: $_local-tooltip-color;
-  border-bottom-width: 0;
-}
-
-[tooltip]:not([flow])::after,
-[tooltip][flow^="up"]::after {
-  bottom: calc(100% + 5px);
-}
-
-[tooltip]:not([flow])::before,
-[tooltip]:not([flow])::after,
-[tooltip][flow^="up"]::before,
-[tooltip][flow^="up"]::after {
-  left: 50%;
-  transform: translate(-50%, -0.5em);
-}
-
-/* FLOW: DOWN */
-[tooltip][flow^="down"]::before {
-  top: 100%;
-  border-top-width: 0;
-  border-bottom-color: $_local-tooltip-color;
-}
-
-[tooltip][flow^="down"]::after {
-  top: calc(100% + 5px);
-}
-
-[tooltip][flow^="down"]::before,
-[tooltip][flow^="down"]::after {
-  left: 50%;
-  transform: translate(-50%, 0.5em);
-}
-
-/* FLOW: LEFT */
-[tooltip][flow^="left"]::before {
-  top: 50%;
-  left: calc(0em - 5px);
-  border-right-width: 0;
-  border-left-color: $_local-tooltip-color;
-  transform: translate(-0.5em, -50%);
-}
-
-[tooltip][flow^="left"]::after {
-  top: 50%;
-  right: calc(100% + 5px);
-  transform: translate(-0.5em, -50%);
-}
-
-/* FLOW: RIGHT */
-[tooltip][flow^="right"]::before {
-  top: 50%;
-  right: calc(0em - 5px);
-  border-right-color: $_local-tooltip-color;
-  border-left-width: 0;
-  transform: translate(0.5em, -50%);
-}
-
-[tooltip][flow^="right"]::after {
-  top: 50%;
-  left: calc(100% + 5px);
-  transform: translate(0.5em, -50%);
-}
-
-@keyframes tooltip-vert {
-  to {
-    opacity: 0.9;
-    transform: translate(-50%, 0);
+@media (max-width: 960px) {
+  :root {
+    --width: calc(100vw - 2 * $grid-gutter);
   }
-}
-
-@keyframes tooltip-hor {
-  to {
-    opacity: 0.9;
-    transform: translate(0, -50%);
-  }
-}
-
-[tooltip]:not([flow]):hover::before,
-[tooltip]:not([flow]):hover::after,
-[tooltip][flow^="up"]:hover::before,
-[tooltip][flow^="up"]:hover::after,
-[tooltip][flow^="down"]:hover::before,
-[tooltip][flow^="down"]:hover::after {
-  animation: tooltip-vert 300ms ease-out forwards;
-}
-
-[tooltip][flow^="left"]:hover::before,
-[tooltip][flow^="left"]:hover::after,
-[tooltip][flow^="right"]:hover::before,
-[tooltip][flow^="right"]:hover::after {
-  animation: tooltip-hor 300ms ease-out forwards;
 }

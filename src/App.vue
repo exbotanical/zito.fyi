@@ -1,14 +1,40 @@
 <script setup>
-import { computed } from 'vue';
+import {
+  computed,
+  watch,
+  onMounted
+} from 'vue';
 import { useRoute } from 'vue-router';
 import { useHead } from '@vueuse/head';
 
+import {
+  useActions,
+  useGetters
+} from '@/hooks';
+
 /* Components */
-import MainCacheWrapper from '@/layout/MainCacheWrapper.vue';
+import MainLayout from '@/layout/MainLayout.vue';
 
 /* Est */
 const route = useRoute();
 
+const { addViewToCache } =
+  useActions('config', [
+    'addViewToCache'
+  ]);
+
+const { getCachedViews } =
+  useGetters('config', [
+    'getCachedViews'
+  ]);
+
+/* Watchers */
+watch(
+  () => route.name,
+  () => addViewToCache(route)
+);
+
+/* Init */
 useHead({
   title: 'zito.dev',
   meta: [
@@ -19,13 +45,15 @@ useHead({
   ]
 });
 
+onMounted(() => {
+  addViewToCache(route);
+});
 </script>
 
 <template lang="pug">
 <!-- /* eslint-disable */ -->
-MainCacheWrapper
+MainLayout
+  router-view(v-slot="{ Component }")
+    keep-alive(:include="getCachedViews")
+      component(:is="Component")
 </template>
-
-<style lang="scss">
-// must exist for injection of root stylesheet
-</style>

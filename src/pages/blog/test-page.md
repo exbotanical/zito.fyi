@@ -7,10 +7,6 @@ imgSrc: https://payload.cargocollective.com/1/17/549798/8559338/paperrad_print09
 slug: test-page
 ---
 
-# X X X X 
-
-## sub title
-
 ```docker
 FROM golang:alpine AS builder
 
@@ -28,7 +24,7 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o app ./cmd/ 
+RUN go build -o app ./cmd/
 
 WORKDIR /dist
 
@@ -41,3 +37,5 @@ COPY --from=builder /dist/app . /dist/.env ./
 
 ENTRYPOINT ["/app"]
 ```
+
+For our card list we want to have four in a row, but because

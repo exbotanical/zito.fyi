@@ -47,7 +47,7 @@ export default defineConfig({
         linkify: true,
         typographer: true,
       },
-      wrapperComponent: 'BlogContainer',
+      wrapperComponent: 'PostContainer',
       markdownItUses: [
         prism
       ]

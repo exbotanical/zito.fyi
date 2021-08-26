@@ -1,162 +1,139 @@
-*,
-::after,
-::before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+// TODO add actual font-face declaration here
+@import
+  url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;700&display=swap');
 
-:root {
-  --base: 0.8rem;
-  --width: 960px;
-  --grid-gutter: var(--base);
-  --grid-height: calc(var(--base) * 2);
+html,
+body {
+  margin: 0;
+  border: 0;
+  padding: 0;
 }
 
 html {
-  -webkit-tap-highlight-color: transparent;
+  // here, we set the root font-size in order to
+  // create a custom baseline that will henceforth equal 1 rem
+  // this further allows us to easily change all measurements on our site
+  // with a single, simple setting
+
+  // finally, this approach mitigates the need for complex media queries
+  font-size: 16px;
+
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 body {
-  background-color: #fff;
-  color: #000;
-  font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
-  font-size: $main-font-lg;
-  line-height: 1.78;
+  /* Container */
+  background: $main-background-color;
+  position: relative;
+
+  /* Font */
+  color: $main-foreground-color;
+  font-family: 'Inconsolata', monospace;
+  font-variation-settings:
+    "wdth" $main-font-width,
+    "wght" $main-font-weight,
+    "slnt" $main-font-slant;
+  font-size: $grid-height;
+  line-height: $grid-height + $grid-gutter;
+  overflow-x: hidden;
+  hyphens: auto;
 }
 
 main {
-  max-width: calc(var(--width) * 1.5);
+  max-width: var(--width);
   margin: 0 auto;
+  margin-top: calc(9 * var(--base));
+  padding: $grid-gutter;
 }
 
-a {
-  color: $main-accent-color;
-  text-decoration: none;
-}
+/* Native Elements */
 
-a:focus {
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
-
-a:focus,
-a:hover {
-  color: $main-accent-active;
-  text-decoration: none;
-}
-
-hr {
-  border: 0;
-  border-top: 1px solid #eee;
-  margin-top: 1em;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: #000;
-  font-family: Cabin, Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  line-height: 1.1;
-}
+// Headings
 
 h1,
 h2,
 h3 {
-  margin-top: 1.5rem;
-  margin-bottom: 1.3rem;
+  margin: 0;
+  font-variation-settings:
+    "size" $heading-size,
+    "quad" $heading-quad,
+    "bevl" $heading-bevl,
+    "oval" $heading-oval;
+  line-height: 1.2em;
+  hyphens: none;
 }
 
-p {
-  margin: 0 0 0.8rem;
-  hyphens: auto;
-  overflow-wrap: break-word;
-  word-break: break-word;
+h3,
+h4 {
+  font-size: inherit;
+  margin: 0;
+  margin-top: calc(2 * $grid-height);
+  font-variation-settings:
+    "size" $subheading-size,
+    "quad" $subheading-quad,
+    "bevl" $subheading-bevl,
+    "oval" $subheading-oval;
 }
 
-button,
-input,
-textarea {
-  color: inherit;
-  font: inherit;
+strong {
+  font-weight: 700;
+  $main-font-weight: 700;
+  font-variation-settings:
+    "wdth" $main-font-width,
+    "wght" $main-font-weight,
+    "slnt" $main-font-slant;
 }
 
-textarea {
-  resize: none;
+em {
+  font-style: italic;
+  $main-font-slant: 10;
+  font-variation-settings:
+    "wdth" $main-font-width,
+    "wght" $main-font-weight,
+    "slnt" $main-font-slant;
 }
 
-input,
-textarea {
-  padding: 0.5rem 1.25rem;
-  border: 1px solid $main-info-color;
-  margin-bottom: 0.5rem;
-  border-radius: 2px;
-  color: $main-dark-color;
-  line-height: 1.5;
-
-  &::-ms-expand {
-    border: 0;
-    background-color: transparent;
-  }
-
-  &::-moz-placeholder,
-  &::-webkit-input-placeholder,
-  &:-ms-input-placeholder {
-    color: $main-dark-color;
-  }
-
-  &:focus {
-    border-color: $main-secondary-active;
-    outline: 0;
-  }
-
-  &:not(:focus):invalid {
-    color: $main-error-color;
-  }
+code {
+  hyphens: none;
 }
 
-li {
-  list-style: none;
+time {
+  font-variation-settings:
+    "size" $heading-size,
+    "quad" $heading-quad,
+    "bevl" $heading-bevl,
+    "oval" $heading-oval;
 }
 
-label {
-  display: inline-block;
-  margin-bottom: 0.3rem;
+a {
+  text-decoration: none;
+  color: $main-success-color;
 }
 
-table,
-th,
-td {
-  border: 1px solid $main-dark-color;
+/* Unique Identifiers */
+
+/* Noise */
+.noise {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: calc(2px * var(--noise-size));
+  pointer-events: none;
+  opacity: 0.012;
+  z-index: 980;
+  animation: fade-in 4s;
 }
 
-table {
-  border-collapse: collapse;
-  border-radius: 0.25em 0.25em 0 0;
-}
-
-th {
-  padding: 0.5em 1em;
-  text-align: left;
-}
-
-td {
-  padding: 0.65em 1em;
-}
-
-.img-responsive {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-@media (min-width: $main-mobile-and-tablet) {
-  main {
-    margin-top: calc(var(--grid-height) * 4.5);
-    margin-left: 240px;
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
 }

@@ -20,6 +20,11 @@ const symbolId = computed(() => `#${props.prefix}-${props.name}`);
 </script>
 
 <template lang="pug">
-svg(aria-hidden="true",width="100%",height="40px")
+<!-- /* eslint-disable */ -->
+svg(
+  aria-hidden="true",
+  width="100%",
+  height="40px"
+)
   use(:xlink:href="symbolId" :fill="color")
 </template>

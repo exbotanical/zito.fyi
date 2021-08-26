@@ -6,6 +6,11 @@ import routes from '@/router/routes/blog.routes';
 import { ERROR_CAT } from '@/services/api/models';
 import { useMetadata } from '@/hooks';
 
+/* Components */
+import ErrorBoundary from '@/components/fallback/ErrorBoundary.vue';
+import BlogPostThumbnailFallback from '@/components/fallback/BlogPostThumbnailFallback.vue';
+import BlogPostThumbnail from '@/components/BlogPostThumbnail.vue';
+
 /* Est */
 const { event } = inject('$api');
 
@@ -24,5 +29,17 @@ onErrorCaptured((err, vm, info) => {
 
 <template lang="pug">
 <!-- /* eslint-disable */ -->
-div {{ posts }}
+h2.posts-header Posts
+ul.posts
+  ErrorBoundary(
+    v-for="({ title, subtitle, createdAt, slug }, idx) in posts"
+    :key="idx"
+    :fallback="BlogPostThumbnailFallback"
+  )
+    BlogPostThumbnail(
+      :title="title"
+      :subtitle="subtitle"
+      :createdAt="createdAt"
+      :slug="slug"
+    )
 </template>

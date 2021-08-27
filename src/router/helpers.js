@@ -1,5 +1,5 @@
 export {
-  predicate
+	predicate
 };
 
 /* Routing Helpers */
@@ -10,7 +10,7 @@ export {
  * @param {object} to destination route definition
  */
 function predicate (to) {
-  return function (test) {
-    return to.matched.some(record => record.meta[test]);
-  };
+	return function (test) {
+		return to.matched.some(record => record.meta[test]);
+	};
 }

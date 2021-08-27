@@ -1,9 +1,9 @@
 ---
-title: test 1
+title: test 1doooo it dooooooooo!! the DOOO! doooo it dooooooooo!! the DOOO!
 subtitle: lorem ipsum dolor lorem
 createdAt: 2021-04-28
 imgSrc: https://lh3.googleusercontent.com/proxy/zTGJP5IN0gemAWIQSWBlux6de3TkbMNUDQ6LLtwLlYSi33M2D-bIjbMFt-O5hArvkp9myGodBMgG_qstE-PmfqW8bZhUJg
-slug: test-1
+slug: test-1-copy
 ---
 
 ```haskell

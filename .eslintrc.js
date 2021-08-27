@@ -36,9 +36,27 @@ module.exports = {
     'vue/singleline-html-element-content-newline': 'off',
     'vue/max-attributes-per-line': 'off',
     'vue/html-self-closing': 'off',
+    'import/no-webpack-loader-syntax': 'off',
+
+    'no-prototype-builtins': 'off',
+    'vue/html-closing-bracket-spacing': 'off',
+    'vue/require-default-prop': 'off',
+    'vue/order-in-components': 'off',
+    'no-useless-escape': 'off',
+    'no-irregular-whitespace': 'off',
+    'no-mixed-spaces-and-tabs': 'off',
+    'vue/attributes-order': 'off',
+    'vue/mustache-interpolation-spacing': 'off',
+    'vue/no-multi-spaces': 'off',
+    'standard/no-callback-literal': 'off',
+    'camelcase': 'off',
     'no-unused-vars': 'off',
-    'space-before-function-paren': 'error',
-    'comma-dangle': 'error'
+    'no-undef': 'off',
+    'eqeqeq': 'off',
+
+    'no-useless-catch': 'warn',
+    'no-fallthrough': 'warn',
+    'indent': ['error', 'tab']
   },
 
   reportUnusedDisableDirectives: true

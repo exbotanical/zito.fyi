@@ -1,14 +1,14 @@
 import {
-  eventApi as event
+	eventApi as event
 } from '@/services/api';
 
 export default {
-  install (app, opts) {
-    const api = {
-      event
-    };
+	install (app, opts) {
+		const api = {
+			event
+		};
 
-    app.config.globalProperties.$api = api;
-    app.provide('$api', api);
-  }
+		app.config.globalProperties.$api = api;
+		app.provide('$api', api);
+	}
 };

@@ -7,6 +7,14 @@ $main-success-color: #50fa7b;
 $main-error-color: #f55;
 $main-warn-color: #f1fa8c;
 $main-info-color: #6272a4;
+$main-highlight-color-1:#1d1d36;
+$main-highlight-color-2:#343468;
+$main-highlight-color-3: #3e3fa3;
+$main-highlight-color-4:#483f7a;
+$main-highlight-color-5: #8041c8;
+$main-highlight-color-6: #b756b8;
+$main-highlight-color-7: #b86faa;
+$main-highlight-color-8: #cea6ba;
 
 $main-background-color: #282a36;
 $main-line-color: #44475a;
@@ -31,8 +39,6 @@ $main-font-weight-bold: 700;
 /* Layout */
 $main-header-height: 3rem;
 
-$noise-size: 64;
-
 $grid-gutter: var(--base);
 $grid-height: calc(2 * var(--base));
 
@@ -54,7 +60,7 @@ $subheading-oval: 0;
 
 :root {
   --base: 0.8rem;
-  --noise-size: 64;
+  --paper-size: 64;
   --width: 960px;
 }
 
@@ -67,5 +73,12 @@ $subheading-oval: 0;
 @media (max-width: 960px) {
   :root {
     --width: calc(100vw - 2 * $grid-gutter);
+  }
+}
+
+@mixin transform($scale: 1.01, $s: 0.7s) {
+  &:hover {
+    transform: scale($scale);
+    transition: $s;
   }
 }

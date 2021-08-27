@@ -1,5 +1,5 @@
 ---
-to: "src/pages/blog/<%= name %>.md"
+to: "src/pages/<%= name %>.md"
 ---
 <%
 

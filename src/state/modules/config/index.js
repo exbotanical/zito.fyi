@@ -5,9 +5,9 @@ import state from './state';
 
 /* Dedicated Vuex Store for App Configurations and Settings */
 export default {
-  namespaced: true,
-  getters,
-  mutations,
-  actions,
-  state
+	namespaced: true,
+	getters,
+	mutations,
+	actions,
+	state
 };

@@ -4,30 +4,63 @@
 }
 
 .posts {
-  list-style: none;
   padding: 0;
-
-  time {
-    display: block;
-    text-align: right;
-    font-size: 0.5em;
-    line-height: 1em;
-  }
+  list-style: none;
 
   p {
     margin: 0;
   }
 
+  p:first-child {
+    color: $main-success-color;
+  }
+
+  time {
+    display: block;
+    font-size: $main-font-md;
+    line-height: 1em;
+    text-align: right;
+  }
+
   .post {
+    padding: 1rem;
     margin-bottom: calc(2 * $grid-height);
+    margin-bottom: 1rem;
+    border-radius: 11px 0 11px 0;
+
+    &:not(.error):hover {
+      box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+
+      @include transform;
+    }
   }
 
   .continue {
     text-align: right;
   }
 
-  .error {
-    color: $main-error-color;
-    margin-bottom: 1rem;
+  $colors:
+    $main-highlight-color-1,
+    $main-highlight-color-2,
+    $main-highlight-color-3,
+    $main-highlight-color-4,
+    $main-highlight-color-5,
+    $main-highlight-color-6,
+    $main-highlight-color-7,
+    $main-highlight-color-8;
+
+  @for $i from 1 through length($colors) {
+    .post:nth-child(#{length($colors)}n+#{$i}) {
+      background: nth($colors, $i);
+    }
+  }
+
+  .post.error {
+    background: $main-error-color;
+
+    p {
+      color: $main-foreground-color;
+    }
   }
 }

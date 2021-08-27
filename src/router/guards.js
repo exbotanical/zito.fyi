@@ -6,7 +6,7 @@ import { eventApi } from '@/services/api';
 import { predicate } from '@/router/helpers';
 
 export {
-  guards
+	guards
 };
 
 const session = new SessionManager();
@@ -15,20 +15,20 @@ const session = new SessionManager();
  * @summary Wrapper for all system navigation guards
  */
 function guards () {
-  this.beforeEach((to, from, next) => {
-    const routeHas = predicate(to);
+	this.beforeEach((to, from, next) => {
+		const routeHas = predicate(to);
 
-    if (not(session.tracking())) {
-      session.track();
-      eventApi.logInteraction();
-    }
+		if (not(session.tracking())) {
+			session.track();
+			eventApi.logInteraction();
+		}
 
-    if (routeHas('redirect')) {
-      return next({ name: 'Landing' });
-    }
+		if (routeHas('redirect')) {
+			return next({ name: 'Landing' });
+		}
 
-    return next();
-  });
+		return next();
+	});
 
-  return this;
+	return this;
 }

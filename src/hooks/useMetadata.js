@@ -1,7 +1,7 @@
 import {
-  notNullOrUndefined,
-  isObject,
-  not
+	notNullOrUndefined,
+	isObject,
+	not
 } from 'js-heuristics';
 
 import { ref } from 'vue';
@@ -9,18 +9,18 @@ import { ref } from 'vue';
 import { pipe } from '@/utils';
 
 export {
-  useMetadata
+	useMetadata
 };
 
 /**
  * @summary Expose mappings of frontmatter-generated route definitions
  */
 function useMetadata (routes) {
-  const posts = ref([
-    ...resolveFrontmatter(routes)
-  ]);
+	const posts = ref([
+		...resolveFrontmatter(routes)
+	]);
 
-  return { posts };
+	return { posts };
 }
 
 /**
@@ -29,18 +29,18 @@ function useMetadata (routes) {
  * @returns {object[]} object[]
  */
 function resolveFrontmatter (routes) {
-  return routes
-    .map(pipe(each, has))
-    .filter(notNullOrUndefined);
+	return routes
+		.map(pipe(each, has))
+		.filter(notNullOrUndefined);
 }
 
 /* Util */
 const model = [
-  'createdAt',
-  'imgSrc',
-  'slug',
-  'subtitle',
-  'title'
+	'createdAt',
+	'imgSrc',
+	'slug',
+	'subtitle',
+	'title'
 ];
 
 /**
@@ -49,7 +49,7 @@ const model = [
  * @returns {(object|undefined)} object | undefined
  */
 function each ({ meta } = {}) {
-  return meta?.frontmatter;
+	return meta?.frontmatter;
 }
 
 /**
@@ -58,9 +58,9 @@ function each ({ meta } = {}) {
  * @returns {(object|null)} object | null
  */
 function has (frontmatter) {
-  return (isObject(frontmatter) && isCoalescent(frontmatter))
-    ? frontmatter
-    : null;
+	return (isObject(frontmatter) && isCoalescent(frontmatter))
+		? frontmatter
+		: null;
 }
 
 /**
@@ -68,5 +68,5 @@ function has (frontmatter) {
  * @param {object} prospect
  */
 function isCoalescent (prospect) {
-  return not(Object.values(prospect).some(not));
+	return not(Object.values(prospect).some(not));
 }

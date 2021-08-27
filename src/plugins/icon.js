@@ -15,19 +15,19 @@ import { faKey } from '@fortawesome/free-solid-svg-icons/faKey';
 import { faCommentAlt } from '@fortawesome/free-solid-svg-icons/faCommentAlt';
 
 export default function () {
-  library.add(
-    faInstagram,
-    faYoutube,
-    faGithub,
-    faFacebook,
-    faLinkedin,
-    faTwitter,
-    faShareAltSquare,
-    faShareAlt,
-    faFingerprint,
-    faKey,
-    faCommentAlt
-  );
+	library.add(
+		faInstagram,
+		faYoutube,
+		faGithub,
+		faFacebook,
+		faLinkedin,
+		faTwitter,
+		faShareAltSquare,
+		faShareAlt,
+		faFingerprint,
+		faKey,
+		faCommentAlt
+	);
 
-  return FontAwesomeIcon;
+	return FontAwesomeIcon;
 }

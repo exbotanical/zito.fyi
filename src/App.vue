@@ -1,15 +1,15 @@
 <script setup>
 import {
-  computed,
-  watch,
-  onMounted
+	computed,
+	watch,
+	onMounted
 } from 'vue';
 import { useRoute } from 'vue-router';
 import { useHead } from '@vueuse/head';
 
 import {
-  useActions,
-  useGetters
+	useActions,
+	useGetters
 } from '@/hooks';
 
 /* Components */
@@ -20,33 +20,33 @@ const route = useRoute();
 
 const { addViewToCache } =
   useActions('config', [
-    'addViewToCache'
+  	'addViewToCache'
   ]);
 
 const { getCachedViews } =
   useGetters('config', [
-    'getCachedViews'
+  	'getCachedViews'
   ]);
 
 /* Watchers */
 watch(
-  () => route.name,
-  () => addViewToCache(route)
+	() => route.name,
+	() => addViewToCache(route)
 );
 
 /* Init */
 useHead({
-  title: 'zito.dev',
-  meta: [
-    {
-      name: `description`,
-      content: computed(() => route.meta.desc)
-    }
-  ]
+	title: 'zito.dev',
+	meta: [
+		{
+			name: `description`,
+			content: computed(() => route.meta.desc)
+		}
+	]
 });
 
 onMounted(() => {
-  addViewToCache(route);
+	addViewToCache(route);
 });
 </script>
 

@@ -24,11 +24,11 @@ import api from '@/plugins/api';
  *
  ************************************/
 const app = createApp(App)
-  .use(debug)
-  .use(api)
-  .use(router)
-  .use(store)
-  .use(createHead());
+	.use(debug)
+	.use(api)
+	.use(router)
+	.use(store)
+	.use(createHead());
 
 /************************************
  *

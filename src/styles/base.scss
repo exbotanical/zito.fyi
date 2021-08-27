@@ -4,12 +4,13 @@
 
 html,
 body {
-  margin: 0;
-  border: 0;
   padding: 0;
+  border: 0;
+  margin: 0;
 }
 
 html {
+  box-sizing: border-box;
   // here, we set the root font-size in order to
   // create a custom baseline that will henceforth equal 1 rem
   // this further allows us to easily change all measurements on our site
@@ -17,39 +18,38 @@ html {
 
   // finally, this approach mitigates the need for complex media queries
   font-size: 16px;
-
-  box-sizing: border-box;
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
 body {
+  position: relative;
+
   /* Container */
   background: $main-background-color;
-  position: relative;
 
   /* Font */
   color: $main-foreground-color;
   font-family: 'Inconsolata', monospace;
+  font-size: $grid-height;
   font-variation-settings:
     "wdth" $main-font-width,
     "wght" $main-font-weight,
     "slnt" $main-font-slant;
-  font-size: $grid-height;
+  hyphens: auto;
   line-height: $grid-height + $grid-gutter;
   overflow-x: hidden;
-  hyphens: auto;
 }
 
 main {
   max-width: var(--width);
+  padding: $grid-gutter;
   margin: 0 auto;
   margin-top: calc(9 * var(--base));
-  padding: $grid-gutter;
 }
 
 /* Native Elements */
@@ -65,15 +65,15 @@ h3 {
     "quad" $heading-quad,
     "bevl" $heading-bevl,
     "oval" $heading-oval;
-  line-height: 1.2em;
   hyphens: none;
+  line-height: 1.2em;
 }
 
 h3,
 h4 {
-  font-size: inherit;
   margin: 0;
   margin-top: calc(2 * $grid-height);
+  font-size: inherit;
   font-variation-settings:
     "size" $subheading-size,
     "quad" $subheading-quad,
@@ -82,17 +82,18 @@ h4 {
 }
 
 strong {
-  font-weight: 700;
-  $main-font-weight: 700;
   font-variation-settings:
     "wdth" $main-font-width,
     "wght" $main-font-weight,
     "slnt" $main-font-slant;
+  font-weight: 700;
+  $main-font-weight: 700;
 }
 
 em {
   font-style: italic;
   $main-font-slant: 10;
+
   font-variation-settings:
     "wdth" $main-font-width,
     "wght" $main-font-weight,
@@ -112,24 +113,40 @@ time {
 }
 
 a {
-  text-decoration: none;
   color: $main-success-color;
+  text-decoration: none;
+
+  &:hover {
+    font-size: 1.15em;
+
+    @include transform(1.01, 0.1s);
+  }
+}
+
+figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Unique Identifiers */
 
-/* Noise */
-.noise {
+#app {
+  min-height: 100vh;
+}
+
+/* Paper */
+.paper {
   position: absolute;
+  z-index: 980;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
-  background-size: calc(2px * var(--noise-size));
-  pointer-events: none;
-  opacity: 0.012;
-  z-index: 980;
+  left: 0;
   animation: fade-in 4s;
+  background-size: calc(2px * var(--paper-size));
+  opacity: 0.012;
+  pointer-events: none;
 }
 
 @keyframes fade-in {

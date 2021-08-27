@@ -1,9 +1,8 @@
 <script setup>
 import {
-  ref,
-  onErrorCaptured,
-  defineProps,
-  inject
+	ref,
+	onErrorCaptured,
+	inject
 } from 'vue';
 
 import { isDev } from '@/utils';
@@ -16,26 +15,26 @@ const { event } = inject('$api');
 const hasError = ref(false);
 
 const props = defineProps({
-  fallback: {
-    type: Object
-  },
-  propagates: {
-    type: Boolean,
-    default: false
-  }
+	fallback: {
+		type: Object
+	},
+	propagates: {
+		type: Boolean,
+		default: false
+	}
 });
 
 onErrorCaptured((err, vm, info) => {
-  hasError.value = true;
-  // eslint-disable-next-line no-console
-  if (isDev) console.warn({ err }, { info });
+	hasError.value = true;
+	// eslint-disable-next-line no-console
+	if (isDev) console.warn({ err }, { info });
 
-  event.logError({
-    category: ERROR_CAT.BOUND,
-    info: `${info} ${err}`
-  });
+	event.logError({
+		category: ERROR_CAT.BOUND,
+		info: `${info} ${err}`
+	});
 
-  return !!props.propagates;
+	return !!props.propagates;
 });
 </script>
 

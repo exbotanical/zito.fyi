@@ -20,7 +20,7 @@ $colors:
   display: flex;
   align-items: center;
 
-  @for $i from 1 through 3 {
+  @for $i from 1 through length($colors) {
     &__el:nth-child(#{$i}) {
       color: nth($colors, $i);
       font-size: 2rem;

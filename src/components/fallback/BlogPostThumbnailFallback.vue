@@ -1,5 +1,5 @@
 <template lang="pug">
 <!-- /* eslint-disable */ -->
-li.post
-  p.error Unable to resolve this post
+li.post.error
+  p Unable to resolve this post
 </template>

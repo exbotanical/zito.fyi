@@ -5,6 +5,7 @@ import routes from '@/router/routes/blog.routes';
 
 import { ERROR_CAT } from '@/services/api/models';
 import { useMetadata } from '@/hooks';
+import { toUnixTs } from '@/utils';
 
 /* Components */
 import ErrorBoundary from '@/components/fallback/ErrorBoundary.vue';
@@ -17,13 +18,15 @@ const { event } = inject('$api');
 /* Data */
 const { posts } = useMetadata(routes);
 
-onErrorCaptured((err, vm, info) => {
-  event.logError({
-    category: ERROR_CAT.RUNTIME,
-    info: `${err.toString()} ${vm} ${info}`
-  });
+const sortedPosts = posts.value.sort((a, b) => toUnixTs(b.createdAt) - toUnixTs(a.createdAt));
 
-  return false;
+onErrorCaptured((err, vm, info) => {
+	event.logError({
+		category: ERROR_CAT.RUNTIME,
+		info: `${err.toString()} ${vm} ${info}`
+	});
+
+	return false;
 });
 </script>
 

@@ -1,5 +1,5 @@
 export {
-  dispatchRoot
+	dispatchRoot
 };
 
 /**
@@ -7,7 +7,7 @@ export {
  * @returns {function}
  */
 function dispatchRoot (dispatch) {
-  return async function (namespace, args) {
-    await dispatch(namespace, args, { root: true });
-  };
+	return async function (namespace, args) {
+		await dispatch(namespace, args, { root: true });
+	};
 }

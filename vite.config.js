@@ -97,7 +97,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolveAbsolute('./src'),
-      '@pkg': resolveAbsolute('./package.json')
+      '@pkg': resolveAbsolute('./package.json'),
+      '@settings': resolveAbsolute('./settings')
     }
   },
 

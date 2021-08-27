@@ -6,6 +6,6 @@ import { guards } from './guards';
 /* Root Router Configurations */
 
 export default guards.call(createRouter({
-  history: createWebHistory(),
-  routes
+	history: createWebHistory(),
+	routes
 }));

@@ -1,15 +1,19 @@
 import pkg from '@pkg';
 
-const { appName, author } = pkg;
+const appSettings = {
+	appName: pkg.appName,
+	version: pkg.version,
+	author: pkg.author,
+	dateFmt: { year: 'numeric', month: 'long', day: 'numeric' }
+};
 
 export default () => ({
-  ...cacheState(),
-  appName,
-  author
+	...cacheState(),
+	...appSettings
 });
 
 export function cacheState () {
-  return {
-    cachedViews: []
-  };
+	return {
+		cachedViews: []
+	};
 }

@@ -1,8 +1,9 @@
-package handler
+package main
 
 import (
 	"errors"
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/MatthewZito/zito.dev/api/db"
@@ -28,21 +29,35 @@ func CreateEvent(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	db, err := db.Connect()
-	if err != nil {
-		util.FError(w, err)
-		return
-	}
+	// db, err := db.Connect()
+	// if err != nil {
+	// 	util.FError(w, http.StatusInternalServerError, "Database connection failed")
+	// 	return
+	// }
 
-	defer db.Close()
+	// defer db.Close()
 
-	err = db.CreateEvent(&e)
-	if err != nil {
-		util.FError(w, http.StatusInternalServerError, "Database write failed")
-		return
-	}
+	// err = db.CreateEvent(&e)
+	// if err != nil {
+	// 	util.FError(w, http.StatusInternalServerError, "Database write failed")
+	// 	return
+	// }
 
 	fmt.Println(e)
 
 	util.FResponse(w, http.StatusCreated, "OK", "")
+}
+
+func WithCorsMiddleWare(fn func(w http.ResponseWriter, r *http.Request)) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
+		w.Header().Set("Access-Control-Allow-Credentials", "true")
+
+		fn(w, r)
+	}
+}
+
+func main() {
+	http.HandleFunc("/api/main", WithCorsMiddleWare(CreateEvent))
+	log.Fatal(http.ListenAndServe(":5000", nil))
 }

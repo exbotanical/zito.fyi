@@ -22,7 +22,7 @@ const pipe = (fn, ...fns) =>
  * @returns {Blob}
  */
 const blobify = data => new Blob([JSON.stringify(data)],
-	{ type : 'application/json; charset=UTF-8' });
+	{ type: 'application/json; charset=UTF-8', credentials: 'omit'  });
 
 /**
  * @summary Convert date to readable string with app-specified format
@@ -42,15 +42,15 @@ const toUnixTs = raw => new Date(raw)?.getTime() || 0;
 /**
  * @summary Is the app running in a local development mode?
  */
-const isDev = !!import.meta.env.VITE_LOCAL || import.meta.env.DEV;
+const isDev = !!import.meta.env.VITE_APP_MODE_LOCAL || import.meta.env.DEV;
 
 /**
  * @summary The current app base URL
  * where local mode is set with a string literal and not an env var
  * because of Vercel CLI modesparadox theatrer
  */
-const baseUrl = import.meta.env.VITE_LOCAL
-	? 'http://localhost:3000'
+const baseUrl = import.meta.env.VITE_APP_MODE_LOCAL
+	? 'http://localhost:5000'
 	: import.meta.env.VITE_APP_URL_UI;
 
 export {

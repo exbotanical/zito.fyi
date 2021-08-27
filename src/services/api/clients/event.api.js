@@ -18,7 +18,7 @@ export default {
 		// we don't really care if these go through and especially do not want to force the users
 		// to wait for something they did not ask for, and thus send the mutation manually via `sendBeacon`
 		return this.client.sendBeacon(
-			baseUrl + import.meta.env.VITE_APP_API_MAIN,
+			baseUrl + import.meta.env.VITE_APP_API_ENDPOINT,
 			blobify(ERROR_EVENT(data))
 		);
 	},
@@ -30,7 +30,7 @@ export default {
 		if (not(this.client?.sendBeacon)) return;
 
 		return this.client.sendBeacon(
-			baseUrl + import.meta.env.VITE_APP_API_MAIN,
+			baseUrl + import.meta.env.VITE_APP_API_ENDPOINT,
 			blobify(INTERACTION_EVENT(data))
 		);
 	}

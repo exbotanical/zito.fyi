@@ -6,6 +6,8 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
+    "api:dev": "go run api/main.go",
+    "dev:local": "VITE_APP_MODE_LOCAL=1 concurrently \"vite\" \"yarn run api:dev\"",
     "lint": "eslint \"src/**/*.{js,vue}\" --no-fix",
     "lint:css": "stylelint \"src/**/*.{css,scss,vue}\"",
     "lint:fix": "concurrently \"yarn lint --fix\" \"yarn lint:css --fix\"",

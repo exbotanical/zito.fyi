@@ -1,4 +1,4 @@
-module github.com/MatthewZito/goldmund-sh-ii
+module github.com/MatthewZito/zito.dev
 
 go 1.15
 

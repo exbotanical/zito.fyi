@@ -23,9 +23,10 @@ const { addViewToCache } =
   	'addViewToCache'
   ]);
 
-const { getCachedViews } =
+const { getCachedViews, appName } =
   useGetters('config', [
-  	'getCachedViews'
+  	'getCachedViews',
+		'appName'
   ]);
 
 /* Watchers */
@@ -36,7 +37,7 @@ watch(
 
 /* Init */
 useHead({
-	title: 'zito.dev',
+	title: appName,
 	meta: [
 		{
 			name: `description`,

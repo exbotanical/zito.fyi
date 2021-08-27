@@ -18,7 +18,9 @@ const { event } = inject('$api');
 /* Data */
 const { posts } = useMetadata(routes);
 
-const sortedPosts = posts.value.sort((a, b) => toUnixTs(b.createdAt) - toUnixTs(a.createdAt));
+const sortedPosts = posts.value.sort(
+	(a, b) => toUnixTs(b.createdAt) - toUnixTs(a.createdAt)
+);
 
 onErrorCaptured((err, vm, info) => {
 	event.logError({

@@ -9,7 +9,6 @@ import store from '@/state';
 import App from './App.vue';
 
 /* Global Components */
-import fa from '@/plugins/icon';
 import PostContainer from '@/layout/PostContainer.vue';
 
 /* Global Error Handlers */
@@ -37,7 +36,6 @@ const app = createApp(App)
  ************************************/
 
 /* Global Components */
-app.component('FAIcon', fa());
 app.component('PostContainer', PostContainer);
 
 /*************************************

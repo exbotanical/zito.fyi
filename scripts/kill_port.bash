@@ -3,8 +3,8 @@
 #desc           :kill process running on given port
 #author         :Matthew Zito (goldmund)
 #created        :02/2021
-#version        :1.0.0  
-#usage          :bash ./kill_port.sh
+#version        :1.0.0
+#usage          :bash ./kill_port.bash
 #environment    :bash 5.0.17
 #===============================================================================
 IFS=$'\n'
@@ -32,11 +32,11 @@ main () {
   fi
 
   kill $pid 2>/dev/null && echo "[+] Process terminated"
-  
+
   exit
 }
 
-source "$(dirname $0)/util.sh"
+source "$(dirname $0)/util.bash"
 
 if [[ -z "$1" ]]; then
   panic $E_ARGS "A parameter is required"

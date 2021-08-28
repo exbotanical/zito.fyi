@@ -27,7 +27,6 @@ if (not(objNotEmptyDeep(props))) {
 	throw new Error('Rendering error');
 }
 </script>
-<!-- jillybean -->
 <template lang="pug">
 <!-- /* eslint-disable */ -->
 router-link(

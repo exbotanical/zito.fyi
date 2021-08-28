@@ -90,8 +90,10 @@ onErrorCaptured((err, vm, info) => {
 ErrorBoundary(
   :fallback="BlogPostFallback"
 )
-  h1 {{ title }}
-  h2 {{ subtitle  }}
+  h1(style="color:#ff79c6") {{ title }}
+  h2(
+		style="color:#8be9fd;margin: 1rem 0;"
+	) {{ subtitle  }}
   time {{ dateHeader }}
   slot
   time {{ dateFooter }}

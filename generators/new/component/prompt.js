@@ -12,8 +12,10 @@ module.exports = [
     message: 'Name:',
     validate (value) {
       if (!value.length) return '[!] Components must have a name';
+
       // strip prefix if extant
       const fileName = value.replace(extRegex, '');
+
       // ensure file doesn't already exist
       try {
         fs.access(absPath(fileName), fs.F_OK, (err) => {
@@ -22,6 +24,7 @@ module.exports = [
       } catch ({ message }) {
         return message;
       }
+
       return true;
     },
   },

@@ -47,28 +47,28 @@ function onClickCopy ({ target } = {}) {
 <!-- /* eslint-disable */ -->
 footer
 	div.social-icons
-	a(
-	v-for="({ name, url }, idx) in socials"
-	:key="idx"
-	:href="url"
-	target="_blank"
-	)
-	Svg(
-	:name="name"
-	color="#ff79c6"
-	)
+		a(
+			v-for="({ name, url }, idx) in socials"
+			:key="idx"
+			:href="url"
+			target="_blank"
+		)
+			Svg(
+				:name="name"
+				color="#ff79c6"
+			)
 	span.social-links
-	h6 &#169; {{ appAuthor }} |&nbsp;
-	a(
-	@dblclick="onClickCopy"
-	tooltip="Double click to copy"
-	flow="up"
-	)
-	h6 Fingerprint
-	h6 &nbsp;|&nbsp;
-	a(
-	href="/pub.asc"
-	download
-	)
-	h6 Public Key
+		h6 &#169; {{ appAuthor }} |&nbsp;
+		a(
+			@dblclick="onClickCopy"
+			tooltip="Double click to copy"
+			flow="up"
+		)
+			h6 Fingerprint
+		h6 &nbsp;|&nbsp;
+		a(
+			href="/pub.asc"
+			download
+		)
+			h6 Public Key
 </template>

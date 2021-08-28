@@ -2,11 +2,10 @@ package handler
 
 import (
 	"errors"
-	"log"
 	"net/http"
 
-	"github.com/MatthewZito/zito.dev/api/db"
-	"github.com/MatthewZito/zito.dev/api/util"
+	"github.com/MatthewZito/zito.dev/srv/db"
+	"github.com/MatthewZito/zito.dev/srv/util"
 )
 
 // CreateEvent takes inbound events data and submits it to the database in an event entry
@@ -44,25 +43,4 @@ func CreateEvent(w http.ResponseWriter, r *http.Request) {
 	}
 
 	util.FResponse(w, http.StatusCreated, "OK", "")
-}
-
-// WithCorsMiddleware intercepts inbound requests and sets CORS-enabling headers thereon
-func WithCorsMiddleware(fn func(w http.ResponseWriter, r *http.Request)) func(w http.ResponseWriter, r *http.Request) {
-	return func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
-		w.Header().Set("Access-Control-Allow-Credentials", "true")
-		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With")
-
-		if r.Method == "OPTIONS" {
-			w.WriteHeader(http.StatusOK)
-			return
-		}
-
-		fn(w, r)
-	}
-}
-
-func main() {
-	http.HandleFunc("/api/main", WithCorsMiddleware(CreateEvent))
-	log.Fatal(http.ListenAndServe(":5000", nil))
 }

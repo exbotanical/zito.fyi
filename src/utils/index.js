@@ -22,7 +22,7 @@ const pipe = (fn, ...fns) =>
  * @returns {Blob}
  */
 const blobify = data => new Blob([JSON.stringify(data)],
-	{ type: 'application/json; charset=UTF-8', credentials: 'omit'  });
+	{ type: 'application/json; charset=UTF-8' });
 
 /**
  * @summary Convert date to readable string with app-specified format

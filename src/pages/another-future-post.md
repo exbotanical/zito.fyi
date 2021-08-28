@@ -1,9 +1,8 @@
 ---
-title: test 1
-subtitle: lorem ipsum dolor lorem
+title: Another Future Post
+subtitle: Placeholder
 createdAt: 2021-04-28
-imgSrc: https://lh3.googleusercontent.com/proxy/zTGJP5IN0gemAWIQSWBlux6de3TkbMNUDQ6LLtwLlYSi33M2D-bIjbMFt-O5hArvkp9myGodBMgG_qstE-PmfqW8bZhUJg
-slug: test-1
+slug: another-future-post
 ---
 
 ```haskell

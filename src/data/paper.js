@@ -29,7 +29,7 @@
 		url = URL.createObjectURL(png),
 		div = document.createElement('div');
 
-	div.classList.add('noise');
+	div.classList.add('paper');
 	div.style = `background-image: url(${url})`;
 
 	document.body.appendChild(div);

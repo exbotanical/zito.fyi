@@ -1,10 +1,9 @@
 ---
-title: Lorem Ipsum Dolor
-subtitle: Lorem Ipsum Dolor
+title: Future Blog Post
+subtitle: lorem ipsum dolor
 createdAt: 2020-01-01
 updatedAt: 2021-01-01
-imgSrc: https://payload.cargocollective.com/1/17/549798/8559338/paperrad_print09_1000.jpg
-slug: test-page-1
+slug: future-blog-post-3
 ---
 
 ```js

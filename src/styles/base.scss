@@ -41,13 +41,14 @@ body {
     "wght" $main-font-weight,
     "slnt" $main-font-slant;
   hyphens: auto;
-  line-height: $grid-height + $grid-gutter;
+  line-height: calc(3 * var(--base));
   overflow-x: hidden;
 }
 
 main {
   max-width: var(--width);
   padding: $grid-gutter;
+  padding-bottom: 3rem;
   margin: 0 auto;
   margin-top: calc(9 * var(--base));
 }
@@ -81,6 +82,11 @@ h4 {
     "oval" $subheading-oval;
 }
 
+h5,
+h6 {
+  margin: 0;
+}
+
 strong {
   font-variation-settings:
     "wdth" $main-font-width,
@@ -105,6 +111,7 @@ code {
 }
 
 time {
+  font-size: $main-font-md;
   font-variation-settings:
     "size" $heading-size,
     "quad" $heading-quad,
@@ -127,6 +134,10 @@ figure {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+img {
+  width: 100%;
 }
 
 /* Unique Identifiers */

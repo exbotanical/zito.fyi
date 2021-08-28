@@ -24,7 +24,7 @@ const symbolId = computed(() => `#${props.prefix}-${props.name}`);
 svg(
   aria-hidden="true",
   width="100%",
-  height="40px"
+  height="2.5vh"
 )
   use(:xlink:href="symbolId" :fill="color")
 </template>

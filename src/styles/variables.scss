@@ -58,6 +58,7 @@ $subheading-quad: 0;
 $subheading-bevl: 0;
 $subheading-oval: 0;
 
+/* Root Variables */
 :root {
   --base: 0.8rem;
   --paper-size: 64;
@@ -76,6 +77,7 @@ $subheading-oval: 0;
   }
 }
 
+/* Mixins */
 @mixin transform($scale: 1.01, $s: 0.7s) {
   &:hover {
     transform: scale($scale);

@@ -13,21 +13,22 @@ import {
 } from '@/hooks';
 
 /* Components */
+import NotificationDispatch from '@/components/notification/Dispatch.vue';
 import MainLayout from '@/layout/MainLayout.vue';
 
 /* Est */
 const route = useRoute();
 
 const { addViewToCache } =
-  useActions('config', [
-  	'addViewToCache'
-  ]);
+	useActions('config', [
+		'addViewToCache'
+	]);
 
 const { getCachedViews, appName } =
-  useGetters('config', [
-  	'getCachedViews',
+	useGetters('config', [
+		'getCachedViews',
 		'appName'
-  ]);
+	]);
 
 /* Watchers */
 watch(
@@ -53,8 +54,9 @@ onMounted(() => {
 
 <template lang="pug">
 <!-- /* eslint-disable */ -->
+NotificationDispatch(namespace="notifications")
 MainLayout
-  router-view(v-slot="{ Component }")
-    keep-alive(:include="getCachedViews")
-      component(:is="Component")
+	router-view(v-slot="{ Component }")
+		keep-alive(:include="getCachedViews")
+			component(:is="Component")
 </template>

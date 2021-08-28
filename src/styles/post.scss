@@ -7,12 +7,12 @@
   padding: 0;
   list-style: none;
 
-  p {
-    margin: 0;
+  h3 {
+    color: $main-success-color;
   }
 
-  p:first-child {
-    color: $main-success-color;
+  p {
+    margin: 0;
   }
 
   time {

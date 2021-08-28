@@ -1,9 +1,8 @@
 ---
-title: test 2
+title: Future Blog Post
 subtitle: lorem ipsum dolor
 createdAt: 2021-04-28
-imgSrc: https://lh3.googleusercontent.com/proxy/h2zyFMePW0XAMc58KjnQ8BuBBycvPagR-GOz7Tz4n9P0KG63ROAhmeO37FRy5yLJvqajuLTQhn0V3UyDGp1K4yvHZ1EYfA
-slug: test-2
+slug: future-blog-post-2
 ---
 
 ```yaml

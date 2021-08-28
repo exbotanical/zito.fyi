@@ -1,0 +1,29 @@
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: $grid-height;
+  padding-bottom: 0;
+
+  .social-icons {
+    display: grid;
+    grid-template-columns: repeat(2, 2em);
+    grid-template-rows: auto;
+
+    a {
+      @include transform(1.2);
+    }
+  }
+
+  .social-links {
+    display: inline-flex;
+
+    a:first-of-type {
+      cursor: pointer;
+    }
+  }
+}

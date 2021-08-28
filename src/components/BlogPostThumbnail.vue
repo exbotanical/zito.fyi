@@ -38,7 +38,7 @@ router-link(
   li.post(
     @click="navigate"
   )
-    p {{ title }}
+    h3 {{ title }}
     p {{ subtitle}}
     time {{ dateConv(createdAt) }}
 </template>

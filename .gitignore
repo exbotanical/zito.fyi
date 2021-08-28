@@ -7,6 +7,6 @@ repl.js
 cache
 .vercel
 
-docs
+*.sql
 metadata.json
 data.md

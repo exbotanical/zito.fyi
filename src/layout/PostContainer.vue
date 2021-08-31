@@ -90,11 +90,32 @@ onErrorCaptured((err, vm, info) => {
 ErrorBoundary(
   :fallback="BlogPostFallback"
 )
-  h1(style="color:#ff79c6") {{ title }}
-  h2(
-		style="color:#8be9fd;margin: 1rem 0;"
-	) {{ subtitle  }}
-  time {{ dateHeader }}
-  slot
-  time {{ dateFooter }}
+	.main
+		h1.main-title {{ title }}
+		h2.main-subtitle {{ subtitle  }}
+		time {{ dateHeader }}
+	slot
+	time {{ dateFooter }}
 </template>
+
+<style lang="scss" scoped>
+
+.main {
+  padding-bottom: 9rem;
+  transform: skewY(-9deg);
+
+  &-title {
+    color: $main-accent-color;
+  }
+
+  &-subtitle {
+    margin: 1rem 0;
+    color: $main-secondary-color;
+    // margin-bottom: 9rem;
+  }
+}
+
+time {
+  float: right;
+}
+</style>

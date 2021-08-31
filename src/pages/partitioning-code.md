@@ -158,3 +158,51 @@ In the body of a function:
     ...
   }
   ```
+
+## Formatting Guidelines
+
+- Tabs vs Spaces
+
+  Tabs, where possible. This is the modern approach; tabs are a single, distinguishable character in contrast to two spaces.
+
+  Spaces in some languages e.g. Python have lexical meaning.
+
+- Space-prefixed Parentheses in Function Declarations
+
+  Function declarations should feature a space-prefixed parenthesis couple.
+  Akin to the language exception for the aforementioned spaces, some languages require contiguous characters from the
+  name of a function through the parentheses e.g. Go.
+
+  Examples:
+
+  ```js
+  // preferred, the declaration is perceivably different from an invocation
+  function routine () {
+    ...
+  }
+  ```
+
+  Occasioned Exception
+
+  ```go
+  // Go `fmt` enforces this
+  func formatted() {
+    ...
+  }
+  ```
+
+  ```py
+  # Python is preferential to this qua examples in PEP8
+  def formatted():
+    ...
+  ```
+
+- Single Quote vs Double Quote
+
+  Single quote, where possible. Yes, it does entail less keystrokes for most, but we favor this
+  because the presence of single-quoted *strings* will assert that we are writing a
+  language that abstracts away the relationships between characters and strings (or character arrays).
+
+  Typically, we say 'choose one and stick with it', but the purpose of this guide *is* to delve into these things.
+
+  Obvious exceptions to this rule include C and Go.

@@ -55,7 +55,7 @@ footer
 		)
 			Svg(
 				:name="name"
-				color="#ff79c6"
+				color="#50fa7b"
 			)
 	span.social-links
 		h6 &#169; {{ appAuthor }} |&nbsp;

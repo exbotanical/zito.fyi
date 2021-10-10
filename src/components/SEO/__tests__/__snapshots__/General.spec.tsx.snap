@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`\`GeneralTags\` generates correct tags for posts 1`] = `
+Array [
+  <title>
+    Post title
+  </title>,
+  <link
+    href=""
+    rel="shortcut icon"
+  />,
+  <meta
+    content="Post description."
+    name="description"
+  />,
+  <meta
+    content="/logos/logo-1024.png"
+    name="image"
+  />,
+]
+`;
+
+exports[`\`GeneralTags\` generates correct tags on pages 1`] = `
+Array [
+  <title>
+    Site title
+  </title>,
+  <link
+    href=""
+    rel="shortcut icon"
+  />,
+  <meta
+    content="Site description."
+    name="description"
+  />,
+  <meta
+    content="/logos/logo-1024.png"
+    name="image"
+  />,
+]
+`;
+
+exports[`\`GeneralTags\` generates correct tags when missing \`description\` 1`] = `
+Array [
+  <title>
+    Post title
+  </title>,
+  <link
+    href=""
+    rel="shortcut icon"
+  />,
+  <meta
+    content="/logos/logo-1024.png"
+    name="image"
+  />,
+]
+`;
+
+exports[`\`GeneralTags\` generates correct tags when missing \`imageUrl\` 1`] = `
+Array [
+  <title>
+    Post title
+  </title>,
+  <link
+    href=""
+    rel="shortcut icon"
+  />,
+  <meta
+    content="Post description."
+    name="description"
+  />,
+]
+`;

@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`seo module RichSearchTags generates correct tags for pages 1`] = `
+Array [
+  <script
+    type="application/ld+json"
+  >
+    {"@context":"https://schema.org","@type":"Organization","url":"https://zito.dev","name":"","description":"","logo":""}
+  </script>,
+]
+`;
+
+exports[`seo module RichSearchTags generates correct tags for posts 1`] = `
+Array [
+  <script
+    type="application/ld+json"
+  >
+    {"@context":"http://schema.org","@type":"BlogPosting","image":"/logos/logo-1024.png","url":"/posts/url","headline":"Post title","name":"Post title","description":"Post description.","dateCreated":"2021-12-17T00:00:00.000Z","datePublished":"2021-12-17T00:00:00.000Z","dateModified":"2021-12-20T00:00:00.000Z","author":{"@type":"Person","givenName":"Matthew","familyName":"Zito","email":"exbotanical@gmail.com","address":"United States"},"creator":{"@type":"Person","givenName":"Matthew","familyName":"Zito","email":"exbotanical@gmail.com","address":"United States"},"publisher":{"@context":"https://schema.org","@type":"Organization","url":"https://zito.dev","name":"","description":"","logo":""},"mainEntityOfPage":"True","keywords":["Tag1","Tag2"],"articleSection":"Tech","articleBody":"Post body"}
+  </script>,
+]
+`;
+
+exports[`seo module RichSearchTags generates correct tags when missing org data 1`] = `
+Array [
+  <script
+    type="application/ld+json"
+  >
+    {"@context":"http://schema.org","@type":"BlogPosting","image":"/logos/logo-1024.png","url":"/posts/url","headline":"Post title","name":"Post title","description":"Post description.","dateCreated":"2021-12-17T00:00:00.000Z","datePublished":"2021-12-17T00:00:00.000Z","dateModified":"2021-12-20T00:00:00.000Z","author":{"@type":"Person","givenName":"Matthew","familyName":"Zito","email":"exbotanical@gmail.com","address":"United States"},"creator":{"@type":"Person","givenName":"Matthew","familyName":"Zito","email":"exbotanical@gmail.com","address":"United States"},"mainEntityOfPage":"True","keywords":["Tag1","Tag2"],"articleSection":"Tech","articleBody":"Post body"}
+  </script>,
+]
+`;
+
+exports[`seo module RichSearchTags generates correct tags when missing user metadata 1`] = `
+Array [
+  <script
+    type="application/ld+json"
+  >
+    {"@context":"http://schema.org","@type":"BlogPosting","image":"/logos/logo-1024.png","url":"/posts/url","headline":"Post title","name":"Post title","description":"Post description.","dateCreated":"2021-12-17T00:00:00.000Z","datePublished":"2021-12-17T00:00:00.000Z","dateModified":"2021-12-20T00:00:00.000Z","publisher":{"@context":"https://schema.org","@type":"Organization","url":"https://zito.dev","name":"","description":"","logo":""},"mainEntityOfPage":"True","keywords":["Tag1","Tag2"],"articleSection":"Tech","articleBody":"Post body"}
+  </script>,
+]
+`;

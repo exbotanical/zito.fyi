@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`\`TwitterTags\` generates correct tags for pages 1`] = `
+Array [
+  <meta
+    content="summary_large_image"
+    name="twitter:card"
+  />,
+  <meta
+    content="Site title"
+    name="twitter:title"
+  />,
+  <meta
+    content="Site description."
+    name="twitter:description"
+  />,
+  <meta
+    content="/logos/logo-1024.png"
+    name="twitter:image"
+  />,
+  <meta
+    content="Site image alt description."
+    name="twitter:image:alt"
+  />,
+  <meta
+    content="test"
+    name="twitter:creator"
+  />,
+  <meta
+    content="test"
+    name="twitter:site"
+  />,
+]
+`;
+
+exports[`\`TwitterTags\` generates correct tags for posts 1`] = `
+Array [
+  <meta
+    content="summary_large_image"
+    name="twitter:card"
+  />,
+  <meta
+    content="Post title"
+    name="twitter:title"
+  />,
+  <meta
+    content="Post description."
+    name="twitter:description"
+  />,
+  <meta
+    content="/logos/logo-1024.png"
+    name="twitter:image"
+  />,
+  <meta
+    content="Post cover image alt text."
+    name="twitter:image:alt"
+  />,
+  <meta
+    content="test"
+    name="twitter:creator"
+  />,
+  <meta
+    content="test"
+    name="twitter:site"
+  />,
+]
+`;
+
+exports[`\`TwitterTags\` generates correct tags when \`description\` is not extant 1`] = `
+Array [
+  <meta
+    content="summary_large_image"
+    name="twitter:card"
+  />,
+  <meta
+    content="Post title"
+    name="twitter:title"
+  />,
+  <meta
+    content="/logos/logo-1024.png"
+    name="twitter:image"
+  />,
+  <meta
+    content="Post cover image alt text."
+    name="twitter:image:alt"
+  />,
+  <meta
+    content="test"
+    name="twitter:creator"
+  />,
+  <meta
+    content="test"
+    name="twitter:site"
+  />,
+]
+`;
+
+exports[`\`TwitterTags\` generates correct tags when \`imageUrl\` is not extant 1`] = `
+Array [
+  <meta
+    content="summary_large_image"
+    name="twitter:card"
+  />,
+  <meta
+    content="Post title"
+    name="twitter:title"
+  />,
+  <meta
+    content="Post description."
+    name="twitter:description"
+  />,
+  <meta
+    content="Post cover image alt text."
+    name="twitter:image:alt"
+  />,
+  <meta
+    content="test"
+    name="twitter:creator"
+  />,
+  <meta
+    content="test"
+    name="twitter:site"
+  />,
+]
+`;

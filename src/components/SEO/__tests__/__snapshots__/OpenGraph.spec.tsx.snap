@@ -1,0 +1,225 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`\`OpenGraphTags\` generates correct tags for pages 1`] = `
+Array [
+  <meta
+    content="Site title"
+    property="og:title"
+  />,
+  <meta
+    content="page"
+    property="og:type"
+  />,
+  <meta
+    content="/url"
+    property="og:url"
+  />,
+  <meta
+    content="/logos/logo-1024.png"
+    property="og:image"
+  />,
+  <meta
+    content="Site image alt description."
+    property="og:image:alt"
+  />,
+  <meta
+    content="Matthew Zito's Blog"
+    property="og:site_name"
+  />,
+  <meta
+    content="Site description."
+    property="og:description"
+  />,
+]
+`;
+
+exports[`\`OpenGraphTags\` generates correct tags for posts 1`] = `
+Array [
+  <meta
+    content="Post title"
+    property="og:title"
+  />,
+  <meta
+    content="post"
+    property="og:type"
+  />,
+  <meta
+    content="/posts/url"
+    property="og:url"
+  />,
+  <meta
+    content="/logos/logo-1024.png"
+    property="og:image"
+  />,
+  <meta
+    content="Post cover image alt text."
+    property="og:image:alt"
+  />,
+  <meta
+    content="Matthew Zito's Blog"
+    property="og:site_name"
+  />,
+  <meta
+    content="Post description."
+    property="og:description"
+  />,
+  <meta
+    content="2021-12-17T00:00:00.000Z"
+    property="article:published_time"
+  />,
+  <meta
+    content="2021-12-20T00:00:00.000Z"
+    property="article:modified_time"
+  />,
+  <meta
+    content="http://examples.opengraphprotocol.us/profile.html"
+    property="article:author"
+  />,
+  <meta
+    content="Matthew"
+    property="profile:first_name"
+  />,
+  <meta
+    content="Zito"
+    property="profile:last_name"
+  />,
+  <meta
+    content="goldmund"
+    property="profile:username"
+  />,
+  <meta
+    content="Tech"
+    property="article:section"
+  />,
+  <meta
+    content="Tag1"
+    property="article:tag"
+  />,
+  <meta
+    content="Tag2"
+    property="article:tag"
+  />,
+]
+`;
+
+exports[`\`OpenGraphTags\` generates correct tags when missing \`description\` 1`] = `
+Array [
+  <meta
+    content="Post title"
+    property="og:title"
+  />,
+  <meta
+    content="post"
+    property="og:type"
+  />,
+  <meta
+    content="/posts/url"
+    property="og:url"
+  />,
+  <meta
+    content="/logos/logo-1024.png"
+    property="og:image"
+  />,
+  <meta
+    content="Post cover image alt text."
+    property="og:image:alt"
+  />,
+  <meta
+    content="Matthew Zito's Blog"
+    property="og:site_name"
+  />,
+  <meta
+    content="2021-12-17T00:00:00.000Z"
+    property="article:published_time"
+  />,
+  <meta
+    content="2021-12-20T00:00:00.000Z"
+    property="article:modified_time"
+  />,
+  <meta
+    content="http://examples.opengraphprotocol.us/profile.html"
+    property="article:author"
+  />,
+  <meta
+    content="Matthew"
+    property="profile:first_name"
+  />,
+  <meta
+    content="Zito"
+    property="profile:last_name"
+  />,
+  <meta
+    content="goldmund"
+    property="profile:username"
+  />,
+  <meta
+    content="Tech"
+    property="article:section"
+  />,
+  <meta
+    content="Tag1"
+    property="article:tag"
+  />,
+  <meta
+    content="Tag2"
+    property="article:tag"
+  />,
+]
+`;
+
+exports[`\`OpenGraphTags\` generates correct tags when missing user data 1`] = `
+Array [
+  <meta
+    content="Post title"
+    property="og:title"
+  />,
+  <meta
+    content="post"
+    property="og:type"
+  />,
+  <meta
+    content="/posts/url"
+    property="og:url"
+  />,
+  <meta
+    content="/logos/logo-1024.png"
+    property="og:image"
+  />,
+  <meta
+    content="Post cover image alt text."
+    property="og:image:alt"
+  />,
+  <meta
+    content="Matthew Zito's Blog"
+    property="og:site_name"
+  />,
+  <meta
+    content="Post description."
+    property="og:description"
+  />,
+  <meta
+    content="2021-12-17T00:00:00.000Z"
+    property="article:published_time"
+  />,
+  <meta
+    content="2021-12-20T00:00:00.000Z"
+    property="article:modified_time"
+  />,
+  <meta
+    content="http://examples.opengraphprotocol.us/profile.html"
+    property="article:author"
+  />,
+  <meta
+    content="Tech"
+    property="article:section"
+  />,
+  <meta
+    content="Tag1"
+    property="article:tag"
+  />,
+  <meta
+    content="Tag2"
+    property="article:tag"
+  />,
+]
+`;

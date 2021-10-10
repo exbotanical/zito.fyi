@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component \`DisqusPlugin\` renders correctly when config.disqusShortname is not set 1`] = `<DocumentFragment />`;
+
+exports[`component \`DisqusPlugin\` renders correctly when config.disqusShortname is set 1`] = `<DocumentFragment />`;

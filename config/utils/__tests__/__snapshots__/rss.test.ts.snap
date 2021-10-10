@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rss build util \`generateRssFeed\` correctly maps graphql data to a feed 1`] = `undefined`;

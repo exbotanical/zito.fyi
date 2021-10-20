@@ -1,6 +1,6 @@
 {
   "name": "zito.dev",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Matthew Zito's personal blog site",
   "keywords": [],
   "license": "MIT",
@@ -18,14 +18,12 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,md,css,scss}\"",
     "lint": "eslint --ext .ts,.js,.tsx,.jsx,.json . --fix",
     "lint:css": "stylelint \"src/**/*.{css,scss,ts,tsx}\" --fix",
-    "test": "jest",
+    "test:unit": "jest",
     "typecheck": "tsc --noEmit",
     "typecheck:watch": "yarn typecheck -- --watch",
-    "cy:open": "cypress open",
-    "cy:run": "cypress run",
     "test:e2e:dev": "CYPRESS_SUPPORT=y CYPRESS_BASE_URL=http://localhost:3000 CYPRESS_STAGE=dev start-server-and-test dev http://localhost:3000 cy:open",
-    "test:e2e": "CYPRESS_SUPPORT=y npm run build && start-server-and-test serve http://localhost:9000 cy:open",
-    "test:e2e:ci": "CYPRESS_SUPPORT=y npm run build && start-server-and-test serve http://localhost:9000 cy:run"
+    "test:e2e": "CYPRESS_SUPPORT=y npm run build && start-server-and-test serve http://localhost:9000 cypress open",
+    "test:e2e:ci": "CYPRESS_SUPPORT=y npm run build && start-server-and-test serve http://localhost:9000 cypress run"
   },
   "bugs": {
     "url": "https://github.com/MatthewZito/zito.dev/issues"
@@ -40,6 +38,16 @@
     "src/**/*.{css,scss}": [
       "yarn format",
       "yarn lint:css"
+    ]
+  },
+	"config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
     ]
   },
   "dependencies": {

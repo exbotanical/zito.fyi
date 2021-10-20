@@ -1,0 +1,16 @@
+name: Continuous Deployment
+
+on:
+  workflow_run:
+    workflows:
+      - 'Continuous Integration'
+    branches:
+      - master
+    types:
+      - completed
+
+jobs:
+  placeholder:
+    runs_on: ubuntu-latest
+    steps:
+      - run: echo test

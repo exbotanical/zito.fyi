@@ -30,7 +30,7 @@ const LayoutGrid = styled.div`
 `;
 
 export const Layout = ({ children, post }: ILayoutProps): JSX.Element => {
-	const [theme, setTheme] = useState<'light' | 'dark'>('light');
+	const [theme, setTheme] = useState<'light' | 'dark'>('dark');
 
 	const toggleTheme = () =>
 		setTheme((theme) => (theme === 'light' ? 'dark' : 'light'));

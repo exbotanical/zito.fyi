@@ -35,7 +35,7 @@ const SharedCellCSS = css<ICellProps>`
 export const HeadCell = styled.th<ICellProps>`
 	${SharedCellCSS}
 
-	border-bottom: 2px solid var(--color-primary-100);
+	border-bottom: 2px solid var(--color-text);
 	margin-right: 4px;
 	margin-left: 4px;
 `;

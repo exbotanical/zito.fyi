@@ -15,6 +15,8 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+		"cy:open": "cypress open",
+		"cy:run": "cypress run",
     "format": "prettier --write \"src/**/*.{ts,tsx,md,css,scss}\"",
     "lint": "eslint --ext .ts,.js,.tsx,.jsx,.json . --fix",
     "lint:css": "stylelint \"src/**/*.{css,scss,ts,tsx}\" --fix",
@@ -22,8 +24,8 @@
     "typecheck": "tsc --noEmit",
     "typecheck:watch": "yarn typecheck -- --watch",
     "test:e2e:dev": "CYPRESS_SUPPORT=y CYPRESS_BASE_URL=http://localhost:3000 CYPRESS_STAGE=dev start-server-and-test dev http://localhost:3000 cy:open",
-    "test:e2e": "CYPRESS_SUPPORT=y npm run build && start-server-and-test serve http://localhost:9000 cypress open",
-    "test:e2e:ci": "CYPRESS_SUPPORT=y npm run build && start-server-and-test serve http://localhost:9000 cypress run"
+    "test:e2e": "CYPRESS_SUPPORT=y npm run build && start-server-and-test serve http://localhost:9000 cy:open",
+    "test:e2e:ci": "CYPRESS_SUPPORT=y npm run build && start-server-and-test serve http://localhost:9000 cy:run"
   },
   "bugs": {
     "url": "https://github.com/MatthewZito/zito.dev/issues"

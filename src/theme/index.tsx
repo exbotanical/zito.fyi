@@ -13,7 +13,7 @@ interface IThemeProps {
 }
 
 const lightTheme = {
-	colorprimary: 'rgb(218, 59, 59)',
+	colorprimary: '#9A1D1D',
 	colorprimary100: 'rgb(251, 248, 228)',
 	colorprimary200: 'rgb(247, 240, 194)',
 	colorprimary300: 'rgb(207, 121, 100)',
@@ -29,9 +29,10 @@ const lightTheme = {
 	colorgrey400: 'rgb(142, 96, 117)',
 	colorgrey500: 'rgb(191, 85, 105)',
 	colorgrey600: 'rgb(218, 59, 59)',
-	colorgrey700: 'rgb(207, 121, 100)',
+	colorgrey700: '',
 	colorgrey800: 'rgb(247, 240, 194)',
 	colorgrey900: 'rgb(251, 248, 228)',
+	colorgrey1000: 'rgb(251, 248, 228)',
 	colortext: '#000',
 	colortextinverted: 'rgb(251, 248, 228)',
 	colorbg: 'rgb(247, 240, 194)',
@@ -54,10 +55,11 @@ const darkTheme = {
 	colorgrey300: 'rgb(184, 65, 190)',
 	colorgrey400: 'rgb(184, 111, 170)',
 	colorgrey500: 'rgb(120, 112, 170)',
-	colorgrey600: 'rgb(48, 95, 138)',
+	colorgrey600: 'rgb(184, 65, 190)',
 	colorgrey700: 'rgb(184, 111, 170)',
 	colorgrey800: 'rgb(38, 55, 122)',
 	colorgrey900: 'rgb(22, 55, 128)',
+	colorgrey1000: 'rgb(206, 166, 186)',
 	colortext: 'rgb(206, 166, 186)',
 	colortextinverted: '#fff',
 	colorbg: 'rgb(25, 23, 37)',

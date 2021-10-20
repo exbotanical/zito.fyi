@@ -12,8 +12,8 @@ export const Footer = (): JSX.Element => {
 
 	return (
 		<S.Wrapper>
+			<AuthorCard />
 			<S.LinkGrid>
-				<AuthorCard />
 				<Socials includeRss />
 			</S.LinkGrid>
 			<S.Info>

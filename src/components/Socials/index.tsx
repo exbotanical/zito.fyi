@@ -83,8 +83,10 @@ export const Socials = ({
 
 	return (
 		<LinkGrid className={className}>
-			{renderTwitterLink(config)} {renderGitHubLink(config)}
-			{generateLinkedInLink(config)} {renderEmailLink(config)}
+			{renderTwitterLink(config)}
+			{renderGitHubLink(config)}
+			{generateLinkedInLink(config)}
+			{renderEmailLink(config)}
 			{includeRss && renderRssLink(config)}
 		</LinkGrid>
 	);

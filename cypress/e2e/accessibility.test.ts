@@ -17,7 +17,9 @@ describe('Accessibility evaluation', () => {
 			];
 
 			const axeFalsePositives: Rule[] = [
-				// { id: 'duplicate-id', enabled: false }
+				{ id: 'duplicate-id', enabled: false },
+				{ id: 'document-title', enabled: false },
+				{ id: 'html-has-lang', enabled: false }
 			];
 
 			disabledRules.push(...axeFalsePositives);

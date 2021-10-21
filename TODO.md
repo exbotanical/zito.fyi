@@ -14,7 +14,7 @@
 - add font properties
 - somehow resolve the `validateDOMNesting` that `remark-unwrap-images` still cannot fix
 - fix GraphQL date resolution
-
+- add 404 page
 
 ## Cypress
 

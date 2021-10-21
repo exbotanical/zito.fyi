@@ -21,7 +21,7 @@ describe('Post page evaluation', () => {
 	});
 
 	it('renders post metadata (post info)', () => {
-		cy.get('p').contains('⋅ Jan 6, 2021 ⋅ 3 min read');
+		cy.get('p').contains(/⋅ Jan [0-9], 2021 ⋅ 3 min read/);
 
 		cy.get('main').then((container) => {
 			cy.findByRole('link', { name: 'music', container }).should(

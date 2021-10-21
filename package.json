@@ -33,7 +33,6 @@
   "homepage": "https://github.com/MatthewZito/zito.dev#readme",
   "lint-staged": {
     "**/*.{ts,tsx,js,jsx}": [
-      "yarn typecheck",
       "yarn format",
       "yarn lint"
     ],

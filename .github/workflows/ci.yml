@@ -8,24 +8,24 @@ on:
 jobs:
 
   lint:
-    - uses: MatthewZito/.github/.github/workflows/yarn_script_run.yml@master
-      with:
-        script_name: lint
+    uses: MatthewZito/.github/.github/workflows/yarn_script_run.yml@master
+    with:
+      script_name: lint
 
   stylelint:
-    - uses: MatthewZito/.github/.github/workflows/yarn_script_run.yml@master
-      with:
-        script_name: lint:css
+    uses: MatthewZito/.github/.github/workflows/yarn_script_run.yml@master
+    with:
+      script_name: lint:css
 
   typecheck:
-    - uses: MatthewZito/.github/.github/workflows/yarn_script_run.yml@master
-      with:
-        script_name: typecheck
+    uses: MatthewZito/.github/.github/workflows/yarn_script_run.yml@master
+    with:
+      script_name: typecheck
 
   unit_test:
-    - uses: MatthewZito/.github/.github/workflows/yarn_script_run.yml@master
-      with:
-        script_name: test:unit
+    uses: MatthewZito/.github/.github/workflows/yarn_script_run.yml@master
+    with:
+      script_name: test:unit
 
   e2e_test:
     runs-on: ubuntu-latest

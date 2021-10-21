@@ -13,6 +13,8 @@
 - add self-hosted, variable font
 - add font properties
 - somehow resolve the `validateDOMNesting` that `remark-unwrap-images` still cannot fix
+- fix GraphQL date resolution
+- add 404 page
 
 ## Cypress
 
@@ -21,3 +23,8 @@
 - fix accessibility violations
 - assert on share links formatting
 - test dark mode / theme toggle
+
+## Posts
+
+- "People Who Write C"
+- pending

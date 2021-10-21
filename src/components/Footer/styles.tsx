@@ -5,7 +5,7 @@ export const Wrapper = styled.footer`
 	align-items: center;
 	padding: 32px 0 16px;
 	background-color: var(--color-grey-100);
-	color: var(--color-grey-700);
+	color: var(--color-grey-1000);
 	gap: 40px;
 	justify-items: center;
 `;

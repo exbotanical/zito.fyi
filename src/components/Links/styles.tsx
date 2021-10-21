@@ -22,7 +22,7 @@ export const IconCSS = css`
 
 const PrimaryCSS = css`
 	display: inline-block;
-	color: var(--color-primary);
+	color: var(--color-text);
 	text-decoration: none;
 
 	&:hover {

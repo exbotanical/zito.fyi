@@ -54,5 +54,4 @@ a:active {
 		opacity: 0;
 	}
 }
-}
 `;

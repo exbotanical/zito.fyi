@@ -9,9 +9,20 @@ describe('Accessibility evaluation', () => {
 			cy.waitForRouteChange();
 			cy.injectAxe();
 
-			const axeFalsePositives: Rule[] = [
-				{ id: 'duplicate-id', enabled: false }
+			const disabledRules: Rule[] = [
+				// see discussion https://github.com/dequelabs/axe-core/issues/795
+				// my personal take is that this rule is in some cases contradictory
+				// and such a case is applicable here, hence disabling it
+				{ id: 'landmark-complementary-is-top-level', enabled: false }
 			];
+
+			const axeFalsePositives: Rule[] = [
+				{ id: 'duplicate-id', enabled: false },
+				{ id: 'document-title', enabled: false },
+				{ id: 'html-has-lang', enabled: false }
+			];
+
+			disabledRules.push(...axeFalsePositives);
 
 			const devFalsePositives = [
 				{ id: 'landmark-no-duplicate-contentinfo', enabled: false },
@@ -19,11 +30,11 @@ describe('Accessibility evaluation', () => {
 			];
 
 			if (Cypress.env('STAGE') === 'dev') {
-				axeFalsePositives.push(...devFalsePositives);
+				disabledRules.push(...devFalsePositives);
 			}
 
 			cy.configureAxe({
-				rules: axeFalsePositives
+				rules: disabledRules
 			});
 
 			cy.checkA11y();

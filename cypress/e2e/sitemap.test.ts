@@ -12,7 +12,7 @@ if (Cypress.env('STAGE') !== 'dev') {
 					sitemapString: data.body
 				}).then((sitemapLinks) => {
 					const links = sitemapLinks as string[];
-					expect(links).to.include('my-favorite-soft-machine-records');
+					expect(links).to.include('/my-favorite-soft-machine-records');
 
 					links.forEach((link) => {
 						cy.visit(link);

@@ -14,7 +14,13 @@ feedUrls.forEach((url) => {
 		it('loads the initial posts properly', () => {
 			cy.get('@feed').children().should('have.length', PAGE_POST_COUNT);
 
-			if (url === feedUrls[1]) {
+			if (url === feedUrls[0]) {
+				cy.findByText('Lorem Ipsum 3001');
+				cy.findByText('Lorem Ipsum 3000');
+				cy.findByText('Andrea Zittel 2');
+				cy.findByText('Andrea Zittel');
+				cy.findByText('Lorem Ipsum 33');
+			} else if (url === feedUrls[1]) {
 				cy.findByText('Lorem Ipsum 3000');
 				cy.findByText('Andrea Zittel');
 				cy.findByText('Lorem Ipsum 33');
@@ -45,7 +51,7 @@ feedUrls.forEach((url) => {
 
 		it('contains a post excerpt', () => {
 			cy.findByText(
-				'This is a post excerpt, used for testing with Cypress. We\'ll grab the text by searching for it on the DOM. This should be the final sentence…'
+				'This is a TEST post excerpt, used for testing with Cypress. We\'ll grab the text by searching for it on the DOM. This should be the final…'
 			);
 		});
 

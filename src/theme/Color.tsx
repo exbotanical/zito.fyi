@@ -20,6 +20,7 @@ const Colors = css`
 		--color-grey-700: ${(props) => props.theme.colorgrey700};
 		--color-grey-800: ${(props) => props.theme.colorgrey800};
 		--color-grey-900: ${(props) => props.theme.colorgrey900};
+		--color-grey-1000: ${(props) => props.theme.colorgrey1000};
 		--color-text: ${(props) => props.theme.colortext};
 		--color-inverted-text: ${(props) => props.theme.colortextinverted};
 		--color-background: ${(props) => props.theme.colorbg};

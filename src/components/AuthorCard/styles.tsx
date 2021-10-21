@@ -66,7 +66,7 @@ export const ShareLabel = styled(H3)`
 `;
 
 export const AuthorName = styled(H3)`
-	color: var(--color-primary);
+	color: var(--color-primary-100);
 `;
 
 export const AboutText = styled.div`

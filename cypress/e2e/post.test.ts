@@ -10,10 +10,9 @@ describe('Post page evaluation', () => {
 	it('renders a post intro', () => {
 		cy.findByText('My Favorite Soft Machine Records', { selector: 'h1' });
 
-		// TODO fix
-		// cy.findByText(
-		// 	"This is a post excerpt, used for testing with Cypress. We'll grab the text by searching for it on the DOM. This should be the final sentence…"
-		// );
+		cy.findByText(
+			'This is another TEST post excerpt, used for testing with Cypress. We\'ll grab the text by searching for it on the DOM. This should be the…'
+		);
 
 		cy.findByAltText('An image of musician Robert Wyatt');
 		cy.findByText('An image of musician Robert Wyatt', {
@@ -22,7 +21,7 @@ describe('Post page evaluation', () => {
 	});
 
 	it('renders post metadata (post info)', () => {
-		cy.get('p').contains('⋅ Jan 6, 2021 ⋅ 3 min read');
+		cy.get('p').contains(/⋅ Jan [0-9], 2021 ⋅ 3 min read/);
 
 		cy.get('main').then((container) => {
 			cy.findByRole('link', { name: 'music', container }).should(
@@ -47,7 +46,7 @@ describe('Post page evaluation', () => {
 
 	it('renders the post / article', () => {
 		cy.get('article > p').contains(
-			/This is a post excerpt, used for testing with Cypress. We'll grab the text by searching for it on the DOM. This should be the final sentence\./
+			'This is another TEST post excerpt, used for testing with Cypress. We\'ll grab the text by searching for it on the DOM. This should be the final sentence.'
 		);
 	});
 
@@ -78,7 +77,7 @@ describe('Post page evaluation', () => {
 			.children()
 			.first()
 			.children()
-			.find('a[href="/lorem-ipsum-3000"]')
-			.contains(/^Lorem Ipsum 3000$/);
+			.find('a[href="/lorem-ipsum-3001"]')
+			.contains(/^Lorem Ipsum 3001$/);
 	});
 });

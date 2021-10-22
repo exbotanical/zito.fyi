@@ -49,7 +49,9 @@ const PopUp = styled.div`
 	animation-iteration-count: 2;
 	background-color: var(--color-inverted-background);
 	border-radius: 6px;
-	box-shadow: 0 6px 10px rgba(0, 0, 0, 0.14), 0 1px 18px rgba(0, 0, 0, 0.12),
+	box-shadow:
+		0 6px 10px rgba(0, 0, 0, 0.14),
+		0 1px 18px rgba(0, 0, 0, 0.12),
 		0 3px 5px rgba(0, 0, 0, 0.2);
 	color: var(--color-inverted-text);
 	transform: translateX(-50%);

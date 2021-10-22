@@ -20,8 +20,8 @@ body {
 	min-height: 100%;
 	padding: 0;
 	margin: 0;
-	background: ${(props) => props.theme.colorbg};
-	color: ${(props) => props.theme.colortext};
+	background: var(--color-background);
+	color: var(--color-text);
 }
 
 #___gatsby #gatsby-focus-wrapper {
@@ -34,6 +34,11 @@ a:visited,
 a:hover,
 a:active {
 	color: inherit;
+}
+
+p {
+	hyphens: auto;
+	word-break: break-word;
 }
 
 .noise {

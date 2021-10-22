@@ -20,7 +20,7 @@ export const CategoryLink = styled(PrimaryLink)`
 `;
 
 export const PostCaption = styled(Caption)`
-	color: var(--color-text);
+	color: var(--color-primary-300);
 `;
 
 export const InfoGrid = styled.div`
@@ -37,5 +37,6 @@ export const TagGrid = styled.div`
 export const Wrapper = styled.div`
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	justify-content: space-between;
 `;

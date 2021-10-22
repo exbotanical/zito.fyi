@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import { ThemeProvider, breakpoints } from '@/theme';
@@ -30,16 +30,12 @@ const LayoutGrid = styled.div`
 `;
 
 export const Layout = ({ children, post }: ILayoutProps): JSX.Element => {
-	const [theme, setTheme] = useState<'light' | 'dark'>('dark');
-
-	const toggleTheme = () =>
-		setTheme((theme) => (theme === 'light' ? 'dark' : 'light'));
 	return (
-		<ThemeProvider theme={theme}>
+		<ThemeProvider>
 			<SEO post={post} />
 			<LayoutGrid>
 				<LayoutWidthContainer>
-					<Navigation theme={theme} setTheme={toggleTheme} />
+					<Navigation />
 				</LayoutWidthContainer>
 				{children}
 				<Footer />

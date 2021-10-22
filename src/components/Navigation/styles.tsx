@@ -42,3 +42,7 @@ export const NavButton = styled(AnimatedLink)`
 		margin: 8px 0 0 0;
 	}
 `;
+
+export const ThemeButton = styled.div`
+	cursor: pointer;
+`;

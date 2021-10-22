@@ -1,9 +1,9 @@
 # TODOs
 
-- replace string literals which can be set in site config
+- ~~replace string literals which can be set in site config~~
 - replace console statements w/logger
 - ~~relocate mocks to JSON files~~
-- refactor site config
+- ~~refactor site config~~
 - fix Category + Time to Read text-wrap
 - fix tags text-wrap
 - implement gists (short prose, essays)
@@ -15,6 +15,9 @@
 - somehow resolve the `validateDOMNesting` that `remark-unwrap-images` still cannot fix
 - fix GraphQL date resolution
 - add 404 page
+- add avatar
+- fix color on share links
+- add site logo
 
 ## Cypress
 

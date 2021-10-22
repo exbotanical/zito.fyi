@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
-import { breakpoints } from '@/theme/constants';
+import { BREAKPOINTS } from '@/theme/constants';
 
 const SkeletonAnimation = keyframes`
 	from {
@@ -24,14 +24,13 @@ const SkeletonBlock = styled.div`
 	border-radius: 4px;
 
 	/* Loading animation gradient settings */
-	--loading-gradient:
-		linear-gradient(
-			90deg,
-			var(--color-grey-300) 0,
-			rgba(254, 254, 254, 0.3) 45%,
-			rgba(254, 254, 254, 0.3) 55%,
-			var(--color-grey-300) 100%
-		);
+	--loading-gradient: linear-gradient(
+		90deg,
+		var(--color-grey-300) 0,
+		rgba(254, 254, 254, 0.3) 45%,
+		rgba(254, 254, 254, 0.3) 55%,
+		var(--color-grey-300) 100%
+	);
 	--loading-size: 200px 100%;
 	--loading-position: -67% 0;
 	--loading-position-end: 200% 0;
@@ -75,7 +74,7 @@ const TitleSkeleton = styled(SkeletonBlock)`
 
 	height: 33px;
 
-	@media (max-width: ${breakpoints.sm}) {
+	@media (max-width: ${BREAKPOINTS.sm}) {
 		height: 29px;
 	}
 `;
@@ -89,7 +88,7 @@ const ExcerptSkeleton = styled(SkeletonBlock)`
 
 	height: 18px;
 
-	@media (max-width: ${breakpoints.sm}) {
+	@media (max-width: ${BREAKPOINTS.sm}) {
 		height: 16px;
 	}
 `;

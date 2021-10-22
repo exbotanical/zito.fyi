@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
+import { KEYS } from '.';
 
 type IThemeState = 'light' | 'dark';
 
 export const useTheme = () => {
-	const [theme, setTheme] = useState<IThemeState>(
-		(localStorage.getItem('theme') as IThemeState) || 'light'
-	);
+	const [theme, setTheme] = useState<IThemeState>('light');
 
 	const setPersistedTheme = (mode: IThemeState) => {
-		localStorage.setItem('theme', mode);
+		localStorage.setItem(KEYS.THEME_STORAGE_KEY, mode);
 
 		setTheme(mode);
 	};
@@ -25,9 +24,18 @@ export const useTheme = () => {
 		}
 	};
 
+	// we must grab the initial value from localStorage here, because the build runtime is isomorphic
+	// once `useEffect` runs, we can be confident we are in the browser
 	useEffect(() => {
-		const localTheme = localStorage.getItem('theme');
-		localTheme && setTheme(localTheme as IThemeState);
+		const localTheme = localStorage.getItem(KEYS.THEME_STORAGE_KEY);
+
+		if (localTheme) {
+			setTheme(localTheme as IThemeState);
+			document.body.classList.add(`theme-${localTheme}`);
+		} else {
+			// set default
+			localStorage.setItem(KEYS.THEME_STORAGE_KEY, 'light');
+		}
 	}, []);
 
 	return { theme, setTheme: toggleTheme };

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { ThemeProvider, breakpoints } from '@/theme';
+import { ThemeProvider, BREAKPOINTS } from '@/theme';
 
 import { SEO } from '@/components/SEO';
 import { Footer } from '@/components/Footer';
@@ -24,7 +24,7 @@ const LayoutGrid = styled.div`
 	gap: 80px;
 	grid-template-columns: 100%;
 
-	@media (max-width: ${breakpoints.sm}) {
+	@media (max-width: ${BREAKPOINTS.sm}) {
 		gap: 40px;
 	}
 `;

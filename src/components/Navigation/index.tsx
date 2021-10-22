@@ -18,9 +18,11 @@ export const Navigation = (): JSX.Element => {
 
 			<S.ThemeButton
 				role="button"
+				title="button"
 				tabIndex={0}
 				onClick={setTheme}
 				onKeyPress={setTheme}
+				data-testid="theme_btn"
 			>
 				{theme === 'light' ? <Moon height={20} /> : <Sun height={20} />}
 			</S.ThemeButton>

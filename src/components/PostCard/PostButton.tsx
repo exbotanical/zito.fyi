@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Exit } from '@styled-icons/boxicons-regular';
 
 import { typographyStyles } from '@/theme';
-import { breakpoints } from '@/theme/constants';
+import { BREAKPOINTS } from '@/theme/constants';
 
 interface IPostButtonProps {
 	to: string;
@@ -20,7 +20,7 @@ export const ReadButton = styled(GatsbyLink)`
 	grid-gap: 12px;
 	text-decoration: none;
 	${typographyStyles.ButtonLabel}
-	@media (max-width: ${breakpoints.lg}) {
+	@media (max-width: ${BREAKPOINTS.lg}) {
 		display: none;
 	}
 `;

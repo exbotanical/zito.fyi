@@ -5,7 +5,7 @@ const Colors = css`
 		--color-primary: #9a1d1d;
 		--color-primary-100: rgb(251, 248, 228);
 		--color-primary-200: rgb(247, 240, 194);
-		--color-primary-300: rgb(207, 121, 100);
+		--color-primary-300: rgb(207, 12, 0);
 		--color-primary-400: rgb(218, 59, 59);
 		--color-primary-500: rgb(191, 85, 105);
 		--color-primary-600: rgb(142, 96, 117);
@@ -18,7 +18,7 @@ const Colors = css`
 		--color-grey-400: rgb(142, 96, 117);
 		--color-grey-500: rgb(191, 85, 105);
 		--color-grey-600: rgb(218, 59, 59);
-		--color-grey-700: ;
+		--color-grey-700: rgb(0, 0, 0);
 		--color-grey-800: rgb(247, 240, 194);
 		--color-grey-900: rgb(251, 248, 228);
 		--color-grey-1000: rgb(251, 248, 228);
@@ -32,7 +32,7 @@ const Colors = css`
 		--color-primary: rgb(84, 157, 225);
 		--color-primary-100: rgb(206, 166, 186);
 		--color-primary-200: rgb(184, 111, 170);
-		--color-primary-300: rgb(183, 86, 184);
+		--color-primary-300: rgb(182, 116, 182);
 		--color-primary-400: rgb(128, 65, 200);
 		--color-primary-500: rgb(62, 63, 163);
 		--color-primary-600: rgb(38, 57, 125);

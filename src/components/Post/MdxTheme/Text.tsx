@@ -70,9 +70,9 @@ const generateHeading = (
 
 const BlockquoteStyle = styled.blockquote`
 	padding: 8px 16px;
-	border-left: 8px solid var(--color-primary-300);
-	background-color: var(--color-grey-200);
-	color: var(--color-inverted-text);
+	border-left: 8px solid var(--color-primary-300, rgb(207, 12, 0));
+	background-color: var(--color-grey-200, rgb(3, 83, 99));
+	color: var(--color-inverted-text, rgb(251, 248, 228));
 `;
 
 export const Paragraph = undefined;

@@ -27,7 +27,7 @@ export const LinkWrapper = styled.div`
 `;
 
 export const Label = styled(H3)`
-	color: var(--color-grey-600);
+	color: var(--color-grey-600, rgb(218, 59, 59));
 	text-transform: uppercase;
 `;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { breakpoints } from '@/theme/constants';
+import { BREAKPOINTS } from '@/theme/constants';
 import { PostCard } from '@/components/PostCard';
 import { LayoutWidthContainer } from '@/components//LayoutWidthContainer';
 
@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 	grid-gap: 80px;
 	grid-template-columns: 1fr 1fr;
 
-	@media (max-width: ${breakpoints.lg}) {
+	@media (max-width: ${BREAKPOINTS.lg}) {
 		gap: 60px;
 		grid-template-columns: 1fr;
 	}

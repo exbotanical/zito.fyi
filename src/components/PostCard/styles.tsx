@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
-import { Body, breakpoints } from '@/theme';
+import { Body, BREAKPOINTS } from '@/theme';
 
 import { ImageShadow } from '@/components/Image';
 
@@ -36,7 +36,7 @@ export const Wrapper = styled.div<ICardStyleProps>`
 	${({ hero }) =>
 		hero &&
 		css`
-			@media (min-width: ${breakpoints.lg}) {
+			@media (min-width: ${BREAKPOINTS.lg}) {
 				grid-column: span 2;
 				grid-gap: 32px;
 				grid-template-columns: 6fr 4fr;

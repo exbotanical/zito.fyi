@@ -2,33 +2,30 @@ import React from 'react';
 
 import { Moon, Sun } from '../icons';
 import { useConfig } from '@/config';
-import * as Styles from '@/components/Navigation/styles';
+import * as S from '@/components/Navigation/styles';
+import { useTheme } from '@/theme';
 
-interface INavigationProps {
-	theme: 'light' | 'dark';
-	setTheme: () => void;
-}
-
-export const Navigation = ({
-	theme,
-	setTheme
-}: INavigationProps): JSX.Element => {
+export const Navigation = (): JSX.Element => {
 	const config = useConfig();
+	const { theme, setTheme } = useTheme();
 
 	return (
-		<Styles.Wrapper>
-			<Styles.HomeButton to="/">
+		<S.Wrapper>
+			<S.HomeButton to="/">
 				{/* TODO logo */}
-				<Styles.SiteTitle>{config.site.titleAbridged}</Styles.SiteTitle>
-			</Styles.HomeButton>
+				<S.SiteTitle>{config.site.titleAbridged}</S.SiteTitle>
+			</S.HomeButton>
 
-			{theme === 'light' ?
-				(
-					<Moon height={20} onClick={() => setTheme()} />
-				) :
-				(
-					<Sun height={20} onClick={setTheme} />
-				)}
-		</Styles.Wrapper>
+			<S.ThemeButton
+				role="button"
+				title="button"
+				tabIndex={0}
+				onClick={setTheme}
+				onKeyPress={setTheme}
+				data-testid="theme_btn"
+			>
+				{theme === 'light' ? <Moon height={20} /> : <Sun height={20} />}
+			</S.ThemeButton>
+		</S.Wrapper>
 	);
 };

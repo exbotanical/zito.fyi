@@ -6,7 +6,7 @@ import { PrimaryLink, AnimatedLink } from '@/components/Links';
 export const HomeButton = styled(PrimaryLink)`
 	display: grid;
 	align-items: center;
-	color: var(--color-text);
+	color: var(--color-text, rgb(0, 0, 0));
 	grid-auto-flow: column;
 	grid-gap: 16px;
 	text-decoration: none;
@@ -36,9 +36,13 @@ export const SiteTitle = styled.p`
 export const NavButton = styled(AnimatedLink)`
 	${typographyStyles.ButtonLabel}
 
-	color: var(--color-text);
+	color: var(--color-text, rgb(0, 0, 0));
 
 	&::after {
 		margin: 8px 0 0 0;
 	}
+`;
+
+export const ThemeButton = styled.div`
+	cursor: pointer;
 `;

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import { ThemeProvider, breakpoints } from '@/theme';
+import { ThemeProvider, BREAKPOINTS } from '@/theme';
 
 import { SEO } from '@/components/SEO';
 import { Footer } from '@/components/Footer';
@@ -24,22 +24,18 @@ const LayoutGrid = styled.div`
 	gap: 80px;
 	grid-template-columns: 100%;
 
-	@media (max-width: ${breakpoints.sm}) {
+	@media (max-width: ${BREAKPOINTS.sm}) {
 		gap: 40px;
 	}
 `;
 
 export const Layout = ({ children, post }: ILayoutProps): JSX.Element => {
-	const [theme, setTheme] = useState<'light' | 'dark'>('dark');
-
-	const toggleTheme = () =>
-		setTheme((theme) => (theme === 'light' ? 'dark' : 'light'));
 	return (
-		<ThemeProvider theme={theme}>
+		<ThemeProvider>
 			<SEO post={post} />
 			<LayoutGrid>
 				<LayoutWidthContainer>
-					<Navigation theme={theme} setTheme={toggleTheme} />
+					<Navigation />
 				</LayoutWidthContainer>
 				{children}
 				<Footer />

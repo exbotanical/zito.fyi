@@ -20,6 +20,17 @@ import * as feedUtils from '..';
 
 const mockedGatsbyActions = mocked(GatsbyActionsMock, true);
 
+// because Gatsby's `GatsbyNode` interface properties are optional,
+// our types get picked up as being possibly undefined...
+// we'd want to use type guards if this was a plugin / library, but it's not,
+// and we can be assured that if we're importing these implementations, they
+// are indeed defined
+const [onCreateNodeImpl, createSchemaCustomizationImpl, createPagesImpl] = [
+	onCreateNode!,
+	createSchemaCustomization!,
+	createPages!
+];
+
 type NodeArgs = CreateNodeArgs<Record<string, unknown>>;
 
 jest.spyOn(global.console, 'error').mockImplementation();
@@ -83,10 +94,7 @@ describe('onCreateNode', () => {
 
 		const opts = config as unknown as PluginOptions;
 
-		// eslint-disable-next-line jest/no-if
-		if (!onCreateNode) throw Error('`onCreateNode` is not defined');
-
-		await onCreateNode(nodeArgs, opts, () => {});
+		await onCreateNodeImpl(nodeArgs, opts, () => {});
 
 		expect(mockedGatsbyActions.createNodeField).toHaveBeenCalledWith({
 			node: testNode,
@@ -133,10 +141,7 @@ describe('onCreateNode', () => {
 			node: testNode
 		} as unknown as NodeArgs;
 
-		// eslint-disable-next-line jest/no-if
-		if (!onCreateNode) throw Error('`onCreateNode` is not defined');
-
-		await onCreateNode(nodeArgs, {} as PluginOptions, () => {});
+		await onCreateNodeImpl(nodeArgs, {} as PluginOptions, () => {});
 
 		expect(mockedGatsbyActions.createNodeField).toHaveBeenCalledWith({
 			node: testNode,
@@ -163,17 +168,14 @@ describe('onCreateNode', () => {
 			node: testNode
 		} as unknown as NodeArgs;
 
-		// eslint-disable-next-line jest/no-if
-		if (!onCreateNode) throw Error('onCreateNode is not defined');
-
-		await onCreateNode(nodeArgs, {} as PluginOptions, () => {});
+		await onCreateNodeImpl(nodeArgs, {} as PluginOptions, () => {});
 
 		expect(mockedConsole.error).toHaveBeenCalled();
 
 		nodeArgs.node.frontmatter = undefined;
 		mockedConsole.error.mockClear();
 
-		await onCreateNode(nodeArgs, {} as PluginOptions, () => {});
+		await onCreateNodeImpl(nodeArgs, {} as PluginOptions, () => {});
 
 		expect(mockedConsole.error).toHaveBeenCalled();
 	});
@@ -195,12 +197,9 @@ describe('onCreateNode', () => {
 			node: testNode
 		} as unknown as NodeArgs;
 
-		// eslint-disable-next-line jest/no-if
-		if (!onCreateNode) throw Error('`onCreateNode` is not defined');
-
 		mockedGatsbyActions.createNodeField.mockClear();
 
-		await onCreateNode(nodeArgs, {} as PluginOptions, () => {});
+		await onCreateNodeImpl(nodeArgs, {} as PluginOptions, () => {});
 
 		expect(mockedGatsbyActions.createNodeField).toHaveBeenCalledTimes(0);
 	});
@@ -208,12 +207,7 @@ describe('onCreateNode', () => {
 
 describe('`createSchemaCustomization`', () => {
 	it('sets GraphQL schema types', async () => {
-		// eslint-disable-next-line jest/no-if
-		if (!createSchemaCustomization) {
-			throw Error('`createSchemaCustomization` is not defined');
-		}
-
-		await createSchemaCustomization(
+		await createSchemaCustomizationImpl(
 			{ actions: GatsbyActionsMock } as CreateSchemaCustomizationArgs,
 			{} as PluginOptions,
 			() => {}
@@ -229,10 +223,7 @@ type CreatePagesFirstArg = CreatePagesArgs & {
 
 describe('createPages', () => {
 	it('creates feed and post pages', async () => {
-		// eslint-disable-next-line jest/no-if
-		if (!createPages) throw Error('`createPages` is not defined');
-
-		await createPages(
+		await createPagesImpl(
 			{
 				graphql: jest.fn(),
 				actions: GatsbyActionsMock

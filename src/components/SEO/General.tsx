@@ -12,16 +12,19 @@ export const GeneralTags = (
 	const { logoUrl } = siteData;
 
 	const tags = [
-		<title key="gen-title">{title}</title>,
-		<link rel="shortcut icon" href={logoUrl} key="gen-fav" />
+		<title key="z_title">{title}</title>,
+		<link rel="shortcut icon" href={logoUrl} key="z_shortcut" />,
+		<meta name="color-scheme" content="dark light" key="z_color_scheme" />
 	];
 
 	if (description) {
-		tags.push(<meta name="description" content={description} key="gen-desc" />);
+		tags.push(
+			<meta name="description" content={description} key="z_description" />
+		);
 	}
 
 	if (imageUrl) {
-		tags.push(<meta name="image" content={imageUrl} key="gen-image" />);
+		tags.push(<meta name="image" content={imageUrl} key="z_image" />);
 	}
 
 	return tags;

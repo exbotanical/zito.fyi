@@ -36,10 +36,10 @@ feedUrls.forEach((url) => {
 		});
 
 		it('navigates to a post via its title', () => {
-			cy.findByText('Lorem Ipsum 3000').click();
+			cy.findByText('Andrea Zittel').click();
 			cy.waitForRouteChange();
 
-			cy.url().should('contain', '/lorem-ipsum-3000');
+			cy.url().should('contain', '/andrea-zittel');
 		});
 
 		it('navigates to a post via its cover image', () => {

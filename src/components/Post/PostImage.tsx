@@ -63,13 +63,13 @@ const StyledGatsbyImage = styled(GatsbyImage)`
 export const FigCaptionCss = css`
 	${typographyStyles.Caption}
 
-	color: var(--color-grey-700);
+	color: var(--color-grey-700, rgb(0, 0, 0));
 `;
 
 const FigCaption = styled.figcaption`
 	${typographyStyles.Caption}
 
-	color: var(--color-grey-700);
+	color: var(--color-grey-700, rgb(0, 0, 0));
 `;
 
 export const PostImage = ({ src, alt, title }: IImageProps): JSX.Element => (

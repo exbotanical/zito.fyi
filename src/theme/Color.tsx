@@ -1,30 +1,58 @@
 import { createGlobalStyle, css } from 'styled-components';
 
 const Colors = css`
-	:root {
-		--color-primary: ${(props) => props.theme.colorprimary};
-		--color-primary-100: ${(props) => props.theme.colorprimary100};
-		--color-primary-200: ${(props) => props.theme.colorprimary200};
-		--color-primary-300: ${(props) => props.theme.colorprimary300};
-		--color-primary-400: ${(props) => props.theme.colorprimary400};
-		--color-primary-600: ${(props) => props.theme.colorprimary600};
-		--color-primary-700: ${(props) => props.theme.colorprimary700};
-		--color-primary-800: ${(props) => props.theme.colorprimary800};
-		--color-primary-900: ${(props) => props.theme.colorprimary900};
-		--color-grey-100: ${(props) => props.theme.colorgrey100};
-		--color-grey-200: ${(props) => props.theme.colorgrey200};
-		--color-grey-300: ${(props) => props.theme.colorgrey300};
-		--color-grey-400: ${(props) => props.theme.colorgrey400};
-		--color-grey-500: ${(props) => props.theme.colorgrey500};
-		--color-grey-600: ${(props) => props.theme.colorgrey600};
-		--color-grey-700: ${(props) => props.theme.colorgrey700};
-		--color-grey-800: ${(props) => props.theme.colorgrey800};
-		--color-grey-900: ${(props) => props.theme.colorgrey900};
-		--color-grey-1000: ${(props) => props.theme.colorgrey1000};
-		--color-text: ${(props) => props.theme.colortext};
-		--color-inverted-text: ${(props) => props.theme.colortextinverted};
-		--color-background: ${(props) => props.theme.colorbg};
-		--color-inverted-background: ${(props) => props.theme.colorbginverted};
+	.theme-light {
+		--color-primary: #9a1d1d;
+		--color-primary-100: rgb(251, 248, 228);
+		--color-primary-200: rgb(247, 240, 194);
+		--color-primary-300: rgb(207, 12, 0);
+		--color-primary-400: rgb(218, 59, 59);
+		--color-primary-500: rgb(191, 85, 105);
+		--color-primary-600: rgb(142, 96, 117);
+		--color-primary-700: rgb(12, 105, 121);
+		--color-primary-800: rgb(3, 83, 99);
+		--color-primary-900: rgb(10, 49, 68);
+		--color-grey-100: rgb(10, 49, 68);
+		--color-grey-200: rgb(3, 83, 99);
+		--color-grey-300: rgb(12, 105, 121);
+		--color-grey-400: rgb(142, 96, 117);
+		--color-grey-500: rgb(191, 85, 105);
+		--color-grey-600: rgb(218, 59, 59);
+		--color-grey-700: rgb(0, 0, 0);
+		--color-grey-800: rgb(247, 240, 194);
+		--color-grey-900: rgb(251, 248, 228);
+		--color-grey-1000: rgb(251, 248, 228);
+		--color-text: rgb(0, 0, 0);
+		--color-inverted-text: rgb(251, 248, 228);
+		--color-background: rgb(247, 240, 194);
+		--color-inverted-background: rgb(0, 0, 0);
+	}
+
+	.theme-dark {
+		--color-primary: rgb(84, 157, 225);
+		--color-primary-100: rgb(206, 166, 186);
+		--color-primary-200: rgb(184, 111, 170);
+		--color-primary-300: rgb(182, 116, 182);
+		--color-primary-400: rgb(128, 65, 200);
+		--color-primary-500: rgb(62, 63, 163);
+		--color-primary-600: rgb(38, 57, 125);
+		--color-primary-700: rgb(32, 45, 98);
+		--color-primary-800: rgb(47, 43, 69);
+		--color-primary-900: rgb(25, 23, 37);
+		--color-grey-100: rgb(47, 43, 69);
+		--color-grey-200: rgb(38, 57, 125);
+		--color-grey-300: rgb(184, 65, 190);
+		--color-grey-400: rgb(184, 111, 170);
+		--color-grey-500: rgb(120, 112, 170);
+		--color-grey-600: rgb(184, 65, 190);
+		--color-grey-700: rgb(184, 111, 170);
+		--color-grey-800: rgb(38, 55, 122);
+		--color-grey-900: rgb(22, 55, 128);
+		--color-grey-1000: rgb(206, 166, 186);
+		--color-text: rgb(206, 166, 186);
+		--color-inverted-text: #fff;
+		--color-background: rgb(25, 23, 37);
+		--color-inverted-background: rgb(204, 5, 190);
 	}
 `;
 

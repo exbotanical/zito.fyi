@@ -1,32 +1,21 @@
 import type { IPost } from '../../src/types';
 
 const N_RELATED_POSTS = 2;
-const categoryMappingCache = new Map<string, IPost[]>();
 
 /**
  * @summary Get posts of a given category
  */
 const getPostsOfCategory = (category: string, posts: IPost[]): IPost[] => {
-	const cachedCategory = categoryMappingCache.get(category);
-	if (cachedCategory) return cachedCategory;
-
-	posts.forEach((post) => {
-		if (post.category === category) {
-			const mappedPosts = categoryMappingCache.get(category) || [];
-			mappedPosts.push(post);
-
-			categoryMappingCache.set(category, mappedPosts);
-		}
-	});
-
-	return categoryMappingCache.get(category) || [];
+	return posts.filter((post) => post.category === category);
 };
 
 /**
  * @summary Get posts of a tag, ranked by matches
  */
 const getRankedPostsOfTag = (targetPost: IPost, posts: IPost[]): IPost[] => {
-	if (!targetPost.tags) return posts;
+	if (!targetPost.tags?.length) {
+		return posts;
+	}
 
 	const rankedPosts: {
 		rank: number;
@@ -39,7 +28,7 @@ const getRankedPostsOfTag = (targetPost: IPost, posts: IPost[]): IPost[] => {
 
 		if (post.tags) {
 			post.tags.forEach((tag) => {
-				if (targetPost.tags?.includes(tag)) {
+				if (targetPost.tags!.includes(tag)) {
 					rank += 1;
 				}
 			});
@@ -71,6 +60,7 @@ export const getNRelatedPosts = (
 	posts: IPost[]
 ): IPost[] => {
 	// exclude the target post from the posts
+
 	const filteredPosts = posts.filter((post) => post.slug !== targetPost.slug);
 
 	const relatedPosts: IPost[] = [];

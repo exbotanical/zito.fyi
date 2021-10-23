@@ -35,7 +35,7 @@ export const tagListHasUniqueKeys = (
 };
 
 // TODO deduplicate
-export const sampleSeoData: {
+export const seoData: {
 	post: IAbridgedPost;
 	seoPost: ISeoData;
 	seoSite: ISeoData;
@@ -87,7 +87,7 @@ export const sampleSeoData: {
 		rssTitle: 'Matthew Zito\'s Blog RSS Feed',
 		googleAnalyticsId: '',
 		copyright: '© Copyright 2021 | Matthew Zito',
-		themeColor: '#D83850',
+		themeColor: '#9AACFF',
 		backgroundColor: '#F7F7F7'
 	},
 	user: {
@@ -106,6 +106,6 @@ export const sampleSeoData: {
 		name: '',
 		description: '',
 		logoUrl: '',
-		url: 'https://zito.dev' // URL of the organization site
+		url: 'https://zito.dev'
 	}
 };

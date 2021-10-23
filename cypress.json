@@ -4,5 +4,7 @@
   "fixturesFolder": false,
 	"chromeWebSecurity": false,
 	"video": false,
-	"screenshotOnRunFailure": false
+	"screenshotOnRunFailure": false,
+	"retries": 2,
+	"defaultCommandTimeout": 10000
 }

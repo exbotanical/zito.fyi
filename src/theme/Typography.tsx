@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { createGlobalStyle, css } from 'styled-components';
 
-import { breakpoints } from './constants';
+import { BREAKPOINTS } from './constants';
 
 const MobileH1 = css`
 	font-family: 'Alfa Slab One', serif;
@@ -180,70 +180,70 @@ const DesktopCode = css`
 
 const H1WithStyle = css`
 	${MobileH1}
-	@media (min-width: ${breakpoints.sm}) {
+	@media (min-width: ${BREAKPOINTS.sm}) {
 		${DesktopH1}
 	}
 `;
 
 const H2WithStyle = css`
 	${MobileH2}
-	@media (min-width: ${breakpoints.sm}) {
+	@media (min-width: ${BREAKPOINTS.sm}) {
 		${DesktopH2}
 	}
 `;
 
 const H3WithStyle = css`
 	${MobileH3}
-	@media (min-width: ${breakpoints.sm}) {
+	@media (min-width: ${BREAKPOINTS.sm}) {
 		${DesktopH3}
 	}
 `;
 
 const H4WithStyle = css`
 	${MobileH4}
-	@media (min-width: ${breakpoints.sm}) {
+	@media (min-width: ${BREAKPOINTS.sm}) {
 		${DesktopH4}
 	}
 `;
 
 const H5WithStyle = css`
 	${MobileH5}
-	@media (min-width: ${breakpoints.sm}) {
+	@media (min-width: ${BREAKPOINTS.sm}) {
 		${DesktopH5}
 	}
 `;
 
 const H6WithStyle = css`
 	${MobileH6}
-	@media (min-width: ${breakpoints.sm}) {
+	@media (min-width: ${BREAKPOINTS.sm}) {
 		${DesktopH6}
 	}
 `;
 
 const BodyWithStyle = css`
 	${MobileBody}
-	@media (min-width: ${breakpoints.sm}) {
+	@media (min-width: ${BREAKPOINTS.sm}) {
 		${DesktopBody}
 	}
 `;
 
 const CaptionWithStyle = css`
 	${MobileCaption}
-	@media (min-width: ${breakpoints.sm}) {
+	@media (min-width: ${BREAKPOINTS.sm}) {
 		${DesktopCaption}
 	}
 `;
 
 const OverlineWithStyle = css`
 	${MobileOverline}
-	@media (min-width: ${breakpoints.sm}) {
+	@media (min-width: ${BREAKPOINTS.sm}) {
 		${DesktopOverline}
 	}
 `;
 
 const CodeWithStyle = css`
 	${MobileCode}
-	@media (min-width: ${breakpoints.sm}) {
+	@media (min-width: ${BREAKPOINTS.sm}) {
 		${DesktopCode}
 	}
 `;

@@ -10,6 +10,10 @@ Array [
     rel="shortcut icon"
   />,
   <meta
+    content="dark light"
+    name="color-scheme"
+  />,
+  <meta
     content="Post description."
     name="description"
   />,
@@ -28,6 +32,10 @@ Array [
   <link
     href=""
     rel="shortcut icon"
+  />,
+  <meta
+    content="dark light"
+    name="color-scheme"
   />,
   <meta
     content="Site description."
@@ -50,6 +58,10 @@ Array [
     rel="shortcut icon"
   />,
   <meta
+    content="dark light"
+    name="color-scheme"
+  />,
+  <meta
     content="/logos/logo-1024.png"
     name="image"
   />,
@@ -64,6 +76,10 @@ Array [
   <link
     href=""
     rel="shortcut icon"
+  />,
+  <meta
+    content="dark light"
+    name="color-scheme"
   />,
   <meta
     content="Post description."

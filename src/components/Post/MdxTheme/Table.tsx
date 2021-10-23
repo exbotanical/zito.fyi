@@ -35,7 +35,7 @@ const SharedCellCSS = css<ICellProps>`
 export const HeadCell = styled.th<ICellProps>`
 	${SharedCellCSS}
 
-	border-bottom: 2px solid var(--color-text);
+	border-bottom: 2px solid var(--color-text, rgb(0, 0, 0));
 	margin-right: 4px;
 	margin-left: 4px;
 `;
@@ -47,10 +47,10 @@ export const BodyCell = styled.td<ICellProps>`
 	padding-right: 16px;
 	padding-bottom: 4px;
 	padding-left: 16px;
-	border-bottom: 1px solid var(--color-grey-300);
+	border-bottom: 1px solid var(--color-grey-300, rgb(12, 105, 121));
 
 	:hover {
-		background-color: var(--color-grey-100);
+		background-color: var(--color-grey-100, rgb(10, 49, 68));
 	}
 `;
 

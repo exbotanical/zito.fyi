@@ -27,9 +27,10 @@ jobs:
     with:
       script_name: test:unit
 
+  # TODO run in parallel
+  # TODO test on different browsers
   e2e_test:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2

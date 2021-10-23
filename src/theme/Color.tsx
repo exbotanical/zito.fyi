@@ -22,10 +22,10 @@ const Colors = css`
 		--color-grey-800: rgb(247, 240, 194);
 		--color-grey-900: rgb(251, 248, 228);
 		--color-grey-1000: rgb(251, 248, 228);
-		--color-text: #000;
+		--color-text: rgb(0, 0, 0);
 		--color-inverted-text: rgb(251, 248, 228);
 		--color-background: rgb(247, 240, 194);
-		--color-inverted-background: #000;
+		--color-inverted-background: rgb(0, 0, 0);
 	}
 
 	.theme-dark {

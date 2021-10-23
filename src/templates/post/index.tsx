@@ -33,7 +33,7 @@ export const PostTemplate = ({
 		<Layout post={post}>
 			<Wrapper>
 				<Post post={post} />
-				<RelatedPosts list={pageContext.relatedPosts.map(jsonToPost)} />
+				<RelatedPosts posts={pageContext.relatedPosts.map(jsonToPost)} />
 			</Wrapper>
 		</Layout>
 	);

@@ -1,69 +1,15 @@
 import { getNRelatedPosts } from '..';
+import {
+	edgeCaseTargetPost,
+	poolOfPosts,
+	poolOfPostsFull
+} from '../../../__tests__/fixtures';
 
-import type { IPost } from '../../../src/types';
-
-const postsList = [
-	{
-		title: 'Test One',
-		category: 'technology',
-		tags: ['programming', 'software', 'markdown', 'blog post'],
-		slug: 'test-one'
-	},
-	{
-		title: 'Test Two',
-		category: 'cat',
-		tags: ['tag'],
-		slug: 'test-two'
-	},
-	{
-		title: 'Test Three',
-		category: 'something',
-		tags: [],
-		slug: 'test-three'
-	},
-	{
-		title: 'Test Four',
-		category: 'technology',
-		tags: ['programming', 'code', 'testing', 'tags', 'sorting', 'querying'],
-		slug: 'test-four'
-	},
-	{
-		title: 'Test Five',
-		category: 'c',
-		tags: undefined,
-		slug: 'test-five'
-	},
-	{
-		title: 'A Hamburger',
-		category: 'test3',
-		tags: ['food', 'other'],
-		slug: 'great-restaurants'
-	},
-	{
-		title: 'Italics',
-		category: 'technology',
-		tags: ['tag'],
-		slug: 'birch'
-	},
-	{
-		title: 'The Test',
-		category: 'another one',
-		tags: ['test Two', 'again', 'tagging'],
-		slug: 'test-i'
-	},
-	{
-		title: 'Bold Test',
-		category: 'tech',
-		tags: ['programming', 'another', 'other'],
-		slug: 'bold'
-	}
-] as IPost[];
-
-const targetPost = postsList[0] as IPost;
+const targetPost = poolOfPosts[0];
 
 describe('build util `getNRelatedPosts`', () => {
 	it('correctly determines related posts', () => {
-		const relatedPosts = getNRelatedPosts(targetPost, postsList);
+		const relatedPosts = getNRelatedPosts(targetPost, poolOfPosts);
 
 		expect(relatedPosts).toHaveLength(2);
 		expect(relatedPosts[0]?.title).toBe('Test Four');
@@ -73,7 +19,7 @@ describe('build util `getNRelatedPosts`', () => {
 	it('correctly determines related posts when target is missing category', () => {
 		const relatedPosts = getNRelatedPosts(
 			{ ...targetPost, category: undefined },
-			postsList
+			poolOfPosts
 		);
 
 		expect(relatedPosts).toHaveLength(2);
@@ -84,7 +30,7 @@ describe('build util `getNRelatedPosts`', () => {
 	it('correctly determines related posts when target is missing tags', () => {
 		const relatedPosts = getNRelatedPosts(
 			{ ...targetPost, tags: undefined },
-			postsList
+			poolOfPosts
 		);
 
 		expect(relatedPosts).toHaveLength(2);
@@ -95,7 +41,7 @@ describe('build util `getNRelatedPosts`', () => {
 	it('returns latest posts when target is missing tags and the category', () => {
 		const relatedPosts = getNRelatedPosts(
 			{ ...targetPost, tags: undefined, category: undefined },
-			postsList
+			poolOfPosts
 		);
 
 		expect(relatedPosts).toHaveLength(2);
@@ -106,7 +52,7 @@ describe('build util `getNRelatedPosts`', () => {
 	it('returns 2 posts even when there is only one direct category match', () => {
 		const relatedPosts = getNRelatedPosts(
 			{ ...targetPost, category: 'more' },
-			postsList
+			poolOfPosts
 		);
 
 		expect(relatedPosts).toHaveLength(2);
@@ -117,7 +63,7 @@ describe('build util `getNRelatedPosts`', () => {
 	it('returns 2 posts even when there are no category matches', () => {
 		const relatedPosts = getNRelatedPosts(
 			{ ...targetPost, category: 'non-existent-category' },
-			postsList
+			poolOfPosts
 		);
 
 		expect(relatedPosts).toHaveLength(2);
@@ -128,20 +74,40 @@ describe('build util `getNRelatedPosts`', () => {
 	it('works with no other posts besides the target post', () => {
 		const relatedPosts = getNRelatedPosts(
 			{ ...targetPost, category: 'non-existent-category' },
-			postsList.slice(0, 1)
+			poolOfPosts.slice(0, 1)
 		);
 
 		expect(relatedPosts).toHaveLength(0);
 	});
 
-	it('works with low amount of posts', () => {
+	it('works with scarce amount of posts', () => {
 		// edge case whereby no posts are in the secondary tag ranking
 		const relatedPosts = getNRelatedPosts(
 			{ ...targetPost, category: 'more' },
-			postsList.slice(0, 2)
+			poolOfPosts.slice(0, 2)
 		);
 
 		expect(relatedPosts).toHaveLength(1);
 		expect(relatedPosts[0]?.title).toBe('Test Two');
+	});
+
+	it('does not include the target post in the results', () => {
+		// we had an edge case whereby `getPostsOfCategory` used a cache which often included duplicates
+		// thus, we invoke `getNRelatedPosts` here as a precursor step, to populate the cache
+
+		// @ts-ignore
+		const _ = getNRelatedPosts(poolOfPostsFull[1], [
+			...poolOfPostsFull,
+			edgeCaseTargetPost
+		]);
+
+		// that said, the cache has been removed because it was another Zitonian pre-optimization
+		// I need to be better about that...
+		const relatedPosts = getNRelatedPosts(edgeCaseTargetPost, poolOfPostsFull);
+
+		expect(relatedPosts).toHaveLength(2);
+		expect(edgeCaseTargetPost.title).not.toBe(relatedPosts[0]?.title);
+		expect(edgeCaseTargetPost.title).not.toBe(relatedPosts[1]?.title);
+		expect(relatedPosts[0]?.title).not.toBe(relatedPosts[1]?.title);
 	});
 });

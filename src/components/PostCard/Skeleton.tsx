@@ -16,7 +16,7 @@ const SkeletonAnimation = keyframes`
 const SkeletonBlock = styled.div`
 	animation: ${SkeletonAnimation} 7s linear infinite;
 	background-blend-mode: lighten;
-	background-color: var(--color-grey-300);
+	background-color: var(--color-grey-300, rgb(12, 105, 121));
 	background-image: var(--loading-gradient);
 	background-position: var(--loading-position);
 	background-repeat: no-repeat;
@@ -26,10 +26,10 @@ const SkeletonBlock = styled.div`
 	/* Loading animation gradient settings */
 	--loading-gradient: linear-gradient(
 		90deg,
-		var(--color-grey-300) 0,
+		var(--color-grey-300, rgb(12, 105, 121)) 0,
 		rgba(254, 254, 254, 0.3) 45%,
 		rgba(254, 254, 254, 0.3) 55%,
-		var(--color-grey-300) 100%
+		var(--color-grey-300, rgb(12, 105, 121)) 100%
 	);
 	--loading-size: 200px 100%;
 	--loading-position: -67% 0;

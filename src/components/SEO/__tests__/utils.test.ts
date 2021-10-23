@@ -3,11 +3,11 @@ import cloneDeep from 'clone-deep';
 
 import { post as postFixture } from '../../../../__tests__/fixtures';
 import { generatePostData, generateSeoData } from '../utils';
-import { sampleSeoData } from './utils';
+import { seoData } from './utils';
 
 describe('sEO utility `generateSeoData`', () => {
 	it('generates site SEO metadata', () => {
-		const siteData = sampleSeoData.site;
+		const siteData = seoData.site;
 
 		const seoData = generateSeoData(siteData);
 
@@ -21,9 +21,9 @@ describe('sEO utility `generateSeoData`', () => {
 	});
 
 	it('generates SEO metadata for posts', () => {
-		const postData = sampleSeoData.post;
+		const postData = seoData.post;
 
-		const seoData = generateSeoData(sampleSeoData.site, postData);
+		const seoData = generateSeoData(seoData.site, postData);
 
 		expect(seoData.title).toBe(postData.title);
 		expect(seoData.description).toBe(postData.description);

@@ -40,12 +40,12 @@ export const Item = styled.li`
 	}
 
 	::marker {
-		color: var(--color-grey-500);
+		color: var(--color-grey-500, rgb(191, 85, 105));
 	}
 
 	:hover {
 		::marker {
-			color: var(--color-primary-100);
+			color: var(--color-primary-100, rgb(251, 248, 228));
 		}
 	}
 `;

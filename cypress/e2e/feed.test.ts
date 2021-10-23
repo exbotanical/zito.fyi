@@ -36,10 +36,10 @@ feedUrls.forEach((url) => {
 		});
 
 		it('navigates to a post via its title', () => {
-			cy.findByText('Lorem Ipsum 3000').click();
+			cy.findByText('Andrea Zittel').click();
 			cy.waitForRouteChange();
 
-			cy.url().should('contain', '/lorem-ipsum-3000');
+			cy.url().should('contain', '/andrea-zittel');
 		});
 
 		it('navigates to a post via its cover image', () => {
@@ -51,7 +51,7 @@ feedUrls.forEach((url) => {
 
 		it('contains a post excerpt', () => {
 			cy.findByText(
-				'This is a TEST post excerpt, used for testing with Cypress. We\'ll grab the text by searching for it on the DOM. This should be the final…'
+				"This is a TEST post excerpt, used for testing with Cypress. We'll grab the text by searching for it on the DOM. This should be the final…"
 			);
 		});
 

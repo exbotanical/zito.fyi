@@ -20,7 +20,7 @@ export const CategoryLink = styled(PrimaryLink)`
 `;
 
 export const PostCaption = styled(Caption)`
-	color: var(--color-primary-300);
+	color: var(--color-primary-300, rgb(207, 12, 0));
 `;
 
 export const InfoGrid = styled.div`

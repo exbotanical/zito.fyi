@@ -35,7 +35,7 @@ export const tagListHasUniqueKeys = (
 };
 
 // TODO deduplicate
-export const sampleSeoData: {
+export const seoData: {
 	post: IAbridgedPost;
 	seoPost: ISeoData;
 	seoSite: ISeoData;
@@ -74,20 +74,20 @@ export const sampleSeoData: {
 		description: 'Site description.'
 	},
 	site: {
-		title: 'Matthew Zito\'s Blog',
-		titleAbridged: 'Zito\'s Blog',
-		name: 'Matthew Zito\'s Blog',
-		description: 'Matthew Zito\'s Blog About Software and Programming',
+		title: "Matthew Zito's Blog",
+		titleAbridged: "Zito's Blog",
+		name: "Matthew Zito's Blog",
+		description: "Matthew Zito's Blog About Software and Programming",
 		language: 'en',
 		logoUrl: '',
 		facebookAppId: '',
 		twitterHandle: 'test',
 		url: 'https://zito.dev',
 		rss: '/rss.xml',
-		rssTitle: 'Matthew Zito\'s Blog RSS Feed',
+		rssTitle: "Matthew Zito's Blog RSS Feed",
 		googleAnalyticsId: '',
 		copyright: '© Copyright 2021 | Matthew Zito',
-		themeColor: '#D83850',
+		themeColor: '#9AACFF',
 		backgroundColor: '#F7F7F7'
 	},
 	user: {
@@ -106,6 +106,6 @@ export const sampleSeoData: {
 		name: '',
 		description: '',
 		logoUrl: '',
-		url: 'https://zito.dev' // URL of the organization site
+		url: 'https://zito.dev'
 	}
 };

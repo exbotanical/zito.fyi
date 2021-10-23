@@ -6,7 +6,7 @@ import { H2 } from '@/theme';
 import { Feed } from '@/components/Feed';
 
 interface IRelatedPostsProps {
-	list: IPost[];
+	posts: IPost[];
 }
 
 const Wrapper = styled.aside`
@@ -16,13 +16,15 @@ const Wrapper = styled.aside`
 `;
 
 const Label = styled(H2)`
-	color: var(--color-grey-700);
+	color: var(--color-grey-700, rgb(0, 0, 0));
 	text-transform: uppercase;
 `;
 
-export const RelatedPosts = ({ list }: IRelatedPostsProps): JSX.Element => (
-	<Wrapper>
-		<Label>RELATED POSTS</Label>
-		<Feed hideHero feedItems={list} />
-	</Wrapper>
-);
+export const RelatedPosts = ({ posts }: IRelatedPostsProps): JSX.Element => {
+	return (
+		<Wrapper>
+			<Label>RELATED POSTS</Label>
+			<Feed hideHero feedItems={posts} />
+		</Wrapper>
+	);
+};

@@ -95,8 +95,7 @@ describe('build util `getNRelatedPosts`', () => {
 		// we had an edge case whereby `getPostsOfCategory` used a cache which often included duplicates
 		// thus, we invoke `getNRelatedPosts` here as a precursor step, to populate the cache
 
-		// @ts-ignore
-		const _ = getNRelatedPosts(poolOfPostsFull[1], [
+		getNRelatedPosts(poolOfPostsFull[1], [
 			...poolOfPostsFull,
 			edgeCaseTargetPost
 		]);

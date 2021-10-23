@@ -54,13 +54,15 @@ const generateHeading = (
 	const GeneratedHeader = ({ children }: IHeadingProps): JSX.Element => {
 		const hashLink = getHeaderHashLink(children);
 
-		return hashLink ? (
-			<HeadingComponent id={hashLink}>
-				<HeadingLink to={`${slug}#${hashLink}`}>{children} </HeadingLink>
-			</HeadingComponent>
-		) : (
-			<HeadingComponent>{children}</HeadingComponent>
-		);
+		return hashLink ?
+			(
+				<HeadingComponent id={hashLink}>
+					<HeadingLink to={`${slug}#${hashLink}`}>{children} </HeadingLink>
+				</HeadingComponent>
+			) :
+			(
+				<HeadingComponent>{children}</HeadingComponent>
+			);
 	};
 
 	return GeneratedHeader;

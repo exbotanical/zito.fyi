@@ -55,7 +55,7 @@ const feedUtilsMock = mocked(feedUtils, true);
 
 jest.mock('../utils/queries', () => {
 	const postsList = jest.requireActual<
-		typeof import('../../__tests__/fixtures')
+	typeof import('../../__tests__/fixtures')
 	>('../../__tests__/fixtures').postsList;
 
 	const testPostsList = [

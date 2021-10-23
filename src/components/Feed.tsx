@@ -41,11 +41,13 @@ export const Feed = ({ feedItems, hideHero }: IFeedProps): JSX.Element => (
 					return <PostCard key={feedItem.key} />;
 				}
 
-				return idx === 0 && !hideHero ? (
-					<PostCard key={feedItem.slug} post={feedItem} hero />
-				) : (
-					<PostCard key={feedItem.slug} post={feedItem} />
-				);
+				return idx === 0 && !hideHero ?
+					(
+						<PostCard key={feedItem.slug} post={feedItem} hero />
+					) :
+					(
+						<PostCard key={feedItem.slug} post={feedItem} />
+					);
 			})}
 		</Wrapper>
 	</WidthLimitedGrid>

@@ -3,7 +3,8 @@ import { createGlobalStyle, css } from 'styled-components';
 export const ScrollbarStyles = createGlobalStyle`${css`
 	/* Firefox */
 	* {
-		scrollbar-color: var(--color-grey-500, rgb(191, 85, 105))
+		scrollbar-color:
+			var(--color-grey-500, rgb(191, 85, 105))
 			var(--color-background, rgb(247, 240, 194));
 	}
 

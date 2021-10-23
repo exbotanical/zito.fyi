@@ -9,45 +9,45 @@ describe('sEO utility `generateSeoData`', () => {
 	it('generates site SEO metadata', () => {
 		const siteData = seoData.site;
 
-		const seoData = generateSeoData(siteData);
+		const seo = generateSeoData(siteData);
 
-		expect(seoData.title).toBe(siteData.title);
-		expect(seoData.description).toBe(siteData.description);
-		expect(seoData.url).toBe(siteData.url);
-		expect(seoData.imageUrl).toBe(siteData.logoUrl);
-		expect(seoData.imageAlt).toBe(siteData.description);
-		expect(seoData.type).toBe('page');
-		expect(seoData.isPost).toBe(false);
+		expect(seo.title).toBe(siteData.title);
+		expect(seo.description).toBe(siteData.description);
+		expect(seo.url).toBe(siteData.url);
+		expect(seo.imageUrl).toBe(siteData.logoUrl);
+		expect(seo.imageAlt).toBe(siteData.description);
+		expect(seo.type).toBe('page');
+		expect(seo.isPost).toBe(false);
 	});
 
 	it('generates SEO metadata for posts', () => {
 		const postData = seoData.post;
 
-		const seoData = generateSeoData(seoData.site, postData);
+		const seo = generateSeoData(seoData.site, postData);
 
-		expect(seoData.title).toBe(postData.title);
-		expect(seoData.description).toBe(postData.description);
-		expect(seoData.url).toBe(postData.url);
-		expect(seoData.imageUrl).toBe(postData.coverImageUrl);
-		expect(seoData.imageAlt).toBe(postData.coverImageAlt);
-		expect(seoData.type).toBe('post');
-		expect(seoData.isPost).toBe(true);
+		expect(seo.title).toBe(postData.title);
+		expect(seo.description).toBe(postData.description);
+		expect(seo.url).toBe(postData.url);
+		expect(seo.imageUrl).toBe(postData.coverImageUrl);
+		expect(seo.imageAlt).toBe(postData.coverImageAlt);
+		expect(seo.type).toBe('post');
+		expect(seo.isPost).toBe(true);
 	});
 });
 
 describe('seo utility `generatePostData`', () => {
 	it('generates SEO metadata for posts', () => {
-		const postData = generatePostData(postFixture);
+		const post = generatePostData(postFixture);
 
-		expect(postData.body).toBe(removeMd(postFixture.internalContent as string));
-		expect(postData.category).toBe(postFixture.category);
-		expect(postData.coverImageUrl).toBe(postFixture.coverImageUrl);
-		expect(postData.coverImageAlt).toBe(postFixture.coverImageAlt);
-		expect(postData.datePublished).toBe(postFixture.datePublished);
-		expect(postData.dateModified).toBe(postFixture.dateModified);
-		expect(postData.description).toBe(postFixture.description);
-		expect(postData.tags).toBe(postFixture.tags);
-		expect(postData.title).toBe(postFixture.title);
+		expect(post.body).toBe(removeMd(postFixture.internalContent as string));
+		expect(post.category).toBe(postFixture.category);
+		expect(post.coverImageUrl).toBe(postFixture.coverImageUrl);
+		expect(post.coverImageAlt).toBe(postFixture.coverImageAlt);
+		expect(post.datePublished).toBe(postFixture.datePublished);
+		expect(post.dateModified).toBe(postFixture.dateModified);
+		expect(post.description).toBe(postFixture.description);
+		expect(post.tags).toBe(postFixture.tags);
+		expect(post.title).toBe(postFixture.title);
 	});
 
 	it('strips markdown formatting from the post content', () => {

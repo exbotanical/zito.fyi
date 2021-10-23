@@ -1,13 +1,11 @@
 name: Continuous Deployment
 
 on:
-  workflow_run:
-    workflows:
-      - 'Continuous Integration'
+  # a push always happens when we merge, ergo this is the
+  # equivalent of `on.merge.branches.master`
+  push:
     branches:
       - master
-    types:
-      - completed
 
 jobs:
   deploy:

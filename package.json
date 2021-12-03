@@ -128,7 +128,7 @@
     "@types/url-join": "4.0.1",
     "babel-jest": "27.2.5",
     "babel-plugin-transform-regenerator": "6.26.0",
-    "babel-preset-gatsby": "1.14.0",
+    "babel-preset-gatsby": "2.3.0",
     "clone-deep": "4.0.1",
     "cypress": "8.6.0",
     "cypress-axe": "0.13.0",

@@ -1,32 +1,36 @@
+/* eslint-disable sort-keys */
+import { MDXProvider } from '@mdx-js/react';
 import React from 'react';
 
-import { MDXProvider } from '@mdx-js/react';
-
-import * as TextComponents from './Text';
 import * as CodeComponents from './Code';
-import * as TableComponents from './Table';
+import { Footnote } from './Footnote';
 import * as ListComponents from './List';
 import * as MiscComponents from './Miscellaneous';
-
-import { Footnote } from './Footnote';
+import * as TableComponents from './Table';
+import * as TextComponents from './Text';
 
 import type { IPost } from '@/types';
+import type { MDXProviderComponents } from '@mdx-js/react';
 
 interface IMdxThemeProps {
 	children: React.ReactNode;
 	post: IPost;
 }
 
-const getComponentMapping = (post: IPost) => {
+const getComponentMapping = (post: IPost): MDXProviderComponents => {
 	const headings = TextComponents.generateHeadings(post.slug);
 
 	return {
+		// @ts-expect-error TODO
 		wrapper: ({ children }: { children: React.ReactNode }) => {
 			const updatedChildren = React.Children.map(children, (child) => {
+				console.log({ children, child });
+
 				if (!React.isValidElement(child)) {
 					return child;
 				}
 
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 				if (child.props.className === 'footnotes') {
 					// the key is of negligible consequence given we've only one element that will ever match
 					// however, react requires one, so...
@@ -36,7 +40,7 @@ const getComponentMapping = (post: IPost) => {
 				return child;
 			});
 
-			return <>{updatedChildren}</>;
+			return updatedChildren;
 		},
 		p: TextComponents.Paragraph,
 		h1: headings.H1,
@@ -71,10 +75,14 @@ const getComponentMapping = (post: IPost) => {
 	};
 };
 
-export const MDXTheme = ({ children, post }: IMdxThemeProps): JSX.Element => (
-	<>
-		<MiscComponents.GlobalGatsbyImageStyle />
-		<CodeComponents.GlobalCodeStyle />
-		<MDXProvider components={getComponentMapping(post)}>{children}</MDXProvider>
-	</>
-);
+export function MDXTheme({ children, post }: IMdxThemeProps): JSX.Element {
+	return (
+		<>
+			<MiscComponents.GlobalGatsbyImageStyle />
+			<CodeComponents.GlobalCodeStyle />
+			<MDXProvider components={getComponentMapping(post)}>
+				{children}
+			</MDXProvider>
+		</>
+	);
+}

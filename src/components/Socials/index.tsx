@@ -1,20 +1,21 @@
+import { Twitter, LinkedinSquare, Github } from '@styled-icons/boxicons-logos';
+import { MailSend, Rss } from '@styled-icons/boxicons-regular';
 import React from 'react';
 import styled from 'styled-components';
 
-import { MailSend, Rss } from '@styled-icons/boxicons-regular';
-import { Twitter, LinkedinSquare, Github } from '@styled-icons/boxicons-logos';
-import { StyledIcon } from '@styled-icons/styled-icon';
-
-import { IconLink } from '../Links';
-import { ISiteConfig } from '../../types';
 import { useConfig } from '../../config';
+import { IconLink } from '../Links';
+
+import type { ISiteConfig } from '../../types';
+import type { StyledIcon } from '@styled-icons/styled-icon';
+
 
 const generateLink = (
 	url: string,
 	label: string,
 	Icon: StyledIcon
 ): JSX.Element => (
-	<IconLink to={url} ariaLabel={label}>
+	<IconLink ariaLabel={label} to={url}>
 		<Icon size={48} />
 	</IconLink>
 );
@@ -61,8 +62,8 @@ const renderRssLink = (config: Readonly<ISiteConfig>): JSX.Element =>
 	generateLink(config.site.rss, 'RSS Feed', Rss);
 
 interface IIconLinksProps {
-	includeRss?: boolean;
 	className?: string;
+	includeRss?: boolean;
 }
 
 const defaultProps: IIconLinksProps = {
@@ -75,10 +76,10 @@ const LinkGrid = styled.div`
 	grid-auto-flow: column;
 `;
 
-export const Socials = ({
+export function Socials({
 	includeRss,
 	className
-}: IIconLinksProps): JSX.Element | null => {
+}: IIconLinksProps): JSX.Element | null {
 	const config = useConfig();
 
 	return (
@@ -90,6 +91,6 @@ export const Socials = ({
 			{includeRss && renderRssLink(config)}
 		</LinkGrid>
 	);
-};
+}
 
 Socials.defaultProps = defaultProps;

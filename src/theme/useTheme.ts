@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
+
 import { KEYS } from '.';
 
-type IThemeState = 'light' | 'dark';
+type IThemeState = 'dark' | 'light';
 
 export const useTheme = () => {
 	const [theme, setTheme] = useState<IThemeState>('light');
@@ -38,5 +39,5 @@ export const useTheme = () => {
 		}
 	}, []);
 
-	return { theme, setTheme: toggleTheme };
+	return { setTheme: toggleTheme, theme };
 };

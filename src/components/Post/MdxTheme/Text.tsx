@@ -1,10 +1,12 @@
-import React from 'react';
-import styled, { AnyStyledComponent } from 'styled-components';
 import _ from 'lodash';
+import React from 'react';
+import styled from 'styled-components';
 
-import * as styles from '@/theme';
-import { ExtendingWrapper } from '@/components/Post/PostSpacing';
+import type { AnyStyledComponent } from 'styled-components';
+
 import { HeadingLink } from '@/components/Links';
+import { ExtendingWrapper } from '@/components/Post/PostSpacing';
+import * as styles from '@/theme';
 
 interface IHeadingProps {
 	children: React.ReactNode;
@@ -51,7 +53,7 @@ const generateHeading = (
 	slug: string,
 	HeadingComponent: AnyStyledComponent
 ): IHeadingComponent => {
-	const GeneratedHeader = ({ children }: IHeadingProps): JSX.Element => {
+	function GeneratedHeader({ children }: IHeadingProps): JSX.Element {
 		const hashLink = getHeaderHashLink(children);
 
 		return hashLink ?
@@ -63,7 +65,7 @@ const generateHeading = (
 			(
 				<HeadingComponent>{children}</HeadingComponent>
 			);
-	};
+	}
 
 	return GeneratedHeader;
 };
@@ -85,8 +87,8 @@ export const generateHeadings = (slug: string): IHeadings => ({
 	H6: generateHeading(slug, styles.H6)
 });
 
-export const Blockquote = ({ children }: IBlockquoteProps): JSX.Element => (
-	<ExtendingWrapper>
+export function Blockquote({ children }: IBlockquoteProps): JSX.Element {
+  return <ExtendingWrapper>
 		<BlockquoteStyle>{children}</BlockquoteStyle>
 	</ExtendingWrapper>
-);
+}

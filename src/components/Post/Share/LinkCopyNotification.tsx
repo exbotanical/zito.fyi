@@ -61,14 +61,14 @@ const PopUp = styled.div`
 	}
 `;
 
-type SnackbarProps = {
+interface SnackbarProps {
 	onAnimationEnd?: () => void;
-};
+}
 
-export const LinkCopyNotification = ({
+export function LinkCopyNotification({
 	onAnimationEnd
-}: SnackbarProps): JSX.Element => (
-	<PopUp onAnimationEnd={onAnimationEnd}>
+}: SnackbarProps): JSX.Element {
+  return <PopUp onAnimationEnd={onAnimationEnd}>
 		<Caption>Link copied to clipboard</Caption>
 	</PopUp>
-);
+}

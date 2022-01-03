@@ -1,4 +1,4 @@
-import * as xml2js from 'xml2js';
+import { parseStringPromise } from 'xml2js';
 
 interface IRssData {
 	rss?: {
@@ -19,24 +19,28 @@ interface IParseSitemapArgs {
 
 const pluginConfig: Cypress.PluginConfig = (on) => {
 	on('task', {
-		parseRss (rssString: string) {
-			return xml2js.parseStringPromise(rssString).then((res) => {
+		async parseRss (rssString: string) {
+			return parseStringPromise(rssString).then((res) => {
 				const rssData = res as IRssData;
 
-				const items = rssData?.rss?.channel[0]?.item;
+				const items = rssData.rss.channel[0].item;
+				// TODO
+				console.log({ items },rssData.rss);
 
 				const siteUrl = rssData.rss.channel[0].link[0];
+				console.log({ items },rssData.rss);
 
 				return items.map((item) => item.link[0].replace(siteUrl, ''));
 			});
 		},
 
-		parseSitemap ({ siteUrl, sitemapString }: IParseSitemapArgs) {
-			return xml2js.parseStringPromise(sitemapString).then((res) => {
+		async parseSitemap ({ siteUrl, sitemapString }: IParseSitemapArgs) {
+			return parseStringPromise(sitemapString).then((res) => {
 				const siteMapData = res as ISiteMapData;
 
 				const urls = siteMapData.urlset.url;
-
+				// TODO
+				console.log({ siteMapData, urls });
 				return urls.map((url) => url.loc[0].replace(siteUrl, ''));
 			});
 		}

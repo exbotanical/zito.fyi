@@ -1,9 +1,9 @@
+import { Link } from '@styled-icons/boxicons-regular';
 import styled from 'styled-components';
 
-import { Link } from '@styled-icons/boxicons-regular';
 
-import { H3 } from '@/theme';
 import { IconCSS } from '@/components/Links/styles';
+import { H3 } from '@/theme';
 
 export const Wrapper = styled.section`
 	display: grid;

@@ -1,11 +1,14 @@
+import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
 import { POST_WIDTH } from './PostSpacing';
-import { typographyStyles } from '@/theme';
+
+import type { IGatsbyImageData } from 'gatsby-plugin-image';
+
 import { BaseImage, ImageShadow } from '@/components/Image';
+import { typographyStyles } from '@/theme';
 
 interface IFigureProps {
 	cover?: boolean;
@@ -72,16 +75,16 @@ const FigCaption = styled.figcaption`
 	color: var(--color-grey-700, rgb(0, 0, 0));
 `;
 
-export const PostImage = ({ src, alt, title }: IImageProps): JSX.Element => (
-	<Figure>
-		<Img src={src} alt={alt} />
+export function PostImage({ src, alt, title }: IImageProps): JSX.Element {
+  return <Figure>
+		<Img alt={alt} src={src} />
 		<FigCaption>{title || alt}</FigCaption>
 	</Figure>
-);
+}
 
-export const CoverImage = ({ image, alt }: ICoverImageProps): JSX.Element => (
-	<Figure cover>
-		<StyledGatsbyImage image={image} alt={alt} />
+export function CoverImage({ image, alt }: ICoverImageProps): JSX.Element {
+  return <Figure cover>
+		<StyledGatsbyImage alt={alt} image={image} />
 		<FigCaption>{alt}</FigCaption>
 	</Figure>
-);
+}

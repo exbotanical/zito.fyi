@@ -1,10 +1,9 @@
-/* eslint-disable testing-library/no-node-access, testing-library/no-container */
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
 import 'jest-styled-components';
 
-import { config, post } from '../../../../../__tests__/fixtures';
+import { config, post } from '../../../../../test/fixtures';
 import { PostShare } from '../index';
 
 jest.mock('../../../../config/useConfig', () => ({

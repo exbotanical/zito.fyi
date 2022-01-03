@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { BREAKPOINTS } from '@/theme/constants';
-import { PostCard } from '@/components/PostCard';
-import { LayoutWidthContainer } from '@/components//LayoutWidthContainer';
-
 import type { IFeedItems } from '@/types';
+
+import { LayoutWidthContainer } from '@/components//LayoutWidthContainer';
+import { PostCard } from '@/components/PostCard';
+import { BREAKPOINTS } from '@/theme/constants';
+
 
 interface IFeedProps {
 	feedItems: IFeedItems;
@@ -32,8 +33,8 @@ const WidthLimitedGrid = styled(LayoutWidthContainer)`
 	justify-items: stretch;
 `;
 
-export const Feed = ({ feedItems, hideHero }: IFeedProps): JSX.Element => (
-	<WidthLimitedGrid>
+export function Feed({ feedItems, hideHero }: IFeedProps): JSX.Element {
+  return <WidthLimitedGrid>
 		<Wrapper>
 			{feedItems.map((feedItem, idx) => {
 				// it may be a placeholder post
@@ -43,7 +44,7 @@ export const Feed = ({ feedItems, hideHero }: IFeedProps): JSX.Element => (
 
 				return idx === 0 && !hideHero ?
 					(
-						<PostCard key={feedItem.slug} post={feedItem} hero />
+						<PostCard hero key={feedItem.slug} post={feedItem} />
 					) :
 					(
 						<PostCard key={feedItem.slug} post={feedItem} />
@@ -51,4 +52,4 @@ export const Feed = ({ feedItems, hideHero }: IFeedProps): JSX.Element => (
 			})}
 		</Wrapper>
 	</WidthLimitedGrid>
-);
+}

@@ -1,4 +1,4 @@
-describe('Post page evaluation', () => {
+describe('post page', () => {
 	before(() => {
 		cy.visit('/my-favorite-soft-machine-records');
 		cy.waitForRouteChange();
@@ -11,7 +11,7 @@ describe('Post page evaluation', () => {
 		cy.findByText('My Favorite Soft Machine Records', { selector: 'h1' });
 
 		cy.findByText(
-			'This is another TEST post excerpt, used for testing with Cypress. We\'ll grab the text by searching for it on the DOM. This should be the…'
+			"This is another TEST post excerpt, used for testing with Cypress. We'll grab the text by searching for it on the DOM. This should be the…"
 		);
 
 		cy.findByAltText('An image of musician Robert Wyatt');
@@ -46,7 +46,7 @@ describe('Post page evaluation', () => {
 
 	it('renders the post / article', () => {
 		cy.get('article > p').contains(
-			'This is another TEST post excerpt, used for testing with Cypress. We\'ll grab the text by searching for it on the DOM. This should be the final sentence.'
+			"This is another TEST post excerpt, used for testing with Cypress. We'll grab the text by searching for it on the DOM. This should be the final sentence."
 		);
 	});
 

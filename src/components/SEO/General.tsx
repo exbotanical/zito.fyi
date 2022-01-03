@@ -1,7 +1,7 @@
 import React from 'react';
 
-import type { ISiteMetadata } from '@/types';
 import type { ISeoData } from '@/components/SEO/types';
+import type { ISiteMetadata } from '@/types';
 
 // TODO rel canonical
 export const GeneralTags = (
@@ -13,18 +13,18 @@ export const GeneralTags = (
 
 	const tags = [
 		<title key="z_title">{title}</title>,
-		<link rel="shortcut icon" href={logoUrl} key="z_shortcut" />,
-		<meta name="color-scheme" content="dark light" key="z_color_scheme" />
+		<link href={logoUrl} key="z_shortcut" rel="icon" />,
+		<meta content="dark light" key="z_color_scheme" name="color-scheme" />
 	];
 
 	if (description) {
 		tags.push(
-			<meta name="description" content={description} key="z_description" />
+			<meta content={description} key="z_description" name="description" />
 		);
 	}
 
 	if (imageUrl) {
-		tags.push(<meta name="image" content={imageUrl} key="z_image" />);
+		tags.push(<meta content={imageUrl} key="z_image" name="image" />);
 	}
 
 	return tags;

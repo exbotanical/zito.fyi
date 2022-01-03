@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { jsonToPost, queryToPost } from '@/utils';
+import type { IPostBySlugQueryResult, IPostJson } from '@/types';
 
 import { Layout } from '@/components/Layout';
 import { Post } from '@/components/Post';
 import { RelatedPosts } from '@/components/RelatedPosts';
+import { jsonToPost, queryToPost } from '@/utils';
 
-import type { IPostBySlugQueryResult, IPostJson } from '@/types';
 
 interface IPageContext {
 	relatedPosts: IPostJson[];
@@ -23,10 +23,10 @@ const Wrapper = styled.div`
 	grid-gap: 60px;
 `;
 
-export const PostTemplate = ({
+export function PostTemplate({
 	data,
 	pageContext
-}: IPostTemplateProps): JSX.Element => {
+}: IPostTemplateProps): JSX.Element {
 	const post = queryToPost(data);
 
 	return (
@@ -37,4 +37,4 @@ export const PostTemplate = ({
 			</Wrapper>
 		</Layout>
 	);
-};
+}

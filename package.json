@@ -9,7 +9,6 @@
     "url": "git+https://github.com/MatthewZito/zito.dev.git"
   },
   "author": "Matthew Zito <matthewtzito@gmail.com> (goldmund)",
-  "main": "index.js",
   "scripts": {
     "dev": "gatsby develop -p 3000 -o",
     "build": "gatsby build",
@@ -23,9 +22,9 @@
     "test:unit": "jest",
     "typecheck": "tsc --noEmit",
     "typecheck:watch": "yarn typecheck -- --watch",
-    "test:e2e:dev": "CYPRESS_SUPPORT=y CYPRESS_BASE_URL=http://localhost:3000 CYPRESS_STAGE=dev start-server-and-test dev http://localhost:3000 cy:open",
-    "test:e2e": "CYPRESS_SUPPORT=y npm run build && start-server-and-test serve http://localhost:9000 cy:open",
-    "test:e2e:ci": "CYPRESS_SUPPORT=y npm run build && start-server-and-test serve http://localhost:9000 cy:run"
+    "test:cy:dev": "CYPRESS_SUPPORT=y CYPRESS_BASE_URL=http://localhost:3000 CYPRESS_STAGE=dev start-server-and-test dev http://localhost:3000 cy:open",
+    "test:cy": "CYPRESS_SUPPORT=y npm run build && start-server-and-test serve http://localhost:9000 cy:open",
+    "test:cy:ci": "CYPRESS_SUPPORT=y npm run build && start-server-and-test serve http://localhost:9000 cy:run"
   },
   "bugs": {
     "url": "https://github.com/MatthewZito/zito.dev/issues"
@@ -108,7 +107,7 @@
     "@babel/preset-typescript": "7.15.0",
     "@commitlint/cli": "13.1.0",
     "@commitlint/config-conventional": "13.1.0",
-    "@magister_zito/eslint-config-react": "0.0.9",
+    "@magister_zito/eslint-config-react": "^0.8.0",
     "@magister_zito/stylelint-config": "0.0.2",
     "@testing-library/cypress": "8.0.1",
     "@testing-library/dom": "8.9.1",
@@ -126,6 +125,7 @@
     "@types/remove-markdown": "0.3.1",
     "@types/styled-components": "5.1.15",
     "@types/url-join": "4.0.1",
+    "@types/xml2js": "^0.4.9",
     "babel-jest": "27.2.5",
     "babel-plugin-transform-regenerator": "6.26.0",
     "babel-preset-gatsby": "1.14.0",
@@ -137,15 +137,13 @@
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-cypress": "2.12.1",
     "eslint-plugin-graphql": "4.0.0",
-    "eslint-plugin-jest": "25.2.1",
-    "eslint-plugin-jest-dom": "3.9.2",
-    "eslint-plugin-testing-library": "4.12.4",
     "fetch-mock": "9.11.0",
     "gatsby-cypress": "1.14.0",
     "husky": "7.0.2",
     "jest": "27.2.5",
     "jest-styled-components": "7.0.5",
     "lint-staged": "11.1.2",
+    "memfs": "^3.4.1",
     "prettier": "2.4.1",
     "prismjs": "1.25.0",
     "start-server-and-test": "1.14.0",

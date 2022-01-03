@@ -20,7 +20,7 @@ export const wrapRootElement = QueryWrapper;
 export const onRenderBody = ({ setPostBodyComponents }) => {
 	setPostBodyComponents([
 		<script
-			key="site_theme"
+		// eslint-disable-next-line react/no-danger
 			dangerouslySetInnerHTML={{
 				__html: `
 				(function() {
@@ -31,6 +31,7 @@ export const onRenderBody = ({ setPostBodyComponents }) => {
 				})();
 				`
 			}}
+			key="site_theme"
 		/>
 	]);
 };

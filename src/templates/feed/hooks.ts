@@ -1,11 +1,9 @@
 import { useEffect, useRef, useMemo } from 'react';
-import { useInfiniteQuery, UseInfiniteQueryResult } from 'react-query';
+import { useInfiniteQuery } from 'react-query';
 
 import { constants } from '../../../config';
-import type { IPageContext } from './types';
-import { useConfig } from '@/config';
-import { jsonToPost } from '@/utils';
 
+import type { IPageContext } from './types';
 import type {
 	IFeedMetadataJson,
 	IPostJson,
@@ -13,6 +11,11 @@ import type {
 	IPlaceholderPost,
 	ISiteConfig
 } from '@/types';
+import type { UseInfiniteQueryResult } from 'react-query';
+
+import { useConfig } from '@/config';
+import { jsonToPost } from '@/utils';
+
 
 /**
  * @summary Calculate the base URL for a given feed
@@ -125,8 +128,8 @@ export const useInfiniteFeed = (
 			getNextPageParam: (lastPage) => lastPage.next,
 			// Set the initial page data supplied by the page context
 			initialData: {
+				pageParams: [pageContext.pageIndex],
 				pages: [pageContext.feedMetadata],
-				pageParams: [pageContext.pageIndex]
 			}
 		}
 	);
@@ -135,14 +138,14 @@ export const useInfiniteFeed = (
 
 	const feedItems = useMemo(() => {
 		const jsonPostList: IPostJson[] =
-			feedQuery?.data?.pages.map((page) => page.posts).flat() ||
+			feedQuery.data?.pages.map((page) => page.posts).flat() ||
 			pageContext.feedMetadata.posts;
 
 		const list: IFeedItems = jsonPostList.map(jsonToPost);
 
 		// when loading the next page, we want to show placeholder posts
 		if (feedQuery.isFetchingNextPage) {
-			const lastPage = feedQuery.data?.pages[feedQuery.data?.pages.length - 1];
+			const lastPage = feedQuery.data?.pages[feedQuery.data.pages.length - 1];
 			list.push(...generatePostPlaceholders('next', lastPage?.nextCount));
 		}
 

@@ -1,11 +1,11 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
+import React from 'react';
 import 'jest-styled-components';
 
-import { config } from '../../../../__tests__/fixtures';
+import { config } from '../../../../test/fixtures';
 import { Socials } from '../index';
 
-const user = config.user!;
+const user = config.user;
 
 jest.mock('../../../config/useConfig', () => ({
 	useConfig: jest.fn(() => config)
@@ -18,6 +18,7 @@ describe('component Socials', () => {
 		const twitterLink = screen.getByRole('link', {
 			name: 'Twitter Profile'
 		});
+
 		expect(twitterLink).toHaveAttribute(
 			'href',
 			`https://twitter.com/${user.twitterHandle}`
@@ -53,7 +54,7 @@ describe('component Socials', () => {
 		expect(rssLink).toHaveAttribute('href', '/rss.xml');
 	});
 
-	it('does not render RSS link when `includeRss` is `false`', async () => {
+	it('does not render RSS link when `includeRss` is `false`', () => {
 		render(<Socials />);
 
 		const rssLink = screen.queryByRole('link', { name: 'RSS Feed' });

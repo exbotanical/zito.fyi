@@ -1,9 +1,10 @@
 import React from 'react';
 
-import * as S from '@/components/Links/styles';
 import type { ILinkProps } from '@/components/Links/types';
 
-export const IconLink = ({
+import * as S from '@/components/Links/styles';
+
+export function IconLink({
 	to,
 	href,
 	className,
@@ -11,20 +12,20 @@ export const IconLink = ({
 	activeClassName,
 	noBasePath,
 	ariaLabel
-}: ILinkProps): JSX.Element => (
-	<S.IconLink
-		to={to}
-		href={href}
-		className={className}
+}: ILinkProps): JSX.Element {
+  return <S.IconLink
 		activeClassName={activeClassName}
-		noBasePath={noBasePath}
 		ariaLabel={ariaLabel}
+		className={className}
+		href={href}
+		noBasePath={noBasePath}
+		to={to}
 	>
 		{children}
 	</S.IconLink>
-);
+}
 
-export const PrimaryLink = ({
+export function PrimaryLink({
 	to,
 	href,
 	className,
@@ -32,20 +33,20 @@ export const PrimaryLink = ({
 	activeClassName,
 	noBasePath,
 	ariaLabel
-}: ILinkProps): JSX.Element => (
-	<S.PrimaryLink
-		to={to}
-		href={href}
-		className={className}
+}: ILinkProps): JSX.Element {
+  return <S.PrimaryLink
 		activeClassName={activeClassName}
-		noBasePath={noBasePath}
 		ariaLabel={ariaLabel}
+		className={className}
+		href={href}
+		noBasePath={noBasePath}
+		to={to}
 	>
 		{children}
 	</S.PrimaryLink>
-);
+}
 
-export const AnimatedLink = ({
+export function AnimatedLink({
 	to,
 	href,
 	className,
@@ -53,20 +54,20 @@ export const AnimatedLink = ({
 	activeClassName,
 	noBasePath,
 	ariaLabel
-}: ILinkProps): JSX.Element => (
-	<S.AnimatedLink
-		to={to}
-		href={href}
-		className={className}
+}: ILinkProps): JSX.Element {
+  return <S.AnimatedLink
 		activeClassName={activeClassName}
-		noBasePath={noBasePath}
 		ariaLabel={ariaLabel}
+		className={className}
+		href={href}
+		noBasePath={noBasePath}
+		to={to}
 	>
 		{children}
 	</S.AnimatedLink>
-);
+}
 
-export const TransparentLink = ({
+export function TransparentLink({
 	to,
 	href,
 	className,
@@ -74,20 +75,20 @@ export const TransparentLink = ({
 	activeClassName,
 	noBasePath,
 	ariaLabel
-}: ILinkProps): JSX.Element => (
-	<S.TransparentLink
-		to={to}
-		href={href}
-		className={className}
+}: ILinkProps): JSX.Element {
+  return <S.TransparentLink
 		activeClassName={activeClassName}
-		noBasePath={noBasePath}
 		ariaLabel={ariaLabel}
+		className={className}
+		href={href}
+		noBasePath={noBasePath}
+		to={to}
 	>
 		{children}
 	</S.TransparentLink>
-);
+}
 
-export const HeadingLink = ({
+export function HeadingLink({
 	to,
 	href,
 	className,
@@ -95,15 +96,15 @@ export const HeadingLink = ({
 	activeClassName,
 	noBasePath,
 	ariaLabel
-}: ILinkProps): JSX.Element => (
-	<S.HeadingLink
-		to={to}
-		href={href}
-		className={className}
+}: ILinkProps): JSX.Element {
+  return <S.HeadingLink
 		activeClassName={activeClassName}
-		noBasePath={noBasePath}
 		ariaLabel={ariaLabel}
+		className={className}
+		href={href}
+		noBasePath={noBasePath}
+		to={to}
 	>
 		{children}
 	</S.HeadingLink>
-);
+}

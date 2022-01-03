@@ -8,16 +8,16 @@ import type { IPost, ISiteMetadata } from '@/types';
  */
 export const generatePostData = (post: IPost): IAbridgedPost => {
 	const {
-		coverImageUrl,
-		coverImageAlt,
-		datePublished,
-		dateModified,
-		description,
-		title,
 		category,
-		tags,
+		coverImageAlt,
+		coverImageUrl,
+		dateModified,
+		datePublished,
+		description,
+		excerpt,
 		internalContent,
-		excerpt
+		tags,
+		title
 	} = post;
 
 	if (!internalContent) {
@@ -29,15 +29,15 @@ export const generatePostData = (post: IPost): IAbridgedPost => {
 	const body = removeMd(internalContent);
 
 	return {
-		title,
-		description: description || excerpt,
-		coverImageUrl,
-		coverImageAlt,
-		datePublished,
-		dateModified,
-		category: category || 'None',
-		tags: tags || [],
 		body,
+		category: category || 'None',
+		coverImageAlt,
+		coverImageUrl,
+		dateModified,
+		datePublished,
+		description: description || excerpt,
+		tags: tags || [],
+		title,
 		url: post.url
 	};
 };
@@ -55,17 +55,17 @@ export const generateSeoData = (
 	const imageUrl = postData ? postData.coverImageUrl : siteMetadata.logoUrl;
 	const imageAlt = postData ? postData.coverImageAlt : siteMetadata.description;
 	const url = postData ? postData.url : siteMetadata.url;
-	const description = postData ?
-		postData.description :
-		siteMetadata.description;
+	const description = postData
+		? postData.description
+		: siteMetadata.description;
 
 	return {
-		isPost,
-		type,
-		title,
-		imageUrl,
+		description,
 		imageAlt,
-		url,
-		description
+		imageUrl,
+		isPost,
+		title,
+		type,
+		url
 	};
 };

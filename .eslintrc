@@ -1,52 +1,23 @@
 {
   "extends": [
-    "prettier",
-    "@magister_zito/react"
+    "@magister_zito/react",
+    "prettier"
   ],
   "plugins": [
     "graphql"
 	],
   "overrides": [
-    {
-      "files": "**/__tests__/**",
-      "extends": [
-        "plugin:testing-library/react",
-        "plugin:jest/all",
-        "plugin:jest-dom/recommended"
-      ],
-      "plugins": [
-        "jest",
-        "testing-library"
-      ],
-      "env": {
-        "browser": true,
-        "es6": true,
-        "jest/globals": true
-      },
-      "rules": {
-        "jest/require-to-throw-message": "off",
-        "jest/prefer-expect-assertions": "off",
-        "jest/no-hooks": "off",
-        "jest/prefer-called-with": "off"
-      }
-    },
-    {
-      "files": "cypress",
-      "extends": [
-        "plugin:cypress/recommended"
-      ],
-      "env": {
-        "browser": true,
-        "es6": true,
-        "cypress/globals": true
-      }
-    }
-  ],
+		{
+			"files": ["**/*.ts"],
+			"parserOptions": {
+				"project": ["./tsconfig.json", "./cypress/tsconfig.json"]
+			}
+		}
+	],
   "ignorePatterns": [
     ".cache",
-    "public",
     "data",
-    "fixtures",
-    "content"
+    "content",
+    "fixtures"
   ]
 }

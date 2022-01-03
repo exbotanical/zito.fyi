@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { typographyStyles, Caption } from '@/theme';
 import { PrimaryLink } from '@/components/Links';
+import { typographyStyles, Caption } from '@/theme';
 
 export const TagLink = styled(PrimaryLink)`
 	${typographyStyles.Overline}

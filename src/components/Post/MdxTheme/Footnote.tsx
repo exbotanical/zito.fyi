@@ -22,11 +22,11 @@ export const Wrapper = styled.div`
 	}
 `;
 
-export const Footnote = ({
+export function Footnote({
 	className,
 	children
-}: IFootnoteProps): JSX.Element => (
-	<Wrapper className={className} tabIndex={0}>
+}: IFootnoteProps): JSX.Element {
+  return <Wrapper className={className} tabIndex={0}>
 		{children}
 	</Wrapper>
-);
+}

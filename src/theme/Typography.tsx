@@ -297,29 +297,31 @@ const TypographyStyles = createGlobalStyle`
 `;
 
 export const typographyStyles = {
+	Body: BodyWithStyle,
+	ButtonLabel: ButtonLabelWithStyle,
+	Caption: CaptionWithStyle,
+	Code: CodeWithStyle,
 	H1: H1WithStyle,
 	H2: H2WithStyle,
 	H3: H3WithStyle,
 	H4: H4WithStyle,
 	H5: H5WithStyle,
 	H6: H6WithStyle,
-	Body: BodyWithStyle,
-	Caption: CaptionWithStyle,
-	Overline: OverlineWithStyle,
-	ButtonLabel: ButtonLabelWithStyle,
-	Code: CodeWithStyle
+	Overline: OverlineWithStyle
 };
 
 // TODO replace with preload link
-export const Typography = (): JSX.Element => (
-	<>
-		<Helmet>
-			<link
-				href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Fira+Sans:ital,wght@0,400;0,500;1,400&family=Fira+Code:wght@500&display=swap"
-				rel="stylesheet"
-			/>
-		</Helmet>
+export function Typography(): JSX.Element {
+	return (
+		<>
+			<Helmet>
+				<link
+					href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Fira+Sans:ital,wght@0,400;0,500;1,400&family=Fira+Code:wght@500&display=swap"
+					rel="stylesheet"
+				/>
+			</Helmet>
 
-		<TypographyStyles />
-	</>
-);
+			<TypographyStyles />
+		</>
+	);
+}

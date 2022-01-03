@@ -1,8 +1,5 @@
-const baseConfig = require('./__tests__/config/jest.config.base');
+const baseConfig = require('./test/config/jest.config.base');
 
 module.exports = {
 	...baseConfig
-	// coveragePathIgnorePatterns: [
-	//   ...baseConfig.coveragePathIgnorePatterns
-	// ]
 };

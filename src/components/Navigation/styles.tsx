@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { typographyStyles } from '@/theme';
 import { PrimaryLink, AnimatedLink } from '@/components/Links';
+import { typographyStyles } from '@/theme';
 
 export const HomeButton = styled(PrimaryLink)`
 	display: grid;

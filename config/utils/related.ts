@@ -18,8 +18,8 @@ const getRankedPostsOfTag = (targetPost: IPost, posts: IPost[]): IPost[] => {
 	}
 
 	const rankedPosts: {
-		rank: number;
 		post: IPost;
+		rank: number;
 	}[] = [];
 
 	// increment the ranking once per tag match
@@ -35,8 +35,8 @@ const getRankedPostsOfTag = (targetPost: IPost, posts: IPost[]): IPost[] => {
 		}
 
 		rankedPosts.push({
+			post,
 			rank,
-			post
 		});
 	});
 
@@ -91,6 +91,7 @@ export const getNRelatedPosts = (
 
 		const highestRankedMatch = tagMatchesSansExistingMatch[0];
 
+		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 		if (highestRankedMatch) {
 			relatedPosts.push(highestRankedMatch);
 

@@ -1,8 +1,9 @@
-import removeMd from 'remove-markdown';
 import cloneDeep from 'clone-deep';
+import removeMd from 'remove-markdown';
 
-import { post as postFixture } from '../../../../__tests__/fixtures';
+import { post as postFixture } from '../../../../test/fixtures';
 import { generatePostData, generateSeoData } from '../utils';
+
 import { seoData } from './utils';
 
 describe('sEO utility `generateSeoData`', () => {
@@ -39,7 +40,7 @@ describe('seo utility `generatePostData`', () => {
 	it('generates SEO metadata for posts', () => {
 		const post = generatePostData(postFixture);
 
-		expect(post.body).toBe(removeMd(postFixture.internalContent as string));
+		expect(post.body).toBe(removeMd(postFixture.internalContent!));
 		expect(post.category).toBe(postFixture.category);
 		expect(post.coverImageUrl).toBe(postFixture.coverImageUrl);
 		expect(post.coverImageAlt).toBe(postFixture.coverImageAlt);

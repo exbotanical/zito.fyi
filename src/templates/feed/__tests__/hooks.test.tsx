@@ -1,16 +1,15 @@
+import { fireEvent } from '@testing-library/react';
+import { renderHook, act } from '@testing-library/react-hooks';
+import fetchMock from 'fetch-mock';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { renderHook, act } from '@testing-library/react-hooks';
-import { fireEvent } from '@testing-library/dom';
-import fetchMock from 'fetch-mock';
 import { mocked } from 'ts-jest/utils';
 
+import { config } from '../../../../test/fixtures';
+import Index0 from '../../../../test/fixtures/feedMetadata/index-0.json';
+import Index1 from '../../../../test/fixtures/feedMetadata/index-1.json';
+import Index2 from '../../../../test/fixtures/feedMetadata/index-2.json';
 import { useInfiniteFeed } from '../hooks';
-
-import Index0 from '../../../../__tests__/fixtures/feedMetadata/index-0.json';
-import Index1 from '../../../../__tests__/fixtures/feedMetadata/index-1.json';
-import Index2 from '../../../../__tests__/fixtures/feedMetadata/index-2.json';
-import { config } from '../../../../__tests__/fixtures';
 
 import type {
 	IFeedItems,
@@ -64,9 +63,6 @@ const mockFetch = () => {
 		}
 
 		const pageData = pageMetadatas[parseInt(pageId, 10)];
-		if (!pageData) {
-			throw Error(`Requested page with id ${pageId} does not exist`);
-		}
 
 		return { body: pageData, status: 200 };
 	});
@@ -81,9 +77,8 @@ const pageCtx: IPageContext = {
 };
 
 const isPostPlaceholder = (
-	post: IPost | IPlaceholderPost
-): post is IPlaceholderPost =>
-	(post as IPlaceholderPost).isPlaceholder === true;
+	post: IPlaceholderPost | IPost
+): post is IPlaceholderPost => (post as IPlaceholderPost).isPlaceholder;
 
 const filterPlaceholders = (feedPosts: IFeedItems) =>
 	feedPosts.filter(isPostPlaceholder);

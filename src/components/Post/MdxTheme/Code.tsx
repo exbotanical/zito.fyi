@@ -1,8 +1,8 @@
 import React from 'react';
 import styled, { createGlobalStyle, css } from 'styled-components';
 
-import { typographyStyles } from '@/theme';
 import { SIDE_PADDING } from '@/components/Post/PostSpacing';
+import { typographyStyles } from '@/theme';
 
 const CODE_CONTENT_WIDTH = '736px';
 const CODE_BLOCK_SIZE = `calc(${CODE_CONTENT_WIDTH} + 2 * ${SIDE_PADDING})`;
@@ -50,8 +50,8 @@ export const StyledCode = styled.code`
 	max-width: 100%;
 `;
 
-export const Code = ({ className, children }: ICodeProps): JSX.Element => (
-	<StyledCode className={className} tabIndex={0}>
+export function Code({ className, children }: ICodeProps): JSX.Element {
+  return <StyledCode className={className} tabIndex={0}>
 		{children}
 	</StyledCode>
-);
+}

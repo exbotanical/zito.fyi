@@ -1,9 +1,9 @@
-import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
+import React from 'react';
 import 'jest-styled-components';
 
+import { config } from '../../../../../test/fixtures';
 import { generateHeadings } from '../Text';
-import { config } from '../../../../../__tests__/fixtures';
 
 jest.mock('../../../../config/useConfig', () => ({
 	useConfig: jest.fn(() => config)

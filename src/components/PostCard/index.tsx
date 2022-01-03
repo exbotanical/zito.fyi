@@ -1,22 +1,22 @@
+import { getImage } from 'gatsby-plugin-image';
 import React from 'react';
-import { getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
-import { PostCardSkeleton } from './Skeleton';
 import { PostButton } from './PostButton';
+import { PostCardSkeleton } from './Skeleton';
 import * as Styles from './styles';
-import { H3 } from '@/theme/Primitives';
+
+import type { IPost } from '@/types';
 
 import { TransparentLink } from '@/components/Links';
 import { PostInfo } from '@/components/PostInfo';
-
-import type { IPost } from '@/types';
+import { H3 } from '@/theme/Primitives';
 
 interface IPostCardProps {
 	post?: IPost;
 	hero?: boolean;
 }
 
-export const PostCard = ({ post, hero }: IPostCardProps): JSX.Element => {
+export function PostCard({ post, hero }: IPostCardProps): JSX.Element {
 	if (!post) return <PostCardSkeleton />;
 
 	if (!post.coverImg) {
@@ -26,10 +26,10 @@ export const PostCard = ({ post, hero }: IPostCardProps): JSX.Element => {
 
 	return (
 		<Styles.Wrapper hero={hero}>
-			<TransparentLink to={post.slug} ariaLabel={post.title}>
+			<TransparentLink ariaLabel={post.title} to={post.slug}>
 				<Styles.Cover
-					image={getImage(post.coverImg) as IGatsbyImageData}
 					alt={post.coverImageAlt}
+					image={getImage(post.coverImg)!}
 				/>
 			</TransparentLink>
 			<Styles.Details hero={hero}>
@@ -41,7 +41,7 @@ export const PostCard = ({ post, hero }: IPostCardProps): JSX.Element => {
 							<H3 as="h2">{post.title}</H3>
 						</TransparentLink>
 					</Styles.Header>
-					<TransparentLink to={post.slug} ariaLabel={post.title}>
+					<TransparentLink ariaLabel={post.title} to={post.slug}>
 						<Styles.Excerpt hero={hero}>{post.excerpt}</Styles.Excerpt>
 					</TransparentLink>
 				</Styles.Meta>
@@ -49,4 +49,4 @@ export const PostCard = ({ post, hero }: IPostCardProps): JSX.Element => {
 			</Styles.Details>
 		</Styles.Wrapper>
 	);
-};
+}

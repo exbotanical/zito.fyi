@@ -1,4 +1,3 @@
-import { IGetMdxPostsQueryResult } from 'config/utils/types';
 import type {
 	IMdxNode,
 	IPost,
@@ -7,8 +6,9 @@ import type {
 	IUserQueryResult,
 	IUserMetadata
 } from '@/types';
+import type { IGetMdxPostsQueryResult } from 'config/utils/types';
 
-export function mdxNodeToPost (mdxNode: IMdxNode): IPost {
+export function mdxNodeToPost(mdxNode: IMdxNode): IPost {
 	const { frontmatter } = mdxNode;
 
 	if (!frontmatter) {
@@ -74,7 +74,7 @@ export function mdxNodeToPost (mdxNode: IMdxNode): IPost {
 	if (!frontmatter.cover) {
 		throw Error(
 			`[mdxNodeToPost] Post missing cover image. Post slug: ${
-				mdxNode.fields?.slug || 'was not provided'
+				mdxNode.fields.slug || 'was not provided'
 			}.`
 		);
 	}
@@ -82,7 +82,7 @@ export function mdxNodeToPost (mdxNode: IMdxNode): IPost {
 	if (!frontmatter.coverAlt) {
 		throw Error(
 			`[mdxNodeToPost] Post missing cover alt. Post slug: ${
-				mdxNode.fields?.slug || 'was not provided'
+				mdxNode.fields.slug || 'was not provided'
 			}.`
 		);
 	}
@@ -90,7 +90,7 @@ export function mdxNodeToPost (mdxNode: IMdxNode): IPost {
 	if (!frontmatter.description) {
 		console.warn(
 			`[mdxNodeToPost] Post missing description. Post slug: ${
-				mdxNode.fields?.slug || 'was not provided'
+				mdxNode.fields.slug || 'was not provided'
 			}. `
 		);
 	}
@@ -100,34 +100,29 @@ export function mdxNodeToPost (mdxNode: IMdxNode): IPost {
 	const tagList = frontmatter.tags ? frontmatter.tags.filter(tagsFilter) : [];
 
 	return {
-		title: frontmatter.title,
-
-		description: frontmatter.description,
-		coverImg: frontmatter.cover.childImageSharp?.gatsbyImageData,
-		coverImageUrl: frontmatter.cover.publicURL,
+		body: mdxNode.body,
+		category: frontmatter.category,
 		coverImageAlt: frontmatter.coverAlt,
-
-		datePublished: new Date(frontmatter.datePublished),
+		coverImageUrl: frontmatter.cover.publicURL,
+		coverImg: frontmatter.cover.childImageSharp?.gatsbyImageData,
 		dateModified: new Date(
 			frontmatter.dateModified || frontmatter.datePublished
 		),
-
-		category: frontmatter.category,
-		tags: tagList,
-
-		body: mdxNode.body,
-		internalContent: mdxNode.internal?.content,
+		datePublished: new Date(frontmatter.datePublished),
+		description: frontmatter.description,
 		excerpt: mdxNode.excerpt,
-		timeToRead: mdxNode.timeToRead,
-
-		slug: mdxNode.fields.slug,
-		route: mdxNode.fields.route,
+		internalContent: mdxNode.internal?.content,
 		pathName: mdxNode.fields.pathName,
+		route: mdxNode.fields.route,
+		slug: mdxNode.fields.slug,
+		tags: tagList,
+		timeToRead: mdxNode.timeToRead,
+		title: frontmatter.title,
 		url: mdxNode.fields.url
 	};
 }
 
-export function queryToPost (data: IPostBySlugQueryResult): IPost {
+export function queryToPost(data: IPostBySlugQueryResult): IPost {
 	const postData = data.mdx;
 
 	if (!postData) {
@@ -137,7 +132,7 @@ export function queryToPost (data: IPostBySlugQueryResult): IPost {
 	return mdxNodeToPost(postData);
 }
 
-export function jsonToPost (meta: IPostJson): IPost {
+export function jsonToPost(meta: IPostJson): IPost {
 	const {
 		dateModified,
 		datePublished,
@@ -158,32 +153,26 @@ export function jsonToPost (meta: IPostJson): IPost {
 	} = meta;
 
 	return {
-		title,
-
-		description,
-		coverImg,
-		coverImageUrl,
-		coverImageAlt,
-
-		datePublished: new Date(datePublished),
-		dateModified: new Date(dateModified),
-
 		category,
-		tags,
-
+		coverImageAlt,
+		coverImageUrl,
+		coverImg,
+		dateModified: new Date(dateModified),
+		datePublished: new Date(datePublished),
+		description,
 		excerpt,
-		timeToRead,
-
-		slug,
-		route,
 		pathName,
-		url,
-
-		relatedPosts: relatedPosts ? relatedPosts.map(jsonToPost) : undefined
+		relatedPosts: relatedPosts ? relatedPosts.map(jsonToPost) : undefined,
+		route,
+		slug,
+		tags,
+		timeToRead,
+		title,
+		url
 	};
 }
 
-export function queryToPostsList (res: IGetMdxPostsQueryResult): IPost[] {
+export function queryToPostsList(res: IGetMdxPostsQueryResult): IPost[] {
 	const { edges } = res.allMdx;
 
 	const nodes = edges.map((edge) => edge.node);
@@ -191,9 +180,10 @@ export function queryToPostsList (res: IGetMdxPostsQueryResult): IPost[] {
 	return nodes.map((node) => mdxNodeToPost(node));
 }
 
-export function queryToUser (data: IUserQueryResult): IUserMetadata {
+export function queryToUser(data: IUserQueryResult): IUserMetadata {
 	const { user } = data.site.siteMetadata.config;
 
+	// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 	if (!user) {
 		throw Error('[queryToUser]: Query does not contain user data');
 	}

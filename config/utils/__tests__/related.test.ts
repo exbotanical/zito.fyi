@@ -3,7 +3,7 @@ import {
 	edgeCaseTargetPost,
 	poolOfPosts,
 	poolOfPostsFull
-} from '../../../__tests__/fixtures';
+} from '../../../test/fixtures';
 
 const targetPost = poolOfPosts[0];
 

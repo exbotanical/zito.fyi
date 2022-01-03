@@ -2,7 +2,7 @@ import type { Rule } from 'axe-core';
 
 const testUrls = ['/', '/my-favorite-soft-machine-records'];
 
-const initialize = (url) => {
+const initialize = (url: string) => {
 	cy.visit(url);
 	cy.waitForRouteChange();
 	cy.injectAxe();
@@ -40,7 +40,7 @@ const assertAll = () => {
 	cy.checkA11y();
 };
 
-describe('Accessibility evaluation', () => {
+describe('accessibility', () => {
 	testUrls.forEach((url) => {
 		it(`Page ${url} has no detectable accessibility violations on load [dark mode]`, () => {
 			initialize(url);

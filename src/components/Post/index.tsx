@@ -18,10 +18,10 @@ const Wrapper = styled.main`
 	justify-items: center;
 `;
 
-export const Post = ({ post }: IPostProps): JSX.Element => (
-	<Wrapper>
+export function Post({ post }: IPostProps): JSX.Element {
+  return <Wrapper>
 		<PostIntro post={post} />
 		<Render post={post} />
 		<PostShare post={post} />
 	</Wrapper>
-);
+}

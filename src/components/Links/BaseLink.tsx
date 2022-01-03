@@ -1,12 +1,14 @@
-import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
+import React from 'react';
 
 import { withBasePath } from '../../../config/utils';
-import { useConfig } from '@/config';
 
 import type { ILinkProps } from '@/components/Links/types';
 
-export const BaseLink = ({
+import { useConfig } from '@/config';
+
+
+export function BaseLink({
 	to,
 	href,
 	className,
@@ -14,7 +16,7 @@ export const BaseLink = ({
 	activeClassName,
 	noBasePath,
 	ariaLabel
-}: ILinkProps): JSX.Element => {
+}: ILinkProps): JSX.Element {
 	const config = useConfig();
 
 	const url = href || to;
@@ -28,16 +30,16 @@ export const BaseLink = ({
 		(
 			<GatsbyLink
 				activeClassName={activeClassName}
+				aria-label={ariaLabel}
 				className={className}
 				to={internalUrl}
-				aria-label={ariaLabel}
 			>
 				{children}
 			</GatsbyLink>
 		) :
 		(
-			<a className={className} href={url} aria-label={ariaLabel} rel="noreferrer">
+			<a aria-label={ariaLabel} className={className} href={url} rel="noreferrer">
 				{children}
 			</a>
 		);
-};
+}

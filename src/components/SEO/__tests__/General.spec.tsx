@@ -1,4 +1,5 @@
 import { GeneralTags } from '../General';
+
 import { tagListHasEmptyValues, seoData } from './utils';
 
 describe('`GeneralTags`', () => {

@@ -1,5 +1,5 @@
-import React from 'react';
 import { format } from 'date-fns';
+import React from 'react';
 
 import * as S from './styles';
 
@@ -11,7 +11,7 @@ interface IPostInfoProps {
 
 const N_TAGS = 2;
 
-export const PostInfo = ({ post }: IPostInfoProps): JSX.Element => {
+export function PostInfo({ post }: IPostInfoProps): JSX.Element {
 	const categoryUrl = post.category ? `/category/${post.category}` : undefined;
 
 	const publicationDate = `${categoryUrl ? '\u00A0⋅ ' : ''}${format(
@@ -40,4 +40,4 @@ export const PostInfo = ({ post }: IPostInfoProps): JSX.Element => {
 			<S.TagGrid>{tagLinks}</S.TagGrid>
 		</S.Wrapper>
 	);
-};
+}

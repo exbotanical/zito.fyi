@@ -5,7 +5,7 @@ Array [
   <script
     type="application/ld+json"
   >
-    {"@context":"https://schema.org","@type":"Organization","url":"https://zito.dev","name":"","description":"","logo":""}
+    {"@context":"https://schema.org","@type":"Organization","description":"","logo":"","name":"","url":"https://zito.dev"}
   </script>,
 ]
 `;
@@ -15,7 +15,7 @@ Array [
   <script
     type="application/ld+json"
   >
-    {"@context":"http://schema.org","@type":"BlogPosting","image":"/logos/logo-1024.png","url":"/posts/url","headline":"Post title","name":"Post title","description":"Post description.","dateCreated":"2021-12-17T00:00:00.000Z","datePublished":"2021-12-17T00:00:00.000Z","dateModified":"2021-12-20T00:00:00.000Z","author":{"@type":"Person","givenName":"Matthew","familyName":"Zito","email":"exbotanical@gmail.com","address":"United States"},"creator":{"@type":"Person","givenName":"Matthew","familyName":"Zito","email":"exbotanical@gmail.com","address":"United States"},"publisher":{"@context":"https://schema.org","@type":"Organization","url":"https://zito.dev","name":"","description":"","logo":""},"mainEntityOfPage":"True","keywords":["Tag1","Tag2"],"articleSection":"Tech","articleBody":"Post body"}
+    {"@context":"http://schema.org","@type":"BlogPosting","articleBody":"Post body","articleSection":"Tech","author":{"@type":"Person","address":"United States","email":"exbotanical@gmail.com","familyName":"Zito","givenName":"Matthew"},"creator":{"@type":"Person","address":"United States","email":"exbotanical@gmail.com","familyName":"Zito","givenName":"Matthew"},"dateCreated":"2021-12-17T00:00:00.000Z","dateModified":"2021-12-20T00:00:00.000Z","datePublished":"2021-12-17T00:00:00.000Z","description":"Post description.","headline":"Post title","image":"/logos/logo-1024.png","keywords":["Tag1","Tag2"],"mainEntityOfPage":"True","name":"Post title","publisher":{"@context":"https://schema.org","@type":"Organization","description":"","logo":"","name":"","url":"https://zito.dev"},"url":"/posts/url"}
   </script>,
 ]
 `;
@@ -25,7 +25,7 @@ Array [
   <script
     type="application/ld+json"
   >
-    {"@context":"http://schema.org","@type":"BlogPosting","image":"/logos/logo-1024.png","url":"/posts/url","headline":"Post title","name":"Post title","description":"Post description.","dateCreated":"2021-12-17T00:00:00.000Z","datePublished":"2021-12-17T00:00:00.000Z","dateModified":"2021-12-20T00:00:00.000Z","author":{"@type":"Person","givenName":"Matthew","familyName":"Zito","email":"exbotanical@gmail.com","address":"United States"},"creator":{"@type":"Person","givenName":"Matthew","familyName":"Zito","email":"exbotanical@gmail.com","address":"United States"},"mainEntityOfPage":"True","keywords":["Tag1","Tag2"],"articleSection":"Tech","articleBody":"Post body"}
+    {"@context":"http://schema.org","@type":"BlogPosting","articleBody":"Post body","articleSection":"Tech","author":{"@type":"Person","address":"United States","email":"exbotanical@gmail.com","familyName":"Zito","givenName":"Matthew"},"creator":{"@type":"Person","address":"United States","email":"exbotanical@gmail.com","familyName":"Zito","givenName":"Matthew"},"dateCreated":"2021-12-17T00:00:00.000Z","dateModified":"2021-12-20T00:00:00.000Z","datePublished":"2021-12-17T00:00:00.000Z","description":"Post description.","headline":"Post title","image":"/logos/logo-1024.png","keywords":["Tag1","Tag2"],"mainEntityOfPage":"True","name":"Post title","url":"/posts/url"}
   </script>,
 ]
 `;
@@ -35,7 +35,7 @@ Array [
   <script
     type="application/ld+json"
   >
-    {"@context":"http://schema.org","@type":"BlogPosting","image":"/logos/logo-1024.png","url":"/posts/url","headline":"Post title","name":"Post title","description":"Post description.","dateCreated":"2021-12-17T00:00:00.000Z","datePublished":"2021-12-17T00:00:00.000Z","dateModified":"2021-12-20T00:00:00.000Z","publisher":{"@context":"https://schema.org","@type":"Organization","url":"https://zito.dev","name":"","description":"","logo":""},"mainEntityOfPage":"True","keywords":["Tag1","Tag2"],"articleSection":"Tech","articleBody":"Post body"}
+    {"@context":"http://schema.org","@type":"BlogPosting","articleBody":"Post body","articleSection":"Tech","dateCreated":"2021-12-17T00:00:00.000Z","dateModified":"2021-12-20T00:00:00.000Z","datePublished":"2021-12-17T00:00:00.000Z","description":"Post description.","headline":"Post title","image":"/logos/logo-1024.png","keywords":["Tag1","Tag2"],"mainEntityOfPage":"True","name":"Post title","publisher":{"@context":"https://schema.org","@type":"Organization","description":"","logo":"","name":"","url":"https://zito.dev"},"url":"/posts/url"}
   </script>,
 ]
 `;

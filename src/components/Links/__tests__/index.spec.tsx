@@ -1,12 +1,11 @@
-import React from 'react';
 import { screen, cleanup, render } from '@testing-library/react';
 import cloneDeep from 'clone-deep';
+import * as gatsby from 'gatsby';
+import React from 'react';
 import { mocked } from 'ts-jest/utils';
 
-import * as gatsby from 'gatsby';
-
+import { config } from '../../../../test/fixtures';
 import { useConfig } from '../../../config';
-import { config } from '../../../../__tests__/fixtures';
 import { BaseLink } from '../BaseLink';
 
 import type { ISiteConfig } from '../../../types';
@@ -93,7 +92,7 @@ describe('component Link', () => {
 		mockedUseConfig.mockReturnValue(configWithBasePath);
 
 		render(
-			<BaseLink to="/local/path" noBasePath>
+			<BaseLink noBasePath to="/local/path">
 				Test
 			</BaseLink>
 		);

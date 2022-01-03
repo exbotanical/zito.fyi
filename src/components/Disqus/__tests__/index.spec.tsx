@@ -1,12 +1,11 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 import cloneDeep from 'clone-deep';
+import React from 'react';
 import { mocked } from 'ts-jest/utils';
 
+
+import { post, config } from '../../../../test/fixtures';
 import { useConfig } from '../../../config';
-
-import { post, config } from '../../../../__tests__/fixtures';
-
 import { DisqusPlugin } from '../index';
 
 jest.mock('../../../config/useConfig', () => ({

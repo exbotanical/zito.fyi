@@ -1,9 +1,9 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import { WidthWrapper } from '@/components/Post/PostSpacing';
 import { typographyStyles } from '@/theme';
 
-import { WidthWrapper } from '@/components/Post/PostSpacing';
 
 interface ITableProps {
 	children?: React.ReactNode;
@@ -58,11 +58,11 @@ export const Body = styled.tbody`
 	${typographyStyles.Body}
 `;
 
-export const Table = ({ children }: ITableProps): JSX.Element => (
-	<TableWrapper>
+export function Table({ children }: ITableProps): JSX.Element {
+  return <TableWrapper>
 		<TableStyled>{children}</TableStyled>
 	</TableWrapper>
-);
+}
 
 export const Head = styled.thead`
 	${typographyStyles.ButtonLabel}

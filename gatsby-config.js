@@ -2,9 +2,9 @@
 require('source-map-support').install();
 
 require('ts-node').register({
-	transpileOnly: true,
-	files: true,
-	ignore: ['(?:^|/).cache/', '(?:^|/)public/']
+  files: true,
+  ignore: ['(?:^|/).cache/', '(?:^|/)public/'],
+  transpileOnly: true
 });
 
 module.exports = require('./config/gatsby-config');

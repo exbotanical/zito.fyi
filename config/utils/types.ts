@@ -1,6 +1,6 @@
 export interface IGetMdxPostsQueryResult {
 	allMdx: {
-		edges: Array<{
+		edges: {
 			node: {
 				fields?: { slug?: string };
 				frontmatter?: {
@@ -10,7 +10,7 @@ export interface IGetMdxPostsQueryResult {
 					datePublished?: string;
 				};
 			};
-		}>;
+		}[];
 	};
 }
 

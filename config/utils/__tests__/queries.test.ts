@@ -1,11 +1,10 @@
 import { getAllPostsByCategory, getAllPostsByTag, getAllPosts } from '..';
-
 import {
 	allPostsByCategoryQuery,
 	allPostsByTagQuery,
 	allPostsQuery
 } from '../../../src/templates/feed/queries';
-import { postsListQueryResponse } from '../../../__tests__/fixtures';
+import { postsListQueryResponse } from '../../../test/fixtures';
 
 jest.spyOn(global.console, 'warn').mockImplementation();
 jest.spyOn(global.console, 'error').mockImplementation();
@@ -14,7 +13,7 @@ const categoryQueryResponse = {
 	data: {
 		allMdx: {
 			edges: postsListQueryResponse.allMdx.edges.filter(
-				(edge) => edge.node?.frontmatter?.category === 'category'
+				(edge) => edge.node.frontmatter.category === 'category'
 			)
 		}
 	}
@@ -23,7 +22,7 @@ const tagQueryResponse = {
 	data: {
 		allMdx: {
 			edges: postsListQueryResponse.allMdx.edges.filter((edge) =>
-				edge.node?.frontmatter?.tags?.includes('tag')
+				edge.node.frontmatter.tags.includes('tag')
 			)
 		}
 	}

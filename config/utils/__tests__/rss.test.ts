@@ -1,6 +1,7 @@
 import { mocked } from 'ts-jest/utils';
-import { config, postQueryResult } from '../../../__tests__/fixtures';
+
 import { generateRssFeed, setupRssFeed } from '..';
+import { config, postQueryResult } from '../../../test/fixtures';
 
 import type { IFeedQueryResult, IFeedPluginData } from '../types';
 jest.spyOn(global.console, 'warn').mockImplementation();

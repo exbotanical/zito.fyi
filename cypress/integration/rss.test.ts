@@ -1,7 +1,7 @@
 import type { IResponseData } from '../types';
 
 if (Cypress.env('STAGE') !== 'dev') {
-	describe('RSS Feed evaluation', () => {
+	describe('rss feed', () => {
 		it('contains valid post links', () => {
 			cy.request('/rss.xml').as('rssFeed');
 

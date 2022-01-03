@@ -1,4 +1,4 @@
-import { config } from '../../__tests__/fixtures';
+import { config } from '../../test/fixtures';
 
 const footerTestPages = ['/', '/my-favorite-soft-machine-records'];
 

@@ -1,5 +1,5 @@
+import { config, post } from '../../../../test/fixtures';
 import { SEO } from '../index';
-import { config, post } from '../../../../__tests__/fixtures';
 
 jest.mock('../../../config/useConfig', () => ({
 	useConfig: jest.fn(() => config)

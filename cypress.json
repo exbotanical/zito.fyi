@@ -1,6 +1,6 @@
 {
   "baseUrl": "http://localhost:9000",
-  "integrationFolder": "cypress/e2e",
+  "integrationFolder": "cypress/integration",
   "fixturesFolder": false,
 	"chromeWebSecurity": false,
 	"video": false,

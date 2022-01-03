@@ -1,6 +1,6 @@
 const POST_PATH = 'my-favorite-soft-machine-records';
 
-describe('MDX rendering evaluation', () => {
+describe('mdx rendering', () => {
 	before(() => {
 		cy.visit(`/${POST_PATH}`);
 		cy.waitForRouteChange();

@@ -1,14 +1,15 @@
 const path = require('path');
+
 const {
-	onCreateNode,
-	createSchemaCustomization,
-	createPages
+  createPages,
+  createSchemaCustomization,
+  onCreateNode
 } = require('./config/gatsby-node');
 
 module.exports = {
-	onCreateNode,
-	createSchemaCustomization,
 	createPages,
+	createSchemaCustomization,
+	onCreateNode,
 	onCreateWebpackConfig: ({ actions }) => {
 		actions.setWebpackConfig({
 			resolve: {
@@ -16,8 +17,8 @@ module.exports = {
 					'@': path.resolve(__dirname, 'src')
 				},
 				fallback: {
-					path: false,
-					fs: false
+					fs: false,
+					path: false
 				}
 			}
 		});

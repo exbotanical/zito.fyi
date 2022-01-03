@@ -74,7 +74,7 @@ export const useConfig = (): ISiteConfig => {
 		`
 	);
 
-	const config = data?.site?.siteMetadata?.config;
+	const config = data.site?.siteMetadata?.config;
 
 	if (!config) throw Error('[useConfig] Failed to query Site Config.');
 

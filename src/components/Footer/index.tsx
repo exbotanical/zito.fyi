@@ -2,12 +2,13 @@ import React from 'react';
 
 import { AuthorCard } from '../AuthorCard';
 import { Socials } from '../Socials';
-import * as S from './styles';
-import { useConfig } from '@/config';
 
+import * as S from './styles';
+
+import { useConfig } from '@/config';
 import { Caption } from '@/theme/Primitives';
 
-export const Footer = (): JSX.Element => {
+export function Footer(): JSX.Element {
 	const config = useConfig();
 
 	return (
@@ -21,4 +22,4 @@ export const Footer = (): JSX.Element => {
 			</S.Info>
 		</S.Wrapper>
 	);
-};
+}

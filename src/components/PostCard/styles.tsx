@@ -1,9 +1,9 @@
-import styled, { css } from 'styled-components';
 import { GatsbyImage } from 'gatsby-plugin-image';
-
-import { Body, BREAKPOINTS } from '@/theme';
+import styled, { css } from 'styled-components';
 
 import { ImageShadow } from '@/components/Image';
+import { Body, BREAKPOINTS } from '@/theme';
+
 
 interface ICardStyleProps {
 	hero?: boolean;

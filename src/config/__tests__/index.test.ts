@@ -1,7 +1,7 @@
 import { cloneDeep } from 'lodash';
 
-import { config as mockConfig } from '../../../__tests__/fixtures/config';
 import { withBasePath } from '../../../config/utils';
+import { config as mockConfig } from '../../../test/fixtures/config';
 
 import type { ISiteConfig } from '../../types';
 

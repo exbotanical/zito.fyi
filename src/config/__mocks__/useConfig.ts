@@ -1,6 +1,6 @@
 const configFixture = jest.requireActual<
-typeof import('../../../__tests__/fixtures/config')
->('../../../__tests__/fixtures/config');
+	typeof import('../../../test/fixtures/config')
+>('../../../test/fixtures/config');
 
 const mock = jest.fn().mockReturnValue(configFixture);
 

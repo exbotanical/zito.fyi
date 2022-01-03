@@ -33,7 +33,9 @@ export const onClientEntry = () => {
 
 			ctx.putImageData(new ImageData(data, size, size), 0, 0);
 
-			return new Promise((resolve) => canvas.toBlob(resolve, 'image/png'));
+			return new Promise((resolve) => {
+				canvas.toBlob(resolve, 'image/png')
+			});
 		}
 
 		initNoiseEffect().then((png) => {

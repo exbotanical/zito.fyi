@@ -94,11 +94,11 @@ const ExcerptSkeleton = styled(SkeletonBlock)`
 	}
 `;
 
-export const PostCardSkeleton = (): JSX.Element => (
-	<Wrapper>
+export function PostCardSkeleton(): JSX.Element {
+  return <Wrapper>
 		<Cover />
 		<Details>
 			<TitleSkeleton /> <ExcerptSkeleton />
 		</Details>
 	</Wrapper>
-);
+}

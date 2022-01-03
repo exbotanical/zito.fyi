@@ -11,32 +11,32 @@ import type {
 import type { IUserMetadata, IOrgMetadata } from '@/types';
 
 interface ISeoArgs {
-	seoData: ISeoData;
-	postData?: IAbridgedPost;
-	userData?: IUserMetadata;
 	orgData?: IOrgMetadata;
+	postData?: IAbridgedPost;
+	seoData: ISeoData;
+	userData?: IUserMetadata;
 }
 
 export const getAuthorMetadata = (
 	userData: IUserMetadata
 ): IJsonLdAuthorMetadata => ({
 	'@type': 'Person',
-	'givenName': userData.firstName,
-	'familyName': userData.surname,
+	'address': userData.location,
 	'email': userData.email,
-	'address': userData.location
+	'familyName': userData.surname,
+	'givenName': userData.firstName,
 });
 
 export const getOrgMetadata = (orgData: IOrgMetadata): IJsonLdOrgMetadata => {
-	const { url, logoUrl, description, name } = orgData;
+	const { description, logoUrl, name, url } = orgData;
 
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'Organization',
-		url,
-		name,
 		description,
-		'logo': logoUrl
+		'logo': logoUrl,
+		name,
+		url
 	};
 };
 
@@ -46,14 +46,14 @@ export const getPostMetadata = (
 	userData?: IUserMetadata
 ): IJsonLdPostMetadata | null => {
 	const {
-		title,
-		description,
-		coverImageUrl,
-		datePublished,
-		dateModified,
-		category,
-		tags,
 		body,
+		category,
+		coverImageUrl,
+		dateModified,
+		datePublished,
+		description,
+		tags,
+		title,
 		url
 	} = postData;
 
@@ -65,21 +65,21 @@ export const getPostMetadata = (
 	return {
 		'@context': 'http://schema.org',
 		'@type': 'BlogPosting',
-		'image': coverImageUrl,
-		url,
-		'headline': title,
-		'name': title,
-		description,
-		'dateCreated': datePublished,
-		datePublished,
-		dateModified,
+		'articleBody': body,
+		'articleSection': category,
 		'author': authorData,
 		'creator': authorData,
-		'publisher': orgMetaData,
-		'mainEntityOfPage': 'True',
+		'dateCreated': datePublished,
+		dateModified,
+		datePublished,
+		description,
+		'headline': title,
+		'image': coverImageUrl,
 		'keywords': tags,
-		'articleSection': category,
-		'articleBody': body
+		'mainEntityOfPage': 'True',
+		'name': title,
+		'publisher': orgMetaData,
+		url
 	};
 };
 
@@ -92,9 +92,9 @@ export const RichSearchTags = ({
 	const { isPost } = seoData;
 
 	const postJsonLd =
-		isPost && postData ?
-			getPostMetadata(postData, orgData, userData) :
-			undefined;
+		isPost && postData
+			? getPostMetadata(postData, orgData, userData)
+			: undefined;
 
 	const orgJsonLd = orgData ? getOrgMetadata(orgData) : undefined;
 

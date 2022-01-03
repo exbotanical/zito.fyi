@@ -1,192 +1,189 @@
 import type { ISiteConfig } from '../src/types';
 
 export const config: ISiteConfig = {
-	site: {
-		/**
-		 * Site title
-		 */
-		title: 'Matthew Zito\'s Blog',
+  /**
+   * Directory in which static assets will reside
+   */
+  // assetDir: '../static',
+  assetDir: '../static',
 
-		/**
-		 * Abridged site title. Used for PWA home screen icon. Approx 12 char maximum
-		 */
-		titleAbridged: 'Zito\'s Blog',
+  /**
+   * Base path for pages
+   */
+  basePath: '/',
 
-		/**
-		 * Site name as used for SEO, PWA home screen
-		 */
-		name: 'Matthew Zito\'s Blog',
+  /**
+   * Directory in which MDX posts will reside
+   */
+  // contentDir: '../content',
+  // TODO
+  contentDir: '../test/fixtures/content',
 
-		/**
-		 * Site description; used for RSS feeds, description meta tag
-		 */
-		description: 'Matthew Zito\'s Blog About Software and Programming',
+  /**
+   * MDX-embedded image width; used for `gatsby-plugin-image` optimizations
+   */
+  embeddedImageWidth: 768,
 
-		/**
-		 * App-wide HTML lang attr
-		 */
-		language: 'en',
+  /**
+   * MDX-embedded video width, in pixels
+   */
+  embeddedVideoWidth: 920,
 
-		/**
-		 * Logo; used for SEO
-		 */
-		logoUrl: '',
+  /**
+   * Glob pattern for icons that will be cached by `gatsby-plugin-offline`
+   */
+  iconCachePaths: undefined,
 
-		/**
-		 * Facebook Application Id; used for app insights, Facebook-specific OpenGraph features
-		 */
-		facebookAppId: '',
+  /**
+   * Icons used in the web manifest
+   */
+  iconList: [],
 
-		/**
-		 * Twitter handle for the site
-		 */
-		twitterHandle: 'test',
+  /**
+   * Manifest icon
+   */
+  iconPath: undefined,
+  organization: {
+    description: '',
+    logoUrl: '',
+    name: '',
 
-		/**
-		 * Site base domain
-		 */
-		url: 'https://zito.dev',
+    /**
+     * Organization homepage
+     */
+    url: 'https://zito.dev'
+  },
 
-		/**
-		 * RSS Feed filepath
-		 */
-		rss: '/rss.xml',
+  /**
+   * Prefix all URLs
+   */
+  pathPrefix: '/',
+  site: {
+    /**
+     * Site manifest background color
+     */
+    backgroundColor: '#F7F7F7',
 
-		/**
-		 * RSS Feed title
-		 */
-		rssTitle: 'Matthew Zito\'s Blog RSS Feed',
+    /**
+     * Copyright, as displayed in footer and RSS Feed
+     */
+    copyright: '© Copyright 2021 | Matthew Zito',
 
-		/**
-		 * Google Analytics Tracking Id
-		 */
-		googleAnalyticsId: '',
+    /**
+     * Site description; used for RSS feeds, description meta tag
+     */
+    description: 'Matthew Zito\'s Blog About Software and Programming',
 
-		/**
-		 * Copyright, as displayed in footer and RSS Feed
-		 */
-		copyright: '© Copyright 2021 | Matthew Zito',
+    /**
+     * Facebook Application Id; used for app insights, Facebook-specific OpenGraph features
+     */
+    facebookAppId: '',
 
-		/**
-		 * App theme color base; used in site manifest
-		 */
-		themeColor: '#D83850',
+    /**
+     * Google Analytics Tracking Id
+     */
+    googleAnalyticsId: '',
 
-		/**
-		 * Site manifest background color
-		 */
-		backgroundColor: '#F7F7F7'
-	},
+    /**
+     * App-wide HTML lang attr
+     */
+    language: 'en',
 
-	// User configuration
-	user: {
-		/**
-		 * Unique identifier for the site admin; used in OpenGraph and SEO tags
-		 */
-		id: 'goldmund',
+    /**
+     * Logo; used for SEO
+     */
+    logoUrl: '',
 
-		/**
-		 * Admin first name; used for SEO
-		 */
-		firstName: 'Matthew',
+    /**
+     * Site name as used for SEO, PWA home screen
+     */
+    name: 'Matthew Zito\'s Blog',
 
-		/**
-		 * Admin surname; used for SEO
-		 */
-		surname: 'Zito',
+    /**
+     * RSS Feed filepath
+     */
+    rss: '/rss.xml',
 
-		/**
-		 * Admin twitter handle
-		 */
-		twitterHandle: 'test',
+    /**
+     * RSS Feed title
+     */
+    rssTitle: 'Matthew Zito\'s Blog RSS Feed',
 
-		/**
-		 * Admin LinkedIn Id
-		 */
-		linkedIn: 'matthew-zito-9a03b3127',
+    /**
+     * App theme color base; used in site manifest
+     */
+    themeColor: '#D83850',
 
-		/**
-		 * Admin GitHub username
-		 */
-		github: 'MatthewZito',
+    /**
+     * Site title
+     */
+    title: 'Matthew Zito\'s Blog',
 
-		/**
-		 * Admin email addr; used for SEO, RSS Feed
-		 */
-		email: 'exbotanical@gmail.com',
+    /**
+     * Abridged site title. Used for PWA home screen icon. Approx 12 char maximum
+     */
+    titleAbridged: 'Zito\'s Blog',
 
-		/**
-		 * Admin location; used for SEO
-		 */
-		location: 'United States',
+    /**
+     * Twitter handle for the site
+     */
+    twitterHandle: 'test',
 
-		/**
-		 * Admin 'author' section text
-		 */
-		about: 'A paragraph about me, the author and site admin.',
+    /**
+     * Site base domain
+     */
+    url: 'https://zito.dev'
+  },
+  // User configuration
+  user: {
+    /**
+     * Admin 'author' section text
+     */
+    about: 'A paragraph about me, the author and site admin.',
 
-		/**
-		 * Admin 'author' section avatar
-		 */
-		avatar: 'https://i.ibb.co/LNJDFXV/self.png'
-	},
+    /**
+     * Admin 'author' section avatar
+     */
+    avatar: 'https://i.ibb.co/LNJDFXV/self.png',
 
-	organization: {
-		name: '',
-		description: '',
-		logoUrl: '',
+    /**
+     * Admin email addr; used for SEO, RSS Feed
+     */
+    email: 'exbotanical@gmail.com',
 
-		/**
-		 * Organization homepage
-		 */
-		url: 'https://zito.dev'
-	},
+    /**
+     * Admin first name; used for SEO
+     */
+    firstName: 'Matthew',
 
-	/**
-	 * Prefix all URLs
-	 */
-	pathPrefix: '/',
+    /**
+     * Admin GitHub username
+     */
+    github: 'MatthewZito',
 
-	/**
-	 * Directory in which MDX posts will reside
-	 */
-	// contentDir: '../content',
-	// TODO
-	contentDir: '../__tests__/fixtures/content',
+    /**
+     * Unique identifier for the site admin; used in OpenGraph and SEO tags
+     */
+    id: 'goldmund',
 
-	/**
-	 * Directory in which static assets will reside
-	 */
-	// assetDir: '../static',
-	assetDir: '../static',
+    /**
+     * Admin LinkedIn Id
+     */
+    linkedIn: 'matthew-zito-9a03b3127',
 
-	/**
-	 * MDX-embedded image width; used for `gatsby-plugin-image` optimizations
-	 */
-	embeddedImageWidth: 768,
+    /**
+     * Admin location; used for SEO
+     */
+    location: 'United States',
 
-	/**
-	 * MDX-embedded video width, in pixels
-	 */
-	embeddedVideoWidth: 920,
+    /**
+     * Admin surname; used for SEO
+     */
+    surname: 'Zito',
 
-	/**
-	 * Manifest icon
-	 */
-	iconPath: undefined,
-
-	/**
-	 * Icons used in the web manifest
-	 */
-	iconList: [],
-
-	/**
-	 * Glob pattern for icons that will be cached by `gatsby-plugin-offline`
-	 */
-	iconCachePaths: undefined,
-
-	/**
-	 * Base path for pages
-	 */
-	basePath: '/'
+    /**
+     * Admin twitter handle
+     */
+    twitterHandle: 'test'
+  }
 };

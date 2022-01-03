@@ -1,4 +1,5 @@
 import { TwitterTags } from '../Twitter';
+
 import { tagListHasEmptyValues, tagListHasUniqueKeys, seoData } from './utils';
 
 describe('`TwitterTags`', () => {

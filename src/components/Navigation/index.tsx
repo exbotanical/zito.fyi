@@ -1,11 +1,12 @@
 import React from 'react';
 
 import { Moon, Sun } from '../icons';
-import { useConfig } from '@/config';
+
 import * as S from '@/components/Navigation/styles';
+import { useConfig } from '@/config';
 import { useTheme } from '@/theme';
 
-export const Navigation = (): JSX.Element => {
+export function Navigation(): JSX.Element {
 	const config = useConfig();
 	const { theme, setTheme } = useTheme();
 
@@ -17,15 +18,15 @@ export const Navigation = (): JSX.Element => {
 			</S.HomeButton>
 
 			<S.ThemeButton
-				role="button"
-				title="button"
-				tabIndex={0}
+				data-testid="theme_btn"
 				onClick={setTheme}
 				onKeyPress={setTheme}
-				data-testid="theme_btn"
+				role="button"
+				tabIndex={0}
+				title="button"
 			>
 				{theme === 'light' ? <Moon height={20} /> : <Sun height={20} />}
 			</S.ThemeButton>
 		</S.Wrapper>
 	);
-};
+}

@@ -1,21 +1,20 @@
 import React from 'react';
 
 import * as S from './styles';
-import { Body } from '@/theme';
 
 import { useConfig } from '@/config';
+import { Body } from '@/theme';
 
-export const AuthorCard = (): JSX.Element | null => {
+
+export function AuthorCard(): JSX.Element {
 	const { user } = useConfig();
-
-	if (!user) return null;
 
 	const fullName = `${user.firstName} ${user.surname}`;
 
 	return (
 		<S.Wrapper aria-label="About the author">
 			<S.Main>
-				<S.Avatar src={user.avatar} alt={fullName} />
+				<S.Avatar alt={fullName} src={user.avatar} />
 				<S.Info>
 					<S.AuthorName>{fullName}</S.AuthorName>
 					<S.AboutText>
@@ -25,4 +24,4 @@ export const AuthorCard = (): JSX.Element | null => {
 			</S.Main>
 		</S.Wrapper>
 	);
-};
+}

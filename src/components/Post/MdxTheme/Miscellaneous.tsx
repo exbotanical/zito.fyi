@@ -1,14 +1,14 @@
 import React from 'react';
 import { css, createGlobalStyle } from 'styled-components';
 
+import { BaseImage } from '@/components/Image';
+import { AnimatedLink } from '@/components/Links';
 import {
 	PostImage,
 	PostImageSpacing,
 	FigCaptionCss
 } from '@/components/Post/PostImage';
 import { ExtendingWrapper } from '@/components/Post/PostSpacing';
-import { BaseImage } from '@/components/Image';
-import { AnimatedLink } from '@/components/Links';
 import { Separator } from '@/components/Separator';
 
 interface ILinkProps extends React.HTMLProps<HTMLAnchorElement> {
@@ -16,13 +16,13 @@ interface ILinkProps extends React.HTMLProps<HTMLAnchorElement> {
 	to: string;
 }
 
-export const Break = (): JSX.Element => (
-	<ExtendingWrapper>
+export function Break(): JSX.Element {
+  return <ExtendingWrapper>
 		<Separator />
 	</ExtendingWrapper>
-);
+}
 
-export const Link = ({
+export function Link({
 	children,
 	className,
 	activeClassName,
@@ -31,16 +31,16 @@ export const Link = ({
 	target,
 	rel,
 	style
-}: ILinkProps): JSX.Element => {
+}: ILinkProps): JSX.Element {
 	// allow `gatsby-remark-images` to handle its own links
 	if (className === 'gatsby-resp-image-link') {
 		return (
 			<a
 				className={className}
 				href={href}
-				target={target}
 				rel={rel}
 				style={style}
+				target={target}
 			>
 				{children}
 			</a>
@@ -49,15 +49,15 @@ export const Link = ({
 
 	return (
 		<AnimatedLink
-			className={className}
 			activeClassName={activeClassName}
-			to={to}
+			className={className}
 			href={href}
+			to={to}
 		>
 			{children}
 		</AnimatedLink>
 	);
-};
+}
 
 export const GlobalGatsbyImageStyle = createGlobalStyle`${css`
 	.gatsby-resp-image-figure {
@@ -75,7 +75,7 @@ export const GlobalGatsbyImageStyle = createGlobalStyle`${css`
 `}
 `;
 
-export const MdxImage = ({
+export function MdxImage({
 	src,
 	alt,
 	className,
@@ -84,18 +84,18 @@ export const MdxImage = ({
 	sizes,
 	loading,
 	style
-}: React.ImgHTMLAttributes<HTMLImageElement>): JSX.Element => {
+}: React.ImgHTMLAttributes<HTMLImageElement>): JSX.Element {
 	if (className === 'gatsby-resp-image-image') {
 		return (
 			<BaseImage
-				src={src}
 				alt={alt}
-				title={title}
-				srcSet={srcSet}
-				sizes={sizes}
-				loading={loading}
-				style={style}
 				className={className}
+				loading={loading}
+				sizes={sizes}
+				src={src}
+				srcSet={srcSet}
+				style={style}
+				title={title}
 			/>
 		);
 	}
@@ -108,5 +108,5 @@ export const MdxImage = ({
 		);
 	}
 
-	return <PostImage src={src} alt={alt} title={title} />;
-};
+	return <PostImage alt={alt} src={src} title={title} />;
+}

@@ -1,11 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 
-import { Actions } from 'gatsby';
+
+import { constants } from './constants';
+
+import { withBasePath } from '.';
 
 import type { IFeedMetadata, IPost, ISiteConfig } from '../../src/types';
-import { constants } from './constants';
-import { withBasePath } from '.';
+import type { Actions } from 'gatsby';
 
 const FEED_COMPONENT = require.resolve('../../src/templates/feed/index.tsx');
 
@@ -62,13 +64,13 @@ export const createFeedMetadata = (
 	const prevCount = typeof prevPage === 'number' ? limit : undefined;
 
 	return {
-		current: pageIdx,
-		next: nextPage,
-		nextCount,
-		prev: prevPage,
-		prevCount,
-		posts: feedPagePosts
-	};
+    current: pageIdx,
+    next: nextPage,
+    nextCount,
+    posts: feedPagePosts,
+    prev: prevPage,
+    prevCount
+  };
 };
 
 export const setupFeedMetadataDir = (): void => {
@@ -98,16 +100,16 @@ export const createFeed = async (
 			const path = resolveFeedPath(config, feedType, feedId);
 
 			actions.createPage({
-				path,
-				component: FEED_COMPONENT,
-				context: {
-					pageCount,
-					pageIndex: pageIdx,
-					feedType,
-					feedId,
-					feedMetadata: pageMeta
-				}
-			});
+        component: FEED_COMPONENT,
+        context: {
+          feedId,
+          feedMetadata: pageMeta,
+          feedType,
+          pageCount,
+          pageIndex: pageIdx
+        },
+        path
+      });
 		}
 	});
 

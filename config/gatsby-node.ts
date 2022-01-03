@@ -1,17 +1,18 @@
-import { GatsbyNode } from 'gatsby';
 import urlJoin from 'url-join';
 
+import { config } from './config';
+import { generateSlug, withBasePath, getNRelatedPosts } from './utils';
+import { createFeed, setupFeedMetadataDir } from './utils/feed';
 import {
 	getAllPosts,
 	getAllPostsByTag,
 	getAllPostsByCategory
 } from './utils/queries';
-import { createFeed, setupFeedMetadataDir } from './utils/feed';
-import { generateSlug, withBasePath, getNRelatedPosts } from './utils';
 import { ConfigSchema } from './utils/schema';
-import { IBaseFrontmatter } from './utils/types';
+
+import type { IBaseFrontmatter } from './utils/types';
 // we must import directly in order to mock this
-import { config } from './config';
+import type { GatsbyNode } from 'gatsby';
 
 const POST_PAGE_COMPONENT = require.resolve('../src/templates/post/queries.ts');
 
@@ -37,19 +38,38 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions }) => {
 		const url = urlJoin(config.site.url, pathName);
 
 		// set fields route, url, pathName, slug
-		actions.createNodeField({ node, name: 'slug', value: slug });
-		actions.createNodeField({ node, name: 'route', value: route });
-		actions.createNodeField({ node, name: 'pathName', value: pathName });
-		actions.createNodeField({ node, name: 'url', value: url });
+		actions.createNodeField({
+			name: 'slug',
+			node,
+			value: slug
+		});
+
+		actions.createNodeField({
+			name: 'route',
+			node,
+			value: route
+		});
+
+		actions.createNodeField({
+			name: 'pathName',
+			node,
+			value: pathName
+		});
+
+		actions.createNodeField({
+			name: 'url',
+			node,
+			value: url
+		});
 	}
 };
 
 export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] =
 	({ actions }) => {
 		actions.createTypes(`#graphql
-     ${ConfigSchema}
-   `);
-	};
+			${ConfigSchema}
+		`);
+};
 
 export const createPages: GatsbyNode['createPages'] = async ({
 	graphql,
@@ -84,17 +104,17 @@ export const createPages: GatsbyNode['createPages'] = async ({
 		const relatedPosts = getNRelatedPosts(post, allPosts);
 
 		actions.createPage({
-			path: post.route,
-			component: POST_PAGE_COMPONENT,
-			context: {
-				slug: post.slug,
-				nexttitle: nextPost?.title,
-				nextslug: nextPost?.slug,
-				prevtitle: prevPost?.title,
-				prevslug: prevPost?.slug,
-				relatedPosts
-			}
-		});
+      component: POST_PAGE_COMPONENT,
+      context: {
+        nextslug: nextPost.slug,
+        nexttitle: nextPost.title,
+        prevslug: prevPost.slug,
+        prevtitle: prevPost.title,
+        relatedPosts,
+        slug: post.slug
+      },
+      path: post.route
+    });
 	});
 
 	// create primary posts feed

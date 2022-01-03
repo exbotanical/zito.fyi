@@ -2,7 +2,7 @@ import type { IResponseData } from '../types';
 
 // skip dev given the dev server does not build RSS assets
 if (Cypress.env('STAGE') !== 'dev') {
-	describe('Sitemap evaluation', () => {
+	describe('sitemap', () => {
 		it('contains valid urls', () => {
 			cy.request('/sitemap/sitemap-0.xml').then((response) => {
 				const data = response as unknown as IResponseData;

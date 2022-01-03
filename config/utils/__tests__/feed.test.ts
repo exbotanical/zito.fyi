@@ -1,7 +1,6 @@
 import memfs from 'memfs';
-
 import { mocked } from 'ts-jest/utils';
-import { GatsbyActionsMock } from '../../../__tests__/utils/gatsbyActions';
+
 
 import {
 	createFeed,
@@ -11,8 +10,8 @@ import {
 	persistFeedMetadata
 	, constants
 } from '..';
-
-import { post, config, postsList } from '../../../__tests__/fixtures';
+import { post, config, postsList } from '../../../test/fixtures';
+import { GatsbyActionsMock } from '../../../test/utils/gatsbyActions';
 
 const longPostsList = [...postsList, ...postsList];
 

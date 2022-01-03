@@ -21,7 +21,7 @@ export const TwitterTags = ({
 	const tagList: ITwitterTagList = [];
 
 	const addTypeSafeTag = (name: string, content: string) => {
-		tagList.push(<meta name={name} content={content} />);
+		tagList.push(<meta content={content} name={name} />);
 	};
 
 	addTypeSafeTag('twitter:card', 'summary_large_image');

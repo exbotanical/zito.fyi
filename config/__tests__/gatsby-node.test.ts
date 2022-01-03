@@ -1,22 +1,22 @@
-import {
-	Node,
-	CreateNodeArgs,
-	PluginOptions,
-	CreateSchemaCustomizationArgs,
-	CreatePagesArgs
-} from 'gatsby';
 import { mocked } from 'ts-jest/utils';
 
+import * as feedUtils from '..';
+import { config } from '../../test/fixtures';
+import { GatsbyActionsMock } from '../../test/utils/gatsbyActions';
 import {
 	onCreateNode,
 	createSchemaCustomization,
 	createPages
 } from '../gatsby-node';
 
-import { GatsbyActionsMock } from '../../__tests__/utils/gatsbyActions';
-import { config } from '../../__tests__/fixtures';
 
-import * as feedUtils from '..';
+import type {
+	Node,
+	CreateNodeArgs,
+	PluginOptions,
+	CreateSchemaCustomizationArgs,
+	CreatePagesArgs
+} from 'gatsby';
 
 const mockedGatsbyActions = mocked(GatsbyActionsMock, true);
 
@@ -31,7 +31,7 @@ const [onCreateNodeImpl, createSchemaCustomizationImpl, createPagesImpl] = [
 	createPages!
 ];
 
-type NodeArgs = CreateNodeArgs<Record<string, unknown>>;
+type NodeArgs = CreateNodeArgs;
 
 jest.spyOn(global.console, 'error').mockImplementation();
 
@@ -55,8 +55,8 @@ const feedUtilsMock = mocked(feedUtils, true);
 
 jest.mock('../utils/queries', () => {
 	const postsList = jest.requireActual<
-	typeof import('../../__tests__/fixtures')
-	>('../../__tests__/fixtures').postsList;
+	typeof import('../../test/fixtures')
+	>('../../test/fixtures').postsList;
 
 	const testPostsList = [
 		...postsList,

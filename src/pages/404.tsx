@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import { navigate } from '@reach/router';
+import { useEffect } from 'react';
 
 export default () => {
 	useEffect(() => {

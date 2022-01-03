@@ -1,13 +1,12 @@
-import { mocked } from 'ts-jest/utils';
 import cloneDeep from 'clone-deep';
+import { mocked } from 'ts-jest/utils';
 
 import {
 	postsListQueryResponse,
 	postQueryResult,
 	post,
 	config
-} from '../../../__tests__/fixtures';
-
+} from '../../../test/fixtures';
 import {
 	mdxNodeToPost,
 	queryToPost,
@@ -15,7 +14,7 @@ import {
 	queryToPostsList
 } from '../../utils';
 
-import type { IMdxNode, IPostJson } from '..';
+import type { IPostJson } from '..';
 
 const consoleWarnSpy = jest
 	.spyOn(global.console, 'warn')
@@ -30,13 +29,13 @@ const testError = Error('Invalid `postQueryResult` object used in a test');
 
 describe('`mdxNodeToPost`', () => {
 	it('generates correct post data', () => {
-		const post = mdxNodeToPost(postQueryResult.mdx as IMdxNode);
+		const post = mdxNodeToPost(postQueryResult.mdx!);
 
 		expect(post).toMatchSnapshot();
 	});
 
 	it('falls back to `datePublished` if `dateModified` has not been set', () => {
-		const mdxNodeSansDateModified = cloneDeep(postQueryResult.mdx) as IMdxNode;
+		const mdxNodeSansDateModified = cloneDeep(postQueryResult.mdx)!;
 
 		// eslint-disable-next-line jest/no-if
 		if (
@@ -56,7 +55,7 @@ describe('`mdxNodeToPost`', () => {
 	});
 
 	it('throws when missing MDX data', () => {
-		const invalidMdx = cloneDeep(postQueryResult.mdx) as IMdxNode;
+		const invalidMdx = cloneDeep(postQueryResult.mdx)!;
 
 		invalidMdx.timeToRead = undefined;
 
@@ -64,7 +63,7 @@ describe('`mdxNodeToPost`', () => {
 	});
 
 	it('throws when missing frontmatter', () => {
-		const invalidMdx = cloneDeep(postQueryResult.mdx) as IMdxNode;
+		const invalidMdx = cloneDeep(postQueryResult.mdx)!;
 
 		// eslint-disable-next-line jest/no-if
 		if (!invalidMdx.frontmatter) {
@@ -93,7 +92,7 @@ describe('`mdxNodeToPost`', () => {
 	});
 
 	it('throws when missing fields', () => {
-		const invalidMdx = cloneDeep(postQueryResult.mdx) as IMdxNode;
+		const invalidMdx = cloneDeep(postQueryResult.mdx)!;
 
 		// eslint-disable-next-line jest/no-if
 		if (!invalidMdx.fields) {
@@ -122,7 +121,7 @@ describe('`mdxNodeToPost`', () => {
 	});
 
 	it('warns when missing SEO fields', () => {
-		const partialMdx = cloneDeep(postQueryResult.mdx) as IMdxNode;
+		const partialMdx = cloneDeep(postQueryResult.mdx)!;
 
 		// eslint-disable-next-line jest/no-if
 		if (!partialMdx.frontmatter) {

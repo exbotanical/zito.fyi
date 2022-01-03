@@ -63,9 +63,10 @@ const processQueryResult = (
 		console.error(
 			'[processQueryResult] Error while processing query results. See:'
 		);
+		console.log({ result }); // TODO
 		console.error(result.errors);
 
-		throw Error(result.errors);
+		throw Error(result.errors as string);
 	}
 
 	if (!result.data) {

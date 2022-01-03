@@ -15,7 +15,7 @@ const addTypeSafeTag = (
 	property: string,
 	content: string
 ) => {
-	tagList.push(<meta property={property} content={content} />);
+	tagList.push(<meta content={content} property={property} />);
 };
 
 const createPostTagList = (

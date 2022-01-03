@@ -1,13 +1,15 @@
+import { getImage } from 'gatsby-plugin-image';
 import React from 'react';
 import styled from 'styled-components';
-import { getImage } from 'gatsby-plugin-image';
 
 import { CoverImage } from './PostImage';
 import { WidthWrapper } from './PostSpacing';
-import { H1, Body } from '@/theme';
-import { PostInfo } from '@/components/PostInfo';
 
 import type { IPost } from '@/types';
+
+import { PostInfo } from '@/components/PostInfo';
+import { H1, Body } from '@/theme';
+
 
 interface IPostIntroProps {
 	post: IPost;
@@ -32,7 +34,7 @@ const Cover = styled.div`
 	justify-items: center;
 `;
 
-export const PostIntro = ({ post }: IPostIntroProps): JSX.Element => {
+export function PostIntro({ post }: IPostIntroProps): JSX.Element {
 	if (!post.coverImg) {
 		throw Error('[PostIntro] Cannot render `PostIntro` without `coverImg`');
 	}
@@ -55,8 +57,8 @@ export const PostIntro = ({ post }: IPostIntroProps): JSX.Element => {
 				<WidthWrapper>
 					<PostInfo post={post} />
 				</WidthWrapper>
-				<CoverImage image={imgData} alt={post.coverImageAlt} />
+				<CoverImage alt={post.coverImageAlt} image={imgData} />
 			</Cover>
 		</Wrapper>
 	);
-};
+}

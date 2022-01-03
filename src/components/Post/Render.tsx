@@ -1,6 +1,6 @@
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import styled from 'styled-components';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import { MDXTheme } from './MdxTheme';
 import { WrapperCss } from './PostSpacing';
@@ -45,7 +45,7 @@ const Wrapper = styled.article`
 	}
 `;
 
-export const Render = ({ post }: IRenderProps): JSX.Element => {
+export function Render({ post }: IRenderProps): JSX.Element {
 	if (!post.body) {
 		throw Error(
 			`[Render] post data does not contain MDX body for rendering. Slug: ${post.slug}`
@@ -59,4 +59,4 @@ export const Render = ({ post }: IRenderProps): JSX.Element => {
 			</MDXTheme>
 		</Wrapper>
 	);
-};
+}

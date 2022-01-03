@@ -28,17 +28,18 @@ export const generateRssFeed =
 				const url = slug ? config.site.url + slug : config.site.url;
 
 				return {
-					categories: node?.frontmatter?.tags,
-					date: node?.frontmatter?.datePublished,
-					title: node?.frontmatter?.title,
-					description: node.excerpt,
-					url,
-					guid: url,
-					custom_elements: [
-						{ 'content:encoded': node.html },
-						{ author: config.user.email }
-					]
-				};
+					categories: node.frontmatter?.tags,
+          custom_elements: [{
+            'content:encoded': node.html
+          }, {
+            author: config.user.email
+          }],
+          date: node.frontmatter?.datePublished,
+          description: node.excerpt,
+          guid: url,
+          title: node.frontmatter?.title,
+          url
+        };
 			});
 
 			return res;
@@ -47,7 +48,7 @@ export const generateRssFeed =
 export const setupRssFeed =
 	(config: ISiteConfig) =>
 		(ref: IFeedPluginData): IRssFeedMetadata => {
-			const ret = ref.query?.site?.siteMetadata?.rssMetadata;
+			const ret = ref.query.site?.siteMetadata?.rssMetadata;
 
 			if (!ret) {
 				throw Error('`gatsby-plugin-feed` rssMetadata is not defined');

@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { ExtendingWrapper } from '@/components/Post/PostSpacing';
 import { typographyStyles } from '@/theme';
 
-import { ExtendingWrapper } from '@/components/Post/PostSpacing';
 
 interface IListProps {
 	children?: React.ReactNode;
@@ -13,21 +13,21 @@ const UnorderedStyle = styled.ul`
 	padding-left: 40px;
 `;
 
-export const UnorderedList = ({ children }: IListProps): JSX.Element => (
-	<ExtendingWrapper>
+export function UnorderedList({ children }: IListProps): JSX.Element {
+  return <ExtendingWrapper>
 		<UnorderedStyle>{children}</UnorderedStyle>
 	</ExtendingWrapper>
-);
+}
 
 const OrderedStyle = styled.ol`
 	padding-left: 40px;
 `;
 
-export const OrderedList = ({ children }: IListProps): JSX.Element => (
-	<ExtendingWrapper>
+export function OrderedList({ children }: IListProps): JSX.Element {
+  return <ExtendingWrapper>
 		<OrderedStyle>{children}</OrderedStyle>
 	</ExtendingWrapper>
-);
+}
 
 export const Item = styled.li`
 	${typographyStyles.Body}

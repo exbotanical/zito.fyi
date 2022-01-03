@@ -1,9 +1,9 @@
 const PAGE_POST_COUNT = 5;
 
-const feedUrls = ['/', '/category/technology', '/tag/programming']; //, '/category/technology',
+const feedUrls = ['/', '/category/technology', '/tag/programming']; // , '/category/technology',
 
 feedUrls.forEach((url) => {
-	describe(`Feed evaluation (${url})`, () => {
+	describe(`feed (${url})`, () => {
 		beforeEach(() => {
 			cy.visit(url);
 			cy.waitForRouteChange();
@@ -51,7 +51,7 @@ feedUrls.forEach((url) => {
 
 		it('contains a post excerpt', () => {
 			cy.findByText(
-				'This is a TEST post excerpt, used for testing with Cypress. We\'ll grab the text by searching for it on the DOM. This should be the final…'
+				"This is a TEST post excerpt, used for testing with Cypress. We'll grab the text by searching for it on the DOM. This should be the final…"
 			);
 		});
 

@@ -1,10 +1,10 @@
-import { mocked } from 'ts-jest/utils';
 import { renderHook } from '@testing-library/react-hooks';
 import * as gatsby from 'gatsby';
+import { mocked } from 'ts-jest/utils';
 
+
+import { config } from '../../../test/fixtures/config';
 import { useConfig } from '../useConfig';
-
-import { config } from '../../../__tests__/fixtures/config';
 
 const siteConfigQueryResponse = {
 	site: {

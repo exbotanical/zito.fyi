@@ -1,16 +1,15 @@
+import { cleanup, screen } from '@testing-library/react';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { cleanup, screen } from '@testing-library/react';
 import 'jest-styled-components';
 
 import FeedTemplate from '..';
+import { config } from '../../../../test/fixtures';
+import Index0 from '../../../../test/fixtures/feedMetadata/index-0.json';
+import { renderWithQueryClient } from '../../../../test/utils/render';
 
-import Index0 from '../../../../__tests__/fixtures/feedMetadata/index-0.json';
-import { config } from '../../../../__tests__/fixtures';
-import { renderWithQueryClient } from '../../../../__tests__/utils/render';
-
-import type { IPageContext } from '../types';
 import type { IFeedMetadataJson } from '../../../types';
+import type { IPageContext } from '../types';
 
 jest.mock('../../../config/useConfig', () => ({
 	useConfig: jest.fn(() => config)

@@ -1,4 +1,4 @@
-import { ImageDataLike } from 'gatsby-plugin-image';
+import type { ImageDataLike } from 'gatsby-plugin-image';
 
 export interface IUserQueryResult {
 	site: {
@@ -36,7 +36,7 @@ export interface IMdxNode {
 		coverAlt?: string;
 
 		category?: string;
-		tags?: ReadonlyArray<string | undefined>;
+		tags?: readonly (string | undefined)[];
 
 		datePublished?: string;
 		dateModified?: string;
@@ -108,21 +108,21 @@ export interface IFeedMetadata {
 	posts: IPost[];
 }
 
-export type IFeedMetadataJson = {
+export interface IFeedMetadataJson {
 	current: number;
 	next?: number;
 	nextCount?: number;
 	prev?: number;
 	prevCount?: number;
 	posts: IPostJson[];
-};
+}
 
-export type IPlaceholderPost = {
+export interface IPlaceholderPost {
 	isPlaceholder: boolean;
 	key: string;
-};
+}
 
-export type IFeedItems = (IPost | IPlaceholderPost)[];
+export type IFeedItems = (IPlaceholderPost | IPost)[];
 
 export interface ISiteMetadata {
 	title: string;
@@ -190,8 +190,8 @@ export interface ISiteConfig {
 	basePath?: string;
 }
 
-export type IQueryAllPostsResult = {
+export interface IQueryAllPostsResult {
 	allMdx: {
 		edges: { node: IMdxNode }[];
 	};
-};
+}

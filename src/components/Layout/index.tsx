@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { ThemeProvider, BREAKPOINTS } from '@/theme';
-
-import { SEO } from '@/components/SEO';
-import { Footer } from '@/components/Footer';
-import { Navigation } from '@/components/Navigation';
-import { LayoutWidthContainer } from '@/components/LayoutWidthContainer';
-
 import type { IPost } from '@/types';
+
+import { Footer } from '@/components/Footer';
+import { LayoutWidthContainer } from '@/components/LayoutWidthContainer';
+import { Navigation } from '@/components/Navigation';
+import { SEO } from '@/components/SEO';
+import { ThemeProvider, BREAKPOINTS } from '@/theme';
 
 interface ILayoutProps {
 	children?: React.ReactNode;
@@ -29,9 +28,10 @@ const LayoutGrid = styled.div`
 	}
 `;
 
-export const Layout = ({ children, post }: ILayoutProps): JSX.Element => {
+export function Layout({ children, post }: ILayoutProps): JSX.Element {
 	return (
 		<ThemeProvider>
+			{/* eslint-disable-next-line react/jsx-pascal-case */}
 			<SEO post={post} />
 			<LayoutGrid>
 				<LayoutWidthContainer>
@@ -42,4 +42,4 @@ export const Layout = ({ children, post }: ILayoutProps): JSX.Element => {
 			</LayoutGrid>
 		</ThemeProvider>
 	);
-};
+}

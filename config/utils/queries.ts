@@ -8,15 +8,15 @@ import { mdxNodeToPost } from '../../src/utils';
 import type { IQueryAllPostsResult, IPost } from '../../src/types';
 
 interface IQueryResult {
-	errors?: any;
-	data?: IQueryAllPostsResult | undefined;
+	errors?: string[];
+	data?: IQueryAllPostsResult;
 }
 
 type GraphqlType = <TData, TVariables = any>(
 	query: string,
 	variables?: TVariables
 ) => Promise<{
-	errors?: any;
+	errors?: string[];
 	data?: TData;
 }>;
 
@@ -63,10 +63,11 @@ const processQueryResult = (
 		console.error(
 			'[processQueryResult] Error while processing query results. See:'
 		);
-		console.log({ result }); // TODO
+
 		console.error(result.errors);
 
-		throw Error(result.errors as string);
+		// @ts-expect-error serialize array of error strings
+		throw Error(result.errors);
 	}
 
 	if (!result.data) {

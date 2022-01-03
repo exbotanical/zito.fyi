@@ -21,17 +21,15 @@ const getComponentMapping = (post: IPost): MDXProviderComponents => {
 	const headings = TextComponents.generateHeadings(post.slug);
 
 	return {
-		// @ts-expect-error TODO
 		wrapper: ({ children }: { children: React.ReactNode }) => {
 			const updatedChildren = React.Children.map(children, (child) => {
-				console.log({ children, child });
 
 				if (!React.isValidElement(child)) {
 					return child;
 				}
 
 				// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-				if (child.props.className === 'footnotes') {
+				if (child.props?.className === 'footnotes') {
 					// the key is of negligible consequence given we've only one element that will ever match
 					// however, react requires one, so...
 					return <Footnote key={1} {...child.props} />;
@@ -40,7 +38,7 @@ const getComponentMapping = (post: IPost): MDXProviderComponents => {
 				return child;
 			});
 
-			return updatedChildren;
+			return updatedChildren as unknown as React.ReactElement;
 		},
 		p: TextComponents.Paragraph,
 		h1: headings.H1,

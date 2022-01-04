@@ -19,5 +19,5 @@ module.exports = {
 		'^.+\\.tsx?$': 'ts-jest'
 	},
 	// https://github.com/facebook/jest/issues/2081#issuecomment-699558143
-	transformIgnorePatterns: ['node_modules/(?!.*(gatsby-plugin-mdx)/)']
+	transformIgnorePatterns: ['node_modules/(?!.*(gatsby|gatsby-plugin-mdx)/)']
 };

@@ -26,6 +26,9 @@ specifiers:
   '@testing-library/user-event': 13.3.0
   '@types/clone-deep': 4.0.1
   '@types/jest': 27.0.2
+  '@types/lodash.clonedeep': ^4.5.6
+  '@types/lodash.isobject': ^3.0.6
+  '@types/lodash.kebabcase': ^4.1.6
   '@types/mdx-js__react': 1.5.4
   '@types/node': 16.11.2
   '@types/react': 17.0.27
@@ -40,8 +43,8 @@ specifiers:
   babel-plugin-transform-regenerator: 6.26.0
   babel-preset-gatsby: 1.14.0
   clone-deep: 4.0.1
-  cypress: 8.6.0
-  cypress-axe: 0.13.0
+  cypress: ^9.2.0
+  cypress-axe: ^0.13.0
   cz-conventional-changelog: 3.3.0
   date-fns: 2.25.0
   eslint: 7.32.0
@@ -59,8 +62,9 @@ specifiers:
   gatsby-plugin-image: 2.1.0-next.0
   gatsby-plugin-lodash: 5.1.0-next.0
   gatsby-plugin-manifest: 4.1.0-next.0
-  gatsby-plugin-mdx: 2.14.0
+  gatsby-plugin-mdx: 3.4.0
   gatsby-plugin-offline: 5.1.0-next.0
+  gatsby-plugin-pnpm: ^1.2.10
   gatsby-plugin-react-helmet: 5.1.0-next.0
   gatsby-plugin-react-svg: 2.0.0-beta1
   gatsby-plugin-sharp: 4.1.0-next.0
@@ -79,6 +83,9 @@ specifiers:
   jest: 27.2.5
   jest-styled-components: 7.0.5
   lint-staged: 11.1.2
+  lodash.clonedeep: ^4.5.0
+  lodash.isobject: ^3.0.2
+  lodash.kebabcase: ^4.1.1
   memfs: ^3.4.1
   prettier: 2.4.1
   prism-themes: 1.9.0
@@ -119,8 +126,9 @@ dependencies:
   gatsby-plugin-image: 2.1.0-next.0_fad975fedc5abb950a03d39a8ece9d58
   gatsby-plugin-lodash: 5.1.0-next.0_gatsby@4.0.0
   gatsby-plugin-manifest: 4.1.0-next.0_gatsby@4.0.0
-  gatsby-plugin-mdx: 2.14.0_73e8d0148a4c5c71ceb6a02bbce55c80
+  gatsby-plugin-mdx: 3.4.0_1907e0b6fe372da4f932da3fa03f4fce
   gatsby-plugin-offline: 5.1.0-next.0_b0da73f707a47b4db272d1bf8ca28eeb
+  gatsby-plugin-pnpm: 1.2.10_gatsby@4.0.0
   gatsby-plugin-react-helmet: 5.1.0-next.0_gatsby@4.0.0+react-helmet@6.1.0
   gatsby-plugin-react-svg: 2.0.0-beta1
   gatsby-plugin-sharp: 4.1.0-next.0_gatsby@4.0.0
@@ -160,7 +168,7 @@ devDependencies:
   '@commitlint/config-conventional': 13.1.0
   '@magister_zito/eslint-config-react': 0.8.0_eslint@7.32.0+typescript@4.4.3
   '@magister_zito/stylelint-config': 0.0.2
-  '@testing-library/cypress': 8.0.1_cypress@8.6.0
+  '@testing-library/cypress': 8.0.1_cypress@9.2.0
   '@testing-library/dom': 8.9.1
   '@testing-library/jest-dom': 5.14.1
   '@testing-library/react': 12.1.2_react-dom@17.0.2+react@17.0.2
@@ -168,6 +176,9 @@ devDependencies:
   '@testing-library/user-event': 13.3.0_@testing-library+dom@8.9.1
   '@types/clone-deep': 4.0.1
   '@types/jest': 27.0.2
+  '@types/lodash.clonedeep': 4.5.6
+  '@types/lodash.isobject': 3.0.6
+  '@types/lodash.kebabcase': 4.1.6
   '@types/mdx-js__react': 1.5.4
   '@types/node': 16.11.2
   '@types/react': 17.0.27
@@ -181,19 +192,22 @@ devDependencies:
   babel-plugin-transform-regenerator: 6.26.0
   babel-preset-gatsby: 1.14.0_@babel+core@7.15.8
   clone-deep: 4.0.1
-  cypress: 8.6.0
-  cypress-axe: 0.13.0_cypress@8.6.0
+  cypress: 9.2.0
+  cypress-axe: 0.13.0_cypress@9.2.0
   cz-conventional-changelog: 3.3.0_@types+node@16.11.2
   eslint: 7.32.0
   eslint-config-prettier: 8.3.0_eslint@7.32.0
   eslint-plugin-cypress: 2.12.1_eslint@7.32.0
   eslint-plugin-graphql: 4.0.0_888ba06d97c9fb01d926bd80216ac90e
   fetch-mock: 9.11.0
-  gatsby-cypress: 1.14.0_cypress@8.6.0+gatsby@4.0.0
+  gatsby-cypress: 1.14.0_cypress@9.2.0+gatsby@4.0.0
   husky: 7.0.2
   jest: 27.2.5_ts-node@10.3.0
   jest-styled-components: 7.0.5_styled-components@5.3.1
   lint-staged: 11.1.2
+  lodash.clonedeep: 4.5.0
+  lodash.isobject: 3.0.2
+  lodash.kebabcase: 4.1.1
   memfs: 3.4.1
   prettier: 2.4.1
   prismjs: 1.25.0
@@ -695,7 +709,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.12.9
-      '@babel/helper-plugin-utils': 7.10.4
+      '@babel/helper-plugin-utils': 7.16.7
       '@babel/plugin-syntax-object-rest-spread': 7.8.3_@babel+core@7.12.9
       '@babel/plugin-transform-parameters': 7.16.7_@babel+core@7.12.9
     dev: false
@@ -2314,7 +2328,7 @@ packages:
       '@jest/test-result': 27.4.2
       '@jest/transform': 27.4.5
       '@jest/types': 27.4.2
-      '@types/node': 16.11.2
+      '@types/node': 17.0.6
       ansi-escapes: 4.3.2
       chalk: 4.1.2
       emittery: 0.8.1
@@ -2495,7 +2509,7 @@ packages:
     dependencies:
       '@types/istanbul-lib-coverage': 2.0.4
       '@types/istanbul-reports': 3.0.1
-      '@types/node': 16.11.2
+      '@types/node': 17.0.6
       '@types/yargs': 16.0.4
       chalk: 4.1.2
     dev: true
@@ -3165,7 +3179,7 @@ packages:
     dependencies:
       defer-to-connect: 2.0.1
 
-  /@testing-library/cypress/8.0.1_cypress@8.6.0:
+  /@testing-library/cypress/8.0.1_cypress@9.2.0:
     resolution: {integrity: sha512-JCGy8u4ia+OQQJxVqKqjqpb0i4kmHQhu5jKFVBp+v/YSICnf52fil2MWIJqO+tH9ZQXtp3aF7uKHsVipWaI0BQ==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
@@ -3173,7 +3187,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.16.7
       '@testing-library/dom': 8.9.1
-      cypress: 8.6.0
+      cypress: 9.2.0
     dev: true
 
   /@testing-library/dom/7.31.2:
@@ -3485,9 +3499,26 @@ packages:
     dependencies:
       '@types/node': 17.0.6
 
+  /@types/lodash.clonedeep/4.5.6:
+    resolution: {integrity: sha512-cE1jYr2dEg1wBImvXlNtp0xDoS79rfEdGozQVgliDZj1uERH4k+rmEMTudP9b4VQ8O6nRb5gPqft0QzEQGMQgA==}
+    dependencies:
+      '@types/lodash': 4.14.178
+    dev: true
+
+  /@types/lodash.isobject/3.0.6:
+    resolution: {integrity: sha512-2lwGbaIXMR5hjO56nCvI7W6bmY3Y3uJvbHWqO9MtOE1StyhZ1VtLINQ0MLC87rrB3zHHp+u4DHeal70rx1kvjw==}
+    dependencies:
+      '@types/lodash': 4.14.178
+    dev: true
+
+  /@types/lodash.kebabcase/4.1.6:
+    resolution: {integrity: sha512-+RAD9pCAa8kuVyCYTeDNiwBXwD/0u0p+hos3NSqD+tXTjJextbfF3farfYB+ssAKgEssoewXEtBsfwBpsI7gsA==}
+    dependencies:
+      '@types/lodash': 4.14.178
+    dev: true
+
   /@types/lodash/4.14.178:
     resolution: {integrity: sha512-0d5Wd09ItQWH1qFbEyQ7oTQ3GZrMfth5JkbN3EvTKLXcHLRDSXeLnlvlOn0wvxVIwK5o2M8JzP/OWz7T3NRsbw==}
-    dev: false
 
   /@types/mdast/3.0.10:
     resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==}
@@ -5138,7 +5169,7 @@ packages:
     resolution: {integrity: sha512-gxGWBrTT1JuMx6R+o5PTXMmUnhnVzLQ9SNutD4YqKtI6ap897t3tKECYla6gCWEkplXnlNybEkZg9GEGxKFCgw==}
     dependencies:
       pascal-case: 3.1.2
-      tslib: 2.2.0
+      tslib: 2.3.1
 
   /camelcase-css/2.0.1:
     resolution: {integrity: sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==}
@@ -5310,7 +5341,7 @@ packages:
       dom-serializer: 0.1.1
       entities: 1.1.2
       htmlparser2: 3.10.1
-      lodash: 4.17.20
+      lodash: 4.17.21
       parse5: 3.0.3
     dev: false
 
@@ -6146,18 +6177,18 @@ packages:
   /csstype/3.0.10:
     resolution: {integrity: sha512-2u44ZG2OcNUO9HDp/Jl8C07x6pU/eTR3ncV91SiK3dhG9TWvRVsCoJw14Ckx5DgWkzGA3waZWO3d7pgqpUI/XA==}
 
-  /cypress-axe/0.13.0_cypress@8.6.0:
+  /cypress-axe/0.13.0_cypress@9.2.0:
     resolution: {integrity: sha512-fCIy7RiDCm7t30U3C99gGwQrUO307EYE1QqXNaf9ToK4DVqW8y5on+0a/kUHMrHdlls2rENF6TN9ZPpPpwLrnw==}
     engines: {node: '>=10'}
     peerDependencies:
       axe-core: ^3 || ^4
       cypress: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
     dependencies:
-      cypress: 8.6.0
+      cypress: 9.2.0
     dev: true
 
-  /cypress/8.6.0:
-    resolution: {integrity: sha512-F7qEK/6Go5FsqTueR+0wEw2vOVKNgk5847Mys8vsWkzPoEKdxs+7N9Y1dit+zhaZCLtMPyrMwjfA53ZFy+lSww==}
+  /cypress/9.2.0:
+    resolution: {integrity: sha512-Jn26Tprhfzh/a66Sdj9SoaYlnNX6Mjfmj5PHu2a7l3YHXhrgmavM368wjCmgrxC6KHTOv9SpMQGhAJn+upDViA==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     requiresBuild: true
@@ -6197,7 +6228,6 @@ packages:
       ospath: 1.2.2
       pretty-bytes: 5.6.0
       proxy-from-env: 1.0.0
-      ramda: 0.27.1
       request-progress: 3.0.0
       supports-color: 8.1.1
       tmp: 0.2.1
@@ -6656,7 +6686,7 @@ packages:
   /domutils/1.5.1:
     resolution: {integrity: sha1-3NhIiib1Y9YQeeSMn3t+Mjc2gs8=}
     dependencies:
-      dom-serializer: 0.1.1
+      dom-serializer: 0.2.2
       domelementtype: 1.3.1
     dev: false
 
@@ -8155,6 +8185,7 @@ packages:
       proper-lockfile: 4.1.2
       tmp: 0.2.1
       xdg-basedir: 4.0.0
+    dev: true
 
   /gatsby-core-utils/3.4.0:
     resolution: {integrity: sha512-dYQpyo1BLGJzxQOXgGs1Fbj7jzGj5cKAIPYz2hz2l4Aus6skwjjaUlOjZlrWIahNHoLkx3mH0f5y6E8205T/aQ==}
@@ -8172,7 +8203,7 @@ packages:
       xdg-basedir: 4.0.0
     dev: false
 
-  /gatsby-cypress/1.14.0_cypress@8.6.0+gatsby@4.0.0:
+  /gatsby-cypress/1.14.0_cypress@9.2.0+gatsby@4.0.0:
     resolution: {integrity: sha512-LZFP63nGxRn0Jka8NSAF0tQM+xRl+DsgZJarfhaKk1/+ULU95Nwv078DXFCexQAta+AFUyO11rWL2/ceRH2d7Q==}
     engines: {node: '>=12.13.0'}
     peerDependencies:
@@ -8180,7 +8211,7 @@ packages:
       gatsby: ^3.0.0-next.0
     dependencies:
       '@babel/runtime': 7.16.7
-      cypress: 8.6.0
+      cypress: 9.2.0
       gatsby: 4.0.0_619cfafc41eecb79d05cec78d9a5ae11
     dev: true
 
@@ -8359,11 +8390,12 @@ packages:
       sharp: 0.29.3
     dev: false
 
-  /gatsby-plugin-mdx/2.14.0_73e8d0148a4c5c71ceb6a02bbce55c80:
-    resolution: {integrity: sha512-aEAx4KrfSL/A4LFhh5nlOWUZZ2FA70X5xl+j5PiBRFEVTCgSOb8D0XPrHvtwNFYlAhdl/cuH3NcqlbRPJkX+Uw==}
+  /gatsby-plugin-mdx/3.4.0_1907e0b6fe372da4f932da3fa03f4fce:
+    resolution: {integrity: sha512-SJTIZsQ9lhjkd9GX1v4o1kzYPlu5LTWydHNdpddsP4w9U+dBLcKGXm4ee1PHWpwNL1Y8PeOhRQBUGhbLAbeXTA==}
     peerDependencies:
       '@mdx-js/mdx': ^1.0.0
       '@mdx-js/react': ^1.0.0
+      gatsby: ^4.0.0-next
       react: ^16.9.0 || ^17.0.0
       react-dom: ^16.9.0 || ^17.0.0
     dependencies:
@@ -8385,7 +8417,8 @@ packages:
       escape-string-regexp: 1.0.5
       eval: 0.1.6
       fs-extra: 10.0.0
-      gatsby-core-utils: 2.14.0
+      gatsby: 4.0.0_619cfafc41eecb79d05cec78d9a5ae11
+      gatsby-core-utils: 3.4.0
       gray-matter: 4.0.3
       json5: 2.2.0
       loader-utils: 1.4.0
@@ -8393,6 +8426,7 @@ packages:
       mdast-util-to-string: 1.1.0
       mdast-util-toc: 3.1.0
       mime: 2.6.0
+      mkdirp: 1.0.4
       p-queue: 6.6.2
       pretty-bytes: 5.6.0
       react: 17.0.2
@@ -8452,6 +8486,16 @@ packages:
       lodash: 4.17.21
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /gatsby-plugin-pnpm/1.2.10_gatsby@4.0.0:
+    resolution: {integrity: sha512-29xjIakNEUY42OBb3wI9Thmawr5EcUUOB3dB8nE51yr/TfKQFCREk+HAOATQHTNedG3VZhgU4wVjl2V3wgOXJA==}
+    peerDependencies:
+      gatsby: ~2.x.x || ~3.x.x || ~4.x.x
+    dependencies:
+      gatsby: 4.0.0_619cfafc41eecb79d05cec78d9a5ae11
+      lodash.get: 4.4.2
+      lodash.uniq: 4.5.0
     dev: false
 
   /gatsby-plugin-react-helmet/5.1.0-next.0_gatsby@4.0.0+react-helmet@6.1.0:
@@ -10916,7 +10960,7 @@ packages:
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     dependencies:
       '@jest/types': 27.4.2
-      '@types/node': 16.11.2
+      '@types/node': 17.0.6
       chalk: 4.1.2
       ci-info: 3.3.0
       graceful-fs: 4.2.8
@@ -11440,7 +11484,6 @@ packages:
 
   /lodash.clonedeep/4.5.0:
     resolution: {integrity: sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=}
-    dev: false
 
   /lodash.debounce/4.0.8:
     resolution: {integrity: sha1-gteb/zCmfEAF/9XiUVMArZyk168=}
@@ -11479,6 +11522,10 @@ packages:
     resolution: {integrity: sha1-QVxEePK8wwEgwizhDtMib30+GOA=}
     dev: true
 
+  /lodash.isobject/3.0.2:
+    resolution: {integrity: sha1-PI+41bW/S/kK4G4U8qUwpO2TXh0=}
+    dev: true
+
   /lodash.isplainobject/4.0.6:
     resolution: {integrity: sha1-fFJqUtibRcRcxpC4gWO+BJf1UMs=}
     dev: false
@@ -11486,6 +11533,10 @@ packages:
   /lodash.isstring/4.0.1:
     resolution: {integrity: sha1-1SfftUVuynzJu5XV2ur4i6VKVFE=}
     dev: false
+
+  /lodash.kebabcase/4.1.1:
+    resolution: {integrity: sha1-hImxyw0p/4gZXM7KRI/21swpXDY=}
+    dev: true
 
   /lodash.map/4.6.0:
     resolution: {integrity: sha1-dx7Hg540c9nEzeKLGTlMNWL09tM=}
@@ -11600,7 +11651,7 @@ packages:
   /lower-case/2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
     dependencies:
-      tslib: 2.2.0
+      tslib: 2.3.1
 
   /lowercase-keys/1.0.1:
     resolution: {integrity: sha512-G2Lj61tXDnVFFOi8VZds+SoQjtQC3dgokKdDG2mTm1tx4m50NUHBOZSBwQQHyy0V12A0JTG4icfZQH+xPyh8VA==}
@@ -12103,6 +12154,12 @@ packages:
       minimist: 1.2.5
     dev: false
 
+  /mkdirp/1.0.4:
+    resolution: {integrity: sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==}
+    engines: {node: '>=10'}
+    hasBin: true
+    dev: false
+
   /moment/2.29.1:
     resolution: {integrity: sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==}
     dev: false
@@ -12244,7 +12301,7 @@ packages:
     resolution: {integrity: sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==}
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.2.0
+      tslib: 2.3.1
 
   /node-abi/3.5.0:
     resolution: {integrity: sha512-LtHvNIBgOy5mO8mPEUtkCW/YCRWYEKshIvqhe1GHHyXEHEB5mgICyYnAcl4qan3uFeRROErKGzatFHPf6kDxWw==}
@@ -12844,7 +12901,7 @@ packages:
     resolution: {integrity: sha512-uWlGT3YSnK9x3BQJaOdcZwrnV6hPpd8jFH1/ucpiLRPh/2zCVJKS19E4GvYHvaCcACn3foXZ0cLB9Wrx1KGe5g==}
     dependencies:
       no-case: 3.0.4
-      tslib: 2.2.0
+      tslib: 2.3.1
 
   /pascalcase/0.1.1:
     resolution: {integrity: sha1-s2PlXoAGym/iF4TS2yK9FdeRfxQ=}
@@ -13706,10 +13763,6 @@ packages:
   /ramda/0.21.0:
     resolution: {integrity: sha1-oAGr7bP/YQd9T/HVd9RN536NCjU=}
     dev: false
-
-  /ramda/0.27.1:
-    resolution: {integrity: sha512-PgIdVpn5y5Yns8vqb8FzBUEYn98V3xcPgawAkkgj0YJ0qDsnHCiNmZYfOGMgOvoB0eWFLpYbhxUR3mxfDIMvpw==}
-    dev: true
 
   /randombytes/2.1.0:
     resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
@@ -15510,7 +15563,7 @@ packages:
       eventemitter3: 3.1.2
       iterall: 1.3.0
       symbol-observable: 1.2.0
-      ws: 7.4.5
+      ws: 7.5.6
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -15526,7 +15579,7 @@ packages:
       graphql: 15.8.0
       iterall: 1.3.0
       symbol-observable: 1.2.0
-      ws: 7.4.5
+      ws: 7.5.6
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -16909,7 +16962,7 @@ packages:
   /wide-align/1.1.5:
     resolution: {integrity: sha512-eDMORYaPNZ4sQIuuYPDHdQvf4gyCF9rEEV/yPxGfwPkRodwEgiMUUXTx/dex+Me0wxx53S+NgUHaP7y3MGlDmg==}
     dependencies:
-      string-width: 1.0.2
+      string-width: 4.2.3
     dev: false
 
   /widest-line/3.1.0:

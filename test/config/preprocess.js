@@ -9,3 +9,4 @@ const babelOptions = {
 };
 
 module.exports = babelJest.default.createTransformer(babelOptions);
+// "lint:md": "markdownlint-cli2 content/**/*.{md,mdx}",

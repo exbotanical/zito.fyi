@@ -1,4 +1,4 @@
-import { cloneDeep } from 'lodash';
+import cloneDeep from 'lodash.clonedeep';
 
 import { withBasePath } from '../../../config/utils';
 import { config as mockConfig } from '../../../test/fixtures/config';

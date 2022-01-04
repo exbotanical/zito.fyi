@@ -18,7 +18,9 @@ const adjustedPathPRefix = config.pathPrefix === '' ? '/' : config.pathPrefix;
 
 const gatsbyConfig: GatsbyConfig = {
   pathPrefix: adjustedPathPRefix,
-  plugins: [{
+  plugins: [
+		'gatsby-plugin-pnpm',
+		{
     options: {
       rule: {
         include: /\.svg$/

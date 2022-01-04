@@ -1,4 +1,4 @@
-import { kebabCase } from 'lodash';
+import kebabCase from 'lodash.kebabcase';
 import urlJoin from 'url-join';
 
 import type { ISiteConfig } from '../../src/types';

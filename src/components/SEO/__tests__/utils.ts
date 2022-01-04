@@ -1,6 +1,5 @@
 import type React from 'react';
-
-import { isObject } from 'lodash';
+import isObject from 'lodash.isobject';
 
 import type {
 	IUserMetadata,

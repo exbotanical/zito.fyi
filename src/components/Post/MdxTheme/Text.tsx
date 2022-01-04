@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import kebabCase from 'lodash.kebabcase';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -34,13 +34,13 @@ interface IBlockquoteProps {
  */
 const getHeaderHashLink = (children: React.ReactNode): string | null => {
 	if (Array.isArray(children)) {
-		return _.kebabCase(
+		return kebabCase(
 			children.filter((child) => typeof child === 'string').join()
 		);
 	}
 
 	if (typeof children === 'string') {
-		return _.kebabCase(children);
+		return kebabCase(children);
 	}
 
 	return null;

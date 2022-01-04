@@ -5,7 +5,7 @@ module.exports = {
 	moduleNameMapper: {
 		'.+\\.(css|styl|less|sass|scss)$': 'identity-obj-proxy',
 		'.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-			path.join(__dirname, '../__mocks__/assets.js'),
+			path.join(__dirname, '../mocks/assets.js'),
 		'^@/(.*)$': '<rootDir>/src/$1'
 	},
 	setupFiles: [path.join(__dirname, './loader.shim.js')],

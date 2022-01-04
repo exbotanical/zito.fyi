@@ -15,6 +15,7 @@ export const LinkGrid = styled.section`
 	align-items: center;
 	gap: 12px;
 	justify-items: center;
+	color: var(--color-primary, rgb(0, 0, 0));
 `;
 
 export const Info = styled.div`

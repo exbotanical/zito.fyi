@@ -61,12 +61,12 @@ export const Avatar = styled.img`
 `;
 
 export const ShareLabel = styled(H3)`
-	color: var(--color-grey-600, rgb(218, 59, 59));
+	color: var(--color-grey-500, rgb(218, 59, 59));
 	line-height: 100%;
 `;
 
 export const AuthorName = styled(H3)`
-	color: var(--color-primary-100, rgb(251, 248, 228));
+	color: var(--color-grey-1000, rgb(251, 248, 228));
 `;
 
 export const AboutText = styled.div`

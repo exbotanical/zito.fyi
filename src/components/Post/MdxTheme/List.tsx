@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { ExtendingWrapper } from '@/components/Post/PostSpacing';
 import { typographyStyles } from '@/theme';
 
-
 interface IListProps {
 	children?: React.ReactNode;
 }
@@ -14,9 +13,11 @@ const UnorderedStyle = styled.ul`
 `;
 
 export function UnorderedList({ children }: IListProps): JSX.Element {
-  return <ExtendingWrapper>
-		<UnorderedStyle>{children}</UnorderedStyle>
-	</ExtendingWrapper>
+	return (
+		<ExtendingWrapper>
+			<UnorderedStyle>{children}</UnorderedStyle>
+		</ExtendingWrapper>
+	);
 }
 
 const OrderedStyle = styled.ol`
@@ -24,9 +25,11 @@ const OrderedStyle = styled.ol`
 `;
 
 export function OrderedList({ children }: IListProps): JSX.Element {
-  return <ExtendingWrapper>
-		<OrderedStyle>{children}</OrderedStyle>
-	</ExtendingWrapper>
+	return (
+		<ExtendingWrapper>
+			<OrderedStyle>{children}</OrderedStyle>
+		</ExtendingWrapper>
+	);
 }
 
 export const Item = styled.li`

@@ -13,10 +13,10 @@ const TransparentCSS = css`
 `;
 
 export const IconCSS = css`
-	color: var(--color-grey-700, rgb(0, 0, 0));
+	color: var(--color-primary, rgb(0, 0, 0));
 
 	&:hover {
-		color: var(--color-primary, #9a1d1d);
+		color: var(--color-primary-600, #9a1d1d);
 	}
 `;
 

@@ -1,8 +1,6 @@
 import { Link } from '@styled-icons/boxicons-regular';
 import styled from 'styled-components';
 
-
-import { IconCSS } from '@/components/Links/styles';
 import { H3 } from '@/theme';
 
 export const Wrapper = styled.section`
@@ -27,7 +25,7 @@ export const LinkWrapper = styled.div`
 `;
 
 export const Label = styled(H3)`
-	color: var(--color-grey-600, rgb(218, 59, 59));
+	color: var(--color-grey-500, rgb(218, 59, 59));
 	text-transform: uppercase;
 `;
 
@@ -37,7 +35,11 @@ export const LinkGrid = styled.div`
 	grid-gap: 12px;
 
 	& svg {
-		${IconCSS}
+		color: var(--color-primary, #9a1d1d);
+
+		&:hover {
+			color: var(--color-primary-600, #9a1d1d);
+		}
 	}
 `;
 

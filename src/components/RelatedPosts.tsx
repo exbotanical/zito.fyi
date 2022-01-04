@@ -17,7 +17,7 @@ const Wrapper = styled.aside`
 `;
 
 const Label = styled(H2)`
-	color: var(--color-grey-700, rgb(0, 0, 0));
+	color: var(--color-primary, rgb(0, 0, 0));
 	text-transform: uppercase;
 `;
 

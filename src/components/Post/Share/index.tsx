@@ -13,13 +13,12 @@ import {
 } from 'react-share';
 
 import { LinkCopyNotification } from './LinkCopyNotification';
-import * as Styles from './styles';
+import * as S from './styles';
 
 import type { IPost, ISiteConfig } from '@/types';
 
 import { Separator } from '@/components/Separator';
 import { useConfig } from '@/config';
-
 
 interface IPostShareProps {
 	post: IPost;
@@ -49,10 +48,9 @@ export function PostShare({ post }: IPostShareProps): JSX.Element {
 	const relatedtwitterHandles = generateRelatedtwitterHandles(config);
 
 	return (
-		<Styles.Wrapper aria-label="Share on social media">
-			<Styles.LinkWrapper>
-				<Styles.Label>SHARE</Styles.Label>
-				<Styles.LinkGrid>
+		<S.Wrapper aria-label="Share on social media">
+			<S.LinkWrapper>
+				<S.LinkGrid>
 					<FacebookShareButton quote={excerpt} url={url}>
 						<FacebookIcon size={40} />
 					</FacebookShareButton>
@@ -75,7 +73,7 @@ export function PostShare({ post }: IPostShareProps): JSX.Element {
 					>
 						<LinkedInIcon size={40} />
 					</LinkedinShareButton>
-					<Styles.LinkButton
+					<S.LinkButton
 						onClick={() => {
 							// eslint-disable-next-line no-void
 							void navigator.clipboard.writeText(url);
@@ -90,9 +88,9 @@ export function PostShare({ post }: IPostShareProps): JSX.Element {
 							}}
 						/>
 					)}
-				</Styles.LinkGrid>
-			</Styles.LinkWrapper>
+				</S.LinkGrid>
+			</S.LinkWrapper>
 			<Separator />
-		</Styles.Wrapper>
+		</S.Wrapper>
 	);
 }

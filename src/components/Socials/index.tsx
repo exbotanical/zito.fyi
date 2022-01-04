@@ -9,7 +9,6 @@ import { IconLink } from '../Links';
 import type { ISiteConfig } from '../../types';
 import type { StyledIcon } from '@styled-icons/styled-icon';
 
-
 const generateLink = (
 	url: string,
 	label: string,

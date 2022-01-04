@@ -13,7 +13,7 @@
 - [x] test dark mode / theme toggle
 - [x] fix accessibility violations
 - [x] add 404 page <!-- I'd rather redirect at the server -->
-
+- [x] fix share icons' color loss
 - [ ] replace console statements w/logger (f. custom Console)
 - [ ] add self-hosted, variable font
   - [ ] add font properties

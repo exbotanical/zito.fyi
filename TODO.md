@@ -39,6 +39,7 @@
 - [ ] "People Who Write C"
 - [ ] dev dependencies and JAMStack (everything is a dep because builds yada yada)
 - [ ] Duff's Device
+- [ ] How ESM Works Under the Hood
 
 ## Misc
 

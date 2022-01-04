@@ -28,7 +28,7 @@ const Wrapper = styled.article`
 		${WrapperCss}
 	}
 
-	/* Apply margins for headings */
+	/* apply margins for headings */
 	& > h1,
 	h2,
 	h3,
@@ -39,7 +39,7 @@ const Wrapper = styled.article`
 		margin-bottom: 16px;
 	}
 
-	/* Remove bottom margin from the last child */
+	/* remove bottom margin from the last child */
 	& > *:last-child {
 		margin-bottom: 0;
 	}

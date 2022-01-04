@@ -17,9 +17,11 @@ interface ILinkProps extends React.HTMLProps<HTMLAnchorElement> {
 }
 
 export function Break(): JSX.Element {
-  return <ExtendingWrapper>
-		<Separator />
-	</ExtendingWrapper>
+	return (
+		<ExtendingWrapper>
+			<Separator />
+		</ExtendingWrapper>
+	);
 }
 
 export function Link({

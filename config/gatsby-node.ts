@@ -69,7 +69,7 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
 		actions.createTypes(`#graphql
 			${ConfigSchema}
 		`);
-};
+	};
 
 export const createPages: GatsbyNode['createPages'] = async ({
 	graphql,
@@ -83,15 +83,13 @@ export const createPages: GatsbyNode['createPages'] = async ({
 	const allPosts = await getAllPosts(graphql);
 
 	allPosts.forEach((post, index) => {
-		const { tags } = post;
-
+		const { tags, category } = post;
 		if (tags) {
 			tags.forEach((tag) => {
 				uniqueTags.add(tag);
 			});
 		}
 
-		const { category } = post;
 		if (category) {
 			uniqueCategories.add(category);
 		}
@@ -100,21 +98,20 @@ export const createPages: GatsbyNode['createPages'] = async ({
 		const prevId = index - 1 >= 0 ? index - 1 : allPosts.length - 1;
 		const nextPost = allPosts[nextId];
 		const prevPost = allPosts[prevId];
-
 		const relatedPosts = getNRelatedPosts(post, allPosts);
 
 		actions.createPage({
-      component: POST_PAGE_COMPONENT,
-      context: {
-        nextslug: nextPost.slug,
-        nexttitle: nextPost.title,
-        prevslug: prevPost.slug,
-        prevtitle: prevPost.title,
-        relatedPosts,
-        slug: post.slug
-      },
-      path: post.route
-    });
+			component: POST_PAGE_COMPONENT,
+			context: {
+				nextslug: nextPost.slug,
+				nexttitle: nextPost.title,
+				prevslug: prevPost.slug,
+				prevtitle: prevPost.title,
+				relatedPosts,
+				slug: post.slug
+			},
+			path: post.route
+		});
 	});
 
 	// create primary posts feed

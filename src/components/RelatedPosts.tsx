@@ -21,11 +21,13 @@ const Label = styled(H2)`
 	text-transform: uppercase;
 `;
 
-export function RelatedPosts({ posts }: IRelatedPostsProps): JSX.Element {
-	return (
+export function RelatedPosts({
+	posts
+}: IRelatedPostsProps): JSX.Element | null {
+	return posts.length ? (
 		<Wrapper>
 			<Label>RELATED POSTS</Label>
 			<Feed feedItems={posts} hideHero />
 		</Wrapper>
-	);
+	) : null;
 }

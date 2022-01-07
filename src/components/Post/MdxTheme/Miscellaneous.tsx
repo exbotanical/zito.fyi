@@ -11,7 +11,7 @@ import {
 import { ExtendingWrapper } from '@/components/Post/PostSpacing';
 import { Separator } from '@/components/Separator';
 
-interface ILinkProps extends React.HTMLProps<HTMLAnchorElement> {
+interface LinkProps extends React.HTMLProps<HTMLAnchorElement> {
 	activeClassName?: string;
 	to: string;
 }
@@ -33,7 +33,7 @@ export function Link({
 	target,
 	rel,
 	style
-}: ILinkProps): JSX.Element {
+}: LinkProps): JSX.Element {
 	// allow `gatsby-remark-images` to handle its own links
 	if (className === 'gatsby-resp-image-link') {
 		return (

@@ -6,7 +6,7 @@ import { SIDE_PADDING } from '@/components/Post/PostSpacing';
 const FOOTNOTE_CONTENT_WIDTH = '920px';
 const FOOTNOTE_SIZE = `calc(${FOOTNOTE_CONTENT_WIDTH} + 2 * ${SIDE_PADDING})`;
 
-interface IFootnoteProps {
+interface FootnoteProps {
 	className?: string;
 	children: React.ReactChildren;
 }
@@ -22,11 +22,10 @@ export const Wrapper = styled.div`
 	}
 `;
 
-export function Footnote({
-	className,
-	children
-}: IFootnoteProps): JSX.Element {
-  return <Wrapper className={className} tabIndex={0}>
-		{children}
-	</Wrapper>
+export function Footnote({ className, children }: FootnoteProps): JSX.Element {
+	return (
+		<Wrapper className={className} tabIndex={0}>
+			{children}
+		</Wrapper>
+	);
 }

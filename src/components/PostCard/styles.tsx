@@ -4,8 +4,7 @@ import styled, { css } from 'styled-components';
 import { ImageShadow } from '@/components/Image';
 import { Body, BREAKPOINTS } from '@/theme';
 
-
-interface ICardStyleProps {
+interface CardStyleProps {
 	hero?: boolean;
 }
 
@@ -29,7 +28,7 @@ export const Cover = styled(GatsbyImage)`
 	}
 `;
 
-export const Wrapper = styled.div<ICardStyleProps>`
+export const Wrapper = styled.div<CardStyleProps>`
 	display: grid;
 	grid-gap: 8px;
 
@@ -51,7 +50,7 @@ export const Header = styled.div`
 	grid-gap: 12px;
 `;
 
-export const Excerpt = styled(Body)<ICardStyleProps>`
+export const Excerpt = styled(Body)<CardStyleProps>`
 	display: -webkit-box;
 	overflow: hidden;
 	-webkit-box-orient: vertical;
@@ -65,7 +64,7 @@ export const Meta = styled.div`
 	grid-gap: 12px;
 `;
 
-export const Details = styled.div<ICardStyleProps>`
+export const Details = styled.div<CardStyleProps>`
 	display: grid;
 
 	${({ hero }) =>

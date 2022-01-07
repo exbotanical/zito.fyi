@@ -1,4 +1,4 @@
-import type { IResponseData } from '../types';
+import type { ResponseData } from '../types';
 
 if (Cypress.env('STAGE') !== 'dev') {
 	describe('rss feed', () => {
@@ -6,7 +6,7 @@ if (Cypress.env('STAGE') !== 'dev') {
 			cy.request('/rss.xml').as('rssFeed');
 
 			cy.get('@rssFeed').then((response) => {
-				const data = response as unknown as IResponseData;
+				const data = response as unknown as ResponseData;
 
 				cy.task('parseRss', data.body).then((rssLinks) => {
 					expect(rssLinks).to.include('my-favorite-soft-machine-records');

@@ -5,10 +5,10 @@ import { PostIntro } from './PostIntro';
 import { Render } from './Render';
 import { PostShare } from './Share';
 
-import type { IPost } from '@/types';
+import type { Post as P } from '@/types';
 
-interface IPostProps {
-	post: IPost;
+interface PostProps {
+	post: P;
 }
 
 const Wrapper = styled.main`
@@ -18,10 +18,12 @@ const Wrapper = styled.main`
 	justify-items: center;
 `;
 
-export function Post({ post }: IPostProps): JSX.Element {
-  return <Wrapper>
-		<PostIntro post={post} />
-		<Render post={post} />
-		<PostShare post={post} />
-	</Wrapper>
+export function Post({ post }: PostProps): JSX.Element {
+	return (
+		<Wrapper>
+			<PostIntro post={post} />
+			<Render post={post} />
+			<PostShare post={post} />
+		</Wrapper>
+	);
 }

@@ -8,7 +8,7 @@ import { config } from '../../../../test/fixtures';
 import { useConfig } from '../../../config';
 import { BaseLink } from '../BaseLink';
 
-import type { ISiteConfig } from '../../../types';
+import type { SiteConfig } from '../../../types';
 
 jest.mock('../../../config/useConfig', () => ({
 	useConfig: jest.fn(() => config)
@@ -17,7 +17,7 @@ jest.mock('../../../config/useConfig', () => ({
 const testLink = 'https://example.com/local/path';
 const mockedUseConfig = mocked(useConfig);
 
-const testConfig = cloneDeep<ISiteConfig>(config);
+const testConfig = cloneDeep<SiteConfig>(config);
 testConfig.basePath = '/';
 
 jest.mock('gatsby', () => {
@@ -112,7 +112,7 @@ describe('component Link', () => {
 		);
 	});
 
-	it('prioritizes \'href\' url over \'to\' url', () => {
+	it("prioritizes 'href' url over 'to' url", () => {
 		mockedUseConfig.mockReturnValue(testConfig);
 
 		render(
@@ -127,7 +127,7 @@ describe('component Link', () => {
 		);
 	});
 
-	it('passes down \'activeClassName\' to GatsbyLink', () => {
+	it("passes down 'activeClassName' to GatsbyLink", () => {
 		render(
 			<BaseLink activeClassName="test-active-class" to="/local/path">
 				Test

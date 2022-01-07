@@ -5,9 +5,17 @@ import * as S from './styles';
 import { useConfig } from '@/config';
 import { Body } from '@/theme';
 
+// import { useStaticQuery, graphql } from 'gatsby';
+// import type { ImageDataLike } from 'gatsby-plugin-image';
+// import { avatarQuery } from 'node';
+
+// interface AvatarQueryResult {
+// 	fileName?: ImageDataLike;
+// }
 
 export function AuthorCard(): JSX.Element {
 	const { user } = useConfig();
+	// const { fileName } = useStaticQuery<AvatarQueryResult>(avatarQuery);
 
 	const fullName = `${user.firstName} ${user.surname}`;
 

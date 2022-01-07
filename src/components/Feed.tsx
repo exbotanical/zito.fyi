@@ -1,15 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import type { IFeedItems } from '@/types';
+import type { FeedItems } from '@/types';
 
 import { LayoutWidthContainer } from '@/components//LayoutWidthContainer';
 import { PostCard } from '@/components/PostCard';
 import { BREAKPOINTS } from '@/theme/constants';
 
-
-interface IFeedProps {
-	feedItems: IFeedItems;
+interface FeedProps {
+	feedItems: FeedItems;
 	hideHero?: boolean;
 }
 
@@ -33,23 +32,23 @@ const WidthLimitedGrid = styled(LayoutWidthContainer)`
 	justify-items: stretch;
 `;
 
-export function Feed({ feedItems, hideHero }: IFeedProps): JSX.Element {
-  return <WidthLimitedGrid>
-		<Wrapper>
-			{feedItems.map((feedItem, idx) => {
-				// it may be a placeholder post
-				if ('isPlaceholder' in feedItem) {
-					return <PostCard key={feedItem.key} />;
-				}
+export function Feed({ feedItems, hideHero }: FeedProps): JSX.Element {
+	return (
+		<WidthLimitedGrid>
+			<Wrapper>
+				{feedItems.map((feedItem, idx) => {
+					// it may be a placeholder post
+					if ('isPlaceholder' in feedItem) {
+						return <PostCard key={feedItem.key} />;
+					}
 
-				return idx === 0 && !hideHero ?
-					(
+					return idx === 0 && !hideHero ? (
 						<PostCard hero key={feedItem.slug} post={feedItem} />
-					) :
-					(
+					) : (
 						<PostCard key={feedItem.slug} post={feedItem} />
 					);
-			})}
-		</Wrapper>
-	</WidthLimitedGrid>
+				})}
+			</Wrapper>
+		</WidthLimitedGrid>
+	);
 }

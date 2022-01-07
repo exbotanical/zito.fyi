@@ -12,17 +12,17 @@ import Index2 from '../../../../test/fixtures/feedMetadata/index-2.json';
 import { useInfiniteFeed } from '../hooks';
 
 import type {
-	IFeedItems,
-	IFeedMetadataJson,
-	IPost,
-	IPlaceholderPost
+	FeedItems,
+	FeedMetadataJson,
+	Post,
+	PlaceholderPost
 } from '../../../types';
-import type { IPageContext } from '../types';
+import type { PageContext } from '../types';
 
-const pageMetadatas: IFeedMetadataJson[] = [
-	Index0 as unknown as IFeedMetadataJson,
-	Index1 as unknown as IFeedMetadataJson,
-	Index2 as unknown as IFeedMetadataJson
+const pageMetadatas: FeedMetadataJson[] = [
+	Index0 as unknown as FeedMetadataJson,
+	Index1 as unknown as FeedMetadataJson,
+	Index2 as unknown as FeedMetadataJson
 ];
 
 jest.mock('react', () => {
@@ -68,22 +68,22 @@ const mockFetch = () => {
 	});
 };
 
-const pageCtx: IPageContext = {
+const pageCtx: PageContext = {
 	feedId: undefined,
-	feedMetadata: Index0 as unknown as IFeedMetadataJson,
+	feedMetadata: Index0 as unknown as FeedMetadataJson,
 	feedType: 'index',
 	pageCount: 3,
 	pageIndex: 0
 };
 
 const isPostPlaceholder = (
-	post: IPlaceholderPost | IPost
-): post is IPlaceholderPost => (post as IPlaceholderPost).isPlaceholder;
+	post: PlaceholderPost | Post
+): post is PlaceholderPost => (post as PlaceholderPost).isPlaceholder;
 
-const filterPlaceholders = (feedPosts: IFeedItems) =>
+const filterPlaceholders = (feedPosts: FeedItems) =>
 	feedPosts.filter(isPostPlaceholder);
 
-const filterFullPosts = (feedPosts: IFeedItems) =>
+const filterFullPosts = (feedPosts: FeedItems) =>
 	feedPosts.filter((post) => !isPostPlaceholder(post));
 
 describe('hook `useInfiniteFeed`', () => {

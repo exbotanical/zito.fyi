@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type { ILinkProps } from '@/components/Links/types';
+import type { LinkProps } from '@/components/Links/types';
 
 import * as S from '@/components/Links/styles';
 
@@ -12,17 +12,19 @@ export function IconLink({
 	activeClassName,
 	noBasePath,
 	ariaLabel
-}: ILinkProps): JSX.Element {
-  return <S.IconLink
-		activeClassName={activeClassName}
-		ariaLabel={ariaLabel}
-		className={className}
-		href={href}
-		noBasePath={noBasePath}
-		to={to}
-	>
-		{children}
-	</S.IconLink>
+}: LinkProps): JSX.Element {
+	return (
+		<S.IconLink
+			activeClassName={activeClassName}
+			ariaLabel={ariaLabel}
+			className={className}
+			href={href}
+			noBasePath={noBasePath}
+			to={to}
+		>
+			{children}
+		</S.IconLink>
+	);
 }
 
 export function PrimaryLink({
@@ -33,17 +35,19 @@ export function PrimaryLink({
 	activeClassName,
 	noBasePath,
 	ariaLabel
-}: ILinkProps): JSX.Element {
-  return <S.PrimaryLink
-		activeClassName={activeClassName}
-		ariaLabel={ariaLabel}
-		className={className}
-		href={href}
-		noBasePath={noBasePath}
-		to={to}
-	>
-		{children}
-	</S.PrimaryLink>
+}: LinkProps): JSX.Element {
+	return (
+		<S.PrimaryLink
+			activeClassName={activeClassName}
+			ariaLabel={ariaLabel}
+			className={className}
+			href={href}
+			noBasePath={noBasePath}
+			to={to}
+		>
+			{children}
+		</S.PrimaryLink>
+	);
 }
 
 export function AnimatedLink({
@@ -54,17 +58,19 @@ export function AnimatedLink({
 	activeClassName,
 	noBasePath,
 	ariaLabel
-}: ILinkProps): JSX.Element {
-  return <S.AnimatedLink
-		activeClassName={activeClassName}
-		ariaLabel={ariaLabel}
-		className={className}
-		href={href}
-		noBasePath={noBasePath}
-		to={to}
-	>
-		{children}
-	</S.AnimatedLink>
+}: LinkProps): JSX.Element {
+	return (
+		<S.AnimatedLink
+			activeClassName={activeClassName}
+			ariaLabel={ariaLabel}
+			className={className}
+			href={href}
+			noBasePath={noBasePath}
+			to={to}
+		>
+			{children}
+		</S.AnimatedLink>
+	);
 }
 
 export function TransparentLink({
@@ -75,17 +81,19 @@ export function TransparentLink({
 	activeClassName,
 	noBasePath,
 	ariaLabel
-}: ILinkProps): JSX.Element {
-  return <S.TransparentLink
-		activeClassName={activeClassName}
-		ariaLabel={ariaLabel}
-		className={className}
-		href={href}
-		noBasePath={noBasePath}
-		to={to}
-	>
-		{children}
-	</S.TransparentLink>
+}: LinkProps): JSX.Element {
+	return (
+		<S.TransparentLink
+			activeClassName={activeClassName}
+			ariaLabel={ariaLabel}
+			className={className}
+			href={href}
+			noBasePath={noBasePath}
+			to={to}
+		>
+			{children}
+		</S.TransparentLink>
+	);
 }
 
 export function HeadingLink({
@@ -96,15 +104,17 @@ export function HeadingLink({
 	activeClassName,
 	noBasePath,
 	ariaLabel
-}: ILinkProps): JSX.Element {
-  return <S.HeadingLink
-		activeClassName={activeClassName}
-		ariaLabel={ariaLabel}
-		className={className}
-		href={href}
-		noBasePath={noBasePath}
-		to={to}
-	>
-		{children}
-	</S.HeadingLink>
+}: LinkProps): JSX.Element {
+	return (
+		<S.HeadingLink
+			activeClassName={activeClassName}
+			ariaLabel={ariaLabel}
+			className={className}
+			href={href}
+			noBasePath={noBasePath}
+			to={to}
+		>
+			{children}
+		</S.HeadingLink>
+	);
 }

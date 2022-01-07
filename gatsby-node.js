@@ -1,9 +1,9 @@
 const path = require('path');
 
 const {
-  createPages,
-  createSchemaCustomization,
-  onCreateNode
+	createPages,
+	createSchemaCustomization,
+	onCreateNode
 } = require('./config/gatsby-node');
 
 module.exports = {

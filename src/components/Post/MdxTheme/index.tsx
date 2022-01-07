@@ -9,21 +9,20 @@ import * as MiscComponents from './Miscellaneous';
 import * as TableComponents from './Table';
 import * as TextComponents from './Text';
 
-import type { IPost } from '@/types';
+import type { Post } from '@/types';
 import type { MDXProviderComponents } from '@mdx-js/react';
 
-interface IMdxThemeProps {
+interface MdxThemeProps {
 	children: React.ReactNode;
-	post: IPost;
+	post: Post;
 }
 
-const getComponentMapping = (post: IPost): MDXProviderComponents => {
+const getComponentMapping = (post: Post): MDXProviderComponents => {
 	const headings = TextComponents.generateHeadings(post.slug);
 
 	return {
 		wrapper: ({ children }: { children: React.ReactNode }) => {
 			const updatedChildren = React.Children.map(children, (child) => {
-
 				if (!React.isValidElement(child)) {
 					return child;
 				}
@@ -73,7 +72,7 @@ const getComponentMapping = (post: IPost): MDXProviderComponents => {
 	};
 };
 
-export function MDXTheme({ children, post }: IMdxThemeProps): JSX.Element {
+export function MDXTheme({ children, post }: MdxThemeProps): JSX.Element {
 	return (
 		<>
 			<MiscComponents.GlobalGatsbyImageStyle />

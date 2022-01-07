@@ -35,7 +35,7 @@ export const LinkGrid = styled.div`
 	grid-gap: 12px;
 
 	& svg {
-		color: var(--color-primary, #9a1d1d);
+		color: var(--color-grey-500, #9a1d1d);
 
 		&:hover {
 			color: var(--color-primary-600, #9a1d1d);

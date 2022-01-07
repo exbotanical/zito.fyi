@@ -5,18 +5,18 @@ import { PostButton } from './PostButton';
 import { PostCardSkeleton } from './Skeleton';
 import * as Styles from './styles';
 
-import type { IPost } from '@/types';
+import type { Post } from '@/types';
 
 import { TransparentLink } from '@/components/Links';
 import { PostInfo } from '@/components/PostInfo';
 import { H3 } from '@/theme/Primitives';
 
-interface IPostCardProps {
-	post?: IPost;
+interface PostCardProps {
+	post?: Post;
 	hero?: boolean;
 }
 
-export function PostCard({ post, hero }: IPostCardProps): JSX.Element {
+export function PostCard({ post, hero }: PostCardProps): JSX.Element {
 	if (!post) return <PostCardSkeleton />;
 
 	if (!post.coverImg) {

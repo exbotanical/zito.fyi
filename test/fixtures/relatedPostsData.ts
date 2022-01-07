@@ -1,4 +1,4 @@
-import type { IPost } from '../../src/types';
+import type { Post } from '../../src/types';
 
 export const poolOfPosts = [
 	{
@@ -55,9 +55,9 @@ export const poolOfPosts = [
 		tags: ['programming', 'another', 'other'],
 		slug: 'bold'
 	}
-] as IPost[];
+] as Post[];
 
-export const poolOfPostsFull: IPost[] = [
+export const poolOfPostsFull: Post[] = [
 	{
 		title: 'Lorem Ipsum 3001',
 		description: 'another post about HR Giger',
@@ -350,7 +350,7 @@ export const poolOfPostsFull: IPost[] = [
 	}
 ];
 
-export const edgeCaseTargetPost: IPost = {
+export const edgeCaseTargetPost: Post = {
 	title: 'Andrea Zittel',
 	description: 'A story about the art of Andrea Zittel',
 	coverImageUrl: '',

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import type { IPost } from '@/types';
+import type { Post } from '@/types';
 
 import { GeneralTags } from '@/components/SEO/General';
 import { OpenGraphTags } from '@/components/SEO/OpenGraph';
@@ -10,11 +10,11 @@ import { TwitterTags } from '@/components/SEO/Twitter';
 import { generatePostData, generateSeoData } from '@/components/SEO/utils';
 import { useConfig } from '@/config';
 
-interface ISeoProps {
-	post?: IPost;
+interface SeoProps {
+	post?: Post;
 }
 
-export function SEO({ post }: ISeoProps): JSX.Element {
+export function SEO({ post }: SeoProps): JSX.Element {
 	const config = useConfig();
 
 	const postData = post ? generatePostData(post) : undefined;

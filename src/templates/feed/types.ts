@@ -1,9 +1,9 @@
-import type { IFeedMetadataJson } from '../../types';
+import type { FeedMetadataJson } from '../../types';
 
-export interface IPageContext {
+export interface PageContext {
 	pageCount: number;
 	pageIndex: number;
 	feedType: string;
 	feedId?: string;
-	feedMetadata: IFeedMetadataJson;
+	feedMetadata: FeedMetadataJson;
 }

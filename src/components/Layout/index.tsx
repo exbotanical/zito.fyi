@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import type { IPost } from '@/types';
+import type { Post } from '@/types';
 
 import { Footer } from '@/components/Footer';
 import { LayoutWidthContainer } from '@/components/LayoutWidthContainer';
@@ -9,9 +9,9 @@ import { Navigation } from '@/components/Navigation';
 import { SEO } from '@/components/SEO';
 import { ThemeProvider, BREAKPOINTS } from '@/theme';
 
-interface ILayoutProps {
+interface LayoutProps {
 	children?: React.ReactNode;
-	post?: IPost;
+	post?: Post;
 }
 
 const LayoutGrid = styled.div`
@@ -28,7 +28,7 @@ const LayoutGrid = styled.div`
 	}
 `;
 
-export function Layout({ children, post }: ILayoutProps): JSX.Element {
+export function Layout({ children, post }: LayoutProps): JSX.Element {
 	return (
 		<ThemeProvider>
 			{/* eslint-disable-next-line react/jsx-pascal-case */}

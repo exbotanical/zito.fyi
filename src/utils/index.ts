@@ -1,14 +1,14 @@
 import type {
-	IMdxNode,
-	IPost,
-	IPostJson,
-	IPostBySlugQueryResult,
-	IUserQueryResult,
-	IUserMetadata
+	MdxNode,
+	Post,
+	PostJson,
+	PostBySlugQueryResult,
+	UserQueryResult,
+	UserMetadata
 } from '@/types';
-import type { IGetMdxPostsQueryResult } from 'config/utils/types';
+import type { GetMdxPostsQueryResult } from 'node/types';
 
-export function mdxNodeToPost(mdxNode: IMdxNode): IPost {
+export function mdxNodeToPost(mdxNode: MdxNode): Post {
 	const { frontmatter } = mdxNode;
 
 	if (!frontmatter) {
@@ -122,7 +122,7 @@ export function mdxNodeToPost(mdxNode: IMdxNode): IPost {
 	};
 }
 
-export function queryToPost(data: IPostBySlugQueryResult): IPost {
+export function queryToPost(data: PostBySlugQueryResult): Post {
 	const postData = data.mdx;
 
 	if (!postData) {
@@ -132,7 +132,7 @@ export function queryToPost(data: IPostBySlugQueryResult): IPost {
 	return mdxNodeToPost(postData);
 }
 
-export function jsonToPost(meta: IPostJson): IPost {
+export function jsonToPost(meta: PostJson): Post {
 	const {
 		dateModified,
 		datePublished,
@@ -172,7 +172,7 @@ export function jsonToPost(meta: IPostJson): IPost {
 	};
 }
 
-export function queryToPostsList(res: IGetMdxPostsQueryResult): IPost[] {
+export function queryToPostsList(res: GetMdxPostsQueryResult): Post[] {
 	const { edges } = res.allMdx;
 
 	const nodes = edges.map((edge) => edge.node);
@@ -180,7 +180,7 @@ export function queryToPostsList(res: IGetMdxPostsQueryResult): IPost[] {
 	return nodes.map((node) => mdxNodeToPost(node));
 }
 
-export function queryToUser(data: IUserQueryResult): IUserMetadata {
+export function queryToUser(data: UserQueryResult): UserMetadata {
 	const { user } = data.site.siteMetadata.config;
 
 	// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition

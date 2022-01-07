@@ -1,17 +1,17 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
-import type { ISiteConfig } from '@/types';
+import type { SiteConfig } from '@/types';
 
-interface IUserConfigQuery {
+interface UserConfigQueryResult {
 	site?: {
 		siteMetadata?: {
-			config?: ISiteConfig;
+			config?: SiteConfig;
 		};
 	};
 }
 
-export const useConfig = (): ISiteConfig => {
-	const data = useStaticQuery<IUserConfigQuery>(
+export const useConfig = (): SiteConfig => {
+	const data = useStaticQuery<UserConfigQueryResult>(
 		graphql`
 			query UserConfig {
 				site {
@@ -76,7 +76,9 @@ export const useConfig = (): ISiteConfig => {
 
 	const config = data.site?.siteMetadata?.config;
 
-	if (!config) throw Error('[useConfig] Failed to query Site Config.');
+	if (!config) {
+		throw Error('[useConfig] Failed to query Site Config.');
+	}
 
 	return config;
 };

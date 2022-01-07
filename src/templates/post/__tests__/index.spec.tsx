@@ -5,9 +5,9 @@ import { Helmet } from 'react-helmet';
 import { PostTemplate } from '..';
 import { post, postQueryResult, config } from '../../../../test/fixtures';
 
-import type { IPostJson } from '../../../types';
+import type { PostJson } from '../../../types';
 
-const postFromJson = JSON.parse(JSON.stringify(post)) as IPostJson;
+const postFromJson = JSON.parse(JSON.stringify(post)) as PostJson;
 
 const postData = postQueryResult;
 
@@ -23,9 +23,10 @@ jest.mock('../../../config/useConfig', () => ({
 
 describe('`PostTemplate`', () => {
 	beforeAll(() => {
-		console.error = (msg) =>
-			{ !msg.toString().includes('Warning: validateDOMNesting') &&
-			originalError(msg); };
+		console.error = (msg) => {
+			!msg.toString().includes('Warning: validateDOMNesting') &&
+				originalError(msg);
+		};
 	});
 
 	afterAll(() => {

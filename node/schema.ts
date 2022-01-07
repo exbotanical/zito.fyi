@@ -1,5 +1,5 @@
 export const ConfigSchema = `#graphql
-  type ISiteMetadata {
+  type BaseSiteMetadata {
     title: String!
     titleAbridged: String!
     name: String!
@@ -18,7 +18,7 @@ export const ConfigSchema = `#graphql
     backgroundColor: String!
   }
 
-  type IUserMetadata {
+  type UserMetadata {
     id: String!
     firstName: String!
     surname: String!
@@ -31,24 +31,24 @@ export const ConfigSchema = `#graphql
     avatar: String!
   }
 
-  type IOrgMetadata {
+  type OrgMetadata {
     name: String!
     description: String!
     logoUrl: String!
     url: String!
   }
 
-  type IIconManifest {
+  type IconManifest {
     src: String!
     sizes: String!
     type: String!
     purpose: String
   }
 
-  type ISiteConfig {
-    site: ISiteMetadata!
-    user: IUserMetadata
-    organization: IOrgMetadata
+  type SiteConfig {
+    site: BaseSiteMetadata!
+    user: UserMetadata
+    organization: OrgMetadata
 
     pathPrefix: String!
 
@@ -59,13 +59,13 @@ export const ConfigSchema = `#graphql
     embeddedVideoWidth: Int!
 
     iconPath: String
-    iconList: [IIconManifest]!
+    iconList: [IconManifest]!
     iconCachePaths: [String]
 
     basePath: String
   }
 
   type SiteSiteMetadata {
-    config: ISiteConfig!
+    config: SiteConfig!
   }
 `;

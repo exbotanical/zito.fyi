@@ -1,24 +1,29 @@
 import urlJoin from 'url-join';
 
-import { config } from './config';
-import { generateSlug, withBasePath, getNRelatedPosts } from './utils';
-import { createFeed, setupFeedMetadataDir } from './utils/feed';
 import {
+	generateSlug,
+	withBasePath,
+	getNRelatedPosts,
+	createFeed,
+	setupFeedMetadataDir,
 	getAllPosts,
 	getAllPostsByTag,
-	getAllPostsByCategory
-} from './utils/queries';
-import { ConfigSchema } from './utils/schema';
+	getAllPostsByCategory,
+	ConfigSchema
+} from '../node';
 
-import type { IBaseFrontmatter } from './utils/types';
-// we must import directly in order to mock this
+import { config } from './config';
+
+// StreamLogger.init();
+
+import type { BaseFrontmatter } from '../node/types';
 import type { GatsbyNode } from 'gatsby';
 
 const POST_PAGE_COMPONENT = require.resolve('../src/templates/post/queries.ts');
 
 export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions }) => {
 	if (node.internal.type === 'Mdx' && node.parent) {
-		const slug = generateSlug(node.frontmatter as IBaseFrontmatter);
+		const slug = generateSlug(node.frontmatter as BaseFrontmatter);
 
 		if (!slug) {
 			console.error(

@@ -1,4 +1,4 @@
-export interface IGetMdxPostsQueryResult {
+export interface GetMdxPostsQueryResult {
 	allMdx: {
 		edges: {
 			node: {
@@ -14,12 +14,12 @@ export interface IGetMdxPostsQueryResult {
 	};
 }
 
-export interface IBaseFrontmatter {
+export interface BaseFrontmatter {
 	title?: string;
 	slug?: string;
 }
 
-export interface IRssFeedMetadata {
+export interface RssFeedMetadata {
 	site_url?: string;
 	feed_url?: string;
 	title?: string;
@@ -29,13 +29,13 @@ export interface IRssFeedMetadata {
 	generator?: string;
 }
 
-export interface IRssFeedQueryResult {
+export interface RssFeedQueryResult {
 	siteMetadata?: {
-		rssMetadata?: IRssFeedMetadata;
+		rssMetadata?: RssFeedMetadata;
 	};
 }
 
-export interface IMdxFeedQueryResult {
+export interface MdxFeedQueryResult {
 	edges?: [
 		{
 			node: {
@@ -57,32 +57,32 @@ export interface IMdxFeedQueryResult {
 	];
 }
 
-export interface IFeedQueryResult {
-	site?: IRssFeedQueryResult;
-	allMdx?: IMdxFeedQueryResult;
+export interface FeedQueryResult {
+	site?: RssFeedQueryResult;
+	allMdx?: MdxFeedQueryResult;
 }
 
-export interface IFeedConfig {
+export interface FeedConfig {
 	serialize: (
-		data: IFeedPluginData
-	) => (IFeedPluginItem | undefined)[] | undefined;
+		data: FeedPluginData
+	) => (FeedPluginItem | undefined)[] | undefined;
 	query: string;
 	output: string;
 	title: string;
 	site_url: string;
 }
 
-export interface IFeedPluginData {
+export interface FeedPluginData {
 	generator: string;
-	query: IFeedQueryResult;
-	feeds: IFeedConfig[];
+	query: FeedQueryResult;
+	feeds: FeedConfig[];
 	plugins: [];
 	output: string;
 	title: string;
 	site_url: string;
 }
 
-export interface IFeedPluginItem {
+export interface FeedPluginItem {
 	categories?: string;
 	date?: string;
 	title?: string;

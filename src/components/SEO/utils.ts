@@ -1,12 +1,12 @@
 import removeMd from 'remove-markdown';
 
-import type { ISeoData, IAbridgedPost } from './types';
-import type { IPost, ISiteMetadata } from '@/types';
+import type { SeoData, AbridgedPost } from './types';
+import type { Post, BaseSiteMetadata } from '@/types';
 
 /**
  * @summary Generate abridged post data from a given `allMdx` edge
  */
-export const generatePostData = (post: IPost): IAbridgedPost => {
+export const generatePostData = (post: Post): AbridgedPost => {
 	const {
 		category,
 		coverImageAlt,
@@ -46,9 +46,9 @@ export const generatePostData = (post: IPost): IAbridgedPost => {
  * @summary Generate SEO metadata
  */
 export const generateSeoData = (
-	siteMetadata: ISiteMetadata,
-	postData?: IAbridgedPost
-): ISeoData => {
+	siteMetadata: BaseSiteMetadata,
+	postData?: AbridgedPost
+): SeoData => {
 	const isPost = !!postData;
 	const title = postData ? postData.title : siteMetadata.title;
 	const type = postData ? 'post' : 'page';

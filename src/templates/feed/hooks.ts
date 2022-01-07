@@ -1,29 +1,25 @@
 import { useEffect, useRef, useMemo } from 'react';
 import { useInfiniteQuery } from 'react-query';
 
-import { constants } from '../../../config';
+import { constants } from '../../../node';
 
-import type { IPageContext } from './types';
+import type { PageContext } from './types';
 import type {
-	IFeedMetadataJson,
-	IPostJson,
-	IFeedItems,
-	IPlaceholderPost,
-	ISiteConfig
+	FeedMetadataJson,
+	PostJson,
+	FeedItems,
+	PlaceholderPost,
+	SiteConfig
 } from '@/types';
 import type { UseInfiniteQueryResult } from 'react-query';
 
 import { useConfig } from '@/config';
 import { jsonToPost } from '@/utils';
 
-
 /**
  * @summary Calculate the base URL for a given feed
  */
-const resolveBaseUrl = (
-	pageContext: IPageContext,
-	config: ISiteConfig
-): string =>
+const resolveBaseUrl = (pageContext: PageContext, config: SiteConfig): string =>
 	`${config.pathPrefix}${constants.feedMetaDirectory}/${pageContext.feedType}${
 		pageContext.feedId ? `-${pageContext.feedId}` : ''
 	}`;
@@ -33,16 +29,16 @@ const resolveBaseUrl = (
  */
 const generateFetchHandler =
 	(baseUrl: string) =>
-		async ({ pageParam = 0 }): Promise<IFeedMetadataJson> => {
+	async ({ pageParam = 0 }): Promise<FeedMetadataJson> => {
 		// kind of a hack but w/e, it's what Gatsby is doing under the hood
-			const response = await fetch(`${baseUrl}-${pageParam}.json`);
+		const response = await fetch(`${baseUrl}-${pageParam}.json`);
 
-			if (!response.ok) {
-				throw new Error(`Failed to fetch ${baseUrl}-${pageParam}.json`);
-			}
+		if (!response.ok) {
+			throw new Error(`Failed to fetch ${baseUrl}-${pageParam}.json`);
+		}
 
-			return response.json() as Promise<IFeedMetadataJson>;
-		};
+		return response.json() as Promise<FeedMetadataJson>;
+	};
 
 /**
  * @summary Generate placeholders for currently loading posts
@@ -50,7 +46,7 @@ const generateFetchHandler =
 const generatePostPlaceholders = (
 	keyPrefix: string,
 	count?: number
-): IPlaceholderPost[] =>
+): PlaceholderPost[] =>
 	Array(count || constants.postsPerFeedPage)
 		.fill(0)
 		.map((_, idx) => ({
@@ -112,10 +108,10 @@ const useScrollContingentFetch = (
  * @summary Provides an infinite-scroll capable feed
  */
 export const useInfiniteFeed = (
-	pageContext: IPageContext
+	pageContext: PageContext
 ): {
 	feedElementRef: React.RefObject<HTMLDivElement>;
-	feedItems: IFeedItems;
+	feedItems: FeedItems;
 } => {
 	const config = useConfig();
 
@@ -129,7 +125,7 @@ export const useInfiniteFeed = (
 			// Set the initial page data supplied by the page context
 			initialData: {
 				pageParams: [pageContext.pageIndex],
-				pages: [pageContext.feedMetadata],
+				pages: [pageContext.feedMetadata]
 			}
 		}
 	);
@@ -137,11 +133,11 @@ export const useInfiniteFeed = (
 	const feedElementRef = useScrollContingentFetch(feedQuery);
 
 	const feedItems = useMemo(() => {
-		const jsonPostList: IPostJson[] =
+		const jsonPostList: PostJson[] =
 			feedQuery.data?.pages.map((page) => page.posts).flat() ||
 			pageContext.feedMetadata.posts;
 
-		const list: IFeedItems = jsonPostList.map(jsonToPost);
+		const list: FeedItems = jsonPostList.map(jsonToPost);
 
 		// when loading the next page, we want to show placeholder posts
 		if (feedQuery.isFetchingNextPage) {

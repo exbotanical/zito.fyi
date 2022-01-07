@@ -14,7 +14,7 @@ import {
 	queryToPostsList
 } from '../../utils';
 
-import type { IPostJson } from '..';
+import type { PostJson } from '..';
 
 const consoleWarnSpy = jest
 	.spyOn(global.console, 'warn')
@@ -158,7 +158,7 @@ describe('`queryToPostsList`', () => {
 
 describe('`jsonToPost`', () => {
 	it('converts JSON based post metadata into a post', () => {
-		const jsonPost = JSON.parse(JSON.stringify(post)) as IPostJson;
+		const jsonPost = JSON.parse(JSON.stringify(post)) as PostJson;
 
 		const generatedPost = jsonToPost(jsonPost);
 
@@ -169,7 +169,7 @@ describe('`jsonToPost`', () => {
 
 		const jsonPostWithRelated = JSON.parse(
 			JSON.stringify(postWithRelated)
-		) as IPostJson;
+		) as PostJson;
 
 		const generatedPostWithRelated = jsonToPost(jsonPostWithRelated);
 

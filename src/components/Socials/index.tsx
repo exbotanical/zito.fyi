@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { useConfig } from '../../config';
 import { IconLink } from '../Links';
 
-import type { ISiteConfig } from '../../types';
+import type { SiteConfig } from '../../types';
 import type { StyledIcon } from '@styled-icons/styled-icon';
 
 const generateLink = (
@@ -20,7 +20,7 @@ const generateLink = (
 );
 
 const renderTwitterLink = (
-	config: Readonly<ISiteConfig>
+	config: Readonly<SiteConfig>
 ): JSX.Element | null => {
 	const username = config.user.twitterHandle;
 
@@ -30,9 +30,7 @@ const renderTwitterLink = (
 	return generateLink(url, 'Twitter Profile', Twitter);
 };
 
-const renderGitHubLink = (
-	config: Readonly<ISiteConfig>
-): JSX.Element | null => {
+const renderGitHubLink = (config: Readonly<SiteConfig>): JSX.Element | null => {
 	const username = config.user.github;
 
 	if (!username) return null;
@@ -42,7 +40,7 @@ const renderGitHubLink = (
 };
 
 const generateLinkedInLink = (
-	config: Readonly<ISiteConfig>
+	config: Readonly<SiteConfig>
 ): JSX.Element | null => {
 	const username = config.user.linkedIn;
 
@@ -52,20 +50,20 @@ const generateLinkedInLink = (
 	return generateLink(url, 'LinkedIn Profile', LinkedinSquare);
 };
 
-const renderEmailLink = (config: Readonly<ISiteConfig>): JSX.Element => {
+const renderEmailLink = (config: Readonly<SiteConfig>): JSX.Element => {
 	const url = `mailto:${config.user.email || ''}`;
 	return generateLink(url, 'E-Mail', MailSend);
 };
 
-const renderRssLink = (config: Readonly<ISiteConfig>): JSX.Element =>
+const renderRssLink = (config: Readonly<SiteConfig>): JSX.Element =>
 	generateLink(config.site.rss, 'RSS Feed', Rss);
 
-interface IIconLinksProps {
+interface IconLinksProps {
 	className?: string;
 	includeRss?: boolean;
 }
 
-const defaultProps: IIconLinksProps = {
+const defaultProps: IconLinksProps = {
 	includeRss: false
 };
 
@@ -78,7 +76,7 @@ const LinkGrid = styled.div`
 export function Socials({
 	includeRss,
 	className
-}: IIconLinksProps): JSX.Element | null {
+}: IconLinksProps): JSX.Element | null {
 	const config = useConfig();
 
 	return (

@@ -5,14 +5,13 @@ import styled from 'styled-components';
 import { CoverImage } from './PostImage';
 import { WidthWrapper } from './PostSpacing';
 
-import type { IPost } from '@/types';
+import type { Post } from '@/types';
 
 import { PostInfo } from '@/components/PostInfo';
 import { H1, Body } from '@/theme';
 
-
-interface IPostIntroProps {
-	post: IPost;
+interface PostIntroProps {
+	post: Post;
 }
 
 const Wrapper = styled.section`
@@ -34,7 +33,7 @@ const Cover = styled.div`
 	justify-items: center;
 `;
 
-export function PostIntro({ post }: IPostIntroProps): JSX.Element {
+export function PostIntro({ post }: PostIntroProps): JSX.Element {
 	if (!post.coverImg) {
 		throw Error('[PostIntro] Cannot render `PostIntro` without `coverImg`');
 	}

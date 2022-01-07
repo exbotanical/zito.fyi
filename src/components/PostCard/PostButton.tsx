@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { typographyStyles } from '@/theme';
 import { BREAKPOINTS } from '@/theme/constants';
 
-interface IPostButtonProps {
+interface PostButtonProps {
 	to: string;
 }
 
@@ -25,8 +25,10 @@ export const ReadButton = styled(GatsbyLink)`
 	}
 `;
 
-export function PostButton({ to }: IPostButtonProps): JSX.Element {
-  return <ReadButton to={to}>
-		Read the post <Exit size={28} />
-	</ReadButton>
+export function PostButton({ to }: PostButtonProps): JSX.Element {
+	return (
+		<ReadButton to={to}>
+			Read the post <Exit size={28} />
+		</ReadButton>
+	);
 }

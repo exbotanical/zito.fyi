@@ -5,10 +5,10 @@ import styled from 'styled-components';
 import { MDXTheme } from './MdxTheme';
 import { WrapperCss } from './PostSpacing';
 
-import type { IPost } from '@/types';
+import type { Post } from '@/types';
 
-interface IRenderProps {
-	post: IPost;
+interface RenderProps {
+	post: Post;
 }
 
 const Wrapper = styled.article`
@@ -45,7 +45,7 @@ const Wrapper = styled.article`
 	}
 `;
 
-export function Render({ post }: IRenderProps): JSX.Element {
+export function Render({ post }: RenderProps): JSX.Element {
 	if (!post.body) {
 		throw Error(
 			`[Render] post data does not contain MDX body for rendering. Slug: ${post.slug}`

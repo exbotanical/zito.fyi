@@ -18,14 +18,14 @@
 - [ ] add self-hosted, variable font
   - [ ] add font properties
 - [ ] implement gists (short prose, essays)
-- [ ] somehow resolve the `validateDOMNesting` that `remark-unwrap-images` still cannot fix
+- [ ] resolve `validateDOMNesting` via `remark-unwrap-images`
 - [ ] fix GraphQL date resolution
-- [ ] add avatar
+- [x] add avatar
 - [ ] add site logo
-- [ ] research gatsby 4 caching and performance optimizations
+- [ ] gatsby 4 caching and performance optimizations
 - [ ] vendor icons
 - [ ] add rel canonical
-- [ ] switch to pnpm
+- [x] switch to pnpm
 
 ## Cypress
 
@@ -40,6 +40,13 @@
 - [ ] dev dependencies and JAMStack (everything is a dep because builds yada yada)
 - [ ] Duff's Device
 - [ ] How ESM Works Under the Hood
+- [ ] XMLHttpRequest under the hood
+- [ ] why prettier (lang server / vs code plugin) should have a mode that allows you to only auto-format code you've
+just written (ignoring existing code in that file) to reduce producing convoluted git diffs that your coworkers have to deal with.
+this makes sense anyway, because we can assume code that is being ignored was also formatted because this mode would have run the
+formatter when it was written. this could all be much more efficient
+
+- [ ] write a formatter with this mode ^
 
 ## Misc
 

@@ -13,7 +13,7 @@
     "dev": "gatsby develop -p 3000 -o",
     "build": "gatsby build",
     "serve": "gatsby serve",
-		"check": "pnpm lint && pnpm typecheck && pnpm test:unit && pnpm test:cy:ci",
+    "check": "pnpm lint && pnpm typecheck && pnpm test:unit && pnpm test:cy:ci",
     "clean": "gatsby clean",
     "cy:open": "cypress open",
     "cy:run": "cypress run",

@@ -30,7 +30,7 @@ body {
 }
 
 a,
-a:visited,
+a:vSited,
 a:hover,
 a:active {
 	color: inherit;

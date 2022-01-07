@@ -1,9 +1,9 @@
-import { getNRelatedPosts } from '..';
+import { getNRelatedPosts } from '../';
 import {
 	edgeCaseTargetPost,
 	poolOfPosts,
 	poolOfPostsFull
-} from '../../../test/fixtures';
+} from '../../test/fixtures';
 
 const targetPost = poolOfPosts[0];
 

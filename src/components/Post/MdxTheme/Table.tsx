@@ -4,12 +4,11 @@ import styled, { css } from 'styled-components';
 import { WidthWrapper } from '@/components/Post/PostSpacing';
 import { typographyStyles } from '@/theme';
 
-
-interface ITableProps {
+interface TableProps {
 	children?: React.ReactNode;
 }
 
-interface ICellProps {
+interface CellProps {
 	align?: string;
 }
 
@@ -24,7 +23,7 @@ const TableStyled = styled.table`
 	table-layout: fixed;
 `;
 
-const SharedCellCSS = css<ICellProps>`
+const SharedCellCSS = css<CellProps>`
 	padding-top: 8px;
 	padding-right: 16px;
 	padding-bottom: 4px;
@@ -32,7 +31,7 @@ const SharedCellCSS = css<ICellProps>`
 	text-align: ${({ align }) => align};
 `;
 
-export const HeadCell = styled.th<ICellProps>`
+export const HeadCell = styled.th<CellProps>`
 	${SharedCellCSS}
 
 	border-bottom: 2px solid var(--color-text, rgb(0, 0, 0));
@@ -40,7 +39,7 @@ export const HeadCell = styled.th<ICellProps>`
 	margin-left: 4px;
 `;
 
-export const BodyCell = styled.td<ICellProps>`
+export const BodyCell = styled.td<CellProps>`
 	${SharedCellCSS}
 
 	padding-top: 8px;
@@ -58,10 +57,12 @@ export const Body = styled.tbody`
 	${typographyStyles.Body}
 `;
 
-export function Table({ children }: ITableProps): JSX.Element {
-  return <TableWrapper>
-		<TableStyled>{children}</TableStyled>
-	</TableWrapper>
+export function Table({ children }: TableProps): JSX.Element {
+	return (
+		<TableWrapper>
+			<TableStyled>{children}</TableStyled>
+		</TableWrapper>
+	);
 }
 
 export const Head = styled.thead`

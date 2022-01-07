@@ -1,6 +1,6 @@
-import type { IPost } from '../../src/types';
+import type { Post } from '../../src/types';
 
-export const postsList: IPost[] = [
+export const postsList: Post[] = [
 	{
 		title: 'Test',
 		description: 'Decsription',

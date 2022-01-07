@@ -1,4 +1,4 @@
-export interface ILinkProps {
+export interface LinkProps {
 	className?: string;
 	activeClassName?: string;
 	children: React.ReactNode;

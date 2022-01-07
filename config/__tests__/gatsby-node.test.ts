@@ -1,6 +1,6 @@
 import { mocked } from 'ts-jest/utils';
 
-import * as feedUtils from '..';
+import * as feedUtils from '../../node';
 import { config } from '../../test/fixtures';
 import { GatsbyActionsMock } from '../../test/utils/gatsbyActions';
 import {
@@ -8,7 +8,6 @@ import {
 	createSchemaCustomization,
 	createPages
 } from '../gatsby-node';
-
 
 import type {
 	Node,
@@ -46,7 +45,7 @@ jest.mock('../config', () => ({
 }));
 const mockedConsole = mocked(global.console, true);
 
-jest.mock('../utils/feed', () => ({
+jest.mock('../node', () => ({
 	createFeed: jest.fn(),
 	setupFeedMetadataDir: jest.fn()
 }));
@@ -54,9 +53,9 @@ jest.mock('../utils/feed', () => ({
 const feedUtilsMock = mocked(feedUtils, true);
 
 jest.mock('../utils/queries', () => {
-	const postsList = jest.requireActual<
-	typeof import('../../test/fixtures')
-	>('../../test/fixtures').postsList;
+	const postsList = jest.requireActual<typeof import('../../test/fixtures')>(
+		'../../test/fixtures'
+	).postsList;
 
 	const testPostsList = [
 		...postsList,

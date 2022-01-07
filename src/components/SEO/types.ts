@@ -1,6 +1,6 @@
 import type React from 'react';
 
-export interface ISeoData {
+export interface SeoData {
 	isPost: boolean;
 	type: 'page' | 'post';
 	title: string;
@@ -10,7 +10,7 @@ export interface ISeoData {
 	description?: string;
 }
 
-export interface IAbridgedPost {
+export interface AbridgedPost {
 	title: string;
 	description?: string;
 	coverImageUrl?: string;
@@ -23,7 +23,7 @@ export interface IAbridgedPost {
 	url: string;
 }
 
-export interface IJsonLdAuthorMetadata {
+export interface JsonLdAuthorMetadata {
 	'@type': 'Person';
 	'givenName': string;
 	'familyName': string;
@@ -31,7 +31,7 @@ export interface IJsonLdAuthorMetadata {
 	'address': string;
 }
 
-export interface IJsonLdOrgMetadata {
+export interface JsonLdOrgMetadata {
 	'@context': 'https://schema.org';
 	'@type': 'Organization';
 	'url': string;
@@ -40,7 +40,7 @@ export interface IJsonLdOrgMetadata {
 	'logo': string;
 }
 
-export interface IJsonLdPostMetadata {
+export interface JsonLdPostMetadata {
 	'@context': 'http://schema.org';
 	'@type': 'BlogPosting';
 	'mainEntityOfPage': 'True';
@@ -52,25 +52,25 @@ export interface IJsonLdPostMetadata {
 	'dateCreated': Date;
 	'datePublished': Date;
 	'dateModified': Date;
-	'author'?: IJsonLdAuthorMetadata;
-	'creator'?: IJsonLdAuthorMetadata;
-	'publisher'?: IJsonLdOrgMetadata;
+	'author'?: JsonLdAuthorMetadata;
+	'creator'?: JsonLdAuthorMetadata;
+	'publisher'?: JsonLdOrgMetadata;
 	'keywords': string[];
 	'articleSection': string;
 	'articleBody': string;
 }
 
-export type ITwitterTagList = React.ReactElement<
-{ name: string; content: string },
-'meta'
+export type TwitterTagList = React.ReactElement<
+	{ name: string; content: string },
+	'meta'
 >[];
 
-export type IOpenGraphTagList = React.ReactElement<
-{ property: string; content: string },
-'meta'
+export type OpenGraphTagList = React.ReactElement<
+	{ property: string; content: string },
+	'meta'
 >[];
 
-export type IRichSearchTag = React.ReactElement<
-{ key: 'rich-search'; type: 'application/ld+json' },
-'script'
+export type RichSearchTag = React.ReactElement<
+	{ key: 'rich-search'; type: 'application/ld+json' },
+	'script'
 >;

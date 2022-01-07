@@ -15,16 +15,16 @@ import {
 import { LinkCopyNotification } from './LinkCopyNotification';
 import * as S from './styles';
 
-import type { IPost, ISiteConfig } from '@/types';
+import type { Post, SiteConfig } from '@/types';
 
 import { Separator } from '@/components/Separator';
 import { useConfig } from '@/config';
 
-interface IPostShareProps {
-	post: IPost;
+interface PostShareProps {
+	post: Post;
 }
 
-const generateRelatedtwitterHandles = (config: ISiteConfig): string[] => {
+const generateRelatedtwitterHandles = (config: SiteConfig): string[] => {
 	const relatedtwitterHandles = [];
 
 	if (config.user.twitterHandle) {
@@ -38,7 +38,7 @@ const generateRelatedtwitterHandles = (config: ISiteConfig): string[] => {
 	return relatedtwitterHandles;
 };
 
-export function PostShare({ post }: IPostShareProps): JSX.Element {
+export function PostShare({ post }: PostShareProps): JSX.Element {
 	const { title, excerpt, url } = post;
 
 	const [showLinkNotification, setShowlinkNotification] = useState(false);

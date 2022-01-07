@@ -3,15 +3,15 @@ import React from 'react';
 
 import * as S from './styles';
 
-import type { IPost } from '@/types';
+import type { Post } from '@/types';
 
-interface IPostInfoProps {
-	post: IPost;
+interface PostInfoProps {
+	post: Post;
 }
 
 const N_TAGS = 2;
 
-export function PostInfo({ post }: IPostInfoProps): JSX.Element {
+export function PostInfo({ post }: PostInfoProps): JSX.Element {
 	const categoryUrl = post.category ? `/category/${post.category}` : undefined;
 
 	const publicationDate = `${categoryUrl ? '\u00A0⋅ ' : ''}${format(

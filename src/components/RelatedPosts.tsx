@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import type { IPost } from '../types';
+import type { Post } from '../types';
 
 import { Feed } from '@/components/Feed';
 import { H2 } from '@/theme';
 
-interface IRelatedPostsProps {
-	posts: IPost[];
+interface RelatedPostsProps {
+	posts: Post[];
 }
 
 const Wrapper = styled.aside`
@@ -21,9 +21,7 @@ const Label = styled(H2)`
 	text-transform: uppercase;
 `;
 
-export function RelatedPosts({
-	posts
-}: IRelatedPostsProps): JSX.Element | null {
+export function RelatedPosts({ posts }: RelatedPostsProps): JSX.Element | null {
 	return posts.length ? (
 		<Wrapper>
 			<Label>RELATED POSTS</Label>

@@ -1,12 +1,12 @@
 import React from 'react';
 
-import type { ISeoData } from '@/components/SEO/types';
-import type { ISiteMetadata } from '@/types';
+import type { SeoData } from '@/components/SEO/types';
+import type { BaseSiteMetadata } from '@/types';
 
 // TODO rel canonical
 export const GeneralTags = (
-	seoData: ISeoData,
-	siteData: ISiteMetadata
+	seoData: SeoData,
+	siteData: BaseSiteMetadata
 ): React.ReactElement[] => {
 	const { title, description, imageUrl } = seoData;
 	const { logoUrl } = siteData;

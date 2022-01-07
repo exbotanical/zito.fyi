@@ -1,40 +1,40 @@
 import { parseStringPromise } from 'xml2js';
 
-interface IRssData {
+interface RssData {
 	rss: {
-		channel: IRssChannel[];
+		channel: RssChannel[];
 	};
 }
 
-interface ISiteMapData {
+interface SiteMapData {
 	urlset: {
 		url: {
-			loc: string[],
-			changefreq: string[],
-			priority: string[]
+			loc: string[];
+			changefreq: string[];
+			priority: string[];
 		}[];
 	};
 }
 
-interface IParseSitemapArgs {
+interface ParseSitemapArgs {
 	siteUrl: string;
 	sitemapString: string;
 }
 
-interface IRssItem {
+interface RssItem {
 	link: string[];
 }
 
-interface IRssChannel {
+interface RssChannel {
 	link: string[];
-	item: IRssItem[];
+	item: RssItem[];
 }
 
 const pluginConfig: Cypress.PluginConfig = (on) => {
 	on('task', {
-		async parseRss (rssString: string) {
+		async parseRss(rssString: string) {
 			return parseStringPromise(rssString).then((res) => {
-				const rssData = res as IRssData;
+				const rssData = res as RssData;
 				const items = rssData.rss.channel[0].item;
 				const siteUrl = rssData.rss.channel[0].link[0];
 
@@ -42,9 +42,9 @@ const pluginConfig: Cypress.PluginConfig = (on) => {
 			});
 		},
 
-		async parseSitemap ({ siteUrl, sitemapString }: IParseSitemapArgs) {
+		async parseSitemap({ siteUrl, sitemapString }: ParseSitemapArgs) {
 			return parseStringPromise(sitemapString).then((res) => {
-				const siteMapData = res as ISiteMapData;
+				const siteMapData = res as SiteMapData;
 				const urls = siteMapData.urlset.url;
 
 				return urls.map((url) => url.loc[0].replace(siteUrl, ''));

@@ -1,24 +1,24 @@
 import React from 'react';
 
-import type { IUserMetadata, ISiteMetadata } from '../../types';
-import type { ISeoData, ITwitterTagList } from './types';
+import type { UserMetadata, BaseSiteMetadata } from '../../types';
+import type { SeoData, TwitterTagList } from './types';
 
 interface SeoArgs {
-	seoData: ISeoData;
-	userData?: IUserMetadata;
-	siteData: ISiteMetadata;
+	seoData: SeoData;
+	userData?: UserMetadata;
+	siteData: BaseSiteMetadata;
 }
 
 export const TwitterTags = ({
 	seoData,
 	userData,
 	siteData
-}: SeoArgs): ITwitterTagList => {
+}: SeoArgs): TwitterTagList => {
 	const { title, description, imageUrl, imageAlt } = seoData;
 	const usertwitterHandle = userData?.twitterHandle;
 	const sitetwitterHandle = siteData.twitterHandle;
 
-	const tagList: ITwitterTagList = [];
+	const tagList: TwitterTagList = [];
 
 	const addTypeSafeTag = (name: string, content: string) => {
 		tagList.push(<meta content={content} name={name} />);

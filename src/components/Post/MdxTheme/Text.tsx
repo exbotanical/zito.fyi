@@ -8,24 +8,24 @@ import { HeadingLink } from '@/components/Links';
 import { ExtendingWrapper } from '@/components/Post/PostSpacing';
 import * as styles from '@/theme';
 
-interface IHeadingProps {
+interface HeadingProps {
 	children: React.ReactNode;
 }
 
-interface IHeadingComponent {
-	(props: IHeadingProps): JSX.Element;
+interface HeadingComponent {
+	(props: HeadingProps): JSX.Element;
 }
 
-interface IHeadings {
-	H1: IHeadingComponent;
-	H2: IHeadingComponent;
-	H3: IHeadingComponent;
-	H4: IHeadingComponent;
-	H5: IHeadingComponent;
-	H6: IHeadingComponent;
+interface Headings {
+	H1: HeadingComponent;
+	H2: HeadingComponent;
+	H3: HeadingComponent;
+	H4: HeadingComponent;
+	H5: HeadingComponent;
+	H6: HeadingComponent;
 }
 
-interface IBlockquoteProps {
+interface BlockquoteProps {
 	children?: React.ReactNode;
 }
 
@@ -52,19 +52,17 @@ const getHeaderHashLink = (children: React.ReactNode): string | null => {
 const generateHeading = (
 	slug: string,
 	HeadingComponent: AnyStyledComponent
-): IHeadingComponent => {
-	function GeneratedHeader({ children }: IHeadingProps): JSX.Element {
+): HeadingComponent => {
+	function GeneratedHeader({ children }: HeadingProps): JSX.Element {
 		const hashLink = getHeaderHashLink(children);
 
-		return hashLink ?
-			(
-				<HeadingComponent id={hashLink}>
-					<HeadingLink to={`${slug}#${hashLink}`}>{children} </HeadingLink>
-				</HeadingComponent>
-			) :
-			(
-				<HeadingComponent>{children}</HeadingComponent>
-			);
+		return hashLink ? (
+			<HeadingComponent id={hashLink}>
+				<HeadingLink to={`${slug}#${hashLink}`}>{children} </HeadingLink>
+			</HeadingComponent>
+		) : (
+			<HeadingComponent>{children}</HeadingComponent>
+		);
 	}
 
 	return GeneratedHeader;
@@ -78,7 +76,7 @@ const BlockquoteStyle = styled.blockquote`
 `;
 
 export const Paragraph = undefined;
-export const generateHeadings = (slug: string): IHeadings => ({
+export const generateHeadings = (slug: string): Headings => ({
 	H1: generateHeading(slug, styles.H1),
 	H2: generateHeading(slug, styles.H2),
 	H3: generateHeading(slug, styles.H3),
@@ -87,8 +85,10 @@ export const generateHeadings = (slug: string): IHeadings => ({
 	H6: generateHeading(slug, styles.H6)
 });
 
-export function Blockquote({ children }: IBlockquoteProps): JSX.Element {
-  return <ExtendingWrapper>
-		<BlockquoteStyle>{children}</BlockquoteStyle>
-	</ExtendingWrapper>
+export function Blockquote({ children }: BlockquoteProps): JSX.Element {
+	return (
+		<ExtendingWrapper>
+			<BlockquoteStyle>{children}</BlockquoteStyle>
+		</ExtendingWrapper>
+	);
 }

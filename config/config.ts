@@ -1,12 +1,11 @@
-import type { ISiteConfig } from '../src/types';
+import type { SiteConfig } from '../src/types';
 
 const isTest = process.env.CYPRESS_SUPPORT || process.env.NODE_ENV === 'test';
 
-export const config: ISiteConfig = {
+export const config: SiteConfig = {
 	/**
 	 * Directory in which static assets will reside
 	 */
-	// assetDir: '../static',
 	assetDir: '../static',
 
 	/**
@@ -17,7 +16,6 @@ export const config: ISiteConfig = {
 	/**
 	 * Directory in which MDX posts will reside
 	 */
-	// contentDir: '../content',
 	// TODO
 	contentDir: isTest ? '../test/fixtures/content' : '../content',
 
@@ -45,6 +43,7 @@ export const config: ISiteConfig = {
 	 * Manifest icon
 	 */
 	iconPath: undefined,
+
 	organization: {
 		description: '',
 		logoUrl: '',
@@ -142,12 +141,14 @@ export const config: ISiteConfig = {
 		/**
 		 * Admin 'author' section text
 		 */
-		about: 'A paragraph about me, the author and site admin.',
+		about:
+			"I'm a frontend software developer and comp-sci enthusiast. I write source code reviews and blog about reactive programming, linux, C and JavaScript.",
 
 		/**
 		 * Admin 'author' section avatar
 		 */
-		avatar: 'https://i.ibb.co/LNJDFXV/self.png',
+		avatar:
+			'https://upload.wikimedia.org/wikipedia/en/e/e7/CanMonsterMovieAlbumCover.jpg',
 
 		/**
 		 * Admin email addr; used for SEO, RSS Feed

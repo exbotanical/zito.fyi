@@ -1,17 +1,11 @@
 import kebabCase from 'lodash.kebabcase';
 import urlJoin from 'url-join';
 
-import type { ISiteConfig } from '../../src/types';
-import type { IBaseFrontmatter } from './types';
-
-export * from './constants';
-export * from './feed';
-export * from './queries';
-export * from './related';
-export * from './rss';
+import type { SiteConfig } from '../src/types';
+import type { BaseFrontmatter } from './types';
 
 export const generateSlug = (
-	frontmatter?: IBaseFrontmatter
+	frontmatter?: BaseFrontmatter
 ): string | undefined => {
 	if (frontmatter) {
 		const { slug, title } = frontmatter;
@@ -23,5 +17,5 @@ export const generateSlug = (
 	console.error('Missing post slug and title. Unable to generate a slug.');
 };
 
-export const withBasePath = (config: ISiteConfig, url: string): string =>
+export const withBasePath = (config: SiteConfig, url: string): string =>
 	config.basePath ? urlJoin(config.basePath, url) : url;

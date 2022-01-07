@@ -1,20 +1,20 @@
 import type { ImageDataLike } from 'gatsby-plugin-image';
 
-export interface IUserQueryResult {
+export interface UserQueryResult {
 	site: {
 		siteMetadata: {
 			config: {
-				user: IUserMetadata;
+				user: UserMetadata;
 			};
 		};
 	};
 }
 
-export interface IPostBySlugQueryResult {
-	mdx?: IMdxNode;
+export interface PostBySlugQueryResult {
+	mdx?: MdxNode;
 }
 
-export interface IMdxNode {
+export interface MdxNode {
 	body?: string;
 	excerpt?: string;
 	timeToRead?: number;
@@ -47,7 +47,7 @@ export interface IMdxNode {
 	};
 }
 
-export interface IPost {
+export interface Post {
 	title: string;
 
 	description?: string;
@@ -71,10 +71,10 @@ export interface IPost {
 	pathName: string;
 	url: string;
 
-	relatedPosts?: IPost[];
+	relatedPosts?: Post[];
 }
 
-export interface IPostJson {
+export interface PostJson {
 	title: string;
 
 	description?: string;
@@ -96,35 +96,35 @@ export interface IPostJson {
 	pathName: string;
 	url: string;
 
-	relatedPosts?: IPostJson[];
+	relatedPosts?: PostJson[];
 }
 
-export interface IFeedMetadata {
+export interface FeedMetadata {
 	current: number;
 	next?: number;
 	nextCount?: number;
 	prev?: number;
 	prevCount?: number;
-	posts: IPost[];
+	posts: Post[];
 }
 
-export interface IFeedMetadataJson {
+export interface FeedMetadataJson {
 	current: number;
 	next?: number;
 	nextCount?: number;
 	prev?: number;
 	prevCount?: number;
-	posts: IPostJson[];
+	posts: PostJson[];
 }
 
-export interface IPlaceholderPost {
+export interface PlaceholderPost {
 	isPlaceholder: boolean;
 	key: string;
 }
 
-export type IFeedItems = (IPlaceholderPost | IPost)[];
+export type FeedItems = (PlaceholderPost | Post)[];
 
-export interface ISiteMetadata {
+export interface BaseSiteMetadata {
 	title: string;
 	titleAbridged: string;
 	name: string;
@@ -143,7 +143,7 @@ export interface ISiteMetadata {
 	backgroundColor: string;
 }
 
-export interface IUserMetadata {
+export interface UserMetadata {
 	id: string;
 	firstName: string;
 	surname: string;
@@ -156,24 +156,24 @@ export interface IUserMetadata {
 	avatar: string;
 }
 
-export interface IOrgMetadata {
+export interface OrgMetadata {
 	name: string;
 	description: string;
 	logoUrl: string;
 	url: string;
 }
 
-interface IIconManifest {
+interface IconManifest {
 	src: string;
 	sizes: string;
 	type: string;
 	purpose?: string;
 }
 
-export interface ISiteConfig {
-	site: ISiteMetadata;
-	user: IUserMetadata;
-	organization: IOrgMetadata;
+export interface SiteConfig {
+	site: BaseSiteMetadata;
+	user: UserMetadata;
+	organization: OrgMetadata;
 
 	pathPrefix: string;
 
@@ -184,14 +184,14 @@ export interface ISiteConfig {
 	embeddedVideoWidth: number;
 
 	iconPath?: string;
-	iconList: Readonly<IIconManifest[]>;
+	iconList: Readonly<IconManifest[]>;
 	iconCachePaths?: string[];
 
 	basePath?: string;
 }
 
-export interface IQueryAllPostsResult {
+export interface QueryAllPostsResult {
 	allMdx: {
-		edges: { node: IMdxNode }[];
+		edges: { node: MdxNode }[];
 	};
 }

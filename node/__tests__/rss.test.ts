@@ -1,9 +1,9 @@
 import { mocked } from 'ts-jest/utils';
 
-import { generateRssFeed, setupRssFeed } from '..';
-import { config, postQueryResult } from '../../../test/fixtures';
+import { generateRssFeed, setupRssFeed } from '../';
+import { config, postQueryResult } from '../../test/fixtures';
 
-import type { IFeedQueryResult, IFeedPluginData } from '../types';
+import type { FeedQueryResult, FeedPluginData } from '../types';
 jest.spyOn(global.console, 'warn').mockImplementation();
 
 const mockedConsole = mocked(global.console, true);
@@ -17,9 +17,9 @@ const testQuery = {
 			}
 		}
 	}
-} as unknown as IFeedQueryResult;
+} as unknown as FeedQueryResult;
 
-const testFeedData: IFeedPluginData = {
+const testFeedData: FeedPluginData = {
 	title: 'test',
 	site_url: 'https://example.com/',
 	plugins: [],

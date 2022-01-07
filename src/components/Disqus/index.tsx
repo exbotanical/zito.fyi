@@ -1,17 +1,15 @@
 import { Disqus } from 'gatsby-plugin-disqus';
 import React from 'react';
 
-import type { IPost } from '@/types';
+import type { Post } from '@/types';
 
 import { useConfig } from '@/config';
 
-interface IDisqusPluginProps {
-	post: IPost;
+interface DisqusPluginProps {
+	post: Post;
 }
 
-export function DisqusPlugin({
-	post
-}: IDisqusPluginProps): JSX.Element | null {
+export function DisqusPlugin({ post }: DisqusPluginProps): JSX.Element | null {
 	const config = useConfig();
 
 	if (!config.site.disqusShortname) {
@@ -23,10 +21,10 @@ export function DisqusPlugin({
 	return (
 		<Disqus
 			config={{
-        identifier: title,
-        title,
-        url
-      }}
+				identifier: title,
+				title,
+				url
+			}}
 		/>
 	);
 }

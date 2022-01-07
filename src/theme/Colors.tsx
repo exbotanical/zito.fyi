@@ -14,7 +14,7 @@ const Colors = css`
 		--color-primary-900: rgb(10, 49, 68);
 		--color-grey-100: rgb(10, 49, 68);
 		--color-grey-200: rgb(3, 83, 99);
-		--color-grey-300: rgb(12, 105, 121);
+		--color-grey-300: rgb(102, 95, 101);
 		--color-grey-400: rgb(142, 96, 117);
 		--color-grey-500: rgb(191, 85, 105);
 		--color-grey-600: rgb(218, 59, 59);
@@ -26,10 +26,11 @@ const Colors = css`
 		--color-inverted-text: rgb(251, 248, 228);
 		--color-background: rgb(247, 240, 194);
 		--color-inverted-background: rgb(0, 0, 0);
+		--color-accent: #fb923c; // @TODO
 	}
 
 	.theme-dark {
-		--color-primary: rgb(84, 157, 225);
+		--color-primary: rgb(104, 157, 225);
 		--color-primary-100: rgb(206, 166, 186);
 		--color-primary-200: rgb(184, 111, 170);
 		--color-primary-300: rgb(182, 116, 182);
@@ -41,7 +42,7 @@ const Colors = css`
 		--color-primary-900: rgb(25, 23, 37);
 		--color-grey-100: rgb(47, 43, 69);
 		--color-grey-200: rgb(38, 57, 125);
-		--color-grey-300: rgb(184, 65, 190);
+		--color-grey-300: rgb(100, 102, 140);
 		--color-grey-400: rgb(184, 111, 170);
 		--color-grey-500: rgb(120, 112, 170);
 		--color-grey-600: rgb(184, 65, 190);
@@ -53,6 +54,7 @@ const Colors = css`
 		--color-inverted-text: #fff;
 		--color-background: rgb(25, 23, 37);
 		--color-inverted-background: rgb(204, 5, 190);
+		--color-accent: #3730a3; // @TODO
 	}
 `;
 

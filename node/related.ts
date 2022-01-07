@@ -1,24 +1,24 @@
-import type { IPost } from '../../src/types';
+import type { Post } from '../src/types';
 
 const N_RELATED_POSTS = 2;
 
 /**
  * @summary Get posts of a given category
  */
-const getPostsOfCategory = (category: string, posts: IPost[]): IPost[] => {
+const getPostsOfCategory = (category: string, posts: Post[]): Post[] => {
 	return posts.filter((post) => post.category === category);
 };
 
 /**
  * @summary Get posts of a tag, ranked by matches
  */
-const getRankedPostsOfTag = (targetPost: IPost, posts: IPost[]): IPost[] => {
+const getRankedPostsOfTag = (targetPost: Post, posts: Post[]): Post[] => {
 	if (!targetPost.tags?.length) {
 		return posts;
 	}
 
 	const rankedPosts: {
-		post: IPost;
+		post: Post;
 		rank: number;
 	}[] = [];
 
@@ -36,7 +36,7 @@ const getRankedPostsOfTag = (targetPost: IPost, posts: IPost[]): IPost[] => {
 
 		rankedPosts.push({
 			post,
-			rank,
+			rank
 		});
 	});
 
@@ -55,15 +55,12 @@ const getRankedPostsOfTag = (targetPost: IPost, posts: IPost[]): IPost[] => {
  * @summary Get n posts related to a given post
  * @todo fix duplications
  */
-export const getNRelatedPosts = (
-	targetPost: IPost,
-	posts: IPost[]
-): IPost[] => {
+export const getNRelatedPosts = (targetPost: Post, posts: Post[]): Post[] => {
 	// exclude the target post from the posts
 
 	const filteredPosts = posts.filter((post) => post.slug !== targetPost.slug);
 
-	const relatedPosts: IPost[] = [];
+	const relatedPosts: Post[] = [];
 
 	if (targetPost.category) {
 		const categoryPosts = getPostsOfCategory(

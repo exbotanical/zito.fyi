@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby';
 
-import { PostTemplate } from './index';
+import { PostTemplate } from '.';
 
 const TemplateComponent = PostTemplate;
 
@@ -19,7 +19,7 @@ export const PostTemplateQuery = graphql`
 						gatsbyImageData
 					}
 				}
-				coverAlt
+
 				datePublished
 				dateModified
 				category

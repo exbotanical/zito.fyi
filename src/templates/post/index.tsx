@@ -1,21 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import type { IPostBySlugQueryResult, IPostJson } from '@/types';
+import type { PostBySlugQueryResult, PostJson } from '@/types';
 
 import { Layout } from '@/components/Layout';
 import { Post } from '@/components/Post';
 import { RelatedPosts } from '@/components/RelatedPosts';
 import { jsonToPost, queryToPost } from '@/utils';
 
-
-interface IPageContext {
-	relatedPosts: IPostJson[];
+interface PageContext {
+	relatedPosts: PostJson[];
 }
 
-interface IPostTemplateProps {
-	data: IPostBySlugQueryResult;
-	pageContext: IPageContext;
+interface PostTemplateProps {
+	data: PostBySlugQueryResult;
+	pageContext: PageContext;
 }
 
 const Wrapper = styled.div`
@@ -26,7 +25,7 @@ const Wrapper = styled.div`
 export function PostTemplate({
 	data,
 	pageContext
-}: IPostTemplateProps): JSX.Element {
+}: PostTemplateProps): JSX.Element {
 	const post = queryToPost(data);
 
 	return (

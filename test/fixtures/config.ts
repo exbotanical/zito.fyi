@@ -1,6 +1,6 @@
-import type { ISiteConfig } from '../../src/types';
+import type { SiteConfig } from '../../src/types';
 
-export const config: ISiteConfig = {
+export const config: SiteConfig = {
 	site: {
 		title: "Matthew Zito's Blog",
 		titleAbridged: "Zito's Blog",

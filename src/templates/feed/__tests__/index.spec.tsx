@@ -8,8 +8,8 @@ import { config } from '../../../../test/fixtures';
 import Index0 from '../../../../test/fixtures/feedMetadata/index-0.json';
 import { renderWithQueryClient } from '../../../../test/utils/render';
 
-import type { IFeedMetadataJson } from '../../../types';
-import type { IPageContext } from '../types';
+import type { FeedMetadataJson } from '../../../types';
+import type { PageContext } from '../types';
 
 jest.mock('../../../config/useConfig', () => ({
 	useConfig: jest.fn(() => config)
@@ -17,7 +17,7 @@ jest.mock('../../../config/useConfig', () => ({
 
 const indexFeedContext = {
 	feedId: undefined,
-	feedMetadata: Index0 as unknown as IFeedMetadataJson,
+	feedMetadata: Index0 as unknown as FeedMetadataJson,
 	feedType: 'index',
 	pageCount: 3,
 	pageIndex: 0
@@ -25,7 +25,7 @@ const indexFeedContext = {
 
 const categoryFeedContext = {
 	feedId: 'test',
-	feedMetadata: Index0 as unknown as IFeedMetadataJson,
+	feedMetadata: Index0 as unknown as FeedMetadataJson,
 	feedType: 'category',
 	pageCount: 3,
 	pageIndex: 0
@@ -33,7 +33,7 @@ const categoryFeedContext = {
 
 const tagFeedContext = {
 	feedId: 'test',
-	feedMetadata: Index0 as unknown as IFeedMetadataJson,
+	feedMetadata: Index0 as unknown as FeedMetadataJson,
 	feedType: 'tag',
 	pageCount: 3,
 	pageIndex: 0
@@ -41,7 +41,7 @@ const tagFeedContext = {
 
 describe('page template FeedTemplate', () => {
 	it('sets the correct title', () => {
-		const assertTitle = (context: IPageContext, expectedTitle: string) => {
+		const assertTitle = (context: PageContext, expectedTitle: string) => {
 			renderWithQueryClient(<FeedTemplate pageContext={context} />);
 
 			const helmet = Helmet.peek();

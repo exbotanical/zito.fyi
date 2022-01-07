@@ -1,33 +1,33 @@
 import React from 'react';
 
 import type {
-	IRichSearchTag,
-	IAbridgedPost,
-	ISeoData,
-	IJsonLdAuthorMetadata,
-	IJsonLdOrgMetadata,
-	IJsonLdPostMetadata
+	RichSearchTag,
+	AbridgedPost,
+	SeoData,
+	JsonLdAuthorMetadata,
+	JsonLdOrgMetadata,
+	JsonLdPostMetadata
 } from './types';
-import type { IUserMetadata, IOrgMetadata } from '@/types';
+import type { UserMetadata, OrgMetadata } from '@/types';
 
-interface ISeoArgs {
-	orgData?: IOrgMetadata;
-	postData?: IAbridgedPost;
-	seoData: ISeoData;
-	userData?: IUserMetadata;
+interface SeoArgs {
+	orgData?: OrgMetadata;
+	postData?: AbridgedPost;
+	seoData: SeoData;
+	userData?: UserMetadata;
 }
 
 export const getAuthorMetadata = (
-	userData: IUserMetadata
-): IJsonLdAuthorMetadata => ({
+	userData: UserMetadata
+): JsonLdAuthorMetadata => ({
 	'@type': 'Person',
 	'address': userData.location,
 	'email': userData.email,
 	'familyName': userData.surname,
-	'givenName': userData.firstName,
+	'givenName': userData.firstName
 });
 
-export const getOrgMetadata = (orgData: IOrgMetadata): IJsonLdOrgMetadata => {
+export const getOrgMetadata = (orgData: OrgMetadata): JsonLdOrgMetadata => {
 	const { description, logoUrl, name, url } = orgData;
 
 	return {
@@ -41,10 +41,10 @@ export const getOrgMetadata = (orgData: IOrgMetadata): IJsonLdOrgMetadata => {
 };
 
 export const getPostMetadata = (
-	postData: IAbridgedPost,
-	orgData?: IOrgMetadata,
-	userData?: IUserMetadata
-): IJsonLdPostMetadata | null => {
+	postData: AbridgedPost,
+	orgData?: OrgMetadata,
+	userData?: UserMetadata
+): JsonLdPostMetadata | null => {
 	const {
 		body,
 		category,
@@ -88,7 +88,7 @@ export const RichSearchTags = ({
 	postData,
 	userData,
 	orgData
-}: ISeoArgs): IRichSearchTag[] => {
+}: SeoArgs): RichSearchTag[] => {
 	const { isPost } = seoData;
 
 	const postJsonLd =

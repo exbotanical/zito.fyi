@@ -1,12 +1,11 @@
 import { Link as GatsbyLink } from 'gatsby';
 import React from 'react';
 
-import { withBasePath } from '../../../config/utils';
+import { withBasePath } from '../../../node';
 
-import type { ILinkProps } from '@/components/Links/types';
+import type { LinkProps } from '@/components/Links/types';
 
 import { useConfig } from '@/config';
-
 
 export function BaseLink({
 	to,
@@ -16,7 +15,7 @@ export function BaseLink({
 	activeClassName,
 	noBasePath,
 	ariaLabel
-}: ILinkProps): JSX.Element {
+}: LinkProps): JSX.Element {
 	const config = useConfig();
 
 	const url = href || to;
@@ -26,20 +25,24 @@ export function BaseLink({
 	// if it's an internal URL, we'll need to prepend it with the base path
 	const internalUrl = !noBasePath ? withBasePath(config, url) : url;
 
-	return isInternalUrl ?
-		(
-			<GatsbyLink
-				activeClassName={activeClassName}
-				aria-label={ariaLabel}
-				className={className}
-				to={internalUrl}
-			>
-				{children}
-			</GatsbyLink>
-		) :
-		(
-			<a aria-label={ariaLabel} className={className} href={url} rel="noreferrer">
-				{children}
-			</a>
-		);
+	return isInternalUrl ? (
+		<GatsbyLink
+			activeClassName={activeClassName}
+			aria-label={ariaLabel}
+			className={className}
+			to={internalUrl}
+		>
+			{children}
+		</GatsbyLink>
+	) : (
+		<a
+			aria-label={ariaLabel}
+			className={className}
+			href={url}
+			rel="noreferrer"
+			target="_blank"
+		>
+			{children}
+		</a>
+	);
 }

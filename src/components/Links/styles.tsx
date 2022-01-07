@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { BaseLink } from '@/components/Links/BaseLink';
 
-interface ILinkStyleProps {
+interface LinkStyleProps {
 	activeClassName?: string;
 }
 
@@ -13,10 +13,10 @@ const TransparentCSS = css`
 `;
 
 export const IconCSS = css`
-	color: var(--color-primary, rgb(0, 0, 0));
+	color: var(--color-primary-100, rgb(0, 0, 0));
 
 	&:hover {
-		color: var(--color-primary-600, #9a1d1d);
+		color: var(--color-primary-400, #9a1d1d);
 	}
 `;
 
@@ -30,7 +30,7 @@ const PrimaryCSS = css`
 	}
 `;
 
-const AnimatedCSS = css<ILinkStyleProps>`
+const AnimatedCSS = css<LinkStyleProps>`
 	display: inline-block;
 	background-color: inherit;
 	color: var(--color-primary, #9a1d1d);
@@ -76,7 +76,7 @@ const HeadingCss = css`
 `;
 
 export const AnimatedLink = styled(BaseLink).attrs(
-	({ activeClassName }: ILinkStyleProps) => ({
+	({ activeClassName }: LinkStyleProps) => ({
 		activeClassName: activeClassName || 'gatsby-active-link'
 	})
 )`
@@ -93,6 +93,15 @@ export const PrimaryLink = styled(BaseLink)`
 
 export const IconLink = styled(BaseLink)`
 	${IconCSS}
+
+	border-radius: 9999px;
+	transition-property: color, background-color, opacity, transform;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 300ms;
+
+	&:hover {
+		transform: scale(1.25);
+	}
 `;
 
 export const HeadingLink = styled(BaseLink)`

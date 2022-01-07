@@ -1,12 +1,12 @@
 import React from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
-import { Color } from './Color';
+import { Color } from './Colors';
 import { Reset } from './Reset';
 import { ScrollbarStyles } from './Scrollbar';
 import { Typography } from './Typography';
 
-interface IThemeProps {
+interface ThemeProps {
 	children: React.ReactNode;
 }
 
@@ -15,14 +15,16 @@ interface IThemeProps {
 // doing this allows us to mitigate any sort of 'flash' on load
 const theme = {};
 
-export function ThemeProvider({ children }: IThemeProps): JSX.Element {
-  return <StyledThemeProvider theme={theme}>
-		<Reset />
-		<Color />
-		<Typography />
-		<ScrollbarStyles />
-		{children}
-	</StyledThemeProvider>
+export function ThemeProvider({ children }: ThemeProps): JSX.Element {
+	return (
+		<StyledThemeProvider theme={theme}>
+			<Reset />
+			<Color />
+			<Typography />
+			<ScrollbarStyles />
+			{children}
+		</StyledThemeProvider>
+	);
 }
 
 export * from './constants';

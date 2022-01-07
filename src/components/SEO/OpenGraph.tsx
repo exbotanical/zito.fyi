@@ -1,17 +1,17 @@
 import React from 'react';
 
-import type { IAbridgedPost, ISeoData, IOpenGraphTagList } from './types';
-import type { IUserMetadata, ISiteMetadata } from '@/types';
+import type { AbridgedPost, SeoData, OpenGraphTagList } from './types';
+import type { UserMetadata, BaseSiteMetadata } from '@/types';
 
-interface ISeoArgs {
-	seoData: ISeoData;
-	siteData: ISiteMetadata;
-	userData?: IUserMetadata;
-	postData?: IAbridgedPost;
+interface SeoArgs {
+	seoData: SeoData;
+	siteData: BaseSiteMetadata;
+	userData?: UserMetadata;
+	postData?: AbridgedPost;
 }
 
 const addTypeSafeTag = (
-	tagList: IOpenGraphTagList,
+	tagList: OpenGraphTagList,
 	property: string,
 	content: string
 ) => {
@@ -19,10 +19,10 @@ const addTypeSafeTag = (
 };
 
 const createPostTagList = (
-	postData: IAbridgedPost,
-	userData?: IUserMetadata
-): IOpenGraphTagList => {
-	const metaTags: IOpenGraphTagList = [];
+	postData: AbridgedPost,
+	userData?: UserMetadata
+): OpenGraphTagList => {
+	const metaTags: OpenGraphTagList = [];
 
 	addTypeSafeTag(
 		metaTags,
@@ -60,14 +60,14 @@ export const OpenGraphTags = ({
 	siteData,
 	userData,
 	postData
-}: ISeoArgs): IOpenGraphTagList => {
+}: SeoArgs): OpenGraphTagList => {
 	const { isPost, type, title, imageUrl, imageAlt, url, description } = seoData;
 
 	const siteName = siteData.name;
 
 	if (!imageUrl || !imageAlt) return [];
 
-	const metaTags: IOpenGraphTagList = [];
+	const metaTags: OpenGraphTagList = [];
 
 	addTypeSafeTag(metaTags, 'og:title', title);
 	addTypeSafeTag(metaTags, 'og:type', type);

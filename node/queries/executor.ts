@@ -5,11 +5,11 @@ import {
 } from '../../src/templates/feed/queries';
 import { mdxNodeToPost } from '../../src/utils';
 
-import type { IQueryAllPostsResult, IPost } from '../../src/types';
+import type { QueryAllPostsResult, Post } from '../../src/types';
 
-interface IQueryResult {
+interface QueryResult {
 	errors?: string[];
-	data?: IQueryAllPostsResult;
+	data?: QueryAllPostsResult;
 }
 
 type GraphqlType = <TData, TVariables = any>(
@@ -23,8 +23,8 @@ type GraphqlType = <TData, TVariables = any>(
 export const getAllPostsByTag = async (
 	graphql: GraphqlType,
 	tag: string
-): Promise<IPost[]> => {
-	const tagQueryResult = await graphql<IQueryAllPostsResult>(
+): Promise<Post[]> => {
+	const tagQueryResult = await graphql<QueryAllPostsResult>(
 		allPostsByTagQuery,
 		{
 			tag
@@ -34,11 +34,11 @@ export const getAllPostsByTag = async (
 	return processQueryResult(tagQueryResult);
 };
 
-export async function getAllPostsByCategory (
+export async function getAllPostsByCategory(
 	graphql: GraphqlType,
 	category: string
-): Promise<IPost[]> {
-	const categoryQueryResult = await graphql<IQueryAllPostsResult>(
+): Promise<Post[]> {
+	const categoryQueryResult = await graphql<QueryAllPostsResult>(
 		allPostsByCategoryQuery,
 		{ category }
 	);
@@ -47,8 +47,8 @@ export async function getAllPostsByCategory (
 }
 
 export const resolveAllPostsFromQuery = (
-	allPosts: IQueryAllPostsResult
-): IPost[] => {
+	allPosts: QueryAllPostsResult
+): Post[] => {
 	const { edges } = allPosts.allMdx;
 
 	const nodes = edges.map((edge) => edge.node);
@@ -57,7 +57,7 @@ export const resolveAllPostsFromQuery = (
 };
 
 const processQueryResult = (
-	result: IQueryResult
+	result: QueryResult
 ): ReturnType<typeof resolveAllPostsFromQuery> => {
 	if (result.errors) {
 		console.error(
@@ -78,8 +78,8 @@ const processQueryResult = (
 	return resolveAllPostsFromQuery(result.data);
 };
 
-export const getAllPosts = async (graphql: GraphqlType): Promise<IPost[]> => {
-	const indexQueryResult = await graphql<IQueryAllPostsResult>(allPostsQuery);
+export const getAllPosts = async (graphql: GraphqlType): Promise<Post[]> => {
+	const indexQueryResult = await graphql<QueryAllPostsResult>(allPostsQuery);
 
 	return processQueryResult(indexQueryResult);
 };

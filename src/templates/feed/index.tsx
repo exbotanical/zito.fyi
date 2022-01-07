@@ -3,8 +3,7 @@ import { Helmet } from 'react-helmet';
 
 import { useInfiniteFeed } from './hooks';
 
-import type { IPageContext } from './types';
-
+import type { PageContext } from './types';
 
 import { Feed } from '@/components/Feed';
 import { FeedWrapper } from '@/components/FeedWrapper';
@@ -13,7 +12,7 @@ import { ScreenReaderH1 } from '@/components/ScreenReader';
 import { useConfig } from '@/config';
 
 interface FeedTemplateProps {
-	pageContext: IPageContext;
+	pageContext: PageContext;
 }
 
 function FeedTemplate({ pageContext }: FeedTemplateProps): JSX.Element {

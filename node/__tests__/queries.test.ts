@@ -1,10 +1,14 @@
-import { getAllPostsByCategory, getAllPostsByTag, getAllPosts } from '..';
 import {
 	allPostsByCategoryQuery,
 	allPostsByTagQuery,
 	allPostsQuery
-} from '../../../src/templates/feed/queries';
-import { postsListQueryResponse } from '../../../test/fixtures';
+} from '../../src/templates/feed/queries';
+import { postsListQueryResponse } from '../../test/fixtures';
+import {
+	getAllPostsByCategory,
+	getAllPostsByTag,
+	getAllPosts
+} from '../queries';
 
 jest.spyOn(global.console, 'warn').mockImplementation();
 jest.spyOn(global.console, 'error').mockImplementation();

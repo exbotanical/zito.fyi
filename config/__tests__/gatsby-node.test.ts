@@ -45,14 +45,14 @@ jest.mock('../config', () => ({
 }));
 const mockedConsole = mocked(global.console, true);
 
-jest.mock('../node', () => ({
+jest.mock('../../node/feed', () => ({
 	createFeed: jest.fn(),
 	setupFeedMetadataDir: jest.fn()
 }));
 
 const feedUtilsMock = mocked(feedUtils, true);
 
-jest.mock('../utils/queries', () => {
+jest.mock('../../node/queries', () => {
 	const postsList = jest.requireActual<typeof import('../../test/fixtures')>(
 		'../../test/fixtures'
 	).postsList;

@@ -8,6 +8,7 @@ import type { LinkProps } from '@/components/Links/types';
 import { useConfig } from '@/config';
 
 const isAbsolute = RegExp.prototype.test.bind(
+	// eslint-disable-next-line prefer-regex-literals
 	new RegExp('^(?:[a-z]+:)?//', 'i')
 );
 

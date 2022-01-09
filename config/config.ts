@@ -1,4 +1,5 @@
 import { config as testConfig } from '../test/fixtures/config';
+
 import type { SiteConfig } from '../src/types';
 
 const isTestEnv =

@@ -15,7 +15,7 @@ const generateLink = (
 	Icon: StyledIcon,
 	sansBasePath = true
 ): JSX.Element => (
-	<IconLink ariaLabel={label} to={url} sansBasePath={sansBasePath}>
+	<IconLink ariaLabel={label} sansBasePath={sansBasePath} to={url}>
 		<Icon size={48} />
 	</IconLink>
 );

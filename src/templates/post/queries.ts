@@ -19,7 +19,7 @@ export const PostTemplateQuery = graphql`
 						gatsbyImageData
 					}
 				}
-
+				coverAlt
 				datePublished
 				dateModified
 				category

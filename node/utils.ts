@@ -9,9 +9,10 @@ export const generateSlug = (
 ): string | undefined => {
 	if (frontmatter) {
 		const { slug, title } = frontmatter;
-		if (slug) return `/${kebabCase(slug)}`;
 
-		if (title) return `/${kebabCase(title)}`;
+		if (slug || title) {
+			return `/${kebabCase(slug || title)}`;
+		}
 	}
 
 	console.error('Missing post slug and title. Unable to generate a slug.');

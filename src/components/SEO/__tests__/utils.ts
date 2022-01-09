@@ -99,7 +99,9 @@ export const seoData: {
 	},
 	user: {
 		about: 'A paragraph about me, the author and site admin.',
-		avatar: 'https://i.ibb.co/LNJDFXV/self.png',
+		avatar:
+			'https://upload.wikimedia.org/wikipedia/en/e/e7/CanMonsterMovieAlbumCover.jpg',
+
 		email: 'exbotanical@gmail.com',
 		firstName: 'Matthew',
 		github: 'MatthewZito',

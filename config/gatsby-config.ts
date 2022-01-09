@@ -13,7 +13,7 @@ import { config } from '.';
 
 import type { GatsbyConfig } from 'gatsby';
 
-const adjustedPathPRefix = config.pathPrefix === '' ? '/' : config.pathPrefix;
+const adjustedPathPRefix = !config.pathPrefix ? '/' : config.pathPrefix;
 const gatsbyConfig: GatsbyConfig = {
 	pathPrefix: adjustedPathPRefix,
 	plugins: [
@@ -30,14 +30,14 @@ const gatsbyConfig: GatsbyConfig = {
 		{
 			options: {
 				name: 'assets',
-				path: path.join(__dirname, config.assetDir || '../../static')
+				path: path.join(__dirname, '../', config.assetDir || 'static')
 			},
 			resolve: 'gatsby-source-filesystem'
 		},
 		{
 			options: {
 				name: 'posts',
-				path: path.join(__dirname, config.contentDir || '../../content')
+				path: path.join(__dirname, '../', config.contentDir || 'content')
 			},
 			resolve: 'gatsby-source-filesystem'
 		},

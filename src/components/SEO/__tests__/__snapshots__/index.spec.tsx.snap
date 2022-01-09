@@ -119,7 +119,7 @@ exports[`component SEO renders correctly for posts 1`] = `
     name="twitter:image:alt"
   />
   <meta
-    content="test"
+    content="exbotanical"
     name="twitter:creator"
   />
   <meta
@@ -176,7 +176,7 @@ exports[`component SEO renders correctly on pages 1`] = `
     name="twitter:image:alt"
   />
   <meta
-    content="test"
+    content="exbotanical"
     name="twitter:creator"
   />
   <meta

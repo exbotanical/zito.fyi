@@ -1,6 +1,11 @@
 import type { SiteConfig } from '../../src/types';
 
 export const config: SiteConfig = {
+	assetDir: 'static',
+	contentDir: 'test/fixtures/content',
+	basePath: '/',
+	pathPrefix: '/',
+
 	site: {
 		title: "Matthew Zito's Blog",
 		titleAbridged: "Zito's Blog",
@@ -19,16 +24,19 @@ export const config: SiteConfig = {
 		backgroundColor: '#F7F7F7'
 	},
 	user: {
-		id: 'goldmund',
-		firstName: 'Matthew',
-		surname: 'Zito',
-		twitterHandle: 'test',
-		linkedIn: 'matthew-zito-9a03b3127',
-		github: 'MatthewZito',
+		about:
+			"I'm a frontend software developer and comp-sci enthusiast. I write source code reviews and blog about reactive programming, linux, C and JavaScript.",
+		avatar:
+			'https://upload.wikimedia.org/wikipedia/en/e/e7/CanMonsterMovieAlbumCover.jpg',
+
 		email: 'exbotanical@gmail.com',
+		firstName: 'Matthew',
+		github: 'MatthewZito',
+		id: 'goldmund',
+		linkedIn: 'matthew-zito-9a03b3127',
 		location: 'United States',
-		about: 'A paragraph about me, the author and site admin.',
-		avatar: 'https://i.ibb.co/LNJDFXV/self.png'
+		surname: 'Zito',
+		twitterHandle: 'exbotanical'
 	},
 	organization: {
 		name: '',
@@ -36,9 +44,7 @@ export const config: SiteConfig = {
 		logoUrl: '',
 		url: 'https://zito.dev'
 	},
-	pathPrefix: '',
 	embeddedImageWidth: 768,
 	embeddedVideoWidth: 920,
-	iconList: [],
-	basePath: ''
+	iconList: []
 };

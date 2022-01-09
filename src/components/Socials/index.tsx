@@ -12,9 +12,10 @@ import type { StyledIcon } from '@styled-icons/styled-icon';
 const generateLink = (
 	url: string,
 	label: string,
-	Icon: StyledIcon
+	Icon: StyledIcon,
+	sansBasePath = true
 ): JSX.Element => (
-	<IconLink ariaLabel={label} to={url}>
+	<IconLink ariaLabel={label} to={url} sansBasePath={sansBasePath}>
 		<Icon size={48} />
 	</IconLink>
 );
@@ -56,7 +57,7 @@ const renderEmailLink = (config: Readonly<SiteConfig>): JSX.Element => {
 };
 
 const renderRssLink = (config: Readonly<SiteConfig>): JSX.Element =>
-	generateLink(config.site.rss, 'RSS Feed', Rss);
+	generateLink(config.site.rss, 'RSS Feed', Rss, false);
 
 interface IconLinksProps {
 	className?: string;

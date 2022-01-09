@@ -16,7 +16,6 @@ import { Body } from '@/theme';
 export function AuthorCard(): JSX.Element {
 	const { user } = useConfig();
 	// const { fileName } = useStaticQuery<AvatarQueryResult>(avatarQuery);
-
 	const fullName = `${user.firstName} ${user.surname}`;
 
 	return (

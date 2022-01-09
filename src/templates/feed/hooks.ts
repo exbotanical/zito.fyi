@@ -63,7 +63,6 @@ const useScrollContingentFetch = (
 ): React.RefObject<HTMLDivElement> => {
 	// ref to the feed wrapper el; tracks scroll progress
 	const feedElementRef = useRef<HTMLDivElement>(null);
-
 	// Helpers for loading pages
 	const loadNext = async () => {
 		if (

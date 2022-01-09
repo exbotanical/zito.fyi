@@ -92,7 +92,7 @@ describe('component Link', () => {
 		mockedUseConfig.mockReturnValue(configWithBasePath);
 
 		render(
-			<BaseLink noBasePath to="/local/path">
+			<BaseLink sansBasePath to="/local/path">
 				Test
 			</BaseLink>
 		);

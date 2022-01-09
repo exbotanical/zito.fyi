@@ -10,7 +10,7 @@ export function IconLink({
 	className,
 	children,
 	activeClassName,
-	noBasePath,
+	sansBasePath,
 	ariaLabel
 }: LinkProps): JSX.Element {
 	return (
@@ -19,7 +19,7 @@ export function IconLink({
 			ariaLabel={ariaLabel}
 			className={className}
 			href={href}
-			noBasePath={noBasePath}
+			sansBasePath={sansBasePath}
 			to={to}
 		>
 			{children}
@@ -33,7 +33,7 @@ export function PrimaryLink({
 	className,
 	children,
 	activeClassName,
-	noBasePath,
+	sansBasePath,
 	ariaLabel
 }: LinkProps): JSX.Element {
 	return (
@@ -42,7 +42,7 @@ export function PrimaryLink({
 			ariaLabel={ariaLabel}
 			className={className}
 			href={href}
-			noBasePath={noBasePath}
+			sansBasePath={sansBasePath}
 			to={to}
 		>
 			{children}
@@ -56,7 +56,7 @@ export function AnimatedLink({
 	className,
 	children,
 	activeClassName,
-	noBasePath,
+	sansBasePath,
 	ariaLabel
 }: LinkProps): JSX.Element {
 	return (
@@ -65,7 +65,7 @@ export function AnimatedLink({
 			ariaLabel={ariaLabel}
 			className={className}
 			href={href}
-			noBasePath={noBasePath}
+			sansBasePath={sansBasePath}
 			to={to}
 		>
 			{children}
@@ -79,7 +79,7 @@ export function TransparentLink({
 	className,
 	children,
 	activeClassName,
-	noBasePath,
+	sansBasePath,
 	ariaLabel
 }: LinkProps): JSX.Element {
 	return (
@@ -88,7 +88,7 @@ export function TransparentLink({
 			ariaLabel={ariaLabel}
 			className={className}
 			href={href}
-			noBasePath={noBasePath}
+			sansBasePath={sansBasePath}
 			to={to}
 		>
 			{children}
@@ -102,7 +102,7 @@ export function HeadingLink({
 	className,
 	children,
 	activeClassName,
-	noBasePath,
+	sansBasePath,
 	ariaLabel
 }: LinkProps): JSX.Element {
 	return (
@@ -111,7 +111,7 @@ export function HeadingLink({
 			ariaLabel={ariaLabel}
 			className={className}
 			href={href}
-			noBasePath={noBasePath}
+			sansBasePath={sansBasePath}
 			to={to}
 		>
 			{children}

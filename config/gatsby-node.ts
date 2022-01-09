@@ -13,7 +13,6 @@ import {
 } from '../node';
 
 import { config } from './config';
-
 // StreamLogger.init();
 
 import type { BaseFrontmatter } from '../node/types';

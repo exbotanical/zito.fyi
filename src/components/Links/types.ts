@@ -4,6 +4,6 @@ export interface LinkProps {
 	children: React.ReactNode;
 	to: string;
 	href?: string;
-	noBasePath?: boolean;
+	sansBasePath?: boolean;
 	ariaLabel?: string;
 }

@@ -55,8 +55,6 @@ describe('post page', () => {
 			'shareSection'
 		);
 
-		cy.get('@shareSection').findByText('SHARE');
-
 		cy.get('@shareSection').get('button[aria-label="facebook"]');
 		cy.get('@shareSection').get('button[aria-label="twitter"]');
 		cy.get('@shareSection').get('button[aria-label="reddit"]');
@@ -64,6 +62,7 @@ describe('post page', () => {
 	});
 
 	it('renders related Posts', () => {
+		/** @todo no text if no posts */
 		cy.findByText('RELATED POSTS')
 			.next()
 			.children()

@@ -22,6 +22,7 @@ const Colors = css`
 		--color-grey-800: rgb(247, 240, 194);
 		--color-grey-900: rgb(251, 248, 228);
 		--color-grey-1000: rgb(251, 248, 228);
+		--color-grey-2000: rgb(255, 181, 120);
 		--color-text: rgb(0, 0, 0);
 		--color-inverted-text: rgb(251, 248, 228);
 		--color-background: rgb(247, 240, 194);
@@ -50,6 +51,7 @@ const Colors = css`
 		--color-grey-800: rgb(38, 55, 122);
 		--color-grey-900: rgb(22, 55, 128);
 		--color-grey-1000: rgb(206, 166, 186);
+		--color-grey-2000: rgb(47, 43, 69);
 		--color-text: rgb(206, 166, 186);
 		--color-inverted-text: #fff;
 		--color-background: rgb(25, 23, 37);

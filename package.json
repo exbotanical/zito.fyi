@@ -147,6 +147,7 @@
     "gatsby-cypress": "2.4.0",
     "husky": "7.0.4",
     "jest": "27.4.5",
+    "jest-mock": "^27.4.6",
     "jest-styled-components": "7.0.8",
     "lint-staged": "12.1.5",
     "lodash.clonedeep": "^4.5.0",

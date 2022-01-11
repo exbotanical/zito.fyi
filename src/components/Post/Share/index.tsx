@@ -50,6 +50,7 @@ export function PostShare({ post }: PostShareProps): JSX.Element {
 	return (
 		<S.Wrapper aria-label="Share on social media">
 			<S.LinkWrapper>
+				<S.Label>SHARE</S.Label>
 				<S.LinkGrid>
 					<FacebookShareButton quote={excerpt} url={url}>
 						<FacebookIcon size={40} />

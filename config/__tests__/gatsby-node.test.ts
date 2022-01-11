@@ -1,4 +1,4 @@
-import { mocked } from 'ts-jest/utils';
+import { mocked } from 'jest-mock';
 
 import * as feedUtils from '../../node';
 import { config } from '../../test/fixtures';

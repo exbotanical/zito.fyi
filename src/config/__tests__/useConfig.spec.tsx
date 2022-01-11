@@ -1,7 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 import * as gatsby from 'gatsby';
-import { mocked } from 'ts-jest/utils';
-
+import { mocked } from 'jest-mock';
 
 import { config } from '../../../test/fixtures/config';
 import { useConfig } from '../useConfig';

@@ -55,6 +55,8 @@ describe('post page', () => {
 			'shareSection'
 		);
 
+		cy.get('@shareSection').findByText('SHARE');
+
 		cy.get('@shareSection').get('button[aria-label="facebook"]');
 		cy.get('@shareSection').get('button[aria-label="twitter"]');
 		cy.get('@shareSection').get('button[aria-label="reddit"]');

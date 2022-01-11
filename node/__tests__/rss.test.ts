@@ -1,4 +1,4 @@
-import { mocked } from 'ts-jest/utils';
+import { mocked } from 'jest-mock';
 
 import { generateRssFeed, setupRssFeed } from '../';
 import { config, postQueryResult } from '../../test/fixtures';

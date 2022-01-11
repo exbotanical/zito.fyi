@@ -49,7 +49,7 @@ export const BodyCell = styled.td<CellProps>`
 	border-bottom: 1px solid var(--color-grey-300, rgb(12, 105, 121));
 
 	:hover {
-		background-color: var(--color-grey-100, rgb(10, 49, 68));
+		background-color: var(--color-grey-2000, rgb(10, 49, 68));
 	}
 `;
 

@@ -11,6 +11,7 @@ const isAbsolute = RegExp.prototype.test.bind(
 	// eslint-disable-next-line prefer-regex-literals
 	new RegExp('^(?:[a-z]+:)?//', 'i')
 );
+const isEmail = (url: string) => url.startsWith('mailto');
 
 export function BaseLink({
 	to,
@@ -24,7 +25,7 @@ export function BaseLink({
 	const config = useConfig();
 	const url = href || to;
 
-	if (url.startsWith('mailto') || isAbsolute(url)) {
+	if (isEmail(url) || isAbsolute(url)) {
 		return (
 			<a
 				aria-label={ariaLabel}

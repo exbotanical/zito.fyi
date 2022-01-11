@@ -1,5 +1,5 @@
 import memfs from 'memfs';
-import { mocked } from 'ts-jest/utils';
+import { mocked } from 'jest-mock';
 
 import {
 	createFeed,

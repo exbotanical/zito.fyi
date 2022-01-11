@@ -147,7 +147,7 @@ export const config: SiteConfig = isTestEnv
 				 * Admin 'author' section text
 				 */
 				about:
-					"I'm a frontend software developer and comp-sci enthusiast. I write source code reviews and blog about reactive programming, linux, C and JavaScript.",
+					'Frontend software developer. Comp-sci enthusiast. I write source code reviews and blog about programming.',
 
 				/**
 				 * Admin 'author' section avatar

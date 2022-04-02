@@ -12,8 +12,10 @@ export function QueryWrapper({
 }: {
 	element: React.ReactChild;
 }): JSX.Element {
-  return <QueryClientProvider client={queryClient}>
-		{element}
-		<ReactQueryDevtools initialIsOpen={false} />
-	</QueryClientProvider>
+	return (
+		<QueryClientProvider client={queryClient}>
+			{element}
+			<ReactQueryDevtools initialIsOpen={false} />
+		</QueryClientProvider>
+	);
 }

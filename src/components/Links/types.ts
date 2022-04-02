@@ -1,9 +1,9 @@
 export interface LinkProps {
-	className?: string;
 	activeClassName?: string;
+	ariaLabel?: string;
 	children: React.ReactNode;
-	to: string;
+	className?: string;
 	href?: string;
 	sansBasePath?: boolean;
-	ariaLabel?: string;
+	to: string;
 }

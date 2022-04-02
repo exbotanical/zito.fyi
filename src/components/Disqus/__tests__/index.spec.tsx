@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import cloneDeep from 'clone-deep';
-import React from 'react';
 import { mocked } from 'jest-mock';
+import React from 'react';
 
 import { post, config } from '../../../../test/fixtures';
 import { useConfig } from '../../../config';

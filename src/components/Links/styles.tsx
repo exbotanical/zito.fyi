@@ -95,9 +95,9 @@ export const IconLink = styled(BaseLink)`
 	${IconCSS}
 
 	border-radius: 9999px;
+	transition-duration: 300ms;
 	transition-property: color, background-color, opacity, transform;
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-	transition-duration: 300ms;
 
 	&:hover {
 		transform: scale(1.25);

@@ -12,15 +12,14 @@ tags:
   - software engineering
 ---
 
-# Dillinger
-
 ## _The Last Markdown Editor, Ever_
 
 [![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-Dillinger is a cloud-enabled, mobile-ready, offline-storage compatible, AngularJS-powered HTML5 Markdown editor.
+Dillinger is a cloud-enabled, mobile-ready, offline-storage compatible,
+AngularJS-powered HTML5 Markdown editor.
 
 - Type some Markdown on the left
 - See HTML in the right
@@ -128,7 +127,7 @@ gulp watch
 karma test
 ```
 
-#### Building for source
+### Building for source
 
 For production release:
 
@@ -164,7 +163,8 @@ your host. In this example, we simply map port 8000 of the host to
 port 8080 of the Docker (or whatever port was exposed in the Dockerfile):
 
 ```sh
-docker run -d -p 8000:8080 --restart=always --cap-add=SYS_ADMIN --name=dillinger <youruser>/dillinger:${package.json.version}
+docker run -d -p 8000:8080 --restart=always --cap-add=SYS_ADMIN --name=dillinger
+<youruser>/dillinger:${package.json.version}
 ```
 
 > Note: `--capt-add=SYS-ADMIN` is required for PDF rendering.

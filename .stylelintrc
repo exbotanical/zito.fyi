@@ -1,5 +1,5 @@
 {
   "extends": [
-    "@magister_zito/stylelint-config"
+    "@magister_zito/stylelint-config/styled-components"
   ]
 }

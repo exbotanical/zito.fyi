@@ -1,5 +1,5 @@
-import memfs from 'memfs';
 import { mocked } from 'jest-mock';
+import memfs from 'memfs';
 
 import {
 	createFeed,

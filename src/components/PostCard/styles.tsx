@@ -51,9 +51,9 @@ export const Header = styled.div`
 `;
 
 export const Excerpt = styled(Body)<CardStyleProps>`
-	display: -webkit-box;
+	display: box;
 	overflow: hidden;
-	-webkit-box-orient: vertical;
+	box-orient: vertical;
 	-webkit-line-clamp: ${({ hero }) => (hero ? 5 : 2)};
 `;
 

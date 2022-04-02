@@ -1,8 +1,8 @@
 import { screen, cleanup, render } from '@testing-library/react';
 import cloneDeep from 'clone-deep';
 import * as gatsby from 'gatsby';
-import React from 'react';
 import { mocked } from 'jest-mock';
+import React from 'react';
 
 import { config } from '../../../../test/fixtures';
 import { useConfig } from '../../../config';

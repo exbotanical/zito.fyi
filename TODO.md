@@ -34,20 +34,6 @@
 - [ ] parallelize
 - [ ] cron job to smoke test in different browsers
 
-## Posts
-
-- [ ] "People Who Write C"
-- [ ] dev dependencies and JAMStack (everything is a dep because builds yada yada)
-- [ ] Duff's Device
-- [ ] How ESM Works Under the Hood
-- [ ] XMLHttpRequest under the hood
-- [ ] why prettier (lang server / vs code plugin) should have a mode that allows you to only auto-format code you've
-just written (ignoring existing code in that file) to reduce producing convoluted git diffs that your coworkers have to deal with.
-this makes sense anyway, because we can assume code that is being ignored was also formatted because this mode would have run the
-formatter when it was written. this could all be much more efficient
-
-- [ ] write a formatter with this mode ^
-
 ## Misc
 
 - [ ] attempt to create reusable workflow for pnpm scripts (again)

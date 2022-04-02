@@ -76,7 +76,6 @@ export function PostShare({ post }: PostShareProps): JSX.Element {
 					</LinkedinShareButton>
 					<S.LinkButton
 						onClick={() => {
-							// eslint-disable-next-line no-void
 							void navigator.clipboard.writeText(url);
 							setShowlinkNotification(true);
 						}}

@@ -2,7 +2,7 @@
 Cypress.Commands.add('isInViewport', (element: string) => {
 	cy.get(element).then(($el) => {
 		cy.window().then((window) => {
-			const bottom = Cypress.$(window).height();
+			const bottom = Cypress.$(window).height()!;
 
 			const rect = $el[0].getBoundingClientRect();
 

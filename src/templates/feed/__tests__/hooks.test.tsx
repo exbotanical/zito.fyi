@@ -1,9 +1,9 @@
 import { fireEvent } from '@testing-library/react';
 import { renderHook, act } from '@testing-library/react-hooks';
 import fetchMock from 'fetch-mock';
+import { mocked } from 'jest-mock';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { mocked } from 'jest-mock';
 
 import { config } from '../../../../test/fixtures';
 import Index0 from '../../../../test/fixtures/feedMetadata/index-0.json';

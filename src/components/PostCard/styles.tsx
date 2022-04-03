@@ -2,7 +2,7 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 import styled, { css } from 'styled-components';
 
 import { ImageShadow } from '@/components/Image';
-import { Body, BREAKPOINTS } from '@/theme';
+import { Body, BREAKPOINTS } from '@/styles';
 
 interface CardStyleProps {
 	hero?: boolean;

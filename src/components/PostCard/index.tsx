@@ -9,7 +9,7 @@ import type { Post } from '@/types';
 
 import { TransparentLink } from '@/components/Links';
 import { PostInfo } from '@/components/PostInfo';
-import { H3 } from '@/theme/Primitives';
+import { H3 } from '@/styles/Primitives';
 
 interface PostCardProps {
 	post?: Post;

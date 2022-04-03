@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { H1 } from '@/theme';
+import { H1 } from '@/styles';
 
 export const ScreenReaderOnlyCss = css`
 	position: absolute !important;

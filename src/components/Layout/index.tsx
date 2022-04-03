@@ -7,7 +7,7 @@ import { Footer } from '@/components/Footer';
 import { LayoutWidthContainer } from '@/components/LayoutWidthContainer';
 import { Navigation } from '@/components/Navigation';
 import { SEO } from '@/components/SEO';
-import { ThemeProvider, BREAKPOINTS } from '@/theme';
+import { ThemeProvider, BREAKPOINTS } from '@/styles';
 
 interface LayoutProps {
 	children?: React.ReactNode;
@@ -31,7 +31,6 @@ const LayoutGrid = styled.div`
 export function Layout({ children, post }: LayoutProps): JSX.Element {
 	return (
 		<ThemeProvider>
-			{/* eslint-disable-next-line react/jsx-pascal-case */}
 			<SEO post={post} />
 			<LayoutGrid>
 				<LayoutWidthContainer>

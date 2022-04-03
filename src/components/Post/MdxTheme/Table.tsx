@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import { WidthWrapper } from '@/components/Post/PostSpacing';
-import { typographyStyles } from '@/theme';
+import { typographyStyles } from '@/styles';
 
 interface TableProps {
 	children?: React.ReactNode;
@@ -34,7 +34,7 @@ const SharedCellCSS = css<CellProps>`
 export const HeadCell = styled.th<CellProps>`
 	${SharedCellCSS}
 
-	border-bottom: 2px solid var(--color-text, rgb(0, 0, 0));
+	border-bottom: 2px solid ${({ theme }) => theme.colors.b1};
 	margin-right: 4px;
 	margin-left: 4px;
 `;
@@ -46,10 +46,10 @@ export const BodyCell = styled.td<CellProps>`
 	padding-right: 16px;
 	padding-bottom: 4px;
 	padding-left: 16px;
-	border-bottom: 1px solid var(--color-grey-300, rgb(12, 105, 121));
+	border-bottom: 1px solid ${({ theme }) => theme.colors.g1};
 
 	:hover {
-		background-color: var(--color-grey-2000, rgb(10, 49, 68));
+		background-color: ${({ theme }) => theme.colors.g2};
 	}
 `;
 

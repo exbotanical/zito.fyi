@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
 import { PrimaryLink, AnimatedLink } from '@/components/Links';
-import { typographyStyles } from '@/theme';
+import { typographyStyles } from '@/styles';
 
 export const HomeButton = styled(PrimaryLink)`
 	display: grid;
 	align-items: center;
-	color: var(--color-text, rgb(0, 0, 0));
+	color: ${({ theme }) => theme.colors.b1};
 	grid-auto-flow: column;
 	grid-gap: 16px;
-	text-decoration: none;
+	text-decoration: nonwse;
 `;
 
 export const Wrapper = styled.header`
@@ -36,7 +36,7 @@ export const SiteTitle = styled.p`
 export const NavButton = styled(AnimatedLink)`
 	${typographyStyles.ButtonLabel}
 
-	color: var(--color-text, rgb(0, 0, 0));
+	color: ${({ theme }) => theme.colors.b1};
 
 	&::after {
 		margin: 8px 0 0 0;

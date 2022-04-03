@@ -1,7 +1,7 @@
 import { Link } from '@styled-icons/boxicons-regular';
 import styled from 'styled-components';
 
-import { H3 } from '@/theme';
+import { H3 } from '@/styles';
 
 export const Wrapper = styled.section`
 	display: grid;
@@ -25,7 +25,7 @@ export const LinkWrapper = styled.div`
 `;
 
 export const Label = styled(H3)`
-	color: var(--color-grey-500, rgb(218, 59, 59));
+	color: ${({ theme }) => theme.colors.p4};
 	text-transform: uppercase;
 `;
 
@@ -35,10 +35,10 @@ export const LinkGrid = styled.div`
 	grid-gap: 12px;
 
 	& svg {
-		color: var(--color-grey-500, #9a1d1d);
+		color: ${({ theme }) => theme.colors.p4};
 
 		&:hover {
-			color: var(--color-primary-600, #9a1d1d);
+			color: ${({ theme }) => theme.colors.p5};
 		}
 	}
 `;

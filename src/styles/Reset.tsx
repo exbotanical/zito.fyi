@@ -20,8 +20,8 @@ body {
 	min-height: 100%;
 	padding: 0;
 	margin: 0;
-	background: var(--color-background, rgb(247, 240, 194));
-	color: var(--color-text, rgb(0, 0, 0));
+	background: ${({ theme }) => theme.colors.p1};;
+	color: ${({ theme }) => theme.colors.b1};;
 }
 
 #___gatsby #gatsby-focus-wrapper {

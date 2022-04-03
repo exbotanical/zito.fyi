@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import type { Post } from '../types';
 
 import { Feed } from '@/components/Feed';
-import { H2 } from '@/theme';
+import { H2 } from '@/styles';
 
 interface RelatedPostsProps {
 	posts: Post[];
@@ -17,7 +17,7 @@ const Wrapper = styled.aside`
 `;
 
 const Label = styled(H2)`
-	color: var(--color-primary, rgb(0, 0, 0));
+	color: ${({ theme }) => theme.colors.l1};
 	text-transform: uppercase;
 `;
 

@@ -5,7 +5,7 @@ import type { FeedItems } from '@/types';
 
 import { LayoutWidthContainer } from '@/components//LayoutWidthContainer';
 import { PostCard } from '@/components/PostCard';
-import { BREAKPOINTS } from '@/theme/constants';
+import { BREAKPOINTS } from '@/styles/constants';
 
 interface FeedProps {
 	feedItems: FeedItems;

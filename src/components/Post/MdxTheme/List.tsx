@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { ExtendingWrapper } from '@/components/Post/PostSpacing';
-import { typographyStyles } from '@/theme';
+import { typographyStyles } from '@/styles';
 
 interface ListProps {
 	children?: React.ReactNode;
@@ -43,12 +43,12 @@ export const Item = styled.li`
 	}
 
 	::marker {
-		color: var(--color-grey-500, rgb(191, 85, 105));
+		color: ${({ theme }) => theme.colors.p4};
 	}
 
 	:hover {
 		::marker {
-			color: var(--color-primary-100, rgb(251, 248, 228));
+			color: ${({ theme }) => theme.colors.p1};
 		}
 	}
 `;

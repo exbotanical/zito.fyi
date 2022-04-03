@@ -13,41 +13,41 @@ const TransparentCSS = css`
 `;
 
 export const IconCSS = css`
-	color: var(--color-primary-100, rgb(0, 0, 0));
+	color: ${({ theme }) => theme.colors.b3};
 
 	&:hover {
-		color: var(--color-primary-400, #9a1d1d);
+		color: ${({ theme }) => theme.colors.p2};
 	}
 `;
 
 const PrimaryCSS = css`
 	display: inline-block;
-	color: var(--color-text, rgb(0, 0, 0));
+	color: ${({ theme }) => theme.colors.b1};
 	text-decoration: none;
 
 	&:hover {
-		color: var(--color-primary, #9a1d1d);
+		color: ${({ theme }) => theme.colors.l1};
 	}
 `;
 
 const AnimatedCSS = css<LinkStyleProps>`
 	display: inline-block;
 	background-color: inherit;
-	color: var(--color-primary, #9a1d1d);
+	color: ${({ theme }) => theme.colors.l1};
 	text-decoration: none;
 
 	&::after {
 		display: block;
 		width: 100%;
 		height: 2px;
-		background-color: var(--color-primary, #9a1d1d);
+		background-color: ${({ theme }) => theme.colors.l1};
 		content: '';
 		transform: scaleX(0);
 		transition: transform 300ms ease;
 	}
 
 	&:hover {
-		color: var(--color-primary, #9a1d1d);
+		color: ${({ theme }) => theme.colors.l1};
 	}
 
 	&:hover::after {
@@ -69,7 +69,7 @@ const HeadingCss = css`
 		position: absolute;
 		display: block;
 		padding-right: 8px;
-		color: var(--color-primary, #9a1d1d);
+		color: ${({ theme }) => theme.colors.l1};
 		content: '#';
 		transform: translateX(-100%);
 	}

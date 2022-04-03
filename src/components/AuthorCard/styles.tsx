@@ -2,9 +2,7 @@ import styled from 'styled-components';
 
 import { Separator } from '@/components/Separator';
 import { Socials } from '@/components/Socials';
-import { H3 } from '@/theme';
-
-const SM_BREAKPOINT = '500px';
+import { BREAKPOINTS, H3 } from '@/styles';
 
 export const Wrapper = styled.aside`
 	display: grid;
@@ -19,7 +17,7 @@ export const Main = styled.div`
 	grid-gap: 32px;
 	justify-items: center;
 
-	@media (max-width: ${SM_BREAKPOINT}) {
+	@media (max-width: ${BREAKPOINTS.sm}) {
 		grid-auto-flow: row;
 	}
 `;
@@ -30,7 +28,7 @@ export const Info = styled.div`
 	justify-content: flex-start;
 	grid-gap: 16px;
 
-	@media (max-width: ${SM_BREAKPOINT}) {
+	@media (max-width: ${BREAKPOINTS.sm}) {
 		justify-content: center;
 		grid-auto-flow: row;
 	}
@@ -44,7 +42,7 @@ export const Contact = styled.div`
 	grid-auto-flow: column;
 	grid-gap: 24px;
 
-	@media (max-width: ${SM_BREAKPOINT}) {
+	@media (max-width: ${BREAKPOINTS.sm}) {
 		justify-content: center;
 		margin-top: 32px;
 		grid-auto-flow: row;
@@ -61,12 +59,12 @@ export const Avatar = styled.img`
 `;
 
 export const ShareLabel = styled(H3)`
-	color: var(--color-grey-500, rgb(218, 59, 59));
+	color: ${({ theme }) => theme.colors.p4};
 	line-height: 100%;
 `;
 
 export const AuthorName = styled(H3)`
-	color: var(--color-grey-1000, rgb(251, 248, 228));
+	color: ${({ theme }) => theme.colors.b3};
 `;
 
 export const AboutText = styled.div`
@@ -74,10 +72,18 @@ export const AboutText = styled.div`
 	min-width: 100%;
 	align-self: center;
 
-	@media (max-width: ${SM_BREAKPOINT}) {
+	& > p {
+		color: ${({ theme }) => theme.colors.b3};
+	}
+
+	@media (max-width: ${BREAKPOINTS.sm}) {
 		& > p {
 			text-align: justify;
 		}
+	}
+
+	@media (min-width: ${BREAKPOINTS.lg}) {
+		width: 500px;
 	}
 `;
 

@@ -3,8 +3,8 @@ import { createGlobalStyle, css } from 'styled-components';
 export const ScrollbarStyles = createGlobalStyle`${css`
 	/* Firefox */
 	* {
-		scrollbar-color: var(--color-grey-500, rgb(191, 85, 105))
-			var(--color-background, rgb(247, 240, 194));
+		scrollbar-color: ${({ theme }) => theme.colors.p4};
+		${({ theme }) => theme.colors.p1};
 	}
 
 	/* WebKit based */
@@ -14,21 +14,21 @@ export const ScrollbarStyles = createGlobalStyle`${css`
 	}
 
 	*::-webkit-scrollbar-track {
-		background: var(--color-background, rgb(247, 240, 194));
+		background: ${({ theme }) => theme.colors.p1};
 	}
 
 	*::-webkit-scrollbar-thumb {
-		border: 2px solid var(--color-background, rgb(247, 240, 194));
-		background: var(--color-grey-500, rgb(191, 85, 105));
+		border: 2px solid ${({ theme }) => theme.colors.p1};
+		background: ${({ theme }) => theme.colors.p4};
 		border-radius: 6px;
 	}
 
 	*::-webkit-scrollbar-thumb:hover {
-		background: var(--color-primary-200, rgb(251, 248, 228));
+		background: ${({ theme }) => theme.colors.p2};
 	}
 
 	*::-webkit-scrollbar-thumb:active {
-		background: var(--color-primary, #9a1d1d);
+		background: ${({ theme }) => theme.colors.l1};
 	}
 `}
 `;

@@ -3,8 +3,8 @@ import { Link as GatsbyLink } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 
-import { typographyStyles } from '@/theme';
-import { BREAKPOINTS } from '@/theme/constants';
+import { typographyStyles } from '@/styles';
+import { BREAKPOINTS } from '@/styles/constants';
 
 interface PostButtonProps {
 	to: string;
@@ -15,7 +15,7 @@ export const ReadButton = styled(GatsbyLink)`
 	align-items: center;
 	align-self: flex-end;
 	justify-content: start;
-	color: var(--color-primary, #9a1d1d);
+	color: ${({ theme }) => theme.colors.l1};
 	grid-auto-flow: column;
 	grid-gap: 12px;
 	text-decoration: none;

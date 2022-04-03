@@ -8,7 +8,7 @@ import { WidthWrapper } from './PostSpacing';
 import type { Post } from '@/types';
 
 import { PostInfo } from '@/components/PostInfo';
-import { H1, Body } from '@/theme';
+import { H1, Body } from '@/styles';
 
 interface PostIntroProps {
 	post: Post;

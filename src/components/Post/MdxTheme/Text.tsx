@@ -6,7 +6,7 @@ import type { AnyStyledComponent } from 'styled-components';
 
 import { HeadingLink } from '@/components/Links';
 import { ExtendingWrapper } from '@/components/Post/PostSpacing';
-import * as styles from '@/theme';
+import * as styles from '@/styles';
 
 interface HeadingProps {
 	children: React.ReactNode;
@@ -70,9 +70,9 @@ const generateHeading = (
 
 const BlockquoteStyle = styled.blockquote`
 	padding: 8px 16px;
-	border-left: 8px solid var(--color-primary-300, rgb(207, 12, 0));
-	background-color: var(--color-grey-200, rgb(3, 83, 99));
-	color: var(--color-inverted-text, rgb(251, 248, 228));
+	border-left: 8px solid ${({ theme }) => theme.colors.p3};
+	background-color: ${({ theme }) => theme.colors.p6};
+	color: ${({ theme }) => theme.colors.f1};
 `;
 
 export const Paragraph = undefined;

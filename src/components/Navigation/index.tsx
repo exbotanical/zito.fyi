@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { Moon, Sun } from '../icons';
 
 import * as S from '@/components/Navigation/styles';
 import { useConfig } from '@/config';
-import { useTheme } from '@/theme';
+
+import { ThemeToggleContext } from '@/styles/Theme';
 
 export function Navigation(): JSX.Element {
 	const config = useConfig();
-	const { theme, setTheme } = useTheme();
+	const { theme, toggleTheme } = useContext(ThemeToggleContext);
 
 	return (
 		<S.Wrapper>
@@ -19,8 +20,8 @@ export function Navigation(): JSX.Element {
 
 			<S.ThemeButton
 				data-testid="theme_btn"
-				onClick={setTheme}
-				onKeyPress={setTheme}
+				onClick={toggleTheme}
+				onKeyPress={toggleTheme}
 				role="button"
 				tabIndex={0}
 				title="button"

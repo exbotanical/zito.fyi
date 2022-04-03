@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { keyframes, css } from 'styled-components';
 
-import { Caption } from '@/theme/Primitives';
+import { Caption } from '@/styles/Primitives';
 
 const popUpStartState = css`
 	bottom: 0;
@@ -47,11 +47,11 @@ const PopUp = styled.div`
 	animation-direction: alternate;
 	animation-fill-mode: both;
 	animation-iteration-count: 2;
-	background-color: var(--color-primary-100, rgb(0, 0, 0));
+	background-color: ${({ theme }) => theme.colors.p1};
 	border-radius: 6px;
 	box-shadow: 0 6px 10px rgba(0, 0, 0, 0.14), 0 1px 18px rgba(0, 0, 0, 0.12),
 		0 3px 5px rgba(0, 0, 0, 0.2);
-	color: var(--color-primary-900, rgb(251, 248, 228));
+	color: ${({ theme }) => theme.colors.p6};
 	transform: translateX(-50%);
 
 	@media screen and (prefers-reduced-motion: reduce), (update: slow) {

@@ -7,7 +7,7 @@ import { POST_WIDTH } from './PostSpacing';
 import type { IGatsbyImageData } from 'gatsby-plugin-image';
 
 import { BaseImage, ImageShadow } from '@/components/Image';
-import { typographyStyles } from '@/theme';
+import { typographyStyles } from '@/styles';
 
 interface FigureProps {
 	cover?: boolean;
@@ -65,13 +65,13 @@ const StyledGatsbyImage = styled(GatsbyImage)`
 export const FigCaptionCss = css`
 	${typographyStyles.Caption}
 
-	color: var(--color-grey-700, rgb(0, 0, 0));
+	color: ${({ theme }) => theme.colors.p2};
 `;
 
 const FigCaption = styled.figcaption`
 	${typographyStyles.Caption}
 
-	color: var(--color-grey-700, rgb(0, 0, 0));
+	color: ${({ theme }) => theme.colors.p2};
 `;
 
 export function PostImage({ src, alt, title }: ImageProps): JSX.Element {

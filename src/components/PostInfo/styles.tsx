@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { PrimaryLink } from '@/components/Links';
-import { typographyStyles, Caption } from '@/theme';
+import { typographyStyles, Caption } from '@/styles';
 
 export const TagLink = styled(PrimaryLink)`
 	${typographyStyles.Overline}
@@ -20,7 +20,7 @@ export const CategoryLink = styled(PrimaryLink)`
 `;
 
 export const PostCaption = styled(Caption)`
-	color: var(--color-primary-300, rgb(207, 12, 0));
+	color: ${({ theme }) => theme.colors.p3};
 `;
 
 export const InfoGrid = styled.div`

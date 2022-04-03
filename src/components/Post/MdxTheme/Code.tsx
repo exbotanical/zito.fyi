@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { createGlobalStyle, css } from 'styled-components';
 
 import { SIDE_PADDING } from '@/components/Post/PostSpacing';
-import { typographyStyles } from '@/theme';
+import { typographyStyles } from '@/styles';
 
 const CODE_CONTENT_WIDTH = '736px';
 const CODE_BLOCK_SIZE = `calc(${CODE_CONTENT_WIDTH} + 2 * ${SIDE_PADDING})`;

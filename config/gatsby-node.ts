@@ -13,11 +13,12 @@ import {
 } from '../node';
 
 import { config } from './config';
-// StreamLogger.init();
 
 import type { BaseFrontmatter } from '../node/types';
 import type { GatsbyNode } from 'gatsby';
+import { StreamLogger } from '../node/logger';
 
+StreamLogger.init();
 const POST_PAGE_COMPONENT = require.resolve('../src/templates/post/queries.ts');
 
 export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions }) => {

@@ -6,7 +6,7 @@ import { Socials } from '../Socials';
 import * as S from './styles';
 
 import { useConfig } from '@/config';
-import { Caption } from '@/theme/Primitives';
+import { Caption } from '@/styles/Primitives';
 
 export function Footer(): JSX.Element {
 	const config = useConfig();

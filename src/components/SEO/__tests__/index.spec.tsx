@@ -1,7 +1,7 @@
 import { config, post } from '@test/fixtures';
 import { SEO } from '../index';
 
-jest.mock('../../../config/useConfig', () => ({
+jest.mock('@/config/useConfig', () => ({
 	useConfig: jest.fn(() => config)
 }));
 

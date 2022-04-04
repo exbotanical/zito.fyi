@@ -1,4 +1,4 @@
-import type { FeedMetadataJson } from '../../types';
+import type { FeedMetadataJson } from '@/types';
 
 export interface PageContext {
 	pageCount: number;

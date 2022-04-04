@@ -53,9 +53,10 @@ jest.mock('../../node/feed', () => ({
 const feedUtilsMock = mocked(feedUtils, true);
 
 jest.mock('../../node/queries', () => {
-	const postsList = jest.requireActual<typeof import('../../test/fixtures')>(
-		'../../test/fixtures'
-	).postsList;
+	const postsList =
+		jest.requireActual<typeof import('@test/fixtures')>(
+			'@test/fixtures'
+		).postsList;
 
 	const testPostsList = [
 		...postsList,

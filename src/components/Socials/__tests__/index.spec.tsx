@@ -8,7 +8,7 @@ import { RenderStyled } from '@test/utils/styled';
 
 const user = config.user;
 
-jest.mock('../../../config/useConfig', () => ({
+jest.mock('@/config/useConfig', () => ({
 	useConfig: jest.fn(() => config)
 }));
 

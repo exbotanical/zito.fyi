@@ -6,7 +6,7 @@ import { config } from '@test/fixtures';
 import { generateHeadings } from '../Text';
 import { RenderStyled } from '@test/utils/styled';
 
-jest.mock('../../../../config/useConfig', () => ({
+jest.mock('@/config/useConfig', () => ({
 	useConfig: jest.fn(() => config)
 }));
 

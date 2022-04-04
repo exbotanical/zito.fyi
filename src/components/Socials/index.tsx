@@ -3,10 +3,10 @@ import { MailSend, Rss } from '@styled-icons/boxicons-regular';
 import React from 'react';
 import styled from 'styled-components';
 
-import { useConfig } from '../../config';
+import { useConfig } from '@/config';
 import { IconLink } from '../Links';
 
-import type { SiteConfig } from '../../types';
+import type { SiteConfig } from '@/types';
 import type { StyledIcon } from '@styled-icons/styled-icon';
 
 const generateLink = (

@@ -7,7 +7,7 @@ import { useConfig } from '@/config';
 import { DisqusPlugin } from '../index';
 import { RenderStyled } from '@test/utils/styled';
 
-jest.mock('../../../config/useConfig', () => ({
+jest.mock('@/config/useConfig', () => ({
 	useConfig: jest.fn(() => config)
 }));
 

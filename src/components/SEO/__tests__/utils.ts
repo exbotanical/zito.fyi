@@ -2,11 +2,7 @@ import type React from 'react';
 
 import isObject from 'lodash.isobject';
 
-import type {
-	UserMetadata,
-	BaseSiteMetadata,
-	OrgMetadata
-} from '../../../types';
+import type { UserMetadata, BaseSiteMetadata, OrgMetadata } from '@/types';
 import type { SeoData, AbridgedPost } from '../types';
 
 // recursively scan for nullish values

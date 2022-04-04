@@ -1,4 +1,4 @@
-import { KEYS } from '../../src/theme/constants';
+import { KEYS } from '@/styles/constants';
 
 const themeTestPages = ['/', '/my-favorite-soft-machine-records'];
 

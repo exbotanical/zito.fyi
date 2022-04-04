@@ -7,7 +7,7 @@ import { config, post } from '@test/fixtures';
 import { PostShare } from '../index';
 import { RenderStyled } from '@test/utils/styled';
 
-jest.mock('../../../../config/useConfig', () => ({
+jest.mock('@/config/useConfig', () => ({
 	useConfig: jest.fn(() => config)
 }));
 

@@ -11,7 +11,7 @@ import { BaseLink } from '../BaseLink';
 import type { SiteConfig } from '@/types';
 import { RenderStyled } from '@test/utils/styled';
 
-jest.mock('../../../config/useConfig', () => ({
+jest.mock('@/config/useConfig', () => ({
 	useConfig: jest.fn(() => config)
 }));
 

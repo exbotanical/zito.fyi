@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 import { PostTemplate } from '..';
 import { post, postQueryResult, config } from '@test/fixtures';
 
-import type { PostJson } from '../../../types';
+import type { PostJson } from '@/types';
 import { RenderStyled } from '@test/utils/styled';
 
 const postFromJson = JSON.parse(JSON.stringify(post)) as PostJson;
@@ -18,7 +18,7 @@ const pageContext = {
 
 const originalError = console.error.bind(console.error);
 
-jest.mock('../../../config/useConfig', () => ({
+jest.mock('@/config/useConfig', () => ({
 	useConfig: jest.fn(() => config)
 }));
 

@@ -37,3 +37,4 @@
 ## Misc
 
 - [ ] attempt to create reusable workflow for pnpm scripts (again)
+- [ ] convert to monorepo

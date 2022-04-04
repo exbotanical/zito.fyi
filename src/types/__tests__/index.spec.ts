@@ -20,7 +20,7 @@ const consoleWarnSpy = jest
 	.spyOn(global.console, 'warn')
 	.mockImplementation(() => {});
 
-jest.mock('../../config');
+jest.mock('@/config');
 const mockedConfig = mocked(config, true);
 mockedConfig.site.url = 'http://test.com';
 mockedConfig.pathPrefix = '/test';

@@ -1,4 +1,4 @@
-import type { PostBySlugQueryResult } from '../../src/types';
+import type { PostBySlugQueryResult } from '@/types';
 
 export const postQueryResult: PostBySlugQueryResult = {
 	mdx: {

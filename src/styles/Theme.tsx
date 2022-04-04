@@ -3,6 +3,7 @@ import { Typography } from './Typography';
 import React, { createContext } from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { useLocalStorage } from '@/hooks';
+import { isBrowserRuntime } from '@/utils';
 
 type Themes = 'dark' | 'light';
 interface ThemeContext {
@@ -73,6 +74,7 @@ export const ThemeToggleContext = createContext({} as ThemeContext);
 
 export function ThemeProvider({ children }: ThemeProps): JSX.Element {
 	const prefersDark =
+		isBrowserRuntime &&
 		window.matchMedia &&
 		window.matchMedia('(prefers-color-scheme: dark)').matches;
 

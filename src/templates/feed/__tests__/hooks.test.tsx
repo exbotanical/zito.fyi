@@ -42,7 +42,7 @@ jest.mock('react', () => {
 	};
 });
 
-jest.mock('../../../config/useConfig', () => ({
+jest.mock('@/config/useConfig', () => ({
 	useConfig: jest.fn(() => config)
 }));
 

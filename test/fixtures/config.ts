@@ -1,4 +1,4 @@
-import type { SiteConfig } from '../../src/types';
+import type { SiteConfig } from '@/types';
 
 export const config: SiteConfig = {
 	assetDir: 'static',

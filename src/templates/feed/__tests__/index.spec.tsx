@@ -8,10 +8,10 @@ import { config } from '@test/fixtures';
 import Index0 from '@test/fixtures/feedMetadata/index-0.json';
 import { renderWithQueryClient } from '@test/utils/render';
 
-import type { FeedMetadataJson } from '../../../types';
+import type { FeedMetadataJson } from '@/types';
 import type { PageContext } from '../types';
 
-jest.mock('../../../config/useConfig', () => ({
+jest.mock('@/config/useConfig', () => ({
 	useConfig: jest.fn(() => config)
 }));
 

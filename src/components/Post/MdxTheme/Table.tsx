@@ -34,7 +34,7 @@ const SharedCellCSS = css<CellProps>`
 export const HeadCell = styled.th<CellProps>`
 	${SharedCellCSS}
 
-	border-bottom: 2px solid ${({ theme }) => theme.colors.b1};
+	border-bottom: 2px solid ${({ theme }) => theme.colors.font.primary};
 	margin-right: 4px;
 	margin-left: 4px;
 `;
@@ -46,10 +46,10 @@ export const BodyCell = styled.td<CellProps>`
 	padding-right: 16px;
 	padding-bottom: 4px;
 	padding-left: 16px;
-	border-bottom: 1px solid ${({ theme }) => theme.colors.g1};
+	border-bottom: 1px solid ${({ theme }) => theme.colors.border.primary};
 
 	:hover {
-		background-color: ${({ theme }) => theme.colors.g2};
+		background-color: ${({ theme }) => theme.colors.font.hover};
 	}
 `;
 

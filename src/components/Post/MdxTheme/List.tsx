@@ -43,12 +43,12 @@ export const Item = styled.li`
 	}
 
 	::marker {
-		color: ${({ theme }) => theme.colors.p4};
+		color: ${({ theme }) => theme.colors.font.primary};
 	}
 
 	:hover {
 		::marker {
-			color: ${({ theme }) => theme.colors.p1};
+			color: ${({ theme }) => theme.colors.font.primary};
 		}
 	}
 `;

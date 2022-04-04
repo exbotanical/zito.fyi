@@ -47,11 +47,11 @@ const PopUp = styled.div`
 	animation-direction: alternate;
 	animation-fill-mode: both;
 	animation-iteration-count: 2;
-	background-color: ${({ theme }) => theme.colors.p1};
+	background-color: ${({ theme }) => theme.colors.bg.tertiary};
 	border-radius: 6px;
 	box-shadow: 0 6px 10px rgba(0, 0, 0, 0.14), 0 1px 18px rgba(0, 0, 0, 0.12),
 		0 3px 5px rgba(0, 0, 0, 0.2);
-	color: ${({ theme }) => theme.colors.p6};
+	color: ${({ theme }) => theme.colors.bg.primary};
 	transform: translateX(-50%);
 
 	@media screen and (prefers-reduced-motion: reduce), (update: slow) {

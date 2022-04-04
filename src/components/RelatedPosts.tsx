@@ -17,7 +17,7 @@ const Wrapper = styled.aside`
 `;
 
 const Label = styled(H2)`
-	color: ${({ theme }) => theme.colors.l1};
+	color: ${({ theme }) => theme.colors.link};
 	text-transform: uppercase;
 `;
 

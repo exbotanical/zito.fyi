@@ -6,7 +6,7 @@ import { typographyStyles } from '@/styles';
 export const HomeButton = styled(PrimaryLink)`
 	display: grid;
 	align-items: center;
-	color: ${({ theme }) => theme.colors.b1};
+	color: ${({ theme }) => theme.colors.font.primary};
 	grid-auto-flow: column;
 	grid-gap: 16px;
 	text-decoration: nonwse;
@@ -36,7 +36,7 @@ export const SiteTitle = styled.p`
 export const NavButton = styled(AnimatedLink)`
 	${typographyStyles.ButtonLabel}
 
-	color: ${({ theme }) => theme.colors.b1};
+	color: ${({ theme }) => theme.colors.font.primary};
 
 	&::after {
 		margin: 8px 0 0 0;

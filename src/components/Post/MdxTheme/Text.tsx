@@ -70,9 +70,9 @@ const generateHeading = (
 
 const BlockquoteStyle = styled.blockquote`
 	padding: 8px 16px;
-	border-left: 8px solid ${({ theme }) => theme.colors.p3};
-	background-color: ${({ theme }) => theme.colors.p6};
-	color: ${({ theme }) => theme.colors.f1};
+	border-left: 8px solid ${({ theme }) => theme.colors.bg.tertiary};
+	background-color: ${({ theme }) => theme.colors.bg.secondary};
+	color: ${({ theme }) => theme.colors.font.secondary};
 `;
 
 export const Paragraph = undefined;

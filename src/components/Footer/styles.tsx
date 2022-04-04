@@ -4,8 +4,7 @@ export const Wrapper = styled.footer`
 	display: grid;
 	align-items: center;
 	padding: 32px 0 16px;
-	background-color: ${({ theme }) => theme.colors.b2};
-	color: ${({ theme }) => theme.colors.p6};
+	background-color: ${({ theme }) => theme.colors.bg.secondary};
 	gap: 40px;
 	justify-items: center;
 `;
@@ -22,5 +21,5 @@ export const Info = styled.div`
 	align-items: center;
 	gap: 8px;
 	justify-items: center;
-	color: ${({ theme }) => theme.colors.b3};
+	color: ${({ theme }) => theme.colors.font.secondary};
 `;

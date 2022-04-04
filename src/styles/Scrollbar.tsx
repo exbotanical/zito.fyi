@@ -3,32 +3,20 @@ import { createGlobalStyle, css } from 'styled-components';
 export const ScrollbarStyles = createGlobalStyle`${css`
 	/* Firefox */
 	* {
-		scrollbar-color: ${({ theme }) => theme.colors.p4};
-		${({ theme }) => theme.colors.p1};
+		scrollbar-color: ${({ theme }) => theme.colors.font.primary};
 	}
 
-	/* WebKit based */
 	*::-webkit-scrollbar {
-		width: 12px;
-		height: 12px;
+		width: 14px;
 	}
 
 	*::-webkit-scrollbar-track {
-		background: ${({ theme }) => theme.colors.p1};
+		background: ${({ theme }) => theme.colors.scroll.bg};
 	}
 
 	*::-webkit-scrollbar-thumb {
-		border: 2px solid ${({ theme }) => theme.colors.p1};
-		background: ${({ theme }) => theme.colors.p4};
-		border-radius: 6px;
-	}
-
-	*::-webkit-scrollbar-thumb:hover {
-		background: ${({ theme }) => theme.colors.p2};
-	}
-
-	*::-webkit-scrollbar-thumb:active {
-		background: ${({ theme }) => theme.colors.l1};
+		background: ${({ theme }) => theme.colors.scroll.fg};
+		border-radius: 3px;
 	}
 `}
 `;

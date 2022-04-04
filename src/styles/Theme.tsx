@@ -1,5 +1,4 @@
 import { Reset } from './Reset';
-import { ScrollbarStyles } from './Scrollbar';
 import { Typography } from './Typography';
 import React, { createContext } from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
@@ -23,39 +22,52 @@ interface ThemeProps {
 
 export const lightTheme = {
 	colors: {
-		p1: 'rgb(251, 248, 228)',
-		p2: 'rgb(247, 240, 194)',
-		p3: 'rgb(218, 59, 59)',
-		p4: 'rgb(191, 85, 105)',
-		p5: 'rgb(142, 96, 117)',
-		p6: 'rgb(10, 49, 68)',
-		g1: 'rgb(102, 95, 101)',
-		g2: 'rgb(255, 181, 120)',
-		b1: 'rgb(0, 0, 0)',
-		b2: 'rgb(10, 49, 68)',
-		b3: 'rgb(251, 248, 228)',
-		l1: 'rgb(207, 12, 0)',
-		f1: 'rgb(251, 248, 228)'
+		font: {
+			primary: 'rgb(0, 0, 0)',
+			secondary: 'rgb(251, 248, 228)',
+			hover: 'rgb(250, 239, 204)'
+		},
+		bg: {
+			primary: 'rgb(251, 248, 228)',
+			secondary: 'rgb(10, 49, 68)',
+			tertiary: 'rgb(191, 85, 105)'
+		},
+		border: {
+			primary: 'rgb(102, 95, 101)'
+		},
+		link: 'rgb(224, 102, 125)',
+		scroll: {
+			fg: 'rgb(224, 102, 125)',
+			bg: 'rgb(255, 181, 120)'
+		}
 	}
 };
 
 export const darkTheme = {
 	colors: {
-		p1: ' rgb(25, 23, 37)',
-		p2: 'rgb(184, 111, 170)',
-		p3: 'rgb(171, 137, 194)',
-		p4: 'rgb(206, 166, 186)',
-		p5: 'rgb(184, 111, 170)',
-		p6: 'rgb(38, 57, 125)',
-		g1: 'rgb(100, 102, 140)',
-		g2: 'rgb(47, 43, 69)',
-		b1: 'rgb(206, 166, 186)',
-		b2: 'rgb(47, 43, 69)',
-		b3: 'rgb(206, 166, 186)',
-		l1: 'rgb(104, 157, 225)',
-		f1: '#fff'
+		font: {
+			primary: 'rgb(206, 166, 186)',
+			secondary: 'rgb(206, 166, 186)',
+			hover: 'rgb(47, 43, 69)'
+		},
+		bg: {
+			primary: 'rgb(25, 23, 37)',
+			secondary: 'rgb(47, 43, 69)',
+			tertiary: 'rgb(214, 102, 149)'
+		},
+
+		border: {
+			primary: 'rgb(100, 102, 140)'
+		},
+
+		link: 'rgb(75, 187, 172)',
+		scroll: {
+			fg: 'rgb(214, 102, 149)',
+			bg: 'rgb(100, 102, 140)'
+		}
 	}
 };
+// rgb(104, 157, 225)
 
 export const ThemeToggleContext = createContext({} as ThemeContext);
 
@@ -82,7 +94,6 @@ export function ThemeProvider({ children }: ThemeProps): JSX.Element {
 			<StyledThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
 				<Reset />
 				<Typography />
-				<ScrollbarStyles />
 				{children}
 			</StyledThemeProvider>
 		</ThemeToggleContext.Provider>

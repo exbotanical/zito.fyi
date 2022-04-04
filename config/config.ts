@@ -5,6 +5,10 @@ import type { SiteConfig } from '../src/types';
 const isTestEnv =
 	process.env.CYPRESS_SUPPORT || process.env.NODE_ENV === 'test';
 
+const yearCreated = 2021;
+
+const currentYear = new Date().getFullYear();
+
 export const config: SiteConfig = isTestEnv
 	? testConfig
 	: {
@@ -73,7 +77,8 @@ export const config: SiteConfig = isTestEnv
 				/**
 				 * Copyright, as displayed in footer and RSS Feed
 				 */
-				copyright: '© Copyright 2021 | Matthew Zito',
+
+				copyright: `© Copyright ${yearCreated} - ${currentYear} | Matthew Zito`,
 
 				/**
 				 * Site description; used for RSS feeds, description meta tag

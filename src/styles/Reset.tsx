@@ -20,8 +20,8 @@ body {
 	min-height: 100%;
 	padding: 0;
 	margin: 0;
-	background: ${({ theme }) => theme.colors.p1};;
-	color: ${({ theme }) => theme.colors.b1};;
+	background: ${({ theme }) => theme.colors.bg.primary};
+	color: ${({ theme }) => theme.colors.font.primary};
 }
 
 #___gatsby #gatsby-focus-wrapper {

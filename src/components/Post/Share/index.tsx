@@ -19,12 +19,13 @@ import type { Post, SiteConfig } from '@/types';
 
 import { Separator } from '@/components/Separator';
 import { useConfig } from '@/config';
+import styled, { css } from 'styled-components';
 
 interface PostShareProps {
 	post: Post;
 }
 
-const generateRelatedtwitterHandles = (config: SiteConfig): string[] => {
+function generateRelatedtwitterHandles(config: SiteConfig): string[] {
 	const relatedtwitterHandles = [];
 
 	if (config.user.twitterHandle) {
@@ -36,7 +37,33 @@ const generateRelatedtwitterHandles = (config: SiteConfig): string[] => {
 	}
 
 	return relatedtwitterHandles;
-};
+}
+
+const HoverStyle = css`
+	transition-duration: 300ms;
+	transition-property: color, background-color, opacity, transform;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	&:hover {
+		transform: scale(1.25);
+	}
+`;
+
+const FacebookShare = styled(FacebookShareButton)`
+	${HoverStyle}
+`;
+
+const TwitterShare = styled(TwitterShareButton)`
+	${HoverStyle}
+`;
+
+const RedditShare = styled(RedditShareButton)`
+	${HoverStyle}
+`;
+
+const LinkedinShare = styled(LinkedinShareButton)`
+	${HoverStyle}
+`;
 
 export function PostShare({ post }: PostShareProps): JSX.Element {
 	const { title, excerpt, url } = post;
@@ -52,28 +79,29 @@ export function PostShare({ post }: PostShareProps): JSX.Element {
 			<S.LinkWrapper>
 				<S.Label>SHARE</S.Label>
 				<S.LinkGrid>
-					<FacebookShareButton quote={excerpt} url={url}>
+					<FacebookShare quote={excerpt} url={url}>
 						<FacebookIcon size={40} />
-					</FacebookShareButton>
-					<TwitterShareButton
+					</FacebookShare>
+
+					<TwitterShare
 						related={relatedtwitterHandles}
 						title={title}
 						url={url}
 						via={config.site.name}
 					>
 						<TwitterIcon size={40} />
-					</TwitterShareButton>
-					<RedditShareButton title={title} url={url}>
+					</TwitterShare>
+					<RedditShare title={title} url={url}>
 						<RedditIcon size={40} />
-					</RedditShareButton>
-					<LinkedinShareButton
+					</RedditShare>
+					<LinkedinShare
 						source={config.site.name}
 						summary={excerpt}
 						title={title}
 						url={url}
 					>
 						<LinkedInIcon size={40} />
-					</LinkedinShareButton>
+					</LinkedinShare>
 					<S.LinkButton
 						onClick={() => {
 							void navigator.clipboard.writeText(url);

@@ -15,7 +15,7 @@ export const ReadButton = styled(GatsbyLink)`
 	align-items: center;
 	align-self: flex-end;
 	justify-content: start;
-	color: ${({ theme }) => theme.colors.l1};
+	color: ${({ theme }) => theme.colors.link};
 	grid-auto-flow: column;
 	grid-gap: 12px;
 	text-decoration: none;

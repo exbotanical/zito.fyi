@@ -1,5 +1,5 @@
 import { fireEvent } from '@testing-library/react';
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook, act } from '../../../../test/utils/renderHook';
 import fetchMock from 'fetch-mock';
 import { mocked } from 'jest-mock';
 import React from 'react';

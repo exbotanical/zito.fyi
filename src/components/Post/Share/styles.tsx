@@ -7,6 +7,7 @@ export const Wrapper = styled.section`
 	display: grid;
 	grid-auto-flow: row;
 	grid-gap: 8px;
+	margin: auto 0;
 `;
 
 export const LinkWrapper = styled.div`
@@ -15,6 +16,11 @@ export const LinkWrapper = styled.div`
 	align-items: center;
 	grid-auto-flow: column;
 	grid-gap: 24px;
+
+	& svg,
+	h3 {
+		color: ${({ theme }) => theme.colors.link} !important;
+	}
 
 	@media (max-width: 404px) {
 		justify-content: center;
@@ -25,7 +31,7 @@ export const LinkWrapper = styled.div`
 `;
 
 export const Label = styled(H3)`
-	color: ${({ theme }) => theme.colors.p4};
+	color: ${({ theme }) => theme.colors.font.primary};
 	text-transform: uppercase;
 `;
 
@@ -35,11 +41,7 @@ export const LinkGrid = styled.div`
 	grid-gap: 12px;
 
 	& svg {
-		color: ${({ theme }) => theme.colors.p4};
-
-		&:hover {
-			color: ${({ theme }) => theme.colors.p5};
-		}
+		color: ${({ theme }) => theme.colors.font.primary};
 	}
 `;
 

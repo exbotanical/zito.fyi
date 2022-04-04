@@ -59,12 +59,11 @@ export const Avatar = styled.img`
 `;
 
 export const ShareLabel = styled(H3)`
-	color: ${({ theme }) => theme.colors.p4};
 	line-height: 100%;
 `;
 
 export const AuthorName = styled(H3)`
-	color: ${({ theme }) => theme.colors.b3};
+	color: ${({ theme }) => theme.colors.font.secondary};
 `;
 
 export const AboutText = styled.div`
@@ -73,7 +72,7 @@ export const AboutText = styled.div`
 	align-self: center;
 
 	& > p {
-		color: ${({ theme }) => theme.colors.b3};
+		color: ${({ theme }) => theme.colors.font.secondary};
 	}
 
 	@media (max-width: ${BREAKPOINTS.sm}) {

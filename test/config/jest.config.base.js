@@ -6,7 +6,17 @@ module.exports = {
 		'.+\\.(css|styl|less|sass|scss)$': 'identity-obj-proxy',
 		'.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
 			path.join(__dirname, '../mocks/assets.js'),
-		'^@/(.*)$': '<rootDir>/src/$1'
+		'^@/(.*)$': '<rootDir>/src/$1',
+		'^@test/(.*)$': '<rootDir>/test/$1',
+
+		// Workaround for https://github.com/facebook/jest/issues/9771
+		// @see https://github.com/gatsbyjs/gatsby/discussions/34803
+		'^gatsby-page-utils/(.*)$': `gatsby-page-utils/dist/$1`,
+		'^gatsby-core-utils/(.*)$': `gatsby-core-utils/dist/$1`,
+		'^gatsby-plugin-utils/(.*)$': [
+			`gatsby-plugin-utils/dist/$1`,
+			`gatsby-plugin-utils/$1`
+		]
 	},
 	setupFiles: [path.join(__dirname, './loader.shim.js')],
 	setupFilesAfterEnv: [path.join(__dirname, './setupTests.js')],

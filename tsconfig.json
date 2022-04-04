@@ -20,7 +20,9 @@
 		"forceConsistentCasingInFileNames": true,
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["src/*"]
+			"@/*": ["src/*"],
+			"@test/*": ["test/*"],
+			"@node/*": ["node/*"]
 		}
   },
 	"include": ["node", "src", "test", "*.ts", "config"]

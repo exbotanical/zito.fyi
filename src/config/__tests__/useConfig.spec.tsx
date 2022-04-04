@@ -1,8 +1,8 @@
-import { renderHook } from '../../../test/utils/renderHook';
+import { renderHook } from '@testing-library/react-hooks';
 import * as gatsby from 'gatsby';
 import { mocked } from 'jest-mock';
 
-import { config } from '../../../test/fixtures/config';
+import { config } from '@test/fixtures/config';
 import { useConfig } from '../useConfig';
 
 const siteConfigQueryResponse = {
@@ -35,19 +35,17 @@ describe('hook `useConfig`', () => {
 			return useConfig();
 		});
 
-		// @tmp @todo `renderHook` util invokes twice until this is fixed
-		expect(mockedGatsby.graphql).toHaveBeenCalledTimes(2);
-		expect(mockedGatsby.useStaticQuery).toHaveBeenCalledTimes(2);
+		expect(mockedGatsby.graphql).toHaveBeenCalledTimes(1);
+		expect(mockedGatsby.useStaticQuery).toHaveBeenCalledTimes(1);
 
 		expect(result.current).toBe(config);
 	});
 
-	it.only('throws an error if site configuration is not extant', () => {
+	it('throws an error if site configuration is not extant', () => {
 		mockedGatsby.useStaticQuery.mockImplementation(() => ({ site: undefined }));
 
 		const { result } = renderHook(useConfig);
-		console.log({ result });
-		// expect(result.error).toBeDefined();
+		expect(result.error).toBeDefined();
 
 		expect(mockedGatsby.graphql).toHaveBeenCalledTimes(2); // ?
 		expect(mockedGatsby.useStaticQuery).toHaveBeenCalledTimes(2);

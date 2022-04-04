@@ -1,11 +1,12 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
 import { PostTemplate } from '..';
-import { post, postQueryResult, config } from '../../../../test/fixtures';
+import { post, postQueryResult, config } from '@test/fixtures';
 
 import type { PostJson } from '../../../types';
+import { RenderStyled } from '@test/utils/styled';
 
 const postFromJson = JSON.parse(JSON.stringify(post)) as PostJson;
 
@@ -34,7 +35,7 @@ describe('`PostTemplate`', () => {
 	});
 
 	it('renders the expected SEO tags', () => {
-		render(<PostTemplate data={postData} pageContext={pageContext} />);
+		RenderStyled(<PostTemplate data={postData} pageContext={pageContext} />);
 
 		const helmet = Helmet.peek();
 
@@ -49,7 +50,7 @@ describe('`PostTemplate`', () => {
 	});
 
 	it('sets the correct title', () => {
-		render(<PostTemplate data={postData} pageContext={pageContext} />);
+		RenderStyled(<PostTemplate data={postData} pageContext={pageContext} />);
 
 		const helmet = Helmet.peek();
 
@@ -57,7 +58,7 @@ describe('`PostTemplate`', () => {
 	});
 
 	it('renders the layout component', async () => {
-		render(<PostTemplate data={postData} pageContext={pageContext} />);
+		RenderStyled(<PostTemplate data={postData} pageContext={pageContext} />);
 
 		const copyrightNotice = await screen.findByText(config.site.copyright);
 
@@ -65,7 +66,7 @@ describe('`PostTemplate`', () => {
 	});
 
 	it('renders the post', async () => {
-		render(<PostTemplate data={postData} pageContext={pageContext} />);
+		RenderStyled(<PostTemplate data={postData} pageContext={pageContext} />);
 
 		const post = await screen.findByRole('article');
 
@@ -73,7 +74,7 @@ describe('`PostTemplate`', () => {
 	});
 
 	it('renders related posts', async () => {
-		render(<PostTemplate data={postData} pageContext={pageContext} />);
+		RenderStyled(<PostTemplate data={postData} pageContext={pageContext} />);
 
 		const relatedPosts = await screen.findByText('RELATED POSTS');
 

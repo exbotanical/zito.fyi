@@ -1,11 +1,11 @@
-import { render } from '@testing-library/react';
 import cloneDeep from 'clone-deep';
 import { mocked } from 'jest-mock';
 import React from 'react';
 
-import { post, config } from '../../../../test/fixtures';
-import { useConfig } from '../../../config';
+import { post, config } from '@test/fixtures';
+import { useConfig } from '@/config';
 import { DisqusPlugin } from '../index';
+import { RenderStyled } from '@test/utils/styled';
 
 jest.mock('../../../config/useConfig', () => ({
 	useConfig: jest.fn(() => config)
@@ -20,7 +20,7 @@ describe('component `DisqusPlugin`', () => {
 
 		mockedUseConfig.mockReturnValue(newConfig);
 
-		const { asFragment } = render(<DisqusPlugin post={post} />);
+		const { asFragment } = RenderStyled(<DisqusPlugin post={post} />);
 
 		expect(asFragment()).toMatchSnapshot();
 	});
@@ -31,7 +31,7 @@ describe('component `DisqusPlugin`', () => {
 
 		mockedUseConfig.mockReturnValue(newConfig);
 
-		const { asFragment } = render(<DisqusPlugin post={post} />);
+		const { asFragment } = RenderStyled(<DisqusPlugin post={post} />);
 		expect(asFragment()).toMatchSnapshot();
 	});
 });

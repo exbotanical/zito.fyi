@@ -6,13 +6,13 @@ import {
 	postQueryResult,
 	post,
 	config
-} from '../../../test/fixtures';
+} from '@test/fixtures';
 import {
 	mdxNodeToPost,
 	queryToPost,
 	jsonToPost,
 	queryToPostsList
-} from '../../utils';
+} from '@/utils';
 
 import type { PostJson } from '..';
 

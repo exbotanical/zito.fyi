@@ -1,14 +1,14 @@
 import { fireEvent } from '@testing-library/react';
-import { renderHook, act } from '../../../../test/utils/renderHook';
+import { renderHook, act } from '@testing-library/react-hooks';
 import fetchMock from 'fetch-mock';
 import { mocked } from 'jest-mock';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import { config } from '../../../../test/fixtures';
-import Index0 from '../../../../test/fixtures/feedMetadata/index-0.json';
-import Index1 from '../../../../test/fixtures/feedMetadata/index-1.json';
-import Index2 from '../../../../test/fixtures/feedMetadata/index-2.json';
+import { config } from '@test/fixtures';
+import Index0 from '@test/fixtures/feedMetadata/index-0.json';
+import Index1 from '@test/fixtures/feedMetadata/index-1.json';
+import Index2 from '@test/fixtures/feedMetadata/index-2.json';
 import { useInfiniteFeed } from '../hooks';
 
 import type {
@@ -16,7 +16,7 @@ import type {
 	FeedMetadataJson,
 	Post,
 	PlaceholderPost
-} from '../../../types';
+} from '@/types';
 import type { PageContext } from '../types';
 
 const pageMetadatas: FeedMetadataJson[] = [

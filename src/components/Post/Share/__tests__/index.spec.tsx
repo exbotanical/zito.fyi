@@ -1,10 +1,11 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import 'jest-styled-components';
 
-import { config, post } from '../../../../../test/fixtures';
+import { config, post } from '@test/fixtures';
 import { PostShare } from '../index';
+import { RenderStyled } from '@test/utils/styled';
 
 jest.mock('../../../../config/useConfig', () => ({
 	useConfig: jest.fn(() => config)
@@ -25,7 +26,7 @@ describe('component `PostShare`', () => {
 	});
 
 	it('renders social links', () => {
-		const { container } = render(<PostShare post={post} />);
+		const { container } = RenderStyled(<PostShare post={post} />);
 
 		const facebookButton = container.querySelector(
 			'button[aria-label="facebook"]'
@@ -50,7 +51,7 @@ describe('component `PostShare`', () => {
 	});
 
 	it('renders a popup notification when the user clicks the post url copy button', async () => {
-		const { container } = render(<PostShare post={post} />);
+		const { container } = RenderStyled(<PostShare post={post} />);
 
 		const linkButton = container.querySelector('div > svg');
 		expect(linkButton).toBeInTheDocument();

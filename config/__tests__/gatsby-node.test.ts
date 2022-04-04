@@ -1,8 +1,8 @@
 import { mocked } from 'jest-mock';
 
 import * as feedUtils from '../../node';
-import { config } from '../../test/fixtures';
-import { GatsbyActionsMock } from '../../test/utils/gatsbyActions';
+import { config } from '@test/fixtures';
+import { GatsbyActionsMock } from '@test/utils/gatsbyActions';
 import {
 	onCreateNode,
 	createSchemaCustomization,

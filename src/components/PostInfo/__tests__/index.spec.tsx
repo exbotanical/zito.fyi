@@ -1,9 +1,10 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import React from 'react';
 import 'jest-styled-components';
 
-import { config, post } from '../../../../test/fixtures';
+import { config, post } from '@test/fixtures';
 import { PostInfo } from '../index';
+import { RenderStyled } from '@test/utils/styled';
 
 jest.mock('../../../config/useConfig', () => ({
 	useConfig: jest.fn(() => config)
@@ -11,7 +12,7 @@ jest.mock('../../../config/useConfig', () => ({
 
 describe('`PostInfo` component', () => {
 	it('generates correct tag/category URLs', async () => {
-		render(<PostInfo post={post} />);
+		RenderStyled(<PostInfo post={post} />);
 
 		const categoryLink = await screen.findByRole('link', {
 			name: 'technology'
@@ -26,7 +27,7 @@ describe('`PostInfo` component', () => {
 	});
 
 	it('shows correct information span', async () => {
-		render(<PostInfo post={post} />);
+		RenderStyled(<PostInfo post={post} />);
 
 		// TODO fix dates so we don't need to do this
 		// but for now, due to local OS tz, the date will be different

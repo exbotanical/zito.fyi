@@ -1,9 +1,9 @@
 import cloneDeep from 'lodash.clonedeep';
 
 import { withBasePath } from '../../../node';
-import { config as mockConfig } from '../../../test/fixtures/config';
+import { config as mockConfig } from '@test/fixtures/config';
 
-import type { SiteConfig } from '../../types';
+import type { SiteConfig } from '@/types';
 
 describe('configuration util `withBasePath`', () => {
 	it('correctly adds the basePath to the URL', () => {

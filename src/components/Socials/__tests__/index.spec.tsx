@@ -1,9 +1,10 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import React from 'react';
 import 'jest-styled-components';
 
-import { config } from '../../../../test/fixtures';
+import { config } from '@test/fixtures';
 import { Socials } from '../index';
+import { RenderStyled } from '@test/utils/styled';
 
 const user = config.user;
 
@@ -13,7 +14,7 @@ jest.mock('../../../config/useConfig', () => ({
 
 describe('component Socials', () => {
 	it('renders social links', async () => {
-		render(<Socials />);
+		RenderStyled(<Socials />);
 
 		const twitterLink = screen.getByRole('link', {
 			name: 'Twitter Profile'
@@ -48,14 +49,14 @@ describe('component Socials', () => {
 	});
 
 	it('renders RSS link when `includeRss` is `true`', async () => {
-		render(<Socials includeRss />);
+		RenderStyled(<Socials includeRss />);
 
 		const rssLink = await screen.findByRole('link', { name: 'RSS Feed' });
 		expect(rssLink).toHaveAttribute('href', '/rss.xml');
 	});
 
 	it('does not render RSS link when `includeRss` is `false`', () => {
-		render(<Socials />);
+		RenderStyled(<Socials />);
 
 		const rssLink = screen.queryByRole('link', { name: 'RSS Feed' });
 

@@ -1,7 +1,7 @@
 import cloneDeep from 'clone-deep';
 import removeMd from 'remove-markdown';
 
-import { post as postFixture } from '../../../../test/fixtures';
+import { post as postFixture } from '@test/fixtures';
 import { generatePostData, generateSeoData } from '../utils';
 
 import { seoData } from './utils';

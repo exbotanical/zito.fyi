@@ -1,14 +1,15 @@
-import { screen, cleanup, render } from '@testing-library/react';
+import { screen, cleanup } from '@testing-library/react';
 import cloneDeep from 'clone-deep';
 import * as gatsby from 'gatsby';
 import { mocked } from 'jest-mock';
 import React from 'react';
 
-import { config } from '../../../../test/fixtures';
-import { useConfig } from '../../../config';
+import { config } from '@test/fixtures';
+import { useConfig } from '@/config';
 import { BaseLink } from '../BaseLink';
 
-import type { SiteConfig } from '../../../types';
+import type { SiteConfig } from '@/types';
+import { RenderStyled } from '@test/utils/styled';
 
 jest.mock('../../../config/useConfig', () => ({
 	useConfig: jest.fn(() => config)
@@ -39,7 +40,7 @@ describe('component Link', () => {
 	});
 
 	it('renders local links via GatsbyLink', () => {
-		render(<BaseLink to="/local/path">Test</BaseLink>);
+		RenderStyled(<BaseLink to="/local/path">Test</BaseLink>);
 
 		expect(mockedGatsby.Link).toHaveBeenCalledTimes(1);
 
@@ -50,7 +51,7 @@ describe('component Link', () => {
 	});
 
 	it('renders external links via an HTML element', () => {
-		render(<BaseLink to={testLink}>Test</BaseLink>);
+		RenderStyled(<BaseLink to={testLink}>Test</BaseLink>);
 
 		expect(mockedGatsby.Link).toHaveBeenCalledTimes(0);
 
@@ -61,13 +62,13 @@ describe('component Link', () => {
 	});
 
 	it('renders children prop', () => {
-		render(<BaseLink to={testLink}>Test</BaseLink>);
+		RenderStyled(<BaseLink to={testLink}>Test</BaseLink>);
 
 		expect(screen.getByRole('link', { name: 'Test' })).toBeInTheDocument();
 
 		cleanup();
 
-		render(<BaseLink to="/local/path">Test</BaseLink>);
+		RenderStyled(<BaseLink to="/local/path">Test</BaseLink>);
 
 		expect(screen.getByRole('link', { name: 'Test' })).toBeInTheDocument();
 	});
@@ -78,7 +79,7 @@ describe('component Link', () => {
 
 		mockedUseConfig.mockReturnValue(configWithBasePath);
 
-		render(<BaseLink to="/local/path">Test</BaseLink>);
+		RenderStyled(<BaseLink to="/local/path">Test</BaseLink>);
 
 		expect(screen.getByRole('link', { name: 'Test' })).toHaveAttribute(
 			'href',
@@ -91,7 +92,7 @@ describe('component Link', () => {
 
 		mockedUseConfig.mockReturnValue(configWithBasePath);
 
-		render(
+		RenderStyled(
 			<BaseLink sansBasePath to="/local/path">
 				Test
 			</BaseLink>
@@ -104,7 +105,7 @@ describe('component Link', () => {
 
 		cleanup();
 
-		render(<BaseLink to={testLink}>Test</BaseLink>);
+		RenderStyled(<BaseLink to={testLink}>Test</BaseLink>);
 
 		expect(screen.getByRole('link', { name: 'Test' })).toHaveAttribute(
 			'href',
@@ -115,7 +116,7 @@ describe('component Link', () => {
 	it("prioritizes 'href' url over 'to' url", () => {
 		mockedUseConfig.mockReturnValue(testConfig);
 
-		render(
+		RenderStyled(
 			<BaseLink href="/correct/local/path" to="/incorrect/local/path">
 				Test
 			</BaseLink>
@@ -128,7 +129,7 @@ describe('component Link', () => {
 	});
 
 	it("passes down 'activeClassName' to GatsbyLink", () => {
-		render(
+		RenderStyled(
 			<BaseLink activeClassName="test-active-class" to="/local/path">
 				Test
 			</BaseLink>
@@ -146,7 +147,7 @@ describe('component Link', () => {
 	});
 
 	it('passes down className and aria-label attributes', () => {
-		render(
+		RenderStyled(
 			<BaseLink
 				activeClassName="test-active-class"
 				ariaLabel="test-label"
@@ -172,7 +173,7 @@ describe('component Link', () => {
 
 		cleanup();
 
-		render(
+		RenderStyled(
 			<BaseLink
 				activeClassName="test-active-class"
 				ariaLabel="test-label"

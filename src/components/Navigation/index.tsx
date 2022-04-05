@@ -1,21 +1,17 @@
 import React, { useContext } from 'react';
 
-import { Moon, Sun } from '../icons';
+import { Lambda, Moon, Sun } from '../icons';
 
 import * as S from '@/components/Navigation/styles';
-import { useConfig } from '@/config';
-
 import { ThemeToggleContext } from '@/styles/Theme';
 
 export function Navigation(): JSX.Element {
-	const config = useConfig();
 	const { theme, toggleTheme } = useContext(ThemeToggleContext);
 
 	return (
 		<S.Wrapper>
 			<S.HomeButton to="/">
-				{/* TODO logo */}
-				<S.SiteTitle>{config.site.titleAbridged}</S.SiteTitle>
+				<Lambda height="35px" width="35px" data-testid="site_logo" />
 			</S.HomeButton>
 
 			<S.ThemeButton

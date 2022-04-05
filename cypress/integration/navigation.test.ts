@@ -1,12 +1,18 @@
-describe('main navigation', () => {
-	beforeEach(() => {
-		cy.visit('/my-favorite-soft-machine-records');
-		cy.waitForRouteChange();
-	});
+const testPages = ['/', '/my-favorite-soft-machine-records'];
 
-	it('has a clickable logo', () => {
-		cy.get('header').findAllByText('Zito\'s Blog').click();
+testPages.forEach((url) => {
+	describe(`main navigation on page ${url}`, () => {
+		beforeEach(() => {
+			cy.visit(url).waitForRouteChange();
+		});
 
-		cy.location('pathname').should('eq', '/');
+		it('has a clickable logo', () => {
+			cy.get('header')
+				.getByTestId('site_logo')
+				.click()
+
+				.location('pathname')
+				.should('eq', '/');
+		});
 	});
 });

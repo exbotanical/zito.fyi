@@ -16,6 +16,7 @@ export const LinkWrapper = styled.div`
 	align-items: center;
 	grid-auto-flow: column;
 	grid-gap: 24px;
+	margin-top: 6rem;
 
 	& svg,
 	h3 {

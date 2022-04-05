@@ -1,66 +1,81 @@
+import { darkTheme, lightTheme } from '@/styles/Theme';
 import type { Rule } from 'axe-core';
 
 const testUrls = ['/', '/my-favorite-soft-machine-records'];
 
-const initialize = (url: string) => {
-	cy.visit(url);
-	cy.waitForRouteChange();
-	cy.injectAxe();
-};
-
-const assertAll = () => {
-	const disabledRules: Rule[] = [
-		// see discussion https://github.com/dequelabs/axe-core/issues/795
-		// my personal take is that this rule is in some cases contradictory
-		// and such a case is applicable here, hence disabling it
-		{ id: 'landmark-complementary-is-top-level', enabled: false }
-	];
+function configure() {
+	const disabledRules: Rule[] = [];
 
 	const axeFalsePositives: Rule[] = [
-		{ id: 'duplicate-id', enabled: false },
-		{ id: 'document-title', enabled: false },
-		{ id: 'html-has-lang', enabled: false }
+		// { id: 'duplicate-id', enabled: false },
+		// finicky rule; we test this manually
+		// { id: 'document-title', enabled: false }
+		// react-helmet sets this. perhaps due to:
+		// @see https://github.com/cityofaustin/census2020/issues/38
+		// { id: 'html-has-lang', enabled: false }
 	];
+
+	const devFalsePositives: Rule[] = [];
 
 	disabledRules.push(...axeFalsePositives);
-
-	const devFalsePositives = [
-		{ id: 'landmark-no-duplicate-contentinfo', enabled: false },
-		{ id: 'landmark-unique', enabled: false }
-	];
 
 	if (Cypress.env('STAGE') === 'dev') {
 		disabledRules.push(...devFalsePositives);
 	}
 
 	cy.configureAxe({
-		rules: disabledRules
+		rules: disabledRules,
+		checks: [
+			{
+				id: 'color-contrast',
+				options: {
+					contrastRatio: {
+						normal: {
+							expected: 4.5
+						},
+						large: {
+							expected: 4
+						}
+					}
+				}
+			}
+		]
 	});
+}
 
+function checkA11y() {
+	cy.injectAxe();
+	configure();
 	cy.checkA11y();
-};
+}
 
-describe('accessibility', () => {
-	testUrls.forEach((url) => {
-		it(`Page ${url} has no detectable accessibility violations on load [dark mode]`, () => {
-			initialize(url);
-
-			// sanity check
-			cy.get('[data-testid="theme_btn"]').click();
-			cy.get('body').should('have.class', 'theme-dark');
-
-			assertAll();
+testUrls.forEach((url) => {
+	describe('accessibility', () => {
+		beforeEach(() => {
+			cy.visit(url).waitForRouteChange();
 		});
-	});
 
-	testUrls.forEach((url) => {
-		it(`Page ${url} has no detectable accessibility violations on load [light mode]`, () => {
-			initialize(url);
-
+		it(`Page ${url} has no detectable accessibility violations on load [dark mode]`, () => {
 			// sanity check
-			cy.get('body').should('have.class', 'theme-light');
+			cy.get('body')
+				.should('have.css', 'background-color', darkTheme.colors.bg.primary)
 
-			assertAll();
+				.title()
+				.should('not.be.empty');
+
+			checkA11y();
+		});
+
+		it(`Page ${url} has no detectable accessibility violations on load [light mode]`, () => {
+			cy.getByTestId('theme_btn')
+				.click()
+				.get('body')
+				.should('have.css', 'background-color', lightTheme.colors.bg.primary)
+
+				.title()
+				.should('not.be.empty');
+
+			checkA11y();
 		});
 	});
 });

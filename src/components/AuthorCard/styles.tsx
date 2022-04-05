@@ -4,7 +4,7 @@ import { Separator } from '@/components/Separator';
 import { Socials } from '@/components/Socials';
 import { BREAKPOINTS, H3 } from '@/styles';
 
-export const Wrapper = styled.aside`
+export const Wrapper = styled.section`
 	display: grid;
 	padding: 0 16px;
 	justify-items: center;

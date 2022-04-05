@@ -43,6 +43,10 @@ const Wrapper = styled.article`
 	& > *:last-child {
 		margin-bottom: 0;
 	}
+
+	a figure {
+		min-width: 100%;
+	}
 `;
 
 export function Render({ post }: RenderProps): JSX.Element {

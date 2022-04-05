@@ -22,6 +22,8 @@ body {
 	margin: 0;
 	background: ${({ theme }) => theme.colors.bg.primary};
 	color: ${({ theme }) => theme.colors.font.primary};
+	/* needed for absolute pos static noise div */
+	position: relative;
 }
 
 #___gatsby #gatsby-focus-wrapper {
@@ -43,6 +45,7 @@ p {
 
 .noise {
 	position: absolute;
+	height: 100%;
 	z-index: 980;
 	top: 0;
 	right: 0;

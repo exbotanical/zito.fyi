@@ -1,5 +1,5 @@
 import { GatsbyImage } from 'gatsby-plugin-image';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 
 import { POST_WIDTH } from './PostSpacing';
@@ -42,8 +42,7 @@ const Figure = styled.figure<FigureProps>`
 	width: 100%;
 	grid-gap: 8px;
 	justify-items: center;
-
-	${({ cover }) => (!cover ? PostImageSpacing : '')}
+	${({ cover }) => (!cover ? PostImageSpacing : '')};
 `;
 
 const Img = styled(BaseImage)`
@@ -71,8 +70,18 @@ const FigCaption = styled.figcaption`
 `;
 
 export function PostImage({ src, alt, title }: ImageProps): JSX.Element {
+	const ref = useRef<HTMLElement>(null);
+
+	useEffect(() => {
+		// @see https://stackoverflow.com/questions/2326499/apply-css-styles-to-an-element-depending-on-its-child-elements
+		if (ref?.current?.parentElement?.style) {
+			// center image links
+			ref.current.parentElement.style.display = 'table';
+		}
+	}, []);
+
 	return (
-		<Figure>
+		<Figure ref={ref}>
 			<Img alt={alt} src={src} />
 			<FigCaption>{title || alt}</FigCaption>
 		</Figure>

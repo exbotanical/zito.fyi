@@ -4,6 +4,7 @@ import React, { createContext } from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { useLocalStorage } from '@/hooks';
 import { isBrowserRuntime } from '@/utils';
+import { KEYS } from './constants';
 
 type Themes = 'dark' | 'light';
 interface ThemeContext {
@@ -73,13 +74,13 @@ export const darkTheme = {
 export const ThemeToggleContext = createContext({} as ThemeContext);
 
 export function ThemeProvider({ children }: ThemeProps): JSX.Element {
-	const prefersDark =
-		isBrowserRuntime &&
-		window.matchMedia &&
-		window.matchMedia('(prefers-color-scheme: dark)').matches;
+	const prefersDark = true;
+	// isBrowserRuntime &&
+	// window?.matchMedia('(prefers-color-scheme: dark)')?.matches;
 
 	const [theme, setTheme] = useLocalStorage<Themes>(
-		'theme',
+		KEYS.THEME_STORAGE_KEY,
+
 		prefersDark ? 'dark' : 'light'
 	);
 

@@ -5,8 +5,7 @@ const feedUrls = ['/', '/category/technology', '/tag/programming']; // , '/categ
 feedUrls.forEach((url) => {
 	describe(`feed (${url})`, () => {
 		beforeEach(() => {
-			cy.visit(url);
-			cy.waitForRouteChange();
+			cy.visit(url).waitForRouteChange();
 
 			cy.get('main > div > div').as('feed');
 		});
@@ -15,36 +14,34 @@ feedUrls.forEach((url) => {
 			cy.get('@feed').children().should('have.length', PAGE_POST_COUNT);
 
 			if (url === feedUrls[0]) {
-				cy.findByText('Lorem Ipsum 3001');
-				cy.findByText('Lorem Ipsum 3000');
-				cy.findByText('Andrea Zittel 2');
-				cy.findByText('Andrea Zittel');
-				cy.findByText('Lorem Ipsum 33');
+				cy.findByText('Lorem Ipsum 3001')
+					.findByText('Lorem Ipsum 3000')
+					.findByText('Andrea Zittel 2')
+					.findByText('Andrea Zittel')
+					.findByText('Lorem Ipsum 33');
 			} else if (url === feedUrls[1]) {
-				cy.findByText('Lorem Ipsum 3000');
-				cy.findByText('Andrea Zittel');
-				cy.findByText('Lorem Ipsum 33');
-				cy.findByText('Toulouse Lautrec');
-				cy.findByText('Exmagma');
+				cy.findByText('Lorem Ipsum 3000')
+					.findByText('Andrea Zittel')
+					.findByText('Lorem Ipsum 33')
+					.findByText('Toulouse Lautrec')
+					.findByText('Exmagma');
 			} else {
-				cy.findByText('Lorem Ipsum 3000');
-				cy.findByText('Andrea Zittel');
-				cy.findByText('Lorem Ipsum 33');
-				cy.findByText('Toulouse Lautrec');
-				cy.findByText('Francis Bacon');
+				cy.findByText('Lorem Ipsum 3000')
+					.findByText('Andrea Zittel')
+					.findByText('Lorem Ipsum 33')
+					.findByText('Toulouse Lautrec')
+					.findByText('Francis Bacon');
 			}
 		});
 
 		it('navigates to a post via its title', () => {
-			cy.findByText('Andrea Zittel').click();
-			cy.waitForRouteChange();
+			cy.findByText('Andrea Zittel').click().waitForRouteChange();
 
 			cy.url().should('contain', '/andrea-zittel');
 		});
 
 		it('navigates to a post via its cover image', () => {
-			cy.findByAltText('a painting by HR Giger').click();
-			cy.waitForRouteChange();
+			cy.findByAltText('a painting by HR Giger').click().waitForRouteChange();
 
 			cy.url().should('contain', '/lorem-ipsum-3000');
 		});
@@ -56,11 +53,13 @@ feedUrls.forEach((url) => {
 		});
 
 		it('supports infinite scrolling', () => {
-			cy.get('@feed').children().should('have.length', PAGE_POST_COUNT);
-
-			cy.scrollTo('bottom');
-
 			cy.get('@feed')
+				.children()
+				.should('have.length', PAGE_POST_COUNT)
+
+				.scrollTo('bottom')
+
+				.get('@feed')
 				.children()
 				.should('have.length', PAGE_POST_COUNT * 2);
 		});
@@ -68,16 +67,16 @@ feedUrls.forEach((url) => {
 		it('caches fetched infinite scroll pages across page navigations', () => {
 			cy.on('uncaught:exception', () => false);
 
-			cy.scrollTo('bottom');
-			cy.get('@feed')
+			cy.scrollTo('bottom')
+				.get('@feed')
 				.children()
-				.should('have.length', PAGE_POST_COUNT * 2);
+				.should('have.length', PAGE_POST_COUNT * 2)
 
-			cy.findByText('Lorem Ipsum 3000').click();
-			cy.waitForRouteChange();
+				.findByText('Lorem Ipsum 3000')
+				.click()
+				.waitForRouteChange();
 
-			cy.go('back');
-			cy.waitForRouteChange();
+			cy.go('back').waitForRouteChange();
 
 			cy.get('@feed')
 				.children()

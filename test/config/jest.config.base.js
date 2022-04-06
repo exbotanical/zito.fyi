@@ -9,7 +9,7 @@ module.exports = {
 
 		// aliases
 		'^@/(.*)$': '<rootDir>/src/$1',
-		'^@test/(.*)$': '<rootDir>/test/$1',
+		'^@@/(.*)$': '<rootDir>/test/$1',
 
 		// workarounds for https://github.com/facebook/jest/issues/9771
 		// @see https://github.com/gatsbyjs/gatsby/discussions/34803

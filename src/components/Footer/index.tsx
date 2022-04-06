@@ -1,12 +1,12 @@
 import React from 'react';
 
+import { useConfig } from '@/config';
+import { Caption } from '@/styles/Primitives';
+
 import { AuthorCard } from '../AuthorCard';
 import { Socials } from '../Socials';
 
 import * as S from './styles';
-
-import { useConfig } from '@/config';
-import { Caption } from '@/styles/Primitives';
 
 export function Footer(): JSX.Element {
 	const config = useConfig();

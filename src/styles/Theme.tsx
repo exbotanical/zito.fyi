@@ -1,10 +1,12 @@
-import { Reset } from './Reset';
-import { Typography } from './Typography';
-import React, { createContext } from 'react';
+import React, { createContext, useCallback, useMemo } from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
+
 import { useLocalStorage } from '@/hooks';
 import { isBrowserRuntime } from '@/utils';
+
 import { KEYS } from './constants';
+import { Reset } from './Reset';
+import { Typography } from './Typography';
 
 type Themes = 'dark' | 'light';
 interface ThemeContext {
@@ -74,9 +76,9 @@ export const darkTheme = {
 export const ThemeToggleContext = createContext({} as ThemeContext);
 
 export function ThemeProvider({ children }: ThemeProps): JSX.Element {
-	const prefersDark = true;
-	// isBrowserRuntime &&
-	// window?.matchMedia('(prefers-color-scheme: dark)')?.matches;
+	const prefersDark =
+		isBrowserRuntime &&
+		window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 	const [theme, setTheme] = useLocalStorage<Themes>(
 		KEYS.THEME_STORAGE_KEY,
@@ -84,16 +86,18 @@ export function ThemeProvider({ children }: ThemeProps): JSX.Element {
 		prefersDark ? 'dark' : 'light'
 	);
 
-	function toggleTheme() {
+	const toggleTheme = useCallback(() => {
 		if (theme === 'light') {
 			setTheme('dark');
 		} else {
 			setTheme('light');
 		}
-	}
+	}, [theme, setTheme]);
+
+	const ctx = useMemo(() => ({ theme, toggleTheme }), [theme, toggleTheme]);
 
 	return (
-		<ThemeToggleContext.Provider value={{ theme, toggleTheme }}>
+		<ThemeToggleContext.Provider value={ctx}>
 			<StyledThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
 				<Reset />
 				<Typography />

@@ -1,19 +1,15 @@
 import { darkTheme, lightTheme } from '@/styles/Theme';
+
 import type { Rule } from 'axe-core';
+
 
 const testUrls = ['/', '/my-favorite-soft-machine-records'];
 
 function configure() {
+	const isDev = Cypress.env('STAGE') === 'dev';
 	const disabledRules: Rule[] = [];
 
-	const axeFalsePositives: Rule[] = [
-		// { id: 'duplicate-id', enabled: false },
-		// finicky rule; we test this manually
-		// { id: 'document-title', enabled: false }
-		// react-helmet sets this. perhaps due to:
-		// @see https://github.com/cityofaustin/census2020/issues/38
-		// { id: 'html-has-lang', enabled: false }
-	];
+	const axeFalsePositives: Rule[] = [{ id: 'duplicate-id', enabled: isDev }];
 
 	const devFalsePositives: Rule[] = [];
 

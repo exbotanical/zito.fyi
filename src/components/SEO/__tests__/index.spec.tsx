@@ -1,4 +1,5 @@
-import { config, post } from '@test/fixtures';
+import { config, post } from '@@/fixtures';
+
 import { SEO } from '../index';
 
 jest.mock('@/config/useConfig', () => ({

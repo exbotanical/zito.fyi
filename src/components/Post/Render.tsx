@@ -2,10 +2,10 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import styled from 'styled-components';
 
+import type { Post } from '@/types';
+
 import { MDXTheme } from './MdxTheme';
 import { WrapperCss } from './PostSpacing';
-
-import type { Post } from '@/types';
 
 interface RenderProps {
 	post: Post;

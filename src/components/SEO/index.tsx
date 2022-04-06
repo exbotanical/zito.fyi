@@ -1,14 +1,13 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import type { Post } from '@/types';
-
 import { GeneralTags } from '@/components/SEO/General';
 import { OpenGraphTags } from '@/components/SEO/OpenGraph';
 import { RichSearchTags } from '@/components/SEO/RichSearch';
 import { TwitterTags } from '@/components/SEO/Twitter';
 import { generatePostData, generateSeoData } from '@/components/SEO/utils';
 import { useConfig } from '@/config';
+import type { Post } from '@/types';
 
 interface SeoProps {
 	post?: Post;

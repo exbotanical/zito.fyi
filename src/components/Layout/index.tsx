@@ -1,13 +1,13 @@
+/* eslint-disable react/jsx-pascal-case */
 import React from 'react';
 import styled from 'styled-components';
-
-import type { Post } from '@/types';
 
 import { Footer } from '@/components/Footer';
 import { LayoutWidthContainer } from '@/components/LayoutWidthContainer';
 import { Navigation } from '@/components/Navigation';
 import { SEO } from '@/components/SEO';
 import { ThemeProvider, BREAKPOINTS } from '@/styles';
+import type { Post } from '@/types';
 
 interface LayoutProps {
 	children?: React.ReactNode;

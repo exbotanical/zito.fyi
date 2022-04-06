@@ -1,8 +1,7 @@
 import React from 'react';
 
-import type { LinkProps } from '@/components/Links/types';
-
 import * as S from '@/components/Links/styles';
+import type { LinkProps } from '@/components/Links/types';
 
 export function IconLink({
 	to,

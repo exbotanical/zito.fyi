@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import type { PostBySlugQueryResult, PostJson } from '@/types';
-
 import { Layout } from '@/components/Layout';
 import { Post } from '@/components/Post';
 import { RelatedPosts } from '@/components/RelatedPosts';
+import type { PostBySlugQueryResult, PostJson } from '@/types';
 import { jsonToPost, queryToPost } from '@/utils';
 
 interface PageContext {

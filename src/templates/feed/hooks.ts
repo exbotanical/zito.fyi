@@ -1,9 +1,7 @@
 import { useEffect, useRef, useMemo } from 'react';
 import { useInfiniteQuery } from 'react-query';
 
-import { constants } from '../../../node';
-
-import type { PageContext } from './types';
+import { useConfig } from '@/config';
 import type {
 	FeedMetadataJson,
 	PostJson,
@@ -11,10 +9,12 @@ import type {
 	PlaceholderPost,
 	SiteConfig
 } from '@/types';
-import type { UseInfiniteQueryResult } from 'react-query';
-
-import { useConfig } from '@/config';
 import { jsonToPost } from '@/utils';
+
+import { constants } from '../../../node';
+
+import type { PageContext } from './types';
+import type { UseInfiniteQueryResult } from 'react-query';
 
 /**
  * @summary Calculate the base URL for a given feed

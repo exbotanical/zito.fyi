@@ -2,13 +2,12 @@ import { getImage } from 'gatsby-plugin-image';
 import React from 'react';
 import styled from 'styled-components';
 
-import { CoverImage } from './PostImage';
-import { WidthWrapper } from './PostSpacing';
-
-import type { Post } from '@/types';
-
 import { PostInfo } from '@/components/PostInfo';
 import { H1, Body } from '@/styles';
+import type { Post } from '@/types';
+
+import { CoverImage } from './PostImage';
+import { WidthWrapper } from './PostSpacing';
 
 interface PostIntroProps {
 	post: Post;

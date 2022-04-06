@@ -1,7 +1,8 @@
 import React from 'react';
 
-import type { AbridgedPost, SeoData, OpenGraphTagList } from './types';
 import type { UserMetadata, BaseSiteMetadata } from '@/types';
+
+import type { AbridgedPost, SeoData, OpenGraphTagList } from './types';
 
 interface SeoArgs {
 	seoData: SeoData;

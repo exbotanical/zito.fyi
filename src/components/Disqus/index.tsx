@@ -1,9 +1,8 @@
 import { Disqus } from 'gatsby-plugin-disqus';
 import React from 'react';
 
-import type { Post } from '@/types';
-
 import { useConfig } from '@/config';
+import type { Post } from '@/types';
 
 interface DisqusPluginProps {
 	post: Post;

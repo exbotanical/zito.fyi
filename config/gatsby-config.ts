@@ -1,5 +1,6 @@
 import path from 'path';
 
+
 import remarkA11yEmoji from '@fec/remark-a11y-emoji';
 import remarkExternalLinks from 'remark-external-links';
 // https://github.com/gatsbyjs/gatsby/issues/16239
@@ -7,11 +8,13 @@ import remarkExternalLinks from 'remark-external-links';
 import unwrapImages from 'remark-unwrap-images';
 import urljoin from 'url-join';
 
+
 import { withBasePath, generateRssFeed, setupRssFeed } from '../node';
 
 import { config } from '.';
 
 import type { GatsbyConfig } from 'gatsby';
+
 
 const adjustedPathPRefix = !config.pathPrefix ? '/' : config.pathPrefix;
 const gatsbyConfig: GatsbyConfig = {

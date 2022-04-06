@@ -23,7 +23,7 @@ const SkeletonBlock = styled.div`
 	background-size: var(--loading-size);
 	border-radius: 4px;
 
-	/* Loading animation gradient settings */
+	/* loading animation gradient configurations */
 	--loading-gradient: linear-gradient(
 		90deg,
 		${({ theme }) => theme.colors.border.primary}; 0,
@@ -35,7 +35,7 @@ const SkeletonBlock = styled.div`
 	--loading-position: -67% 0;
 	--loading-position-end: 200% 0;
 
-	/* Disable the animation on slow devices or when the user requests reduced animation. */
+	/* disable the animation on slow devices or when the user prefers reduced animation */
 	@media screen and (prefers-reduced-motion: reduce), (update: slow) {
 		animation: unset;
 	}
@@ -68,7 +68,7 @@ const Details = styled.div`
 const TitleSkeleton = styled(SkeletonBlock)`
 	width: 70%;
 
-	/* Tune loading gradient settings to match animation stages */
+	/* tune loading gradient configurations to match animation stage */
 	--loading-position: -121% 0;
 	--loading-position-end: 364% 0;
 
@@ -82,7 +82,7 @@ const TitleSkeleton = styled(SkeletonBlock)`
 const ExcerptSkeleton = styled(SkeletonBlock)`
 	width: 90%;
 
-	/* Tune loading gradient settings to match animation stages */
+	/* tune loading gradient configurations to match animation stage */
 	--loading-position: -75% 0;
 	--loading-position-end: 223% 0;
 
@@ -98,7 +98,8 @@ export function PostCardSkeleton(): JSX.Element {
 		<Wrapper>
 			<Cover />
 			<Details>
-				<TitleSkeleton /> <ExcerptSkeleton />
+				<TitleSkeleton />
+				<ExcerptSkeleton />
 			</Details>
 		</Wrapper>
 	);

@@ -1,15 +1,15 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import { useInfiniteFeed } from './hooks';
-
-import type { PageContext } from './types';
-
 import { Feed } from '@/components/Feed';
 import { FeedWrapper } from '@/components/FeedWrapper';
 import { Layout } from '@/components/Layout';
 import { ScreenReaderH1 } from '@/components/ScreenReader';
 import { useConfig } from '@/config';
+
+import { useInfiniteFeed } from './hooks';
+
+import type { PageContext } from './types';
 
 interface FeedTemplateProps {
 	pageContext: PageContext;

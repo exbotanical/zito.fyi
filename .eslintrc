@@ -6,6 +6,9 @@
   "plugins": [
     "graphql"
 	],
+	"settings": {
+		"import/internal-regex": "^@@/"
+	},
   "overrides": [
 		{
 			"files": ["**/*.ts"],

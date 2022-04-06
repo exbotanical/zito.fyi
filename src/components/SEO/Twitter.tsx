@@ -1,6 +1,7 @@
 import React from 'react';
 
 import type { UserMetadata, BaseSiteMetadata } from '@/types';
+
 import type { SeoData, TwitterTagList } from './types';
 
 interface SeoArgs {

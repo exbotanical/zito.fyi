@@ -1,9 +1,9 @@
 import React from 'react';
 
-import * as S from './styles';
-
 import { useConfig } from '@/config';
 import { Body } from '@/styles';
+
+import * as S from './styles';
 
 // import { useStaticQuery, graphql } from 'gatsby';
 // import type { ImageDataLike } from 'gatsby-plugin-image';

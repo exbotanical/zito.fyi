@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import type { FeedItems } from '@/types';
-
 import { LayoutWidthContainer } from '@/components//LayoutWidthContainer';
 import { PostCard } from '@/components/PostCard';
 import { BREAKPOINTS } from '@/styles/constants';
+import type { FeedItems } from '@/types';
 
 interface FeedProps {
 	feedItems: FeedItems;

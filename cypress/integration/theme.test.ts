@@ -17,16 +17,15 @@ themeTestPages.forEach((url) => {
 	describe(`Theme on page ${url}`, () => {
 		beforeEach(() => {
 			cy.visit(url, {
-				onBeforeLoad(aut) {
-					// @todo breaks when `useMediaQuery` invoked; open an issue on gh
-					// cy.stub(aut, 'matchMedia')
-					// 	.withArgs('(prefers-color-scheme: dark)')
-					// 	.returns({
-					// 		matches: true
-					// 	});
-				}
-			})
-			.waitForRouteChange();
+				// @todo breaks when `useMediaQuery` invoked; open an issue on gh
+				// onBeforeLoad(aut) {
+				// cy.stub(aut, 'matchMedia')
+				// 	.withArgs('(prefers-color-scheme: dark)')
+				// 	.returns({
+				// 		matches: true
+				// 	});
+				// }
+			}).waitForRouteChange();
 		});
 
 		it("defaults to the user's prefers-color-scheme preference", () => {

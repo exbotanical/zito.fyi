@@ -2,10 +2,12 @@ import cloneDeep from 'clone-deep';
 import { mocked } from 'jest-mock';
 import React from 'react';
 
-import { post, config } from '@test/fixtures';
 import { useConfig } from '@/config';
+
+import { post, config } from '@@/fixtures';
+import { RenderStyled } from '@@/utils/styled';
+
 import { DisqusPlugin } from '../index';
-import { RenderStyled } from '@test/utils/styled';
 
 jest.mock('@/config/useConfig', () => ({
 	useConfig: jest.fn(() => config)

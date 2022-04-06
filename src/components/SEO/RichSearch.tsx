@@ -1,5 +1,7 @@
 import React from 'react';
 
+import type { UserMetadata, OrgMetadata } from '@/types';
+
 import type {
 	RichSearchTag,
 	AbridgedPost,
@@ -8,7 +10,6 @@ import type {
 	JsonLdOrgMetadata,
 	JsonLdPostMetadata
 } from './types';
-import type { UserMetadata, OrgMetadata } from '@/types';
 
 interface SeoArgs {
 	orgData?: OrgMetadata;
@@ -83,12 +84,12 @@ export const getPostMetadata = (
 	};
 };
 
-export const RichSearchTags = ({
+export function RichSearchTags({
 	seoData,
 	postData,
 	userData,
 	orgData
-}: SeoArgs): RichSearchTag[] => {
+}: SeoArgs): RichSearchTag[] {
 	const { isPost } = seoData;
 
 	const postJsonLd =
@@ -107,4 +108,4 @@ export const RichSearchTags = ({
 	);
 
 	return jsonLdData ? [richSearchTag] : [];
-};
+}

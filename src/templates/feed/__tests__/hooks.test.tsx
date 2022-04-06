@@ -5,18 +5,20 @@ import { mocked } from 'jest-mock';
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import { config } from '@test/fixtures';
-import Index0 from '@test/fixtures/feedMetadata/index-0.json';
-import Index1 from '@test/fixtures/feedMetadata/index-1.json';
-import Index2 from '@test/fixtures/feedMetadata/index-2.json';
-import { useInfiniteFeed } from '../hooks';
-
 import type {
 	FeedItems,
 	FeedMetadataJson,
 	Post,
 	PlaceholderPost
 } from '@/types';
+
+import { config } from '@@/fixtures';
+import Index0 from '@@/fixtures/feedMetadata/index-0.json';
+import Index1 from '@@/fixtures/feedMetadata/index-1.json';
+import Index2 from '@@/fixtures/feedMetadata/index-2.json';
+
+import { useInfiniteFeed } from '../hooks';
+
 import type { PageContext } from '../types';
 
 const pageMetadatas: FeedMetadataJson[] = [

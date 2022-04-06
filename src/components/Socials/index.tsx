@@ -4,9 +4,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { useConfig } from '@/config';
+import type { SiteConfig } from '@/types';
+
 import { IconLink } from '../Links';
 
-import type { SiteConfig } from '@/types';
 import type { StyledIcon } from '@styled-icons/styled-icon';
 
 const generateLink = (

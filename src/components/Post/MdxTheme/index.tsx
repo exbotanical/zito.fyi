@@ -1,6 +1,8 @@
 import { MDXProvider } from '@mdx-js/react';
 import React from 'react';
 
+import type { Post } from '@/types';
+
 import * as CodeComponents from './Code';
 import { Footnote } from './Footnote';
 import * as ListComponents from './List';
@@ -8,7 +10,6 @@ import * as MiscComponents from './Miscellaneous';
 import * as TableComponents from './Table';
 import * as TextComponents from './Text';
 
-import type { Post } from '@/types';
 import type { MDXProviderComponents } from '@mdx-js/react';
 
 interface MdxThemeProps {

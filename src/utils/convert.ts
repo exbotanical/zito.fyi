@@ -6,6 +6,7 @@ import type {
 	UserQueryResult,
 	UserMetadata
 } from '@/types';
+
 import type { GetMdxPostsQueryResult } from '../../node/types';
 
 export function mdxNodeToPost(mdxNode: MdxNode): Post {

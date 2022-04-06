@@ -1,8 +1,10 @@
+
 import { mocked } from 'jest-mock';
 
+import { config } from '@@/fixtures';
+import { GatsbyActionsMock } from '@@/utils/gatsbyActions';
+
 import * as feedUtils from '../../node';
-import { config } from '@test/fixtures';
-import { GatsbyActionsMock } from '@test/utils/gatsbyActions';
 import {
 	onCreateNode,
 	createSchemaCustomization,
@@ -54,9 +56,7 @@ const feedUtilsMock = mocked(feedUtils, true);
 
 jest.mock('../../node/queries', () => {
 	const postsList =
-		jest.requireActual<typeof import('@test/fixtures')>(
-			'@test/fixtures'
-		).postsList;
+		jest.requireActual<typeof import('@@/fixtures')>('@@/fixtures').postsList;
 
 	const testPostsList = [
 		...postsList,

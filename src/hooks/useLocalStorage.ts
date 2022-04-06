@@ -18,7 +18,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
 			}
 
 			return JSON.parse(item);
-		} catch (ex) {
+		} catch (ex: unknown) {
 			logger.error(ex);
 
 			return initialValue;
@@ -35,7 +35,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
 			if (isBrowserRuntime) {
 				window.localStorage.setItem(key, JSON.stringify(valueToPersist));
 			}
-		} catch (ex) {
+		} catch (ex: unknown) {
 			logger.error(ex);
 		}
 	};

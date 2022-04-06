@@ -8,7 +8,7 @@
     "types": ["cypress", "cypress-axe", "@testing-library/cypress"],
 		"paths": {
 			"@/*": ["../src/*"],
-			"@test/*": ["../test/*"]
+			"@@/*": ["../test/*"]
 		}
   },
   "include": ["./**/*.ts"]

@@ -1,11 +1,10 @@
 import { Link as GatsbyLink } from 'gatsby';
 import React from 'react';
 
-import { withBasePath } from '../../../node';
-
 import type { LinkProps } from '@/components/Links/types';
-
 import { useConfig } from '@/config';
+
+import { withBasePath } from '../../../node';
 
 const isAbsolute = RegExp.prototype.test.bind(
 	// eslint-disable-next-line prefer-regex-literals

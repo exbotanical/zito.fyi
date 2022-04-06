@@ -1,6 +1,7 @@
+import type { SiteConfig } from '@/types';
+
 import { config as testConfig } from '../test/fixtures/config';
 
-import type { SiteConfig } from '@/types';
 
 const isTestEnv =
 	process.env.CYPRESS_SUPPORT || process.env.NODE_ENV === 'test';

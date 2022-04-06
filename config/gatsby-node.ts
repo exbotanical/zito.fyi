@@ -1,3 +1,4 @@
+
 import urlJoin from 'url-join';
 
 import {
@@ -11,12 +12,12 @@ import {
 	getAllPostsByCategory,
 	ConfigSchema
 } from '../node';
+import { StreamLogger } from '../node/logger';
 
 import { config } from './config';
 
 import type { BaseFrontmatter } from '../node/types';
 import type { GatsbyNode } from 'gatsby';
-import { StreamLogger } from '../node/logger';
 
 StreamLogger.init();
 const POST_PAGE_COMPONENT = require.resolve('../src/templates/post/queries.ts');

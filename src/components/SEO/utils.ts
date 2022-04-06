@@ -1,7 +1,8 @@
 import removeMd from 'remove-markdown';
 
-import type { SeoData, AbridgedPost } from './types';
 import type { Post, BaseSiteMetadata } from '@/types';
+
+import type { SeoData, AbridgedPost } from './types';
 
 /**
  * @summary Generate abridged post data from a given `allMdx` edge

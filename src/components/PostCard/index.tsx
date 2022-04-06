@@ -1,15 +1,14 @@
 import { getImage } from 'gatsby-plugin-image';
 import React from 'react';
 
-import { PostButton } from './PostButton';
-import { PostCardSkeleton } from './Skeleton';
-import * as Styles from './styles';
-
-import type { Post } from '@/types';
-
 import { TransparentLink } from '@/components/Links';
 import { PostInfo } from '@/components/PostInfo';
 import { H3 } from '@/styles/Primitives';
+import type { Post } from '@/types';
+
+import { PostButton } from './PostButton';
+import { PostCardSkeleton } from './Skeleton';
+import * as Styles from './styles';
 
 interface PostCardProps {
 	post?: Post;
@@ -17,7 +16,9 @@ interface PostCardProps {
 }
 
 export function PostCard({ post, hero }: PostCardProps): JSX.Element {
-	if (!post) return <PostCardSkeleton />;
+	if (!post) {
+		return <PostCardSkeleton />;
+	}
 
 	if (!post.coverImg) {
 		// TODO placeholder
@@ -37,7 +38,7 @@ export function PostCard({ post, hero }: PostCardProps): JSX.Element {
 					<Styles.Header>
 						<PostInfo post={post} />
 						<TransparentLink to={post.slug}>
-							{/* display as an H2 for accessibility and title semantics */}
+							{/* display as an H2 in the interest of accessibility and semantic markup */}
 							<H3 as="h2">{post.title}</H3>
 						</TransparentLink>
 					</Styles.Header>

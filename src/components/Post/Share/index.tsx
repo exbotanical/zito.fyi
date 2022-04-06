@@ -11,32 +11,31 @@ import {
 	TwitterShareButton,
 	RedditShareButton
 } from 'react-share';
-
-import { LinkCopyNotification } from './LinkCopyNotification';
-import * as S from './styles';
-
-import type { Post, SiteConfig } from '@/types';
+import styled, { css } from 'styled-components';
 
 import { Separator } from '@/components/Separator';
 import { useConfig } from '@/config';
-import styled, { css } from 'styled-components';
+import type { Post, SiteConfig } from '@/types';
+
+import { LinkCopyNotification } from './LinkCopyNotification';
+import * as S from './styles';
 
 interface PostShareProps {
 	post: Post;
 }
 
-function generateRelatedtwitterHandles(config: SiteConfig): string[] {
-	const relatedtwitterHandles = [];
+function generateRelatedTwitterHandles(config: SiteConfig): string[] {
+	const relatedTwitterHandles = [];
 
 	if (config.user.twitterHandle) {
-		relatedtwitterHandles.push(config.user.twitterHandle);
+		relatedTwitterHandles.push(config.user.twitterHandle);
 	}
 
 	if (config.site.twitterHandle) {
-		relatedtwitterHandles.push(config.site.twitterHandle);
+		relatedTwitterHandles.push(config.site.twitterHandle);
 	}
 
-	return relatedtwitterHandles;
+	return relatedTwitterHandles;
 }
 
 const HoverStyle = css`
@@ -68,11 +67,11 @@ const LinkedinShare = styled(LinkedinShareButton)`
 export function PostShare({ post }: PostShareProps): JSX.Element {
 	const { title, excerpt, url } = post;
 
+	// eslint-disable-next-line react/hook-use-state
 	const [showLinkNotification, setShowlinkNotification] = useState(false);
 
 	const config = useConfig();
-
-	const relatedtwitterHandles = generateRelatedtwitterHandles(config);
+	const relatedTwitterHandles = generateRelatedTwitterHandles(config);
 
 	return (
 		<S.Wrapper aria-label="Share on social media">
@@ -84,7 +83,7 @@ export function PostShare({ post }: PostShareProps): JSX.Element {
 					</FacebookShare>
 
 					<TwitterShare
-						related={relatedtwitterHandles}
+						related={relatedTwitterHandles}
 						title={title}
 						url={url}
 						via={config.site.name}

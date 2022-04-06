@@ -2,9 +2,10 @@ import { screen, cleanup } from '@testing-library/react';
 import React from 'react';
 import 'jest-styled-components';
 
-import { config } from '@test/fixtures';
+import { config } from '@@/fixtures';
+import { RenderStyled } from '@@/utils/styled';
+
 import { generateHeadings } from '../Text';
-import { RenderStyled } from '@test/utils/styled';
 
 jest.mock('@/config/useConfig', () => ({
 	useConfig: jest.fn(() => config)

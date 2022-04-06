@@ -3,12 +3,14 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import 'jest-styled-components';
 
-import FeedTemplate from '..';
-import { config } from '@test/fixtures';
-import Index0 from '@test/fixtures/feedMetadata/index-0.json';
-import { renderWithQueryClient } from '@test/utils/render';
-
 import type { FeedMetadataJson } from '@/types';
+
+import { config } from '@@/fixtures';
+import Index0 from '@@/fixtures/feedMetadata/index-0.json';
+import { renderWithQueryClient } from '@@/utils/render';
+
+import FeedTemplate from '..';
+
 import type { PageContext } from '../types';
 
 jest.mock('@/config/useConfig', () => ({

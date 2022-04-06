@@ -1,18 +1,20 @@
+/* eslint-disable jest/no-conditional-in-test */
 import cloneDeep from 'clone-deep';
 import { mocked } from 'jest-mock';
 
-import {
-	postsListQueryResponse,
-	postQueryResult,
-	post,
-	config
-} from '@test/fixtures';
 import {
 	mdxNodeToPost,
 	queryToPost,
 	jsonToPost,
 	queryToPostsList
 } from '@/utils';
+
+import {
+	postsListQueryResponse,
+	postQueryResult,
+	post,
+	config
+} from '@@/fixtures';
 
 import type { PostJson } from '..';
 
@@ -37,7 +39,6 @@ describe('`mdxNodeToPost`', () => {
 	it('falls back to `datePublished` if `dateModified` has not been set', () => {
 		const mdxNodeSansDateModified = cloneDeep(postQueryResult.mdx)!;
 
-		// eslint-disable-next-line jest/no-if
 		if (
 			!mdxNodeSansDateModified.frontmatter ||
 			!mdxNodeSansDateModified.frontmatter.datePublished
@@ -65,7 +66,6 @@ describe('`mdxNodeToPost`', () => {
 	it('throws when missing frontmatter', () => {
 		const invalidMdx = cloneDeep(postQueryResult.mdx)!;
 
-		// eslint-disable-next-line jest/no-if
 		if (!invalidMdx.frontmatter) {
 			throw testError;
 		}
@@ -94,7 +94,6 @@ describe('`mdxNodeToPost`', () => {
 	it('throws when missing fields', () => {
 		const invalidMdx = cloneDeep(postQueryResult.mdx)!;
 
-		// eslint-disable-next-line jest/no-if
 		if (!invalidMdx.fields) {
 			throw testError;
 		}
@@ -123,7 +122,6 @@ describe('`mdxNodeToPost`', () => {
 	it('warns when missing SEO fields', () => {
 		const partialMdx = cloneDeep(postQueryResult.mdx)!;
 
-		// eslint-disable-next-line jest/no-if
 		if (!partialMdx.frontmatter) {
 			throw testError;
 		}

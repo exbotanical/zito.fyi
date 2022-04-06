@@ -4,12 +4,13 @@ import * as gatsby from 'gatsby';
 import { mocked } from 'jest-mock';
 import React from 'react';
 
-import { config } from '@test/fixtures';
 import { useConfig } from '@/config';
-import { BaseLink } from '../BaseLink';
-
 import type { SiteConfig } from '@/types';
-import { RenderStyled } from '@test/utils/styled';
+
+import { config } from '@@/fixtures';
+import { RenderStyled } from '@@/utils/styled';
+
+import { BaseLink } from '../BaseLink';
 
 jest.mock('@/config/useConfig', () => ({
 	useConfig: jest.fn(() => config)

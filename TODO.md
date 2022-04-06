@@ -26,6 +26,7 @@
 - [ ] vendor icons
 - [ ] add rel canonical
 - [x] switch to pnpm
+- [ ] fix skeleton loader bg
 
 ## Cypress
 

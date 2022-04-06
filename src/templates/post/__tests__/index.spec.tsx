@@ -2,11 +2,12 @@ import { screen } from '@testing-library/react';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import { PostTemplate } from '..';
-import { post, postQueryResult, config } from '@test/fixtures';
-
 import type { PostJson } from '@/types';
-import { RenderStyled } from '@test/utils/styled';
+
+import { post, postQueryResult, config } from '@@/fixtures';
+import { RenderStyled } from '@@/utils/styled';
+
+import { PostTemplate } from '..';
 
 const postFromJson = JSON.parse(JSON.stringify(post)) as PostJson;
 

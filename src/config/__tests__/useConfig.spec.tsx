@@ -2,7 +2,8 @@ import { renderHook } from '@testing-library/react-hooks';
 import * as gatsby from 'gatsby';
 import { mocked } from 'jest-mock';
 
-import { config } from '@test/fixtures/config';
+import { config } from '@@/fixtures/config';
+
 import { useConfig } from '../useConfig';
 
 const siteConfigQueryResponse = {

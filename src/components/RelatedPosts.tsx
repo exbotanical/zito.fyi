@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import type { Post } from '../types';
-
 import { Feed } from '@/components/Feed';
 import { H2 } from '@/styles';
+
+import type { Post } from '../types';
 
 interface RelatedPostsProps {
 	posts: Post[];

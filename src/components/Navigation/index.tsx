@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 
-import { Lambda, Moon, Sun } from '../icons';
-
 import * as S from '@/components/Navigation/styles';
 import { ThemeToggleContext } from '@/styles/Theme';
+
+import { Lambda, Moon, Sun } from '../icons';
 
 export function Navigation(): JSX.Element {
 	const { theme, toggleTheme } = useContext(ThemeToggleContext);
@@ -11,7 +11,7 @@ export function Navigation(): JSX.Element {
 	return (
 		<S.Wrapper>
 			<S.HomeButton to="/">
-				<Lambda height="35px" width="35px" data-testid="site_logo" />
+				<Lambda data-testid="site_logo" height="35px" width="35px" />
 			</S.HomeButton>
 
 			<S.ThemeButton

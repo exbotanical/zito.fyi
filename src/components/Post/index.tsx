@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import type { Post as P } from '@/types';
+
 import { PostIntro } from './PostIntro';
 import { Render } from './Render';
 import { PostShare } from './Share';
-
-import type { Post as P } from '@/types';
 
 interface PostProps {
 	post: P;

@@ -32,11 +32,13 @@ Cypress.Commands.add('getByTestIdLike', (selector: string) => {
 Cypress.Commands.add(
 	'containsClass',
 	(selector: string, expectedClass: string) => {
-		return cy.get(selector).should('satisfy', ($el) => {
-			const classList = Array.from($el[0].classList);
+		return cy
+			.get(selector)
+			.should('satisfy', ($el: { classList: string[] }[]) => {
+				const classList = Array.from($el[0].classList);
 
-			return classList.includes(expectedClass);
-		});
+				return classList.includes(expectedClass);
+			});
 	}
 );
 
@@ -46,10 +48,12 @@ Cypress.Commands.add(
 Cypress.Commands.add(
 	'omitsClass',
 	(selector: string, expectedClass: string) => {
-		return cy.get(selector).should('satisfy', ($el) => {
-			const classList = Array.from($el[0].classList);
+		return cy
+			.get(selector)
+			.should('satisfy', ($el: { classList: string[] }[]) => {
+				const classList = Array.from($el[0].classList);
 
-			return !classList.includes(expectedClass);
-		});
+				return !classList.includes(expectedClass);
+			});
 	}
 );

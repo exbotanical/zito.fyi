@@ -1,9 +1,9 @@
 import { format } from 'date-fns';
 import React from 'react';
 
-import * as S from './styles';
-
 import type { Post } from '@/types';
+
+import * as S from './styles';
 
 interface PostInfoProps {
 	post: Post;

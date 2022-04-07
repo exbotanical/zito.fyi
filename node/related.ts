@@ -3,14 +3,14 @@ import type { Post } from '../src/types';
 const N_RELATED_POSTS = 2;
 
 /**
- * @summary Get posts of a given category
+ * Get posts of a given category
  */
 const getPostsOfCategory = (category: string, posts: Post[]): Post[] => {
 	return posts.filter((post) => post.category === category);
 };
 
 /**
- * @summary Get posts of a tag, ranked by matches
+ * Get posts of a tag, ranked by matches
  */
 const getRankedPostsOfTag = (targetPost: Post, posts: Post[]): Post[] => {
 	if (!targetPost.tags?.length) {
@@ -52,7 +52,7 @@ const getRankedPostsOfTag = (targetPost: Post, posts: Post[]): Post[] => {
 };
 
 /**
- * @summary Get n posts related to a given post
+ * Get n posts related to a given post
  * @todo fix duplications
  */
 export const getNRelatedPosts = (targetPost: Post, posts: Post[]): Post[] => {

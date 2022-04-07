@@ -30,7 +30,7 @@ interface BlockquoteProps {
 }
 
 /**
- * @summary Extract header hashlink from child components
+ * Extract header hashlink from child components
  */
 const getHeaderHashLink = (children: React.ReactNode): string | null => {
 	if (Array.isArray(children)) {
@@ -47,7 +47,7 @@ const getHeaderHashLink = (children: React.ReactNode): string | null => {
 };
 
 /**
- * @summary Generate a heading component from a given slug and styled component
+ * Generate a heading component from a given slug and styled component
  */
 const generateHeading = (
 	slug: string,

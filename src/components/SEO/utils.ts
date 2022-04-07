@@ -5,7 +5,7 @@ import type { Post, BaseSiteMetadata } from '@/types';
 import type { SeoData, AbridgedPost } from './types';
 
 /**
- * @summary Generate abridged post data from a given `allMdx` edge
+ * Generate abridged post data from a given `allMdx` edge
  */
 export const generatePostData = (post: Post): AbridgedPost => {
 	const {
@@ -44,7 +44,7 @@ export const generatePostData = (post: Post): AbridgedPost => {
 };
 
 /**
- * @summary Generate SEO metadata
+ * Generate SEO metadata
  */
 export const generateSeoData = (
 	siteMetadata: BaseSiteMetadata,

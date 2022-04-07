@@ -17,7 +17,7 @@ import type { PageContext } from './types';
 import type { UseInfiniteQueryResult } from 'react-query';
 
 /**
- * @summary Calculate the base URL for a given feed
+ * Calculate the base URL for a given feed
  */
 const resolveBaseUrl = (pageContext: PageContext, config: SiteConfig): string =>
 	`${config.pathPrefix}${constants.feedMetaDirectory}/${pageContext.feedType}${
@@ -25,7 +25,7 @@ const resolveBaseUrl = (pageContext: PageContext, config: SiteConfig): string =>
 	}`;
 
 /**
- * @summary Generate a fetch handler for use by a feed
+ * Generate a fetch handler for use by a feed
  */
 const generateFetchHandler =
 	(baseUrl: string) =>
@@ -41,7 +41,7 @@ const generateFetchHandler =
 	};
 
 /**
- * @summary Generate placeholders for currently loading posts
+ * Generate placeholders for currently loading posts
  */
 const generatePostPlaceholders = (
 	keyPrefix: string,
@@ -55,7 +55,7 @@ const generatePostPlaceholders = (
 		}));
 
 /**
- * @summary Coordinate page-fetching to the user's scroll position.
+ * Coordinate page-fetching to the user's scroll position.
  * Effectively an infinite scroll utility
  */
 const useScrollContingentFetch = (
@@ -104,7 +104,7 @@ const useScrollContingentFetch = (
 };
 
 /**
- * @summary Provides an infinite-scroll capable feed
+ * Provides an infinite-scroll capable feed
  */
 export const useInfiniteFeed = (
 	pageContext: PageContext

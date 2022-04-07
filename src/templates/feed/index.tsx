@@ -23,7 +23,7 @@ function FeedTemplate({ pageContext }: FeedTemplateProps): JSX.Element {
 	const hideHero = pageContext.feedType !== 'index';
 
 	/**
-	 * @summary Override the title; for non-index feeds
+	 * Override the title; for non-index feeds
 	 */
 	const getTitleOverride = () => {
 		if (pageContext.feedId) {

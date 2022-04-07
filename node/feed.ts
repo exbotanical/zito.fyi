@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 
-
 import { constants, withBasePath } from '.';
 
 import type { FeedMetadata, Post, SiteConfig } from '../src/types';
@@ -24,7 +23,7 @@ export const resolveFeedPath = (
 };
 
 /**
- * @summary Persist Feed page metadata in the /public directory so it can later be retrieved client-side
+ * Persist Feed page metadata in the /public directory so it can later be retrieved client-side
  */
 export const persistFeedMetadata = async (
 	feedType: string,

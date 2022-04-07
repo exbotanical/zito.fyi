@@ -1,5 +1,5 @@
 /**
- * @summary Feed queries
+ * Feed queries
  */
 
 export const allPostsQuery = `#graphql

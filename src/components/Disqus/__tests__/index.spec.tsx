@@ -1,5 +1,5 @@
-import cloneDeep from 'lodash.clonedeep';
 import { mocked } from 'jest-mock';
+import cloneDeep from 'lodash.clonedeep';
 import React from 'react';
 
 import { useConfig } from '@/config';

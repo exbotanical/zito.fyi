@@ -1,6 +1,6 @@
 /* eslint-disable jest/no-conditional-in-test */
-import cloneDeep from 'lodash.clonedeep';
 import { mocked } from 'jest-mock';
+import cloneDeep from 'lodash.clonedeep';
 
 import {
 	mdxNodeToPost,

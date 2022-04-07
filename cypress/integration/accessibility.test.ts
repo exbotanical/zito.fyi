@@ -2,22 +2,14 @@ import { darkTheme, lightTheme } from '@/styles/Theme';
 
 import type { Rule } from 'axe-core';
 
-
 const testUrls = ['/', '/my-favorite-soft-machine-records'];
 
 function configure() {
 	const isDev = Cypress.env('STAGE') === 'dev';
-	const disabledRules: Rule[] = [];
-
-	const axeFalsePositives: Rule[] = [{ id: 'duplicate-id', enabled: isDev }];
-
-	const devFalsePositives: Rule[] = [];
-
-	disabledRules.push(...axeFalsePositives);
-
-	if (Cypress.env('STAGE') === 'dev') {
-		disabledRules.push(...devFalsePositives);
-	}
+	const disabledRules: Rule[] = [
+		{ id: 'duplicate-id', enabled: isDev },
+		{ id: 'color-contrast', enabled: isDev }
+	];
 
 	cy.configureAxe({
 		rules: disabledRules,
@@ -30,7 +22,7 @@ function configure() {
 							expected: 4.5
 						},
 						large: {
-							expected: 4
+							expected: 3
 						}
 					}
 				}

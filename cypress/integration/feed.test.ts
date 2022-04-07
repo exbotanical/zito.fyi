@@ -65,14 +65,17 @@ feedUrls.forEach((url) => {
 		it('caches fetched infinite scroll pages across page navigations', () => {
 			cy.on('uncaught:exception', () => false);
 
-			cy.scrollTo('bottom')
-				.get('@feed')
+			cy.scrollTo('bottom');
+			cy.get('@feed')
 				.children()
 				.should('have.length', PAGE_POST_COUNT * 2);
 
-			cy.findByText('Lorem Ipsum 3000').click().waitForRouteChange();
+			cy.findByText('Lorem Ipsum 3000').click();
 
-			cy.go('back').waitForRouteChange();
+			cy.waitForRouteChange();
+
+			cy.go('back');
+			cy.waitForRouteChange();
 
 			cy.get('@feed')
 				.children()

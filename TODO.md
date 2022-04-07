@@ -15,13 +15,13 @@
 - [x] add 404 page <!-- I'd rather redirect at the server -->
 - [x] fix share icons' color loss
 - [ ] replace console statements w/logger (f. custom Console)
-- [ ] add self-hosted, variable font
+- [ ] variable font
   - [ ] add font properties
 - [ ] implement gists (short prose, essays)
 - [ ] resolve `validateDOMNesting` via `remark-unwrap-images`
 - [ ] fix GraphQL date resolution
 - [x] add avatar
-- [ ] add site logo
+- [x] add site logo
 - [ ] gatsby 4 caching and performance optimizations
 - [ ] vendor icons
 - [ ] add rel canonical
@@ -30,12 +30,12 @@
 
 ## Cypress
 
-- [ ] test site logo, once added
+- [x] test site logo, once added
 - [ ] assert on share links formatting
 - [ ] parallelize
 - [ ] cron job to smoke test in different browsers
 
 ## Misc
 
-- [ ] attempt to create reusable workflow for pnpm scripts (again)
+- [x] attempt to create reusable workflow for pnpm scripts (again)
 - [ ] convert to monorepo

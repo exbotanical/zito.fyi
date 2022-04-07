@@ -1,6 +1,5 @@
 import path from 'path';
 
-
 import remarkA11yEmoji from '@fec/remark-a11y-emoji';
 import remarkExternalLinks from 'remark-external-links';
 // https://github.com/gatsbyjs/gatsby/issues/16239
@@ -8,13 +7,11 @@ import remarkExternalLinks from 'remark-external-links';
 import unwrapImages from 'remark-unwrap-images';
 import urljoin from 'url-join';
 
-
 import { withBasePath, generateRssFeed, setupRssFeed } from '../node';
 
 import { config } from '.';
 
 import type { GatsbyConfig } from 'gatsby';
-
 
 const adjustedPathPRefix = !config.pathPrefix ? '/' : config.pathPrefix;
 const gatsbyConfig: GatsbyConfig = {
@@ -22,29 +19,30 @@ const gatsbyConfig: GatsbyConfig = {
 	plugins: [
 		'gatsby-plugin-pnpm',
 		{
+			resolve: 'gatsby-plugin-react-svg',
 			options: {
 				rule: {
 					include: /\.svg$/
 				}
-			},
-			resolve: 'gatsby-plugin-react-svg'
+			}
 		},
 		'gatsby-plugin-react-helmet',
 		{
+			resolve: 'gatsby-source-filesystem',
 			options: {
 				name: 'assets',
 				path: path.join(__dirname, '../', config.assetDir || 'static')
-			},
-			resolve: 'gatsby-source-filesystem'
+			}
 		},
 		{
+			resolve: 'gatsby-source-filesystem',
 			options: {
 				name: 'posts',
 				path: path.join(__dirname, '../', config.contentDir || 'content')
-			},
-			resolve: 'gatsby-source-filesystem'
+			}
 		},
 		{
+			resolve: 'gatsby-plugin-sharp',
 			options: {
 				defaults: {
 					backgroundColor: 'transparent',
@@ -52,21 +50,21 @@ const gatsbyConfig: GatsbyConfig = {
 					placeholder: 'blurred'
 				},
 				failOnError: true
-			},
-			resolve: 'gatsby-plugin-sharp'
+			}
 		},
 		'gatsby-transformer-sharp',
 		'gatsby-plugin-image',
 		'gatsby-remark-images',
 		{
+			resolve: 'gatsby-plugin-mdx',
 			options: {
 				extensions: ['.md', '.mdx'],
 				gatsbyRemarkPlugins: [
 					{
+						resolve: 'gatsby-remark-embed-video',
 						options: {
 							width: config.embeddedVideoWidth
-						},
-						resolve: 'gatsby-remark-embed-video'
+						}
 					},
 					{
 						resolve: 'gatsby-remark-responsive-iframe'
@@ -75,59 +73,60 @@ const gatsbyConfig: GatsbyConfig = {
 						resolve: 'gatsby-remark-relative-images'
 					},
 					{
+						resolve: 'gatsby-remark-images',
 						options: {
 							maxWidth: config.embeddedImageWidth,
 							showCaptions: ['title', 'alt']
-						},
-						resolve: 'gatsby-remark-images'
+						}
 					},
 					{
 						resolve: 'gatsby-remark-copy-linked-files'
 					},
 					{
+						resolve: 'gatsby-remark-prismjs',
 						options: {
 							showLineNumbers: true
-						},
-						resolve: 'gatsby-remark-prismjs'
+						}
 					}
 				],
 				remarkPlugins: [unwrapImages, remarkA11yEmoji, remarkExternalLinks]
-			},
-			resolve: 'gatsby-plugin-mdx'
+			}
 		},
 		{
+			resolve: 'gatsby-plugin-google-gtag',
 			options: {
 				trackingIds: [config.site.googleAnalyticsId]
-			},
-			resolve: 'gatsby-plugin-google-gtag'
+			}
 		},
 		'gatsby-plugin-catch-links',
 		'gatsby-plugin-twitter',
 		'gatsby-plugin-sitemap',
 		{
+			resolve: 'gatsby-plugin-manifest',
 			options: {
 				background_color: config.site.backgroundColor,
 				cache_busting_mode: 'none',
 				description: config.site.description,
 				display: 'minimal-ui',
 				icon: config.iconPath,
-				icons: config.iconList,
+				// `icons` overrides `icon` - must use one or the other
+				// icons: config.iconList,
 				name: config.site.name,
 				short_name: config.site.titleAbridged,
 				start_url: adjustedPathPRefix,
 				theme_color: config.site.themeColor
-			},
-			resolve: 'gatsby-plugin-manifest'
+			}
 		},
 		{
+			resolve: 'gatsby-plugin-offline',
 			options: {
 				workboxConfig: {
 					globPatterns: config.iconCachePaths
 				}
-			},
-			resolve: 'gatsby-plugin-offline'
+			}
 		},
 		{
+			resolve: 'gatsby-plugin-feed',
 			options: {
 				feeds: [
 					{
@@ -179,8 +178,7 @@ const gatsbyConfig: GatsbyConfig = {
             }
           `,
 				setup: setupRssFeed(config)
-			},
-			resolve: 'gatsby-plugin-feed'
+			}
 		},
 		'gatsby-plugin-styled-components'
 	],

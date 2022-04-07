@@ -2,7 +2,6 @@ import type { SiteConfig } from '@/types';
 
 import { config as testConfig } from '../test/fixtures/config';
 
-
 const isTestEnv =
 	process.env.CYPRESS_SUPPORT || process.env.NODE_ENV === 'test';
 
@@ -42,7 +41,7 @@ export const config: SiteConfig = isTestEnv
 			/**
 			 * Glob pattern for icons that will be cached by `gatsby-plugin-offline`
 			 */
-			iconCachePaths: undefined,
+			iconCachePaths: ['**/*.{png,svg,jpg,gif}'],
 
 			/**
 			 * Icons used in the web manifest
@@ -52,7 +51,7 @@ export const config: SiteConfig = isTestEnv
 			/**
 			 * Manifest icon
 			 */
-			iconPath: undefined,
+			iconPath: 'static/android-chrome-512x512.png',
 
 			organization: {
 				description: '',
@@ -69,11 +68,12 @@ export const config: SiteConfig = isTestEnv
 			 * Prefix all URLs
 			 */
 			pathPrefix: '/',
+
 			site: {
 				/**
 				 * Site manifest background color
 				 */
-				backgroundColor: '#F7F7F7',
+				backgroundColor: 'rgb(206, 166, 186)',
 
 				/**
 				 * Copyright, as displayed in footer and RSS Feed
@@ -105,7 +105,7 @@ export const config: SiteConfig = isTestEnv
 				/**
 				 * Logo; used for SEO
 				 */
-				logoUrl: '',
+				logoUrl: '/android-chrome-512x512.png',
 
 				/**
 				 * Site name as used for SEO, PWA home screen
@@ -125,7 +125,7 @@ export const config: SiteConfig = isTestEnv
 				/**
 				 * App theme color base; used in site manifest
 				 */
-				themeColor: '#D83850',
+				themeColor: 'rgb(100, 102, 140)',
 
 				/**
 				 * Site title
@@ -153,7 +153,7 @@ export const config: SiteConfig = isTestEnv
 				 * Admin 'author' section text
 				 */
 				about:
-					'Frontend software developer. Comp-sci enthusiast. I write source code reviews and blog about programming.',
+					'Frontend software engineer and comp-sci enthusiast. I write source code reviews and blog about programming.',
 
 				/**
 				 * Admin 'author' section avatar

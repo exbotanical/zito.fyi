@@ -1,5 +1,5 @@
 /* eslint-disable jest/no-conditional-in-test */
-import cloneDeep from 'clone-deep';
+import cloneDeep from 'lodash.clonedeep';
 import { mocked } from 'jest-mock';
 
 import {

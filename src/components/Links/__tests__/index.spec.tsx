@@ -1,5 +1,5 @@
 import { screen, cleanup } from '@testing-library/react';
-import cloneDeep from 'clone-deep';
+import cloneDeep from 'lodash.clonedeep';
 import * as gatsby from 'gatsby';
 import { mocked } from 'jest-mock';
 import React from 'react';

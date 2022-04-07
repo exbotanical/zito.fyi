@@ -1,4 +1,4 @@
-import cloneDeep from 'clone-deep';
+import cloneDeep from 'lodash.clonedeep';
 import removeMd from 'remove-markdown';
 
 import { post as postFixture } from '@@/fixtures';

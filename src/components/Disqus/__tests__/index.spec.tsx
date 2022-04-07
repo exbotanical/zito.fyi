@@ -1,4 +1,4 @@
-import cloneDeep from 'clone-deep';
+import cloneDeep from 'lodash.clonedeep';
 import { mocked } from 'jest-mock';
 import React from 'react';
 

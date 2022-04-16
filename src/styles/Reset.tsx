@@ -1,7 +1,7 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
 export const Reset = createGlobalStyle<{
-	theme: { colorbg: string; colortext: string };
+  theme: { colorbg: string; colortext: string }
 }>`
 html {
 	box-sizing: border-box;
@@ -62,4 +62,4 @@ p {
 		opacity: 0;
 	}
 }
-`;
+`

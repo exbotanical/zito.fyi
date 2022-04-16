@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby';
+import { graphql } from 'gatsby'
 
 export const avatarQuery = graphql`#graphql
 	query Avatar() {
@@ -10,4 +10,4 @@ export const avatarQuery = graphql`#graphql
 			}
 		}
 	}
-`;
+`

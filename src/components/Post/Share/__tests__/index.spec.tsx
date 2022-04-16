@@ -1,68 +1,68 @@
-import { screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import React from 'react';
+import { screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import React from 'react'
 
-import 'jest-styled-components';
+import 'jest-styled-components'
 
-import { config, post } from '@@/fixtures';
-import { RenderStyled } from '@@/utils/styled';
+import { config, post } from '@@/fixtures'
+import { RenderStyled } from '@@/utils/styled'
 
-import { PostShare } from '../index';
+import { PostShare } from '../index'
 
 jest.mock('@/config/useConfig', () => ({
-	useConfig: jest.fn(() => config)
-}));
+  useConfig: jest.fn(() => config)
+}))
 
 const mockNavigator = () => {
-	Object.assign(navigator, {
-		clipboard: {
-			writeText: () => {}
-		}
-	});
-	jest.spyOn(navigator.clipboard, 'writeText');
-};
+  Object.assign(navigator, {
+    clipboard: {
+      writeText: () => {}
+    }
+  })
+  jest.spyOn(navigator.clipboard, 'writeText')
+}
 
 describe('component `PostShare`', () => {
-	beforeAll(() => {
-		mockNavigator();
-	});
+  beforeAll(() => {
+    mockNavigator()
+  })
 
-	it('renders social links', () => {
-		const { container } = RenderStyled(<PostShare post={post} />);
+  it('renders social links', () => {
+    const { container } = RenderStyled(<PostShare post={post} />)
 
-		const facebookButton = container.querySelector(
-			'button[aria-label="facebook"]'
-		);
-		expect(facebookButton).toBeInTheDocument();
+    const facebookButton = container.querySelector(
+      'button[aria-label="facebook"]'
+    )
+    expect(facebookButton).toBeInTheDocument()
 
-		const twitterButton = container.querySelector(
-			'button[aria-label="twitter"]'
-		);
-		expect(twitterButton).toBeInTheDocument();
+    const twitterButton = container.querySelector(
+      'button[aria-label="twitter"]'
+    )
+    expect(twitterButton).toBeInTheDocument()
 
-		const redditButton = container.querySelector('button[aria-label="reddit"]');
-		expect(redditButton).toBeInTheDocument();
+    const redditButton = container.querySelector('button[aria-label="reddit"]')
+    expect(redditButton).toBeInTheDocument()
 
-		const linkedinButton = container.querySelector(
-			'button[aria-label="linkedin"]'
-		);
-		expect(linkedinButton).toBeInTheDocument();
+    const linkedinButton = container.querySelector(
+      'button[aria-label="linkedin"]'
+    )
+    expect(linkedinButton).toBeInTheDocument()
 
-		const linkButton = container.querySelector('div > svg');
-		expect(linkButton).toBeInTheDocument();
-	});
+    const linkButton = container.querySelector('div > svg')
+    expect(linkButton).toBeInTheDocument()
+  })
 
-	it('renders a popup notification when the user clicks the post url copy button', async () => {
-		const { container } = RenderStyled(<PostShare post={post} />);
+  it('renders a popup notification when the user clicks the post url copy button', async () => {
+    const { container } = RenderStyled(<PostShare post={post} />)
 
-		const linkButton = container.querySelector('div > svg');
-		expect(linkButton).toBeInTheDocument();
+    const linkButton = container.querySelector('div > svg')
+    expect(linkButton).toBeInTheDocument()
 
-		userEvent.click(linkButton as SVGSVGElement);
+    userEvent.click(linkButton as SVGSVGElement)
 
-		const popupNotif = await screen.findByText('Link copied to clipboard');
-		expect(popupNotif).toBeInTheDocument();
+    const popupNotif = await screen.findByText('Link copied to clipboard')
+    expect(popupNotif).toBeInTheDocument()
 
-		expect(navigator.clipboard.writeText).toHaveBeenCalledTimes(1);
-	});
-});
+    expect(navigator.clipboard.writeText).toHaveBeenCalledTimes(1)
+  })
+})

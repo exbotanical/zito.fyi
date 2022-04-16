@@ -1,176 +1,176 @@
 /* eslint-disable jest/no-conditional-in-test */
-import { mocked } from 'jest-mock';
-import cloneDeep from 'lodash.clonedeep';
+import { mocked } from 'jest-mock'
+import cloneDeep from 'lodash.clonedeep'
 
 import {
-	mdxNodeToPost,
-	queryToPost,
-	jsonToPost,
-	queryToPostsList
-} from '@/utils';
+  mdxNodeToPost,
+  queryToPost,
+  jsonToPost,
+  queryToPostsList
+} from '@/utils'
 
 import {
-	postsListQueryResponse,
-	postQueryResult,
-	post,
-	config
-} from '@@/fixtures';
+  postsListQueryResponse,
+  postQueryResult,
+  post,
+  config
+} from '@@/fixtures'
 
-import type { PostJson } from '..';
+import type { PostJson } from '..'
 
 const consoleWarnSpy = jest
-	.spyOn(global.console, 'warn')
-	.mockImplementation(() => {});
+  .spyOn(global.console, 'warn')
+  .mockImplementation(() => {})
 
-jest.mock('@/config');
-const mockedConfig = mocked(config, true);
-mockedConfig.site.url = 'http://test.com';
-mockedConfig.pathPrefix = '/test';
+jest.mock('@/config')
+const mockedConfig = mocked(config, true)
+mockedConfig.site.url = 'http://test.com'
+mockedConfig.pathPrefix = '/test'
 
-const testError = Error('Invalid `postQueryResult` object used in a test');
+const testError = Error('Invalid `postQueryResult` object used in a test')
 
 describe('`mdxNodeToPost`', () => {
-	it('generates correct post data', () => {
-		const post = mdxNodeToPost(postQueryResult.mdx!);
+  it('generates correct post data', () => {
+    const post = mdxNodeToPost(postQueryResult.mdx!)
 
-		expect(post).toMatchSnapshot();
-	});
+    expect(post).toMatchSnapshot()
+  })
 
-	it('falls back to `datePublished` if `dateModified` has not been set', () => {
-		const mdxNodeSansDateModified = cloneDeep(postQueryResult.mdx)!;
+  it('falls back to `datePublished` if `dateModified` has not been set', () => {
+    const mdxNodeSansDateModified = cloneDeep(postQueryResult.mdx)!
 
-		if (
-			!mdxNodeSansDateModified.frontmatter ||
-			!mdxNodeSansDateModified.frontmatter.datePublished
-		) {
-			throw testError;
-		}
+    if (
+      !mdxNodeSansDateModified.frontmatter ||
+      !mdxNodeSansDateModified.frontmatter.datePublished
+    ) {
+      throw testError
+    }
 
-		mdxNodeSansDateModified.frontmatter.dateModified = undefined;
+    mdxNodeSansDateModified.frontmatter.dateModified = undefined
 
-		const post = mdxNodeToPost(mdxNodeSansDateModified);
+    const post = mdxNodeToPost(mdxNodeSansDateModified)
 
-		expect(post.dateModified).toStrictEqual(
-			new Date(mdxNodeSansDateModified.frontmatter.datePublished)
-		);
-	});
+    expect(post.dateModified).toStrictEqual(
+      new Date(mdxNodeSansDateModified.frontmatter.datePublished)
+    )
+  })
 
-	it('throws when missing MDX data', () => {
-		const invalidMdx = cloneDeep(postQueryResult.mdx)!;
+  it('throws when missing MDX data', () => {
+    const invalidMdx = cloneDeep(postQueryResult.mdx)!
 
-		invalidMdx.timeToRead = undefined;
+    invalidMdx.timeToRead = undefined
 
-		expect(() => mdxNodeToPost(invalidMdx)).toThrow();
-	});
+    expect(() => mdxNodeToPost(invalidMdx)).toThrow()
+  })
 
-	it('throws when missing frontmatter', () => {
-		const invalidMdx = cloneDeep(postQueryResult.mdx)!;
+  it('throws when missing frontmatter', () => {
+    const invalidMdx = cloneDeep(postQueryResult.mdx)!
 
-		if (!invalidMdx.frontmatter) {
-			throw testError;
-		}
+    if (!invalidMdx.frontmatter) {
+      throw testError
+    }
 
-		invalidMdx.frontmatter.coverAlt = undefined;
+    invalidMdx.frontmatter.coverAlt = undefined
 
-		expect(() => mdxNodeToPost(invalidMdx)).toThrow();
+    expect(() => mdxNodeToPost(invalidMdx)).toThrow()
 
-		invalidMdx.frontmatter.cover = undefined;
+    invalidMdx.frontmatter.cover = undefined
 
-		expect(() => mdxNodeToPost(invalidMdx)).toThrow();
+    expect(() => mdxNodeToPost(invalidMdx)).toThrow()
 
-		invalidMdx.frontmatter.datePublished = undefined;
+    invalidMdx.frontmatter.datePublished = undefined
 
-		expect(() => mdxNodeToPost(invalidMdx)).toThrow();
+    expect(() => mdxNodeToPost(invalidMdx)).toThrow()
 
-		invalidMdx.frontmatter.title = undefined;
+    invalidMdx.frontmatter.title = undefined
 
-		expect(() => mdxNodeToPost(invalidMdx)).toThrow();
+    expect(() => mdxNodeToPost(invalidMdx)).toThrow()
 
-		invalidMdx.frontmatter = undefined;
+    invalidMdx.frontmatter = undefined
 
-		expect(() => mdxNodeToPost(invalidMdx)).toThrow();
-	});
+    expect(() => mdxNodeToPost(invalidMdx)).toThrow()
+  })
 
-	it('throws when missing fields', () => {
-		const invalidMdx = cloneDeep(postQueryResult.mdx)!;
+  it('throws when missing fields', () => {
+    const invalidMdx = cloneDeep(postQueryResult.mdx)!
 
-		if (!invalidMdx.fields) {
-			throw testError;
-		}
+    if (!invalidMdx.fields) {
+      throw testError
+    }
 
-		invalidMdx.fields.route = undefined;
+    invalidMdx.fields.route = undefined
 
-		expect(() => mdxNodeToPost(invalidMdx)).toThrow();
+    expect(() => mdxNodeToPost(invalidMdx)).toThrow()
 
-		invalidMdx.fields.url = undefined;
+    invalidMdx.fields.url = undefined
 
-		expect(() => mdxNodeToPost(invalidMdx)).toThrow();
+    expect(() => mdxNodeToPost(invalidMdx)).toThrow()
 
-		invalidMdx.fields.pathName = undefined;
+    invalidMdx.fields.pathName = undefined
 
-		expect(() => mdxNodeToPost(invalidMdx)).toThrow();
+    expect(() => mdxNodeToPost(invalidMdx)).toThrow()
 
-		invalidMdx.fields.slug = undefined;
+    invalidMdx.fields.slug = undefined
 
-		expect(() => mdxNodeToPost(invalidMdx)).toThrow();
+    expect(() => mdxNodeToPost(invalidMdx)).toThrow()
 
-		invalidMdx.fields = undefined;
+    invalidMdx.fields = undefined
 
-		expect(() => mdxNodeToPost(invalidMdx)).toThrow();
-	});
+    expect(() => mdxNodeToPost(invalidMdx)).toThrow()
+  })
 
-	it('warns when missing SEO fields', () => {
-		const partialMdx = cloneDeep(postQueryResult.mdx)!;
+  it('warns when missing SEO fields', () => {
+    const partialMdx = cloneDeep(postQueryResult.mdx)!
 
-		if (!partialMdx.frontmatter) {
-			throw testError;
-		}
+    if (!partialMdx.frontmatter) {
+      throw testError
+    }
 
-		partialMdx.frontmatter.description = undefined;
+    partialMdx.frontmatter.description = undefined
 
-		mdxNodeToPost(partialMdx);
+    mdxNodeToPost(partialMdx)
 
-		expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
-	});
-});
+    expect(consoleWarnSpy).toHaveBeenCalledTimes(1)
+  })
+})
 
 describe('`queryToPost`', () => {
-	it('generates correct post data', () => {
-		const post = queryToPost(postQueryResult);
+  it('generates correct post data', () => {
+    const post = queryToPost(postQueryResult)
 
-		expect(post).toMatchSnapshot();
-	});
+    expect(post).toMatchSnapshot()
+  })
 
-	it('throws when missing data', () => {
-		expect(() => queryToPost({ mdx: undefined })).toThrow();
-	});
-});
+  it('throws when missing data', () => {
+    expect(() => queryToPost({ mdx: undefined })).toThrow()
+  })
+})
 
 describe('`queryToPostsList`', () => {
-	it('generates correct posts list', () => {
-		const res = queryToPostsList(postsListQueryResponse);
+  it('generates correct posts list', () => {
+    const res = queryToPostsList(postsListQueryResponse)
 
-		expect(res).toMatchSnapshot();
-	});
-});
+    expect(res).toMatchSnapshot()
+  })
+})
 
 describe('`jsonToPost`', () => {
-	it('converts JSON based post metadata into a post', () => {
-		const jsonPost = JSON.parse(JSON.stringify(post)) as PostJson;
+  it('converts JSON based post metadata into a post', () => {
+    const jsonPost = JSON.parse(JSON.stringify(post)) as PostJson
 
-		const generatedPost = jsonToPost(jsonPost);
+    const generatedPost = jsonToPost(jsonPost)
 
-		expect(generatedPost).toMatchSnapshot();
+    expect(generatedPost).toMatchSnapshot()
 
-		const postWithRelated = cloneDeep(post);
-		postWithRelated.relatedPosts = [post];
+    const postWithRelated = cloneDeep(post)
+    postWithRelated.relatedPosts = [post]
 
-		const jsonPostWithRelated = JSON.parse(
-			JSON.stringify(postWithRelated)
-		) as PostJson;
+    const jsonPostWithRelated = JSON.parse(
+      JSON.stringify(postWithRelated)
+    ) as PostJson
 
-		const generatedPostWithRelated = jsonToPost(jsonPostWithRelated);
+    const generatedPostWithRelated = jsonToPost(jsonPostWithRelated)
 
-		expect(generatedPostWithRelated).toMatchSnapshot();
-	});
-});
+    expect(generatedPostWithRelated).toMatchSnapshot()
+  })
+})

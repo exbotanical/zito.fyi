@@ -37,7 +37,7 @@ query AllPostsList($skip: Int, $limit: Int) {
     }
   }
 }
-`;
+`
 
 export const allPostsByTagQuery = `#graphql
 query AllPostsByTag($tag: String) {
@@ -75,7 +75,7 @@ query AllPostsByTag($tag: String) {
     }
   }
 }
-`;
+`
 
 export const allPostsByCategoryQuery = `#graphql
 query AllPostsByCategory($category: String) {
@@ -113,4 +113,4 @@ query AllPostsByCategory($category: String) {
     }
   }
 }
-`;
+`

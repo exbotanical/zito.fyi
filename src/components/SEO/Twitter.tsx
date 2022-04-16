@@ -1,45 +1,45 @@
-import React from 'react';
+import React from 'react'
 
-import type { UserMetadata, BaseSiteMetadata } from '@/types';
+import type { UserMetadata, BaseSiteMetadata } from '@/types'
 
-import type { SeoData, TwitterTagList } from './types';
+import type { SeoData, TwitterTagList } from './types'
 
 interface SeoArgs {
-	seoData: SeoData;
-	userData?: UserMetadata;
-	siteData: BaseSiteMetadata;
+  seoData: SeoData
+  userData?: UserMetadata
+  siteData: BaseSiteMetadata
 }
 
 export const TwitterTags = ({
-	seoData,
-	userData,
-	siteData
+  seoData,
+  userData,
+  siteData
 }: SeoArgs): TwitterTagList => {
-	const { title, description, imageUrl, imageAlt } = seoData;
-	const usertwitterHandle = userData?.twitterHandle;
-	const sitetwitterHandle = siteData.twitterHandle;
+  const { title, description, imageUrl, imageAlt } = seoData
+  const usertwitterHandle = userData?.twitterHandle
+  const sitetwitterHandle = siteData.twitterHandle
 
-	const tagList: TwitterTagList = [];
+  const tagList: TwitterTagList = []
 
-	const addTypeSafeTag = (name: string, content: string) => {
-		tagList.push(<meta content={content} name={name} />);
-	};
+  const addTypeSafeTag = (name: string, content: string) => {
+    tagList.push(<meta content={content} name={name} />)
+  }
 
-	addTypeSafeTag('twitter:card', 'summary_large_image');
-	addTypeSafeTag('twitter:title', title);
+  addTypeSafeTag('twitter:card', 'summary_large_image')
+  addTypeSafeTag('twitter:title', title)
 
-	if (description) addTypeSafeTag('twitter:description', description);
+  if (description) addTypeSafeTag('twitter:description', description)
 
-	if (imageUrl) addTypeSafeTag('twitter:image', imageUrl);
+  if (imageUrl) addTypeSafeTag('twitter:image', imageUrl)
 
-	addTypeSafeTag('twitter:image:alt', imageAlt);
+  addTypeSafeTag('twitter:image:alt', imageAlt)
 
-	if (usertwitterHandle) addTypeSafeTag('twitter:creator', usertwitterHandle);
+  if (usertwitterHandle) addTypeSafeTag('twitter:creator', usertwitterHandle)
 
-	if (sitetwitterHandle) addTypeSafeTag('twitter:site', sitetwitterHandle);
+  if (sitetwitterHandle) addTypeSafeTag('twitter:site', sitetwitterHandle)
 
-	return tagList.map((tag) => ({
-		...tag,
-		key: tag.props.name
-	}));
-};
+  return tagList.map(tag => ({
+    ...tag,
+    key: tag.props.name
+  }))
+}

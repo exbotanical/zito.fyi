@@ -1,56 +1,56 @@
-import { parseStringPromise } from 'xml2js';
+import { parseStringPromise } from 'xml2js'
 
 interface RssData {
-	rss: {
-		channel: RssChannel[];
-	};
+  rss: {
+    channel: RssChannel[]
+  }
 }
 
 interface SiteMapData {
-	urlset: {
-		url: {
-			loc: string[];
-			changefreq: string[];
-			priority: string[];
-		}[];
-	};
+  urlset: {
+    url: {
+      loc: string[]
+      changefreq: string[]
+      priority: string[]
+    }[]
+  }
 }
 
 interface ParseSitemapArgs {
-	siteUrl: string;
-	sitemapString: string;
+  siteUrl: string
+  sitemapString: string
 }
 
 interface RssItem {
-	link: string[];
+  link: string[]
 }
 
 interface RssChannel {
-	link: string[];
-	item: RssItem[];
+  link: string[]
+  item: RssItem[]
 }
 
-const pluginConfig: Cypress.PluginConfig = (on) => {
-	on('task', {
-		async parseRss(rssString: string) {
-			return parseStringPromise(rssString).then((res) => {
-				const rssData = res as RssData;
-				const items = rssData.rss.channel[0].item;
-				const siteUrl = rssData.rss.channel[0].link[0];
+const pluginConfig: Cypress.PluginConfig = on => {
+  on('task', {
+    async parseRss(rssString: string) {
+      return parseStringPromise(rssString).then(res => {
+        const rssData = res as RssData
+        const items = rssData.rss.channel[0].item
+        const siteUrl = rssData.rss.channel[0].link[0]
 
-				return items.map((item) => item.link[0].replace(siteUrl, ''));
-			});
-		},
+        return items.map(item => item.link[0].replace(siteUrl, ''))
+      })
+    },
 
-		async parseSitemap({ siteUrl, sitemapString }: ParseSitemapArgs) {
-			return parseStringPromise(sitemapString).then((res) => {
-				const siteMapData = res as SiteMapData;
-				const urls = siteMapData.urlset.url;
+    async parseSitemap({ siteUrl, sitemapString }: ParseSitemapArgs) {
+      return parseStringPromise(sitemapString).then(res => {
+        const siteMapData = res as SiteMapData
+        const urls = siteMapData.urlset.url
 
-				return urls.map((url) => url.loc[0].replace(siteUrl, ''));
-			});
-		}
-	});
-};
+        return urls.map(url => url.loc[0].replace(siteUrl, ''))
+      })
+    }
+  })
+}
 
-export default pluginConfig;
+export default pluginConfig

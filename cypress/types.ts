@@ -1,3 +1,3 @@
 export interface ResponseData {
-	body: string;
+  body: string
 }

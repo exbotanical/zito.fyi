@@ -1,64 +1,64 @@
-import { Link as GatsbyLink } from 'gatsby';
-import React from 'react';
+import { Link as GatsbyLink } from 'gatsby'
+import React from 'react'
 
-import type { LinkProps } from '@/components/Links/types';
-import { useConfig } from '@/config';
+import type { LinkProps } from '@/components/Links/types'
+import { useConfig } from '@/config'
 
-import { withBasePath } from '../../../node';
+import { withBasePath } from '../../../node'
 
 const isAbsolute = RegExp.prototype.test.bind(
-	// eslint-disable-next-line prefer-regex-literals
-	new RegExp('^(?:[a-z]+:)?//', 'i')
-);
-const isEmail = (url: string) => url.startsWith('mailto');
+  // eslint-disable-next-line prefer-regex-literals
+  new RegExp('^(?:[a-z]+:)?//', 'i')
+)
+const isEmail = (url: string) => url.startsWith('mailto')
 
 export function BaseLink({
-	to,
-	href,
-	className,
-	children,
-	activeClassName,
-	sansBasePath,
-	ariaLabel
+  to,
+  href,
+  className,
+  children,
+  activeClassName,
+  sansBasePath,
+  ariaLabel
 }: LinkProps): JSX.Element {
-	const config = useConfig();
-	const url = href || to;
+  const config = useConfig()
+  const url = href || to
 
-	if (isEmail(url) || isAbsolute(url)) {
-		return (
-			<a
-				aria-label={ariaLabel}
-				className={className}
-				href={url}
-				rel="noreferrer"
-				target="_blank"
-			>
-				{children}
-			</a>
-		);
-	}
+  if (isEmail(url) || isAbsolute(url)) {
+    return (
+      <a
+        aria-label={ariaLabel}
+        className={className}
+        href={url}
+        rel="noreferrer"
+        target="_blank"
+      >
+        {children}
+      </a>
+    )
+  }
 
-	const isAnchor = url.startsWith('#');
+  const isAnchor = url.startsWith('#')
 
-	const internalUrl = sansBasePath ? url : withBasePath(config, url);
+  const internalUrl = sansBasePath ? url : withBasePath(config, url)
 
-	return isAnchor ? (
-		<a
-			aria-label={ariaLabel}
-			className={className}
-			href={internalUrl}
-			rel="noreferrer"
-		>
-			{children}
-		</a>
-	) : (
-		<GatsbyLink
-			activeClassName={activeClassName}
-			aria-label={ariaLabel}
-			className={className}
-			to={internalUrl}
-		>
-			{children}
-		</GatsbyLink>
-	);
+  return isAnchor ? (
+    <a
+      aria-label={ariaLabel}
+      className={className}
+      href={internalUrl}
+      rel="noreferrer"
+    >
+      {children}
+    </a>
+  ) : (
+    <GatsbyLink
+      activeClassName={activeClassName}
+      aria-label={ariaLabel}
+      className={className}
+      to={internalUrl}
+    >
+      {children}
+    </GatsbyLink>
+  )
 }

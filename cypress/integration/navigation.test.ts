@@ -1,18 +1,18 @@
-const testPages = ['/', '/my-favorite-soft-machine-records'];
+const testPages = ['/', '/my-favorite-soft-machine-records']
 
-testPages.forEach((url) => {
-	describe(`main navigation on page ${url}`, () => {
-		beforeEach(() => {
-			cy.visit(url).waitForRouteChange();
-		});
+testPages.forEach(url => {
+  describe(`main navigation on page ${url}`, () => {
+    beforeEach(() => {
+      cy.visit(url).waitForRouteChange()
+    })
 
-		it('has a clickable logo', () => {
-			cy.get('header')
-				.getByTestId('site_logo')
-				.click()
+    it('has a clickable logo', () => {
+      cy.get('header')
+        .getByTestId('site_logo')
+        .click()
 
-				.location('pathname')
-				.should('eq', '/');
-		});
-	});
-});
+        .location('pathname')
+        .should('eq', '/')
+    })
+  })
+})

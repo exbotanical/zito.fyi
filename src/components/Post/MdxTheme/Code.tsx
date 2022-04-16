@@ -1,59 +1,59 @@
-import React from 'react';
-import styled, { createGlobalStyle, css } from 'styled-components';
+import React from 'react'
+import styled, { createGlobalStyle, css } from 'styled-components'
 
-import { SIDE_PADDING } from '@/components/Post/PostSpacing';
-import { typographyStyles } from '@/styles';
+import { SIDE_PADDING } from '@/components/Post/PostSpacing'
+import { typographyStyles } from '@/styles'
 
-const CODE_CONTENT_WIDTH = '736px';
-const CODE_BLOCK_SIZE = `calc(${CODE_CONTENT_WIDTH} + 2 * ${SIDE_PADDING})`;
+const CODE_CONTENT_WIDTH = '736px'
+const CODE_BLOCK_SIZE = `calc(${CODE_CONTENT_WIDTH} + 2 * ${SIDE_PADDING})`
 
 interface CodeProps {
-	className?: string;
-	children?: React.ReactChildren;
+  className?: string
+  children?: React.ReactChildren
 }
 
-export const InlineCode = undefined;
+export const InlineCode = undefined
 
 export const GlobalCodeStyle = createGlobalStyle`${css`
-	.gatsby-highlight {
-		width: 100%;
-		padding: 0;
+  .gatsby-highlight {
+    width: 100%;
+    padding: 0;
 
-		@media (min-width: ${CODE_BLOCK_SIZE}) {
-			max-width: ${CODE_BLOCK_SIZE};
-			padding: 0 16px;
-		}
-	}
+    @media (min-width: ${CODE_BLOCK_SIZE}) {
+      max-width: ${CODE_BLOCK_SIZE};
+      padding: 0 16px;
+    }
+  }
 `}
-`;
+`
 
 export const Pre = styled.pre`
-	${typographyStyles.Code}
+  ${typographyStyles.Code}
 
-	width: 100%;
-	max-width: 100%;
-	margin: 0 !important;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 !important;
 
-	/* Set border radius depending on element state */
-	border-radius: 0 !important;
+  /* Set border radius depending on element state */
+  border-radius: 0 !important;
 
-	@media (min-width: ${CODE_BLOCK_SIZE}) {
-		max-width: ${CODE_BLOCK_SIZE};
-		border-radius: 6px !important;
-	}
-`;
+  @media (min-width: ${CODE_BLOCK_SIZE}) {
+    max-width: ${CODE_BLOCK_SIZE};
+    border-radius: 6px !important;
+  }
+`
 
 export const StyledCode = styled.code`
-	${typographyStyles.Code}
+  ${typographyStyles.Code}
 
-	width: 100%;
-	max-width: 100%;
-`;
+  width: 100%;
+  max-width: 100%;
+`
 
 export function Code({ className, children }: CodeProps): JSX.Element {
-	return (
-		<StyledCode className={className} tabIndex={0}>
-			{children}
-		</StyledCode>
-	);
+  return (
+    <StyledCode className={className} tabIndex={0}>
+      {children}
+    </StyledCode>
+  )
 }

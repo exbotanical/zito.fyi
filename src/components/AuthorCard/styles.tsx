@@ -1,95 +1,95 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-import { Separator } from '@/components/Separator';
-import { Socials } from '@/components/Socials';
-import { BREAKPOINTS, H3 } from '@/styles';
+import { Separator } from '@/components/Separator'
+import { Socials } from '@/components/Socials'
+import { BREAKPOINTS, H3 } from '@/styles'
 
 export const Wrapper = styled.section`
-	display: grid;
-	padding: 0 16px;
-	justify-items: center;
-	justify-self: center;
-`;
+  display: grid;
+  padding: 0 16px;
+  justify-items: center;
+  justify-self: center;
+`
 
 export const Main = styled.div`
-	display: grid;
-	grid-auto-flow: column;
-	grid-gap: 32px;
-	justify-items: center;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 32px;
+  justify-items: center;
 
-	@media (max-width: ${BREAKPOINTS.sm}) {
-		grid-auto-flow: row;
-	}
-`;
+  @media (max-width: ${BREAKPOINTS.sm}) {
+    grid-auto-flow: row;
+  }
+`
 
 export const Info = styled.div`
-	display: grid;
-	align-content: flex-start;
-	justify-content: flex-start;
-	grid-gap: 16px;
+  display: grid;
+  align-content: flex-start;
+  justify-content: flex-start;
+  grid-gap: 16px;
 
-	@media (max-width: ${BREAKPOINTS.sm}) {
-		justify-content: center;
-		grid-auto-flow: row;
-	}
-`;
+  @media (max-width: ${BREAKPOINTS.sm}) {
+    justify-content: center;
+    grid-auto-flow: row;
+  }
+`
 
 export const Contact = styled.div`
-	display: grid;
-	align-content: center;
-	align-items: center;
-	margin-top: 8px;
-	grid-auto-flow: column;
-	grid-gap: 24px;
+  display: grid;
+  align-content: center;
+  align-items: center;
+  margin-top: 8px;
+  grid-auto-flow: column;
+  grid-gap: 24px;
 
-	@media (max-width: ${BREAKPOINTS.sm}) {
-		justify-content: center;
-		margin-top: 32px;
-		grid-auto-flow: row;
-		grid-gap: 8px;
-		justify-items: center;
-	}
-`;
+  @media (max-width: ${BREAKPOINTS.sm}) {
+    justify-content: center;
+    margin-top: 32px;
+    grid-auto-flow: row;
+    grid-gap: 8px;
+    justify-items: center;
+  }
+`
 
 export const Avatar = styled.img`
-	overflow: hidden;
-	width: 128px;
-	height: 128px;
-	border-radius: 50%;
-`;
+  overflow: hidden;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+`
 
 export const ShareLabel = styled(H3)`
-	line-height: 100%;
-`;
+  line-height: 100%;
+`
 
 export const AuthorName = styled(H3)`
-	color: ${({ theme }) => theme.colors.font.secondary};
-`;
+  color: ${({ theme }) => theme.colors.font.secondary};
+`
 
 export const AboutText = styled.div`
-	width: 0;
-	min-width: 100%;
-	align-self: center;
+  width: 0;
+  min-width: 100%;
+  align-self: center;
 
-	& > p {
-		color: ${({ theme }) => theme.colors.font.secondary};
-	}
+  & > p {
+    color: ${({ theme }) => theme.colors.font.secondary};
+  }
 
-	@media (max-width: ${BREAKPOINTS.sm}) {
-		& > p {
-			text-align: justify;
-		}
-	}
+  @media (max-width: ${BREAKPOINTS.sm}) {
+    & > p {
+      text-align: justify;
+    }
+  }
 
-	@media (min-width: ${BREAKPOINTS.lg}) {
-		width: 500px;
-	}
-`;
+  @media (min-width: ${BREAKPOINTS.lg}) {
+    width: 500px;
+  }
+`
 
 export const CompactSocials = styled(Socials)`
-	grid-gap: 12px;
-`;
+  grid-gap: 12px;
+`
 
 export const AuthorSeparator = styled(Separator)`
-	margin-top: 8px;
-`;
+  margin-top: 8px;
+`

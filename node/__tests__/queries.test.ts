@@ -1,90 +1,90 @@
 import {
-	allPostsByCategoryQuery,
-	allPostsByTagQuery,
-	allPostsQuery
-} from '../../src/templates/feed/queries';
-import { postsListQueryResponse } from '../../test/fixtures';
+  allPostsByCategoryQuery,
+  allPostsByTagQuery,
+  allPostsQuery
+} from '../../src/templates/feed/queries'
+import { postsListQueryResponse } from '../../test/fixtures'
 import {
-	getAllPostsByCategory,
-	getAllPostsByTag,
-	getAllPosts
-} from '../queries';
+  getAllPostsByCategory,
+  getAllPostsByTag,
+  getAllPosts
+} from '../queries'
 
-jest.spyOn(global.console, 'warn').mockImplementation();
-jest.spyOn(global.console, 'error').mockImplementation();
+jest.spyOn(global.console, 'warn').mockImplementation()
+jest.spyOn(global.console, 'error').mockImplementation()
 
 const categoryQueryResponse = {
-	data: {
-		allMdx: {
-			edges: postsListQueryResponse.allMdx.edges.filter(
-				(edge) => edge.node.frontmatter.category === 'category'
-			)
-		}
-	}
-};
+  data: {
+    allMdx: {
+      edges: postsListQueryResponse.allMdx.edges.filter(
+        edge => edge.node.frontmatter.category === 'category'
+      )
+    }
+  }
+}
 const tagQueryResponse = {
-	data: {
-		allMdx: {
-			edges: postsListQueryResponse.allMdx.edges.filter((edge) =>
-				edge.node.frontmatter.tags.includes('tag')
-			)
-		}
-	}
-};
-const indexQueryResponse = { data: postsListQueryResponse };
+  data: {
+    allMdx: {
+      edges: postsListQueryResponse.allMdx.edges.filter(edge =>
+        edge.node.frontmatter.tags.includes('tag')
+      )
+    }
+  }
+}
+const indexQueryResponse = { data: postsListQueryResponse }
 
 describe('build util `getAllPosts`', () => {
-	it('returns the index feed', async () => {
-		const graphql = jest.fn().mockResolvedValue(indexQueryResponse);
+  it('returns the index feed', async () => {
+    const graphql = jest.fn().mockResolvedValue(indexQueryResponse)
 
-		const posts = await getAllPosts(graphql);
+    const posts = await getAllPosts(graphql)
 
-		expect(graphql).toHaveBeenCalledWith(allPostsQuery);
-		expect(posts).toMatchSnapshot();
-	});
+    expect(graphql).toHaveBeenCalledWith(allPostsQuery)
+    expect(posts).toMatchSnapshot()
+  })
 
-	it('warns when no data is returned', async () => {
-		const graphql = jest.fn().mockResolvedValue({ data: undefined });
+  it('warns when no data is returned', async () => {
+    const graphql = jest.fn().mockResolvedValue({ data: undefined })
 
-		const posts = await getAllPosts(graphql);
+    const posts = await getAllPosts(graphql)
 
-		expect(console.warn).toHaveBeenCalled();
-		expect(posts).toStrictEqual([]);
-	});
+    expect(console.warn).toHaveBeenCalled()
+    expect(posts).toStrictEqual([])
+  })
 
-	it('propagates query errors', async () => {
-		const graphql = jest.fn().mockResolvedValue({ errors: 'TEST ERROR' });
+  it('propagates query errors', async () => {
+    const graphql = jest.fn().mockResolvedValue({ errors: 'TEST ERROR' })
 
-		await expect(getAllPosts(graphql)).rejects.toThrow('TEST ERROR');
+    await expect(getAllPosts(graphql)).rejects.toThrow('TEST ERROR')
 
-		expect(console.error).toHaveBeenCalled();
-		expect(console.error).toHaveBeenCalledWith('TEST ERROR');
-	});
-});
+    expect(console.error).toHaveBeenCalled()
+    expect(console.error).toHaveBeenCalledWith('TEST ERROR')
+  })
+})
 
 describe('build util `getAllPostsByTag`', () => {
-	it('returns the tag feed', async () => {
-		const graphql = jest.fn().mockResolvedValue(tagQueryResponse);
+  it('returns the tag feed', async () => {
+    const graphql = jest.fn().mockResolvedValue(tagQueryResponse)
 
-		const posts = await getAllPostsByTag(graphql, 'tag');
+    const posts = await getAllPostsByTag(graphql, 'tag')
 
-		expect(graphql).toHaveBeenCalledWith(allPostsByTagQuery, {
-			tag: 'tag'
-		});
-		expect(posts).toMatchSnapshot();
-	});
-});
+    expect(graphql).toHaveBeenCalledWith(allPostsByTagQuery, {
+      tag: 'tag'
+    })
+    expect(posts).toMatchSnapshot()
+  })
+})
 
 describe('build util `getAllPostsByCategory`', () => {
-	it('returns the category feed', async () => {
-		const graphql = jest.fn().mockResolvedValue(categoryQueryResponse);
+  it('returns the category feed', async () => {
+    const graphql = jest.fn().mockResolvedValue(categoryQueryResponse)
 
-		const posts = await getAllPostsByCategory(graphql, 'category');
+    const posts = await getAllPostsByCategory(graphql, 'category')
 
-		expect(graphql).toHaveBeenCalledWith(allPostsByCategoryQuery, {
-			category: 'category'
-		});
+    expect(graphql).toHaveBeenCalledWith(allPostsByCategoryQuery, {
+      category: 'category'
+    })
 
-		expect(posts).toMatchSnapshot();
-	});
-});
+    expect(posts).toMatchSnapshot()
+  })
+})

@@ -68,4 +68,4 @@ export const ConfigSchema = `#graphql
   type SiteSiteMetadata {
     config: SiteConfig!
   }
-`;
+`

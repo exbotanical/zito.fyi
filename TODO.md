@@ -27,6 +27,9 @@
 - [ ] add rel canonical
 - [x] switch to pnpm
 - [ ] fix skeleton loader bg
+- [ ] add footer call to action
+- [ ] fix blockquote font
+- [ ] add full copyright
 
 ## Cypress
 

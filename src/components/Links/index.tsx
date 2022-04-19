@@ -10,7 +10,7 @@ export function IconLink({
   children,
   activeClassName,
   sansBasePath,
-  ariaLabel
+  ariaLabel,
 }: LinkProps): JSX.Element {
   return (
     <S.IconLink
@@ -33,7 +33,7 @@ export function PrimaryLink({
   children,
   activeClassName,
   sansBasePath,
-  ariaLabel
+  ariaLabel,
 }: LinkProps): JSX.Element {
   return (
     <S.PrimaryLink
@@ -56,7 +56,7 @@ export function AnimatedLink({
   children,
   activeClassName,
   sansBasePath,
-  ariaLabel
+  ariaLabel,
 }: LinkProps): JSX.Element {
   return (
     <S.AnimatedLink
@@ -79,7 +79,7 @@ export function TransparentLink({
   children,
   activeClassName,
   sansBasePath,
-  ariaLabel
+  ariaLabel,
 }: LinkProps): JSX.Element {
   return (
     <S.TransparentLink
@@ -102,7 +102,7 @@ export function HeadingLink({
   children,
   activeClassName,
   sansBasePath,
-  ariaLabel
+  ariaLabel,
 }: LinkProps): JSX.Element {
   return (
     <S.HeadingLink

@@ -13,7 +13,7 @@ interface SeoArgs {
 export const TwitterTags = ({
   seoData,
   userData,
-  siteData
+  siteData,
 }: SeoArgs): TwitterTagList => {
   const { title, description, imageUrl, imageAlt } = seoData
   const usertwitterHandle = userData?.twitterHandle
@@ -40,6 +40,6 @@ export const TwitterTags = ({
 
   return tagList.map(tag => ({
     ...tag,
-    key: tag.props.name
+    key: tag.props.name,
   }))
 }

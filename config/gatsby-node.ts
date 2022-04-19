@@ -9,7 +9,7 @@ import {
   getAllPosts,
   getAllPostsByTag,
   getAllPostsByCategory,
-  ConfigSchema
+  ConfigSchema,
 } from '../node'
 import { StreamLogger } from '../node/logger'
 
@@ -27,7 +27,7 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions }) => {
 
     if (!slug) {
       console.error(
-        '[onCreateNode]: Cannot generate slug for provided `mdx` frontmatter data'
+        '[onCreateNode]: Cannot generate slug for provided `mdx` frontmatter data',
       )
 
       return
@@ -46,25 +46,25 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions }) => {
     actions.createNodeField({
       name: 'slug',
       node,
-      value: slug
+      value: slug,
     })
 
     actions.createNodeField({
       name: 'route',
       node,
-      value: route
+      value: route,
     })
 
     actions.createNodeField({
       name: 'pathName',
       node,
-      value: pathName
+      value: pathName,
     })
 
     actions.createNodeField({
       name: 'url',
       node,
-      value: url
+      value: url,
     })
   }
 }
@@ -78,7 +78,7 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
 
 export const createPages: GatsbyNode['createPages'] = async ({
   graphql,
-  actions
+  actions,
 }) => {
   const uniqueTags = new Set<string>()
   const uniqueCategories = new Set<string>()
@@ -113,9 +113,9 @@ export const createPages: GatsbyNode['createPages'] = async ({
         prevslug: prevPost.slug,
         prevtitle: prevPost.title,
         relatedPosts,
-        slug: post.slug
+        slug: post.slug,
       },
-      path: post.route
+      path: post.route,
     })
   })
 
@@ -137,7 +137,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
       const postsByCategory = await getAllPostsByCategory(graphql, category)
 
       await createFeed(config, actions, postsByCategory, 'category', category)
-    }
+    },
   )
 
   await Promise.all(categoryTasks)

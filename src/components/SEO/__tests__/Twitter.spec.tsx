@@ -7,7 +7,7 @@ describe('`TwitterTags`', () => {
     const generatedTags = TwitterTags({
       seoData: seoData.seoSite,
       userData: seoData.user,
-      siteData: seoData.site
+      siteData: seoData.site,
     })
 
     expect(generatedTags).toMatchSnapshot()
@@ -17,7 +17,7 @@ describe('`TwitterTags`', () => {
     const generatedTags = TwitterTags({
       seoData: seoData.seoPost,
       userData: seoData.user,
-      siteData: seoData.site
+      siteData: seoData.site,
     })
 
     expect(generatedTags).toMatchSnapshot()
@@ -27,7 +27,7 @@ describe('`TwitterTags`', () => {
     const generatedTags = TwitterTags({
       seoData: { ...seoData.seoPost, description: undefined },
       userData: seoData.user,
-      siteData: seoData.site
+      siteData: seoData.site,
     })
 
     expect(generatedTags).toMatchSnapshot()
@@ -37,7 +37,7 @@ describe('`TwitterTags`', () => {
     const generatedTags = TwitterTags({
       seoData: { ...seoData.seoPost, imageUrl: undefined },
       userData: seoData.user,
-      siteData: seoData.site
+      siteData: seoData.site,
     })
 
     expect(generatedTags).toMatchSnapshot()
@@ -47,7 +47,7 @@ describe('`TwitterTags`', () => {
     const siteTags = TwitterTags({
       seoData: seoData.seoSite,
       userData: seoData.user,
-      siteData: seoData.site
+      siteData: seoData.site,
     })
 
     expect(tagListHasEmptyValues(siteTags)).toBe(false)
@@ -55,7 +55,7 @@ describe('`TwitterTags`', () => {
     const postTags = TwitterTags({
       seoData: seoData.seoPost,
       userData: seoData.user,
-      siteData: seoData.site
+      siteData: seoData.site,
     })
 
     expect(tagListHasEmptyValues(postTags)).toBe(false)
@@ -63,7 +63,7 @@ describe('`TwitterTags`', () => {
     const tagsSansUserTwitter = TwitterTags({
       seoData: seoData.seoPost,
       userData: { ...seoData.user, twitterHandle: undefined },
-      siteData: seoData.site
+      siteData: seoData.site,
     })
 
     expect(tagListHasEmptyValues(tagsSansUserTwitter)).toBe(false)
@@ -71,7 +71,7 @@ describe('`TwitterTags`', () => {
     const tagsSansSitetwitterHandle = TwitterTags({
       seoData: seoData.seoPost,
       userData: seoData.user,
-      siteData: { ...seoData.site, twitterHandle: undefined }
+      siteData: { ...seoData.site, twitterHandle: undefined },
     })
 
     expect(tagListHasEmptyValues(tagsSansSitetwitterHandle)).toBe(false)
@@ -79,7 +79,7 @@ describe('`TwitterTags`', () => {
     const tagsSansDescription = TwitterTags({
       seoData: { ...seoData.seoPost, description: undefined },
       userData: seoData.user,
-      siteData: seoData.site
+      siteData: seoData.site,
     })
 
     expect(tagListHasEmptyValues(tagsSansDescription)).toBe(false)
@@ -87,7 +87,7 @@ describe('`TwitterTags`', () => {
     const tagsSansImageUrl = TwitterTags({
       seoData: { ...seoData.seoPost, imageUrl: undefined },
       userData: seoData.user,
-      siteData: seoData.site
+      siteData: seoData.site,
     })
 
     expect(tagListHasEmptyValues(tagsSansImageUrl)).toBe(false)
@@ -97,7 +97,7 @@ describe('`TwitterTags`', () => {
     const generatedSiteTags = TwitterTags({
       seoData: seoData.seoSite,
       userData: seoData.user,
-      siteData: seoData.site
+      siteData: seoData.site,
     })
 
     expect(tagListHasUniqueKeys(generatedSiteTags)).toBe(true)
@@ -105,7 +105,7 @@ describe('`TwitterTags`', () => {
     const generatedpostTags = TwitterTags({
       seoData: seoData.seoPost,
       userData: seoData.user,
-      siteData: seoData.site
+      siteData: seoData.site,
     })
 
     expect(tagListHasUniqueKeys(generatedpostTags)).toBe(true)

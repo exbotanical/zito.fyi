@@ -8,7 +8,7 @@ import type {
   SeoData,
   JsonLdAuthorMetadata,
   JsonLdOrgMetadata,
-  JsonLdPostMetadata
+  JsonLdPostMetadata,
 } from './types'
 
 interface SeoArgs {
@@ -19,13 +19,13 @@ interface SeoArgs {
 }
 
 export const getAuthorMetadata = (
-  userData: UserMetadata
+  userData: UserMetadata,
 ): JsonLdAuthorMetadata => ({
   '@type': 'Person',
   'address': userData.location,
   'email': userData.email,
   'familyName': userData.surname,
-  'givenName': userData.firstName
+  'givenName': userData.firstName,
 })
 
 export const getOrgMetadata = (orgData: OrgMetadata): JsonLdOrgMetadata => {
@@ -37,14 +37,14 @@ export const getOrgMetadata = (orgData: OrgMetadata): JsonLdOrgMetadata => {
     description,
     'logo': logoUrl,
     name,
-    url
+    url,
   }
 }
 
 export const getPostMetadata = (
   postData: AbridgedPost,
   orgData?: OrgMetadata,
-  userData?: UserMetadata
+  userData?: UserMetadata,
 ): JsonLdPostMetadata | null => {
   const {
     body,
@@ -55,7 +55,7 @@ export const getPostMetadata = (
     description,
     tags,
     title,
-    url
+    url,
   } = postData
 
   const orgMetaData = orgData ? getOrgMetadata(orgData) : undefined
@@ -80,7 +80,7 @@ export const getPostMetadata = (
     'mainEntityOfPage': 'True',
     'name': title,
     'publisher': orgMetaData,
-    url
+    url,
   }
 }
 
@@ -88,7 +88,7 @@ export function RichSearchTags({
   seoData,
   postData,
   userData,
-  orgData
+  orgData,
 }: SeoArgs): RichSearchTag[] {
   const { isPost } = seoData
 

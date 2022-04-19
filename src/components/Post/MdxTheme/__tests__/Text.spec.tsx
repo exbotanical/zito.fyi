@@ -8,7 +8,7 @@ import { RenderStyled } from '@@/utils/styled'
 import { generateHeadings } from '../Text'
 
 jest.mock('@/config/useConfig', () => ({
-  useConfig: jest.fn(() => config)
+  useConfig: jest.fn(() => config),
 }))
 
 describe('utility `generateHeadings`', () => {
@@ -21,7 +21,7 @@ describe('utility `generateHeadings`', () => {
       RenderStyled(<HeadingComponent>Test</HeadingComponent>)
 
       const headingLink = screen.getByRole('link', {
-        name: 'Test'
+        name: 'Test',
       })
 
       expect(headingLink).toHaveAttribute('href', '/test#test')

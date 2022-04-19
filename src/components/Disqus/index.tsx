@@ -22,7 +22,7 @@ export function DisqusPlugin({ post }: DisqusPluginProps): JSX.Element | null {
       config={{
         identifier: title,
         title,
-        url
+        url,
       }}
     />
   )

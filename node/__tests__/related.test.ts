@@ -2,7 +2,7 @@ import { getNRelatedPosts } from '../'
 import {
   edgeCaseTargetPost,
   poolOfPosts,
-  poolOfPostsFull
+  poolOfPostsFull,
 } from '../../test/fixtures'
 
 const targetPost = poolOfPosts[0]
@@ -19,7 +19,7 @@ describe('build util `getNRelatedPosts`', () => {
   it('correctly determines related posts when target is missing category', () => {
     const relatedPosts = getNRelatedPosts(
       { ...targetPost, category: undefined },
-      poolOfPosts
+      poolOfPosts,
     )
 
     expect(relatedPosts).toHaveLength(2)
@@ -30,7 +30,7 @@ describe('build util `getNRelatedPosts`', () => {
   it('correctly determines related posts when target is missing tags', () => {
     const relatedPosts = getNRelatedPosts(
       { ...targetPost, tags: undefined },
-      poolOfPosts
+      poolOfPosts,
     )
 
     expect(relatedPosts).toHaveLength(2)
@@ -41,7 +41,7 @@ describe('build util `getNRelatedPosts`', () => {
   it('returns latest posts when target is missing tags and the category', () => {
     const relatedPosts = getNRelatedPosts(
       { ...targetPost, tags: undefined, category: undefined },
-      poolOfPosts
+      poolOfPosts,
     )
 
     expect(relatedPosts).toHaveLength(2)
@@ -52,7 +52,7 @@ describe('build util `getNRelatedPosts`', () => {
   it('returns 2 posts even when there is only one direct category match', () => {
     const relatedPosts = getNRelatedPosts(
       { ...targetPost, category: 'more' },
-      poolOfPosts
+      poolOfPosts,
     )
 
     expect(relatedPosts).toHaveLength(2)
@@ -63,7 +63,7 @@ describe('build util `getNRelatedPosts`', () => {
   it('returns 2 posts even when there are no category matches', () => {
     const relatedPosts = getNRelatedPosts(
       { ...targetPost, category: 'non-existent-category' },
-      poolOfPosts
+      poolOfPosts,
     )
 
     expect(relatedPosts).toHaveLength(2)
@@ -74,7 +74,7 @@ describe('build util `getNRelatedPosts`', () => {
   it('works with no other posts besides the target post', () => {
     const relatedPosts = getNRelatedPosts(
       { ...targetPost, category: 'non-existent-category' },
-      poolOfPosts.slice(0, 1)
+      poolOfPosts.slice(0, 1),
     )
 
     expect(relatedPosts).toHaveLength(0)
@@ -84,7 +84,7 @@ describe('build util `getNRelatedPosts`', () => {
     // edge case whereby no posts are in the secondary tag ranking
     const relatedPosts = getNRelatedPosts(
       { ...targetPost, category: 'more' },
-      poolOfPosts.slice(0, 2)
+      poolOfPosts.slice(0, 2),
     )
 
     expect(relatedPosts).toHaveLength(1)
@@ -97,7 +97,7 @@ describe('build util `getNRelatedPosts`', () => {
 
     getNRelatedPosts(poolOfPostsFull[1], [
       ...poolOfPostsFull,
-      edgeCaseTargetPost
+      edgeCaseTargetPost,
     ])
 
     // that said, the cache has been removed because it was another Zitonian pre-optimization

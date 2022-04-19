@@ -22,24 +22,24 @@ const gatsbyConfig: GatsbyConfig = {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /\.svg$/
-        }
-      }
+          include: /\.svg$/,
+        },
+      },
     },
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'assets',
-        path: path.join(__dirname, '../', config.assetDir || 'static')
-      }
+        path: path.join(__dirname, '../', config.assetDir || 'static'),
+      },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'posts',
-        path: path.join(__dirname, '../', config.contentDir || 'content')
-      }
+        path: path.join(__dirname, '../', config.contentDir || 'content'),
+      },
     },
     {
       resolve: 'gatsby-plugin-sharp',
@@ -47,10 +47,10 @@ const gatsbyConfig: GatsbyConfig = {
         defaults: {
           backgroundColor: 'transparent',
           formats: ['auto', 'webp', 'avif'],
-          placeholder: 'blurred'
+          placeholder: 'blurred',
         },
-        failOnError: true
-      }
+        failOnError: true,
+      },
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-image',
@@ -63,40 +63,40 @@ const gatsbyConfig: GatsbyConfig = {
           {
             resolve: 'gatsby-remark-embed-video',
             options: {
-              width: config.embeddedVideoWidth
-            }
+              width: config.embeddedVideoWidth,
+            },
           },
           {
-            resolve: 'gatsby-remark-responsive-iframe'
+            resolve: 'gatsby-remark-responsive-iframe',
           },
           {
-            resolve: 'gatsby-remark-relative-images'
+            resolve: 'gatsby-remark-relative-images',
           },
           {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: config.embeddedImageWidth,
-              showCaptions: ['title', 'alt']
-            }
+              showCaptions: ['title', 'alt'],
+            },
           },
           {
-            resolve: 'gatsby-remark-copy-linked-files'
+            resolve: 'gatsby-remark-copy-linked-files',
           },
           {
             resolve: 'gatsby-remark-prismjs',
             options: {
-              showLineNumbers: true
-            }
-          }
+              showLineNumbers: true,
+            },
+          },
         ],
-        remarkPlugins: [unwrapImages, remarkA11yEmoji, remarkExternalLinks]
-      }
+        remarkPlugins: [unwrapImages, remarkA11yEmoji, remarkExternalLinks],
+      },
     },
     {
       resolve: 'gatsby-plugin-google-gtag',
       options: {
-        trackingIds: [config.site.googleAnalyticsId]
-      }
+        trackingIds: [config.site.googleAnalyticsId],
+      },
     },
     'gatsby-plugin-catch-links',
     'gatsby-plugin-twitter',
@@ -114,16 +114,16 @@ const gatsbyConfig: GatsbyConfig = {
         name: config.site.name,
         short_name: config.site.titleAbridged,
         start_url: adjustedPathPRefix,
-        theme_color: config.site.themeColor
-      }
+        theme_color: config.site.themeColor,
+      },
     },
     {
       resolve: 'gatsby-plugin-offline',
       options: {
         workboxConfig: {
-          globPatterns: config.iconCachePaths
-        }
-      }
+          globPatterns: config.iconCachePaths,
+        },
+      },
     },
     {
       resolve: 'gatsby-plugin-feed',
@@ -158,8 +158,8 @@ const gatsbyConfig: GatsbyConfig = {
               `,
             serialize: generateRssFeed(config),
             site_url: config.site.url,
-            title: config.site.rssTitle
-          }
+            title: config.site.rssTitle,
+          },
         ],
         query: `
             {
@@ -177,10 +177,10 @@ const gatsbyConfig: GatsbyConfig = {
               }
             }
           `,
-        setup: setupRssFeed(config)
-      }
+        setup: setupRssFeed(config),
+      },
     },
-    'gatsby-plugin-styled-components'
+    'gatsby-plugin-styled-components',
   ],
   siteMetadata: {
     config,
@@ -192,10 +192,10 @@ const gatsbyConfig: GatsbyConfig = {
         config.site.logoUrl
       }`,
       site_url: urljoin(config.site.url, config.pathPrefix),
-      title: config.site.title
+      title: config.site.title,
     },
-    siteUrl: urljoin(config.site.url, config.pathPrefix)
-  }
+    siteUrl: urljoin(config.site.url, config.pathPrefix),
+  },
 }
 
 export default gatsbyConfig

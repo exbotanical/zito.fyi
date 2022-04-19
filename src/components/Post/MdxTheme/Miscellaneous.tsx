@@ -6,7 +6,7 @@ import { AnimatedLink } from '@/components/Links'
 import {
   PostImage,
   PostImageSpacing,
-  FigCaptionCss
+  FigCaptionCss,
 } from '@/components/Post/PostImage'
 import { ExtendingWrapper } from '@/components/Post/PostSpacing'
 import { Separator } from '@/components/Separator'
@@ -32,7 +32,7 @@ export function Link({
   href,
   target,
   rel,
-  style
+  style,
 }: LinkProps): JSX.Element {
   // allow `gatsby-remark-images` to handle its own links
   if (className === 'gatsby-resp-image-link') {
@@ -85,7 +85,7 @@ export function MdxImage({
   srcSet,
   sizes,
   loading,
-  style
+  style,
 }: React.ImgHTMLAttributes<HTMLImageElement>): JSX.Element {
   if (className === 'gatsby-resp-image-image') {
     return (
@@ -106,7 +106,7 @@ export function MdxImage({
     throw Error(
       `MDX image is missing an alt tag. Image source: ${src || ''}, title: ${
         title || ''
-      }.`
+      }.`,
     )
   }
 

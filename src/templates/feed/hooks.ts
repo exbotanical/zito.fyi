@@ -7,7 +7,7 @@ import type {
   PostJson,
   FeedItems,
   PlaceholderPost,
-  SiteConfig
+  SiteConfig,
 } from '@/types'
 import { jsonToPost } from '@/utils'
 
@@ -45,13 +45,13 @@ const generateFetchHandler =
  */
 const generatePostPlaceholders = (
   keyPrefix: string,
-  count?: number
+  count?: number,
 ): PlaceholderPost[] =>
   Array(count || constants.postsPerFeedPage)
     .fill(0)
     .map((_, idx) => ({
       isPlaceholder: true,
-      key: `${keyPrefix}-${idx}`
+      key: `${keyPrefix}-${idx}`,
     }))
 
 /**
@@ -59,7 +59,7 @@ const generatePostPlaceholders = (
  * Effectively an infinite scroll utility
  */
 const useScrollContingentFetch = (
-  feedQuery: UseInfiniteQueryResult
+  feedQuery: UseInfiniteQueryResult,
 ): React.RefObject<HTMLDivElement> => {
   // ref to the feed wrapper el; tracks scroll progress
   const feedElementRef = useRef<HTMLDivElement>(null)
@@ -107,7 +107,7 @@ const useScrollContingentFetch = (
  * Provides an infinite-scroll capable feed
  */
 export const useInfiniteFeed = (
-  pageContext: PageContext
+  pageContext: PageContext,
 ): {
   feedElementRef: React.RefObject<HTMLDivElement>
   feedItems: FeedItems
@@ -124,9 +124,9 @@ export const useInfiniteFeed = (
       // Set the initial page data supplied by the page context
       initialData: {
         pageParams: [pageContext.pageIndex],
-        pages: [pageContext.feedMetadata]
-      }
-    }
+        pages: [pageContext.feedMetadata],
+      },
+    },
   )
 
   const feedElementRef = useScrollContingentFetch(feedQuery)
@@ -148,11 +148,11 @@ export const useInfiniteFeed = (
   }, [
     feedQuery.data,
     pageContext.feedMetadata.posts,
-    feedQuery.isFetchingNextPage
+    feedQuery.isFetchingNextPage,
   ])
 
   return {
     feedElementRef,
-    feedItems
+    feedItems,
   }
 }

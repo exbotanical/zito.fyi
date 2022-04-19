@@ -77,8 +77,8 @@ const HeadingCss = css`
 
 export const AnimatedLink = styled(BaseLink).attrs(
   ({ activeClassName }: LinkStyleProps) => ({
-    activeClassName: activeClassName || 'gatsby-active-link'
-  })
+    activeClassName: activeClassName || 'gatsby-active-link',
+  }),
 )`
   ${AnimatedCSS}
 `

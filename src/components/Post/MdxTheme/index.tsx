@@ -68,7 +68,7 @@ const getComponentMapping = (post: Post): MDXProviderComponents => {
     thematicBreak: MiscComponents.Break,
 
     a: MiscComponents.Link,
-    img: MiscComponents.MdxImage
+    img: MiscComponents.MdxImage,
   }
 }
 

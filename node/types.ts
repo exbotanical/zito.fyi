@@ -53,7 +53,7 @@ export interface MdxFeedQueryResult {
           tags?: string
         }
       }
-    }
+    },
   ]
 }
 
@@ -64,7 +64,7 @@ export interface FeedQueryResult {
 
 export interface FeedConfig {
   serialize: (
-    data: FeedPluginData
+    data: FeedPluginData,
   ) => (FeedPluginItem | undefined)[] | undefined
   query: string
   output: string

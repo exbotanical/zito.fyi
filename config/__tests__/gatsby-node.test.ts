@@ -7,7 +7,7 @@ import * as feedUtils from '../../node'
 import {
   onCreateNode,
   createSchemaCustomization,
-  createPages
+  createPages,
 } from '../gatsby-node'
 
 import type {
@@ -15,7 +15,7 @@ import type {
   CreateNodeArgs,
   PluginOptions,
   CreateSchemaCustomizationArgs,
-  CreatePagesArgs
+  CreatePagesArgs,
 } from 'gatsby'
 
 const mockedGatsbyActions = mocked(GatsbyActionsMock, true)
@@ -28,7 +28,7 @@ const mockedGatsbyActions = mocked(GatsbyActionsMock, true)
 const [onCreateNodeImpl, createSchemaCustomizationImpl, createPagesImpl] = [
   onCreateNode!,
   createSchemaCustomization!,
-  createPages!
+  createPages!,
 ]
 
 type NodeArgs = CreateNodeArgs
@@ -40,15 +40,15 @@ jest.mock('../config', () => ({
     pathPrefix: '/test-prefix',
     basePath: '/test-base',
     site: {
-      url: 'https://example.com'
-    }
-  }
+      url: 'https://example.com',
+    },
+  },
 }))
 const mockedConsole = mocked(global.console, true)
 
 jest.mock('../../node/feed', () => ({
   createFeed: jest.fn(),
-  setupFeedMetadataDir: jest.fn()
+  setupFeedMetadataDir: jest.fn(),
 }))
 
 const feedUtilsMock = mocked(feedUtils, true)
@@ -59,13 +59,13 @@ jest.mock('../../node/queries', () => {
 
   const testPostsList = [
     ...postsList,
-    { ...postsList[0], category: undefined, tags: undefined }
+    { ...postsList[0], category: undefined, tags: undefined },
   ]
 
   return {
     getAllPosts: jest.fn().mockResolvedValue(testPostsList),
     getAllPostsByTag: jest.fn().mockResolvedValue(testPostsList),
-    getAllPostsByCategory: jest.fn().mockResolvedValue(testPostsList)
+    getAllPostsByCategory: jest.fn().mockResolvedValue(testPostsList),
   }
 })
 
@@ -78,17 +78,17 @@ describe('onCreateNode', () => {
       internal: {
         type: 'Mdx',
         contentDigest: 'testDigest',
-        owner: 'testOwner'
+        owner: 'testOwner',
       },
       frontmatter: {
         title: 'Test Title',
-        slug: 'Test Slug'
-      }
+        slug: 'Test Slug',
+      },
     } as Node
 
     const nodeArgs = {
       actions: GatsbyActionsMock,
-      node: testNode
+      node: testNode,
     } as unknown as NodeArgs
 
     const opts = config as unknown as PluginOptions
@@ -98,25 +98,25 @@ describe('onCreateNode', () => {
     expect(mockedGatsbyActions.createNodeField).toHaveBeenCalledWith({
       node: testNode,
       name: 'slug',
-      value: '/test-slug'
+      value: '/test-slug',
     })
 
     expect(mockedGatsbyActions.createNodeField).toHaveBeenCalledWith({
       node: testNode,
       name: 'route',
-      value: '/test-base/test-slug'
+      value: '/test-base/test-slug',
     })
 
     expect(mockedGatsbyActions.createNodeField).toHaveBeenCalledWith({
       node: testNode,
       name: 'pathName',
-      value: '/test-prefix/test-base/test-slug'
+      value: '/test-prefix/test-base/test-slug',
     })
 
     expect(mockedGatsbyActions.createNodeField).toHaveBeenCalledWith({
       node: testNode,
       name: 'url',
-      value: 'https://example.com/test-prefix/test-base/test-slug'
+      value: 'https://example.com/test-prefix/test-base/test-slug',
     })
   })
 
@@ -128,16 +128,16 @@ describe('onCreateNode', () => {
       internal: {
         type: 'Mdx',
         contentDigest: 'testDigest',
-        owner: 'testOwner'
+        owner: 'testOwner',
       },
       frontmatter: {
-        title: 'Test Title'
-      }
+        title: 'Test Title',
+      },
     } as Node
 
     const nodeArgs = {
       actions: GatsbyActionsMock,
-      node: testNode
+      node: testNode,
     } as unknown as NodeArgs
 
     await onCreateNodeImpl(nodeArgs, {} as PluginOptions, () => {})
@@ -145,7 +145,7 @@ describe('onCreateNode', () => {
     expect(mockedGatsbyActions.createNodeField).toHaveBeenCalledWith({
       node: testNode,
       name: 'slug',
-      value: '/test-title'
+      value: '/test-title',
     })
   })
 
@@ -157,14 +157,14 @@ describe('onCreateNode', () => {
       internal: {
         type: 'Mdx',
         contentDigest: 'testDigest',
-        owner: 'testOwner'
+        owner: 'testOwner',
       },
-      frontmatter: {}
+      frontmatter: {},
     } as Node
 
     const nodeArgs = {
       actions: GatsbyActionsMock,
-      node: testNode
+      node: testNode,
     } as unknown as NodeArgs
 
     await onCreateNodeImpl(nodeArgs, {} as PluginOptions, () => {})
@@ -187,13 +187,13 @@ describe('onCreateNode', () => {
       internal: {
         type: 'not-mdx',
         contentDigest: 'testDigest',
-        owner: 'testOwner'
-      }
+        owner: 'testOwner',
+      },
     } as Node
 
     const nodeArgs = {
       actions: GatsbyActionsMock,
-      node: testNode
+      node: testNode,
     } as unknown as NodeArgs
 
     mockedGatsbyActions.createNodeField.mockClear()
@@ -209,7 +209,7 @@ describe('`createSchemaCustomization`', () => {
     await createSchemaCustomizationImpl(
       { actions: GatsbyActionsMock } as CreateSchemaCustomizationArgs,
       {} as PluginOptions,
-      () => {}
+      () => {},
     )
 
     expect(mockedGatsbyActions.createTypes).toHaveBeenCalledTimes(1)
@@ -225,10 +225,10 @@ describe('createPages', () => {
     await createPagesImpl(
       {
         graphql: jest.fn(),
-        actions: GatsbyActionsMock
+        actions: GatsbyActionsMock,
       } as unknown as CreatePagesFirstArg,
       {} as PluginOptions,
-      () => {}
+      () => {},
     )
 
     expect(feedUtilsMock.setupFeedMetadataDir).toHaveBeenCalledTimes(1)
@@ -238,7 +238,7 @@ describe('createPages', () => {
       expect.anything(),
       expect.anything(),
       expect.anything(),
-      'index'
+      'index',
     )
 
     expect(feedUtilsMock.createFeed).toHaveBeenCalledWith(
@@ -246,14 +246,14 @@ describe('createPages', () => {
       expect.anything(),
       expect.anything(),
       'tag',
-      expect.anything()
+      expect.anything(),
     )
     expect(feedUtilsMock.createFeed).toHaveBeenCalledWith(
       expect.anything(),
       expect.anything(),
       expect.anything(),
       'category',
-      expect.anything()
+      expect.anything(),
     )
   })
 })

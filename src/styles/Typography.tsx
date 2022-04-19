@@ -307,7 +307,7 @@ export const typographyStyles = {
   H4: H4WithStyle,
   H5: H5WithStyle,
   H6: H6WithStyle,
-  Overline: OverlineWithStyle
+  Overline: OverlineWithStyle,
 }
 
 // TODO replace with preload link

@@ -15,37 +15,37 @@ Cypress.Commands.add('isInViewport', (element: string) => {
 /**
  * Select a `data-testid` element by its exact key
  */
-Cypress.Commands.add('getByTestId', (selector: string) => cy.get(`[data-testid=${selector}]`))
+Cypress.Commands.add('getByTestId', (selector: string) =>
+  cy.get(`[data-testid=${selector}]`),
+)
 
 /**
  * Select a `data-testid` element by its approximate key
  */
-Cypress.Commands.add('getByTestIdLike', (selector: string) => cy.get(`[data-testid*=${selector}]`))
+Cypress.Commands.add('getByTestIdLike', (selector: string) =>
+  cy.get(`[data-testid*=${selector}]`),
+)
 
 /**
  * Assert element contains a given class
  */
 Cypress.Commands.add(
   'containsClass',
-  (selector: string, expectedClass: string) => cy
-      .get(selector)
-      .should('satisfy', ($el: { classList: string[] }[]) => {
-        const classList = Array.from($el[0].classList)
+  (selector: string, expectedClass: string) =>
+    cy.get(selector).should('satisfy', ($el: { classList: string[] }[]) => {
+      const classList = Array.from($el[0].classList)
 
-        return classList.includes(expectedClass)
-      })
+      return classList.includes(expectedClass)
+    }),
 )
 
 /**
  * Assert element does not contain a given class
  */
-Cypress.Commands.add(
-  'omitsClass',
-  (selector: string, expectedClass: string) => cy
-      .get(selector)
-      .should('satisfy', ($el: { classList: string[] }[]) => {
-        const classList = Array.from($el[0].classList)
+Cypress.Commands.add('omitsClass', (selector: string, expectedClass: string) =>
+  cy.get(selector).should('satisfy', ($el: { classList: string[] }[]) => {
+    const classList = Array.from($el[0].classList)
 
-        return !classList.includes(expectedClass)
-      })
+    return !classList.includes(expectedClass)
+  }),
 )

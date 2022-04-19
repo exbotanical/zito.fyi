@@ -64,7 +64,7 @@ interface SnackbarProps {
 }
 
 export function LinkCopyNotification({
-  onAnimationEnd
+  onAnimationEnd,
 }: SnackbarProps): JSX.Element {
   return (
     <PopUp onAnimationEnd={onAnimationEnd}>

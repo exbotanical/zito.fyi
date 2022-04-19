@@ -49,7 +49,7 @@ const pluginConfig: Cypress.PluginConfig = on => {
 
         return urls.map(url => url.loc[0].replace(siteUrl, ''))
       })
-    }
+    },
   })
 }
 

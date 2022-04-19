@@ -3,7 +3,7 @@ import { config, post } from '@@/fixtures'
 import { SEO } from '../index'
 
 jest.mock('@/config/useConfig', () => ({
-  useConfig: jest.fn(() => config)
+  useConfig: jest.fn(() => config),
 }))
 
 describe('component SEO', () => {

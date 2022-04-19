@@ -19,7 +19,7 @@ export class Logger {
       `%c${pkg.name}`,
       `${this.#baseFormat}background:${hex}`,
       '\n\n',
-      ...args
+      ...args,
     )
   }
 

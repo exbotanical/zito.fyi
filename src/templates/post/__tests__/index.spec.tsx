@@ -14,13 +14,13 @@ const postFromJson = JSON.parse(JSON.stringify(post)) as PostJson
 const postData = postQueryResult
 
 const pageContext = {
-  relatedPosts: [postFromJson, { ...postFromJson, slug: '/related-post' }]
+  relatedPosts: [postFromJson, { ...postFromJson, slug: '/related-post' }],
 }
 
 const originalError = console.error.bind(console.error)
 
 jest.mock('@/config/useConfig', () => ({
-  useConfig: jest.fn(() => config)
+  useConfig: jest.fn(() => config),
 }))
 
 describe('`PostTemplate`', () => {
@@ -44,9 +44,9 @@ describe('`PostTemplate`', () => {
       expect.arrayContaining([
         {
           content: 'https://zito.dev/bold-mage',
-          property: 'og:url'
-        }
-      ])
+          property: 'og:url',
+        },
+      ]),
     )
   })
 

@@ -6,14 +6,14 @@ import {
   mdxNodeToPost,
   queryToPost,
   jsonToPost,
-  queryToPostsList
+  queryToPostsList,
 } from '@/utils'
 
 import {
   postsListQueryResponse,
   postQueryResult,
   post,
-  config
+  config,
 } from '@@/fixtures'
 
 import type { PostJson } from '..'
@@ -51,7 +51,7 @@ describe('`mdxNodeToPost`', () => {
     const post = mdxNodeToPost(mdxNodeSansDateModified)
 
     expect(post.dateModified).toStrictEqual(
-      new Date(mdxNodeSansDateModified.frontmatter.datePublished)
+      new Date(mdxNodeSansDateModified.frontmatter.datePublished),
     )
   })
 
@@ -166,7 +166,7 @@ describe('`jsonToPost`', () => {
     postWithRelated.relatedPosts = [post]
 
     const jsonPostWithRelated = JSON.parse(
-      JSON.stringify(postWithRelated)
+      JSON.stringify(postWithRelated),
     ) as PostJson
 
     const generatedPostWithRelated = jsonToPost(jsonPostWithRelated)

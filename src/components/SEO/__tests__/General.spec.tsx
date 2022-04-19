@@ -18,7 +18,7 @@ describe('`GeneralTags`', () => {
   it('generates correct tags when missing `description`', () => {
     const generatedTags = GeneralTags(
       { ...seoData.seoPost, description: undefined },
-      seoData.site
+      seoData.site,
     )
 
     expect(generatedTags).toMatchSnapshot()
@@ -27,7 +27,7 @@ describe('`GeneralTags`', () => {
   it('generates correct tags when missing `imageUrl`', () => {
     const generatedTags = GeneralTags(
       { ...seoData.seoPost, imageUrl: undefined },
-      seoData.site
+      seoData.site,
     )
 
     expect(generatedTags).toMatchSnapshot()
@@ -44,14 +44,14 @@ describe('`GeneralTags`', () => {
 
     const generatedPostTagsWithMissingDesc = GeneralTags(
       { ...seoData.seoPost, description: undefined },
-      seoData.site
+      seoData.site,
     )
 
     expect(tagListHasEmptyValues(generatedPostTagsWithMissingDesc)).toBe(false)
 
     const generatedPostTagsWithMissingImage = GeneralTags(
       { ...seoData.seoPost, imageUrl: undefined },
-      seoData.site
+      seoData.site,
     )
 
     expect(tagListHasEmptyValues(generatedPostTagsWithMissingImage)).toBe(false)

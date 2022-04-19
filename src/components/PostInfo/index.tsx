@@ -16,7 +16,7 @@ export function PostInfo({ post }: PostInfoProps): JSX.Element {
 
   const publicationDate = `${categoryUrl ? '\u00A0⋅ ' : ''}${format(
     post.datePublished,
-    'LLL d, y'
+    'LLL d, y',
   )}`
 
   const timeToRead = ` ⋅ ${post.timeToRead} min read`

@@ -13,7 +13,7 @@ import { RenderStyled } from '@@/utils/styled'
 import { BaseLink } from '../BaseLink'
 
 jest.mock('@/config/useConfig', () => ({
-  useConfig: jest.fn(() => config)
+  useConfig: jest.fn(() => config),
 }))
 
 const testLink = 'https://example.com/local/path'
@@ -27,7 +27,7 @@ jest.mock('gatsby', () => {
 
   return {
     ...realGatsby,
-    Link: jest.fn().mockImplementation(props => <realGatsby.Link {...props} />)
+    Link: jest.fn().mockImplementation(props => <realGatsby.Link {...props} />),
   }
 })
 
@@ -45,7 +45,7 @@ describe('component Link', () => {
 
     expect(mockedGatsby.Link).toHaveBeenCalledWith(
       expect.objectContaining({ to: '/local/path' }),
-      expect.anything()
+      expect.anything(),
     )
   })
 
@@ -56,7 +56,7 @@ describe('component Link', () => {
 
     expect(screen.getByRole('link', { name: 'Test' })).toHaveAttribute(
       'href',
-      'https://example.com/local/path'
+      'https://example.com/local/path',
     )
   })
 
@@ -82,7 +82,7 @@ describe('component Link', () => {
 
     expect(screen.getByRole('link', { name: 'Test' })).toHaveAttribute(
       'href',
-      '/base/path/local/path'
+      '/base/path/local/path',
     )
 
     cleanup()
@@ -94,12 +94,12 @@ describe('component Link', () => {
     RenderStyled(
       <BaseLink sansBasePath to="/local/path">
         Test
-      </BaseLink>
+      </BaseLink>,
     )
 
     expect(screen.getByRole('link', { name: 'Test' })).toHaveAttribute(
       'href',
-      '/local/path'
+      '/local/path',
     )
 
     cleanup()
@@ -108,7 +108,7 @@ describe('component Link', () => {
 
     expect(screen.getByRole('link', { name: 'Test' })).toHaveAttribute(
       'href',
-      'https://example.com/local/path'
+      'https://example.com/local/path',
     )
   })
 
@@ -118,12 +118,12 @@ describe('component Link', () => {
     RenderStyled(
       <BaseLink href="/correct/local/path" to="/incorrect/local/path">
         Test
-      </BaseLink>
+      </BaseLink>,
     )
 
     expect(screen.getByRole('link', { name: 'Test' })).toHaveAttribute(
       'href',
-      '/correct/local/path'
+      '/correct/local/path',
     )
   })
 
@@ -131,7 +131,7 @@ describe('component Link', () => {
     RenderStyled(
       <BaseLink activeClassName="test-active-class" to="/local/path">
         Test
-      </BaseLink>
+      </BaseLink>,
     )
 
     expect(mockedGatsby.Link).toHaveBeenCalledTimes(1)
@@ -139,9 +139,9 @@ describe('component Link', () => {
     expect(mockedGatsby.Link).toHaveBeenCalledWith(
       expect.objectContaining({
         to: '/local/path',
-        activeClassName: 'test-active-class'
+        activeClassName: 'test-active-class',
       }),
-      expect.anything()
+      expect.anything(),
     )
   })
 
@@ -153,21 +153,21 @@ describe('component Link', () => {
         to="/local/path"
       >
         Test
-      </BaseLink>
+      </BaseLink>,
     )
 
     expect(mockedGatsby.Link).toHaveBeenCalledTimes(1)
     expect(mockedGatsby.Link).toHaveBeenCalledWith(
       expect.objectContaining({
         'activeClassName': 'test-active-class',
-        'aria-label': 'test-label'
+        'aria-label': 'test-label',
       }),
-      expect.anything()
+      expect.anything(),
     )
 
     expect(screen.getByRole('link', { name: 'test-label' })).toHaveAttribute(
       'aria-label',
-      'test-label'
+      'test-label',
     )
 
     cleanup()
@@ -179,12 +179,12 @@ describe('component Link', () => {
         to={testLink}
       >
         Test
-      </BaseLink>
+      </BaseLink>,
     )
 
     expect(screen.getByRole('link', { name: 'test-label' })).toHaveAttribute(
       'aria-label',
-      'test-label'
+      'test-label',
     )
   })
 })

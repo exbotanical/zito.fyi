@@ -5,7 +5,8 @@ const N_RELATED_POSTS = 2
 /**
  * Get posts of a given category
  */
-const getPostsOfCategory = (category: string, posts: Post[]): Post[] => posts.filter(post => post.category === category)
+const getPostsOfCategory = (category: string, posts: Post[]): Post[] =>
+  posts.filter(post => post.category === category)
 
 /**
  * Get posts of a tag, ranked by matches
@@ -34,7 +35,7 @@ const getRankedPostsOfTag = (targetPost: Post, posts: Post[]): Post[] => {
 
     rankedPosts.push({
       post,
-      rank
+      rank,
     })
   })
 
@@ -78,7 +79,7 @@ export const getNRelatedPosts = (targetPost: Post, posts: Post[]): Post[] => {
 
     // filter out the existing related post
     const tagMatchesSansExistingMatch = rankedTagMatches.filter(
-      tagMatch => tagMatch.slug !== relatedPosts[0]?.slug
+      tagMatch => tagMatch.slug !== relatedPosts[0]?.slug,
     )
 
     const highestRankedMatch = tagMatchesSansExistingMatch[0]
@@ -94,6 +95,6 @@ export const getNRelatedPosts = (targetPost: Post, posts: Post[]): Post[] => {
   // we've no category matches; get a tag-based ranking of all posts
   return getRankedPostsOfTag(targetPost, filteredPosts).slice(
     0,
-    N_RELATED_POSTS
+    N_RELATED_POSTS,
   )
 }

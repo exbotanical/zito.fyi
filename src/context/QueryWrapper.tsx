@@ -8,7 +8,7 @@ const queryClient = new QueryClient()
  * Wrapper for `react-query` context, for both for SSR and Browser envs
  */
 export function QueryWrapper({
-  element
+  element,
 }: {
   element: React.ReactChild
 }): JSX.Element {

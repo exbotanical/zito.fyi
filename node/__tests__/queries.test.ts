@@ -1,13 +1,13 @@
 import {
   allPostsByCategoryQuery,
   allPostsByTagQuery,
-  allPostsQuery
+  allPostsQuery,
 } from '../../src/templates/feed/queries'
 import { postsListQueryResponse } from '../../test/fixtures'
 import {
   getAllPostsByCategory,
   getAllPostsByTag,
-  getAllPosts
+  getAllPosts,
 } from '../queries'
 
 jest.spyOn(global.console, 'warn').mockImplementation()
@@ -17,19 +17,19 @@ const categoryQueryResponse = {
   data: {
     allMdx: {
       edges: postsListQueryResponse.allMdx.edges.filter(
-        edge => edge.node.frontmatter.category === 'category'
-      )
-    }
-  }
+        edge => edge.node.frontmatter.category === 'category',
+      ),
+    },
+  },
 }
 const tagQueryResponse = {
   data: {
     allMdx: {
       edges: postsListQueryResponse.allMdx.edges.filter(edge =>
-        edge.node.frontmatter.tags.includes('tag')
-      )
-    }
-  }
+        edge.node.frontmatter.tags.includes('tag'),
+      ),
+    },
+  },
 }
 const indexQueryResponse = { data: postsListQueryResponse }
 
@@ -69,7 +69,7 @@ describe('build util `getAllPostsByTag`', () => {
     const posts = await getAllPostsByTag(graphql, 'tag')
 
     expect(graphql).toHaveBeenCalledWith(allPostsByTagQuery, {
-      tag: 'tag'
+      tag: 'tag',
     })
     expect(posts).toMatchSnapshot()
   })
@@ -82,7 +82,7 @@ describe('build util `getAllPostsByCategory`', () => {
     const posts = await getAllPostsByCategory(graphql, 'category')
 
     expect(graphql).toHaveBeenCalledWith(allPostsByCategoryQuery, {
-      category: 'category'
+      category: 'category',
     })
 
     expect(posts).toMatchSnapshot()

@@ -71,7 +71,7 @@ export const useConfig = (): SiteConfig => {
           }
         }
       }
-    `
+    `,
   )
 
   const config = data.site?.siteMetadata?.config

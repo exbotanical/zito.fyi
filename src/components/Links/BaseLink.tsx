@@ -8,7 +8,7 @@ import { withBasePath } from '../../../node'
 
 const isAbsolute = RegExp.prototype.test.bind(
   // eslint-disable-next-line prefer-regex-literals
-  new RegExp('^(?:[a-z]+:)?//', 'i')
+  new RegExp('^(?:[a-z]+:)?//', 'i'),
 )
 const isEmail = (url: string) => url.startsWith('mailto')
 
@@ -19,7 +19,7 @@ export function BaseLink({
   children,
   activeClassName,
   sansBasePath,
-  ariaLabel
+  ariaLabel,
 }: LinkProps): JSX.Element {
   const config = useConfig()
   const url = href || to

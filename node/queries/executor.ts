@@ -1,7 +1,7 @@
 import {
   allPostsByCategoryQuery,
   allPostsByTagQuery,
-  allPostsQuery
+  allPostsQuery,
 } from '../../src/templates/feed/queries'
 import { mdxNodeToPost } from '../../src/utils'
 
@@ -14,7 +14,7 @@ interface QueryResult {
 
 type GraphqlType = <TData, TVariables = any>(
   query: string,
-  variables?: TVariables
+  variables?: TVariables,
 ) => Promise<{
   errors?: string[]
   data?: TData
@@ -22,13 +22,13 @@ type GraphqlType = <TData, TVariables = any>(
 
 export const getAllPostsByTag = async (
   graphql: GraphqlType,
-  tag: string
+  tag: string,
 ): Promise<Post[]> => {
   const tagQueryResult = await graphql<QueryAllPostsResult>(
     allPostsByTagQuery,
     {
-      tag
-    }
+      tag,
+    },
   )
 
   return processQueryResult(tagQueryResult)
@@ -36,18 +36,18 @@ export const getAllPostsByTag = async (
 
 export async function getAllPostsByCategory(
   graphql: GraphqlType,
-  category: string
+  category: string,
 ): Promise<Post[]> {
   const categoryQueryResult = await graphql<QueryAllPostsResult>(
     allPostsByCategoryQuery,
-    { category }
+    { category },
   )
 
   return processQueryResult(categoryQueryResult)
 }
 
 export const resolveAllPostsFromQuery = (
-  allPosts: QueryAllPostsResult
+  allPosts: QueryAllPostsResult,
 ): Post[] => {
   const { edges } = allPosts.allMdx
 
@@ -57,11 +57,11 @@ export const resolveAllPostsFromQuery = (
 }
 
 const processQueryResult = (
-  result: QueryResult
+  result: QueryResult,
 ): ReturnType<typeof resolveAllPostsFromQuery> => {
   if (result.errors) {
     console.error(
-      '[processQueryResult] Error while processing query results. See:'
+      '[processQueryResult] Error while processing query results. See:',
     )
 
     console.error(result.errors)

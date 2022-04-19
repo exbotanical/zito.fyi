@@ -28,7 +28,7 @@ export class StreamLogger extends Console {
     HIDDEN: '\x1b[8m',
     RESET: '\x1b[0m',
     REVERSE: '\x1b[7m',
-    UNDERSCORE: '\x1b[4m'
+    UNDERSCORE: '\x1b[4m',
   }
 
   constructor() {
@@ -40,15 +40,15 @@ export class StreamLogger extends Console {
           process.stdout.write(data)
 
           next()
-        }
+        },
       }),
 
       stdout: new Writable({
         write(data, _, next) {
           process.stdout.write(data)
           next()
-        }
-      })
+        },
+      }),
     })
   }
 
@@ -70,7 +70,7 @@ export class StreamLogger extends Console {
 
   private buildStr(
     fg: ValueOf<StreamLogger['colors']>,
-    bg = this.colors.FGWHITE
+    bg = this.colors.FGWHITE,
   ) {
     const dateColor = this.colors.FGMAGENTA
 
@@ -98,7 +98,7 @@ export class StreamLogger extends Console {
       colorConfig,
       new Date().toLocaleTimeString(),
       ...data,
-      this.colors.RESET
+      this.colors.RESET,
     )
   }
 }

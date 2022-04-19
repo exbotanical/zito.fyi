@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 
 export function PostTemplate({
   data,
-  pageContext
+  pageContext,
 }: PostTemplateProps): JSX.Element {
   const post = queryToPost(data)
 

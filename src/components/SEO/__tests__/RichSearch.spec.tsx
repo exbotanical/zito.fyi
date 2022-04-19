@@ -2,7 +2,7 @@ import {
   getAuthorMetadata,
   getOrgMetadata,
   getPostMetadata,
-  RichSearchTags
+  RichSearchTags,
 } from '../RichSearch'
 
 import { tagListHasEmptyValues, seoData, containsEmptyValues } from './utils'
@@ -12,7 +12,7 @@ describe('seo module RichSearchTags', () => {
     const generatedTags = RichSearchTags({
       seoData: seoData.seoSite,
       userData: seoData.user,
-      orgData: seoData.organization
+      orgData: seoData.organization,
     })
 
     expect(generatedTags).toMatchSnapshot()
@@ -23,7 +23,7 @@ describe('seo module RichSearchTags', () => {
       seoData: seoData.seoPost,
       postData: seoData.post,
       userData: seoData.user,
-      orgData: seoData.organization
+      orgData: seoData.organization,
     })
 
     expect(generatedTags).toMatchSnapshot()
@@ -34,7 +34,7 @@ describe('seo module RichSearchTags', () => {
       seoData: seoData.seoPost,
       postData: { ...seoData.post, coverImageUrl: undefined },
       userData: seoData.user,
-      orgData: seoData.organization
+      orgData: seoData.organization,
     })
     expect(generatedTags).toStrictEqual([])
   })
@@ -44,7 +44,7 @@ describe('seo module RichSearchTags', () => {
       seoData: seoData.seoPost,
       postData: { ...seoData.post, description: undefined },
       userData: seoData.user,
-      orgData: seoData.organization
+      orgData: seoData.organization,
     })
 
     expect(generatedTags).toStrictEqual([])
@@ -55,7 +55,7 @@ describe('seo module RichSearchTags', () => {
       seoData: seoData.seoPost,
       postData: seoData.post,
       userData: undefined,
-      orgData: seoData.organization
+      orgData: seoData.organization,
     })
 
     expect(generatedTags).toMatchSnapshot()
@@ -66,7 +66,7 @@ describe('seo module RichSearchTags', () => {
       seoData: seoData.seoPost,
       postData: seoData.post,
       userData: seoData.user,
-      orgData: undefined
+      orgData: undefined,
     })
 
     expect(generatedTags).toMatchSnapshot()
@@ -76,7 +76,7 @@ describe('seo module RichSearchTags', () => {
     const generatedSiteTags = RichSearchTags({
       seoData: seoData.seoSite,
       userData: seoData.user,
-      orgData: seoData.organization
+      orgData: seoData.organization,
     })
 
     expect(tagListHasEmptyValues(generatedSiteTags)).toBe(false)
@@ -85,7 +85,7 @@ describe('seo module RichSearchTags', () => {
       seoData: seoData.seoPost,
       postData: seoData.post,
       userData: seoData.user,
-      orgData: seoData.organization
+      orgData: seoData.organization,
     })
 
     expect(tagListHasEmptyValues(generatedPostTags)).toBe(false)
@@ -94,7 +94,7 @@ describe('seo module RichSearchTags', () => {
       seoData: seoData.seoPost,
       postData: seoData.post,
       userData: undefined,
-      orgData: seoData.organization
+      orgData: seoData.organization,
     })
 
     expect(tagListHasEmptyValues(generatedPostTagsWithoutUserData)).toBe(false)
@@ -103,7 +103,7 @@ describe('seo module RichSearchTags', () => {
       seoData: seoData.seoPost,
       postData: seoData.post,
       userData: seoData.user,
-      orgData: undefined
+      orgData: undefined,
     })
 
     expect(tagListHasEmptyValues(generatedTagsWithoutOrgData)).toBe(false)
@@ -135,7 +135,7 @@ describe('`RichSearchTags` utility `getPostMetadata`', () => {
     const generatedTags = getPostMetadata(
       seoData.post,
       seoData.organization,
-      seoData.user
+      seoData.user,
     )
 
     expect(containsEmptyValues(generatedTags)).toBe(false)

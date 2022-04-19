@@ -18,12 +18,12 @@ export const generatePostData = (post: Post): AbridgedPost => {
     excerpt,
     internalContent,
     tags,
-    title
+    title,
   } = post
 
   if (!internalContent) {
     throw Error(
-      '[generatePostData] Post does not contain internal content necessary for Rich Tags.'
+      '[generatePostData] Post does not contain internal content necessary for Rich Tags.',
     )
   }
 
@@ -39,7 +39,7 @@ export const generatePostData = (post: Post): AbridgedPost => {
     description: description || excerpt,
     tags: tags || [],
     title,
-    url: post.url
+    url: post.url,
   }
 }
 
@@ -48,7 +48,7 @@ export const generatePostData = (post: Post): AbridgedPost => {
  */
 export const generateSeoData = (
   siteMetadata: BaseSiteMetadata,
-  postData?: AbridgedPost
+  postData?: AbridgedPost,
 ): SeoData => {
   const isPost = !!postData
   const title = postData ? postData.title : siteMetadata.title
@@ -65,6 +65,6 @@ export const generateSeoData = (
     isPost,
     title,
     type,
-    url
+    url,
   }
 }

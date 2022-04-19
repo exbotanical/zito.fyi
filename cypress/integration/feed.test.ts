@@ -48,7 +48,7 @@ feedUrls.forEach(url => {
 
     it('contains a post excerpt', () => {
       cy.findByText(
-        "This is a TEST post excerpt, used for testing with Cypress. We'll grab the text by searching for it on the DOM. This should be the final…"
+        "This is a TEST post excerpt, used for testing with Cypress. We'll grab the text by searching for it on the DOM. This should be the final…",
       )
     })
 

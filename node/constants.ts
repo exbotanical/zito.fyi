@@ -15,5 +15,5 @@ export const constants = {
   /**
    * Posts per virtual Feed page
    */
-  postsPerFeedPage: 5
+  postsPerFeedPage: 5,
 }

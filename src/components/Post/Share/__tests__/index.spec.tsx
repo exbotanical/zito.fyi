@@ -10,14 +10,14 @@ import { RenderStyled } from '@@/utils/styled'
 import { PostShare } from '../index'
 
 jest.mock('@/config/useConfig', () => ({
-  useConfig: jest.fn(() => config)
+  useConfig: jest.fn(() => config),
 }))
 
 const mockNavigator = () => {
   Object.assign(navigator, {
     clipboard: {
-      writeText: () => {}
-    }
+      writeText: () => {},
+    },
   })
   jest.spyOn(navigator.clipboard, 'writeText')
 }
@@ -31,12 +31,12 @@ describe('component `PostShare`', () => {
     const { container } = RenderStyled(<PostShare post={post} />)
 
     const facebookButton = container.querySelector(
-      'button[aria-label="facebook"]'
+      'button[aria-label="facebook"]',
     )
     expect(facebookButton).toBeInTheDocument()
 
     const twitterButton = container.querySelector(
-      'button[aria-label="twitter"]'
+      'button[aria-label="twitter"]',
     )
     expect(twitterButton).toBeInTheDocument()
 
@@ -44,7 +44,7 @@ describe('component `PostShare`', () => {
     expect(redditButton).toBeInTheDocument()
 
     const linkedinButton = container.querySelector(
-      'button[aria-label="linkedin"]'
+      'button[aria-label="linkedin"]',
     )
     expect(linkedinButton).toBeInTheDocument()
 

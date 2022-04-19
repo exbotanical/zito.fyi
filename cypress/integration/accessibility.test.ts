@@ -8,7 +8,7 @@ function configure() {
   const isDev = Cypress.env('STAGE') === 'dev'
   const disabledRules: Rule[] = [
     { id: 'duplicate-id', enabled: isDev },
-    { id: 'color-contrast', enabled: isDev }
+    { id: 'color-contrast', enabled: isDev },
   ]
 
   cy.configureAxe({
@@ -19,15 +19,15 @@ function configure() {
         options: {
           contrastRatio: {
             normal: {
-              expected: 4.5
+              expected: 4.5,
             },
             large: {
-              expected: 3
-            }
-          }
-        }
-      }
-    ]
+              expected: 3,
+            },
+          },
+        },
+      },
+    ],
   })
 }
 

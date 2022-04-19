@@ -5,14 +5,14 @@ export const generateRssFeed =
   (config: SiteConfig) =>
   (data: FeedPluginData): (FeedPluginItem | undefined)[] | undefined => {
     const {
-      query: { allMdx }
+      query: { allMdx },
     } = data
 
     const edges = allMdx?.edges
 
     if (!edges) {
       console.warn(
-        '[generateRssFeed] No MDX edges available for feed generation.'
+        '[generateRssFeed] No MDX edges available for feed generation.',
       )
       return undefined
     }
@@ -27,17 +27,17 @@ export const generateRssFeed =
         categories: node.frontmatter?.tags,
         custom_elements: [
           {
-            'content:encoded': node.html
+            'content:encoded': node.html,
           },
           {
-            author: config.user.email
-          }
+            author: config.user.email,
+          },
         ],
         date: node.frontmatter?.datePublished,
         description: node.excerpt,
         guid: url,
         title: node.frontmatter?.title,
-        url
+        url,
       }
     })
 

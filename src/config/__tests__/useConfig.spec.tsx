@@ -9,9 +9,9 @@ import { useConfig } from '../useConfig'
 const siteConfigQueryResponse = {
   site: {
     siteMetadata: {
-      config
-    }
-  }
+      config,
+    },
+  },
 }
 
 jest.mock('gatsby', () => {
@@ -20,7 +20,7 @@ jest.mock('gatsby', () => {
   return {
     ...actualGatsby,
     useStaticQuery: jest.fn(),
-    graphql: jest.fn()
+    graphql: jest.fn(),
   }
 })
 
@@ -29,7 +29,7 @@ const mockedGatsby = mocked(gatsby, true)
 describe('hook `useConfig`', () => {
   it('correctly queries and provides site configuration data', () => {
     mockedGatsby.useStaticQuery.mockImplementation(
-      () => siteConfigQueryResponse
+      () => siteConfigQueryResponse,
     )
 
     const { result } = renderHook(() => useConfig())

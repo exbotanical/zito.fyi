@@ -1,11 +1,11 @@
 ---
-title: "Rules to Die on a Hill By: A Decisive JavaScript Style Guide"
+title: 'Rules to Die on a Hill By: A Decisive JavaScript Style Guide'
 cover: images/kali-15.jpg
-coverAlt: "l"
-description: "I recently made the biggest change of my career - switching from tabs to spaces. But why stop there? Today, I rationalize my code style decisions over the years."
-datePublished: "04/19/2022"
-dateModified: "04/19/2022"
-category: "programming"
+coverAlt: 'l'
+description: 'I recently made the biggest change of my career - switching from tabs to spaces. But why stop there? Today, I rationalize my code style decisions over the years.'
+datePublished: '04/19/2022'
+dateModified: '04/19/2022'
+category: 'programming'
 tags:
   - frontend
   - javascript
@@ -13,15 +13,15 @@ tags:
   - static analysis
 ---
 
-I recently made one of the most significant changes of my career - switching from tabs to spaces. But why stop there? Today, I rationalize my code style decisions over the years. Note this article is called *A* Comprehensive Guide, not *The* Comprehensive Guide. My rationalizations aren't going to work for all of you, but my hope is this guide gives you an anchor point for thinking about these ostensibly mundane concerns.
+I recently made one of the most significant changes of my career - switching from tabs to spaces. But why stop there? Today, I rationalize my code style decisions over the years. Note this article is called _A_ Comprehensive Guide, not _The_ Comprehensive Guide. My rationalizations aren't going to work for all of you, but my hope is this guide gives you an anchor point for thinking about these ostensibly mundane concerns.
 
 > It doesn't matter as long as you're consistent.
 >
-> &#150 *Everyone ever*
+> &#150 _Everyone ever_
 
-In the frontend world, we so often hear that "It doesn't matter which one you choose - just be consistent", but for me this is and always has been *not good enough*. The reality is, when you are working on a highly-collaborative project at-scale, it *does* matter.
+In the frontend world, we so often hear that "It doesn't matter which one you choose - just be consistent", but for me this is and always has been _not good enough_. The reality is, when you are working on a highly-collaborative project at-scale, it _does_ matter.
 
-Yes, your style decisions *matter*. Whether you use tabs or spaces, semicolons or not - these things affect your projects and the people who work on them. My take is your code style should be driven by concerted and deliberate decision-making that is equally utilitarian and appropriate for the technologies being used, and the people using them. That is, it's not the decided style itself that matters, but the process by which you arrived at that decision.
+Yes, your style decisions _matter_. Whether you use tabs or spaces, semicolons or not - these things affect your projects and the people who work on them. My take is your code style should be driven by concerted and deliberate decision-making that is equally utilitarian and appropriate for the technologies being used, and the people using them. That is, it's not the decided style itself that matters, but the process by which you arrived at that decision.
 
 Let's begin!
 
@@ -37,10 +37,9 @@ Tabs are superior. Why? Their appearance is easily configurable. I can adjust my
 
 Tabs have canonically been used for indentation and are defaults across UNIX systems. This tradition hails from terminals and teletypes wherein the character meant 'move to the right 8 columns'. The resulting ASCII tab character is here used as a compression mechanism - 8 space characters, on the contrary, take up more space in a file.
 
-
 If tabs are so excellent, why did I switch to spaces?
 
-Well, tabs are visually variable. In JavaScript, we're less concerned about the tab character as something that affects the interpreter. What's more important is *how* the character appears. The implied problem here is different programs have different settings for tabs. In my editor, the character appears to be expressed over 2 columns. Meanwhile, in source-control it's 4. Furthermore, in my *other* text editor, tabs are 8 columns. Unlike Python, tabs are meaningless when interpreted by a JavaScript engine.
+Well, tabs are visually variable. In JavaScript, we're less concerned about the tab character as something that affects the interpreter. What's more important is _how_ the character appears. The implied problem here is different programs have different settings for tabs. In my editor, the character appears to be expressed over 2 columns. Meanwhile, in source-control it's 4. Furthermore, in my _other_ text editor, tabs are 8 columns. Unlike Python, tabs are meaningless when interpreted by a JavaScript engine.
 
 **The Verdict**
 
@@ -83,7 +82,7 @@ indent_size = 2
 
 ## Semicolons
 
-I no longer use unnecessary semicolons in my JavaScript *because they're completely unnecessary*. Why do we have semicolons in the first place? Well, requiring them makes compilers easier to write! But why do we use them *in JavaScript*?
+I no longer use unnecessary semicolons in my JavaScript _because they're completely unnecessary_. Why do we have semicolons in the first place? Well, requiring them makes compilers easier to write! But why do we use them _in JavaScript_?
 
 > 'Cuz C uses them.
 
@@ -101,11 +100,11 @@ In fact, here's some languages for which semicolons are optional (and furthermor
 
 > "Programs are meant to be read by humans and only incidentally for computers to execute."
 >
-> &#150 *Donald Knuth*
+> &#150 _Donald Knuth_
 
 Today's compilers are smart enough to handle multi-line statements, and today's programmers are more than capable of recognizing EOLs via consistent whitespace formatting (which you should be using). As far as ASI in JavaScript is concerned, here's the gist of it:
 
-*Insert when...*
+_Insert when..._
 
 a. parser encounters a token disallowed by the formal grammar, AND encounters a line break or closing brace
 
@@ -133,7 +132,7 @@ That ^ list enumerates what are known as "restricted productions". You see, part
 Restricted productions is why the following returns `undefined`
 
 ```js
-(() => {
+;(() => {
   return
 
   {
@@ -144,30 +143,29 @@ Restricted productions is why the following returns `undefined`
 
 Whereas this example returns `{ x: 'y' }`
 
-
 ```js
-(() => {
+;(() => {
   return {
-    x: 'y'
+    x: 'y',
   }
 })()
 ```
 
 So let's omit semicolons for the sake of brevity, only including them where necessary.
 
-Ah, and here's a rule for the *where necessary* part:
+Ah, and here's a rule for the _where necessary_ part:
 
-> Use a *leading* semicolon when the line begins with one of the following characters: `+=[(/`
+> Use a _leading_ semicolon when the line begins with one of the following characters: `+=[(/`
 
 For example, here's some code where we'll need to use a semicolon no matter what:
 
 ```js
 let fn = function () {
   /* ... */
-}
-
-// TypeError: undefined is not a function
-[1, 2, 3].forEach()
+}[
+  // TypeError: undefined is not a function
+  (1, 2, 3)
+].forEach()
 ```
 
 The restricted productions will bite you in the ass regardless of whether you use semicolons, so you'll still have to remember this rule.
@@ -218,7 +216,8 @@ My rule here is to simply use double-quotes when I'm typing a string literal con
 ```js
 const str1 = 'this is a string that required less keystrokes to type'
 
-const str2 = "this is a string that contains a ' character. instead of using \\ to escape it, I use double quotes."
+const str2 =
+  "this is a string that contains a ' character. instead of using \\ to escape it, I use double quotes."
 ```
 
 Using double-quotes only when escaping `'` characters also has the added benefit of conveying intention. The rare occasion of a double-quoted string in your codebase will stand out immediately as a string literal that contains quote characters.
@@ -304,14 +303,14 @@ prettier:
 How often do you see this in modern JavaScript codebases?
 
 ```js
-const obj = {a: 1, b: 2}
+const obj = { a: 1, b: 2 }
 
-function x(){
-  console.log({obj})
+function x() {
+  console.log({ obj })
 }
 ```
 
-Yeah, I don't see it much either. There's a reason for that: *minification*.
+Yeah, I don't see it much either. There's a reason for that: _minification_.
 
 Compact bracket spacing is a remnant of a JavaScript ecosystem where whitespace mattered when sending files over the wire. Fortunately, almost every framework and build tool has minification integrated into it. Whether you're building a full-fledged React app or minifying your vanilla JS with Terser, you're stripping whitespace around brackets by the time your code is in production. Minification is an easy opt-in across most modern JavaScript toolchains.
 
@@ -366,7 +365,7 @@ const points = {
 
 Previously, my argument for the utility of omitting trailing commas has been that the omission more plainly conveys that a given property is the last in an object.
 
-Looking back, I think "Wow, what an absurd argument" - as though we can't perceive that by the fact that *the last property is the last property*. We don't need an additional visual aid to convey that. And so, I've changed my tune.
+Looking back, I think "Wow, what an absurd argument" - as though we can't perceive that by the fact that _the last property is the last property_. We don't need an additional visual aid to convey that. And so, I've changed my tune.
 
 Sure, the trailing comma looks a bit awkward, but my inner John Stuart Mill says the utility of the trailing comma far supersedes the cleanliness (rather, lack thereof).
 
@@ -382,32 +381,32 @@ const darkTheme = {
     font: {
       primary: 'rgb(206, 166, 186)',
       secondary: 'rgb(206, 166, 186)',
-      hover: 'rgb(47, 43, 69)'
+      hover: 'rgb(47, 43, 69)',
     },
     bg: {
       primary: 'rgb(25, 23, 37)',
       secondary: 'rgb(47, 43, 69)',
-      tertiary: 'rgb(214, 102, 149)'
+      tertiary: 'rgb(214, 102, 149)',
     },
     border: {
-      primary: 'rgb(100, 102, 140)'
+      primary: 'rgb(100, 102, 140)',
     },
     link: 'rgb(75, 187, 172)',
     scroll: {
       fg: 'rgb(214, 102, 149)',
-      bg: 'rgb(100, 102, 140)'
-    }
-  }
+      bg: 'rgb(100, 102, 140)',
+    },
+  },
 }
 ```
 
 I can't tell you how many times I tried to add or amend a property here and I've had to backtrack with my keyboard to include a missing comma. I can attest to the convenience of trailing commas from anecdotal experience, for sure.
 
-Not convinced? Let's look at the second and more important reason to favor the trailing comma: *Git diffs*.
+Not convinced? Let's look at the second and more important reason to favor the trailing comma: _Git diffs_.
 
 If you're contributing to an open source or enterprise codebase, you're undoubtedly using a version control tool such as git. If you're not...uh, I'd love to [hear from you](mailto:exbotanical@gmail.com).
 
- Let's see what happens in a Git diff when you add a single line to a no-trailing-commas codebase:
+Let's see what happens in a Git diff when you add a single line to a no-trailing-commas codebase:
 
 ```diff
 const darkTheme = {
@@ -435,7 +434,7 @@ const darkTheme = {
 }
 ```
 
-I don't know about you, but seeing a line of code that was already there pop out *twice* while reviewing a PR is just obnoxious. I can't immediately discern whether the penultimate line was actually an addition.
+I don't know about you, but seeing a line of code that was already there pop out _twice_ while reviewing a PR is just obnoxious. I can't immediately discern whether the penultimate line was actually an addition.
 
 Duplicate this several times over across a single PR and you've got a mess on your hands that is difficult to read at best and greedy for cognitive overhead at worst.
 
@@ -475,21 +474,13 @@ Near-ubiquitous transpilers like [Babel](https://babeljs.io/) will remove the tr
 I also prefer this rule for arrays:
 
 ```js
-const arr = [
-  1,
-  2,
-  3,
-]
+const arr = [1, 2, 3]
 ```
 
 And function parameters:
 
 ```js
-function x (
-  first,
-  middle,
-  last,
-) {
+function x(first, middle, last) {
   /* ... */
 }
 ```
@@ -497,12 +488,7 @@ function x (
 Though, a comma must not appear after a 'rest' element:
 
 ```js
-function x (
-  first,
-  middle,
-  last,
-  ...all
-) {
+function x(first, middle, last, ...all) {
   /* ... */
 }
 ```
@@ -532,7 +518,7 @@ prettier:
 
 ```json
 {
-  "trailingComma": "all",
+  "trailingComma": "all"
 }
 ```
 
@@ -557,9 +543,7 @@ npm i -D eslint @magister_zito/eslint-config-javascript
 ```json
 // .eslintrc
 {
-  "extends": [
-    "@magister_zito/javascript"
-  ]
+  "extends": ["@magister_zito/javascript"]
 }
 ```
 
@@ -572,9 +556,7 @@ npm i -D eslint @magister_zito/eslint-config-typescript
 ```json
 // .eslintrc
 {
-  "extends": [
-    "@magister_zito/typescript"
-  ]
+  "extends": ["@magister_zito/typescript"]
 }
 ```
 
@@ -587,9 +569,7 @@ npm i -D eslint @magister_zito/eslint-config-react
 ```json
 // .eslintrc
 {
-  "extends": [
-    "@magister_zito/react"
-  ]
+  "extends": ["@magister_zito/react"]
 }
 ```
 
@@ -602,9 +582,7 @@ npm i -D eslint @magister_zito/eslint-config-vue
 ```json
 // .eslintrc
 {
-  "extends": [
-    "@magister_zito/vue"
-  ]
+  "extends": ["@magister_zito/vue"]
 }
 ```
 

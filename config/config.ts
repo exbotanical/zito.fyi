@@ -60,7 +60,7 @@ export const config: SiteConfig = isTestEnv
         /**
          * Organization homepage
          */
-        url: 'https://zito.dev'
+        url: 'https://zito.dev',
       },
 
       /**
@@ -144,7 +144,7 @@ export const config: SiteConfig = isTestEnv
         /**
          * Site base domain
          */
-        url: 'https://zito.dev'
+        url: 'https://zito.dev',
       },
       // User configuration
       user: {
@@ -198,6 +198,6 @@ export const config: SiteConfig = isTestEnv
         /**
          * Admin twitter handle
          */
-        twitterHandle: 'exbotanical'
-      }
+        twitterHandle: 'exbotanical',
+      },
     }

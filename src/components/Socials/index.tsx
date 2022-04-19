@@ -14,7 +14,7 @@ const generateLink = (
   url: string,
   label: string,
   Icon: StyledIcon,
-  sansBasePath = true
+  sansBasePath = true,
 ): JSX.Element => (
   <IconLink ariaLabel={label} sansBasePath={sansBasePath} to={url}>
     <Icon size={48} />
@@ -22,7 +22,7 @@ const generateLink = (
 )
 
 const renderTwitterLink = (
-  config: Readonly<SiteConfig>
+  config: Readonly<SiteConfig>,
 ): JSX.Element | null => {
   const username = config.user.twitterHandle
 
@@ -42,7 +42,7 @@ const renderGitHubLink = (config: Readonly<SiteConfig>): JSX.Element | null => {
 }
 
 const generateLinkedInLink = (
-  config: Readonly<SiteConfig>
+  config: Readonly<SiteConfig>,
 ): JSX.Element | null => {
   const username = config.user.linkedIn
 
@@ -66,7 +66,7 @@ interface IconLinksProps {
 }
 
 const defaultProps: IconLinksProps = {
-  includeRss: false
+  includeRss: false,
 }
 
 const LinkGrid = styled.div`
@@ -77,7 +77,7 @@ const LinkGrid = styled.div`
 
 export function Socials({
   includeRss,
-  className
+  className,
 }: IconLinksProps): JSX.Element | null {
   const config = useConfig()
 

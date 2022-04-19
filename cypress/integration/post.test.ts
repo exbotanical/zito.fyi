@@ -6,18 +6,18 @@ describe('post page', () => {
   it('renders a post intro', () => {
     // recall, Zito, we don't chain these assertions because we'd have to re-invoke `cy.get('body')` for each
     cy.findByText('My Favorite Soft Machine Records', {
-      selector: 'h1'
+      selector: 'h1',
     }).should('exist')
 
     cy.findByText(
       "This is another TEST post excerpt, used for testing with Cypress. We'll grab the text by searching for it on the DOM. This should be the…",
-      { selector: 'p' }
+      { selector: 'p' },
     ).should('exist')
 
     cy.findByAltText('An image of musician Robert Wyatt').should('exist')
 
     cy.findByText('An image of musician Robert Wyatt', {
-      selector: 'figcaption'
+      selector: 'figcaption',
     }).should('exist')
   })
 
@@ -40,7 +40,7 @@ describe('post page', () => {
 
   it('renders the post / article', () => {
     cy.get('article > p').contains(
-      "This is another TEST post excerpt, used for testing with Cypress. We'll grab the text by searching for it on the DOM. This should be the final sentence."
+      "This is another TEST post excerpt, used for testing with Cypress. We'll grab the text by searching for it on the DOM. This should be the final sentence.",
     )
   })
 

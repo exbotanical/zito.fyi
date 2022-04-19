@@ -13,10 +13,10 @@ const testQuery = {
   site: {
     siteMetadata: {
       rssMetadata: {
-        generator: 'Test'
-      }
-    }
-  }
+        generator: 'Test',
+      },
+    },
+  },
 } as unknown as FeedQueryResult
 
 const testFeedData: FeedPluginData = {
@@ -26,7 +26,7 @@ const testFeedData: FeedPluginData = {
   generator: 'TestGen',
   output: '',
   feeds: [],
-  query: testQuery
+  query: testQuery,
 }
 
 const statefulSetup = setupRssFeed(config)
@@ -54,7 +54,7 @@ describe('rss build util `setupRssFeed`', () => {
     const serializedData = statefulSetup(testFeedData)
 
     expect(serializedData.generator).toBe(
-      config.site.url.replace('https://', '')
+      config.site.url.replace('https://', ''),
     )
   })
 

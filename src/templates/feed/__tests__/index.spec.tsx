@@ -14,7 +14,7 @@ import FeedTemplate from '..'
 import type { PageContext } from '../types'
 
 jest.mock('@/config/useConfig', () => ({
-  useConfig: jest.fn(() => config)
+  useConfig: jest.fn(() => config),
 }))
 
 const indexFeedContext = {
@@ -22,7 +22,7 @@ const indexFeedContext = {
   feedMetadata: Index0 as unknown as FeedMetadataJson,
   feedType: 'index',
   pageCount: 3,
-  pageIndex: 0
+  pageIndex: 0,
 }
 
 const categoryFeedContext = {
@@ -30,7 +30,7 @@ const categoryFeedContext = {
   feedMetadata: Index0 as unknown as FeedMetadataJson,
   feedType: 'category',
   pageCount: 3,
-  pageIndex: 0
+  pageIndex: 0,
 }
 
 const tagFeedContext = {
@@ -38,7 +38,7 @@ const tagFeedContext = {
   feedMetadata: Index0 as unknown as FeedMetadataJson,
   feedType: 'tag',
   pageCount: 3,
-  pageIndex: 0
+  pageIndex: 0,
 }
 
 describe('page template FeedTemplate', () => {
@@ -56,7 +56,7 @@ describe('page template FeedTemplate', () => {
     assertTitle(indexFeedContext, config.site.title)
     assertTitle(
       categoryFeedContext,
-      `Posts in category "test" | ${config.site.title}`
+      `Posts in category "test" | ${config.site.title}`,
     )
     assertTitle(tagFeedContext, `Posts tagged as "test" | ${config.site.title}`)
   })

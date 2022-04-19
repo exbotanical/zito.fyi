@@ -14,31 +14,31 @@ interface SeoArgs {
 const addTypeSafeTag = (
   tagList: OpenGraphTagList,
   property: string,
-  content: string
+  content: string,
 ) => {
   tagList.push(<meta content={content} property={property} />)
 }
 
 const createPostTagList = (
   postData: AbridgedPost,
-  userData?: UserMetadata
+  userData?: UserMetadata,
 ): OpenGraphTagList => {
   const metaTags: OpenGraphTagList = []
 
   addTypeSafeTag(
     metaTags,
     'article:published_time',
-    postData.datePublished.toISOString()
+    postData.datePublished.toISOString(),
   )
   addTypeSafeTag(
     metaTags,
     'article:modified_time',
-    postData.dateModified.toISOString()
+    postData.dateModified.toISOString(),
   )
   addTypeSafeTag(
     metaTags,
     'article:author',
-    'http://examples.opengraphprotocol.us/profile.html'
+    'http://examples.opengraphprotocol.us/profile.html',
   )
 
   if (userData) {
@@ -60,7 +60,7 @@ export const OpenGraphTags = ({
   seoData,
   siteData,
   userData,
-  postData
+  postData,
 }: SeoArgs): OpenGraphTagList => {
   const { isPost, type, title, imageUrl, imageAlt, url, description } = seoData
 
@@ -92,6 +92,6 @@ export const OpenGraphTags = ({
   // return w/ unique keys
   return metaTags.map(tag => ({
     ...tag,
-    key: `${tag.props.property}-${tag.props.content}`
+    key: `${tag.props.property}-${tag.props.content}`,
   }))
 }

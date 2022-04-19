@@ -57,7 +57,7 @@ describe('mdx rendering', () => {
     testHeaderAnchor('Images', 'images')
     testHeaderAnchor(
       'Code and Syntax Highlighting',
-      'code-and-syntax-highlighting'
+      'code-and-syntax-highlighting',
     )
     testHeaderAnchor('Blockquotes', 'blockquotes')
     testHeaderAnchor('Inline HTML', 'inline-html')
@@ -142,7 +142,7 @@ describe('mdx rendering', () => {
       .should(
         'have.attr',
         'src',
-        'https://source.unsplash.com/1600x900/?nature,water'
+        'https://source.unsplash.com/1600x900/?nature,water',
       )
   })
 
@@ -153,7 +153,7 @@ describe('mdx rendering', () => {
 
       .get('@post')
       .find(
-        'pre[class*="language-javascript"] > code[class*="language-javascript"]'
+        'pre[class*="language-javascript"] > code[class*="language-javascript"]',
       )
       .contains('JavaScript syntax highlighting')
 
@@ -167,7 +167,7 @@ describe('mdx rendering', () => {
 
       .get('@post')
       .find(
-        'pre[class*="language-no-highlight"] > code[class*="language-no-highlight"]'
+        'pre[class*="language-no-highlight"] > code[class*="language-no-highlight"]',
       )
       .contains('No language indicated, so no syntax highlighting')
   })
@@ -222,7 +222,7 @@ describe('mdx rendering', () => {
       .get('@post')
       .find('blockquote  > p')
       .contains(
-        /^This is a very long line that will still be quoted properly when it wraps./
+        /^This is a very long line that will still be quoted properly when it wraps./,
       )
       .find('strong')
       .contains(/^Markdown$/)
@@ -257,7 +257,7 @@ describe('mdx rendering', () => {
 
   it('renders videos', () => {
     cy.get('@post').find(
-      'p > div.gatsby-resp-iframe-wrapper > div.embedVideo-container > iframe[src="https://www.youtube.com/embed/8AkLfYOgIrE?rel=0"]'
+      'p > div.gatsby-resp-iframe-wrapper > div.embedVideo-container > iframe[src="https://www.youtube.com/embed/8AkLfYOgIrE?rel=0"]',
     )
   })
 })

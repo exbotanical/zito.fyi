@@ -23,7 +23,7 @@ footerTestPages.forEach(url => {
           .should(
             'have.attr',
             'href',
-            `https://twitter.com/${config.user.twitterHandle}`
+            `https://twitter.com/${config.user.twitterHandle}`,
           )
 
           .findByRole('link', { name: 'GitHub Profile', container })
@@ -31,7 +31,7 @@ footerTestPages.forEach(url => {
           .should(
             'have.attr',
             'href',
-            `https://github.com/${config.user.github}`
+            `https://github.com/${config.user.github}`,
           )
 
           .findByRole('link', { name: 'LinkedIn Profile', container })
@@ -39,7 +39,7 @@ footerTestPages.forEach(url => {
           .should(
             'have.attr',
             'href',
-            `https://www.linkedin.com/in/${config.user.linkedIn}`
+            `https://www.linkedin.com/in/${config.user.linkedIn}`,
           )
 
           .findByRole('link', { name: 'E-Mail', container })
@@ -59,7 +59,7 @@ footerTestPages.forEach(url => {
     it('has a copyright notice', () => {
       cy.get('@footer').then(container => {
         cy.findByText(config.site.copyright, {
-          container
+          container,
         })
       })
     })

@@ -2,14 +2,14 @@ import {
   Twitter as TwitterIcon,
   LinkedinSquare as LinkedInIcon,
   FacebookCircle as FacebookIcon,
-  Reddit as RedditIcon
+  Reddit as RedditIcon,
 } from '@styled-icons/boxicons-logos'
 import React, { useState } from 'react'
 import {
   FacebookShareButton,
   LinkedinShareButton,
   TwitterShareButton,
-  RedditShareButton
+  RedditShareButton,
 } from 'react-share'
 import styled, { css } from 'styled-components'
 

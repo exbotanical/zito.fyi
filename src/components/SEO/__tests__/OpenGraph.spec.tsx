@@ -7,7 +7,7 @@ describe('`OpenGraphTags`', () => {
     const generatedTags = OpenGraphTags({
       seoData: seoData.seoSite,
       siteData: seoData.site,
-      userData: seoData.user
+      userData: seoData.user,
     })
 
     expect(generatedTags).toMatchSnapshot()
@@ -18,7 +18,7 @@ describe('`OpenGraphTags`', () => {
       seoData: seoData.seoPost,
       siteData: seoData.site,
       userData: seoData.user,
-      postData: seoData.post
+      postData: seoData.post,
     })
 
     expect(generatedTags).toMatchSnapshot()
@@ -29,7 +29,7 @@ describe('`OpenGraphTags`', () => {
       seoData: { ...seoData.seoPost, description: undefined },
       siteData: seoData.site,
       userData: seoData.user,
-      postData: seoData.post
+      postData: seoData.post,
     })
 
     expect(generatedTags).toMatchSnapshot()
@@ -40,7 +40,7 @@ describe('`OpenGraphTags`', () => {
       seoData: seoData.seoPost,
       siteData: seoData.site,
       userData: undefined,
-      postData: seoData.post
+      postData: seoData.post,
     })
 
     expect(generatedTags).toMatchSnapshot()
@@ -51,7 +51,7 @@ describe('`OpenGraphTags`', () => {
       seoData: { ...seoData.seoPost, imageUrl: undefined },
       siteData: seoData.site,
       userData: seoData.user,
-      postData: seoData.post
+      postData: seoData.post,
     })
 
     expect(generatedTags).toStrictEqual([])
@@ -61,7 +61,7 @@ describe('`OpenGraphTags`', () => {
     const generatedSiteTags = OpenGraphTags({
       seoData: seoData.seoSite,
       siteData: seoData.site,
-      userData: seoData.user
+      userData: seoData.user,
     })
 
     expect(tagListHasEmptyValues(generatedSiteTags)).toBe(false)
@@ -70,7 +70,7 @@ describe('`OpenGraphTags`', () => {
       seoData: seoData.seoPost,
       siteData: seoData.site,
       userData: seoData.user,
-      postData: seoData.post
+      postData: seoData.post,
     })
 
     expect(tagListHasEmptyValues(generatedPostTags)).toBe(false)
@@ -79,7 +79,7 @@ describe('`OpenGraphTags`', () => {
       seoData: seoData.seoPost,
       siteData: { ...seoData.site, facebookAppId: undefined },
       userData: seoData.user,
-      postData: seoData.post
+      postData: seoData.post,
     })
 
     expect(tagListHasEmptyValues(generatePostTagsSansFbAppId)).toBe(false)
@@ -88,7 +88,7 @@ describe('`OpenGraphTags`', () => {
       seoData: { ...seoData.seoPost, description: undefined },
       siteData: seoData.site,
       userData: seoData.user,
-      postData: seoData.post
+      postData: seoData.post,
     })
 
     expect(tagListHasEmptyValues(generatedPostTagsSansDescription)).toBe(false)
@@ -97,7 +97,7 @@ describe('`OpenGraphTags`', () => {
       seoData: seoData.seoPost,
       siteData: seoData.site,
       userData: undefined,
-      postData: seoData.post
+      postData: seoData.post,
     })
 
     expect(tagListHasEmptyValues(generatedTagsWithoutUserData)).toBe(false)
@@ -107,7 +107,7 @@ describe('`OpenGraphTags`', () => {
     const generatedSiteTags = OpenGraphTags({
       seoData: seoData.seoSite,
       siteData: seoData.site,
-      userData: seoData.user
+      userData: seoData.user,
     })
 
     expect(tagListHasUniqueKeys(generatedSiteTags)).toBe(true)
@@ -116,7 +116,7 @@ describe('`OpenGraphTags`', () => {
       seoData: seoData.seoPost,
       siteData: seoData.site,
       userData: seoData.user,
-      postData: seoData.post
+      postData: seoData.post,
     })
 
     expect(tagListHasUniqueKeys(generatedPostTags)).toBe(true)

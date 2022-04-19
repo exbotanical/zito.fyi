@@ -8,7 +8,7 @@ import { RenderStyled } from '@@/utils/styled'
 import { PostInfo } from '../index'
 
 jest.mock('@/config/useConfig', () => ({
-  useConfig: jest.fn(() => config)
+  useConfig: jest.fn(() => config),
 }))
 
 describe('`PostInfo` component', () => {
@@ -16,7 +16,7 @@ describe('`PostInfo` component', () => {
     RenderStyled(<PostInfo post={post} />)
 
     const categoryLink = await screen.findByRole('link', {
-      name: 'technology'
+      name: 'technology',
     })
     expect(categoryLink).toHaveAttribute('href', '/category/technology')
 

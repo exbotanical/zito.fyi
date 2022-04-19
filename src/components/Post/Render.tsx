@@ -52,7 +52,7 @@ const Wrapper = styled.article`
 export function Render({ post }: RenderProps): JSX.Element {
   if (!post.body) {
     throw Error(
-      `[Render] post data does not contain MDX body for rendering. Slug: ${post.slug}`
+      `[Render] post data does not contain MDX body for rendering. Slug: ${post.slug}`,
     )
   }
 

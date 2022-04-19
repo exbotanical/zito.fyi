@@ -11,8 +11,8 @@ specifiers:
   '@commitlint/cli': 16.0.1
   '@commitlint/config-conventional': 16.0.0
   '@fec/remark-a11y-emoji': 3.1.0
-  '@magister_zito/eslint-config-react': ^0.11.0
-  '@magister_zito/prettier-config': ^0.0.2
+  '@magister_zito/eslint-config-react': ^0.14.0
+  '@magister_zito/prettier-config': ^0.0.4
   '@magister_zito/stylelint-config': 0.2.1
   '@mdx-js/mdx': 1.6.22
   '@mdx-js/react': 1.6.22
@@ -167,8 +167,8 @@ devDependencies:
   '@babel/preset-typescript': 7.16.7_@babel+core@7.16.7
   '@commitlint/cli': 16.0.1
   '@commitlint/config-conventional': 16.0.0
-  '@magister_zito/eslint-config-react': 0.11.0_06ce461426bda87d5f0d029ef7898184
-  '@magister_zito/prettier-config': 0.0.2
+  '@magister_zito/eslint-config-react': 0.14.0_06ce461426bda87d5f0d029ef7898184
+  '@magister_zito/prettier-config': 0.0.4
   '@magister_zito/stylelint-config': 0.2.1
   '@testing-library/cypress': 8.0.2_cypress@9.5.3
   '@testing-library/dom': 8.11.1
@@ -2754,8 +2754,8 @@ packages:
       regenerator-runtime: 0.13.9
     dev: false
 
-  /@magister_zito/eslint-config-base/0.11.0_eslint@7.32.0+typescript@4.6.3:
-    resolution: {integrity: sha512-LlshmMKTVhyxohjVoZZIsklATqK+jmLHEuFyL99SeyHnZCHBv46mviOsQRQVwhNA9j3eXYliri6pWtwqozom4Q==}
+  /@magister_zito/eslint-config-base/0.14.0_eslint@7.32.0+typescript@4.6.3:
+    resolution: {integrity: sha512-IXhJSyl9I9xQ3ehnZDZr46XSs2vP6kzsbAJII5xqw1wJKkQyifzZEKASTWey6NtVvlcVBWA5l647TQhXxBtOKw==}
     peerDependencies:
       eslint: '>=8.0'
       typescript: '>=4.5'
@@ -2777,12 +2777,12 @@ packages:
       - supports-color
     dev: true
 
-  /@magister_zito/eslint-config-react/0.11.0_06ce461426bda87d5f0d029ef7898184:
-    resolution: {integrity: sha512-K6HHvHyNHBCacyX6jx8i21YXsnPA/arjBjOBOJgpvZuKy1JaSYG2Dequ4wNZhtIZXamuVmWXrgtraYu0FvZM8w==}
+  /@magister_zito/eslint-config-react/0.14.0_06ce461426bda87d5f0d029ef7898184:
+    resolution: {integrity: sha512-eXL31PpfLGrtQ3AxXO2zEDSzEQCencs20Js7Ma1hERVUEWu3MuuAv5Mq5soPESIRt74tgX2uat/4WehyMOb9gw==}
     peerDependencies:
       eslint: '>=8.0'
     dependencies:
-      '@magister_zito/eslint-config-typescript': 0.11.0_eslint@7.32.0+typescript@4.6.3
+      '@magister_zito/eslint-config-typescript': 0.14.0_eslint@7.32.0+typescript@4.6.3
       eslint: 7.32.0
       eslint-plugin-cypress: 2.12.1_eslint@7.32.0
       eslint-plugin-jest: 26.1.3_06ce461426bda87d5f0d029ef7898184
@@ -2798,22 +2798,21 @@ packages:
       - typescript
     dev: true
 
-  /@magister_zito/eslint-config-typescript/0.11.0_eslint@7.32.0+typescript@4.6.3:
-    resolution: {integrity: sha512-PutjVWEkSzM9W8rC2/H1LZKFD/mXBoRIx/Sa/BLeHbn7QJcIVHTCtqjpdohdX40wsUtP6rrtDnB2X9oC6+OqBA==}
+  /@magister_zito/eslint-config-typescript/0.14.0_eslint@7.32.0+typescript@4.6.3:
+    resolution: {integrity: sha512-DeWLXu7CSp7/316+Gaju/FJsTX/xHJinCZKRGrrmeNyi74x8JGtOtxePg0SjkijDELqfwxOF2KvDqlRzuv0qDg==}
     peerDependencies:
       eslint: '>=7.4.0'
       typescript: '>=3.9'
     dependencies:
-      '@magister_zito/eslint-config-base': 0.11.0_eslint@7.32.0+typescript@4.6.3
+      '@magister_zito/eslint-config-base': 0.14.0_eslint@7.32.0+typescript@4.6.3
       eslint: 7.32.0
       typescript: 4.6.3
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@magister_zito/prettier-config/0.0.2:
-    resolution: {integrity: sha512-rmvkIt0agjvzZ1568cKZDvdKUs+xLJFCUOmC48TCMrr2pFAplDrQcEMoHZjN3RFuV6miOP40KQi9YDx1dQ8Rwg==}
-    requiresBuild: true
+  /@magister_zito/prettier-config/0.0.4:
+    resolution: {integrity: sha512-RrvPVHHzhycPaRab2sLbPdtBOD0Vf8GPpcu7hOqtsHeTIIZ/4Jq65PRxHN84rgEb1rPveDm0smKeB+c4BJMtmQ==}
     dev: true
 
   /@magister_zito/stylelint-config/0.2.1:

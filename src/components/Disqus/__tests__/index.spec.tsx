@@ -10,7 +10,7 @@ import { RenderStyled } from '@@/utils/styled'
 import { DisqusPlugin } from '../index'
 
 jest.mock('@/config/useConfig', () => ({
-  useConfig: jest.fn(() => config)
+  useConfig: jest.fn(() => config),
 }))
 
 const mockedUseConfig = mocked(useConfig)

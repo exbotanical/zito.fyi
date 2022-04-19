@@ -7,7 +7,7 @@ import {
   resolveFeedPath,
   setupFeedMetadataDir,
   persistFeedMetadata,
-  constants
+  constants,
 } from '../'
 import { post, config, postsList } from '../../test/fixtures'
 import { GatsbyActionsMock } from '../../test/utils/gatsbyActions'
@@ -31,13 +31,13 @@ describe('build util `persistFeedMetadata`', () => {
       nextCount: 5,
       prev: 0,
       prevCount: 5,
-      posts: [post, post]
+      posts: [post, post],
     }
 
     const stringifiedMeta = JSON.stringify(testMeta)
 
     memfs.vol.fromJSON({
-      [FEED_METADATA_DIR]: null
+      [FEED_METADATA_DIR]: null,
     })
 
     await persistFeedMetadata('test', 1, testMeta)
@@ -45,14 +45,14 @@ describe('build util `persistFeedMetadata`', () => {
 
     expect(
       memfs.fs.readFileSync(`${FEED_METADATA_DIR}test-1.json`, {
-        encoding: 'utf8'
-      })
+        encoding: 'utf8',
+      }),
     ).toStrictEqual(stringifiedMeta)
 
     expect(
       memfs.fs.readFileSync(`${FEED_METADATA_DIR}test-testId-1.json`, {
-        encoding: 'utf8'
-      })
+        encoding: 'utf8',
+      }),
     ).toStrictEqual(stringifiedMeta)
   })
 })
@@ -72,7 +72,7 @@ describe('build util `setupFeedMetadataDir`', () => {
 
   it('recreates `FEED_METADATA_DIR` if not extant', () => {
     memfs.vol.fromJSON({
-      [`${FEED_METADATA_DIR}random-file.json`]: 'random-text'
+      [`${FEED_METADATA_DIR}random-file.json`]: 'random-text',
     })
 
     setupFeedMetadataDir()
@@ -150,7 +150,7 @@ describe('build util `createFeed`', () => {
 
   it('correctly generates a feed', async () => {
     memfs.vol.fromJSON({
-      [FEED_METADATA_DIR]: null
+      [FEED_METADATA_DIR]: null,
     })
 
     const MockedGatsbyActions = mocked(GatsbyActionsMock, true)
@@ -159,26 +159,26 @@ describe('build util `createFeed`', () => {
 
     expect(
       memfs.fs.readFileSync(`${FEED_METADATA_DIR}index-0.json`, {
-        encoding: 'utf8'
-      })
+        encoding: 'utf8',
+      }),
     ).toMatchSnapshot()
 
     expect(
       memfs.fs.readFileSync(`${FEED_METADATA_DIR}index-1.json`, {
-        encoding: 'utf8'
-      })
+        encoding: 'utf8',
+      }),
     ).toMatchSnapshot()
 
     expect(
       memfs.fs.readFileSync(`${FEED_METADATA_DIR}index-2.json`, {
-        encoding: 'utf8'
-      })
+        encoding: 'utf8',
+      }),
     ).toMatchSnapshot()
 
     expect(
       memfs.fs.readFileSync(`${FEED_METADATA_DIR}index-3.json`, {
-        encoding: 'utf8'
-      })
+        encoding: 'utf8',
+      }),
     ).toMatchSnapshot()
 
     expect(MockedGatsbyActions.createPage).toHaveBeenCalledTimes(1)
@@ -191,9 +191,9 @@ describe('build util `createFeed`', () => {
           pageCount: 4,
           pageIndex: 0,
           feedType: 'index',
-          feedId: undefined
-        })
-      })
+          feedId: undefined,
+        }),
+      }),
     )
   })
 })

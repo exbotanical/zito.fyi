@@ -14,7 +14,7 @@ const POSTS_PER_PAGE = constants.postsPerFeedPage
 export const resolveFeedPath = (
   config: SiteConfig,
   feedType: string,
-  feedId?: string
+  feedId?: string,
 ): string => {
   const slug =
     feedType === 'index' ? '/' : `/${feedType}${feedId ? `/${feedId}` : ''}`
@@ -29,11 +29,11 @@ export const persistFeedMetadata = async (
   feedType: string,
   feedPageIndex: number,
   feedMetadata: FeedMetadata,
-  feedId?: string
+  feedId?: string,
 ): Promise<void> => {
   const filePath = path.join(
     FEED_METADATA_DIR,
-    `${feedType}${feedId ? `-${feedId}` : ''}-${feedPageIndex}.json`
+    `${feedType}${feedId ? `-${feedId}` : ''}-${feedPageIndex}.json`,
   )
 
   const serializedList = JSON.stringify(feedMetadata)
@@ -44,7 +44,7 @@ export const persistFeedMetadata = async (
 export const createFeedMetadata = (
   pageIdx: number,
   pageCount: number,
-  feedPosts: Post[]
+  feedPosts: Post[],
 ): FeedMetadata => {
   const limit = POSTS_PER_PAGE
   const skip = pageIdx * POSTS_PER_PAGE
@@ -66,7 +66,7 @@ export const createFeedMetadata = (
     nextCount,
     posts: feedPagePosts,
     prev: prevPage,
-    prevCount
+    prevCount,
   }
 }
 
@@ -84,7 +84,7 @@ export const createFeed = async (
   actions: Actions,
   feedPosts: Post[],
   feedType: string,
-  feedId?: string
+  feedId?: string,
 ): Promise<void> => {
   const pageCount = Math.ceil(feedPosts.length / POSTS_PER_PAGE)
 
@@ -103,9 +103,9 @@ export const createFeed = async (
           feedMetadata: pageMeta,
           feedType,
           pageCount,
-          pageIndex: pageIdx
+          pageIndex: pageIdx,
         },
-        path
+        path,
       })
     }
   })

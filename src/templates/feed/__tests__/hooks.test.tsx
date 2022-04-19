@@ -9,7 +9,7 @@ import type {
   FeedItems,
   FeedMetadataJson,
   Post,
-  PlaceholderPost
+  PlaceholderPost,
 } from '@/types'
 
 import { config } from '@@/fixtures'
@@ -24,7 +24,7 @@ import type { PageContext } from '../types'
 const pageMetadatas: FeedMetadataJson[] = [
   Index0 as unknown as FeedMetadataJson,
   Index1 as unknown as FeedMetadataJson,
-  Index2 as unknown as FeedMetadataJson
+  Index2 as unknown as FeedMetadataJson,
 ]
 
 jest.mock('react', () => {
@@ -33,19 +33,19 @@ jest.mock('react', () => {
     current: {
       getBoundingClientRect: () => ({
         bottom: 9999,
-        top: 0
-      })
-    }
+        top: 0,
+      }),
+    },
   }))
 
   return {
     ...actualReact,
-    useRef
+    useRef,
   }
 })
 
 jest.mock('@/config/useConfig', () => ({
-  useConfig: jest.fn(() => config)
+  useConfig: jest.fn(() => config),
 }))
 
 const mockedReact = mocked(React, true)
@@ -75,11 +75,11 @@ const pageCtx: PageContext = {
   feedMetadata: Index0 as unknown as FeedMetadataJson,
   feedType: 'index',
   pageCount: 3,
-  pageIndex: 0
+  pageIndex: 0,
 }
 
 const isPostPlaceholder = (
-  post: PlaceholderPost | Post
+  post: PlaceholderPost | Post,
 ): post is PlaceholderPost => (post as PlaceholderPost).isPlaceholder
 
 const filterPlaceholders = (feedPosts: FeedItems) =>
@@ -94,7 +94,7 @@ describe('hook `useInfiniteFeed`', () => {
   it('loads next page on scroll', async () => {
     await act(async () => {
       const { result, waitFor } = renderHook(() => useInfiniteFeed(pageCtx), {
-        wrapper
+        wrapper,
       })
 
       // initial load
@@ -104,9 +104,9 @@ describe('hook `useInfiniteFeed`', () => {
         current: {
           getBoundingClientRect: () => ({
             bottom: 1,
-            top: 0
-          })
-        }
+            top: 0,
+          }),
+        },
       }))
 
       const loadNext = async (targetCount: number) => {
@@ -118,7 +118,8 @@ describe('hook `useInfiniteFeed`', () => {
         expect(placeholders).toHaveLength(5)
 
         await waitFor(
-          () => filterFullPosts(result.current.feedItems).length === targetCount
+          () =>
+            filterFullPosts(result.current.feedItems).length === targetCount,
         )
 
         const fullPosts = filterFullPosts(result.current.feedItems)
@@ -139,14 +140,14 @@ describe('hook `useInfiniteFeed`', () => {
       current: {
         getBoundingClientRect: () => ({
           bottom: 1,
-          top: 0
-        })
-      }
+          top: 0,
+        }),
+      },
     }))
 
     await act(async () => {
       const { result, waitFor } = renderHook(() => useInfiniteFeed(pageCtx), {
-        wrapper
+        wrapper,
       })
 
       await waitFor(() => filterFullPosts(result.current.feedItems).length > 5)

@@ -9,7 +9,7 @@ if (Cypress.env('STAGE') !== 'dev') {
 
         cy.task('parseSitemap', {
           siteUrl: 'https://zito.dev',
-          sitemapString: data.body
+          sitemapString: data.body,
         }).then(sitemapLinks => {
           const links = sitemapLinks as string[]
           expect(links).to.include('/my-favorite-soft-machine-records')

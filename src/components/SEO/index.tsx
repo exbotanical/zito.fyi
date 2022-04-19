@@ -29,25 +29,25 @@ export function SEO({ post }: SeoProps): JSX.Element {
       postData,
       seoData,
       siteData,
-      userData
+      userData,
     }),
     ...RichSearchTags({
       orgData,
       postData,
       seoData,
-      userData
+      userData,
     }),
     ...TwitterTags({
       seoData,
       siteData,
-      userData
-    })
+      userData,
+    }),
   ]
 
   return (
     <Helmet
       htmlAttributes={{
-        lang: siteData.language
+        lang: siteData.language,
       }}
     >
       {tagList}

@@ -22,5 +22,5 @@ export const GatsbyActionsMock = {
   setJob: jest.fn(),
   setPluginStatus: jest.fn(),
   setWebpackConfig: jest.fn(),
-  touchNode: jest.fn()
+  touchNode: jest.fn(),
 } as unknown as Actions

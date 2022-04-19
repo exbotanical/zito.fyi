@@ -20,10 +20,12 @@ export const containsEmptyValues = (data: unknown): boolean => {
 }
 
 export const tagListHasEmptyValues = (tagList: React.ReactElement[]): boolean =>
-  !!tagList.find(tag => containsEmptyValues(tag.type) || containsEmptyValues(tag.props))
+  !!tagList.find(
+    tag => containsEmptyValues(tag.type) || containsEmptyValues(tag.props),
+  )
 
 export const tagListHasUniqueKeys = (
-  tagList: React.ReactElement[]
+  tagList: React.ReactElement[],
 ): boolean => {
   const keys = tagList.map(tag => tag.key)
 
@@ -43,7 +45,7 @@ export const seoData: {
     description: '',
     logoUrl: '',
     name: '',
-    url: 'https://zito.dev'
+    url: 'https://zito.dev',
   },
   post: {
     body: 'Post body',
@@ -55,7 +57,7 @@ export const seoData: {
     description: 'Post description.',
     tags: ['Tag1', 'Tag2'],
     title: 'Post title',
-    url: '/posts/url'
+    url: '/posts/url',
   },
   seoPost: {
     description: 'Post description.',
@@ -64,7 +66,7 @@ export const seoData: {
     isPost: true,
     title: 'Post title',
     type: 'post',
-    url: '/posts/url'
+    url: '/posts/url',
   },
   seoSite: {
     description: 'Site description.',
@@ -73,7 +75,7 @@ export const seoData: {
     isPost: false,
     title: 'Site title',
     type: 'page',
-    url: '/url'
+    url: '/url',
   },
   site: {
     backgroundColor: '#F7F7F7',
@@ -90,7 +92,7 @@ export const seoData: {
     title: "Matthew Zito's Blog",
     titleAbridged: "Zito's Blog",
     twitterHandle: 'test',
-    url: 'https://zito.dev'
+    url: 'https://zito.dev',
   },
   user: {
     about: 'A paragraph about me, the author and site admin.',
@@ -104,6 +106,6 @@ export const seoData: {
     linkedIn: 'matthew-zito-9a03b3127',
     location: 'United States',
     surname: 'Zito',
-    twitterHandle: 'test'
-  }
+    twitterHandle: 'test',
+  },
 }

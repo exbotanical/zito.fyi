@@ -10,7 +10,7 @@ import { Socials } from '../index'
 const user = config.user
 
 jest.mock('@/config/useConfig', () => ({
-  useConfig: jest.fn(() => config)
+  useConfig: jest.fn(() => config),
 }))
 
 describe('component Socials', () => {
@@ -18,30 +18,30 @@ describe('component Socials', () => {
     RenderStyled(<Socials />)
 
     const twitterLink = screen.getByRole('link', {
-      name: 'Twitter Profile'
+      name: 'Twitter Profile',
     })
 
     expect(twitterLink).toHaveAttribute(
       'href',
-      `https://twitter.com/${user.twitterHandle}`
+      `https://twitter.com/${user.twitterHandle}`,
     )
 
     const githubLink = await screen.findByRole('link', {
-      name: 'GitHub Profile'
+      name: 'GitHub Profile',
     })
 
     expect(githubLink).toHaveAttribute(
       'href',
-      `https://github.com/${user.github}`
+      `https://github.com/${user.github}`,
     )
 
     const linkedInLink = await screen.findByRole('link', {
-      name: 'LinkedIn Profile'
+      name: 'LinkedIn Profile',
     })
 
     expect(linkedInLink).toHaveAttribute(
       'href',
-      `https://www.linkedin.com/in/${user.linkedIn}`
+      `https://www.linkedin.com/in/${user.linkedIn}`,
     )
 
     const eMailLink = await screen.findByRole('link', { name: 'E-Mail' })

@@ -4,7 +4,7 @@ import type {
   PostJson,
   PostBySlugQueryResult,
   UserQueryResult,
-  UserMetadata
+  UserMetadata,
 } from '@/types'
 
 import type { GetMdxPostsQueryResult } from '../../node/types'
@@ -16,7 +16,7 @@ export function mdxNodeToPost(mdxNode: MdxNode): Post {
     throw Error(
       `[mdxNodeToPost] Post missing frontmatter. Post slug: ${
         mdxNode.fields?.slug || 'was not provided'
-      }.`
+      }.`,
     )
   }
 
@@ -24,7 +24,7 @@ export function mdxNodeToPost(mdxNode: MdxNode): Post {
     throw Error(
       `[mdxNodeToPost] Post missing title. Post slug: ${
         mdxNode.fields?.slug || 'was not provided'
-      }.`
+      }.`,
     )
   }
 
@@ -32,43 +32,43 @@ export function mdxNodeToPost(mdxNode: MdxNode): Post {
     throw Error(
       `[mdxNodeToPost] Post missing publication date. Post slug: ${
         mdxNode.fields?.slug || 'was not provided'
-      }.`
+      }.`,
     )
   }
 
   if (!mdxNode.fields) {
     throw Error(
-      `[mdxNodeToPost] Post missing fields. Post title: ${frontmatter.title}.`
+      `[mdxNodeToPost] Post missing fields. Post title: ${frontmatter.title}.`,
     )
   }
 
   if (!mdxNode.fields.slug) {
     throw Error(
-      `[mdxNodeToPost] Post missing slug. Post title: ${frontmatter.title}.`
+      `[mdxNodeToPost] Post missing slug. Post title: ${frontmatter.title}.`,
     )
   }
 
   if (!mdxNode.fields.pathName) {
     throw Error(
-      `[mdxNodeToPost] Post missing pathName. Post slug: ${mdxNode.fields.slug}.`
+      `[mdxNodeToPost] Post missing pathName. Post slug: ${mdxNode.fields.slug}.`,
     )
   }
 
   if (!mdxNode.fields.url) {
     throw Error(
-      `[mdxNodeToPost] Post missing url. Post slug: ${mdxNode.fields.slug}.`
+      `[mdxNodeToPost] Post missing url. Post slug: ${mdxNode.fields.slug}.`,
     )
   }
 
   if (!mdxNode.fields.route) {
     throw Error(
-      `[mdxNodeToPost] Post missing route. Post slug: ${mdxNode.fields.slug}.`
+      `[mdxNodeToPost] Post missing route. Post slug: ${mdxNode.fields.slug}.`,
     )
   }
 
   if (!mdxNode.timeToRead) {
     throw Error(
-      `[mdxNodeToPost] Post missing timeToRead. Post slug: ${mdxNode.fields.slug}.`
+      `[mdxNodeToPost] Post missing timeToRead. Post slug: ${mdxNode.fields.slug}.`,
     )
   }
 
@@ -76,7 +76,7 @@ export function mdxNodeToPost(mdxNode: MdxNode): Post {
     throw Error(
       `[mdxNodeToPost] Post missing cover image. Post slug: ${
         mdxNode.fields.slug || 'was not provided'
-      }.`
+      }.`,
     )
   }
 
@@ -84,7 +84,7 @@ export function mdxNodeToPost(mdxNode: MdxNode): Post {
     throw Error(
       `[mdxNodeToPost] Post missing cover alt. Post slug: ${
         mdxNode.fields.slug || 'was not provided'
-      }.`
+      }.`,
     )
   }
 
@@ -92,7 +92,7 @@ export function mdxNodeToPost(mdxNode: MdxNode): Post {
     console.warn(
       `[mdxNodeToPost] Post missing description. Post slug: ${
         mdxNode.fields.slug || 'was not provided'
-      }. `
+      }. `,
     )
   }
 
@@ -107,7 +107,7 @@ export function mdxNodeToPost(mdxNode: MdxNode): Post {
     coverImageUrl: frontmatter.cover.publicURL,
     coverImg: frontmatter.cover.childImageSharp?.gatsbyImageData,
     dateModified: new Date(
-      frontmatter.dateModified || frontmatter.datePublished
+      frontmatter.dateModified || frontmatter.datePublished,
     ),
     datePublished: new Date(frontmatter.datePublished),
     description: frontmatter.description,
@@ -119,7 +119,7 @@ export function mdxNodeToPost(mdxNode: MdxNode): Post {
     tags: tagList,
     timeToRead: mdxNode.timeToRead,
     title: frontmatter.title,
-    url: mdxNode.fields.url
+    url: mdxNode.fields.url,
   }
 }
 
@@ -150,7 +150,7 @@ export function jsonToPost(meta: PostJson): Post {
     description,
     excerpt,
     tags,
-    relatedPosts
+    relatedPosts,
   } = meta
 
   return {
@@ -169,7 +169,7 @@ export function jsonToPost(meta: PostJson): Post {
     tags,
     timeToRead,
     title,
-    url
+    url,
   }
 }
 

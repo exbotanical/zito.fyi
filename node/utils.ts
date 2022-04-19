@@ -5,7 +5,7 @@ import type { SiteConfig } from '../src/types'
 import type { BaseFrontmatter } from './types'
 
 export function generateSlug(
-  frontmatter?: BaseFrontmatter
+  frontmatter?: BaseFrontmatter,
 ): string | undefined {
   if (frontmatter) {
     const { slug, title } = frontmatter

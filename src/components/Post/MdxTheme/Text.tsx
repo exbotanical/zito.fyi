@@ -49,7 +49,7 @@ const getHeaderHashLink = (children: React.ReactNode): string | null => {
  */
 const generateHeading = (
   slug: string,
-  HeadingComponent: AnyStyledComponent
+  HeadingComponent: AnyStyledComponent,
 ): HeadingComponent => {
   function GeneratedHeader({ children }: HeadingProps): JSX.Element {
     const hashLink = getHeaderHashLink(children)
@@ -69,7 +69,7 @@ const generateHeading = (
 const BlockquoteStyle = styled.blockquote`
   padding: 8px 16px;
   border-left: 8px solid ${({ theme }) => theme.colors.bg.tertiary};
-  background-color: ${({ theme }) => theme.colors.bg.secondary};
+  background-color: ${({ theme }) => theme.colors.bg.quaternary};
   color: ${({ theme }) => theme.colors.font.secondary};
 `
 
@@ -80,7 +80,7 @@ export const generateHeadings = (slug: string): Headings => ({
   H3: generateHeading(slug, styles.H3),
   H4: generateHeading(slug, styles.H4),
   H5: generateHeading(slug, styles.H5),
-  H6: generateHeading(slug, styles.H6)
+  H6: generateHeading(slug, styles.H6),
 })
 
 export function Blockquote({ children }: BlockquoteProps): JSX.Element {

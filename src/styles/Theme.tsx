@@ -29,22 +29,23 @@ export const lightTheme = {
     font: {
       primary: 'rgb(0, 0, 0)',
       secondary: 'rgb(251, 248, 228)',
-      hover: 'rgb(250, 239, 204)'
+      hover: 'rgb(250, 239, 204)',
     },
     bg: {
       primary: 'rgb(251, 248, 228)',
       secondary: 'rgb(10, 49, 68)',
-      tertiary: 'rgb(191, 85, 105)'
+      tertiary: 'rgb(191, 85, 105)',
+      quaternary: 'rgb(10, 49, 68)',
     },
     border: {
-      primary: 'rgb(102, 95, 101)'
+      primary: 'rgb(102, 95, 101)',
     },
     link: 'rgb(224, 102, 125)',
     scroll: {
       fg: 'rgb(224, 102, 125)',
-      bg: 'rgb(255, 181, 120)'
-    }
-  }
+      bg: 'rgb(255, 181, 120)',
+    },
+  },
 }
 
 export const darkTheme = {
@@ -52,24 +53,26 @@ export const darkTheme = {
     font: {
       primary: 'rgb(206, 166, 186)',
       secondary: 'rgb(206, 166, 186)',
-      hover: 'rgb(47, 43, 69)'
+      hover: 'rgb(47, 43, 69)',
     },
     bg: {
-      primary: 'rgb(25, 23, 37)',
-      secondary: 'rgb(47, 43, 69)',
-      tertiary: 'rgb(214, 102, 149)'
+      // primary: 'rgb(25, 23, 37)',
+      primary: 'rgb(17, 16, 21)',
+      secondary: 'rgb(37, 35, 47)',
+      tertiary: 'rgb(214, 102, 149)',
+      quaternary: 'rgb(47, 43, 69)',
     },
 
     border: {
-      primary: 'rgb(100, 102, 140)'
+      primary: 'rgb(100, 102, 140)',
     },
 
     link: 'rgb(75, 187, 172)',
     scroll: {
       fg: 'rgb(214, 102, 149)',
-      bg: 'rgb(100, 102, 140)'
-    }
-  }
+      bg: 'rgb(100, 102, 140)',
+    },
+  },
 }
 // rgb(104, 157, 225)
 
@@ -83,7 +86,7 @@ export function ThemeProvider({ children }: ThemeProps): JSX.Element {
   const [theme, setTheme] = useLocalStorage<Themes>(
     KEYS.THEME_STORAGE_KEY,
 
-    prefersDark ? 'dark' : 'light'
+    prefersDark ? 'dark' : 'light',
   )
 
   const toggleTheme = useCallback(() => {

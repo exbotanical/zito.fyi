@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import type { Post as P } from '@/types'
+import type { Post as PostType } from '@/types'
 
 import { PostIntro } from './PostIntro'
 import { Render } from './Render'
 import { PostShare } from './Share'
 
 interface PostProps {
-  post: P
+  post: PostType
 }
 
 const Wrapper = styled.main`

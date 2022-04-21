@@ -13,7 +13,6 @@ import {
 } from 'react-share'
 import styled, { css } from 'styled-components'
 
-import { Separator } from '@/components/Separator'
 import { useConfig } from '@/config'
 import type { Post, SiteConfig } from '@/types'
 
@@ -23,6 +22,8 @@ import * as S from './styles'
 interface PostShareProps {
   post: Post
 }
+
+const ICON_SIZE = 60
 
 function generateRelatedTwitterHandles(config: SiteConfig): string[] {
   const relatedTwitterHandles = []
@@ -79,7 +80,7 @@ export function PostShare({ post }: PostShareProps): JSX.Element {
         <S.Label>SHARE</S.Label>
         <S.LinkGrid>
           <FacebookShare quote={excerpt} url={url}>
-            <FacebookIcon size={40} />
+            <FacebookIcon size={ICON_SIZE} fill="rgb(66, 103, 178)"/>
           </FacebookShare>
 
           <TwitterShare
@@ -88,10 +89,10 @@ export function PostShare({ post }: PostShareProps): JSX.Element {
             url={url}
             via={config.site.name}
           >
-            <TwitterIcon size={40} />
+            <TwitterIcon size={ICON_SIZE} fill="rgb(29, 161, 242)"/>
           </TwitterShare>
           <RedditShare title={title} url={url}>
-            <RedditIcon size={40} />
+            <RedditIcon size={ICON_SIZE} fill="rgb(255, 86, 0)"/>
           </RedditShare>
           <LinkedinShare
             source={config.site.name}
@@ -99,14 +100,14 @@ export function PostShare({ post }: PostShareProps): JSX.Element {
             title={title}
             url={url}
           >
-            <LinkedInIcon size={40} />
+            <LinkedInIcon size={ICON_SIZE} fill="rgb(0, 119, 181)" />
           </LinkedinShare>
           <S.LinkButton
             onClick={() => {
               void navigator.clipboard.writeText(url)
               setShowlinkNotification(true)
             }}
-            size={40}
+            size={ICON_SIZE}
           />
           {showLinkNotification && (
             <LinkCopyNotification
@@ -117,7 +118,7 @@ export function PostShare({ post }: PostShareProps): JSX.Element {
           )}
         </S.LinkGrid>
       </S.LinkWrapper>
-      <Separator />
+      {/* <Separator /> */}
     </S.Wrapper>
   )
 }

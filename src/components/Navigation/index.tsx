@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import * as S from '@/components/Navigation/styles'
 import { ThemeToggleContext } from '@/styles/Theme'
 
-import { Lambda, Moon, Sun } from '../icons'
+import { Lambda, Moon, Sun } from '../Icons'
 
 export function Navigation(): JSX.Element {
   const { theme, toggleTheme } = useContext(ThemeToggleContext)

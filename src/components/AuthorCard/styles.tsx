@@ -11,7 +11,7 @@ export const Wrapper = styled.section`
   justify-self: center;
 `
 
-export const Main = styled.div`
+export const Content = styled.div`
   display: grid;
   grid-auto-flow: column;
   grid-gap: 32px;

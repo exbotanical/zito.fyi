@@ -16,15 +16,9 @@ const Wrapper = styled.aside`
   justify-items: center;
 `
 
-const Label = styled(H2)`
-  color: ${({ theme }) => theme.colors.link};
-  text-transform: uppercase;
-`
-
 export function RelatedPosts({ posts }: RelatedPostsProps): JSX.Element | null {
   return posts.length ? (
-    <Wrapper>
-      <Label>RELATED POSTS</Label>
+    <Wrapper data-testid="related-posts">
       <Feed feedItems={posts} hideHero />
     </Wrapper>
   ) : null

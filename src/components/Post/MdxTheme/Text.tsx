@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { HeadingLink } from '@/components/Links'
-import { ExtendingWrapper } from '@/components/Post/PostSpacing'
+import { ExtensionWrapper } from '@/components/Post/PostSpacing'
 import * as styles from '@/styles'
 
 import type { AnyStyledComponent } from 'styled-components'
@@ -85,8 +85,8 @@ export const generateHeadings = (slug: string): Headings => ({
 
 export function Blockquote({ children }: BlockquoteProps): JSX.Element {
   return (
-    <ExtendingWrapper>
+    <ExtensionWrapper>
       <BlockquoteStyle>{children}</BlockquoteStyle>
-    </ExtendingWrapper>
+    </ExtensionWrapper>
   )
 }

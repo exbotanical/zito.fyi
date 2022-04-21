@@ -15,6 +15,11 @@ export const Wrapper = styled.div`
   width: 100%;
   max-width: 100%;
 
+  /* Ensure li is centered with article content */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   @media (min-width: ${FOOTNOTE_SIZE}) {
     max-width: ${FOOTNOTE_SIZE};
     padding: 0 16px;

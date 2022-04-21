@@ -33,7 +33,7 @@
 - [ ] generate post description
 - [ ] auto title
 - [ ] dark mode for images
-- [ ] fix footnotes alignment
+- [x] fix footnotes alignment
 
 ## Cypress
 

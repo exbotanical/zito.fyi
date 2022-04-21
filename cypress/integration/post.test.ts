@@ -63,7 +63,7 @@ describe('post page', () => {
 
   it('renders related Posts', () => {
     /** @todo no text if no posts */
-    cy.findByText('RELATED POSTS')
+    cy.getByTestId('related-posts')
       .next()
       .children()
       .first()
@@ -71,7 +71,7 @@ describe('post page', () => {
       .find('a[href="/andrea-zittel"]')
       .contains(/^Andrea Zittel$/)
 
-    cy.findByText('RELATED POSTS')
+    cy.getByTestId('related-posts')
       .next()
       .children()
       .first()

@@ -8,7 +8,7 @@ import {
   PostImageSpacing,
   FigCaptionCss,
 } from '@/components/Post/PostImage'
-import { ExtendingWrapper } from '@/components/Post/PostSpacing'
+import { ExtensionWrapper } from '@/components/Post/PostSpacing'
 import { Separator } from '@/components/Separator'
 
 interface LinkProps extends React.HTMLProps<HTMLAnchorElement> {
@@ -18,9 +18,9 @@ interface LinkProps extends React.HTMLProps<HTMLAnchorElement> {
 
 export function Break(): JSX.Element {
   return (
-    <ExtendingWrapper>
+    <ExtensionWrapper>
       <Separator />
-    </ExtendingWrapper>
+    </ExtensionWrapper>
   )
 }
 

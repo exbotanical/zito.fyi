@@ -6,7 +6,7 @@ export const SIDE_PADDING = '16px'
 export const POST_WIDTH = `calc(${POST_CONTENT_WIDTH} + 2 * ${SIDE_PADDING})`
 
 // equivalent to `WrapperCss` save for the removal of padding once under max-width
-const ExtendingCss = css`
+const ExtensionCss = css`
   width: 100%;
   padding: 0;
 
@@ -22,8 +22,8 @@ export const WrapperCss = css`
   padding: 0 16px;
 `
 
-export const ExtendingWrapper = styled.div`
-  ${ExtendingCss}
+export const ExtensionWrapper = styled.div`
+  ${ExtensionCss}
 `
 
 export const WidthWrapper = styled.div`

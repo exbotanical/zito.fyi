@@ -5,7 +5,7 @@ import { H1 } from '@/styles'
 const makeBox = (color: string) =>
   `data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 625 320.03" stroke="${color}" preserveAspectRatio="none"><path fill="none" stroke="${color}" stroke-miterlimit="10" stroke-width="5px" d="M611,3H15A12,12,0,0,0,3,15V253a12,12,0,0,0,12,12H381.49l65.64,50.45V265H611a12,12,0,0,0,12-12V15A12,12,0,0,0,611,3Z"/></svg>`
 
-export const Wrapper = styled.section`
+export const Wrapper = styled.aside`
   display: flex;
   grid-auto-flow: row;
   margin: auto 0;

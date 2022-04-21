@@ -11,7 +11,7 @@
 	"author": "Matthew Zito <matthewtzito@gmail.com> (goldmund)",
 	"scripts": {
 		"dev": "gatsby develop -p 3000 -o",
-		"build": "gatsby build",
+		"build": "pnpm clean && gatsby build",
 		"serve": "gatsby serve",
 		"check": "pnpm lint && pnpm lint:css && pnpm lint:md && pnpm typecheck && pnpm format",
 		"clean": "gatsby clean",

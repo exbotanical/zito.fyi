@@ -12,7 +12,7 @@ import { withBasePath, generateRssFeed, setupRssFeed } from '../node'
 import { config } from '.'
 
 import type { GatsbyConfig } from 'gatsby'
-console.log({ config })
+
 const adjustedPathPRefix = !config.pathPrefix ? '/' : config.pathPrefix
 const gatsbyConfig: GatsbyConfig = {
   pathPrefix: adjustedPathPRefix,
@@ -171,9 +171,7 @@ const gatsbyConfig: GatsbyConfig = {
                     title
                     description
                     image_url
-                    copyright {
-                      name
-                    }
+                    copyright
                   }
                 }
               }

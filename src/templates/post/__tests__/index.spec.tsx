@@ -61,7 +61,7 @@ describe('`PostTemplate`', () => {
   it('renders the layout component', async () => {
     RenderStyled(<PostTemplate data={postData} pageContext={pageContext} />)
 
-    const copyrightNotice = await screen.findByText(config.site.copyright)
+    const copyrightNotice = await screen.findByText(config.site.copyright.name)
 
     expect(copyrightNotice).toBeInTheDocument()
   })
@@ -77,7 +77,7 @@ describe('`PostTemplate`', () => {
   it('renders related posts', async () => {
     RenderStyled(<PostTemplate data={postData} pageContext={pageContext} />)
 
-    const relatedPosts = await screen.findByText('RELATED POSTS')
+    const relatedPosts = await screen.findByTestId('related-posts')
 
     expect(relatedPosts).toBeInTheDocument()
   })

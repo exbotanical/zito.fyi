@@ -1,4 +1,9 @@
 export const ConfigSchema = `#graphql
+  type Copyright {
+    name: String!
+    link: String!
+  }
+
   type BaseSiteMetadata {
     title: String!
     titleAbridged: String!
@@ -9,7 +14,7 @@ export const ConfigSchema = `#graphql
     facebookAppId: String
     twitterHandle: String
     url: String!
-    copyright: String!
+    copyright: Copyright!
     rss: String!
     rssTitle: String!
     googleAnalyticsId: String
@@ -67,5 +72,15 @@ export const ConfigSchema = `#graphql
 
   type SiteSiteMetadata {
     config: SiteConfig!
+  }
+
+
+  type Mdx implements Node {
+    frontmatter: MdxFrontmatter!
+  }
+
+  # Make dateModified an optional field
+  type MdxFrontmatter {
+    dateModified: Date
   }
 `

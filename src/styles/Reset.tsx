@@ -62,4 +62,8 @@ p {
 		opacity: 0;
 	}
 }
+
+img:not([src*=".svg"]) {
+  ${({ theme }) => (theme.dark ? 'filter: brightness(75%)' : '')};
+}
 `

@@ -12,11 +12,10 @@
 - [x] test ability to navigate back from pages
 - [x] test dark mode / theme toggle
 - [x] fix accessibility violations
-- [x] add 404 page <!-- I'd rather redirect at the server -->
+- [x] add 404 page or redirect
 - [x] fix share icons' color loss
 - [ ] replace console statements w/logger (f. custom Console)
-- [ ] variable font
-  - [ ] add font properties
+- [ ] variable font (vendored)
 - [ ] implement gists (short prose, essays)
 - [ ] resolve `validateDOMNesting` via `remark-unwrap-images`
 - [ ] fix GraphQL date resolution
@@ -26,14 +25,16 @@
 - [ ] vendor icons
 - [ ] add rel canonical
 - [x] switch to pnpm
-- [ ] fix skeleton loader bg
+- [x] fix skeleton loader bg
 - [x] add share cta
 - [x] fix blockquote font
-- [ ] add full copyright
-- [ ] generate post description
-- [ ] auto title
-- [ ] dark mode for images
+- [x] add full copyright
+- [x] generate post description
+- [x] ~~auto title~~
+- [x] dark mode for images
 - [x] fix footnotes alignment
+- [x] fix tags alignment
+- [ ] upgrade to React 18
 
 ## Cypress
 

@@ -34,10 +34,8 @@ export interface MdxNode {
       childImageSharp?: { gatsbyImageData: ImageDataLike }
     }
     coverAlt?: string
-
     category?: string
     tags?: readonly (string | undefined)[]
-
     datePublished?: string
     dateModified?: string
   }
@@ -49,53 +47,41 @@ export interface MdxNode {
 
 export interface Post {
   title: string
-
   description?: string
   coverImg?: ImageDataLike
   coverImageUrl?: string
   coverImageAlt: string
-
   datePublished: Date
   dateModified: Date
-
   category?: string
   tags?: string[]
-
   body?: string
   excerpt?: string
   timeToRead: number
   internalContent?: string
-
   slug: string
   route: string
   pathName: string
   url: string
-
   relatedPosts?: Post[]
 }
 
 export interface PostJson {
   title: string
-
   description?: string
   coverImg: ImageDataLike
   coverImageUrl?: string
   coverImageAlt: string
-
   datePublished: string
   dateModified: string
-
   category?: string
   tags?: string[]
-
   excerpt?: string
   timeToRead: number
-
   slug: string
   route: string
   pathName: string
   url: string
-
   relatedPosts?: PostJson[]
 }
 
@@ -134,7 +120,10 @@ export interface BaseSiteMetadata {
   facebookAppId?: string
   twitterHandle?: string
   url: string
-  copyright: string
+  copyright: {
+    name: string
+    link: string
+  }
   rss: string
   rssTitle: string
   googleAnalyticsId?: string
@@ -174,19 +163,14 @@ export interface SiteConfig {
   site: BaseSiteMetadata
   user: UserMetadata
   organization: OrgMetadata
-
   pathPrefix: string
-
   contentDir?: string
   assetDir?: string
-
   embeddedImageWidth: number
   embeddedVideoWidth: number
-
   iconPath?: string
   iconList: Readonly<IconManifest[]>
   iconCachePaths?: string[]
-
   basePath?: string
 }
 

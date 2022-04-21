@@ -62,21 +62,15 @@ describe('post page', () => {
   })
 
   it('renders related Posts', () => {
-    /** @todo no text if no posts */
-    cy.getByTestId('related-posts')
-      .next()
+    const expected: [string, RegExp][] = [
+      ['a[href="/andrea-zittel"]', /^Andrea Zittel$/],
+      ['a[href="/lorem-ipsum-3001"]', /^Lorem Ipsum 3001$/],
+    ]
+    cy.get('[data-testid=related-posts] > div > div')
       .children()
-      .first()
-      .children()
-      .find('a[href="/andrea-zittel"]')
-      .contains(/^Andrea Zittel$/)
 
-    cy.getByTestId('related-posts')
-      .next()
-      .children()
-      .first()
-      .children()
-      .find('a[href="/lorem-ipsum-3001"]')
-      .contains(/^Lorem Ipsum 3001$/)
+      .each(($el, idx) => {
+        cy.wrap($el).find(expected[idx][0]).contains(expected[idx][1])
+      })
   })
 })

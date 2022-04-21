@@ -9,15 +9,17 @@ import { Reset } from './Reset'
 import { Typography } from './Typography'
 
 type Themes = 'dark' | 'light'
+
+// Use typeof to ensure parity between the themes
+type Theme = typeof lightTheme
+
 interface ThemeContext {
   theme: Themes
   toggleTheme: () => void
 }
 
 declare module 'styled-components' {
-  export interface DefaultTheme {
-    colors: typeof lightTheme.colors
-  }
+  export interface DefaultTheme extends Theme {}
 }
 
 interface ThemeProps {
@@ -25,6 +27,7 @@ interface ThemeProps {
 }
 
 export const lightTheme = {
+  dark: false,
   colors: {
     font: {
       primary: 'rgb(0, 0, 0)',
@@ -45,11 +48,12 @@ export const lightTheme = {
       fg: 'rgb(224, 102, 125)',
       bg: 'rgb(255, 181, 120)',
     },
-    base: 'rgb(0, 0, 0)'
+    base: 'rgb(0, 0, 0)',
   },
 }
 
-export const darkTheme = {
+export const darkTheme: Theme = {
+  dark: true,
   colors: {
     font: {
       primary: 'rgb(206, 166, 186)',
@@ -73,7 +77,7 @@ export const darkTheme = {
       fg: 'rgb(214, 102, 149)',
       bg: 'rgb(100, 102, 140)',
     },
-    base:  'rgb(255, 255, 255)'
+    base: 'rgb(255, 255, 255)',
   },
 }
 // rgb(104, 157, 225)

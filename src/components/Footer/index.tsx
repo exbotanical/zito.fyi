@@ -18,7 +18,12 @@ export function Footer(): JSX.Element {
         <Socials includeRss />
       </S.LinkGrid>
       <S.Info>
-        <Caption>{config.site.copyright}</Caption>
+        <Caption>
+          Licensed under{' '}
+          <a target="_blank" href={config.site.copyright.link}>
+            {config.site.copyright.name}
+          </a>
+        </Caption>
       </S.Info>
     </S.Wrapper>
   )

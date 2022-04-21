@@ -51,7 +51,10 @@ export const useConfig = (): SiteConfig => {
               }
               site {
                 backgroundColor
-                copyright
+                copyright {
+                  link
+                  name
+                }
                 description
                 language
                 facebookAppId

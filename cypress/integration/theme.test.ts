@@ -105,5 +105,29 @@ themeTestPages.forEach(url => {
           expect(getTheme()).to.eq('dark')
         })
     })
+
+    it('darkens images in dark mode', () => {
+      expect(prefersDark()).to.equal(true)
+
+      cy.getByTestId('theme_btn')
+        .as('theme_btn')
+
+        .get('@theme_btn')
+        .click()
+
+        .get('img:not([src*=".svg"]')
+        .first()
+        .should('not.have.css', 'filter', 'brightness(0.75)')
+        .should(() => {
+          expect(getTheme()).to.eq('light')
+        })
+
+        .get('@theme_btn')
+        .click()
+
+        .get('img:not([src*=".svg"]')
+        .first()
+        .should('have.css', 'filter', 'brightness(0.75)')
+    })
   })
 })

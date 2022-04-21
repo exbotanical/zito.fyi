@@ -77,8 +77,10 @@ export const config: SiteConfig = isTestEnv
         /**
          * Copyright, as displayed in footer and RSS Feed
          */
-
-        copyright: `© Copyright ${yearCreated} - ${currentYear} | Matthew Zito`,
+        copyright: {
+          name: 'Creative Commons Attributions 4.0 International License',
+          link: 'https://creativecommons.org/licenses/by/4.0/',
+        },
 
         /**
          * Site description; used for RSS feeds, description meta tag

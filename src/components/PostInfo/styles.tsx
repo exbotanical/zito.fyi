@@ -26,12 +26,13 @@ export const PostCaption = styled(Caption)`
 export const InfoGrid = styled.div`
   display: flex;
   flex-direction: row;
+  grid-gap: 0.25rem;
 `
 
 export const TagGrid = styled.div`
   display: grid;
   grid-auto-flow: column;
-  grid-gap: 16px;
+  grid-gap: 1rem;
 `
 
 export const Wrapper = styled.div`

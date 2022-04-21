@@ -79,7 +79,10 @@ export const seoData: {
   },
   site: {
     backgroundColor: '#F7F7F7',
-    copyright: '© Copyright 2021 | Matthew Zito',
+    copyright: {
+      name: 'Creative Commons Attributions 4.0 International License',
+      link: 'https://creativecommons.org/licenses/by/4.0/',
+    },
     description: "Matthew Zito's Blog About Software and Programming",
     facebookAppId: '',
     googleAnalyticsId: '',

@@ -19,7 +19,10 @@ export const config: SiteConfig = {
     rss: '/rss.xml',
     rssTitle: "Matthew Zito's Blog RSS Feed",
     googleAnalyticsId: '',
-    copyright: '© Copyright 2021 | Matthew Zito',
+    copyright: {
+      name: 'Creative Commons Attributions 4.0 International License',
+      link: 'https://creativecommons.org/licenses/by/4.0/',
+    },
     themeColor: '#D83850',
     backgroundColor: '#F7F7F7'
   },
@@ -46,5 +49,6 @@ export const config: SiteConfig = {
   },
   embeddedImageWidth: 768,
   embeddedVideoWidth: 920,
-  iconList: []
+  iconList: [],
+  iconPath: 'static/android-chrome-512x512.png'
 }

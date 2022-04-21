@@ -58,7 +58,7 @@ footerTestPages.forEach(url => {
 
     it('has a copyright notice', () => {
       cy.get('@footer').then(container => {
-        cy.findByText(config.site.copyright, {
+        cy.findByText(config.site.copyright.name, {
           container,
         })
       })

@@ -1,5 +1,7 @@
 import urlJoin from 'url-join'
 
+import { MdxNode } from '@/types'
+
 import {
   generateSlug,
   withBasePath,
@@ -17,7 +19,6 @@ import { config } from './config'
 
 import type { BaseFrontmatter } from '../node/types'
 import type { GatsbyNode } from 'gatsby'
-import { MdxNode } from '@/types'
 
 StreamLogger.init()
 const POST_PAGE_COMPONENT = require.resolve('../src/templates/post/queries.ts')
@@ -86,12 +87,11 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
         fields: {
           isFuture: {
             type: 'Boolean!',
-            resolve: (source: MdxNode) => {
-              return source.frontmatter?.datePublished &&
-                process.env.NODE_ENV === 'production'
-                ? new Date(source.frontmatter?.datePublished) > new Date()
-                : false
-            },
+            resolve: (source: MdxNode) =>
+              source.frontmatter?.datePublished &&
+              process.env.NODE_ENV === 'production'
+                ? new Date(source.frontmatter.datePublished) > new Date()
+                : false,
           },
         },
       }),

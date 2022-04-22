@@ -80,7 +80,7 @@ export function PostShare({ post }: PostShareProps): JSX.Element {
         <S.Label>SHARE</S.Label>
         <S.LinkGrid>
           <FacebookShare quote={excerpt} url={url}>
-            <FacebookIcon size={ICON_SIZE} fill="rgb(66, 103, 178)"/>
+            <FacebookIcon fill="rgb(66, 103, 178)" size={ICON_SIZE} />
           </FacebookShare>
 
           <TwitterShare
@@ -89,10 +89,10 @@ export function PostShare({ post }: PostShareProps): JSX.Element {
             url={url}
             via={config.site.name}
           >
-            <TwitterIcon size={ICON_SIZE} fill="rgb(29, 161, 242)"/>
+            <TwitterIcon fill="rgb(29, 161, 242)" size={ICON_SIZE} />
           </TwitterShare>
           <RedditShare title={title} url={url}>
-            <RedditIcon size={ICON_SIZE} fill="rgb(255, 86, 0)"/>
+            <RedditIcon fill="rgb(255, 86, 0)" size={ICON_SIZE} />
           </RedditShare>
           <LinkedinShare
             source={config.site.name}
@@ -100,7 +100,7 @@ export function PostShare({ post }: PostShareProps): JSX.Element {
             title={title}
             url={url}
           >
-            <LinkedInIcon size={ICON_SIZE} fill="rgb(0, 119, 181)" />
+            <LinkedInIcon fill="rgb(0, 119, 181)" size={ICON_SIZE} />
           </LinkedinShare>
           <S.LinkButton
             onClick={() => {

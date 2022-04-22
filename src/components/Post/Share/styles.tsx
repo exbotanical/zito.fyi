@@ -1,5 +1,6 @@
 import { Link } from '@styled-icons/boxicons-regular'
 import styled from 'styled-components'
+
 import { H1 } from '@/styles'
 
 const makeBox = (color: string) =>

@@ -20,7 +20,7 @@ I recently made one of the most significant changes of my career[^1] — switchi
 >
 > – _Everyone ever_
 
-Across the frontend ecosystem, we so often hear that *"It doesn't matter which one you choose — just be consistent"*, but for me this is and always has been _not good enough_. The reality is, when you are working on a highly-collaborative project at scale, it _does_ matter.
+Across the frontend ecosystem, we so often hear that _"It doesn't matter which one you choose — just be consistent"_, but for me this is and always has been _not good enough_. The reality is, when you are working on a highly-collaborative project at scale, it _does_ matter.
 
 Yes, your style decisions _matter_. Whether you use tabs or spaces, semicolons or not — these things affect your projects and the people who work on them. My take is your code style should be driven by concerted and deliberate decision-making that is equally utilitarian and appropriate for the technologies being used, and the people using them. That is, it's not the chosen style itself that matters, but the process by which you arrived at that decision.
 
@@ -35,7 +35,7 @@ Tabs have canonically been used for indentation and are the default indent chara
 
 Tabs also support visual configurability. For instance, I can adjust my IDE or text editor such that tabs have the appearance of 2 spaces. Meanwhile, another developer on my team might prefer 4 spaces and adjust their local environment in-kind. In source-control, the indentations are encoded as a tab character (decimal character code of `9`), ensuring a source-of-truth in bytes but not necessarily appearance.
 
-If tabs are arguably *designed for indentation*, why should we prefer spaces?
+If tabs are arguably _designed for indentation_, why should we prefer spaces?
 
 Well, that visual configurability turns out to be as much a bane as it is a boon. Tabs might appear as 2 spaces in one environment and 8 in another. Meanwhile 2 spaces is always just...2 spaces.
 
@@ -76,16 +76,16 @@ Here's a few other languages for which semicolons are optional:
 
 As far as ASI in JavaScript is concerned, here's the gist of it:
 
-*Insert when...*
+_Insert when..._
 
-*a. The parser encounters a token disallowed by the formal grammar, **and** encounters a line break or closing brace.*
+_a. The parser encounters a token disallowed by the formal grammar, **and** encounters a line break or closing brace._
 
 ```js
 x = 1 y = 2
 // Uncaught SyntaxError: Unexpected identifier
 ```
 
-*b. A line break is found after one of the following tokens.*
+_b. A line break is found after one of the following tokens._
 
 - postfix `++` / `--`
 - `continue`
@@ -94,7 +94,7 @@ x = 1 y = 2
 - `yield`, `yield*`
 - `module`
 
-The preceding list enumerates what are known as *restricted productions*. You see, part of JavaScript's ASI algorithm is syntactical forms (so-called *restricted productions*) which forbid a newline character from occurring at a certain point. Note this passage from the [ECMAScript 2015 spec](https://262.ecma-international.org/7.0/#sec-rules-of-automatic-semicolon-insertion):
+The preceding list enumerates what are known as _restricted productions_. You see, part of JavaScript's ASI algorithm is syntactical forms (so-called _restricted productions_) which forbid a newline character from occurring at a certain point. Note this passage from the [ECMAScript 2015 spec](https://262.ecma-international.org/7.0/#sec-rules-of-automatic-semicolon-insertion):
 
 > If the phrase “[no LineTerminator here]” appears in the right-hand side of a production of the syntactic grammar, it indicates that the production is a restricted production: it may not be used if a LineTerminator occurs in the input stream at the indicated position.
 
@@ -139,9 +139,7 @@ For example, here's some code where we'll need to use a semicolon no matter what
 ```js
 let fn = function () {
   /* ... */
-}
-
-[1, 2, 3].forEach() // TypeError: undefined is not a function
+}[(1, 2, 3)].forEach() // TypeError: undefined is not a function
 ```
 
 The restricted productions will bite you in the ass regardless of whether you use semicolons, so you'll still have to remember this rule.
@@ -218,7 +216,7 @@ Line length, in this context not to be confused with exact characters per line, 
 
 As for actual width, here's a [great article](https://javinpaul.medium.com/does-column-width-of-80-make-sense-in-2018-50c161fbdcf6) that points out the [archaic 80-column rule](https://en.wikipedia.org/wiki/Punched_card) is especially anachronistic and not exactly grounded in today's technologies.
 
-That said, I still stick with 80 characters. As you may have noticed, I just said *average monitor* moments ago without clarifying an exact or even approximate monitor size or resolution. I kept it vague because statistics aside, I'm not going to presume what monitor size prevails across my team at work or peers online.
+That said, I still stick with 80 characters. As you may have noticed, I just said _average monitor_ moments ago without clarifying an exact or even approximate monitor size or resolution. I kept it vague because statistics aside, I'm not going to presume what monitor size prevails across my team at work or peers online.
 
 You should discuss this rule with your peers to decide what works best. So long as your decided width accommodates the majority of monitors without the need for tons of scrolling, you're compliant with this guide.
 
@@ -316,7 +314,7 @@ const points = {
 
 Previously, my argument for the utility of omitting trailing commas has been that the omission more plainly conveys that a given property is the last in an object.
 
-Looking back, I think *Wow, what an absurd argument* — as though we can't perceive that by the fact that _the last property is the last property_. We don't need an additional visual aid to convey that. And so, I've changed my tune.
+Looking back, I think _Wow, what an absurd argument_ — as though we can't perceive that by the fact that _the last property is the last property_. We don't need an additional visual aid to convey that. And so, I've changed my tune.
 
 Sure, the trailing comma looks a bit awkward, but my inner John Stuart Mill says the utility of the trailing comma far supersedes the cleanliness (rather, lack thereof).
 
@@ -477,7 +475,7 @@ prettier:
 
 There you have it, my rules to die on a hill by. I actually have many, many more, but this article is already long enough. Even if you disagree with my takes on these contentious issues, my hope is you'll draw inspiration to adopt a more decisive approach to code style when maintaining a JavaScript or TypeScript codebase.
 
-As a frontend lead, it's my job to think about these things so my team doesn't have to. Of course, the final decision should always be a collective one, or at least your team should feel comfortable suggesting a change. I'm a big believer in static analysis tools and I can confidently say that proper tooling can make or break a collaborative codebase. Despite my sardonic perspective on the *just be consistent* adage, I should clarify that, yes, whatever you decide to do what ultimately matters is that you do it consistently.
+As a frontend lead, it's my job to think about these things so my team doesn't have to. Of course, the final decision should always be a collective one, or at least your team should feel comfortable suggesting a change. I'm a big believer in static analysis tools and I can confidently say that proper tooling can make or break a collaborative codebase. Despite my sardonic perspective on the _just be consistent_ adage, I should clarify that, yes, whatever you decide to do what ultimately matters is that you do it consistently.
 
 ### Shared Configurations
 

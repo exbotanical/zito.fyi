@@ -6,8 +6,8 @@ import { isBrowserRuntime } from '@/utils'
 
 import { KEYS } from './constants'
 import { Reset } from './Reset'
-import { Typography } from './Typography'
 import { ScrollbarStyles } from './Scrollbar'
+import { Typography } from './Typography'
 
 type Themes = 'dark' | 'light'
 

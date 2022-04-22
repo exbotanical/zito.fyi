@@ -20,7 +20,7 @@ export function Footer(): JSX.Element {
       <S.Info>
         <Caption>
           Licensed under{' '}
-          <a target="_blank" href={config.site.copyright.link}>
+          <a href={config.site.copyright.link} rel="noreferrer" target="_blank">
             {config.site.copyright.name}
           </a>
         </Caption>

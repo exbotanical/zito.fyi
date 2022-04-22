@@ -7,6 +7,7 @@ import { isBrowserRuntime } from '@/utils'
 import { KEYS } from './constants'
 import { Reset } from './Reset'
 import { Typography } from './Typography'
+import { ScrollbarStyles } from './Scrollbar'
 
 type Themes = 'dark' | 'light'
 
@@ -74,8 +75,8 @@ export const darkTheme: Theme = {
 
     link: 'rgb(75, 187, 172)',
     scroll: {
-      fg: 'rgb(214, 102, 149)',
-      bg: 'rgb(100, 102, 140)',
+      fg: 'rgb(211, 103, 135)',
+      bg: 'rgb(99, 105, 109)',
     },
     base: 'rgb(255, 255, 255)',
   },
@@ -110,6 +111,7 @@ export function ThemeProvider({ children }: ThemeProps): JSX.Element {
       <StyledThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
         <Reset />
         <Typography />
+        <ScrollbarStyles />
         {children}
       </StyledThemeProvider>
     </ThemeToggleContext.Provider>

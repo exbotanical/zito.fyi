@@ -54,19 +54,14 @@ export const ConfigSchema = `#graphql
     site: BaseSiteMetadata!
     user: UserMetadata
     organization: OrgMetadata
-
     pathPrefix: String!
-
     contentDir: String
     assetDir: String
-
     embeddedImageWidth: Int!
     embeddedVideoWidth: Int!
-
     iconPath: String
     iconList: [IconManifest]!
     iconCachePaths: [String]
-
     basePath: String
   }
 
@@ -81,6 +76,7 @@ export const ConfigSchema = `#graphql
 
   # Make dateModified an optional field
   type MdxFrontmatter {
+    datePublished: Date
     dateModified: Date
   }
 `

@@ -10,7 +10,7 @@ export const Wrapper = styled.section`
   grid-auto-flow: row;
   margin: auto 0;
   justify-content: flex-start;
-  stroke: ${({ theme }) => (theme.dark ? 'rgb(0, 0, 0)' : '')};
+  stroke: ${({ theme }) => (theme.dark ? '' : 'rgb(0, 0, 0)')};
   padding: 2rem 6.25rem 12.5rem 2rem;
   margin: 1rem;
 

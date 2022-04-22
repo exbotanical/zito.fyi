@@ -1,10 +1,9 @@
 ---
 title: 'Rules to Die on a Hill By: A Decisive JavaScript Style Guide'
-cover: images/kali-15.jpg
-coverAlt: 'l'
-description: 'I recently made the biggest change of my career - switching from tabs to spaces. But why stop there? Today, I rationalize my code style decisions over the years.'
+cover: images/cardew.jpg
+coverAlt: Chaos and order. An excerpt from Cornelius Cardew's "Treatise"
+description: 'I recently made the biggest change of my career – switching from tabs to spaces. But why stop there? Today, I rationalize my code style decisions over the years.'
 datePublished: '04/19/2022'
-dateModified: '04/19/2022'
 category: 'programming'
 tags:
   - frontend
@@ -13,33 +12,34 @@ tags:
   - static analysis
 ---
 
-I recently made one of the most significant changes of my career - switching from tabs to spaces. But why stop there? Today, I rationalize my code style decisions over the years. Note this article is called _A_ Comprehensive Guide, not _The_ Comprehensive Guide. My rationalizations aren't going to work for all of you, but my hope is this guide gives you an anchor point for thinking about these ostensibly mundane concerns.
+I recently made one of the most significant changes of my career[^1] — switching from tabs to spaces. But why stop there? Today, I rationalize my code style decisions over the years. These rationalizations aren't going to work for everyone (hence _A_ Comprehensive Guide, not _The_ Comprehensive Guide), but my hope is this guide gives you an starting point for thinking about these ostensibly mundane concerns.
+
+[^1]: No, not really.
 
 > It doesn't matter as long as you're consistent.
 >
-> &#150 _Everyone ever_
+> – _Everyone ever_
 
-In the frontend world, we so often hear that "It doesn't matter which one you choose - just be consistent", but for me this is and always has been _not good enough_. The reality is, when you are working on a highly-collaborative project at-scale, it _does_ matter.
+Across the frontend ecosystem, we so often hear that *"It doesn't matter which one you choose — just be consistent"*, but for me this is and always has been _not good enough_. The reality is, when you are working on a highly-collaborative project at scale, it _does_ matter.
 
-Yes, your style decisions _matter_. Whether you use tabs or spaces, semicolons or not - these things affect your projects and the people who work on them. My take is your code style should be driven by concerted and deliberate decision-making that is equally utilitarian and appropriate for the technologies being used, and the people using them. That is, it's not the decided style itself that matters, but the process by which you arrived at that decision.
+Yes, your style decisions _matter_. Whether you use tabs or spaces, semicolons or not — these things affect your projects and the people who work on them. My take is your code style should be driven by concerted and deliberate decision-making that is equally utilitarian and appropriate for the technologies being used, and the people using them. That is, it's not the chosen style itself that matters, but the process by which you arrived at that decision.
 
 Let's begin!
 
-> Disclaimer: Some programming languages e.g. Go have style codified into the language.
-> Other languages e.g. C are sensitive to entities such as semicolons, ergo the decision has been made for you.
-> For this reason, as well as the fact that ECMAScript notoriously and perhaps controversially has not codified code style into the specification, this guide applies specifically to JavaScript and TypeScript codebases.
+> Disclaimer: Some programming languages such as Go have style codified into the language.
+> Other languages such as C necessitate style by virtue of the compiler (e.g. semicolons). ECMAScript, however, notoriously has not codified code style into its language specification, thus this guide is concerned only with JavaScript and TypeScript codebases.
 
 ## Tabs versus Spaces
 
-As noted in the preface, I very recently switched from tabs to spaces. First, I'll share my original rationale:
+Tabs have canonically been used for indentation and are the default indent character across UNIX systems. This tradition hails from terminals and teletypes wherein the character meant 'move to the right 8 columns'. The resulting ASCII tab character is here used as a compression mechanism — 8 space characters, on the contrary, take up more space in a file.
 
-Tabs are superior. Why? Their appearance is easily configurable. I can adjust my IDE or text editor such that tabs have the appearance of 2 spaces, as this is my preference. Meanwhile, another developer on my team might prefer 4 spaces and adjust their local environment in-kind. In source-control, the indentations are encoded as a tab character (decimal character code of `9`), ensuring a source-of-truth in bytes but not necessarily appearance.
+Tabs also support visual configurability. For instance, I can adjust my IDE or text editor such that tabs have the appearance of 2 spaces. Meanwhile, another developer on my team might prefer 4 spaces and adjust their local environment in-kind. In source-control, the indentations are encoded as a tab character (decimal character code of `9`), ensuring a source-of-truth in bytes but not necessarily appearance.
 
-Tabs have canonically been used for indentation and are defaults across UNIX systems. This tradition hails from terminals and teletypes wherein the character meant 'move to the right 8 columns'. The resulting ASCII tab character is here used as a compression mechanism - 8 space characters, on the contrary, take up more space in a file.
+If tabs are arguably *designed for indentation*, why should we prefer spaces?
 
-If tabs are so excellent, why did I switch to spaces?
+Well, that visual configurability turns out to be as much a bane as it is a boon. Tabs might appear as 2 spaces in one environment and 8 in another. Meanwhile 2 spaces is always just...2 spaces.
 
-Well, tabs are visually variable. In JavaScript, we're less concerned about the tab character as something that affects the interpreter. What's more important is _how_ the character appears. The implied problem here is different programs have different settings for tabs. In my editor, the character appears to be expressed over 2 columns. Meanwhile, in source-control it's 4. Furthermore, in my _other_ text editor, tabs are 8 columns. Unlike Python, tabs are meaningless when interpreted by a JavaScript engine.
+In JavaScript, we're less concerned with the tab character as an entity that affects the interpreter. What's more important is _how_ the character appears. The implied problem here is different programs have different settings for tabs. In my editor, the character appears to be expressed over 2 columns. Meanwhile, in source-control it's 4. Furthermore, in my _other_ text editor, tabs are 8 columns. Unlike Python, tabs are meaningless when interpreted by a JavaScript engine.
 
 **The Verdict**
 
@@ -56,41 +56,17 @@ Prefer two spaces as it is:
 - [prettier tabs](https://prettier.io/docs/en/options.html#tabs)
 - [editorconfig indent_style, indent_size](https://editorconfig.org/)
 
-eslint:
-
-```json
-{
-  "no-tabs": "error",
-  "no-mixed-spaces-and-tabs": "error"
-}
-```
-
-prettier:
-
-```json
-{
-  "useTabs": false
-}
-```
-
-editorconfig:
-
-```ini
-indent_style = space
-indent_size = 2
-```
-
 ## Semicolons
 
-I no longer use unnecessary semicolons in my JavaScript _because they're completely unnecessary_. Why do we have semicolons in the first place? Well, requiring them makes compilers easier to write! But why do we use them _in JavaScript_?
+Why do we have semicolons in the first place? Well, requiring them makes compilers easier to write! But why do we use them _in JavaScript_?
 
-> 'Cuz C uses them.
+> Because C uses them.
 
 Ha. Yeah, okay.
 
-You're probably familiar with ASI (Automatic Semicolon Insertion), but if you're not (and you write JavaScript)...well, [become familiar](https://en.wikibooks.org/wiki/JavaScript/Automatic_semicolon_insertion). I'll still be here when you're done ;)
+You're probably familiar with ASI (Automatic Semicolon Insertion), but in case you aren't, ASI is a compile-time convenience whereby the compiler or interpreter automatically inserts semicolons. Because ASI ensures JavaScript statements contain semicolons where necessary, their use by the programmer is largely optional.
 
-In fact, here's some languages for which semicolons are optional (and furthermore omitted by convention):
+Here's a few other languages for which semicolons are optional:
 
 - python
 - go
@@ -98,38 +74,31 @@ In fact, here's some languages for which semicolons are optional (and furthermor
 - groovy
 - scala
 
-> "Programs are meant to be read by humans and only incidentally for computers to execute."
->
-> &#150 _Donald Knuth_
+As far as ASI in JavaScript is concerned, here's the gist of it:
 
-Today's compilers are smart enough to handle multi-line statements, and today's programmers are more than capable of recognizing EOLs via consistent whitespace formatting (which you should be using). As far as ASI in JavaScript is concerned, here's the gist of it:
+*Insert when...*
 
-_Insert when..._
-
-a. parser encounters a token disallowed by the formal grammar, AND encounters a line break or closing brace
-
-e.g.
+*a. The parser encounters a token disallowed by the formal grammar, **and** encounters a line break or closing brace.*
 
 ```js
-x = 1 y = 2 // uh-oh!
+x = 1 y = 2
+// Uncaught SyntaxError: Unexpected identifier
 ```
 
-OR
-
-b. line break is found after one of the following tokens:
+*b. A line break is found after one of the following tokens.*
 
 - postfix `++` / `--`
-- `return`
 - `continue`
-- `yield`
 - `break`
-- `throw`
+- `return`
+- `yield`, `yield*`
+- `module`
 
-That ^ list enumerates what are known as "restricted productions". You see, part of JavaScript's ASI algorithm is so-called "restricted productions". These are syntactical forms which forbid a newline character from occurring at a certain point. Note this passage from the [ECMAScript 2015 spec](https://262.ecma-international.org/7.0/#sec-rules-of-automatic-semicolon-insertion):
+The preceding list enumerates what are known as *restricted productions*. You see, part of JavaScript's ASI algorithm is syntactical forms (so-called *restricted productions*) which forbid a newline character from occurring at a certain point. Note this passage from the [ECMAScript 2015 spec](https://262.ecma-international.org/7.0/#sec-rules-of-automatic-semicolon-insertion):
 
 > If the phrase “[no LineTerminator here]” appears in the right-hand side of a production of the syntactic grammar, it indicates that the production is a restricted production: it may not be used if a LineTerminator occurs in the input stream at the indicated position.
 
-Restricted productions is why the following returns `undefined`
+Restricted productions is why the following returns `undefined`.
 
 ```js
 ;(() => {
@@ -141,7 +110,7 @@ Restricted productions is why the following returns `undefined`
 })()
 ```
 
-Whereas this example returns `{ x: 'y' }`
+Whereas this next example returns `{ x: 'y' }`.
 
 ```js
 ;(() => {
@@ -151,21 +120,28 @@ Whereas this example returns `{ x: 'y' }`
 })()
 ```
 
-So let's omit semicolons for the sake of brevity, only including them where necessary.
+For further reading, see the [full three rules](https://tc39.es/ecma262/#sec-rules-of-automatic-semicolon-insertion) for ASI in the spec.
 
-Ah, and here's a rule for the _where necessary_ part:
+> "Programs are meant to be read by humans and only incidentally for computers to execute."
+>
+> – _Donald Knuth_
+
+Today's compilers are smart enough to handle multi-line statements, and today's programmers are more than capable of recognizing EOLs via consistent whitespace formatting (which you should be using).
+
+Let's omit semicolons for the sake of brevity, only including them where necessary.
+
+Ah, and here's a simple heuristic for the _where necessary_ part:
 
 > Use a _leading_ semicolon when the line begins with one of the following characters: `+=[(/`
 
-For example, here's some code where we'll need to use a semicolon no matter what:
+For example, here's some code where we'll need to use a semicolon no matter what.
 
 ```js
 let fn = function () {
   /* ... */
-}[
-  // TypeError: undefined is not a function
-  (1, 2, 3)
-].forEach()
+}
+
+[1, 2, 3].forEach() // TypeError: undefined is not a function
 ```
 
 The restricted productions will bite you in the ass regardless of whether you use semicolons, so you'll still have to remember this rule.
@@ -180,36 +156,11 @@ Semicolons in JavaScript are superfluous, except when they're not. In those situ
 - [typescript-eslint semi](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/semi.md)
 - [prettier semicolons](https://prettier.io/docs/en/options.html#semicolons)
 
-eslint:
-
-```json
-rules: {
-  "semi": ["error", "never"]
-},
-overrides: [
-  {
-    "files": ["**/*.{ts,tsx}"],
-    "rules": {
-      "@typescript-eslint/semi": ["error", "never"],
-      "semi": "off"
-    }
-  }
-]
-```
-
-prettier:
-
-```json
-{
-  "semi": false
-}
-```
-
-## Double Quote vs Single Quote
+## Double vs Single Quotes
 
 Always a fan of concision, you can probably guess I prefer single quotes in my JavaScript.
 
-On your standard-fare [QWERTY keyboard](https://en.wikipedia.org/wiki/QWERTY), double-quotes require a keypress combination of `Shift`+`'`. Contrast that with single quotes, which require a single keypress. A common argument in favor of double-quotes is the need to escape quote characters within a string literal. However, the number of extra keystrokes needed to accommodate escaping a quote character is negligible when considering the number of keystrokes you'll conserve by using single-quotes.
+On your standard fare [QWERTY keyboard](https://en.wikipedia.org/wiki/QWERTY), double-quotes require a keypress combination of `Shift`+`'`. Contrast that with single quotes, which require a single keypress. A common argument in favor of double-quotes is the need to escape quote characters within a string literal. However, the number of extra keystrokes needed to accommodate escaping a quote character is negligible when considering the number of keystrokes you'll conserve by using single-quotes.
 
 My rule here is to simply use double-quotes when I'm typing a string literal containing a single-quote.
 
@@ -228,7 +179,7 @@ As an aside, prefer back-ticks for interpolated or multi-line strings.
 
 Prefer single quotes, unless typing a string literal that contains single quote characters, then use double quotes. Use back-ticks for string interpolations, multi-line strings, and the occasional [tagged template function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates).
 
-JSX properties should use double quotes, however - both to maintain parity with common HTML conventions and to demarcate JSX templates from JavaScript business logic.
+JSX properties should use double quotes, however — both to maintain parity with common HTML conventions and to demarcate JSX templates from JavaScript business logic.
 
 **Supporting Tools**
 
@@ -267,7 +218,7 @@ Line length, in this context not to be confused with exact characters per line, 
 
 As for actual width, here's a [great article](https://javinpaul.medium.com/does-column-width-of-80-make-sense-in-2018-50c161fbdcf6) that points out the [archaic 80-column rule](https://en.wikipedia.org/wiki/Punched_card) is especially anachronistic and not exactly grounded in today's technologies.
 
-That said, I still stick with 80 characters. As you may have noticed, I just said "average monitor" moments ago without clarifying an exact or even approximate monitor size or resolution. I kept it vague because statistics aside, I'm not going to presume what monitor size prevails across my team at work or peers online.
+That said, I still stick with 80 characters. As you may have noticed, I just said *average monitor* moments ago without clarifying an exact or even approximate monitor size or resolution. I kept it vague because statistics aside, I'm not going to presume what monitor size prevails across my team at work or peers online.
 
 You should discuss this rule with your peers to decide what works best. So long as your decided width accommodates the majority of monitors without the need for tons of scrolling, you're compliant with this guide.
 
@@ -365,7 +316,7 @@ const points = {
 
 Previously, my argument for the utility of omitting trailing commas has been that the omission more plainly conveys that a given property is the last in an object.
 
-Looking back, I think "Wow, what an absurd argument" - as though we can't perceive that by the fact that _the last property is the last property_. We don't need an additional visual aid to convey that. And so, I've changed my tune.
+Looking back, I think *Wow, what an absurd argument* — as though we can't perceive that by the fact that _the last property is the last property_. We don't need an additional visual aid to convey that. And so, I've changed my tune.
 
 Sure, the trailing comma looks a bit awkward, but my inner John Stuart Mill says the utility of the trailing comma far supersedes the cleanliness (rather, lack thereof).
 
@@ -526,7 +477,7 @@ prettier:
 
 There you have it, my rules to die on a hill by. I actually have many, many more, but this article is already long enough. Even if you disagree with my takes on these contentious issues, my hope is you'll draw inspiration to adopt a more decisive approach to code style when maintaining a JavaScript or TypeScript codebase.
 
-As a frontend lead, it's my job to think about these things so my team doesn't have to. Of course, the final decision should always be a collective one, or at least your team should feel comfortable suggesting a change. I'm a big believer in static analysis tools and I can confidently say that proper tooling can make or break a collaborative codebase. Despite my sardonic perspective on the "just be consistent" adage, I should clarify that, yes, whatever you decide to do what ultimately matters is that you do it consistently.
+As a frontend lead, it's my job to think about these things so my team doesn't have to. Of course, the final decision should always be a collective one, or at least your team should feel comfortable suggesting a change. I'm a big believer in static analysis tools and I can confidently say that proper tooling can make or break a collaborative codebase. Despite my sardonic perspective on the *just be consistent* adage, I should clarify that, yes, whatever you decide to do what ultimately matters is that you do it consistently.
 
 ### Shared Configurations
 

@@ -79,7 +79,9 @@ const processQueryResult = (
 }
 
 export const getAllPosts = async (graphql: GraphqlType): Promise<Post[]> => {
-  const indexQueryResult = await graphql<QueryAllPostsResult>(allPostsQuery)
+  const indexQueryResult = await graphql<QueryAllPostsResult>(allPostsQuery, {
+    today: new Date(),
+  })
 
   return processQueryResult(indexQueryResult)
 }

@@ -35,6 +35,7 @@
 - [x] fix footnotes alignment
 - [x] fix tags alignment
 - [ ] upgrade to React 18
+- [x] ensure datePublished in future posts are not rendered (use query filter)
 
 ## Cypress
 

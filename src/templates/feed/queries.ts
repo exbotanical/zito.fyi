@@ -7,7 +7,8 @@ query AllPostsList($skip: Int, $limit: Int) {
   allMdx(
     sort: { fields: [frontmatter___datePublished], order: DESC }
     limit: $limit
-    skip: $skip
+    skip: $skip,
+    filter: { isFuture: { eq: false } }
   ) {
     edges {
       node {
@@ -38,13 +39,13 @@ query AllPostsList($skip: Int, $limit: Int) {
   }
 }
 `
-
+// @todo finalize
 export const allPostsByTagQuery = `#graphql
 query AllPostsByTag($tag: String) {
   allMdx(
     limit: 1000
     sort: { fields: [frontmatter___datePublished], order: DESC }
-    filter: { frontmatter: { tags: { in: [$tag] } } }
+    filter: { isFuture: { eq: false }, frontmatter: { tags: { in: [$tag] } } }
   ) {
     totalCount
     edges {
@@ -82,7 +83,7 @@ query AllPostsByCategory($category: String) {
   allMdx(
     limit: 1000
     sort: { fields: [frontmatter___datePublished], order: DESC }
-    filter: { frontmatter: { category: { eq: $category } } }
+    filter: { isFuture: { eq: false }, frontmatter: { category: { eq: $category } } }
   ) {
     totalCount
     edges {

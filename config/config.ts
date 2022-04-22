@@ -4,10 +4,6 @@ import { config as testConfig } from '../test/fixtures/config'
 
 const isTestEnv = process.env.CYPRESS_SUPPORT || process.env.NODE_ENV === 'test'
 
-const yearCreated = 2021
-
-const currentYear = new Date().getFullYear()
-
 export const config: SiteConfig = isTestEnv
   ? testConfig
   : {

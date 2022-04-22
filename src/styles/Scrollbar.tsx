@@ -7,7 +7,7 @@ export const ScrollbarStyles = createGlobalStyle`${css`
   }
 
   *::-webkit-scrollbar {
-    width: 14px;
+    width: 0.5rem;
   }
 
   *::-webkit-scrollbar-track {
@@ -16,7 +16,7 @@ export const ScrollbarStyles = createGlobalStyle`${css`
 
   *::-webkit-scrollbar-thumb {
     background: ${({ theme }) => theme.colors.scroll.fg};
-    border-radius: 3px;
+    border-radius: 1.5px;
   }
 `}
 `

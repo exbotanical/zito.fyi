@@ -17,6 +17,7 @@ import { config } from './config'
 
 import type { BaseFrontmatter } from '../node/types'
 import type { GatsbyNode } from 'gatsby'
+import { MdxNode } from '@/types'
 
 StreamLogger.init()
 const POST_PAGE_COMPONENT = require.resolve('../src/templates/post/queries.ts')
@@ -70,10 +71,31 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions }) => {
 }
 
 export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] =
-  ({ actions }) => {
+  ({ actions, schema }) => {
     actions.createTypes(`#graphql
 			${ConfigSchema}
 		`)
+
+    /**
+     * Create an `isFuture` helper for filtering `datePublished`.
+     */
+    actions.createTypes([
+      schema.buildObjectType({
+        name: 'Mdx',
+        interfaces: ['Node'],
+        fields: {
+          isFuture: {
+            type: 'Boolean!',
+            resolve: (source: MdxNode) => {
+              return source.frontmatter?.datePublished &&
+                process.env.NODE_ENV === 'production'
+                ? new Date(source.frontmatter?.datePublished) > new Date()
+                : false
+            },
+          },
+        },
+      }),
+    ])
   }
 
 export const createPages: GatsbyNode['createPages'] = async ({

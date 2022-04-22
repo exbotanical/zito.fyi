@@ -2,6 +2,7 @@ import { mocked } from 'jest-mock'
 
 import { config } from '@@/fixtures'
 import { GatsbyActionsMock } from '@@/utils/gatsbyActions'
+import { GatsbySchemaMock } from '@@/utils/gatsbySchema'
 
 import * as feedUtils from '../../node'
 import {
@@ -207,12 +208,15 @@ describe('onCreateNode', () => {
 describe('`createSchemaCustomization`', () => {
   it('sets GraphQL schema types', async () => {
     await createSchemaCustomizationImpl(
-      { actions: GatsbyActionsMock } as CreateSchemaCustomizationArgs,
+      {
+        actions: GatsbyActionsMock,
+        schema: GatsbySchemaMock,
+      } as CreateSchemaCustomizationArgs,
       {} as PluginOptions,
       () => {},
     )
 
-    expect(mockedGatsbyActions.createTypes).toHaveBeenCalledTimes(1)
+    expect(mockedGatsbyActions.createTypes).toHaveBeenCalledTimes(2)
   })
 })
 
@@ -226,6 +230,7 @@ describe('createPages', () => {
       {
         graphql: jest.fn(),
         actions: GatsbyActionsMock,
+        schema: GatsbySchemaMock,
       } as unknown as CreatePagesFirstArg,
       {} as PluginOptions,
       () => {},

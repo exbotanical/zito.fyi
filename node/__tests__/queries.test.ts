@@ -39,7 +39,10 @@ describe('build util `getAllPosts`', () => {
 
     const posts = await getAllPosts(graphql)
 
-    expect(graphql).toHaveBeenCalledWith(allPostsQuery)
+    expect(graphql).toHaveBeenCalledWith(
+      allPostsQuery,
+      expect.objectContaining({ today: expect.any(Date) }),
+    )
     expect(posts).toMatchSnapshot()
   })
 

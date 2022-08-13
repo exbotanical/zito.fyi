@@ -481,7 +481,7 @@ As a frontend lead, it's my job to think about these things so my team doesn't h
 
 I've codified the above rules plus many more sensible defaults into shared configurations for eslint and prettier. They're installable via NPM, and you're welcome to use them in your projects (or copy mine and amend them to your liking). If using prettier in conjunction with eslint, please remember to use [eslint-config-prettier](https://prettier.io/docs/en/integrating-with-linters.html) to mitigate conflicts between the two tools.
 
-To use my [eslint configurations](https://github.com/MatthewZito/eslint-config):
+To use my [eslint configurations](https://github.com/exbotanical/eslint-config):
 
 JavaScript:
 
@@ -535,7 +535,7 @@ npm i -D eslint @magister_zito/eslint-config-vue
 }
 ```
 
-To use my [prettier configurations](https://github.com/MatthewZito/prettier-config):
+To use my [prettier configurations](https://github.com/exbotanical/prettier-config):
 
 ```bash
 npm i -D prettier @magister_zito/prettier-config

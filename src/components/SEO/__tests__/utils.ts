@@ -104,7 +104,7 @@ export const seoData: {
 
     email: 'exbotanical@gmail.com',
     firstName: 'Matthew',
-    github: 'MatthewZito',
+    github: 'exbotanical',
     id: 'goldmund',
     linkedIn: 'matthew-zito-9a03b3127',
     location: 'United States',

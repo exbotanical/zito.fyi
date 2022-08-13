@@ -6,9 +6,9 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/MatthewZito/zito.dev.git"
+		"url": "git+https://github.com/exbotanical/zito.dev.git"
 	},
-	"author": "Matthew Zito <matthewtzito@gmail.com> (goldmund)",
+	"author": "Matthew Zito <exbotanical@protonmail.com>",
 	"scripts": {
 		"dev": "gatsby develop -p 3000 -o",
 		"build": "pnpm clean && gatsby build",
@@ -31,9 +31,9 @@
 		"typecheck:watch": "pnpm typecheck -- --watch"
 	},
 	"bugs": {
-		"url": "https://github.com/MatthewZito/zito.dev/issues"
+		"url": "https://github.com/exbotanical/zito.dev/issues"
 	},
-	"homepage": "https://github.com/MatthewZito/zito.dev#readme",
+	"homepage": "https://github.com/exbotanical/zito.dev#readme",
 	"lint-staged": {
 		"**/*.{ts,tsx,js,jsx,css,scss,json,yml,yaml}": [
 			"pnpm format"

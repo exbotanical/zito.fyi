@@ -171,7 +171,7 @@ export const config: SiteConfig = isTestEnv
         /**
          * Admin GitHub username
          */
-        github: 'MatthewZito',
+        github: 'exbotanical',
 
         /**
          * Unique identifier for the site admin; used in OpenGraph and SEO tags

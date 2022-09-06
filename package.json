@@ -34,6 +34,9 @@
 		"url": "https://github.com/exbotanical/zito.dev/issues"
 	},
 	"homepage": "https://github.com/exbotanical/zito.dev#readme",
+  "engines": {
+    "node": ">=0.14 <18"
+  },
 	"lint-staged": {
 		"**/*.{ts,tsx,js,jsx,css,scss,json,yml,yaml}": [
 			"pnpm format"

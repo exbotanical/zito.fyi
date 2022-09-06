@@ -355,7 +355,7 @@ I can't tell you how many times I tried to add or amend a property here and I've
 
 Not convinced? Let's look at the second and more important reason to favor the trailing comma: _Git diffs_.
 
-If you're contributing to an open source or enterprise codebase, you're undoubtedly using a version control tool such as git. If you're not...uh, I'd love to [hear from you](mailto:exbotanical@gmail.com).
+If you're contributing to an open source or enterprise codebase, you're undoubtedly using a version control tool such as git. If you're not...uh, I'd love to [hear from you](mailto:exbotanical@protonmail.com).
 
 Let's see what happens in a Git diff when you add a single line to a no-trailing-commas codebase:
 
@@ -570,4 +570,4 @@ And amend `.eslintrc`
 }
 ```
 
-Perhaps I'll write a post about writing your own extensible eslint configurations. Interested? Drop me a note and [let me know](mailto:exbotanical@gmail.com).
+Perhaps I'll write a post about writing your own extensible eslint configurations. Interested? Drop me a note and [let me know](mailto:exbotanical@protonmail.com).

@@ -32,7 +32,7 @@ export const config: SiteConfig = {
     avatar:
       'https://upload.wikimedia.org/wikipedia/en/e/e7/CanMonsterMovieAlbumCover.jpg',
 
-    email: 'exbotanical@gmail.com',
+    email: 'exbotanical@protonmail.com',
     firstName: 'Matthew',
     github: 'exbotanical',
     id: 'goldmund',

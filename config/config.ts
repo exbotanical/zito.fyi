@@ -161,7 +161,7 @@ export const config: SiteConfig = isTestEnv
         /**
          * Admin email addr; used for SEO, RSS Feed
          */
-        email: 'exbotanical@gmail.com',
+        email: 'exbotanical@protonmail.com',
 
         /**
          * Admin first name; used for SEO

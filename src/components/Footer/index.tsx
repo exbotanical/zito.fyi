@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { Link } from '@/components/Post/MdxTheme/Miscellaneous'
 import { useConfig } from '@/config'
 import { Caption } from '@/styles/Primitives'
 
@@ -20,9 +21,9 @@ export function Footer(): JSX.Element {
       <S.Info>
         <Caption>
           Licensed under{' '}
-          <a href={config.site.copyright.link} rel="noreferrer" target="_blank">
+          <Link to={config.site.copyright.link}>
             {config.site.copyright.name}
-          </a>
+          </Link>
         </Caption>
       </S.Info>
     </S.Wrapper>

@@ -1,4 +1,4 @@
-import { MDXProvider } from '@mdx-js/react'
+import { MDXProvider, type MDXProviderComponents } from '@mdx-js/react'
 import React from 'react'
 
 import type { Post } from '@/types'
@@ -9,8 +9,6 @@ import * as ListComponents from './List'
 import * as MiscComponents from './Miscellaneous'
 import * as TableComponents from './Table'
 import * as TextComponents from './Text'
-
-import type { MDXProviderComponents } from '@mdx-js/react'
 
 interface MdxThemeProps {
   children: React.ReactNode

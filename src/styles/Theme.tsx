@@ -73,7 +73,7 @@ export const darkTheme: Theme = {
       primary: 'rgb(100, 102, 140)',
     },
 
-    link: 'rgb(75, 187, 172)',
+    link: 'rgb(249, 255, 250)',
     scroll: {
       fg: 'rgb(211, 103, 135)',
       bg: 'rgb(99, 105, 109)',

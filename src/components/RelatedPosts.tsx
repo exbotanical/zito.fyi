@@ -2,8 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { Feed } from '@/components/Feed'
-
-import type { Post } from '../types'
+import type { Post } from '@/types'
 
 interface RelatedPostsProps {
   posts: Post[]

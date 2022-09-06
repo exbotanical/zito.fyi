@@ -2,10 +2,10 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { createGlobalStyle, css } from 'styled-components'
 
-import { BREAKPOINTS } from './constants'
+import { BREAKPOINTS, FONTS } from './constants'
 
 const MobileH1 = css`
-  font-family: 'Alfa Slab One', serif;
+  font-family: ${FONTS.ALFA_SERIF};
   font-size: 32px;
   font-style: normal;
   font-weight: normal;
@@ -14,7 +14,7 @@ const MobileH1 = css`
 `
 
 const MobileH2 = css`
-  font-family: 'Alfa Slab One', serif;
+  font-family: ${FONTS.ALFA_SERIF};
   font-size: 29px;
   font-style: normal;
   font-weight: normal;
@@ -23,7 +23,7 @@ const MobileH2 = css`
 `
 
 const MobileH3 = css`
-  font-family: 'Alfa Slab One', serif;
+  font-family: ${FONTS.ALFA_SERIF};
   font-size: 26px;
   font-style: normal;
   font-weight: normal;
@@ -32,7 +32,7 @@ const MobileH3 = css`
 `
 
 const MobileH4 = css`
-  font-family: 'Alfa Slab One', serif;
+  font-family: ${FONTS.ALFA_SERIF};
   font-size: 23px;
   font-style: normal;
   font-weight: normal;
@@ -41,7 +41,7 @@ const MobileH4 = css`
 `
 
 const MobileH5 = css`
-  font-family: 'Alfa Slab One', serif;
+  font-family: ${FONTS.ALFA_SERIF};
   font-size: 20px;
   font-style: normal;
   font-weight: normal;
@@ -50,7 +50,7 @@ const MobileH5 = css`
 `
 
 const MobileH6 = css`
-  font-family: 'Alfa Slab One', serif;
+  font-family: ${FONTS.ALFA_SERIF};
   font-size: 18px;
   font-style: normal;
   font-weight: normal;
@@ -59,7 +59,7 @@ const MobileH6 = css`
 `
 
 const MobileBody = css`
-  font-family: 'Fira Sans', sans-serif;
+  font-family: ${FONTS.FIRA_SANS};
   font-size: 16px;
   font-style: normal;
   font-weight: normal;
@@ -68,7 +68,7 @@ const MobileBody = css`
 `
 
 const MobileCaption = css`
-  font-family: 'Fira Sans', sans-serif;
+  font-family: ${FONTS.FIRA_SANS};
   font-size: 12px;
   font-style: normal;
   font-weight: normal;
@@ -77,7 +77,7 @@ const MobileCaption = css`
 `
 
 const MobileOverline = css`
-  font-family: 'Fira Sans', sans-serif;
+  font-family: ${FONTS.FIRA_SANS};
   font-size: 10px;
   font-style: normal;
   font-weight: 500;
@@ -93,7 +93,7 @@ const MobileCode = css`
 `
 
 const DesktopH1 = css`
-  font-family: 'Alfa Slab One', serif;
+  font-family: ${FONTS.ALFA_SERIF};
   font-size: 47px;
   font-style: normal;
   font-weight: normal;
@@ -101,7 +101,7 @@ const DesktopH1 = css`
 `
 
 const DesktopH2 = css`
-  font-family: 'Alfa Slab One', serif;
+  font-family: ${FONTS.ALFA_SERIF};
   font-size: 39px;
   font-style: normal;
   font-weight: normal;
@@ -109,7 +109,7 @@ const DesktopH2 = css`
 `
 
 const DesktopH3 = css`
-  font-family: 'Alfa Slab One', serif;
+  font-family: ${FONTS.ALFA_SERIF};
   font-size: 33px;
   font-style: normal;
   font-weight: normal;
@@ -118,7 +118,7 @@ const DesktopH3 = css`
 `
 
 const DesktopH4 = css`
-  font-family: 'Alfa Slab One', serif;
+  font-family: ${FONTS.ALFA_SERIF};
   font-size: 27px;
   font-style: normal;
   font-weight: normal;
@@ -127,7 +127,7 @@ const DesktopH4 = css`
 `
 
 const DesktopH5 = css`
-  font-family: 'Alfa Slab One', serif;
+  font-family: ${FONTS.ALFA_SERIF};
   font-size: 23px;
   font-style: normal;
   font-weight: normal;
@@ -136,7 +136,7 @@ const DesktopH5 = css`
 `
 
 const DesktopH6 = css`
-  font-family: 'Alfa Slab One', serif;
+  font-family: ${FONTS.ALFA_SERIF};
   font-size: 19px;
   font-style: normal;
   font-weight: normal;
@@ -145,7 +145,7 @@ const DesktopH6 = css`
 `
 
 const DesktopBody = css`
-  font-family: 'Fira Sans', sans-serif;
+  font-family: ${FONTS.FIRA_SANS};
   font-size: 18px;
   font-style: normal;
   font-weight: normal;
@@ -154,7 +154,7 @@ const DesktopBody = css`
 `
 
 const DesktopCaption = css`
-  font-family: 'Fira Sans', sans-serif;
+  font-family: ${FONTS.FIRA_SANS};
   font-size: 14px;
   font-style: normal;
   font-weight: normal;
@@ -163,7 +163,7 @@ const DesktopCaption = css`
 `
 
 const DesktopOverline = css`
-  font-family: 'Fira Sans', sans-serif;
+  font-family: ${FONTS.FIRA_SANS};
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
@@ -249,7 +249,7 @@ const CodeWithStyle = css`
 `
 
 const ButtonLabelWithStyle = css`
-  font-family: 'Fira Sans', sans-serif;
+  font-family: ${FONTS.FIRA_SANS};
   font-size: 18px;
   font-style: normal;
   font-weight: 500;

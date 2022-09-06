@@ -1,5 +1,5 @@
 import { useEffect, useRef, useMemo } from 'react'
-import { useInfiniteQuery } from 'react-query'
+import { useInfiniteQuery, type UseInfiniteQueryResult } from 'react-query'
 
 import { useConfig } from '@/config'
 import type {
@@ -14,7 +14,6 @@ import { jsonToPost } from '@/utils'
 import { constants } from '../../../node'
 
 import type { PageContext } from './types'
-import type { UseInfiniteQueryResult } from 'react-query'
 
 /**
  * Calculate the base URL for a given feed

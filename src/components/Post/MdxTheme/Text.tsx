@@ -1,12 +1,10 @@
 import kebabCase from 'lodash.kebabcase'
 import React from 'react'
-import styled from 'styled-components'
+import styled, { type AnyStyledComponent } from 'styled-components'
 
 import { HeadingLink } from '@/components/Links'
 import { ExtensionWrapper } from '@/components/Post/PostSpacing'
 import * as styles from '@/styles'
-
-import type { AnyStyledComponent } from 'styled-components'
 
 interface HeadingProps {
   children: React.ReactNode

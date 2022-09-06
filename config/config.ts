@@ -150,7 +150,7 @@ export const config: SiteConfig = isTestEnv
          * Admin 'author' section text
          */
         about:
-          'Frontend software engineer and comp-sci enthusiast. I write source code reviews and blog about programming.',
+          'Comp-sci enthusiast and SDE-2 at AWS. I write source code reviews and blog about programming.',
 
         /**
          * Admin 'author' section avatar

@@ -139,7 +139,9 @@ For example, here's some code where we'll need to use a semicolon no matter what
 ```js
 let fn = function () {
   /* ... */
-}[(1, 2, 3)].forEach() // TypeError: undefined is not a function
+}
+
+[(1, 2, 3)].forEach() // TypeError: undefined is not a function
 ```
 
 The restricted productions will bite you in the ass regardless of whether you use semicolons, so you'll still have to remember this rule.
@@ -252,10 +254,10 @@ prettier:
 How often do you see this in modern JavaScript codebases?
 
 ```js
-const obj = { a: 1, b: 2 }
+const obj = {a: 1, b: 2}
 
-function x() {
-  console.log({ obj })
+function x(){
+  console.log({obj})
 }
 ```
 
@@ -330,22 +332,22 @@ const darkTheme = {
     font: {
       primary: 'rgb(206, 166, 186)',
       secondary: 'rgb(206, 166, 186)',
-      hover: 'rgb(47, 43, 69)',
+      hover: 'rgb(47, 43, 69)'
     },
     bg: {
       primary: 'rgb(25, 23, 37)',
       secondary: 'rgb(47, 43, 69)',
-      tertiary: 'rgb(214, 102, 149)',
+      tertiary: 'rgb(214, 102, 149)'
     },
     border: {
-      primary: 'rgb(100, 102, 140)',
+      primary: 'rgb(100, 102, 140)'
     },
     link: 'rgb(75, 187, 172)',
     scroll: {
       fg: 'rgb(214, 102, 149)',
-      bg: 'rgb(100, 102, 140)',
-    },
-  },
+      bg: 'rgb(100, 102, 140)'
+    }
+  }
 }
 ```
 
@@ -420,16 +422,20 @@ Much like the aforementioned legacy bracket spacing argument, you may recall tha
 
 Near-ubiquitous transpilers like [Babel](https://babeljs.io/) will remove the trailing comma in transpiled code, so you don't need to worry about this one in legacy browsers.
 
-I also prefer this rule for arrays:
+You may also prefer this rule for arrays:
 
 ```js
-const arr = [1, 2, 3]
+const arr = [
+  1,
+  2,
+  3,
+]
 ```
 
 And function parameters:
 
 ```js
-function x(first, middle, last) {
+function x(first, middle, last,) {
   /* ... */
 }
 ```
@@ -444,7 +450,7 @@ function x(first, middle, last, ...all) {
 
 **The Verdict**
 
-Prefer trailing commas in object literals, arrays, and function parameters. It makes it easier to add properties and results in cleaner, more readable diffs. If targeting legacy browsers, use a transpiler such as Babel to ensure trailing commas are stripped from transpiled code.
+Prefer trailing commas in object literals (and optionally, arrays and function parameters). It makes it easier to add properties and results in cleaner, more readable diffs. If targeting legacy browsers, use a transpiler such as Babel to ensure trailing commas are stripped from transpiled code.
 
 **Supporting Tools**
 
@@ -475,7 +481,7 @@ prettier:
 
 There you have it, my rules to die on a hill by. I actually have many, many more, but this article is already long enough. Even if you disagree with my takes on these contentious issues, my hope is you'll draw inspiration to adopt a more decisive approach to code style when maintaining a JavaScript or TypeScript codebase.
 
-As a frontend lead, it's my job to think about these things so my team doesn't have to. Of course, the final decision should always be a collective one, or at least your team should feel comfortable suggesting a change. I'm a big believer in static analysis tools and I can confidently say that proper tooling can make or break a collaborative codebase. Despite my sardonic perspective on the _just be consistent_ adage, I should clarify that, yes, whatever you decide to do what ultimately matters is that you do it consistently.
+As a frontend lead, it's my job to think about these things so my team doesn't have to. Of course, the final decision should always be a collective one, or at least your team should feel comfortable suggesting a change. I'm a big believer in static analysis tools and I can confidently say that proper tooling can make or break a collaborative codebase. Despite my sardonic perspective on the _just be consistent_ adage, I should clarify that, yes, what ultimately matters is that you do whatever you decide consistently.
 
 ### Shared Configurations
 
@@ -564,4 +570,4 @@ And amend `.eslintrc`
 }
 ```
 
-Perhaps I'll write a post about writing your own extensible eslint configurations. Interested? Drop me a note and [let me know](mailto:exbotanical@gmail.com). See you next time.
+Perhaps I'll write a post about writing your own extensible eslint configurations. Interested? Drop me a note and [let me know](mailto:exbotanical@gmail.com).

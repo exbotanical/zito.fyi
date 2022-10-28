@@ -7,15 +7,14 @@ import type { FeedMetadata, Post, SiteConfig } from '../src/types'
 import type { Actions } from 'gatsby'
 
 const FEED_COMPONENT = require.resolve('../src/templates/feed/index.tsx')
-
 const FEED_METADATA_DIR = `${constants.baseMetaDirectory}/${constants.feedMetaDirectory}/`
 const POSTS_PER_PAGE = constants.postsPerFeedPage
 
-export const resolveFeedPath = (
+export function resolveFeedPath(
   config: SiteConfig,
   feedType: string,
   feedId?: string,
-): string => {
+) {
   const slug =
     feedType === 'index' ? '/' : `/${feedType}${feedId ? `/${feedId}` : ''}`
 
@@ -25,12 +24,12 @@ export const resolveFeedPath = (
 /**
  * Persist Feed page metadata in the /public directory so it can later be retrieved client-side
  */
-export const persistFeedMetadata = async (
+export async function persistFeedMetadata(
   feedType: string,
   feedPageIndex: number,
   feedMetadata: FeedMetadata,
   feedId?: string,
-): Promise<void> => {
+) {
   const filePath = path.join(
     FEED_METADATA_DIR,
     `${feedType}${feedId ? `-${feedId}` : ''}-${feedPageIndex}.json`,
@@ -41,11 +40,11 @@ export const persistFeedMetadata = async (
   await fs.promises.writeFile(filePath, serializedList)
 }
 
-export const createFeedMetadata = (
+export function createFeedMetadata(
   pageIdx: number,
   pageCount: number,
   feedPosts: Post[],
-): FeedMetadata => {
+): FeedMetadata {
   const limit = POSTS_PER_PAGE
   const skip = pageIdx * POSTS_PER_PAGE
 
@@ -70,22 +69,21 @@ export const createFeedMetadata = (
   }
 }
 
-export const setupFeedMetadataDir = (): void => {
-  if (!fs.existsSync(FEED_METADATA_DIR)) {
-    fs.mkdirSync(FEED_METADATA_DIR)
-  } else {
+export function setupFeedMetadataDir() {
+  if (fs.existsSync(FEED_METADATA_DIR)) {
     fs.rmSync(FEED_METADATA_DIR, { recursive: true })
-    fs.mkdirSync(FEED_METADATA_DIR)
   }
+
+  fs.mkdirSync(FEED_METADATA_DIR)
 }
 
-export const createFeed = async (
+export async function createFeed(
   config: SiteConfig,
   actions: Actions,
   feedPosts: Post[],
   feedType: string,
   feedId?: string,
-): Promise<void> => {
+) {
   const pageCount = Math.ceil(feedPosts.length / POSTS_PER_PAGE)
 
   const tasks = [...Array(pageCount).keys()].map(async pageIdx => {

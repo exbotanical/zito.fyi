@@ -5,13 +5,14 @@ const N_RELATED_POSTS = 2
 /**
  * Get posts of a given category
  */
-const getPostsOfCategory = (category: string, posts: Post[]): Post[] =>
-  posts.filter(post => post.category === category)
+function getPostsOfCategory(category: string, posts: Post[]) {
+  return posts.filter(post => post.category === category)
+}
 
 /**
  * Get posts of a tag, ranked by matches
  */
-const getRankedPostsOfTag = (targetPost: Post, posts: Post[]): Post[] => {
+function getRankedPostsOfTag(targetPost: Post, posts: Post[]) {
   if (!targetPost.tags?.length) {
     return posts
   }
@@ -42,7 +43,6 @@ const getRankedPostsOfTag = (targetPost: Post, posts: Post[]): Post[] => {
   rankedPosts.sort((a, b) => {
     if (a.rank > b.rank) return -1
     if (a.rank < b.rank) return 1
-
     return 0
   })
 
@@ -52,13 +52,10 @@ const getRankedPostsOfTag = (targetPost: Post, posts: Post[]): Post[] => {
 
 /**
  * Get n posts related to a given post
- * @todo fix duplications
  */
-export const getNRelatedPosts = (targetPost: Post, posts: Post[]): Post[] => {
+export function getNRelatedPosts(targetPost: Post, posts: Post[]) {
   // exclude the target post from the posts
-
   const filteredPosts = posts.filter(post => post.slug !== targetPost.slug)
-
   const relatedPosts: Post[] = []
 
   if (targetPost.category) {

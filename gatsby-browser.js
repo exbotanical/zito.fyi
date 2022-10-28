@@ -5,7 +5,7 @@ import { QueryWrapper } from './src/context/QueryWrapper'
 
 export const wrapRootElement = QueryWrapper
 
-export const onClientEntry = () => {
+export function onClientEntry() {
   window.onload = () => {
     function initNoiseEffect() {
       const black = new Uint8ClampedArray([0, 0, 0, 255])

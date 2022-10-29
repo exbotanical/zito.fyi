@@ -19,7 +19,7 @@ export const containsEmptyValues = (data: unknown): boolean => {
   return !data
 }
 
-export const tagListHasEmptyValues = (tagList: React.ReactElement[]): boolean =>
+export const tagListHasEmptyValues = (tagList: React.ReactElement[]) =>
   !!tagList.find(
     tag => containsEmptyValues(tag.type) || containsEmptyValues(tag.props),
   )
@@ -45,7 +45,7 @@ export const seoData: {
     description: '',
     logoUrl: '',
     name: '',
-    url: 'https://zito.dev',
+    url: 'https://zito.fyi',
   },
   post: {
     body: 'Post body',
@@ -95,7 +95,7 @@ export const seoData: {
     title: "Matthew Zito's Blog",
     titleAbridged: "Zito's Blog",
     twitterHandle: 'test',
-    url: 'https://zito.dev',
+    url: 'https://zito.fyi',
   },
   user: {
     about: 'A paragraph about me, the author and site admin.',

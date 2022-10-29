@@ -8,7 +8,7 @@ if (Cypress.env('STAGE') !== 'dev') {
         const data = response as unknown as ResponseData
 
         cy.task('parseSitemap', {
-          siteUrl: 'https://zito.dev',
+          siteUrl: 'https://zito.fyi',
           sitemapString: data.body,
         }).then(sitemapLinks => {
           const links = sitemapLinks as string[]

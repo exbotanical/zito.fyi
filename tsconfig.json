@@ -3,12 +3,8 @@
     "module": "commonjs",
     "target": "esnext",
     "jsx": "react",
-    "lib": [
-			"dom",
-			"es2015",
-			"es2017",
-			"es2019"
-		],
+    "lib": ["dom", "es2015", "es2017", "es2019"],
+    "types": ["cypress"],
     "strict": true,
     "noEmit": true,
     "isolatedModules": true,
@@ -16,13 +12,13 @@
     "skipLibCheck": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-		"resolveJsonModule": true,
-		"forceConsistentCasingInFileNames": true,
-		"baseUrl": ".",
-		"paths": {
-			"@/*": ["src/*"],
-			"@@/*": ["test/*"]
-		}
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@@/*": ["test/*"]
+    }
   },
-	"include": ["node", "src", "test", "*.ts", "config"]
+  "include": ["node", "src", "test", "*.ts", "config"]
 }

@@ -3,7 +3,6 @@ import React from 'react'
 import type { SeoData } from '@/components/SEO/types'
 import type { BaseSiteMetadata } from '@/types'
 
-// TODO rel canonical
 export const GeneralTags = (
   seoData: SeoData,
   siteData: BaseSiteMetadata,

@@ -4,6 +4,8 @@ import { config as testConfig } from '../test/fixtures/config'
 
 const isTestEnv = process.env.CYPRESS_SUPPORT || process.env.NODE_ENV === 'test'
 
+const REL_CANONICAL = 'https://zito.fyi'
+
 export const config: SiteConfig = isTestEnv
   ? testConfig
   : {
@@ -56,7 +58,7 @@ export const config: SiteConfig = isTestEnv
         /**
          * Organization homepage
          */
-        url: 'https://zito.dev',
+        url: REL_CANONICAL,
       },
 
       /**
@@ -142,7 +144,7 @@ export const config: SiteConfig = isTestEnv
         /**
          * Site base domain
          */
-        url: 'https://zito.dev',
+        url: REL_CANONICAL,
       },
       // User configuration
       user: {

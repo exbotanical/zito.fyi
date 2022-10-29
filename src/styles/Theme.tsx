@@ -53,6 +53,7 @@ interface ThemeProps {
 }
 
 const { darkTheme, lightTheme } = themes.nordTheme
+export { darkTheme, lightTheme }
 
 export const ThemeToggleContext = createContext({} as ThemeContext)
 

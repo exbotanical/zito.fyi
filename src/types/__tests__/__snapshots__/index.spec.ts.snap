@@ -56,7 +56,7 @@ Object {
   ],
   "timeToRead": 3,
   "title": "Lorem Ipsum",
-  "url": "https://zito.dev/lorem-ipsum",
+  "url": "https://zito.fyi/lorem-ipsum",
 }
 `;
 
@@ -163,7 +163,7 @@ Object {
       ],
       "timeToRead": 3,
       "title": "Lorem Ipsum",
-      "url": "https://zito.dev/lorem-ipsum",
+      "url": "https://zito.fyi/lorem-ipsum",
     },
   ],
   "route": "/lorem-ipsum",
@@ -174,7 +174,7 @@ Object {
   ],
   "timeToRead": 3,
   "title": "Lorem Ipsum",
-  "url": "https://zito.dev/lorem-ipsum",
+  "url": "https://zito.fyi/lorem-ipsum",
 }
 `;
 
@@ -603,7 +603,7 @@ Hic bis parenti: e petunt satis.
   ],
   "timeToRead": 1,
   "title": "Bold Mage",
-  "url": "https://zito.dev/bold-mage",
+  "url": "https://zito.fyi/bold-mage",
 }
 `;
 
@@ -1032,7 +1032,7 @@ Hic bis parenti: e petunt satis.
   ],
   "timeToRead": 1,
   "title": "Bold Mage",
-  "url": "https://zito.dev/bold-mage",
+  "url": "https://zito.fyi/bold-mage",
 }
 `;
 
@@ -1096,7 +1096,7 @@ obliquum erigitur gemmae utque cur natus, aera…",
     ],
     "timeToRead": 1,
     "title": "Test One",
-    "url": "https://zito.dev/test-one",
+    "url": "https://zito.fyi/test-one",
   },
   Object {
     "body": undefined,
@@ -1155,7 +1155,7 @@ obliquum erigitur gemmae utque cur natus, aera…",
     ],
     "timeToRead": 1,
     "title": "Test Ones",
-    "url": "https://zito.dev/test-ones",
+    "url": "https://zito.fyi/test-ones",
   },
 ]
 `;

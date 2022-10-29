@@ -8,12 +8,13 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 
 const queryClient = new QueryClient()
 
-export const renderWithQueryClient = (
+export function renderWithQueryClient(
   children: React.ReactNode,
 
   options?: Omit<RenderOptions, 'wrapper'>,
-): RenderResult =>
-  render(
+): RenderResult {
+  return render(
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>,
     options,
   )
+}

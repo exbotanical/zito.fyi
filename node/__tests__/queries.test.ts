@@ -43,6 +43,7 @@ describe('build util `getAllPosts`', () => {
       allPostsQuery,
       expect.objectContaining({ today: expect.any(Date) }),
     )
+
     expect(posts).toMatchSnapshot()
   })
 

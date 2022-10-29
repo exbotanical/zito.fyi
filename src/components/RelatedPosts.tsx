@@ -14,7 +14,7 @@ const Wrapper = styled.aside`
   justify-items: center;
 `
 
-export function RelatedPosts({ posts }: RelatedPostsProps): JSX.Element | null {
+export function RelatedPosts({ posts }: RelatedPostsProps) {
   return posts.length ? (
     <Wrapper data-testid="related-posts">
       <Feed feedItems={posts} hideHero />

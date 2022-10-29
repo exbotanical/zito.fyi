@@ -10,55 +10,60 @@ import { IconLink } from '../Links'
 
 import type { StyledIcon } from '@styled-icons/styled-icon'
 
-const generateLink = (
+function generateLink(
   url: string,
   label: string,
   Icon: StyledIcon,
   sansBasePath = true,
-): JSX.Element => (
-  <IconLink ariaLabel={label} sansBasePath={sansBasePath} to={url}>
-    <Icon size={48} />
-  </IconLink>
-)
+) {
+  return (
+    <IconLink ariaLabel={label} sansBasePath={sansBasePath} to={url}>
+      <Icon size={48} />
+    </IconLink>
+  )
+}
 
-const renderTwitterLink = (
-  config: Readonly<SiteConfig>,
-): JSX.Element | null => {
+function renderTwitterLink(config: Readonly<SiteConfig>) {
   const username = config.user.twitterHandle
 
-  if (!username) return null
+  if (!username) {
+    return null
+  }
 
   const url = `https://twitter.com/${username}`
   return generateLink(url, 'Twitter Profile', Twitter)
 }
 
-const renderGitHubLink = (config: Readonly<SiteConfig>): JSX.Element | null => {
+function renderGitHubLink(config: Readonly<SiteConfig>) {
   const username = config.user.github
 
-  if (!username) return null
+  if (!username) {
+    return null
+  }
 
   const url = `https://github.com/${username}`
   return generateLink(url, 'GitHub Profile', Github)
 }
 
-const generateLinkedInLink = (
-  config: Readonly<SiteConfig>,
-): JSX.Element | null => {
+function generateLinkedInLink(config: Readonly<SiteConfig>) {
   const username = config.user.linkedIn
 
-  if (!username) return null
+  if (!username) {
+    return null
+  }
 
   const url = `https://www.linkedin.com/in/${username}`
   return generateLink(url, 'LinkedIn Profile', LinkedinSquare)
 }
 
-const renderEmailLink = (config: Readonly<SiteConfig>): JSX.Element => {
+function renderEmailLink(config: Readonly<SiteConfig>) {
   const url = `mailto:${config.user.email || ''}`
   return generateLink(url, 'E-Mail', MailSend)
 }
 
-const renderRssLink = (config: Readonly<SiteConfig>): JSX.Element =>
-  generateLink(config.site.rss, 'RSS Feed', Rss, false)
+function renderRssLink(config: Readonly<SiteConfig>) {
+  return generateLink(config.site.rss, 'RSS Feed', Rss, false)
+}
 
 interface IconLinksProps {
   className?: string

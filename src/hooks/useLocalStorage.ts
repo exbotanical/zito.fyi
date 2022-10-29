@@ -25,7 +25,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
     }
   })
 
-  const setValue = (value: T | ((value: T) => T)) => {
+  function setValue(value: T | ((value: T) => T)) {
     try {
       const valueToPersist =
         value instanceof Function ? value(persistedValue) : value

@@ -11,18 +11,18 @@ interface SeoArgs {
   postData?: AbridgedPost
 }
 
-const addTypeSafeTag = (
+function addTypeSafeTag(
   tagList: OpenGraphTagList,
   property: string,
   content: string,
-) => {
+) {
   tagList.push(<meta content={content} property={property} />)
 }
 
-const createPostTagList = (
+function createPostTagList(
   postData: AbridgedPost,
   userData?: UserMetadata,
-): OpenGraphTagList => {
+): OpenGraphTagList {
   const metaTags: OpenGraphTagList = []
 
   addTypeSafeTag(
@@ -56,12 +56,12 @@ const createPostTagList = (
   return metaTags
 }
 
-export const OpenGraphTags = ({
+export function OpenGraphTags({
   seoData,
   siteData,
   userData,
   postData,
-}: SeoArgs): OpenGraphTagList => {
+}: SeoArgs): OpenGraphTagList {
   const { isPost, type, title, imageUrl, imageAlt, url, description } = seoData
 
   const siteName = siteData.name

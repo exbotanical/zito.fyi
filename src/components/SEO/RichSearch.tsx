@@ -28,7 +28,7 @@ export const getAuthorMetadata = (
   'givenName': userData.firstName,
 })
 
-export const getOrgMetadata = (orgData: OrgMetadata): JsonLdOrgMetadata => {
+export function getOrgMetadata(orgData: OrgMetadata): JsonLdOrgMetadata {
   const { description, logoUrl, name, url } = orgData
 
   return {
@@ -41,11 +41,11 @@ export const getOrgMetadata = (orgData: OrgMetadata): JsonLdOrgMetadata => {
   }
 }
 
-export const getPostMetadata = (
+export function getPostMetadata(
   postData: AbridgedPost,
   orgData?: OrgMetadata,
   userData?: UserMetadata,
-): JsonLdPostMetadata | null => {
+): JsonLdPostMetadata | null {
   const {
     body,
     category,
@@ -61,7 +61,9 @@ export const getPostMetadata = (
   const orgMetaData = orgData ? getOrgMetadata(orgData) : undefined
   const authorData = userData ? getAuthorMetadata(userData) : undefined
 
-  if (!coverImageUrl || !description) return null
+  if (!coverImageUrl || !description) {
+    return null
+  }
 
   return {
     '@context': 'http://schema.org',

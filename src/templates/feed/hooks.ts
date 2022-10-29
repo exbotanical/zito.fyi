@@ -18,26 +18,10 @@ import type { PageContext } from './types'
 /**
  * Calculate the base URL for a given feed
  */
-const resolveBaseUrl = (pageContext: PageContext, config: SiteConfig): string =>
+const resolveBaseUrl = (pageContext: PageContext, config: SiteConfig) =>
   `${config.pathPrefix}${constants.feedMetaDirectory}/${pageContext.feedType}${
     pageContext.feedId ? `-${pageContext.feedId}` : ''
   }`
-
-/**
- * Generate a fetch handler for use by a feed
- */
-const generateFetchHandler =
-  (baseUrl: string) =>
-  async ({ pageParam = 0 }): Promise<FeedMetadataJson> => {
-    // kind of a hack but w/e, it's what Gatsby is doing under the hood
-    const response = await fetch(`${baseUrl}-${pageParam}.json`)
-
-    if (!response.ok) {
-      throw new Error(`Failed to fetch ${baseUrl}-${pageParam}.json`)
-    }
-
-    return response.json() as Promise<FeedMetadataJson>
-  }
 
 /**
  * Generate placeholders for currently loading posts
@@ -54,12 +38,26 @@ const generatePostPlaceholders = (
     }))
 
 /**
+ * Generate a fetch handler for use by a feed
+ */
+function generateFetchHandler(baseUrl: string) {
+  return async function fetchHandler({ pageParam = 0 }) {
+    // kind of a hack but w/e, it's what Gatsby is doing under the hood
+    const response = await fetch(`${baseUrl}-${pageParam}.json`)
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch ${baseUrl}-${pageParam}.json`)
+    }
+
+    return response.json() as Promise<FeedMetadataJson>
+  }
+}
+
+/**
  * Coordinate page-fetching to the user's scroll position.
  * Effectively an infinite scroll utility
  */
-const useScrollContingentFetch = (
-  feedQuery: UseInfiniteQueryResult,
-): React.RefObject<HTMLDivElement> => {
+function useScrollContingentFetch(feedQuery: UseInfiniteQueryResult) {
   // ref to the feed wrapper el; tracks scroll progress
   const feedElementRef = useRef<HTMLDivElement>(null)
   // Helpers for loading pages
@@ -73,7 +71,7 @@ const useScrollContingentFetch = (
     }
   }
 
-  const checkScrollState = async () => {
+  async function checkScrollState() {
     if (feedElementRef.current) {
       if (
         feedElementRef.current.getBoundingClientRect().bottom <=
@@ -85,7 +83,7 @@ const useScrollContingentFetch = (
   }
 
   useEffect(() => {
-    const onScroll = async (): Promise<void> => {
+    async function onScroll() {
       await checkScrollState()
     }
 
@@ -105,12 +103,7 @@ const useScrollContingentFetch = (
 /**
  * Provides an infinite-scroll capable feed
  */
-export const useInfiniteFeed = (
-  pageContext: PageContext,
-): {
-  feedElementRef: React.RefObject<HTMLDivElement>
-  feedItems: FeedItems
-} => {
+export function useInfiniteFeed(pageContext: PageContext) {
   const config = useConfig()
 
   const baseUrl = resolveBaseUrl(pageContext, config)

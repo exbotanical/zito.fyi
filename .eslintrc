@@ -1,26 +1,22 @@
 {
-  "extends": [
-    "@magister_zito/react",
-    "prettier"
-  ],
-  "plugins": [
-    "graphql"
-	],
-	"settings": {
-		"import/internal-regex": "^@@/"
-	},
+  "extends": ["@magister_zito/react", "prettier"],
+  "plugins": ["graphql"],
+  "settings": {
+    "import/internal-regex": "^@@/"
+  },
   "overrides": [
-		{
-			"files": ["**/*.ts"],
-			"parserOptions": {
-				"project": ["./tsconfig.json", "./cypress/tsconfig.json"]
-			}
-		}
-	],
-  "ignorePatterns": [
-    ".cache",
-    "data",
-    "content",
-    "fixtures"
-  ]
+    {
+      "files": ["**/*.ts"],
+      "parserOptions": {
+        "project": ["./tsconfig.json"]
+      }
+    },
+    {
+      "files": ["cypress.config.ts", "cypress/**/*.ts"],
+      "parserOptions": {
+        "project": ["./cypress/tsconfig.json"]
+      }
+    }
+  ],
+  "ignorePatterns": [".cache", "data", "content", "fixtures"]
 }

@@ -42,7 +42,7 @@ export default defineConfig({
   e2e: {
     baseUrl: 'http://localhost:9000',
     specPattern: 'cypress/e2e/**/*.test.{ts,tsx}',
-    setupNodeEvents(on, config) {
+    setupNodeEvents(on) {
       on('task', {
         async parseRss(rssString: string) {
           return parseStringPromise(rssString).then(res => {

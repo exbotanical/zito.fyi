@@ -4,7 +4,7 @@
     "target": "esnext",
     "jsx": "react",
     "lib": ["dom", "es2015", "es2017", "es2019"],
-    "types": ["cypress"],
+    "types": ["jest", "@testing-library/jest-dom"],
     "strict": true,
     "noEmit": true,
     "isolatedModules": true,
@@ -20,5 +20,6 @@
       "@@/*": ["test/*"]
     }
   },
+  "exclude": ["cypress.config.ts"],
   "include": ["node", "src", "test", "*.ts", "config"]
 }

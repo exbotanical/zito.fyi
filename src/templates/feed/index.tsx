@@ -25,7 +25,7 @@ function FeedTemplate({ pageContext }: FeedTemplateProps): JSX.Element {
   /**
    * Override the title; for non-index feeds
    */
-  const getTitleOverride = () => {
+  function getTitleOverride() {
     if (pageContext.feedId) {
       if (pageContext.feedType === 'tag') {
         return (

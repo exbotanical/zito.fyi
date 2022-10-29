@@ -2,7 +2,7 @@ import type { SiteConfig } from '../src/types'
 import type { FeedPluginData, FeedPluginItem } from './types'
 
 export function generateRssFeed(config: SiteConfig) {
-  return function (data: FeedPluginData) {
+  return function mapEdges(data: FeedPluginData) {
     const {
       query: { allMdx },
     } = data
@@ -45,7 +45,7 @@ export function generateRssFeed(config: SiteConfig) {
 }
 
 export function setupRssFeed(config: SiteConfig) {
-  return function (ref: FeedPluginData) {
+  return function setGenerator(ref: FeedPluginData) {
     const ret = ref.query.site?.siteMetadata?.rssMetadata
 
     if (!ret) {

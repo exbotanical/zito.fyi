@@ -30,7 +30,7 @@ interface BlockquoteProps {
 /**
  * Extract header hashlink from child components
  */
-const getHeaderHashLink = (children: React.ReactNode): string | null => {
+function getHeaderHashLink(children: React.ReactNode) {
   if (Array.isArray(children)) {
     return kebabCase(children.filter(child => typeof child === 'string').join())
   }
@@ -45,10 +45,10 @@ const getHeaderHashLink = (children: React.ReactNode): string | null => {
 /**
  * Generate a heading component from a given slug and styled component
  */
-const generateHeading = (
+function generateHeading(
   slug: string,
   HeadingComponent: AnyStyledComponent,
-): HeadingComponent => {
+): HeadingComponent {
   function GeneratedHeader({ children }: HeadingProps): JSX.Element {
     const hashLink = getHeaderHashLink(children)
 

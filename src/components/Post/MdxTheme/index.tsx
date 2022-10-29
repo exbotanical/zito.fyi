@@ -15,7 +15,7 @@ interface MdxThemeProps {
   post: Post
 }
 
-const getComponentMapping = (post: Post): MDXProviderComponents => {
+function getComponentMapping(post: Post): MDXProviderComponents {
   const headings = TextComponents.generateHeadings(post.slug)
 
   return {

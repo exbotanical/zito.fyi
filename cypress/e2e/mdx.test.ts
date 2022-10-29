@@ -1,8 +1,8 @@
-const POST_PATH = 'my-favorite-soft-machine-records'
+const POST_PATH = '/my-favorite-soft-machine-records'
 
 describe('mdx rendering', () => {
   before(() => {
-    cy.visit(`/${POST_PATH}`).waitForRouteChange()
+    cy.visit(POST_PATH).waitForRouteChange()
   })
 
   beforeEach(() => {
@@ -12,32 +12,32 @@ describe('mdx rendering', () => {
   it('renders heading elements', () => {
     cy.get('@post')
       .find('h1[id="h-1"]')
-      .find(`a[href="/${POST_PATH}#h-1"]`)
+      .find(`a[href="${POST_PATH}#h-1"]`)
       .contains('H1')
 
       .get('@post')
       .find('h2[id="h-2"]')
-      .find(`a[href="/${POST_PATH}#h-2"]`)
+      .find(`a[href="${POST_PATH}#h-2"]`)
       .contains('H2')
 
       .get('@post')
       .find('h3[id="h-3"]')
-      .find(`a[href="/${POST_PATH}#h-3"]`)
+      .find(`a[href="${POST_PATH}#h-3"]`)
       .contains('H3')
 
       .get('@post')
       .find('h4[id="h-4"]')
-      .find(`a[href="/${POST_PATH}#h-4"]`)
+      .find(`a[href="${POST_PATH}#h-4"]`)
       .contains('H4')
 
       .get('@post')
       .find('h5[id="h-5"]')
-      .find(`a[href="/${POST_PATH}#h-5"]`)
+      .find(`a[href="${POST_PATH}#h-5"]`)
       .contains('H5')
 
       .get('@post')
       .find('h6[id="h-6"]')
-      .find(`a[href="/${POST_PATH}#h-6"]`)
+      .find(`a[href="${POST_PATH}#h-6"]`)
       .contains('H6')
   })
 

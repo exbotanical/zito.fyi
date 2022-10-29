@@ -8,22 +8,22 @@ on:
 jobs:
 
   lint:
-    uses: exbotanical/.github/.github/workflows/yarn_script_run.yml@master
+    uses: exbotanical/.github/.github/workflows/pnpm_script_run.yml@master
     with:
       script_name: lint
 
   stylelint:
-    uses: exbotanical/.github/.github/workflows/yarn_script_run.yml@master
+    uses: exbotanical/.github/.github/workflows/pnpm_script_run.yml@master
     with:
       script_name: lint:css
 
   typecheck:
-    uses: exbotanical/.github/.github/workflows/yarn_script_run.yml@master
+    uses: exbotanical/.github/.github/workflows/pnpm_script_run.yml@master
     with:
       script_name: typecheck
 
   unit_test:
-    uses: exbotanical/.github/.github/workflows/yarn_script_run.yml@master
+    uses: exbotanical/.github/.github/workflows/pnpm_script_run.yml@master
     with:
       script_name: test:unit
 
@@ -32,17 +32,15 @@ jobs:
   integration_test:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+
+      - name: Install pnpm
+      - uses: pnpm/action-setup@v2
         with:
-          node-version: 'lts/*'
-          cache: 'yarn'
-      - run: yarn install
+          version: latest
+
       - name: Run Integration tests
         uses: cypress-io/github-action@v2
-        with:
-          build: yarn build
-          start: yarn serve
-          browser: chrome
         env:
           CYPRESS_SUPPORT: "y"

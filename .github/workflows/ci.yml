@@ -6,7 +6,6 @@ on:
       - master
 
 jobs:
-
   lint:
     uses: exbotanical/.github/.github/workflows/pnpm_script_run.yml@master
     with:
@@ -33,14 +32,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Install pnpm
-      - uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v2
         with:
           version: latest
 
       - name: Run Integration tests
         uses: cypress-io/github-action@v2
         env:
-          CYPRESS_SUPPORT: "y"
+          CYPRESS_SUPPORT: 'y'

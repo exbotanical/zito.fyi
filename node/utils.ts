@@ -18,5 +18,6 @@ export function generateSlug(
   console.error('Missing post slug and title. Unable to generate a slug.')
 }
 
-export const withBasePath = (config: SiteConfig, url: string): string =>
-  config.basePath ? urlJoin(config.basePath, url) : url
+export function withBasePath(config: SiteConfig, url: string) {
+  return config.basePath ? urlJoin(config.basePath, url) : url
+}

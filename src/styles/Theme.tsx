@@ -4,8 +4,8 @@ import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 import { useLocalStorage } from '@/hooks'
 import { isBrowserRuntime } from '@/utils'
 
-import { KEYS } from './constants'
 import * as themes from './colors'
+import { KEYS } from './constants'
 import { Reset } from './Reset'
 import { ScrollbarStyles } from './Scrollbar'
 import { Typography } from './Typography'
@@ -53,6 +53,7 @@ interface ThemeProps {
 }
 
 const { darkTheme, lightTheme } = themes.nordTheme
+export { darkTheme, lightTheme }
 
 export const ThemeToggleContext = createContext({} as ThemeContext)
 

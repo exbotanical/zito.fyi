@@ -18,7 +18,7 @@ export const postsList: Post[] = [
     slug: '/first-test',
     route: '/first-test',
     pathName: '/first-test',
-    url: 'https://zito.dev/first-test'
+    url: 'https://zito.fyi/first-test'
   },
   {
     title: 'Test Two',
@@ -38,7 +38,7 @@ export const postsList: Post[] = [
     slug: '/test-two',
     route: '/test-two',
     pathName: '/test-two',
-    url: 'https://zito.dev/test-two'
+    url: 'https://zito.fyi/test-two'
   },
   {
     title: 'Test Three',
@@ -58,7 +58,7 @@ export const postsList: Post[] = [
     slug: '/test-three',
     route: '/test-three',
     pathName: '/test-three',
-    url: 'https://zito.dev/test-three'
+    url: 'https://zito.fyi/test-three'
   },
   {
     title: 'Test Four',
@@ -78,7 +78,7 @@ export const postsList: Post[] = [
     slug: '/test-three',
     route: '/test-three',
     pathName: '/test-three',
-    url: 'https://zito.dev/test-three'
+    url: 'https://zito.fyi/test-three'
   },
   {
     title: 'Test Four',
@@ -98,7 +98,7 @@ export const postsList: Post[] = [
     slug: '/test-four',
     route: '/test-four',
     pathName: '/test-four',
-    url: 'https://zito.dev/test-four'
+    url: 'https://zito.fyi/test-four'
   },
   {
     title: 'Test Five',
@@ -118,7 +118,7 @@ export const postsList: Post[] = [
     slug: '/test-five',
     route: '/test-five',
     pathName: '/test-five',
-    url: 'https://zito.dev/test-five'
+    url: 'https://zito.fyi/test-five'
   },
   {
     title: 'Test Six',
@@ -138,7 +138,7 @@ export const postsList: Post[] = [
     slug: '/test-six',
     route: '/test-six',
     pathName: '/test-six',
-    url: 'https://zito.dev/test-six'
+    url: 'https://zito.fyi/test-six'
   },
   {
     title: 'Test Seven',
@@ -158,6 +158,6 @@ export const postsList: Post[] = [
     slug: '/test-seven',
     route: '/test-seven',
     pathName: '/test-seven',
-    url: 'https://zito.dev/test-seven'
+    url: 'https://zito.fyi/test-seven'
   }
 ]

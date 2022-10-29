@@ -7,7 +7,7 @@ import type { SeoData, AbridgedPost } from './types'
 /**
  * Generate abridged post data from a given `allMdx` edge
  */
-export const generatePostData = (post: Post): AbridgedPost => {
+export function generatePostData(post: Post): AbridgedPost {
   const {
     category,
     coverImageAlt,
@@ -46,10 +46,10 @@ export const generatePostData = (post: Post): AbridgedPost => {
 /**
  * Generate SEO metadata
  */
-export const generateSeoData = (
+export function generateSeoData(
   siteMetadata: BaseSiteMetadata,
   postData?: AbridgedPost,
-): SeoData => {
+): SeoData {
   const isPost = !!postData
   const title = postData ? postData.title : siteMetadata.title
   const type = postData ? 'post' : 'page'

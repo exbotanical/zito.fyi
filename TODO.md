@@ -23,7 +23,7 @@
 - [x] add site logo
 - [ ] gatsby 4 caching and performance optimizations
 - [ ] vendor icons
-- [ ] add rel canonical
+- [x] add rel canonical
 - [x] switch to pnpm
 - [x] fix skeleton loader bg
 - [x] add share cta
@@ -47,4 +47,4 @@
 ## Misc
 
 - [x] attempt to create reusable workflow for pnpm scripts (again)
-- [ ] convert to monorepo
+- [ ] convert to true monorepo via pnpm workspaces

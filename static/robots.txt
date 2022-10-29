@@ -2,4 +2,4 @@ User-agent: *
 Disallow: */tags/
 Disallow: */categories/
 
-sitemap: https://zito.dev/sitemap.xml
+sitemap: https://zito.fyi/sitemap.xml

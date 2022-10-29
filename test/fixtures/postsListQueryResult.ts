@@ -8,7 +8,7 @@ export const postsListQueryResponse = {
             slug: '/test-one',
             route: '/test-one',
             pathName: '/test-one',
-            url: 'https://zito.dev/test-one'
+            url: 'https://zito.fyi/test-one'
           },
           excerpt:
             'Sedisti civiliter Lorem  markdownum  Ixione palus  semper peritura barbaque  in aureus\nobliquum erigitur gemmae utque cur natus, aera…',
@@ -66,7 +66,7 @@ export const postsListQueryResponse = {
             slug: '/test-ones',
             route: '/test-ones',
             pathName: '/test-ones',
-            url: 'https://zito.dev/test-ones'
+            url: 'https://zito.fyi/test-ones'
           },
           excerpt:
             'Sedisti civiliter Lorem  markdownum  Ixione palus  semper peritura barbaque  in aureus\nobliquum erigitur gemmae utque cur natus, aera…',

@@ -15,7 +15,7 @@ export const config: SiteConfig = {
     logoUrl: '',
     facebookAppId: '',
     twitterHandle: 'test',
-    url: 'https://zito.dev',
+    url: 'https://zito.fyi',
     rss: '/rss.xml',
     rssTitle: "Matthew Zito's Blog RSS Feed",
     googleAnalyticsId: '',
@@ -45,7 +45,7 @@ export const config: SiteConfig = {
     name: '',
     description: '',
     logoUrl: '',
-    url: 'https://zito.dev'
+    url: 'https://zito.fyi'
   },
   embeddedImageWidth: 768,
   embeddedVideoWidth: 920,

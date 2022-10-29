@@ -7,7 +7,7 @@ import type { UserMetadata, BaseSiteMetadata, OrgMetadata } from '@/types'
 import type { SeoData, AbridgedPost } from '../types'
 
 // recursively scan for nullish values
-export const containsEmptyValues = (data: unknown): boolean => {
+export function containsEmptyValues(data: unknown): boolean {
   if (Array.isArray(data)) {
     return !!data.find(item => containsEmptyValues(item))
   }
@@ -19,14 +19,12 @@ export const containsEmptyValues = (data: unknown): boolean => {
   return !data
 }
 
-export const tagListHasEmptyValues = (tagList: React.ReactElement[]): boolean =>
+export const tagListHasEmptyValues = (tagList: React.ReactElement[]) =>
   !!tagList.find(
     tag => containsEmptyValues(tag.type) || containsEmptyValues(tag.props),
   )
 
-export const tagListHasUniqueKeys = (
-  tagList: React.ReactElement[],
-): boolean => {
+export function tagListHasUniqueKeys(tagList: React.ReactElement[]) {
   const keys = tagList.map(tag => tag.key)
 
   return new Set(keys).size === keys.length
@@ -45,7 +43,7 @@ export const seoData: {
     description: '',
     logoUrl: '',
     name: '',
-    url: 'https://zito.dev',
+    url: 'https://zito.fyi',
   },
   post: {
     body: 'Post body',
@@ -95,7 +93,7 @@ export const seoData: {
     title: "Matthew Zito's Blog",
     titleAbridged: "Zito's Blog",
     twitterHandle: 'test',
-    url: 'https://zito.dev',
+    url: 'https://zito.fyi',
   },
   user: {
     about: 'A paragraph about me, the author and site admin.',

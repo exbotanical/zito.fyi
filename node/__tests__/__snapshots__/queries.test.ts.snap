@@ -60,7 +60,7 @@ obliquum erigitur gemmae utque cur natus, aera…",
     ],
     "timeToRead": 1,
     "title": "Test One",
-    "url": "https://zito.dev/test-one",
+    "url": "https://zito.fyi/test-one",
   },
   Object {
     "body": undefined,
@@ -119,7 +119,7 @@ obliquum erigitur gemmae utque cur natus, aera…",
     ],
     "timeToRead": 1,
     "title": "Test Ones",
-    "url": "https://zito.dev/test-ones",
+    "url": "https://zito.fyi/test-ones",
   },
 ]
 `;

@@ -20,10 +20,7 @@ type GraphqlType = <TData, TVariables = any>(
   data?: TData
 }>
 
-export const getAllPostsByTag = async (
-  graphql: GraphqlType,
-  tag: string,
-): Promise<Post[]> => {
+export async function getAllPostsByTag(graphql: GraphqlType, tag: string) {
   const tagQueryResult = await graphql<QueryAllPostsResult>(
     allPostsByTagQuery,
     {
@@ -46,19 +43,14 @@ export async function getAllPostsByCategory(
   return processQueryResult(categoryQueryResult)
 }
 
-export const resolveAllPostsFromQuery = (
-  allPosts: QueryAllPostsResult,
-): Post[] => {
+export function resolveAllPostsFromQuery(allPosts: QueryAllPostsResult) {
   const { edges } = allPosts.allMdx
-
   const nodes = edges.map(edge => edge.node)
 
   return nodes.map(node => mdxNodeToPost(node))
 }
 
-const processQueryResult = (
-  result: QueryResult,
-): ReturnType<typeof resolveAllPostsFromQuery> => {
+function processQueryResult(result: QueryResult) {
   if (result.errors) {
     console.error(
       '[processQueryResult] Error while processing query results. See:',
@@ -78,7 +70,7 @@ const processQueryResult = (
   return resolveAllPostsFromQuery(result.data)
 }
 
-export const getAllPosts = async (graphql: GraphqlType): Promise<Post[]> => {
+export async function getAllPosts(graphql: GraphqlType) {
   const indexQueryResult = await graphql<QueryAllPostsResult>(allPostsQuery, {
     today: new Date(),
   })

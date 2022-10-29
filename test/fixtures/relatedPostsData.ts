@@ -75,7 +75,7 @@ export const poolOfPostsFull: Post[] = [
     slug: '/lorem-ipsum-3001',
     route: '/lorem-ipsum-3001',
     pathName: '/lorem-ipsum-3001',
-    url: 'https://zito.dev/lorem-ipsum-3001'
+    url: 'https://zito.fyi/lorem-ipsum-3001'
   },
   {
     title: 'Lorem Ipsum 3000',
@@ -94,7 +94,7 @@ export const poolOfPostsFull: Post[] = [
     slug: '/lorem-ipsum-3000',
     route: '/lorem-ipsum-3000',
     pathName: '/lorem-ipsum-3000',
-    url: 'https://zito.dev/lorem-ipsum-3000'
+    url: 'https://zito.fyi/lorem-ipsum-3000'
   },
   {
     title: 'Andrea Zittel 2',
@@ -113,7 +113,7 @@ export const poolOfPostsFull: Post[] = [
     slug: '/andrea-zittel-2',
     route: '/andrea-zittel-2',
     pathName: '/andrea-zittel-2',
-    url: 'https://zito.dev/andrea-zittel-2'
+    url: 'https://zito.fyi/andrea-zittel-2'
   },
   {
     title: 'Andrea Zittel',
@@ -132,7 +132,7 @@ export const poolOfPostsFull: Post[] = [
     slug: '/andrea-zittel',
     route: '/andrea-zittel',
     pathName: '/andrea-zittel',
-    url: 'https://zito.dev/andrea-zittel'
+    url: 'https://zito.fyi/andrea-zittel'
   },
   {
     title: 'Lorem Ipsum 33',
@@ -152,7 +152,7 @@ export const poolOfPostsFull: Post[] = [
     slug: '/lorem-ipsum-33',
     route: '/lorem-ipsum-33',
     pathName: '/lorem-ipsum-33',
-    url: 'https://zito.dev/lorem-ipsum-33'
+    url: 'https://zito.fyi/lorem-ipsum-33'
   },
   {
     title: 'Toulouse Lautrec',
@@ -172,7 +172,7 @@ export const poolOfPostsFull: Post[] = [
     slug: '/toulouse-lautrec',
     route: '/toulouse-lautrec',
     pathName: '/toulouse-lautrec',
-    url: 'https://zito.dev/toulouse-lautrec'
+    url: 'https://zito.fyi/toulouse-lautrec'
   },
   {
     title: 'Francis Bacon',
@@ -191,7 +191,7 @@ export const poolOfPostsFull: Post[] = [
     slug: '/francis-bacon',
     route: '/francis-bacon',
     pathName: '/francis-bacon',
-    url: 'https://zito.dev/francis-bacon'
+    url: 'https://zito.fyi/francis-bacon'
   },
   {
     title: 'Exmagma 2',
@@ -210,7 +210,7 @@ export const poolOfPostsFull: Post[] = [
     slug: '/exmagma-2',
     route: '/exmagma-2',
     pathName: '/exmagma-2',
-    url: 'https://zito.dev/exmagma-2'
+    url: 'https://zito.fyi/exmagma-2'
   },
   {
     title: 'Exmagma',
@@ -229,7 +229,7 @@ export const poolOfPostsFull: Post[] = [
     slug: '/exmagma',
     route: '/exmagma',
     pathName: '/exmagma',
-    url: 'https://zito.dev/exmagma'
+    url: 'https://zito.fyi/exmagma'
   },
   {
     title: 'Lorem Ipsum 2',
@@ -248,7 +248,7 @@ export const poolOfPostsFull: Post[] = [
     slug: '/lorem-ipsum-2',
     route: '/lorem-ipsum-2',
     pathName: '/lorem-ipsum-2',
-    url: 'https://zito.dev/lorem-ipsum-2'
+    url: 'https://zito.fyi/lorem-ipsum-2'
   },
   {
     title: 'Ida Applebroog',
@@ -268,7 +268,7 @@ export const poolOfPostsFull: Post[] = [
     slug: '/ida-applebroog',
     route: '/ida-applebroog',
     pathName: '/ida-applebroog',
-    url: 'https://zito.dev/ida-applebroog'
+    url: 'https://zito.fyi/ida-applebroog'
   },
   {
     title: 'Elric of Melnibone',
@@ -287,7 +287,7 @@ export const poolOfPostsFull: Post[] = [
     slug: '/elric-of-melnibone',
     route: '/elric-of-melnibone',
     pathName: '/elric-of-melnibone',
-    url: 'https://zito.dev/elric-of-melnibone'
+    url: 'https://zito.fyi/elric-of-melnibone'
   },
   {
     title: 'Lorem Capra',
@@ -307,7 +307,7 @@ export const poolOfPostsFull: Post[] = [
     slug: '/lorem-capra',
     route: '/lorem-capra',
     pathName: '/lorem-capra',
-    url: 'https://zito.dev/lorem-capra'
+    url: 'https://zito.fyi/lorem-capra'
   },
   {
     title: 'My Favorite Soft Machine Records',
@@ -327,7 +327,7 @@ export const poolOfPostsFull: Post[] = [
     slug: '/my-favorite-soft-machine-records',
     route: '/my-favorite-soft-machine-records',
     pathName: '/my-favorite-soft-machine-records',
-    url: 'https://zito.dev/my-favorite-soft-machine-records'
+    url: 'https://zito.fyi/my-favorite-soft-machine-records'
   },
   {
     title: 'Lorem Ipsum',
@@ -346,7 +346,7 @@ export const poolOfPostsFull: Post[] = [
     slug: '/lorem-ipsum',
     route: '/lorem-ipsum',
     pathName: '/lorem-ipsum',
-    url: 'https://zito.dev/lorem-ipsum'
+    url: 'https://zito.fyi/lorem-ipsum'
   }
 ]
 
@@ -367,5 +367,5 @@ export const edgeCaseTargetPost: Post = {
   slug: '/andrea-zittel',
   route: '/andrea-zittel',
   pathName: '/andrea-zittel',
-  url: 'https://zito.dev/andrea-zittel'
+  url: 'https://zito.fyi/andrea-zittel'
 }

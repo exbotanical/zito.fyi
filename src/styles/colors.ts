@@ -61,27 +61,27 @@ export const nordTheme = {
     dark: true,
     colors: {
       font: {
-        primary: '#d8dee9',
-        secondary: '#81A1C1',
-        hover: '#A3BE8C',
+        primary: 'rgb(216, 222, 233)',
+        secondary: 'rgb(129, 161, 193)',
+        hover: 'rgb(163, 190, 140)',
       },
       bg: {
-        primary: '#232731',
-        secondary: '#292D38',
-        tertiary: '#A3BE8C',
-        quaternary: '#3B4252',
+        primary: 'rgb(35, 39, 49)',
+        secondary: 'rgb(41, 45, 56)',
+        tertiary: 'rgb(163, 190, 140)',
+        quaternary: 'rgb(59, 66, 82)',
       },
 
       border: {
-        primary: '#88c0d0',
+        primary: 'rgb(136, 192, 208)',
       },
 
-      link: '#88c0d0',
+      link: 'rgb(136, 192, 208)',
       scroll: {
-        fg: '#434c5eaa',
-        bg: '#434c5e99',
+        fg: 'rgb(180, 142, 173)',
+        bg: 'rgb(67, 76, 94)',
       },
-      base: '#E5E9F0',
+      base: 'rgb(229, 233, 240)',
     },
   },
 }

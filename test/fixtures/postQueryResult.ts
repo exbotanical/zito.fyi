@@ -56,7 +56,7 @@ export const postQueryResult: PostBySlugQueryResult = {
       slug: '/bold-mage',
       route: '/bold-mage',
       pathName: '/bold-mage',
-      url: 'https://zito.dev/bold-mage'
+      url: 'https://zito.fyi/bold-mage'
     },
     internal: {
       content:

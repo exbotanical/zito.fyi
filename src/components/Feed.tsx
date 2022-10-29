@@ -31,7 +31,7 @@ const WidthLimitedGrid = styled(LayoutWidthContainer)`
   justify-items: stretch;
 `
 
-export function Feed({ feedItems, hideHero }: FeedProps): JSX.Element {
+export function Feed({ feedItems, hideHero }: FeedProps) {
   return (
     <WidthLimitedGrid>
       <Wrapper>

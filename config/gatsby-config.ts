@@ -28,6 +28,12 @@ const gatsbyConfig: GatsbyConfig = {
     },
     'gatsby-plugin-react-helmet',
     {
+      resolve: 'gatsby-plugin-react-helmet-canonical-urls',
+      options: {
+        siteUrl: config.site.url,
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'assets',

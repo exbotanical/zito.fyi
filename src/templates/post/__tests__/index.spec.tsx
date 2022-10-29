@@ -43,7 +43,7 @@ describe('`PostTemplate`', () => {
     expect(helmet.metaTags).toStrictEqual(
       expect.arrayContaining([
         {
-          content: 'https://zito.dev/bold-mage',
+          content: 'https://zito.fyi/bold-mage',
           property: 'og:url',
         },
       ]),

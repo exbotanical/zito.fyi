@@ -10,14 +10,14 @@ interface SeoArgs {
   siteData: BaseSiteMetadata
 }
 
-export const TwitterTags = ({
+export function TwitterTags({
   seoData,
   userData,
   siteData,
-}: SeoArgs): TwitterTagList => {
+}: SeoArgs): TwitterTagList {
   const { title, description, imageUrl, imageAlt } = seoData
-  const usertwitterHandle = userData?.twitterHandle
-  const sitetwitterHandle = siteData.twitterHandle
+  const userTwitterHandle = userData?.twitterHandle
+  const siteTwitterHandle = siteData.twitterHandle
 
   const tagList: TwitterTagList = []
 
@@ -28,15 +28,22 @@ export const TwitterTags = ({
   addTypeSafeTag('twitter:card', 'summary_large_image')
   addTypeSafeTag('twitter:title', title)
 
-  if (description) addTypeSafeTag('twitter:description', description)
+  if (description) {
+    addTypeSafeTag('twitter:description', description)
+  }
 
-  if (imageUrl) addTypeSafeTag('twitter:image', imageUrl)
-
+  if (imageUrl) {
+    addTypeSafeTag('twitter:image', imageUrl)
+  }
   addTypeSafeTag('twitter:image:alt', imageAlt)
 
-  if (usertwitterHandle) addTypeSafeTag('twitter:creator', usertwitterHandle)
+  if (userTwitterHandle) {
+    addTypeSafeTag('twitter:creator', userTwitterHandle)
+  }
 
-  if (sitetwitterHandle) addTypeSafeTag('twitter:site', sitetwitterHandle)
+  if (siteTwitterHandle) {
+    addTypeSafeTag('twitter:site', siteTwitterHandle)
+  }
 
   return tagList.map(tag => ({
     ...tag,

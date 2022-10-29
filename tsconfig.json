@@ -3,12 +3,8 @@
     "module": "commonjs",
     "target": "esnext",
     "jsx": "react",
-    "lib": [
-			"dom",
-			"es2015",
-			"es2017",
-			"es2019"
-		],
+    "lib": ["dom", "es2015", "es2017", "es2019"],
+    "types": ["jest", "@testing-library/jest-dom"],
     "strict": true,
     "noEmit": true,
     "isolatedModules": true,
@@ -16,13 +12,14 @@
     "skipLibCheck": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-		"resolveJsonModule": true,
-		"forceConsistentCasingInFileNames": true,
-		"baseUrl": ".",
-		"paths": {
-			"@/*": ["src/*"],
-			"@@/*": ["test/*"]
-		}
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@@/*": ["test/*"]
+    }
   },
-	"include": ["node", "src", "test", "*.ts", "config"]
+  "exclude": ["cypress.config.ts"],
+  "include": ["node", "src", "test", "*.ts", "config"]
 }

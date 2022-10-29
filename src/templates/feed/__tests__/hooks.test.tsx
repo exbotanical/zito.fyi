@@ -55,7 +55,7 @@ const wrapper = ({ children }: { children: React.ReactChildren }) => (
   <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 )
 
-const mockFetch = () => {
+function mockFetch() {
   fetchMock.mock(/\/feed_meta\/index-(.+).json/, url => {
     const idMatches = /index-(.+).json/.exec(url)
     const pageId = idMatches ? idMatches[1] : undefined

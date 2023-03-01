@@ -64,6 +64,10 @@ export const ShareLabel = styled(H3)`
 
 export const AuthorName = styled(H3)`
   color: ${({ theme }) => theme.colors.font.secondary};
+
+  @media (max-width: ${BREAKPOINTS.sm}) {
+    text-align: center;
+  }
 `
 
 export const AboutText = styled.div`
@@ -76,6 +80,7 @@ export const AboutText = styled.div`
   }
 
   @media (max-width: ${BREAKPOINTS.sm}) {
+    width: 100%;
     & > p {
       text-align: justify;
     }

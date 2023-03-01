@@ -1,5 +1,4 @@
 import 'prism-themes/themes/prism-nord.css'
-import 'prismjs/plugins/command-line/prism-command-line.css'
 
 import { QueryWrapper } from './src/context/QueryWrapper'
 

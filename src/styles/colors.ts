@@ -1,8 +1,11 @@
-export const invertTheme = {
+import type { Theme } from './Theme'
+
+export const invertTheme: Record<'lightTheme' | 'darkTheme', Theme> = {
   lightTheme: {
     dark: false,
     colors: {
       font: {
+        heading: '#81A1C1',
         primary: 'rgb(0, 0, 0)',
         secondary: 'rgb(251, 248, 228)',
         hover: 'rgb(250, 239, 204)',
@@ -29,6 +32,7 @@ export const invertTheme = {
     dark: true,
     colors: {
       font: {
+        heading: 'inherit',
         primary: 'rgb(206, 166, 186)',
         secondary: 'rgb(206, 166, 186)',
         hover: 'rgb(47, 43, 69)',
@@ -61,6 +65,7 @@ export const nordTheme = {
     dark: true,
     colors: {
       font: {
+        heading: 'inherit',
         primary: 'rgb(216, 222, 233)',
         secondary: 'rgb(129, 161, 193)',
         hover: 'rgb(163, 190, 140)',

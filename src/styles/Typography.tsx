@@ -179,6 +179,8 @@ const DesktopCode = css`
 `
 
 const H1WithStyle = css`
+  color: ${({ theme }) => theme.colors.font.heading};
+
   ${MobileH1}
   @media (min-width: ${BREAKPOINTS.sm}) {
     ${DesktopH1}
@@ -186,6 +188,8 @@ const H1WithStyle = css`
 `
 
 const H2WithStyle = css`
+  color: ${({ theme }) => theme.colors.font.heading};
+
   ${MobileH2}
   @media (min-width: ${BREAKPOINTS.sm}) {
     ${DesktopH2}

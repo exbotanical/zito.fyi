@@ -69,7 +69,7 @@ export function PostShare({ post }: PostShareProps): JSX.Element {
   const { title, excerpt, url } = post
 
   // eslint-disable-next-line react/hook-use-state
-  const [showLinkNotification, setShowlinkNotification] = useState(false)
+  const [showLinkNotification, setShowLinkNotification] = useState(false)
 
   const config = useConfig()
   const relatedTwitterHandles = generateRelatedTwitterHandles(config)
@@ -105,14 +105,14 @@ export function PostShare({ post }: PostShareProps): JSX.Element {
           <S.LinkButton
             onClick={() => {
               void navigator.clipboard.writeText(url)
-              setShowlinkNotification(true)
+              setShowLinkNotification(true)
             }}
             size={ICON_SIZE}
           />
           {showLinkNotification && (
             <LinkCopyNotification
               onAnimationEnd={() => {
-                setShowlinkNotification(false)
+                setShowLinkNotification(false)
               }}
             />
           )}

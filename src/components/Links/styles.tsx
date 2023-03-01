@@ -62,7 +62,7 @@ const AnimatedCSS = css<LinkStyleProps>`
 `
 
 const HeadingCss = css`
-  color: inherit;
+  color: ${({ theme }) => theme.colors.font.heading};
   text-decoration: none;
 
   &:hover::before {

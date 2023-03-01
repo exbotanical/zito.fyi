@@ -13,13 +13,14 @@ import { Typography } from './Typography'
 type Themes = 'dark' | 'light'
 
 // Use typeof to ensure parity between the themes
-interface Theme {
+export interface Theme {
   dark: boolean
   colors: {
     font: {
       primary: string
       secondary: string
       hover: string
+      heading: string
     }
     bg: {
       primary: string

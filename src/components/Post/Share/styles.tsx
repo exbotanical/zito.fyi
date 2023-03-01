@@ -35,6 +35,11 @@ export const LinkWrapper = styled.div`
 export const Label = styled(H1)`
   color: ${({ theme }) => theme.colors.base};
   text-transform: uppercase;
+
+  @supports (-webkit-text-stroke: 3px white) {
+    -webkit-text-stroke: 3px ${({ theme }) => (theme.dark ? 'white' : 'black')};
+    -webkit-text-fill-color: ${({ theme }) => (theme.dark ? 'black' : 'white')};
+  }
 `
 
 export const LinkGrid = styled.div`

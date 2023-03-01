@@ -18,13 +18,9 @@ footerTestPages.forEach(url => {
 
     it('has user links', () => {
       cy.get('@footer').then(container => {
-        cy.findByRole('link', { name: 'Twitter Profile', container })
+        cy.findByRole('link', { name: 'YouTube Channel', container })
           .closest('a')
-          .should(
-            'have.attr',
-            'href',
-            `https://twitter.com/${config.user.twitterHandle}`,
-          )
+          .should('have.attr', 'href', config.user.youtubeUrl)
 
           .findByRole('link', { name: 'GitHub Profile', container })
           .closest('a')

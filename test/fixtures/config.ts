@@ -39,7 +39,8 @@ export const config: SiteConfig = {
     linkedIn: 'matthew-zito-9a03b3127',
     location: 'United States',
     surname: 'Zito',
-    twitterHandle: 'exbotanical'
+    twitterHandle: 'exbotanical',
+    youtubeUrl: 'https://www.youtube.com/@thepeerdependency'
   },
   organization: {
     name: '',

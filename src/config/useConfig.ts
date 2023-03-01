@@ -48,6 +48,7 @@ export const useConfig = (): SiteConfig => {
                 linkedIn
                 location
                 twitterHandle
+                youtubeUrl
               }
               site {
                 backgroundColor

@@ -1,4 +1,9 @@
-import { Twitter, LinkedinSquare, Github } from '@styled-icons/boxicons-logos'
+import {
+  Twitter,
+  LinkedinSquare,
+  Github,
+  Youtube,
+} from '@styled-icons/boxicons-logos'
 import { MailSend, Rss } from '@styled-icons/boxicons-regular'
 import React from 'react'
 import styled from 'styled-components'
@@ -32,6 +37,12 @@ function renderTwitterLink(config: Readonly<SiteConfig>) {
 
   const url = `https://twitter.com/${username}`
   return generateLink(url, 'Twitter Profile', Twitter)
+}
+
+function renderYouTubeLink(config: Readonly<SiteConfig>) {
+  const url = config.user.youtubeUrl
+
+  return url ? generateLink(url, 'YouTube Channel', Youtube) : null
 }
 
 function renderGitHubLink(config: Readonly<SiteConfig>) {
@@ -88,7 +99,8 @@ export function Socials({
 
   return (
     <LinkGrid className={className}>
-      {renderTwitterLink(config)}
+      {/* {renderTwitterLink(config)} */}
+      {renderYouTubeLink(config)}
       {renderGitHubLink(config)}
       {generateLinkedInLink(config)}
       {renderEmailLink(config)}

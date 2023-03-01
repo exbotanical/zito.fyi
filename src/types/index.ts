@@ -118,7 +118,7 @@ export interface BaseSiteMetadata {
   language: string
   logoUrl: string
   facebookAppId?: string
-  twitterHandle?: string
+  twitterHandle?: string // TODO restrict to only UserMetadata
   url: string
   copyright: {
     name: string
@@ -137,6 +137,7 @@ export interface UserMetadata {
   firstName: string
   surname: string
   twitterHandle?: string
+  youtubeUrl?: string
   linkedIn?: string
   github?: string
   email: string

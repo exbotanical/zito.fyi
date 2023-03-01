@@ -108,5 +108,6 @@ export const seoData: {
     location: 'United States',
     surname: 'Zito',
     twitterHandle: 'test',
+    youtubeUrl: 'youtube',
   },
 }

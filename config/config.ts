@@ -199,5 +199,10 @@ export const config: SiteConfig = isTestEnv
          * Admin twitter handle
          */
         twitterHandle: 'exbotanical',
+
+        /**
+         * Admin YouTube url
+         */
+        youtubeUrl: 'https://www.youtube.com/@thepeerdependency',
       },
     }

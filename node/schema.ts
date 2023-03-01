@@ -28,6 +28,7 @@ export const ConfigSchema = `#graphql
     firstName: String!
     surname: String!
     twitterHandle: String
+    youtubeUrl: String
     linkedIn: String
     github: String
     email: String!

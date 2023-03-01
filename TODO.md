@@ -41,6 +41,7 @@
 - [ ] Fix syntax highlighting in light mode (it's black and difficult to see)
 
 ## Dependencies
+
 - [x] switch to pnpm
 - [ ] resolve `validateDOMNesting` via `remark-unwrap-images`
 - [ ] gatsby 4 caching and performance optimizations

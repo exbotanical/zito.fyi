@@ -14,7 +14,7 @@ This last year, I added Java to the list of languages I've worked with in a prof
 
 Java is a fascinating language, its history mired in woes of transactional enterprise interference and a stubborn commitment to backwards compatibility. Like most languages Java's history has shaped it, and I found it accessible and easy to learn in part due to JavaScript being its syntactic successor.
 
-Java has a rich and diverse standard library and the APIs therein are for the most part intuitive and useful. Its capacity for meta-programming via reflection and annotations is one of the more unique programming paradigms I've seen in my tenure as an avid aficionado of language design. Its concurrency package `java.util.concurrent` provides ample facility to craft synchronization policies with immense granularity, and moreover plenty of utilities that can do this for you.
+Java has a rich and diverse standard library and the APIs therein are for the most part intuitive and useful. Its capacity for meta-programming via reflection and annotations is one of the more unique programming paradigms I've seen in my tenure as an avid aficionado of language design. Its concurrency package `java.util.concurrent` provides ample facility to craft synchronization policies with great granularity, and moreover plenty of utilities that can do this for you.
 
 That said, unlike many Java programmers, I didn't learn Java at university. It wasn't my first language. I came to Java with staunchly-held opinions I'd crafted over several thousand hours of programming across a spectrum of JavaScript, TypeScript, Python, C, and Go. Something you learn after some time with code is that all these ostensibly incredible feats of software engineering you once marveled at as a neophyte were made by idiosyncratic people just like you, with their own baggage of historical context, structural workarounds, weird resource constraints, and sometimes outright mistakes.
 
@@ -22,11 +22,11 @@ I used to think, for example, that the UNIX tradition was infallible. It is only
 
 ## The Java Ecosystem is Terrible
 
-> Most Java programmers look at the engineering world from the vantage-point of Java, and thus do not realize just how shitty the Java ecosystem is.
+> Most Java programmers look at the engineering world from the vantage-point of Java, and thus do not realize just how awful the Java ecosystem is.
 
 This is my most outstanding gripe about Java: the ecosystem is _fucking terrible_. Let's start with build systems. The vast majority of Java build systems (e.g. Ant, Maven) stubbornly continue to champion the bulky, antiquated XML, which is notoriously verbose and exceedingly difficult to read. Although Gradle graduated to leveraging JVM languages (i.e. DSL) for configuration files, the documentation (we'll get to Java documentation momentarily) is poor and the overall structure of the configurations it lends to is even worse (how about that convoluted tasks system?).
 
-There seems to be little consensus around package management in Java; sometimes you include a compiled jar file, other times you use the build system's repositories (for which the necessary configurations are inanely overcomplicated). I suspect most Java programmers don't really understand how their projects are actually being compiled — and who can blame them? A terrifying majority of Java build configuration involves copy-pasting shit with no explanation (again, we'll get to documentation soon enough) and hoping it works. While we're on the subject of Maven, let's not forget the entire framework makes your build entirely network-dependent. I cannot imagine maintaining a Maven-based build configuration is even tenable long-term.
+There seems to be little consensus around package management in Java; sometimes you include a compiled jar file, other times you use the build system's repositories (for which the necessary configurations are inanely overcomplicated). I suspect most Java programmers don't really understand how their projects are actually being compiled — and who can blame them? A terrifying majority of Java build configuration involves copy-pasting with no explanation (again, we'll get to documentation soon enough) and hoping it works. While we're on the subject of Maven, let's not forget the entire framework makes your build entirely network-dependent. I cannot imagine maintaining a Maven-based build configuration is even tenable long-term.
 
 ### But wait...there's more!
 

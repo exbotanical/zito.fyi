@@ -36,6 +36,11 @@
 - [x] fix tags alignment
 - [ ] upgrade to React 18
 - [x] ensure datePublished in future posts are not rendered (use query filter)
+- [ ] fix mobile responsivity
+- [ ] change SHARE section
+- [ ] add YT and remove Twitter
+  - [ ] Add feature flags?
+- [ ] Update Java post
 
 ## Cypress
 

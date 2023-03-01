@@ -38,7 +38,15 @@
   - [ ] Add feature flags?
 - [ ] Update Java post
 - [ ] Fix colors (some don't update when toggling modes)
-- [ ] Fix syntax highlighting in light mode (it's black and difficult to see)
+- [x] Fix syntax highlighting in light mode (it's black and difficult to see)
+- [ ] sticky header
+- [ ] do not use nord syntax highlighting theme in light mode
+- [ ] add copy tooltip to code blocks
+- [px] do not use solid black font color in light mode
+- [ ] fix wrap on tags and categories caption
+
+## Content
+- [ ] Change post preview to be the frontmatter description
 
 ## Dependencies
 

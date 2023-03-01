@@ -17,14 +17,11 @@ describe('component Socials', () => {
   it('renders social links', async () => {
     RenderStyled(<Socials />)
 
-    const twitterLink = screen.getByRole('link', {
-      name: 'Twitter Profile',
+    const youtubeLink = screen.getByRole('link', {
+      name: 'YouTube Channel',
     })
 
-    expect(twitterLink).toHaveAttribute(
-      'href',
-      `https://twitter.com/${user.twitterHandle}`,
-    )
+    expect(youtubeLink).toHaveAttribute('href', user.youtubeUrl)
 
     const githubLink = await screen.findByRole('link', {
       name: 'GitHub Profile',

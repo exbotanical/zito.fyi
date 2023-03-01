@@ -1,9 +1,4 @@
-import {
-  Twitter,
-  LinkedinSquare,
-  Github,
-  Youtube,
-} from '@styled-icons/boxicons-logos'
+import { LinkedinSquare, Github, Youtube } from '@styled-icons/boxicons-logos'
 import { MailSend, Rss } from '@styled-icons/boxicons-regular'
 import React from 'react'
 import styled from 'styled-components'
@@ -26,17 +21,6 @@ function generateLink(
       <Icon size={48} />
     </IconLink>
   )
-}
-
-function renderTwitterLink(config: Readonly<SiteConfig>) {
-  const username = config.user.twitterHandle
-
-  if (!username) {
-    return null
-  }
-
-  const url = `https://twitter.com/${username}`
-  return generateLink(url, 'Twitter Profile', Twitter)
 }
 
 function renderYouTubeLink(config: Readonly<SiteConfig>) {

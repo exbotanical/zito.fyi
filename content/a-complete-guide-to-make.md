@@ -12,7 +12,7 @@ tags:
 
 Make is a build automation tool originally created by Stuart Feldman at Bell Labs in 1976. It should really say something to you that a build tool created almost 50 years ago (at the time of writing this post, anyway) is still among the most widely-used tools for building large-scale C and C++ programs (this tends to be the case, though Make doesn't care what language your project uses). Projects such as the Linux kernel, the GNU Compiler Collection (gcc), Git, and the Python programming language use Make. Needless to say, knowing how to use Make is a valuable skill.
 
-The only problem with this is Make is notoriously difficult to learn. There's no scarcity of criticism surrounding its complexity; many guides and tutorials only further confuse the eager learner. I was one of these eager learners, and I failed to learn Make several times. But lately, I feel like I've finally got the hang of it, and I'd like to pass along what I've learned to you so perhaps you won't endure the same frustrations I did.
+The only problem with this is Make is notoriously difficult to learn. There's no scarcity of criticism surrounding its complexity; many guides and tutorials only further confuse the eager learner. I was one such eager learner, and I failed to learn Make several times. But lately, I feel like I've finally got the hang of it, and I'd like to pass along what I've learned to you so perhaps you won't endure the same frustrations I did.
 
 > Note: This guide assumes you are using GNU Make. GNU Make was created by Richard Stallman and Roland McGrath in 1987 as part of the GNU Project. It's the standard implementation of Make these days and adds extensions over the original Make, many of which we'll learn about in this post.
 
@@ -37,7 +37,7 @@ This Makefile specifies that the `program` executable should be built from the `
 
 The syntax of a Makefile is based on rules that define how to build a target (usually a file or an executable) from its dependencies (usually other files or object files). Each rule consists of a target, its dependencies, and the commands needed to build the target from its dependencies.
 
-Speaking of syntax, let's take a closer look at the syntax used in Makefiles.
+Let's take a closer look at the syntax used in Makefiles.
 
 ## Makefile Syntax 101
 
@@ -53,11 +53,12 @@ In this rule, `target` is the name of the file or executable that we want to bui
 
 Note that the commands in a rule _must_ be indented with a tab character (not spaces), or execution will fail (with the mildly cryptic `Makefile:<line number>: *** missing separator. Stop`). If you're frustrated by this weird, seemingly arbitrary restriction, you're not the first. To quote the seminal [UNIX-HATERS Handbook](https://en.wikipedia.org/wiki/The_UNIX-HATERS_Handbook):
 
-> The problem with Dennis’ Makefile is that when he added the comment line, he inadvertently inserted a space before the tab character at the beginning of line 2. The tab character is a very important part of the syntax of Makefiles. All command lines (the lines beginning with cc in our example) must start with tabs. After he made his change, line 2 didn’t, hence the error.
+> *"The problem with Dennis’ Makefile is that when he added the comment line, he inadvertently inserted a space before the tab character at the beginning of line 2. The tab character is a very important part of the syntax of Makefiles. All command lines (the lines beginning with cc in our example) must start with tabs. After he made his change, line 2 didn’t, hence the error."*
+>
+> *"So what?"" you ask, "What’s wrong with that?"*
+>
+> *"There is nothing wrong with it, by itself. It’s just that when you consider how other programming tools work in Unix, using tabs as part of the syntax is like one of those pungee stick traps in The Green Berets: the poor kid from Kansas is walking point in front of John Wayne and doesn’t see the trip wire. After all, there are no trip wires to watch out for in Kansas corn fields. WHAM!"*
 
-> "So what?"" you ask, "What’s wrong with that?"
-
-> There is nothing wrong with it, by itself. It’s just that when you consider how other programming tools work in Unix, using tabs as part of the syntax is like one of those pungee stick traps in The Green Berets: the poor kid from Kansas is walking point in front of John Wayne and doesn’t see the trip wire. After all, there are no trip wires to watch out for in Kansas corn fields. WHAM!
 
 So...yeah, gotta watch out for that.
 
@@ -105,7 +106,7 @@ CFLAGS = -Wall -Werror -O2
 
 ### Best Practices on = versus :=
 
-By the way, in Make there are two main ways to set variables: with `=` and with `:=`. The difference between them is _when_ th.y are evaluated. `=`-assigned variables are evaluated when they are _used_, whereas `:=`-assigned variables are evaluated when they are _defined_ (i.e. immediately).
+By the way, in Make there are two main ways to set variables: with `=` and with `:=`. The difference between them is _when_ they are evaluated. `=`-assigned variables are evaluated when they are _used_, whereas `:=`-assigned variables are evaluated when they are _defined_ (i.e. immediately).
 
 Here's an example to demonstrate the difference:
 
@@ -126,14 +127,14 @@ BAR := hello
 FOO := $(BAR)
 
 all:
-  echo $(FOO)
+  @echo $(FOO)
 ```
 
 Now `BAR` is set before `FOO`, so `FOO` will be set to `hello` and the output of the echo command will be `hello`.
 
 As a best practice, it is generally recommended to use `:=` for variables that don't depend on other variables, and `=` for variables that do.
 
-Also, we'll talk about that `@` before the `echo` command in just a few. But first, let's step up the complexity a tad and look at the more advanced features of Make.
+We'll talk about that `@` before the `echo` command in just a few. But first, let's step up the complexity a tad and look at the more advanced features of Make.
 
 ### Optional Assignment
 
@@ -216,9 +217,9 @@ clean:
   rm -f *.o program
 ```
 
-In this rule, `clean` is a _phony_ target that specifies how to remove all object files and the `program` executable. Note that we use the `.PHONY` directive to tell make that `clean` is not a file, but rather a phony target. If we didn't do this — and we happened to have a file in the root directory named `clean` — running `make clean` would yield `make: 'clean' is up to date.`.
+In this rule, `clean` is a _phony_ target that specifies how to remove all object files and the `program` executable. Note that we use the `.PHONY` directive to tell make that `clean` is not a file, but rather a phony target. If we didn't do this — and we happened to have a file in the root directory named `clean` — running `make clean` would yield `make: 'clean' is up to date` because the file named `clean` exists (i.e. Make thinks it has been "built" already).
 
-By the way, you can specify your phony targets in a single line, like:
+By the way, you can specify many phony targets in a single line, like:
 
 ```makefile
 .PHONY: clean test whatever
@@ -346,9 +347,11 @@ all:
 
 Here, the `$(shell)` function is used to execute the `date` command and assign its output to the `BUILD_DATE` variable. The variable can then be used in a rule to include the date and time in the output.
 
-Again, the `@` symbol before the echo command will prevent the command itself from being printed to the terminal. Only the output (Hello, world!) will be printed. This is useful for keeping the output of your Makefile clean and concise. If you have a lot of commands being run, you may not want to clutter the output with the commands themselves.
+Again, the `@` symbol before the echo command will prevent the command itself from being printed to the terminal. This is useful for keeping the output of your Makefile clean and concise. If you have a lot of commands being run, you may not want to clutter the output with the commands themselves.
 
-## Rules Can Be Fun?!
+## Bending the Rules
+
+Let's look at some cool things we can do with rules.
 
 ### The $(MAKE) Directive
 
@@ -502,10 +505,10 @@ In this example, the `sources.mk` file specifies the source files, and the `head
 
 Using the `include` directive allows you to split your Makefile into smaller, more manageable pieces, which can make it easier to maintain and understand your build system.
 
-Note that `include` more specifically tells Make to suspend reading the current Makefile and read one or more other Makefiles before continuing. This means if we were to place actual rules in `sources.mk` or `headers.mk`, they _could_ be run depending on what they are. Keep this in mind when composing Makefiles together.
+Note that `include` more specifically tells Make to suspend reading the current Makefile and read one or more other Makefiles before continuing. This means if we were to place actual rules in `sources.mk` or `headers.mk`, they will be executed if matched. Keep this in mind when composing Makefiles together.
 
 ## Conclusion
 
-Well, that was a lot. This has been a distillation of things that took me several tries and many projects to grasp. Ultimately, the best way to learn any tool is to get your hands dirty, so I recommend applying the knowledge in this guide by using Make in your next project. Remember, while Make is most often used for C projects, it's language agnostic. Hell, you could even leverage Make to automate something that has nothing to do with code (sort of analogous to how various government agencies [use Git](https://government.github.com/community/#:~:text=Government%20agencies%20at%20the%20national,GitHub%20to%20share%20and%20collaborate.))!
+This has been a distillation of things that took me several tries and many projects to grasp. Ultimately, the best way to learn any tool is to get your hands dirty, so I recommend applying the knowledge in this guide by using Make in your next project. Remember, while Make is most often used for C projects, it's language agnostic. You could even leverage Make to automate something that has nothing to do with code (sort of analogous to how various government agencies [use Git](https://government.github.com/community/#:~:text=Government%20agencies%20at%20the%20national,GitHub%20to%20share%20and%20collaborate.))!
 
 And if you really want to step up to the current industry standard, I recommend looking at [CMake](https://cmake.org/), a build system _generator_ that is often used to _generate Makefiles_.

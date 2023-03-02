@@ -1,7 +1,7 @@
 import { Link } from '@styled-icons/boxicons-regular'
 import styled from 'styled-components'
 
-import { H1 } from '@/styles'
+import { BREAKPOINTS, H1 } from '@/styles'
 
 export const Wrapper = styled.section`
   display: flex;
@@ -24,7 +24,7 @@ export const LinkWrapper = styled.div`
     color: white;
   }
 
-  @media (max-width: 404px) {
+  @media (max-width: ${BREAKPOINTS.sm}) {
     justify-content: center;
     grid-auto-flow: row;
     grid-gap: 8px;
@@ -46,6 +46,20 @@ export const LinkGrid = styled.div`
   display: grid;
   grid-auto-flow: column;
   grid-gap: 12px;
+
+  // Make the icons smaller on small mobile viewports
+  @media (max-width: 365px) {
+    grid-gap: 0px;
+
+    & svg {
+      transform: scale(0.75);
+    }
+  }
+
+  // Ensure the icons wrap when the viewport is very small
+  @media (max-width: 315px) {
+    display: block;
+  }
 `
 
 export const LinkButton = styled(Link)`

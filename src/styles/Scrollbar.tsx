@@ -7,7 +7,7 @@ export const ScrollbarStyles = createGlobalStyle`${css`
   }
 
   *::-webkit-scrollbar {
-    width: 0.75rem;
+    width: 0.5rem;
   }
 
   *::-webkit-scrollbar-track {

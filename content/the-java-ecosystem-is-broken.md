@@ -2,7 +2,7 @@
 title: 'The Java Ecosystem is Broken'
 cover: images/kasamets.png
 coverAlt: 'Udo Kasamets, Timepiece for a Solo Performer (1964)'
-description: "Java is a great language with a terrible ecosystem. Why is it so awful, and what can be done about it?"
+description: 'Java is a great language with a terrible ecosystem. Why is it so awful, and what can be done about it?'
 datePublished: '10/27/2022'
 category: 'programming'
 tags:
@@ -10,15 +10,15 @@ tags:
   - software engineering
 ---
 
-This last year, I added Java to the list of languages I've worked with in a professional capacity, having first learned it in preparation for my current job at AWS. I read several books on Java — two for which I couldn't offer a more urgent recommendation: _Java: Concurrency in Practice_ by Brian Goetz, and _Effective Java_ (Third Ed.) by Joshua Bloch. I'd also highly recommend Venkat Subramaniam's incredible presentations as found on YouTube. I learn by doing, so for my first endeavor I wrote a Java [server framework](https://github.com/exbotanical/mug) — complete with its own trie-based multiplexer and spec-compliant CORS library — that leverages several distinct features unique to the language. At this point, I can tell whether I enjoy a language and I knew I really loved Java.
+This last year, I added Java to the list of languages I've worked with in a professional capacity, having first learned it in preparation for my current job at AWS. I read several books on Java — two for which I couldn't offer a more sincere recommendation: _Java: Concurrency in Practice_ by Brian Goetz, and _Effective Java_ (Third Ed.) by Joshua Bloch. I'd also highly recommend Venkat Subramaniam's excellent presentations (which can be found on YouTube). I learn by doing, so for my first endeavor I wrote a Java [server framework](https://github.com/exbotanical/mug) — complete with its own trie-based multiplexer and spec-compliant CORS library — that leverages several distinct features unique to the language. At this point, I can tell whether I enjoy a language and I knew I really loved Java.
 
 Java is a fascinating language, its history mired in woes of transactional enterprise interference and a stubborn commitment to backwards compatibility. Like most languages Java's history has shaped it, and I found it accessible and easy to learn in part due to JavaScript being its syntactic successor.
 
-Java has a rich and diverse standard library and the APIs therein are for the most part intuitive and useful. Its capacity for meta-programming via reflection and annotations is one of the more unique programming paradigms I've seen in my tenure as an avid aficionado of language design. Its concurrency package `java.util.concurrent` provides ample facility to craft synchronization policies with great granularity, and moreover plenty of utilities that can do this for you.
+Java has a rich and diverse standard library and the APIs therein are for the most part intuitive and useful. Its capacity for meta-programming via reflection and annotations is one of the more unique programming paradigms I've seen in my tenure as an avid aficionado of language design. Its concurrency package `java.util.concurrent` provides ample facility to craft the most granular synchronization policies, and moreover plenty of utilities that can do it for you.
 
-That said, unlike many Java programmers, I didn't learn Java at university. It wasn't my first language. I came to Java with staunchly-held opinions I'd crafted over several thousand hours of programming across a spectrum of JavaScript, TypeScript, Python, C, and Go. Something you learn after some time with code is that all these ostensibly incredible feats of software engineering you once marveled at as a neophyte were made by idiosyncratic people just like you, with their own baggage of historical context, structural workarounds, weird resource constraints, and sometimes outright mistakes.
+That said, unlike many Java programmers, I didn't learn Java at university, nor was it my first language. I came to Java with staunchly-held opinions I'd crafted over several thousand hours of programming across a spectrum of JavaScript, TypeScript, Python, C, and Go. Something you learn after some time with code is that all these ostensibly incredible feats of software engineering you once marveled at as a neophyte were made by idiosyncratic people just like you, with their own baggage of historical context, less-than-ideal workarounds, weird resource constraints, and sometimes outright mistakes.
 
-I used to think, for example, that the UNIX tradition was infallible. It is only several Linux distros later that I think yes, UNIX is beautiful but it's also ludicrously over-complicated and burdened by its hierarchical processes system (the `PATH`, really...), sloppy permissions handling, and bizarre file descriptor management. This is to say when I learned Java, I brought with me a discriminating perspective from which I encountered the one aspect of Java that I must confess — _I completely despise_.
+I used to think, for example, that the Unix tradition was infallible. It is only several Linux distros later that I think yes, Unix is beautiful but it's also ludicrously over-complicated and burdened by its hierarchical processes system, sloppy permissions handling, and bizarre file descriptor management. This is to say when I learned Java, I brought with me a discriminating perspective from which I encountered the one aspect of Java that I must confess — _I completely despise_.
 
 ## The Java Ecosystem is Terrible
 

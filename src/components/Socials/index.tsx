@@ -9,6 +9,7 @@ import type { SiteConfig } from '@/types'
 import { IconLink } from '../Links'
 
 import type { StyledIcon } from '@styled-icons/styled-icon'
+import { BREAKPOINTS } from '@/styles'
 
 function generateLink(
   url: string,
@@ -73,6 +74,14 @@ const LinkGrid = styled.div`
   display: grid;
   gap: 24px;
   grid-auto-flow: column;
+
+  @media (max-width: 350px) {
+    gap: 0px;
+  }
+
+  @media (max-width: 250px) {
+    display: block;
+  }
 `
 
 export function Socials({

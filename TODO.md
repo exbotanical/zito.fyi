@@ -46,6 +46,7 @@
 - [ ] fix wrap on tags and categories caption
 
 ## Content
+
 - [ ] Change post preview to be the frontmatter description
 
 ## Dependencies

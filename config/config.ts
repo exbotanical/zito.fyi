@@ -152,7 +152,7 @@ export const config: SiteConfig = isTestEnv
          * Admin 'author' section text
          */
         about:
-          'Comp-sci enthusiast and software engineer. I write source code reviews and blog about programming. This blog features my own thoughts and opinions: in no way are they representative of my employer.',
+          'Comp-sci enthusiast and self-taught full-stack software engineer. Been going steady with Unix for a while now. I write source code reviews and blog about programming.',
 
         /**
          * Admin 'author' section avatar

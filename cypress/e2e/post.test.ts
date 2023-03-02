@@ -10,7 +10,7 @@ describe('post page', () => {
     }).should('exist')
 
     cy.findByText(
-      "This is another TEST post excerpt, used for testing with Cypress. We'll grab the text by searching for it on the DOM. This should be the…",
+      'An exploration of the Canterbury Scene, as heard through the sound of the Soft Machine',
       { selector: 'p' },
     ).should('exist')
 
@@ -23,7 +23,7 @@ describe('post page', () => {
 
   it('renders post metadata (post info)', () => {
     cy.get('p')
-      .contains(/⋅ Jan [0-9], 2021 ⋅ 3 min read/)
+      .contains(/⋅ Jan [0-9], 2021 ⋅ 2 min read/)
 
       .get('main')
       .then(container => {
@@ -39,9 +39,7 @@ describe('post page', () => {
   })
 
   it('renders the post / article', () => {
-    cy.get('article > p').contains(
-      "This is another TEST post excerpt, used for testing with Cypress. We'll grab the text by searching for it on the DOM. This should be the final sentence.",
-    )
+    cy.get('article > p').contains('Some test text')
   })
 
   it('renders social links', () => {

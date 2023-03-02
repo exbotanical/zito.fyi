@@ -18,7 +18,6 @@ query AllPostsList($skip: Int, $limit: Int) {
           pathName
           url
         }
-        excerpt
         timeToRead
         frontmatter {
           title
@@ -56,7 +55,6 @@ query AllPostsByTag($tag: String) {
           pathName
           url
         }
-        excerpt
         timeToRead
         frontmatter {
           title
@@ -94,7 +92,6 @@ query AllPostsByCategory($category: String) {
           pathName
           url
         }
-        excerpt
         timeToRead
         frontmatter {
           title

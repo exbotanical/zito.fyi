@@ -2,7 +2,7 @@
 title: 'The Java Ecosystem is Broken'
 cover: images/kasamets.png
 coverAlt: 'Udo Kasamets, Timepiece for a Solo Performer (1964)'
-description: "After learning Java for a new job at AWS, there's a few grievances I have with Java."
+description: "Java is a great language with a terrible ecosystem. Why is it so awful, and what can be done about it?"
 datePublished: '10/27/2022'
 category: 'programming'
 tags:

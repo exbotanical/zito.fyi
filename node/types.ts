@@ -39,7 +39,6 @@ export interface MdxFeedQueryResult {
   edges?: [
     {
       node: {
-        excerpt?: string
         html?: string
         timeToRead?: string
         fields?: {
@@ -47,6 +46,7 @@ export interface MdxFeedQueryResult {
         }
         frontmatter?: {
           title?: string
+          description?: string
           cover?: string
           datePublished?: string
           category?: string

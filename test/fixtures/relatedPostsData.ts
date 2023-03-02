@@ -5,56 +5,56 @@ export const poolOfPosts = [
     title: 'Test One',
     category: 'technology',
     tags: ['programming', 'software', 'markdown', 'blog post'],
-    slug: 'test-one'
+    slug: 'test-one',
   },
   {
     title: 'Test Two',
     category: 'cat',
     tags: ['tag'],
-    slug: 'test-two'
+    slug: 'test-two',
   },
   {
     title: 'Test Three',
     category: 'something',
     tags: [],
-    slug: 'test-three'
+    slug: 'test-three',
   },
   {
     title: 'Test Four',
     category: 'technology',
     tags: ['programming', 'code', 'testing', 'tags', 'sorting', 'querying'],
-    slug: 'test-four'
+    slug: 'test-four',
   },
   {
     title: 'Test Five',
     category: 'c',
     tags: undefined,
-    slug: 'test-five'
+    slug: 'test-five',
   },
   {
     title: 'A Hamburger',
     category: 'test3',
     tags: ['food', 'other'],
-    slug: 'great-restaurants'
+    slug: 'great-restaurants',
   },
   {
     title: 'Italics',
     category: 'technology',
     tags: ['tag'],
-    slug: 'birch'
+    slug: 'birch',
   },
   {
     title: 'The Test',
     category: 'another one',
     tags: ['test Two', 'again', 'tagging'],
-    slug: 'test-i'
+    slug: 'test-i',
   },
   {
     title: 'Bold Test',
     category: 'tech',
     tags: ['programming', 'another', 'other'],
-    slug: 'bold'
-  }
+    slug: 'bold',
+  },
 ] as Post[]
 
 export const poolOfPostsFull: Post[] = [
@@ -69,13 +69,11 @@ export const poolOfPostsFull: Post[] = [
     tags: ['sound'],
     body: '',
     internalContent: '',
-    excerpt:
-      "This is a post excerpt, used for testing with Cypress. We'll grab the text by searching for it on the DOM. This should be the final sentence…",
     timeToRead: 2,
     slug: '/lorem-ipsum-3001',
     route: '/lorem-ipsum-3001',
     pathName: '/lorem-ipsum-3001',
-    url: 'https://zito.fyi/lorem-ipsum-3001'
+    url: 'https://zito.fyi/lorem-ipsum-3001',
   },
   {
     title: 'Lorem Ipsum 3000',
@@ -88,13 +86,11 @@ export const poolOfPostsFull: Post[] = [
     tags: ['programming', 'critical analysis'],
     body: '',
     internalContent: '',
-    excerpt:
-      "This is a TEST post excerpt, used for testing with Cypress. We'll grab the text by searching for it on the DOM. This should be the final…",
     timeToRead: 2,
     slug: '/lorem-ipsum-3000',
     route: '/lorem-ipsum-3000',
     pathName: '/lorem-ipsum-3000',
-    url: 'https://zito.fyi/lorem-ipsum-3000'
+    url: 'https://zito.fyi/lorem-ipsum-3000',
   },
   {
     title: 'Andrea Zittel 2',
@@ -107,13 +103,11 @@ export const poolOfPostsFull: Post[] = [
     tags: ['sound'],
     body: '',
     internalContent: '',
-    excerpt:
-      'Table of Contents Headers Emphasis Lists Links Images Code and Syntax Highlighting Tables Blockquotes Inline HTML Horizontal Rule Line…',
     timeToRead: 2,
     slug: '/andrea-zittel-2',
     route: '/andrea-zittel-2',
     pathName: '/andrea-zittel-2',
-    url: 'https://zito.fyi/andrea-zittel-2'
+    url: 'https://zito.fyi/andrea-zittel-2',
   },
   {
     title: 'Andrea Zittel',
@@ -126,13 +120,11 @@ export const poolOfPostsFull: Post[] = [
     tags: ['programming', 'vinyl'],
     body: '',
     internalContent: '',
-    excerpt:
-      'Table of Contents Headers Emphasis Lists Links Images Code and Syntax Highlighting Tables Blockquotes Inline HTML Horizontal Rule Line…',
     timeToRead: 2,
     slug: '/andrea-zittel',
     route: '/andrea-zittel',
     pathName: '/andrea-zittel',
-    url: 'https://zito.fyi/andrea-zittel'
+    url: 'https://zito.fyi/andrea-zittel',
   },
   {
     title: 'Lorem Ipsum 33',
@@ -145,14 +137,11 @@ export const poolOfPostsFull: Post[] = [
     tags: ['programming', 'critical analysis'],
     body: '',
     internalContent: '',
-    excerpt:
-      'Dillinger The Last Markdown Editor, Ever Dillinger is a cloud-enabled, mobile-ready, offline-storage compatible,\n' +
-      'AngularJS-powered HTML…',
     timeToRead: 2,
     slug: '/lorem-ipsum-33',
     route: '/lorem-ipsum-33',
     pathName: '/lorem-ipsum-33',
-    url: 'https://zito.fyi/lorem-ipsum-33'
+    url: 'https://zito.fyi/lorem-ipsum-33',
   },
   {
     title: 'Toulouse Lautrec',
@@ -165,14 +154,11 @@ export const poolOfPostsFull: Post[] = [
     tags: ['programming', 'critical analysis'],
     body: '',
     internalContent: '',
-    excerpt:
-      'Dillinger The Last Markdown Editor, Ever Dillinger is a cloud-enabled, mobile-ready, offline-storage compatible,\n' +
-      'AngularJS-powered HTML…',
     timeToRead: 2,
     slug: '/toulouse-lautrec',
     route: '/toulouse-lautrec',
     pathName: '/toulouse-lautrec',
-    url: 'https://zito.fyi/toulouse-lautrec'
+    url: 'https://zito.fyi/toulouse-lautrec',
   },
   {
     title: 'Francis Bacon',
@@ -185,13 +171,11 @@ export const poolOfPostsFull: Post[] = [
     tags: ['television analysis', 'programming'],
     body: '',
     internalContent: '',
-    excerpt:
-      'Table of Contents Headers Emphasis Lists Links Images Code and Syntax Highlighting Tables Blockquotes Inline HTML Horizontal Rule Line…',
     timeToRead: 2,
     slug: '/francis-bacon',
     route: '/francis-bacon',
     pathName: '/francis-bacon',
-    url: 'https://zito.fyi/francis-bacon'
+    url: 'https://zito.fyi/francis-bacon',
   },
   {
     title: 'Exmagma 2',
@@ -204,13 +188,11 @@ export const poolOfPostsFull: Post[] = [
     tags: ['sound'],
     body: '',
     internalContent: '',
-    excerpt:
-      'Table of Contents Headers Emphasis Lists Links Images Code and Syntax Highlighting Tables Blockquotes Inline HTML Horizontal Rule Line…',
     timeToRead: 2,
     slug: '/exmagma-2',
     route: '/exmagma-2',
     pathName: '/exmagma-2',
-    url: 'https://zito.fyi/exmagma-2'
+    url: 'https://zito.fyi/exmagma-2',
   },
   {
     title: 'Exmagma',
@@ -223,13 +205,11 @@ export const poolOfPostsFull: Post[] = [
     tags: ['television analysis', 'programming'],
     body: '',
     internalContent: '',
-    excerpt:
-      'Table of Contents Headers Emphasis Lists Links Images Code and Syntax Highlighting Tables Blockquotes Inline HTML Horizontal Rule Line…',
     timeToRead: 2,
     slug: '/exmagma',
     route: '/exmagma',
     pathName: '/exmagma',
-    url: 'https://zito.fyi/exmagma'
+    url: 'https://zito.fyi/exmagma',
   },
   {
     title: 'Lorem Ipsum 2',
@@ -242,13 +222,11 @@ export const poolOfPostsFull: Post[] = [
     tags: ['television analysis', 'critical analysis'],
     body: '',
     internalContent: '',
-    excerpt:
-      'Table of Contents Headers Emphasis Lists Links Images Code and Syntax Highlighting Tables Blockquotes Inline HTML Horizontal Rule Line…',
     timeToRead: 2,
     slug: '/lorem-ipsum-2',
     route: '/lorem-ipsum-2',
     pathName: '/lorem-ipsum-2',
-    url: 'https://zito.fyi/lorem-ipsum-2'
+    url: 'https://zito.fyi/lorem-ipsum-2',
   },
   {
     title: 'Ida Applebroog',
@@ -261,14 +239,11 @@ export const poolOfPostsFull: Post[] = [
     tags: ['programming', 'software engineering'],
     body: '',
     internalContent: '',
-    excerpt:
-      'Dillinger The Last Markdown Editor, Ever Dillinger is a cloud-enabled, mobile-ready, offline-storage compatible,\n' +
-      'AngularJS-powered HTML…',
     timeToRead: 2,
     slug: '/ida-applebroog',
     route: '/ida-applebroog',
     pathName: '/ida-applebroog',
-    url: 'https://zito.fyi/ida-applebroog'
+    url: 'https://zito.fyi/ida-applebroog',
   },
   {
     title: 'Elric of Melnibone',
@@ -281,13 +256,11 @@ export const poolOfPostsFull: Post[] = [
     tags: ['javascript', 'programming'],
     body: '',
     internalContent: '',
-    excerpt:
-      'Table of Contents Headers Emphasis Lists Links Images Code and Syntax Highlighting Tables Blockquotes Inline HTML Horizontal Rule Line…',
     timeToRead: 2,
     slug: '/elric-of-melnibone',
     route: '/elric-of-melnibone',
     pathName: '/elric-of-melnibone',
-    url: 'https://zito.fyi/elric-of-melnibone'
+    url: 'https://zito.fyi/elric-of-melnibone',
   },
   {
     title: 'Lorem Capra',
@@ -300,14 +273,11 @@ export const poolOfPostsFull: Post[] = [
     tags: ['programming', 'music'],
     body: '',
     internalContent: '',
-    excerpt:
-      'Dillinger The Last Markdown Editor, Ever Dillinger is a cloud-enabled, mobile-ready, offline-storage compatible,\n' +
-      'AngularJS-powered HTML…',
     timeToRead: 2,
     slug: '/lorem-capra',
     route: '/lorem-capra',
     pathName: '/lorem-capra',
-    url: 'https://zito.fyi/lorem-capra'
+    url: 'https://zito.fyi/lorem-capra',
   },
   {
     title: 'My Favorite Soft Machine Records',
@@ -321,13 +291,11 @@ export const poolOfPostsFull: Post[] = [
     tags: ['progrock', 'vinyl'],
     body: '',
     internalContent: '',
-    excerpt:
-      "This is another TEST post excerpt, used for testing with Cypress. We'll grab the text by searching for it on the DOM. This should be the…",
     timeToRead: 3,
     slug: '/my-favorite-soft-machine-records',
     route: '/my-favorite-soft-machine-records',
     pathName: '/my-favorite-soft-machine-records',
-    url: 'https://zito.fyi/my-favorite-soft-machine-records'
+    url: 'https://zito.fyi/my-favorite-soft-machine-records',
   },
   {
     title: 'Lorem Ipsum',
@@ -340,14 +308,12 @@ export const poolOfPostsFull: Post[] = [
     tags: ['programming', 'javascript', 'software engineering'],
     body: '',
     internalContent: '',
-    excerpt:
-      'Dillinger The Last Markdown Editor, Ever Dillinger is a cloud-enabled, mobile-ready, offline-storage compatible, AngularJS-powered HTML…',
     timeToRead: 2,
     slug: '/lorem-ipsum',
     route: '/lorem-ipsum',
     pathName: '/lorem-ipsum',
-    url: 'https://zito.fyi/lorem-ipsum'
-  }
+    url: 'https://zito.fyi/lorem-ipsum',
+  },
 ]
 
 export const edgeCaseTargetPost: Post = {
@@ -361,11 +327,9 @@ export const edgeCaseTargetPost: Post = {
   tags: ['programming', 'vinyl'],
   body: '',
   internalContent: '',
-  excerpt:
-    'Table of Contents Headers Emphasis Lists Links Images Code and Syntax Highlighting Tables Blockquotes Inline HTML Horizontal Rule Line…',
   timeToRead: 2,
   slug: '/andrea-zittel',
   route: '/andrea-zittel',
   pathName: '/andrea-zittel',
-  url: 'https://zito.fyi/andrea-zittel'
+  url: 'https://zito.fyi/andrea-zittel',
 }

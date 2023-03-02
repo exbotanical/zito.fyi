@@ -66,7 +66,7 @@ const LinkedinShare = styled(LinkedinShareButton)`
 `
 
 export function PostShare({ post }: PostShareProps): JSX.Element {
-  const { title, excerpt, url } = post
+  const { title, description, url } = post
 
   // eslint-disable-next-line react/hook-use-state
   const [showLinkNotification, setShowLinkNotification] = useState(false)
@@ -79,7 +79,7 @@ export function PostShare({ post }: PostShareProps): JSX.Element {
       <S.LinkWrapper>
         <S.Label>SHARE</S.Label>
         <S.LinkGrid>
-          <FacebookShare quote={excerpt} url={url}>
+          <FacebookShare quote={description} url={url}>
             <FacebookIcon fill="rgb(66, 103, 178)" size={ICON_SIZE} />
           </FacebookShare>
 
@@ -96,7 +96,7 @@ export function PostShare({ post }: PostShareProps): JSX.Element {
           </RedditShare>
           <LinkedinShare
             source={config.site.name}
-            summary={excerpt}
+            summary={description}
             title={title}
             url={url}
           >

@@ -16,7 +16,6 @@ export interface PostBySlugQueryResult {
 
 export interface MdxNode {
   body?: string
-  excerpt?: string
   timeToRead?: number
 
   fields?: {
@@ -56,7 +55,6 @@ export interface Post {
   category?: string
   tags?: string[]
   body?: string
-  excerpt?: string
   timeToRead: number
   internalContent?: string
   slug: string
@@ -76,7 +74,6 @@ export interface PostJson {
   dateModified: string
   category?: string
   tags?: string[]
-  excerpt?: string
   timeToRead: number
   slug: string
   route: string

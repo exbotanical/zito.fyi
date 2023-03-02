@@ -111,7 +111,6 @@ export function mdxNodeToPost(mdxNode: MdxNode): Post {
     ),
     datePublished: new Date(frontmatter.datePublished),
     description: frontmatter.description,
-    excerpt: mdxNode.excerpt,
     internalContent: mdxNode.internal?.content,
     pathName: mdxNode.fields.pathName,
     route: mdxNode.fields.route,
@@ -148,7 +147,6 @@ export function jsonToPost(meta: PostJson): Post {
     coverImageAlt,
     coverImageUrl,
     description,
-    excerpt,
     tags,
     relatedPosts,
   } = meta
@@ -161,7 +159,6 @@ export function jsonToPost(meta: PostJson): Post {
     dateModified: new Date(dateModified),
     datePublished: new Date(datePublished),
     description,
-    excerpt,
     pathName,
     relatedPosts: relatedPosts ? relatedPosts.map(jsonToPost) : undefined,
     route,

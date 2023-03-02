@@ -50,7 +50,7 @@ export const Header = styled.div`
   grid-gap: 12px;
 `
 
-export const Excerpt = styled(Body)<CardStyleProps>`
+export const DescriptionText = styled(Body)<CardStyleProps>`
   display: box;
   overflow: hidden;
   box-orient: vertical;

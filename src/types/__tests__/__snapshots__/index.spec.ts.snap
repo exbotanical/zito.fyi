@@ -45,7 +45,6 @@ Object {
   "dateModified": 2021-01-09T00:00:00.000Z,
   "datePublished": 2021-01-06T00:00:00.000Z,
   "description": "this is a post description",
-  "excerpt": "This is a post excerpt, used for testing with Cypress. We'll grab the text by searching for it on the DOM. This should be the final sentence…",
   "pathName": "/lorem-ipsum",
   "relatedPosts": undefined,
   "route": "/lorem-ipsum",
@@ -105,7 +104,6 @@ Object {
   "dateModified": 2021-01-09T00:00:00.000Z,
   "datePublished": 2021-01-06T00:00:00.000Z,
   "description": "this is a post description",
-  "excerpt": "This is a post excerpt, used for testing with Cypress. We'll grab the text by searching for it on the DOM. This should be the final sentence…",
   "pathName": "/lorem-ipsum",
   "relatedPosts": Array [
     Object {
@@ -152,7 +150,6 @@ Object {
       "dateModified": 2021-01-09T00:00:00.000Z,
       "datePublished": 2021-01-06T00:00:00.000Z,
       "description": "this is a post description",
-      "excerpt": "This is a post excerpt, used for testing with Cypress. We'll grab the text by searching for it on the DOM. This should be the final sentence…",
       "pathName": "/lorem-ipsum",
       "relatedPosts": undefined,
       "route": "/lorem-ipsum",
@@ -521,8 +518,6 @@ MDXContent.isMDXComponent = true;",
   "dateModified": 2017-01-01T00:00:00.000Z,
   "datePublished": 2017-01-01T00:00:00.000Z,
   "description": "Description",
-  "excerpt": "Sedisti civiliter Lorem  markdownum  Ixione palus  semper peritura barbaque  in aureus
-obliquum erigitur gemmae utque cur natus, aera…",
   "internalContent": "---
 title: \\"Bold Mage\\"
 cover: images/cover_1.jpeg
@@ -950,8 +945,6 @@ MDXContent.isMDXComponent = true;",
   "dateModified": 2017-01-01T00:00:00.000Z,
   "datePublished": 2017-01-01T00:00:00.000Z,
   "description": "Description",
-  "excerpt": "Sedisti civiliter Lorem  markdownum  Ixione palus  semper peritura barbaque  in aureus
-obliquum erigitur gemmae utque cur natus, aera…",
   "internalContent": "---
 title: \\"Bold Mage\\"
 cover: images/cover_1.jpeg
@@ -1083,8 +1076,6 @@ Array [
     "dateModified": 2020-04-11T00:00:00.000Z,
     "datePublished": 2020-04-11T00:00:00.000Z,
     "description": "Description",
-    "excerpt": "Sedisti civiliter Lorem  markdownum  Ixione palus  semper peritura barbaque  in aureus
-obliquum erigitur gemmae utque cur natus, aera…",
     "internalContent": undefined,
     "pathName": "/test-one",
     "route": "/test-one",
@@ -1143,8 +1134,6 @@ obliquum erigitur gemmae utque cur natus, aera…",
     "dateModified": 2020-04-11T00:00:00.000Z,
     "datePublished": 2020-04-11T00:00:00.000Z,
     "description": "Description",
-    "excerpt": "Sedisti civiliter Lorem  markdownum  Ixione palus  semper peritura barbaque  in aureus
-obliquum erigitur gemmae utque cur natus, aera…",
     "internalContent": undefined,
     "pathName": "/test-ones",
     "route": "/test-ones",

@@ -2,7 +2,7 @@
 title: 'Rules to Die on a Hill By: A Decisive JavaScript Style Guide'
 cover: images/cardew.jpg
 coverAlt: Chaos and order. An excerpt from Cornelius Cardew's "Treatise"
-description: 'I recently made the biggest change of my career – switching from tabs to spaces. But why stop there? Today, I rationalize my code style decisions over the years.'
+description: 'A comprehensive JavaScript style guide for the fastidious developer.'
 datePublished: '04/19/2022'
 category: 'programming'
 tags:

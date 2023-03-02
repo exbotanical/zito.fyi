@@ -62,15 +62,6 @@ describe('seo utility `generatePostData`', () => {
     expect(postData.body).toBe('Content with Markdown.')
   })
 
-  it('falls back to post excerpt when no description is available', () => {
-    const post = cloneDeep(postFixture)
-    post.description = undefined
-
-    const postData = generatePostData(post)
-
-    expect(postData.description).toBe(post.excerpt)
-  })
-
   it('falls back to None when no category is available', () => {
     const post = cloneDeep(postFixture)
     post.category = undefined

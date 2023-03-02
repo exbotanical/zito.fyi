@@ -27,6 +27,7 @@
     "test:unit": "jest",
     "test:unit:dev": "jest --watchAll",
     "test": "pnpm test:unit && pnpm test:cy:ci",
+    "test:updatesnap": "jest -u",
     "typecheck": "tsc --noEmit",
     "typecheck:watch": "pnpm typecheck -- --watch"
   },

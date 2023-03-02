@@ -24,7 +24,7 @@ export const config: SiteConfig = {
       link: 'https://creativecommons.org/licenses/by/4.0/',
     },
     themeColor: '#D83850',
-    backgroundColor: '#F7F7F7'
+    backgroundColor: '#F7F7F7',
   },
   user: {
     about:
@@ -40,16 +40,16 @@ export const config: SiteConfig = {
     location: 'United States',
     surname: 'Zito',
     twitterHandle: 'exbotanical',
-    youtubeUrl: 'https://www.youtube.com/@thepeerdependency'
+    youtubeUrl: 'https://www.youtube.com/@thepeerdependency',
   },
   organization: {
     name: '',
     description: '',
     logoUrl: '',
-    url: 'https://zito.fyi'
+    url: 'https://zito.fyi',
   },
   embeddedImageWidth: 768,
   embeddedVideoWidth: 920,
   iconList: [],
-  iconPath: 'static/android-chrome-512x512.png'
+  iconPath: 'static/android-chrome-512x512.png',
 }

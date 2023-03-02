@@ -43,7 +43,9 @@ export function PostCard({ post, hero }: PostCardProps): JSX.Element {
             </TransparentLink>
           </Styles.Header>
           <TransparentLink ariaLabel={post.title} to={post.slug}>
-            <Styles.Excerpt hero={hero}>{post.excerpt}</Styles.Excerpt>
+            <Styles.DescriptionText hero={hero}>
+              {post.description}
+            </Styles.DescriptionText>
           </TransparentLink>
         </Styles.Meta>
         {hero && <PostButton to={post.slug} />}

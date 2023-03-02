@@ -9,7 +9,6 @@ export const PostTemplateQuery = graphql`
     mdx(fields: { slug: { eq: $slug } }) {
       body
       timeToRead
-      excerpt
       frontmatter {
         title
         description

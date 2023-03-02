@@ -145,7 +145,6 @@ const gatsbyConfig: GatsbyConfig = {
                   ) {
                     edges {
                       node {
-                        excerpt
                         html
                         timeToRead
                         fields {

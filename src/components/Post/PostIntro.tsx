@@ -48,7 +48,7 @@ export function PostIntro({ post }: PostIntroProps): JSX.Element {
       <WidthWrapper>
         <Details>
           <H1>{post.title}</H1>
-          <Body>{post.excerpt}</Body>
+          <Body>{post.description}</Body>
         </Details>
       </WidthWrapper>
       <Cover>

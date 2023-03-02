@@ -79,7 +79,7 @@ const TitleSkeleton = styled(SkeletonBlock)`
   }
 `
 
-const ExcerptSkeleton = styled(SkeletonBlock)`
+const DescriptionSkeleton = styled(SkeletonBlock)`
   width: 90%;
 
   /* tune loading gradient configurations to match animation stage */
@@ -99,7 +99,7 @@ export function PostCardSkeleton(): JSX.Element {
       <Cover />
       <Details>
         <TitleSkeleton />
-        <ExcerptSkeleton />
+        <DescriptionSkeleton />
       </Details>
     </Wrapper>
   )

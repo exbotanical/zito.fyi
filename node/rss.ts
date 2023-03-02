@@ -33,7 +33,7 @@ export function generateRssFeed(config: SiteConfig) {
           },
         ],
         date: node.frontmatter?.datePublished,
-        description: node.excerpt,
+        description: node.frontmatter?.description,
         guid: url,
         title: node.frontmatter?.title,
         url,

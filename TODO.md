@@ -36,7 +36,7 @@
 - [x] change SHARE section
 - [x] add YT and remove Twitter
   - [ ] Add feature flags?
-- [ ] Update Java post
+- [x] Update Java post
 - [ ] Fix colors (some don't update when toggling modes)
 - [x] Fix syntax highlighting in light mode (it's black and difficult to see)
 - [ ] sticky header
@@ -47,7 +47,7 @@
 
 ## Content
 
-- [ ] Change post preview to be the frontmatter description
+- [x] Change post preview to be the frontmatter description
 
 ## Dependencies
 

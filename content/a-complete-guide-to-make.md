@@ -3,7 +3,7 @@ title: 'A Complete Guide to Make'
 cover: images/gnu-make.png
 coverAlt: The GNU Make logo
 description: 'A complete and thorough no-BS guide to using the GNU Make tool.'
-datePublished: '03/03/2023'
+datePublished: '03/04/2023'
 category: 'programming'
 tags:
   - build tools

@@ -8,7 +8,6 @@ export function generateRssFeed(config: SiteConfig) {
     } = data
 
     const edges = allMdx?.edges
-
     if (!edges) {
       console.warn(
         '[generateRssFeed] No MDX edges available for feed generation.',

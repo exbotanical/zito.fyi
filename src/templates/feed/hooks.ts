@@ -44,7 +44,6 @@ function generateFetchHandler(baseUrl: string) {
   return async function fetchHandler({ pageParam = 0 }) {
     // kind of a hack but w/e, it's what Gatsby is doing under the hood
     const response = await fetch(`${baseUrl}-${pageParam}.json`)
-
     if (!response.ok) {
       throw new Error(`Failed to fetch ${baseUrl}-${pageParam}.json`)
     }

@@ -133,58 +133,22 @@ export function queryToPost(data: PostBySlugQueryResult): Post {
 }
 
 export function jsonToPost(meta: PostJson): Post {
-  const {
-    dateModified,
-    datePublished,
-    slug,
-    route,
-    pathName,
-    url,
-    timeToRead,
-    title,
-    category,
-    coverImg,
-    coverImageAlt,
-    coverImageUrl,
-    description,
-    tags,
-    relatedPosts,
-  } = meta
+  const { relatedPosts } = meta
 
   return {
-    category,
-    coverImageAlt,
-    coverImageUrl,
-    coverImg,
-    dateModified: new Date(dateModified),
-    datePublished: new Date(datePublished),
-    description,
-    pathName,
+    ...meta,
+    dateModified: new Date(meta.dateModified),
+    datePublished: new Date(meta.datePublished),
     relatedPosts: relatedPosts ? relatedPosts.map(jsonToPost) : undefined,
-    route,
-    slug,
-    tags,
-    timeToRead,
-    title,
-    url,
   }
 }
 
 export function queryToPostsList(res: GetMdxPostsQueryResult): Post[] {
   const { edges } = res.allMdx
 
-  const nodes = edges.map(edge => edge.node)
-
-  return nodes.map(node => mdxNodeToPost(node))
+  return edges.map(edge => mdxNodeToPost(edge.node))
 }
 
 export function queryToUser(data: UserQueryResult): UserMetadata {
-  const { user } = data.site.siteMetadata.config
-
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (!user) {
-    throw Error('[queryToUser]: Query does not contain user data')
-  }
-
-  return user
+  return data.site.siteMetadata.config.user
 }

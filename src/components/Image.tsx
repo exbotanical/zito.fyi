@@ -6,6 +6,5 @@ export const ImageShadow = css`
 
 export const BaseImage = styled.img`
   object-fit: cover;
-
   ${ImageShadow}
 `

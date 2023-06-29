@@ -92,7 +92,6 @@ export function Socials({
 
   return (
     <LinkGrid className={className}>
-      {/* {renderTwitterLink(config)} */}
       {renderYouTubeLink(config)}
       {renderGitHubLink(config)}
       {generateLinkedInLink(config)}

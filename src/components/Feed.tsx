@@ -41,10 +41,12 @@ export function Feed({ feedItems, hideHero }: FeedProps) {
             return <PostCard key={feedItem.key} />
           }
 
-          return idx === 0 && !hideHero ? (
-            <PostCard hero key={feedItem.slug} post={feedItem} />
-          ) : (
-            <PostCard key={feedItem.slug} post={feedItem} />
+          return (
+            <PostCard
+              hero={idx === 0 && !hideHero}
+              key={feedItem.slug}
+              post={feedItem}
+            />
           )
         })}
       </Wrapper>

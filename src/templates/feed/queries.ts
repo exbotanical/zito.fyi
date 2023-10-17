@@ -8,7 +8,7 @@ query AllPostsList($skip: Int, $limit: Int) {
     sort: { fields: [frontmatter___datePublished], order: DESC }
     limit: $limit
     skip: $skip,
-    filter: { isFuture: { eq: false } }
+    filter: { isNotPublishedYet: { eq: false } }
   ) {
     edges {
       node {
@@ -44,7 +44,7 @@ query AllPostsByTag($tag: String) {
   allMdx(
     limit: 1000
     sort: { fields: [frontmatter___datePublished], order: DESC }
-    filter: { isFuture: { eq: false }, frontmatter: { tags: { in: [$tag] } } }
+    filter: { isNotPublishedYet: { eq: false }, frontmatter: { tags: { in: [$tag] } } }
   ) {
     totalCount
     edges {
@@ -81,7 +81,7 @@ query AllPostsByCategory($category: String) {
   allMdx(
     limit: 1000
     sort: { fields: [frontmatter___datePublished], order: DESC }
-    filter: { isFuture: { eq: false }, frontmatter: { category: { eq: $category } } }
+    filter: { isNotPublishedYet: { eq: false }, frontmatter: { category: { eq: $category } } }
   ) {
     totalCount
     edges {

@@ -154,7 +154,7 @@
     "jest": "27.4.5",
     "jest-mock": "^27.5.1",
     "jest-styled-components": "7.0.8",
-    "lint-staged": "12.1.5",
+    "lint-staged": "15.0.1",
     "markdownlint-cli": "^0.30.0",
     "memfs": "^3.4.1",
     "prettier": "2.5.1",

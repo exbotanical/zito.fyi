@@ -13,17 +13,17 @@ tags:
 
 Recently, I learned about a lesser-known programming paradigm called "Choreographic Programming" that rather intrigued me.
 
-When it comes to concurrent programming *paradigms*, my knowledge has largely been
-focused on the technical aspects of *dealing with* concurrency and the constructs one typically reaches for:
+When it comes to concurrent programming _paradigms_, my knowledge has largely been
+focused on the technical aspects of _dealing with_ concurrency and the constructs one typically reaches for:
 mutexes, semaphores, condition variables, kernel threads, user-space aka "green" threads, coroutines, event loops.
 It wasn't until I learned about Choreographic Programming that I realized just how little I knew about actual
-*paradigms* for managing concurrent programs beyond your standard fare Actor Model or reactive programming.
+_paradigms_ for managing concurrent programs beyond your standard fare Actor Model or reactive programming.
 
 Before we dive right into choreographies, we need to get a few things out of the way.
 
 ## Session Type Formalism
 
-In order to truly appreciate choreographies, we need to understand what a *session type* is. And by session here, I am not referring to the networking-associated, time-delimited, stateful session we typically think of.
+In order to truly appreciate choreographies, we need to understand what a _session type_ is. And by session here, I am not referring to the networking-associated, time-delimited, stateful session we typically think of.
 
 Session in this context refers to a formal methodology and accompanying construct for specifying communication behavior in computer programs. First introduced in a [conference paper](https://link.springer.com/chapter/10.1007/3-540-58184-7_118) submitted for the 1994 International Conference on Parallel Architectures and Languages Europe, session types offer a way to describe invariants around multi-party communication protocols. Even further, session types can actually be statically verified (hence the "type" in the name).
 
@@ -64,21 +64,22 @@ ATMₐᵤₜₕ = offer { DEPOSIT: (recv u64; send u64; ε) | WITHDRAW: (recv u6
 ```
 
 Session types consist of four primary operations:
-- *send/recv*, indicating sending and receiving messages of a particular type from the other party; and
-- *choose/offer*, indicating a branching point at which the host party can choose to enter into one of several sub-protocols.
+
+- _send/recv_, indicating sending and receiving messages of a particular type from the other party; and
+- _choose/offer_, indicating a branching point at which the host party can choose to enter into one of several sub-protocols.
 
 For the latter, our grammar describes such a sub-protocol where we either become authorized to use the ATM (`ATMₐᵤₜₕ`), or the ATM returns an `ERROR`.
 
-Note, here we're describing communication *behavior* but not necessarily implementation. For example, in the first `ERROR` case we don't know the reasons for which a user's authentication might be rejected; we just know that it isn't. Also note, the semicolon in the grammar indicates a sequence of actions and the epsilon indicates the termination of the communication itself.
+Note, here we're describing communication _behavior_ but not necessarily implementation. For example, in the first `ERROR` case we don't know the reasons for which a user's authentication might be rejected; we just know that it isn't. Also note, the semicolon in the grammar indicates a sequence of actions and the epsilon indicates the termination of the communication itself.
 
-What we've done here is describe the protocol from the perspective of the server (the ATM). In session typing, we also describe the protocol from the point-of-view of the client. This — in session typing — is known as the *dual*. We need the dual so we can ultimately implement both and verify them against the session type. Let's throw together another formalization for the dual, in this case the client:
+What we've done here is describe the protocol from the perspective of the server (the ATM). In session typing, we also describe the protocol from the point-of-view of the client. This — in session typing — is known as the _dual_. We need the dual so we can ultimately implement both and verify them against the session type. Let's throw together another formalization for the dual, in this case the client:
 
 ```
 CLIENT = send ID; offer { OK: (CLIENTₐᵤₜₕ) | ERROR: (ε)}
 CLIENTₐᵤₜₕ = choose { DEPOSIT: (send u64, recv u64; ε) | WITHDRAW: (send u64; offer { OK: (ε) | ERROR: (ε)})}
 ```
 
-You'll notice that `CLIENT` looks quite a bit like the `ATM`, but with the four operations reversed. And this is precisely the point! From this we can construct a *dual session type*, which ensures each party's protocol is consistent with the other's.
+You'll notice that `CLIENT` looks quite a bit like the `ATM`, but with the four operations reversed. And this is precisely the point! From this we can construct a _dual session type_, which ensures each party's protocol is consistent with the other's.
 
 In practice, recursion is often used here, but I don't want to digress too much further than I already have. You can easily envision this if you consider whether `ATM` instead allowed the authenticated `CLIENT` to `choose` again instead of terminating.
 
@@ -103,7 +104,7 @@ The idea of Choreographic Programming was solidified in computer scientist Fabri
 
 The thesis points out that the large majority of issues in concurrent distributed systems are focused around endpoint safety. Basically, it's challenging to ensure several nodes each abide by the constraints of the protocol in which they partake. This could be something as simple as many REST servers needing to communicate in a common payload format, or something as practical as several nodes participating in the internet using compliant HTTP.
 
-Programming the communication flows between nodes is difficult, Montesi points out, because the prevailing programming paradigms focus on implementing systems discretely. That is, you don't write code for a client and a server at once; you go and implement a server, then you (or someone else) implement a client (or clients) that talk to it. The paper summarizes this, stating *"expressing [communication flows] by defining the sending/receiving actions of each endpoint is difficult"*.
+Programming the communication flows between nodes is difficult, Montesi points out, because the prevailing programming paradigms focus on implementing systems discretely. That is, you don't write code for a client and a server at once; you go and implement a server, then you (or someone else) implement a client (or clients) that talk to it. The paper summarizes this, stating _"expressing [communication flows] by defining the sending/receiving actions of each endpoint is difficult"_.
 
 ### Endpoint Projection aka EPP
 
@@ -122,4 +123,4 @@ There's a lot more interesting stuff in the thesis, and I'd recommend checking o
 
 ---
 
-*This post's photograph is a picture of assorted people, among them Merce Cunningham — my favorite choreographer. I'll update this with a link once I post something about dance choreography.*
+_This post's photograph is a picture of assorted people, among them Merce Cunningham — my favorite choreographer. I'll update this with a link once I post something about dance choreography._

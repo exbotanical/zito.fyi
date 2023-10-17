@@ -68,3 +68,28 @@
 
 - [x] attempt to create reusable workflow for pnpm scripts (again)
 - [ ] convert to true monorepo via pnpm workspaces
+
+## Posts
+
+- [ ] rodney mullen
+- [ ] diana vishneva
+- [ ] merce cunningham
+- [ ] james brown tami show
+- [ ] jumpstyle
+- [ ] sadhus
+- [ ] stacking
+- [ ] ezra pound
+- [ ] andy kaufman
+- [ ] htx redline
+- [ ] transatlantic accent
+- [ ] bucking
+- [ ] AI
+  - [ ] AI illegitimate books - https://janefriedman.com/i-would-rather-see-my-books-pirated/
+  - [ ] AI taxi business
+  - [ ] AI roam the internet and become celebrities
+- [ ] https://en.wikipedia.org/wiki/Sony_BMG_copy_protection_rootkit_scandal
+- [ ] WEI https://github.com/RupertBenWiser/Web-Environment-Integrity
+- [ ] I don't agree with the notion that if you need to make a private method public to test it, it shouldn't be private (or generally that you are doing something wrong). cmp to rust embedded tests
+- [ ] Clean code book by Uncle Bob fucking sucks and is terrible advice
+- [ ] Learning Rust, round 2
+- [ ] lucrecia dalt and ben bertrand

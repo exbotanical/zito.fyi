@@ -3,7 +3,7 @@ title: 'A Complete Guide to Make'
 cover: images/gnu-make.png
 coverAlt: The GNU Make logo
 description: 'A complete and thorough no-BS guide to using the GNU Make tool.'
-datePublished: '03/04/2023'
+datePublished: '2023-03-04T08:00:00.000Z'
 category: 'programming'
 tags:
   - build tools
@@ -53,12 +53,11 @@ In this rule, `target` is the name of the file or executable that we want to bui
 
 Note that the commands in a rule _must_ be indented with a tab character (not spaces), or execution will fail (with the mildly cryptic `Makefile:<line number>: *** missing separator. Stop`). If you're frustrated by this weird, seemingly arbitrary restriction, you're not the first. To quote the seminal [UNIX-HATERS Handbook](https://en.wikipedia.org/wiki/The_UNIX-HATERS_Handbook):
 
-> *"The problem with Dennis’ Makefile is that when he added the comment line, he inadvertently inserted a space before the tab character at the beginning of line 2. The tab character is a very important part of the syntax of Makefiles. All command lines (the lines beginning with cc in our example) must start with tabs. After he made his change, line 2 didn’t, hence the error."*
+> _"The problem with Dennis’ Makefile is that when he added the comment line, he inadvertently inserted a space before the tab character at the beginning of line 2. The tab character is a very important part of the syntax of Makefiles. All command lines (the lines beginning with cc in our example) must start with tabs. After he made his change, line 2 didn’t, hence the error."_
 >
-> *"So what?"" you ask, "What’s wrong with that?"*
+> _"So what?"" you ask, "What’s wrong with that?"_
 >
-> *"There is nothing wrong with it, by itself. It’s just that when you consider how other programming tools work in Unix, using tabs as part of the syntax is like one of those pungee stick traps in The Green Berets: the poor kid from Kansas is walking point in front of John Wayne and doesn’t see the trip wire. After all, there are no trip wires to watch out for in Kansas corn fields. WHAM!"*
-
+> _"There is nothing wrong with it, by itself. It’s just that when you consider how other programming tools work in Unix, using tabs as part of the syntax is like one of those pungee stick traps in The Green Berets: the poor kid from Kansas is walking point in front of John Wayne and doesn’t see the trip wire. After all, there are no trip wires to watch out for in Kansas corn fields. WHAM!"_
 
 So...yeah, gotta watch out for that.
 

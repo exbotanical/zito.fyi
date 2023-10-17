@@ -3,7 +3,7 @@ title: 'Chromophores'
 cover: images/dreamweapon.jpg
 coverAlt: "Angus Maclise's Dreamweapon"
 description: 'ISO-18916 and Plastics for Good Picture'
-datePublished: '07/02/2023'
+datePublished: '2023-07-02T07:00:00.000Z'
 category: 'record collecting'
 tags:
   - 'vinyl records'
@@ -19,7 +19,7 @@ Thus, I embarked on a research endeavor to actually learn - after some 15 years 
 
 Next, you've your outer sleeve. A decent outer sleeve is larger than the record jacket on all four sides - this mitigates any dings or otherwise devastating damage that can occur both on the shelf and while handling. An acceptable outer sleeve has passed the Photographic Activity Test (PAT) to verify it accords with the ISO-18916 standard. Essentially, the PAT and ISO-18916 comprise the standard for archival quality enclosures. The former explores chemical interactions between photographs and a given material (i.e. some plastic) after prolonged contact by utilizing two detectors: one screens for oxidation and reduction reactions which can cause image fade, silver mirroring, and red or gold spots; the other screens for chromophores, which can cause yellowing. In short, the ideal outer sleeve is a cast polypropylene that has passed the PAT and is accompanied by lab test results to prove it.
 
-The next order of business - where does one find such sleeves? I found mine at a small Canadian company named Vinyl Storage Solutions. I decided to re-sleeve my records using the dual-pocket system. In short, VSS manufactures sleeves into which you seal your record's jacket; the opposing side contains *another* sleeve into which you store the record itself (in its inner sleeve).
+The next order of business - where does one find such sleeves? I found mine at a small Canadian company named Vinyl Storage Solutions. I decided to re-sleeve my records using the dual-pocket system. In short, VSS manufactures sleeves into which you seal your record's jacket; the opposing side contains _another_ sleeve into which you store the record itself (in its inner sleeve).
 I re-sleeved some 7" and 10" records today; here's a few photos.
 
 ![Angus Maclise / Tony Conrad - Dreamweapon III. This is the 1st edition, of which 500 copies in a silkscreened brown cover with purple print were made](images/angus_maclise_vinyl.jpg)
@@ -32,27 +32,27 @@ I'm really quite pleased with this investment. Still a bit sore I didn't do this
 
 ### Zs Arms, Untitled EP, Karate Bump
 
-The sleeves arrived just in time for June's new additions. I found a record dealer in New York who had a NM copy of [Zs' *Arms*](https://www.discogs.com/release/1451533-Zs-Arms). This is the record that officially sold me on Zs' immeasurable brilliance. *Arms* was recorded in May 2006 during one of Zs' sextet periods. Truly, I believe this particular incarnation of Zs is the group at their zenith. The band once described themselves as
+The sleeves arrived just in time for June's new additions. I found a record dealer in New York who had a NM copy of [Zs' _Arms_](https://www.discogs.com/release/1451533-Zs-Arms). This is the record that officially sold me on Zs' immeasurable brilliance. _Arms_ was recorded in May 2006 during one of Zs' sextet periods. Truly, I believe this particular incarnation of Zs is the group at their zenith. The band once described themselves as
 
 > "primarily concerned with making music that challenges the physical and mental limitations of both performer and listener. Manipulating extended technique, unique instrumental synthesis, and near telepathic communication, Zs aims to create works that envelop the listener and unfold sonically over time, evoking unspoken past, present, and future rites and ritual."
 
-Indeed. This contemplation of endurance in art reminds me of Matthew Barney's *Drawing Restraint* series, a collection of performative drawings and sculptures whereby Matthew Barney, the artist, is restrained by way of various physical obstacles through which he laboriously attempts to engage in art-making.
+Indeed. This contemplation of endurance in art reminds me of Matthew Barney's _Drawing Restraint_ series, a collection of performative drawings and sculptures whereby Matthew Barney, the artist, is restrained by way of various physical obstacles through which he laboriously attempts to engage in art-making.
 
 ![Matthew Barney, Drawing Restraint 2, 1988. Photograph: Michael Rees](images/drawing_restraint.jpg)
 
-*Arms* has these brilliant moments of sustained synergy between otherwise incredibly disparate instruments (which happen to very often be paired together). I love the moniker "brutal chamber" as used to describe it - all too accurate. This copy is one among 500 pressed on white vinyl, including a small insert.
+_Arms_ has these brilliant moments of sustained synergy between otherwise incredibly disparate instruments (which happen to very often be paired together). I love the moniker "brutal chamber" as used to describe it - all too accurate. This copy is one among 500 pressed on white vinyl, including a small insert.
 
-The seller also happened to have a VG+ copy of Zs' [*Untitled* 10"](https://www.discogs.com/release/1156121-Zs-Untitled) on clear vinyl, as well as the [*Karate Bump* EP](https://www.discogs.com/release/1051260-Zs-Karate-Bump). I'm not too keen on CDs as a medium but I'll purchase them if they're integral to some sub-collection I'm working on (like the Zs catalog). Plus *Karate Bump* was $2.
+The seller also happened to have a VG+ copy of Zs' [_Untitled_ 10"](https://www.discogs.com/release/1156121-Zs-Untitled) on clear vinyl, as well as the [_Karate Bump_ EP](https://www.discogs.com/release/1051260-Zs-Karate-Bump). I'm not too keen on CDs as a medium but I'll purchase them if they're integral to some sub-collection I'm working on (like the Zs catalog). Plus _Karate Bump_ was $2.
 
 ### Extra Life: Secular Works Vol 2
 
-I noticed in the *Untitled* 10" accreditations *"Written by: Charlie Looker"*. I didn't know that, but cool because I've also really been digging Extra Life's *Secular Works Vol 2* the past several weeks. If you're not familiar with Charlie Looker, he was an integral part of the New York experimental scene during the aughts and 10s. He's especially interested in early Western vocal music and turned me on to David Munrow's *Music Of The Gothic Era*. This comes through in Extra Life (and moreover, Looker's corpus generally) in very unexpected ways. *Vol 2* just kind of came out of nowhere last year; I didn't even know about it until now.
+I noticed in the _Untitled_ 10" accreditations _"Written by: Charlie Looker"_. I didn't know that, but cool because I've also really been digging Extra Life's _Secular Works Vol 2_ the past several weeks. If you're not familiar with Charlie Looker, he was an integral part of the New York experimental scene during the aughts and 10s. He's especially interested in early Western vocal music and turned me on to David Munrow's _Music Of The Gothic Era_. This comes through in Extra Life (and moreover, Looker's corpus generally) in very unexpected ways. _Vol 2_ just kind of came out of nowhere last year; I didn't even know about it until now.
 
 Here, give this a listen:
 
 `video: https://www.youtube-nocookie.com/embed/-_UmJI6xhkw`
 
-I do *love* the vocal orchestration from 6:00 and beyond. I picked up a copy of Vol 2 as well as a first-press copy of Vol 1. Vol 2 was pressed on the same pink vinyl as Vol 1.
+I do _love_ the vocal orchestration from 6:00 and beyond. I picked up a copy of Vol 2 as well as a first-press copy of Vol 1. Vol 2 was pressed on the same pink vinyl as Vol 1.
 
 ![Extra Life's Secular Works Vol 1](images/extra_life_vinyl.jpg)
 
@@ -69,6 +69,7 @@ I also stumbled upon Polish collective BNNT, by way of Zs guitarist Patrick Higg
 `video: https://www.youtube-nocookie.com/embed/jv3z3ySsTS4`
 
 ### Sinbad
+
 I picked up a British series from 2012 called Sinbad, with which I've desperately fallen in love. I went so far as to order the DVD because I legitimately loved this show and lamented that moment at which I viewed the final episode of its first and inevitable final season.
 
 The production is assuredly less than stellar, and the writing is at times somewhat frenzied. It's one of those Xena/Hercules-tier serials that should have endured for years and hundreds of episodes, but alas - it aired in 2012 when TV show renewals weren't handed out as liberally as they had a decade prior. Onward, into the age of penal streaming whereby new shows get PIP'd (yes, a FAANG joke) before they can even establish a cultural presence.
@@ -79,7 +80,7 @@ In case you didn't know, I often enjoy proverbially "bad" TV as much as I enjoy 
 
 ### WebAssembly
 
-I've been reading *WebAssembly in Action* by Gerard Gallant. What I like about this book is it focuses on WebAssembly with C, which inherently affords a more in-depth discourse on WebAssembly's inner machinations. Equipped with a thorough understanding of WASM, I aim to write a frontend C library, drawing inspiration from projects like [Yew](https://github.com/yewstack/yew) and [Choo](https://github.com/choojs/choo). Such a lib would make for a nice companion to my C server framework [Ys](https://github.com/exbotanical/ys).
+I've been reading _WebAssembly in Action_ by Gerard Gallant. What I like about this book is it focuses on WebAssembly with C, which inherently affords a more in-depth discourse on WebAssembly's inner machinations. Equipped with a thorough understanding of WASM, I aim to write a frontend C library, drawing inspiration from projects like [Yew](https://github.com/yewstack/yew) and [Choo](https://github.com/choojs/choo). Such a lib would make for a nice companion to my C server framework [Ys](https://github.com/exbotanical/ys).
 
 My aim is a virtual DOM rendered over a websocket connection. I'll implement a small routing component using a stack, and a reactive state component using some sort of bespoke proxy. I'm not yet sure how to implement this in C short of designing an accompanying runtime so I can manage an evented layer atop which the state would be managed (which I do not wish to do). I'll probably pull the v8 source code again and take a look at how they've implemented JavaScript proxies. The C programming language offers some interesting - if not obscure - faculties, too, so I've no doubt I'll find something with which I'll be satisfied.
 

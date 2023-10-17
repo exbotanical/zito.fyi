@@ -78,14 +78,14 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
 		`)
 
     /**
-     * Create an `isFuture` helper for filtering `datePublished`.
+     * Create an `isNotPublishedYet` helper for filtering `datePublished`.
      */
     actions.createTypes([
       schema.buildObjectType({
         name: 'Mdx',
         interfaces: ['Node'],
         fields: {
-          isFuture: {
+          isNotPublishedYet: {
             type: 'Boolean!',
             resolve: (source: MdxNode) =>
               source.frontmatter?.datePublished &&

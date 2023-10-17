@@ -3,7 +3,7 @@ title: 'Rules to Die on a Hill By: A Decisive JavaScript Style Guide'
 cover: images/cardew.jpg
 coverAlt: Chaos and order. An excerpt from Cornelius Cardew's "Treatise"
 description: 'A comprehensive JavaScript style guide for the fastidious developer.'
-datePublished: '04/19/2022'
+datePublished: '2022-04-19T07:00:00.000Z'
 category: 'programming'
 tags:
   - frontend

@@ -5,7 +5,6 @@ Array [
   Object {
     "category": "minimalism",
     "coverImageAlt": "a painting by HR Giger",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 368,
@@ -60,7 +59,6 @@ Array [
   Object {
     "category": "technology",
     "coverImageAlt": "a painting by HR Giger",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 368,
@@ -116,7 +114,6 @@ Array [
   Object {
     "category": "minimalism",
     "coverImageAlt": "A sculpture by Andrea Zittel",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 368,
@@ -168,7 +165,6 @@ Array [
   Object {
     "category": "technology",
     "coverImageAlt": "A sculpture by Andrea Zittel",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 368,
@@ -221,7 +217,6 @@ Array [
   Object {
     "category": "technology",
     "coverImageAlt": "Yet another image of the Goddess Kali",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 369,
@@ -277,7 +272,6 @@ Array [
   Object {
     "category": "technology",
     "coverImageAlt": "a painting by Toulouse Lautrec",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 368,
@@ -333,7 +327,6 @@ Array [
   Object {
     "category": "art",
     "coverImageAlt": "a painting by Francis Bacon",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 368,
@@ -389,7 +382,6 @@ Array [
   Object {
     "category": "minimalism",
     "coverImageAlt": "A painting of the band Exmagma",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 368,
@@ -441,7 +433,6 @@ Array [
   Object {
     "category": "technology",
     "coverImageAlt": "A painting of the band Exmagma",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 368,
@@ -494,7 +485,6 @@ Array [
   Object {
     "category": "technology",
     "coverImageAlt": "Another image of the Goddess Kali",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 369,
@@ -555,7 +545,6 @@ Array [
   Object {
     "category": "minimalism",
     "coverImageAlt": "a painting by HR Giger",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 368,
@@ -610,7 +599,6 @@ Array [
   Object {
     "category": "technology",
     "coverImageAlt": "a painting by HR Giger",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 368,
@@ -666,7 +654,6 @@ Array [
   Object {
     "category": "minimalism",
     "coverImageAlt": "A sculpture by Andrea Zittel",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 368,
@@ -718,7 +705,6 @@ Array [
   Object {
     "category": "technology",
     "coverImageAlt": "A sculpture by Andrea Zittel",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 368,
@@ -771,7 +757,6 @@ Array [
   Object {
     "category": "technology",
     "coverImageAlt": "Yet another image of the Goddess Kali",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 369,
@@ -827,7 +812,6 @@ Array [
   Object {
     "category": "technology",
     "coverImageAlt": "a painting by Toulouse Lautrec",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 368,
@@ -883,7 +867,6 @@ Array [
   Object {
     "category": "art",
     "coverImageAlt": "a painting by Francis Bacon",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 368,
@@ -939,7 +922,6 @@ Array [
   Object {
     "category": "minimalism",
     "coverImageAlt": "A painting of the band Exmagma",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 368,
@@ -991,7 +973,6 @@ Array [
   Object {
     "category": "technology",
     "coverImageAlt": "A painting of the band Exmagma",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 368,
@@ -1044,7 +1025,6 @@ Array [
   Object {
     "category": "technology",
     "coverImageAlt": "Another image of the Goddess Kali",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 369,
@@ -1100,7 +1080,6 @@ Array [
   Object {
     "category": "technology",
     "coverImageAlt": "A painting by Ida Applebroog",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 368,
@@ -1153,7 +1132,6 @@ Array [
   Object {
     "category": "technology",
     "coverImageAlt": "An drawing by Paper Rad",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 368,
@@ -1206,7 +1184,6 @@ Array [
   Object {
     "category": "technology",
     "coverImageAlt": "An image of a sculpture by Matthew Barney",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 368,
@@ -1259,7 +1236,6 @@ Array [
   Object {
     "category": "music",
     "coverImageAlt": "An image of musician Robert Wyatt",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 368,
@@ -1312,7 +1288,6 @@ Array [
   Object {
     "category": "technology",
     "coverImageAlt": "An image of the Goddess Kali",
-    "coverImageUrl": undefined,
     "coverImg": Object {
       "backgroundColor": "transparent",
       "height": 369,

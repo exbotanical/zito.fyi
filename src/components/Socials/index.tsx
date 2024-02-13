@@ -9,7 +9,6 @@ import type { SiteConfig } from '@/types'
 import { IconLink } from '../Links'
 
 import type { StyledIcon } from '@styled-icons/styled-icon'
-import { BREAKPOINTS } from '@/styles'
 
 function generateLink(
   url: string,

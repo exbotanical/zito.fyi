@@ -1,6 +1,6 @@
 import type { Theme } from './Theme'
 
-export const invertTheme: Record<'lightTheme' | 'darkTheme', Theme> = {
+export const invertTheme: Record<'darkTheme' | 'lightTheme', Theme> = {
   lightTheme: {
     dark: false,
     colors: {

@@ -93,3 +93,4 @@
 - [ ] Clean code book by Uncle Bob fucking sucks and is terrible advice
 - [ ] Learning Rust, round 2
 - [ ] lucrecia dalt and ben bertrand
+- [ ] stupid tiktok videos of people getting fired (cloudflare dummy?)

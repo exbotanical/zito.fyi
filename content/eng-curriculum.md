@@ -269,6 +269,8 @@ And now for the curriculum. This will start easy and get progressively more comp
 - Don't buy _anything_ on Udemy unless it's $15 or less. Everything goes on sale eventually (and very, very frequently). The sales used to drop everything to $9.99 but I've noticed the lowest price is now around $12.99. Just don't pay full price.
 - Most comp-sci books can be found for free. Just query '#book name here# pdf' and you're bound to find something.
 
+C techniques: https://github.com/gurugio/book_cprogramming/blob/master/long-if.md
+
 ---
 
 Review: Computer Systems: A Programmer's Perspective, 3 Edition

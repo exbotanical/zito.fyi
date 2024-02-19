@@ -3,7 +3,7 @@ title: 'ucontext and coroutines'
 cover: images/chris_burden.jpg
 coverAlt: Chris Burden's Urban Light
 description: 'A source code review of a coroutine implementation and excursion into ucontext'
-datePublished: '2023-02-12T00:00:00.000Z'
+datePublished: '2024-02-12T00:00:00.000Z'
 category: 'programming'
 tags:
   - source code review

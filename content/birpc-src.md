@@ -3,7 +3,7 @@ title: 'source code review: birpc'
 cover: images/chris_burden.jpg
 coverAlt: Chris Burden's Urban Light
 description: "A source code review of antfu's birpc library"
-datePublished: '2023-03-04T08:00:00.000Z'
+datePublished: '2033-03-04T08:00:00.000Z'
 category: 'programming'
 tags:
   - source code review

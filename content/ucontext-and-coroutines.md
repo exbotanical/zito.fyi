@@ -32,7 +32,7 @@ typedef struct ucontext_t {
 } ucontext_t;
 ```
 
-When I was reading about ucontext, it was helpful to first see some examples to understand what purpose each of these fields serve. We'll look at a few example programs.
+It'll be helpful to first see some examples to understand what purpose each of these fields serves. We'll look at a few example programs.
 
 ```c
 #include <stdio.h>
@@ -59,7 +59,7 @@ First, we have `getcontext`. It accepts as input a `ucontext_t` and will take wh
 
 Next, we have `setcontext`. This will cause the program to resume execution right after the `getcontext` call. We'll therefore infinitely loop between the two calls.
 
-Quite illustrative here is the `x` and `y` variables. The value of `x` continues to increase while `y` forever remains 1. This happens because `setcontext` restores the registers and stack to that of the last `getcontext` call, including the program counter (hence resuming execution back at the most recent `getcontext` call).
+Quite illustrative here is the `x` and `y` variables. The value of `x` continues to increase while `y` forever remains 1. This happens because `setcontext` restores the registers and stack to that of the last `getcontext` call, including the program counter (hence resuming execution back at the most recent `getcontext` call). So when we jump back to the `getcontext` line in the execution flow, `y` - which is allocated on the stack - no longer exists. We're constantly re-declaring it and pushing it onto the stack.
 
 Next, we have `makecontext` and `swapcontext`, which will be fundamental in cloudwu's coroutines implementation.
 
@@ -86,19 +86,19 @@ int main(void) {
 
   printf("pre-swap\n");
   setcontext(&context);
-  printf("Back to main function\n");
+  printf("Back to main function - will never run\n");
 
   return EXIT_SUCCESS;
 }
 ```
 
-In `main`, we leverage `makecontext`, which allows us to create a new context with its own stack. Using this context allows us to reset the program counter to a different function (`handler` in the demo program). The third argument to `makecontext` is an integer indicating the number of arguments we want to pass to the context handler, and any subsequent `makecontext` arguments are the handler's arguments - the quantity of which, obviously, should align with that third `makecontext` argument.
+In `main`, we leverage `makecontext`, which allows us to create a new context with its own stack. Notice we'll also have to allocate a stack for the context. Using this context allows us to reset the program counter to a different function (`handler` in the demo program). If you've ever written assembly, this is very analogous to a `jmp` instruction. The third argument to `makecontext` is an integer indicating the number of arguments we want to pass to the context handler, and any subsequent `makecontext` arguments are the handler's arguments - the quantity of which, obviously, should align with however many arguments we pass.
 
-Know that the handler arguments must be integers. The `coroutine` library handles this in a unique way that we'll see later.
+Know that the handler arguments must be integers, which isn't particularly useful in practice. The `coroutine` library handles this in a unique way that we'll see later.
 
-In this example, we call `setcontext` on this new context to immediately invoke `handler` with the 2 integer arguments. The default behavior after `handler` finishes executing is to end the process. Thus, `"Back to the main function\n"` will never be written to stdout.
+In this example, we call `setcontext` on this new context to immediately invoke `handler` with 2 integer arguments. The default behavior after `handler` finishes executing is to end the process. Thus, the string `"Back to the main function - will never run\n"` will never be written to stdout.
 
-We can change this behavior by setting the `uc_link` field in the `ucontext` struct. This tells the program to `setcontext` to the context stored in `uc_link` as soon as it finishes executing.
+We can control this behavior by leveraging the `uc_link` field in the `ucontext` struct. Setting this field tells the program to `setcontext` to the context stored in `uc_link` as soon as it finishes executing.
 
 In the following example we set `uc_link` to `main_context`. As soon as `handler` finishes running, execution will resume at `getcontext(&main_context)`, causing an infinite loop.
 
@@ -170,7 +170,7 @@ int main() {
 }
 ```
 
-In this program, we made a slight modification in that we're now calling `swapcontext`. `swapcontext` effectively calls `getcontext` on the first argument, then `setcontext` on the second. That is, create a checkpoint of sorts at `swapcontext`, then immediately begin executing `handler`. Notice we don't need `getcontext` to initialize `main_context`, as the swap call does this for us.
+In this program, we made a slight modification in that we're now calling `swapcontext`. `swapcontext` effectively calls `getcontext` on the first argument, then `setcontext` on the second. That is, we create a checkpoint of sorts at `swapcontext`, then immediately begin executing `handler`. Notice we don't need `getcontext` to initialize `main_context`, as the swap call does this for us.
 
 After the `printf` statement in `handler`, we call `swapcontext` again and resume execution just after the initial `swapcontext` call in `main`. So the program output looks like this:
 
@@ -184,9 +184,9 @@ This should be sufficient knowledge of `ucontext` such that we can appreciate `c
 
 # Source Code Review: coroutine
 
-A while back I found an implementation of coroutines written in C by someone called cloudwu. I don't know this individual, but I bookmarked the library because it looked like a very concise and well-written implementation. Coroutines are a flavor of cooperative multi-tasking centered around suspending and resuming execution flow. You might be familiar with the concept because of Go's stdlib implementation, _Goroutines_, or Kotlin's `kotlinx.coroutines` library.
+A while back I found an implementation of coroutines written in C by someone called cloudwu. I bookmarked the library because it looked like a very concise and well-written implementation of coroutines that would be easy to digest. Coroutines are a flavor of cooperative multi-tasking centered around suspending and resuming execution flow. You might be familiar with the concept because of Go's stdlib implementation, _Goroutines_, or Kotlin's `kotlinx.coroutines` library.
 
-You can find the source code for `coroutine` [here](https://github.com/cloudwu/coroutine/tree/a6263031e6ee3d3e10e613f0c0c3af886465170e) (this is the exact revision reviewed). All code samples henceforth are authored by cloudwu, with occasional albeit slight modifications I've made to improve readability for the sake of code review (predominantly spacing), or to add annotations.
+You can find the source code for `coroutine` [here](https://github.com/cloudwu/coroutine/tree/a6263031e6ee3d3e10e613f0c0c3af886465170e) (this is the exact revision I'll be reviewing). All code samples henceforth are authored by cloudwu, with occasional albeit slight modifications I've made to improve readability for the sake of code review (predominantly spacing), or to add annotations. I'll prefix all of my annotations with `Z:`.
 
 We begin with the example program, main.c, found in the root level directory.
 
@@ -234,7 +234,7 @@ main() {
 }
 ```
 
-In `main`, we create a struct called `schedule`, then pass it into a `test` function where we initialize two coroutines and continually call `coroutine_resume` on them until they are no longer active. If you run this program, you'll see that the coroutines take turns executing. The output is as follows:
+In `main`, we create a struct called `schedule`, then pass it into a `test` function where we initialize two coroutines and continually call `coroutine_resume` on them until they are no longer active. If you run this program, you'll see that the coroutines take turns executing the `foo` function each with their own local state. The output is as follows:
 
 ```
 main start
@@ -264,18 +264,33 @@ struct schedule {
 };
 ```
 
-In `coroutine`, a `schedule` is an opaque struct that represents the runtime environment in which all of the coroutines execute and context switch. Despite being clever and well-written, `coroutine` uses unnecessarily terse names that can make it difficult to understand. I've therefore summarized each field below to elucidate its purpose:
+In `coroutine`, a `schedule` is an opaque struct that represents the runtime environment in which all of the coroutines execute and context switch. Despite being logically well-written, `coroutine` uses unnecessarily terse names that make it difficult to understand. I've therefore summarized each field below to elucidate its purpose:
 
-- `stack` is the stack for the current execution environment
+- `stack` is the stack for the current coroutine execution environment
 - `main` is effectively a checkpoint context for the coroutine. This is where we'll resume execution when a coroutine yields control back to the scheduler.
 - `nco` tracks the number of coroutines that have been added to an array thereof
 - `co` is said array
-- `cap` is the capacity of the coroutines array. This array will be pre-initialized, and will be realloc'd when `nco` reaches `cap`
+- `cap` is the capacity of the coroutines array, `co`, which will be pre-initialized and realloc'd when `nco` reaches `cap`
 - `running` is the index of the currently executing coroutine qua the `co` array
 
 `coroutine_open` is a very simple initializer function for a `schedule`. The initial coroutine capacity is 16 and the `co` array's elements are initialized to 0 via `memset`. The author does this because we will later need to perform `NULL` checks against any one of these slots when inserting new coroutines.
 
-Now we have our `schedule` in `main` and we pass it down through `test`. We'll call `coroutine_new` twice, initializing `coroutine`. We will first look at the `coroutine` struct, then the function:
+
+```c
+
+struct schedule *
+coroutine_open(void) {
+	struct schedule *S = malloc(sizeof(*S));
+	S->nco = 0;
+	S->cap = DEFAULT_COROUTINE;
+	S->running = -1;
+	S->co = malloc(sizeof(struct coroutine *) * S->cap);
+	memset(S->co, 0, sizeof(struct coroutine *) * S->cap);
+	return S;
+}
+```
+
+Now we have our `schedule` in `main` and we pass it down through `test`. We'll call `coroutine_new` twice, initializing two coroutines. We will first look at the `coroutine` struct, then the function:
 
 ```c
 struct coroutine {
@@ -306,26 +321,26 @@ Here's the function `coroutine_new`, annotated:
 ```c
 int
 coroutine_new(struct schedule *S, coroutine_func func, void *ud) {
-    // Just mallocs and sets all fields to defaults
+    // Z: Just mallocs and sets all fields to defaults
 	struct coroutine *co = _co_new(S, func , ud);
 
-    // If the num coroutines in the schedule is at or above capacity...
+    // Z: If the num coroutines in the schedule is at or above capacity...
 	if (S->nco >= S->cap) {
-        // Reallocate to have double the capacity and memset the memory.
+        // Z: Reallocate to have double the capacity and memset the memory.
 		int id = S->cap;
 		S->co = realloc(S->co, S->cap * 2 * sizeof(struct coroutine *));
 		memset(S->co + S->cap , 0 , sizeof(struct coroutine *) * S->cap);
-        // Assign the new coroutine at the next available index (the old capacity)
+        // Z: Assign the new coroutine at the next available index (the old capacity)
 		S->co[S->cap] = co;
-        // Now update the capacity
+        // Z: Now update the capacity
 		S->cap *= 2;
 		++S->nco;
 		return id;
 	} else {
-        // We have enough capacity. Find the next available index
+        // Z: We have enough capacity. Find the next available index
 		int i;
 		for (i = 0; i < S->cap; i++) {
-            // Calculating this way always gives us the next available index
+            // Z: Calculating this way always gives us the next available index
             // and always cycles to the beginning if we run out of cap (shouldnt
             // happen because of the realloc cond above)
 			int id = (i + S->nco) % S->cap;
@@ -336,7 +351,7 @@ coroutine_new(struct schedule *S, coroutine_func func, void *ud) {
 			}
 		}
 	}
-    // Trigger a failure (this will be compiled out in release builds)
+    // Z: Trigger a failure (this will be compiled out in release builds)
 	assert(0);
 	return -1;
 }
@@ -344,12 +359,11 @@ coroutine_new(struct schedule *S, coroutine_func func, void *ud) {
 
 Not much of interest in `_co_new`, just a struct initializer. The coroutine is initialized with a status of `COROUTINE_READY`. `coroutine_new` is super basic, but I've annotated it nonetheless. The author has a very terse style that I'm not particularly fond of and it makes everything harder to understand than it should be. Really, this is your standard fare initialization logic with a few interesting clever bits.
 
-One such clever bit that I like is the `assert` towards the end. When targeting release builds, this will get stripped out but it serves its purpose during development as a guard against invariant violations that ideally should not happen.
+One such clever bit that I like is the `assert` towards the end. When targeting release builds in most C compilers, this will get stripped out but it serves its purpose during development as a safeguard against invariant violations that should never happen.
 
 Okay, so back in main.c we've initialized two coroutines. Now we enter a while loop that won't break until either `coroutine_status` handler returns a falsy value.
 
 ```c
-// ...
 int co1 = coroutine_new(S, foo, &arg1);
 int co2 = coroutine_new(S, foo, &arg2);
 printf("main start\n");
@@ -358,7 +372,6 @@ while (coroutine_status(S, co1) && coroutine_status(S, co2)) {
   coroutine_resume(S, co1);
   coroutine_resume(S, co2);
 }
-// ...
 ```
 
 `coroutine_status` is very simple, but again, I have annotated it:
@@ -366,9 +379,9 @@ while (coroutine_status(S, co1) && coroutine_status(S, co2)) {
 ```c
 int
 coroutine_status(struct schedule * S, int id) {
-    // Maintain invariant: should be a positive index and below the capacity
+    // Z: Maintain invariant: should be a positive index and below the capacity
 	assert(id>=0 && id < S->cap);
-    // if the slot contains NULL, the coroutine is no longer active
+    // Z: if the slot contains NULL, the coroutine is no longer active
 	if (S->co[id] == NULL) {
 		return COROUTINE_DEAD;
 	}
@@ -416,13 +429,13 @@ It's difficult to read in its as-is state, so I'll break it down into three part
 Every call to `coroutine_resume` begins with this preliminary logic, which I've annotated.
 
 ```c
-// We shouldn't call resume while the schedule is in a running state.
-// Should be set back to -1 after every run, so it shouldn't be possible for a user to cause
-// this invariant to be violated. Hence why it's an `assert`.
+// Z: We shouldn't call resume while the schedule is in a running state.
+// Should be set back to -1 after every run, so it shouldn't be possible
+// for user code to violate this invariant. Hence why it's an `assert`.
 assert(S->running == -1);
-// Ditto - we do a size and capacity check.
+// Z: Ditto - we do a size and capacity check.
 assert(id >=0 && id < S->cap);
-// Last, if the coroutine at the given index is NULL, we exit.
+// Z: Last, if the coroutine at the given index is NULL, we exit.
 struct coroutine *C = S->co[id];
 if (C == NULL)
   return;
@@ -431,15 +444,15 @@ if (C == NULL)
 At this point in our systematic breakdown of main.c, we have just invoked `coroutine_resume` for the first time, so we'll hit the `COROUTINE_READY` case of the switch statement.
 
 ```c
-// If the coroutine is COROUTINE_READY, create the context and prepare to
+// Z: If the coroutine is COROUTINE_READY, create the context and prepare to
 // run the coroutine
 case COROUTINE_READY:
-  // Setup the coroutine's context...
+  // Z: Setup the coroutine's context...
   getcontext(&C->ctx);
-  // ...and its stack
+  // Z: ...and its stack
   C->ctx.uc_stack.ss_sp = S->stack;
   C->ctx.uc_stack.ss_size = STACK_SIZE;
-  // S->main is where we will return after switching to ctx.
+  // Z: S->main is where we will return after switching to ctx.
   // Literally the swapcontext line below.
   C->ctx.uc_link = &S->main;
 
@@ -448,13 +461,14 @@ case COROUTINE_READY:
 
   uintptr_t ptr = (uintptr_t)S;
 
-  // Now, this looks interesting...
+  // Z: Now, this looks interesting...
   // makecontext expects two ints and on some architectures this means 32 bit
   // values so we pass in the low 32 bits, and the high 32 bits of the
   // schedule struct, then reconcile it in the context handler.
   makecontext(&C->ctx, (void (*)(void)) mainfunc, 2, (uint32_t)ptr, (uint32_t)(ptr>>32));
 
-  // Run the coroutine. We'll swap the stack and reset the program counter to C->ctx, which is `mainfunc`.
+  // Z:
+  Run the coroutine. We'll swap the stack and reset the program counter to C->ctx, which is `mainfunc`.
   // Calls getcontext on main and initializes it such that it resumes on the
   // line after this swapcontext call.
   swapcontext(&S->main, &C->ctx);
@@ -471,29 +485,27 @@ You'll notice the pointers being passed in (and used in the next code sample) as
 > portable, is undefined according to the standards, and won't work
 > on architectures where pointers are larger than ints.
 
-We'll look at `mainfunc` next, as this is where the flow of execution is about to go.
-
-`mainfunc` is brief, and as usual, I've annotated it liberally:
+We'll look at `mainfunc` next, as this is where the flow of execution is about to proceed. `mainfunc` is brief, and as usual, I've annotated it liberally:
 
 ```c
 static void
 mainfunc(uint32_t low32, uint32_t hi32) {
-  // Reconcile the schedule pointer from the high and low 32 bits
+    // Z: Reconcile the schedule pointer from the high and low 32 bits
 	uintptr_t ptr = (uintptr_t)low32 | ((uintptr_t)hi32 << 32);
 	struct schedule *S = (struct schedule *)ptr;
 
-  // Grab the id of the running coroutine from the schedule
+    // Z: Grab the id of the running coroutine from the schedule
 	int id = S->running;
-  // ...and grab the coroutine
+    // Z: ...and grab the coroutine
 	struct coroutine *C = S->co[id];
 
-  // Run the coroutine's handler function, passing along the coroutine handler argument.
-  // We'll want to peek back at main.c to remember what happens next.
+    // Z: Run the coroutine's handler function, passing along the coroutine handler argument.
+    // We'll want to peek back at main.c to remember what happens next.
 	C->func(S,C->ud);
 
-  // If the program calls coroutine_yield, we'll context switch out of this function immediately
-  // and never hit this line. Thus, if the coroutine does not yield, it is effectively done and gets
-  // destroyed. This does not happen at this point in main.c.
+    // Z: If the program calls coroutine_yield, we'll context switch out of this function immediately
+    // and never hit this line. Thus, if the coroutine does not yield, it is effectively done and gets
+    // destroyed. This does not happen at this point in main.c.
 	_co_delete(C);
 	S->co[id] = NULL;
 	--S->nco;
@@ -524,15 +536,15 @@ Here's `coroutine_yield`, where we suspend the running coroutine:
 ```c
 void
 coroutine_yield(struct schedule * S) {
-  // Another quick check - self explanatory
+    // Z: Another quick check - self explanatory
 	int id = S->running;
 	assert(id >= 0);
 
 	struct coroutine *C = S->co[id];
-  // This one is interesting - we assert that the pointer address is equal to the stack address
-  // to prove we persisted the stack properly
-  assert((char *)&C > S->stack);
-  // Persist the stack state so the next coroutine can use it
+    // Z: This one is interesting - we assert that the pointer address is equal to the stack address
+    // to prove we persisted the stack properly
+    assert((char *)&C > S->stack);
+    // Z: Persist the stack state
 	_save_stack(C, S->stack + STACK_SIZE);
 	C->status = COROUTINE_SUSPEND;
 	S->running = -1;
@@ -555,20 +567,20 @@ case COROUTINE_SUSPEND:
   break;
 ```
 
-Here, we restore the coroutine's stack and `swapcontext` again. This is where all of this code gets very interesting: because we've saved the stack, `swapcontext` now context switches to the end of the `coroutine_yield` stack frame. We immediately exit `coroutine_yield` _into_ the `foo` handler function. The stack state is exactly as it was before, so we make another iteration of the loop and call `coroutine_yield`, save the stack again, and return to the end of the `COROUTINE_SUSPEND` block.
+Here, we restore the coroutine's stack and `swapcontext` again. This is where the code gets very interesting: because we've saved the stack, `swapcontext` now context switches to the end of the `coroutine_yield` stack frame. We immediately exit `coroutine_yield` _into_ the `foo` handler function. The stack state is exactly as it was before, so we make another iteration of the loop and call `coroutine_yield`, save the stack again, and return to the end of the `COROUTINE_SUSPEND` block.
 
 By the way, we should take a peek at `_save_stack`. I've annotated it as usual
 
 ```c
 static void _save_stack(struct coroutine *C, char *top) {
-  // Grab a reference of where we're at in memory
+  // Z: Grab a reference of where we're at in memory
   // This will be stored on the stack, so we'll use its address to figure out the size of the stack.
   char dummy = 0;
 
-  // top of the stack minus addr HERE should be less than the stack size
+  // Z: top of the stack minus addr HERE should be less than the stack size
   assert(top - &dummy <= STACK_SIZE);
 
-  // update capacity and realloc if not enough
+  // Z: update capacity and realloc if not enough
   if (C->capacity < top - &dummy) {
     free(C->stack);
     C->capacity = top - &dummy;
@@ -576,16 +588,17 @@ static void _save_stack(struct coroutine *C, char *top) {
   }
 
   C->size = top - &dummy;
-  // starting at the address of dummy (the last thing pushed onto the stack), copy memory all the way up to sze
+  // Z: starting at the address of dummy (the last thing pushed onto the stack),
+  // copy memory all the way up to size
   memcpy(C->stack, &dummy, C->size);
 }
 ```
 
-Maybe this sort of trickery is typical among C programmers, but I thought it was rather clever; using a stack allocated value's address to verifiably determine the current stack size.
+Maybe this sort of trickery is typical among C programmers, but I thought it was rather clever; using a stack-allocated value's address to verifiably determine the current stack size.
 
 This is the crux of the context switching logic. Both coroutines will continue to suspend and yield, context switching into the other. Each time we make a context switch, we restore the stack of the running coroutine, do a little work, save the stack again, and continue the cycle ad infinitum (or until we stop calling `coroutine_resume` and `coroutine_yield`).
 
-And I really found this quite clever - the first time we finish executing `foo` without calling `coroutine_yield`, we're suddenly in the same stack frame where `mainfunc` was initially invoked. Execution picks up after the `C->func` call and the coroutine is deleted:
+And I really found this quite clever: the first time we finish executing `foo` without calling `coroutine_yield`, we're suddenly in the same stack frame where `mainfunc` was initially invoked. Execution picks up after the `C->func` call and the coroutine is deleted:
 
 ```c
 static void
@@ -595,9 +608,9 @@ mainfunc(uint32_t low32, uint32_t hi32) {
 	int id = S->running;
 	struct coroutine *C = S->co[id];
 
-  C->func(S,C->ud);
-  // After the final coroutine_yield, the outermost handler func stack frame exits and we continue execution here
-
+    C->func(S,C->ud);
+    // Z: After the final coroutine_yield, the outermost handler func
+    // stack frame exits and we continue execution here
 	_co_delete(C);
 	S->co[id] = NULL;
 	--S->nco;
@@ -607,4 +620,4 @@ mainfunc(uint32_t low32, uint32_t hi32) {
 
 There's a few utility functions that for the sake of brevity I have not included in the review. I had the most trouble comprehending the stack persistence logic because I only have a cursory level of experience with pointer arithmetic, but once I started to get it I gained an even more acute appreciation of the code.
 
-My favorite part of this library was the stack frame manipulation around `coroutine_yield` and `mainfunc` - it's a completely bonkers stroke of genius that sent chills down my spine the moment it all clicked for me. The fact that we just fall out of the stack frame and into the other coroutine...totally baller. I've seen this same kind of "fallthrough" trick before (in a manner), specifically in the reactivity library Evan You implemented for the Vue frontend framework. Evan does this thing where you call a function, trigger a proxy trap inside of that function, then push the function itself onto a stack so you can start invoking it any time the proxy traps are triggered subsequently. Yes, it's nuts. In fact, the `@vue/reactivity` library is so cool, I'll have to do a separate source code review for it on this blog (stay tuned for that). I hope you enjoyed `coroutine`; drop me an email and let me know what you thought!
+My favorite part of this library was the stack frame manipulation around `coroutine_yield` and `mainfunc` - it's a completely bonkers stroke of genius that sent chills down my spine the moment it all clicked for me. The fact that we just fall out of the stack frame and into the other coroutine...totally baller. I've seen this same kind of "fallthrough" trick before (in a manner), specifically in the reactivity library Evan You implemented for the Vue frontend framework. Evan does this thing where you call a function, trigger a proxy trap inside of that function, then push the function itself onto a stack so you can start invoking it any time the proxy traps are triggered subsequently. Yes, it's nuts. In fact, the `@vue/reactivity` library is so cool, I'll have to do a separate source code review for it on this blog (stay tuned for that). Anyway, I hope you enjoyed `coroutine`; drop me a note and let me know what you thought!

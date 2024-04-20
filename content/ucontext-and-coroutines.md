@@ -10,7 +10,9 @@ tags:
   - coroutines
 ---
 
-Follows is my source code review of the `coroutine` C library by cloudwu. Understanding the code was an interesting and fun learning exercise of which the foremost topics are cooperative scheduling, coroutines/fibers, and handling stacks in user-space. We'll focus on these concepts during the review.
+Recommended listening: [Gétatchèw Mèkurya - Ethiopian Urban Modern Music Vol. 5 (1972)](https://www.youtube.com/watch?v=6ihmscLSb6A)
+
+Here's my source code review of the `coroutine` C library by an author called cloudwu. Figuring out this code was a great exercise in understanding cooperative scheduling, coroutines/fibers, and handling stacks in user-space. We'll focus on these concepts during the review. There's some clever bits that I absolutely loved as well, and about which I'm excited to share.
 
 `coroutine` is built atop the `ucontext` library. I've dedicated the immediately subsequent section to a brief foray into `ucontext` and its most commonly used APIs. Thereafter, we'll take what we know about `ucontext` and review the coroutine source code.
 
@@ -322,12 +324,12 @@ coroutine_new(struct schedule *S, coroutine_func func, void *ud) {
 	} else {
         // We have enough capacity. Find the next available index
 		int i;
-		for (i=0;i<S->cap;i++) {
+		for (i = 0; i < S->cap; i++) {
             // Calculating this way always gives us the next available index
             // and always cycles to the beginning if we run out of cap (shouldnt
             // happen because of the realloc cond above)
-			int id = (i+S->nco) % S->cap;
-			if (S->co[id] == NULL) {
+			int id = (i + S->nco) % S->cap;
+			if (S->co[id] == NULL) {~~~~
 				S->co[id] = co;
 				++S->nco;
 				return id;
@@ -460,6 +462,15 @@ case COROUTINE_READY:
   break;
 ```
 
+You'll notice the pointers being passed in (and used in the next code sample) as arguments to the context handler. The [manpage](https://man7.org/linux/man-pages/man3/swapcontext.3.html) for `swapcontext` explains this a bit.
+
+> On architectures where int and pointer types are the same size
+> (e.g., x86-32, where both types are 32 bits), you may be able to
+> get away with passing pointers as arguments to makecontext()
+> following argc. However, doing this is not guaranteed to be
+> portable, is undefined according to the standards, and won't work
+> on architectures where pointers are larger than ints.
+
 We'll look at `mainfunc` next, as this is where the flow of execution is about to go.
 
 `mainfunc` is brief, and as usual, I've annotated it liberally:
@@ -517,11 +528,12 @@ coroutine_yield(struct schedule * S) {
 	int id = S->running;
 	assert(id >= 0);
 
-	struct coroutine * C = S->co[id];
-  // This one is interesting -
+	struct coroutine *C = S->co[id];
+  // This one is interesting - we assert that the pointer address is equal to the stack address
+  // to prove we persisted the stack properly
   assert((char *)&C > S->stack);
-
-	_save_stack(C,S->stack + STACK_SIZE);
+  // Persist the stack state so the next coroutine can use it
+	_save_stack(C, S->stack + STACK_SIZE);
 	C->status = COROUTINE_SUSPEND;
 	S->running = -1;
 	swapcontext(&C->ctx , &S->main);
@@ -545,6 +557,32 @@ case COROUTINE_SUSPEND:
 
 Here, we restore the coroutine's stack and `swapcontext` again. This is where all of this code gets very interesting: because we've saved the stack, `swapcontext` now context switches to the end of the `coroutine_yield` stack frame. We immediately exit `coroutine_yield` _into_ the `foo` handler function. The stack state is exactly as it was before, so we make another iteration of the loop and call `coroutine_yield`, save the stack again, and return to the end of the `COROUTINE_SUSPEND` block.
 
+By the way, we should take a peek at `_save_stack`. I've annotated it as usual
+
+```c
+static void _save_stack(struct coroutine *C, char *top) {
+  // Grab a reference of where we're at in memory
+  // This will be stored on the stack, so we'll use its address to figure out the size of the stack.
+  char dummy = 0;
+
+  // top of the stack minus addr HERE should be less than the stack size
+  assert(top - &dummy <= STACK_SIZE);
+
+  // update capacity and realloc if not enough
+  if (C->capacity < top - &dummy) {
+    free(C->stack);
+    C->capacity = top - &dummy;
+    C->stack = malloc(C->capacity);
+  }
+
+  C->size = top - &dummy;
+  // starting at the address of dummy (the last thing pushed onto the stack), copy memory all the way up to sze
+  memcpy(C->stack, &dummy, C->size);
+}
+```
+
+Maybe this sort of trickery is typical among C programmers, but I thought it was rather clever; using a stack allocated value's address to verifiably determine the current stack size.
+
 This is the crux of the context switching logic. Both coroutines will continue to suspend and yield, context switching into the other. Each time we make a context switch, we restore the stack of the running coroutine, do a little work, save the stack again, and continue the cycle ad infinitum (or until we stop calling `coroutine_resume` and `coroutine_yield`).
 
 And I really found this quite clever - the first time we finish executing `foo` without calling `coroutine_yield`, we're suddenly in the same stack frame where `mainfunc` was initially invoked. Execution picks up after the `C->func` call and the coroutine is deleted:
@@ -567,6 +605,6 @@ mainfunc(uint32_t low32, uint32_t hi32) {
 }
 ```
 
-There's a few utility functions that for the sake of brevity I have not included in the review. One such utility function I would recommend looking at - assuming the reader would like to delve further - is the `_save_stack` function, and moreover the stack persistence logic throughout `coroutine`. I had the most trouble comprehending this logic because I only have a cursory level of experience with pointer arithmetic, but once I started to get it I gained an even more acute appreciation of the code.
+There's a few utility functions that for the sake of brevity I have not included in the review. I had the most trouble comprehending the stack persistence logic because I only have a cursory level of experience with pointer arithmetic, but once I started to get it I gained an even more acute appreciation of the code.
 
-My favorite part of this library was the stack frame manipulation around `coroutine_yield` and `mainfunc` - I've seen some of this "fallthrough" type of logic before, specifically in the reactivity library Evan You implemented for the Vue frontend framework. This is a very inventive way to reason about programming in that implementation is guided by execution flow. I've a review of that source code on my YouTube channel for those interested. Check back soon for more source code reviews.
+My favorite part of this library was the stack frame manipulation around `coroutine_yield` and `mainfunc` - it's a completely bonkers stroke of genius that sent chills down my spine the moment it all clicked for me. The fact that we just fall out of the stack frame and into the other coroutine...totally baller. I've seen this same kind of "fallthrough" trick before (in a manner), specifically in the reactivity library Evan You implemented for the Vue frontend framework. Evan does this thing where you call a function, trigger a proxy trap inside of that function, then push the function itself onto a stack so you can start invoking it any time the proxy traps are triggered subsequently. Yes, it's nuts. In fact, the `@vue/reactivity` library is so cool, I'll have to do a separate source code review for it on this blog (stay tuned for that). I hope you enjoyed `coroutine`; drop me an email and let me know what you thought!

@@ -7,8 +7,8 @@ const FOOTNOTE_CONTENT_WIDTH = '920px'
 const FOOTNOTE_SIZE = `calc(${FOOTNOTE_CONTENT_WIDTH} + 2 * ${SIDE_PADDING})`
 
 interface FootnoteProps {
-  className?: string
-  children: React.ReactChildren
+  readonly className?: string
+  readonly children: React.ReactChildren
 }
 
 export const Wrapper = styled.div`

@@ -31,7 +31,7 @@ jest.mock('gatsby', () => {
   }
 })
 
-const mockedGatsby = mocked(gatsby, true)
+const mockedGatsby = mocked(gatsby, { shallow: true })
 
 describe('component Link', () => {
   afterEach(() => {

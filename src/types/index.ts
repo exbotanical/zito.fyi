@@ -16,13 +16,16 @@ export interface PostBySlugQueryResult {
 
 export interface MdxNode {
   body?: string
-  timeToRead?: number
 
   fields?: {
     slug?: string
     pathName?: string
     route?: string
     url?: string
+  }
+
+  timeToRead?: {
+    text?: string
   }
 
   frontmatter?: {
@@ -41,6 +44,7 @@ export interface MdxNode {
 
   internal?: {
     content?: string
+    contentFilePath?: string
   }
 }
 
@@ -55,8 +59,9 @@ export interface Post {
   category?: string
   tags?: string[]
   body?: string
-  timeToRead: number
+  timeToRead: string
   internalContent?: string
+  contentFilePath?: string
   slug: string
   route: string
   pathName: string
@@ -74,7 +79,7 @@ export interface PostJson {
   dateModified: string
   category?: string
   tags?: string[]
-  timeToRead: number
+  timeToRead: string
   slug: string
   route: string
   pathName: string

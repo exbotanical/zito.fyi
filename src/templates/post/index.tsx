@@ -12,8 +12,8 @@ interface PageContext {
 }
 
 interface PostTemplateProps {
-  data: PostBySlugQueryResult
-  pageContext: PageContext
+  readonly data: PostBySlugQueryResult
+  readonly pageContext: PageContext
 }
 
 const Wrapper = styled.div`
@@ -24,13 +24,14 @@ const Wrapper = styled.div`
 export function PostTemplate({
   data,
   pageContext,
+  children,
 }: PostTemplateProps): JSX.Element {
   const post = queryToPost(data)
 
   return (
     <Layout post={post}>
       <Wrapper>
-        <Post post={post} />
+        <Post post={post} children={children} />
         <RelatedPosts posts={pageContext.relatedPosts.map(jsonToPost)} />
       </Wrapper>
     </Layout>

@@ -10,7 +10,7 @@ export const postsListQueryResponse = {
             pathName: '/test-one',
             url: 'https://zito.fyi/test-one',
           },
-          timeToRead: 1,
+          timeToRead: '1 min read',
           frontmatter: {
             title: 'Test One',
             tags: ['programming', 'cate', 'ee'],
@@ -66,7 +66,7 @@ export const postsListQueryResponse = {
             pathName: '/test-ones',
             url: 'https://zito.fyi/test-ones',
           },
-          timeToRead: 1,
+          timeToRead: '1 min read',
           frontmatter: {
             title: 'Test Ones',
             tags: ['programming', 'writing'],

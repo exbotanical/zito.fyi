@@ -1,4 +1,4 @@
-import { GatsbyImage } from 'gatsby-plugin-image'
+import { GatsbyImage, type IGatsbyImageData } from 'gatsby-plugin-image'
 import React, { useEffect, useRef } from 'react'
 import styled, { css } from 'styled-components'
 
@@ -7,21 +7,19 @@ import { typographyStyles } from '@/styles'
 
 import { POST_WIDTH } from './PostSpacing'
 
-import type { IGatsbyImageData } from 'gatsby-plugin-image'
-
 interface FigureProps {
   cover?: boolean
 }
 
 interface ImageProps {
-  src?: string
-  title?: string
-  alt: string
+  readonly src?: string
+  readonly title?: string
+  readonly alt: string
 }
 
 interface CoverImageProps {
-  image: IGatsbyImageData
-  alt: string
+  readonly image: IGatsbyImageData
+  readonly alt: string
 }
 
 export const PostImageSpacing = css`

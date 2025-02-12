@@ -7,8 +7,7 @@ import { useConfig } from '@/config'
 import type { SiteConfig } from '@/types'
 
 import { IconLink } from '../Links'
-
-import type { StyledIcon } from '@styled-icons/styled-icon'
+import { type StyledIcon } from '@styled-icons/styled-icon'
 
 function generateLink(
   url: string,
@@ -61,8 +60,8 @@ function renderRssLink(config: Readonly<SiteConfig>) {
 }
 
 interface IconLinksProps {
-  className?: string
-  includeRss?: boolean
+  readonly className?: string
+  readonly includeRss?: boolean
 }
 
 const defaultProps: IconLinksProps = {
@@ -86,7 +85,7 @@ const LinkGrid = styled.div`
 export function Socials({
   includeRss,
   className,
-}: IconLinksProps): JSX.Element | null {
+}: IconLinksProps = defaultProps): JSX.Element | null {
   const config = useConfig()
 
   return (
@@ -95,9 +94,7 @@ export function Socials({
       {renderGitHubLink(config)}
       {generateLinkedInLink(config)}
       {renderEmailLink(config)}
-      {includeRss && renderRssLink(config)}
+      {includeRss ? renderRssLink(config) : null}
     </LinkGrid>
   )
 }
-
-Socials.defaultProps = defaultProps

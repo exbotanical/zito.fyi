@@ -5,7 +5,7 @@ import { WidthWrapper } from '@/components/Post/PostSpacing'
 import { typographyStyles } from '@/styles'
 
 interface TableProps {
-  children?: React.ReactNode
+  readonly children?: React.ReactNode
 }
 
 interface CellProps {

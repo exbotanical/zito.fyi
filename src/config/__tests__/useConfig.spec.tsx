@@ -24,12 +24,12 @@ jest.mock('gatsby', () => {
   }
 })
 
-const mockedGatsby = mocked(gatsby, true)
+const mockedGatsby = mocked(gatsby, { shallow: true })
 
 describe('hook `useConfig`', () => {
   it('correctly queries and provides site configuration data', () => {
     mockedGatsby.useStaticQuery.mockImplementation(
-      () => siteConfigQueryResponse,
+      () => siteConfigQueryResponse as any,
     )
 
     const { result } = renderHook(() => useConfig())
@@ -41,7 +41,9 @@ describe('hook `useConfig`', () => {
   })
 
   it('throws an error if site configuration is not extant', () => {
-    mockedGatsby.useStaticQuery.mockImplementation(() => ({ site: undefined }))
+    mockedGatsby.useStaticQuery.mockImplementation(
+      () => ({ site: undefined }) as any,
+    )
 
     const { result } = renderHook(useConfig)
     expect(result.error).toBeDefined()

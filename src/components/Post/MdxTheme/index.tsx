@@ -1,4 +1,4 @@
-import { MDXProvider, type MDXProviderComponents } from '@mdx-js/react'
+import { MDXProvider } from '@mdx-js/react'
 import React from 'react'
 
 import type { Post } from '@/types'
@@ -11,11 +11,11 @@ import * as TableComponents from './Table'
 import * as TextComponents from './Text'
 
 interface MdxThemeProps {
-  children: React.ReactNode
-  post: Post
+  readonly children: React.ReactNode
+  readonly post: Post
 }
 
-function getComponentMapping(post: Post): MDXProviderComponents {
+function getComponentMapping(post: Post) {
   const headings = TextComponents.generateHeadings(post.slug)
 
   return {
@@ -37,7 +37,7 @@ function getComponentMapping(post: Post): MDXProviderComponents {
 
       return updatedChildren as unknown as React.ReactElement
     },
-    p: TextComponents.Paragraph,
+    // p: TextComponents.Paragraph,
     h1: headings.H1,
     h2: headings.H2,
     h3: headings.H3,
@@ -54,18 +54,19 @@ function getComponentMapping(post: Post): MDXProviderComponents {
     table: TableComponents.Table,
     thead: TableComponents.Head,
     tbody: TableComponents.Body,
-    tr: TableComponents.Row,
+    // tr: TableComponents.Row,
     td: TableComponents.BodyCell,
     th: TableComponents.HeadCell,
 
     pre: CodeComponents.Pre,
     code: CodeComponents.Code,
-    inlineCode: CodeComponents.InlineCode,
+
+    // inlineCode: CodeComponents.InlineCode,
 
     hr: MiscComponents.Break,
     thematicBreak: MiscComponents.Break,
 
-    a: MiscComponents.Link,
+    // a: MiscComponents.Link,
     img: MiscComponents.MdxImage,
   }
 }

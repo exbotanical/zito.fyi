@@ -11,7 +11,7 @@ export function Navigation(): JSX.Element {
   return (
     <S.Wrapper>
       <S.HomeButton to="/">
-        <Lambda data-testid="site_logo" height="35px" width="35px" />
+        <Lambda data-testid="site_logo" />
       </S.HomeButton>
 
       <S.ThemeButton

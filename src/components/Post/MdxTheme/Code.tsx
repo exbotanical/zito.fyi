@@ -8,8 +8,8 @@ const CODE_CONTENT_WIDTH = '736px'
 const CODE_BLOCK_SIZE = `calc(${CODE_CONTENT_WIDTH} + 2 * ${SIDE_PADDING})`
 
 interface CodeProps {
-  className?: string
-  children?: React.ReactChildren
+  readonly className?: string
+  readonly children?: React.ReactChildren
 }
 
 export const InlineCode = undefined

@@ -10,7 +10,7 @@ const queryClient = new QueryClient()
 export function QueryWrapper({
   element,
 }: {
-  element: React.ReactChild
+  readonly element: React.ReactChild
 }): JSX.Element {
   return (
     <QueryClientProvider client={queryClient}>

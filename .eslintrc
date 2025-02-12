@@ -1,22 +1,25 @@
 {
   "extends": ["@magister_zito/react", "prettier"],
-  "plugins": ["graphql"],
+  "plugins": ["@graphql-eslint"],
   "settings": {
-    "import/internal-regex": "^@@/"
+    "import/internal-regex": "^@@/",
+  },
+  "env": {
+    "jest": true,
   },
   "overrides": [
     {
       "files": ["**/*.ts"],
       "parserOptions": {
-        "project": ["./tsconfig.json"]
-      }
+        "project": ["./tsconfig.json"],
+      },
     },
     {
       "files": ["cypress.config.ts", "cypress/**/*.ts"],
       "parserOptions": {
-        "project": ["./cypress/tsconfig.json"]
-      }
-    }
+        "project": ["./cypress/tsconfig.json"],
+      },
+    },
   ],
-  "ignorePatterns": [".cache", "data", "content", "fixtures"]
+  "ignorePatterns": [".cache", "data", "content", "fixtures"],
 }

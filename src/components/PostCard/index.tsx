@@ -11,8 +11,8 @@ import { PostCardSkeleton } from './Skeleton'
 import * as Styles from './styles'
 
 interface PostCardProps {
-  post?: Post
-  hero?: boolean
+  readonly post?: Post
+  readonly hero?: boolean
 }
 
 export function PostCard({ post, hero }: PostCardProps): JSX.Element {
@@ -48,7 +48,7 @@ export function PostCard({ post, hero }: PostCardProps): JSX.Element {
             </Styles.DescriptionText>
           </TransparentLink>
         </Styles.Meta>
-        {hero && <PostButton to={post.slug} />}
+        {hero ? <PostButton to={post.slug} /> : null}
       </Styles.Details>
     </Styles.Wrapper>
   )

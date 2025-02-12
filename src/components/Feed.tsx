@@ -7,8 +7,8 @@ import { BREAKPOINTS } from '@/styles/constants'
 import type { FeedItems } from '@/types'
 
 interface FeedProps {
-  feedItems: FeedItems
-  hideHero?: boolean
+  readonly feedItems: FeedItems
+  readonly hideHero?: boolean
 }
 
 const Wrapper = styled.div`

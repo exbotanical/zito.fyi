@@ -5,7 +5,7 @@ import { Feed } from '@/components/Feed'
 import type { Post } from '@/types'
 
 interface RelatedPostsProps {
-  posts: Post[]
+  readonly posts: Post[]
 }
 
 const Wrapper = styled.aside`

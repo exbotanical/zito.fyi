@@ -5,7 +5,7 @@ import { useConfig } from '@/config'
 import type { Post } from '@/types'
 
 interface DisqusPluginProps {
-  post: Post
+  readonly post: Post
 }
 
 export function DisqusPlugin({ post }: DisqusPluginProps): JSX.Element | null {

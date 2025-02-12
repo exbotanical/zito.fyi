@@ -17,13 +17,34 @@ const adjustedPathPRefix = !config.pathPrefix ? '/' : config.pathPrefix
 const gatsbyConfig: GatsbyConfig = {
   pathPrefix: adjustedPathPRefix,
   plugins: [
-    'gatsby-plugin-pnpm',
+    // {
+    //   resolve: 'gatsby-plugin-react-svg',
+    //   options: {
+    //     rule: {
+    //       include: /\.svg$/,
+    //     },
+    //   },
+    // },
     {
-      resolve: 'gatsby-plugin-react-svg',
+      // https://github.com/jacobmischka/gatsby-plugin-react-svg/issues/59#issuecomment-2580080274
+      resolve: 'gatsby-plugin-svgr-svgo',
       options: {
-        rule: {
-          include: /\.svg$/,
-        },
+        inlineSvgOptions: [
+          {
+            test: /\.svg$/,
+            // svgoConfig: {
+            //   plugins: [
+            //     {
+            //       name: 'preset-default',
+            //       params: {
+            //         overrides: { removeViewBox: false },
+            //       },
+            //     },
+            //     'prefixIds',
+            //   ],
+            // },
+          },
+        ],
       },
     },
     'gatsby-plugin-react-helmet',
@@ -76,7 +97,7 @@ const gatsbyConfig: GatsbyConfig = {
             resolve: 'gatsby-remark-responsive-iframe',
           },
           {
-            resolve: 'gatsby-remark-relative-images',
+            resolve: 'gatsby-remark-relative-images-v2',
           },
           {
             resolve: 'gatsby-remark-images',
@@ -95,15 +116,21 @@ const gatsbyConfig: GatsbyConfig = {
             },
           },
         ],
-        remarkPlugins: [unwrapImages, remarkA11yEmoji, remarkExternalLinks],
+        mdxOptions: {
+          remarkPlugins: [unwrapImages, remarkA11yEmoji, remarkExternalLinks],
+        },
       },
     },
-    {
-      resolve: 'gatsby-plugin-google-gtag',
-      options: {
-        trackingIds: [config.site.googleAnalyticsId],
-      },
-    },
+    ...(config.site.googleAnalyticsId
+      ? [
+          {
+            resolve: 'gatsby-plugin-google-gtag',
+            options: {
+              trackingIds: [config.site.googleAnalyticsId],
+            },
+          },
+        ]
+      : []),
     'gatsby-plugin-catch-links',
     'gatsby-plugin-twitter',
     'gatsby-plugin-sitemap',
@@ -137,30 +164,27 @@ const gatsbyConfig: GatsbyConfig = {
         feeds: [
           {
             output: withBasePath(config, config.site.rss),
-            query: `
-                {
-                  allMdx(
-                    limit: 1000,
-                    sort: { order: DESC, fields: [frontmatter___datePublished] },
-                  ) {
-                    edges {
-                      node {
-                        html
-                        timeToRead
-                        fields {
-                          slug
-                        }
-                        frontmatter {
-                          title
-                          datePublished
-                          category
-                          tags
-                        }
-                      }
+            query: `{
+              allMdx(limit: 1000, sort: {frontmatter: {datePublished: DESC}}) {
+                edges {
+                  node {
+                    html
+                    timeToRead {
+                      text
+                    }
+                    fields {
+                      slug
+                    }
+                    frontmatter {
+                      title
+                      datePublished
+                      category
+                      tags
                     }
                   }
                 }
-              `,
+              }
+            }`,
             serialize: generateRssFeed(config),
             site_url: config.site.url,
             title: config.site.rssTitle,

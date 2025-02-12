@@ -20,7 +20,7 @@ import { LinkCopyNotification } from './LinkCopyNotification'
 import * as S from './styles'
 
 interface PostShareProps {
-  post: Post
+  readonly post: Post
 }
 
 const ICON_SIZE = 60
@@ -68,7 +68,6 @@ const LinkedinShare = styled(LinkedinShareButton)`
 export function PostShare({ post }: PostShareProps): JSX.Element {
   const { title, description, url } = post
 
-  // eslint-disable-next-line react/hook-use-state
   const [showLinkNotification, setShowLinkNotification] = useState(false)
 
   const config = useConfig()
@@ -78,7 +77,7 @@ export function PostShare({ post }: PostShareProps): JSX.Element {
     <S.Wrapper aria-label="Share on social media">
       <S.LinkWrapper>
         <S.LinkGrid>
-          <FacebookShare quote={description} url={url}>
+          <FacebookShare url={url}>
             <FacebookIcon fill="rgb(66, 103, 178)" size={ICON_SIZE} />
           </FacebookShare>
 
@@ -108,13 +107,13 @@ export function PostShare({ post }: PostShareProps): JSX.Element {
             }}
             size={ICON_SIZE}
           />
-          {showLinkNotification && (
+          {showLinkNotification ? (
             <LinkCopyNotification
               onAnimationEnd={() => {
                 setShowLinkNotification(false)
               }}
             />
-          )}
+          ) : null}
         </S.LinkGrid>
       </S.LinkWrapper>
       {/* <Separator /> */}

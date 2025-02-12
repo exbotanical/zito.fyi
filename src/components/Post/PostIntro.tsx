@@ -10,7 +10,7 @@ import { CoverImage } from './PostImage'
 import { WidthWrapper } from './PostSpacing'
 
 interface PostIntroProps {
-  post: Post
+  readonly post: Post
 }
 
 const Wrapper = styled.section`

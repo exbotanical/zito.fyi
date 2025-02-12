@@ -48,7 +48,7 @@ jest.mock('@/config/useConfig', () => ({
   useConfig: jest.fn(() => config),
 }))
 
-const mockedReact = mocked(React, true)
+const mockedReact = mocked(React, { shallow: true })
 
 const queryClient = new QueryClient()
 const wrapper = ({ children }: { children: React.ReactChildren }) => (

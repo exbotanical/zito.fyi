@@ -5,7 +5,7 @@ import { ExtensionWrapper } from '@/components/Post/PostSpacing'
 import { typographyStyles } from '@/styles'
 
 interface ListProps {
-  children?: React.ReactNode
+  readonly children?: React.ReactNode
 }
 
 const UnorderedStyle = styled.ul`

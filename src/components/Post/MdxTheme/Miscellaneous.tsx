@@ -12,8 +12,8 @@ import { ExtensionWrapper } from '@/components/Post/PostSpacing'
 import { Separator } from '@/components/Separator'
 
 interface LinkProps extends React.HTMLProps<HTMLAnchorElement> {
-  activeClassName?: string
-  to: string
+  readonly activeClassName?: string
+  readonly to: string
 }
 
 export function Break(): JSX.Element {

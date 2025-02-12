@@ -1,5 +1,5 @@
-import type { SiteConfig } from '../src/types'
 import type { FeedPluginData, FeedPluginItem } from './types'
+import type { SiteConfig } from '../src/types'
 
 export function generateRssFeed(config: SiteConfig) {
   return function mapEdges(data: FeedPluginData) {

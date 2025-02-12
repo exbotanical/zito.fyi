@@ -8,7 +8,7 @@ import { BREAKPOINTS } from '@/styles/constants'
 import { PromptIcon } from '../Icons/Composed/Prompt'
 
 interface PostButtonProps {
-  to: string
+  readonly to: string
 }
 
 export const ReadButton = styled(GatsbyLink)`

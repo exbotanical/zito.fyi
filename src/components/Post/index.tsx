@@ -8,7 +8,7 @@ import { Render } from './Render'
 import { PostShare } from './Share'
 
 interface PostProps {
-  post: PostType
+  readonly post: PostType
 }
 
 const Wrapper = styled.main`
@@ -18,11 +18,11 @@ const Wrapper = styled.main`
   justify-items: center;
 `
 
-export function Post({ post }: PostProps): JSX.Element {
+export function Post({ post, children }: PostProps): JSX.Element {
   return (
     <Wrapper>
       <PostIntro post={post} />
-      <Render post={post} />
+      <Render post={post} children={children} />
       <PostShare post={post} />
     </Wrapper>
   )

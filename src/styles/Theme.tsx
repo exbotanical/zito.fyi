@@ -50,7 +50,7 @@ interface ThemeContext {
 }
 
 interface ThemeProps {
-  children: React.ReactNode
+  readonly children: React.ReactNode
 }
 
 const { darkTheme, lightTheme } = themes.nordTheme

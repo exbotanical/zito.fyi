@@ -66,7 +66,7 @@ export function mdxNodeToPost(mdxNode: MdxNode): Post {
     )
   }
 
-  if (!mdxNode.timeToRead) {
+  if (!mdxNode.timeToRead?.text) {
     throw Error(
       `[mdxNodeToPost] Post missing timeToRead. Post slug: ${mdxNode.fields.slug}.`,
     )
@@ -111,12 +111,14 @@ export function mdxNodeToPost(mdxNode: MdxNode): Post {
     ),
     datePublished: new Date(frontmatter.datePublished),
     description: frontmatter.description,
-    internalContent: mdxNode.internal?.content,
+    // TODO: CHECK THIS AGAINST mdxNode.internal.content
+    internalContent: mdxNode.body,
+    contentFilePath: mdxNode.internal?.contentFilePath,
     pathName: mdxNode.fields.pathName,
     route: mdxNode.fields.route,
     slug: mdxNode.fields.slug,
     tags: tagList,
-    timeToRead: mdxNode.timeToRead,
+    timeToRead: mdxNode.timeToRead.text,
     title: frontmatter.title,
     url: mdxNode.fields.url,
   }

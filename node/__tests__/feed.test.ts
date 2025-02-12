@@ -153,7 +153,7 @@ describe('build util `createFeed`', () => {
       [FEED_METADATA_DIR]: null,
     })
 
-    const MockedGatsbyActions = mocked(GatsbyActionsMock, true)
+    const MockedGatsbyActions = mocked(GatsbyActionsMock, { shallow: true })
 
     await createFeed(config, GatsbyActionsMock, longPostsList, 'index')
 

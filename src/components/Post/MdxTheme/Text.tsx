@@ -7,11 +7,11 @@ import { ExtensionWrapper } from '@/components/Post/PostSpacing'
 import * as styles from '@/styles'
 
 interface HeadingProps {
-  children: React.ReactNode
+  readonly children: React.ReactNode
 }
 
 interface HeadingComponent {
-  (props: HeadingProps): JSX.Element
+  (props: any): JSX.Element
 }
 
 interface Headings {
@@ -24,7 +24,7 @@ interface Headings {
 }
 
 interface BlockquoteProps {
-  children?: React.ReactNode
+  readonly children?: React.ReactNode
 }
 
 /**

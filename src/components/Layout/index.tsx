@@ -10,8 +10,8 @@ import { ThemeProvider, BREAKPOINTS } from '@/styles'
 import type { Post } from '@/types'
 
 interface LayoutProps {
-  children?: React.ReactNode
-  post?: Post
+  readonly children?: React.ReactNode
+  readonly post?: Post
 }
 
 const LayoutGrid = styled.div`

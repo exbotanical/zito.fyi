@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface PromptIconProps {
-  direction: 'left' | 'right'
+  readonly direction: 'left' | 'right'
 }
 
 const StyledContainer = styled.span`

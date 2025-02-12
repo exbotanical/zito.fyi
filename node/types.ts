@@ -40,7 +40,9 @@ export interface MdxFeedQueryResult {
     {
       node: {
         html?: string
-        timeToRead?: string
+        timeToRead?: {
+          text?: string
+        }
         fields?: {
           slug?: string
         }

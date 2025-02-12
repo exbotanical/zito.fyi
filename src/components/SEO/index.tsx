@@ -10,7 +10,7 @@ import { useConfig } from '@/config'
 import type { Post } from '@/types'
 
 interface SeoProps {
-  post?: Post
+  readonly post?: Post
 }
 
 export function SEO({ post }: SeoProps): JSX.Element {

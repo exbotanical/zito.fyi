@@ -49,7 +49,9 @@ const PopUp = styled.div`
   animation-iteration-count: 2;
   background-color: ${({ theme }) => theme.colors.bg.tertiary};
   border-radius: 6px;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.14), 0 1px 18px rgba(0, 0, 0, 0.12),
+  box-shadow:
+    0 6px 10px rgba(0, 0, 0, 0.14),
+    0 1px 18px rgba(0, 0, 0, 0.12),
     0 3px 5px rgba(0, 0, 0, 0.2);
   color: ${({ theme }) => theme.colors.bg.primary};
   transform: translateX(-50%);
@@ -60,7 +62,7 @@ const PopUp = styled.div`
 `
 
 interface SnackbarProps {
-  onAnimationEnd?: () => void
+  readonly onAnimationEnd?: () => void
 }
 
 export function LinkCopyNotification({

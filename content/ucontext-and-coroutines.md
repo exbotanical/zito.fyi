@@ -275,7 +275,6 @@ In `coroutine`, a `schedule` is an opaque struct that represents the runtime env
 
 `coroutine_open` is a very simple initializer function for a `schedule`. The initial coroutine capacity is 16 and the `co` array's elements are initialized to 0 via `memset`. The author does this because we will later need to perform `NULL` checks against any one of these slots when inserting new coroutines.
 
-
 ```c
 
 struct schedule *

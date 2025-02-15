@@ -4,7 +4,7 @@ import { config as testConfig } from '../test/fixtures/config'
 
 const isTestEnv = process.env.CYPRESS_SUPPORT || process.env.NODE_ENV === 'test'
 
-const REL_CANONICAL = 'https://zito.fyi'
+export const REL_CANONICAL = 'https://zito.fyi'
 
 export const config: SiteConfig = isTestEnv
   ? testConfig

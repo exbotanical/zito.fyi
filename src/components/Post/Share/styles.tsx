@@ -1,13 +1,13 @@
 import { Link } from '@styled-icons/boxicons-regular'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { BREAKPOINTS, H1 } from '@/styles'
 
 export const Wrapper = styled.section`
   display: flex;
-  grid-auto-flow: row;
-  margin: 1rem auto;
   justify-content: flex-start;
+  margin: 1rem auto;
+  grid-auto-flow: row;
   stroke: ${({ theme }) =>
     theme.dark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'};
 `
@@ -37,8 +37,8 @@ export const Label = styled(H1)`
   text-transform: uppercase;
 
   @supports (-webkit-text-stroke: 3px white) {
-    -webkit-text-stroke: 3px ${({ theme }) => (theme.dark ? 'white' : 'black')};
     -webkit-text-fill-color: ${({ theme }) => (theme.dark ? 'black' : 'white')};
+    -webkit-text-stroke: 3px ${({ theme }) => (theme.dark ? 'white' : 'black')};
   }
 `
 

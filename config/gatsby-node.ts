@@ -1,3 +1,4 @@
+import readingTime from 'reading-time'
 import urlJoin from 'url-join'
 
 import { MdxNode } from '@/types'
@@ -13,15 +14,12 @@ import {
   getAllPostsByCategory,
   ConfigSchema,
 } from '../node'
-import { StreamLogger } from '../node/logger'
 
 import { config } from './config'
 
 import type { BaseFrontmatter } from '../node/types'
 import type { GatsbyNode } from 'gatsby'
-import readingTime from 'reading-time'
 
-StreamLogger.init()
 const POST_PAGE_COMPONENT = require.resolve('../src/templates/post/queries.ts')
 
 export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions }) => {
@@ -69,6 +67,10 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions }) => {
       node,
       value: url,
     })
+
+    if (!node.body || typeof node.body !== 'string') {
+      throw Error(`Expected node.body to be a string (node ${node.id})`)
+    }
 
     actions.createNodeField({
       node,

@@ -15,7 +15,7 @@ interface FeedTemplateProps {
   readonly pageContext: PageContext
 }
 
-function FeedTemplate({ pageContext }: FeedTemplateProps): JSX.Element {
+function FeedTemplate({ pageContext }: FeedTemplateProps): React.JSX.Element {
   const { feedItems, feedElementRef } = useInfiniteFeed(pageContext)
 
   const config = useConfig()

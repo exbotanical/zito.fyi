@@ -5,13 +5,13 @@ import { ThemeToggleContext } from '@/styles/Theme'
 
 import { Lambda, Moon, Sun } from '../Icons'
 
-export function Navigation(): JSX.Element {
+export function Navigation(): React.JSX.Element {
   const { theme, toggleTheme } = useContext(ThemeToggleContext)
 
   return (
     <S.Wrapper>
       <S.HomeButton to="/">
-        <Lambda data-testid="site_logo" />
+        <Lambda aria-label="Homepage" data-testid="site_logo" />
       </S.HomeButton>
 
       <S.ThemeButton

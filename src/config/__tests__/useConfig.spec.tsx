@@ -1,4 +1,3 @@
-import { renderHook } from '@testing-library/react-hooks'
 import * as gatsby from 'gatsby'
 import { mocked } from 'jest-mock'
 
@@ -24,7 +23,7 @@ jest.mock('gatsby', () => {
   }
 })
 
-const mockedGatsby = mocked(gatsby, { shallow: true })
+const mockedGatsby = mocked(gatsby, { shallow: false })
 
 describe('hook `useConfig`', () => {
   it('correctly queries and provides site configuration data', () => {
@@ -32,12 +31,12 @@ describe('hook `useConfig`', () => {
       () => siteConfigQueryResponse as any,
     )
 
-    const { result } = renderHook(() => useConfig())
+    const result = useConfig()
 
     expect(mockedGatsby.graphql).toHaveBeenCalledTimes(1)
     expect(mockedGatsby.useStaticQuery).toHaveBeenCalledTimes(1)
 
-    expect(result.current).toBe(config)
+    expect(result).toBe(config)
   })
 
   it('throws an error if site configuration is not extant', () => {
@@ -45,10 +44,9 @@ describe('hook `useConfig`', () => {
       () => ({ site: undefined }) as any,
     )
 
-    const { result } = renderHook(useConfig)
-    expect(result.error).toBeDefined()
+    expect(useConfig).toThrow()
 
-    expect(mockedGatsby.graphql).toHaveBeenCalledTimes(2) // ?
-    expect(mockedGatsby.useStaticQuery).toHaveBeenCalledTimes(2)
+    expect(mockedGatsby.graphql).toHaveBeenCalledTimes(1)
+    expect(mockedGatsby.useStaticQuery).toHaveBeenCalledTimes(1)
   })
 })

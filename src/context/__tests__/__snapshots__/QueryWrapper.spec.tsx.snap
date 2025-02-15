@@ -4,21 +4,21 @@ exports[`context QueryWrapper renders correctly 1`] = `
 <QueryClientProvider
   client={
     QueryClient {
-      "defaultOptions": Object {},
+      "defaultOptions": {},
       "mutationCache": MutationCache {
-        "config": Object {},
-        "listeners": Array [],
+        "config": {},
+        "listeners": [],
         "mutationId": 0,
-        "mutations": Array [],
+        "mutations": [],
       },
-      "mutationDefaults": Array [],
+      "mutationDefaults": [],
       "queryCache": QueryCache {
-        "config": Object {},
-        "listeners": Array [],
-        "queries": Array [],
-        "queriesMap": Object {},
+        "config": {},
+        "listeners": [],
+        "queries": [],
+        "queriesMap": {},
       },
-      "queryDefaults": Array [],
+      "queryDefaults": [],
     }
   }
 >

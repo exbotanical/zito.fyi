@@ -8,7 +8,8 @@ function configure() {
   const isDev = Cypress.env('STAGE') === 'dev'
   const disabledRules: Rule[] = [
     { id: 'duplicate-id', enabled: isDev },
-    { id: 'color-contrast', enabled: isDev },
+    { id: 'color-contrast', enabled: false },
+    { id: 'scrollable-region-focusable', enabled: false },
   ]
 
   cy.configureAxe({

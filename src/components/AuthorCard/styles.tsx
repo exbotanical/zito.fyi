@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { Separator } from '@/components/Separator'
 import { Socials } from '@/components/Socials'

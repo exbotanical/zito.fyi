@@ -15,7 +15,7 @@ interface PostCardProps {
   readonly hero?: boolean
 }
 
-export function PostCard({ post, hero }: PostCardProps): JSX.Element {
+export function PostCard({ post, hero }: PostCardProps): React.JSX.Element {
   if (!post) {
     return <PostCardSkeleton />
   }
@@ -26,14 +26,14 @@ export function PostCard({ post, hero }: PostCardProps): JSX.Element {
   }
 
   return (
-    <Styles.Wrapper hero={hero}>
+    <Styles.Wrapper $hero={hero}>
       <TransparentLink ariaLabel={post.title} to={post.slug}>
         <Styles.Cover
           alt={post.coverImageAlt}
           image={getImage(post.coverImg)!}
         />
       </TransparentLink>
-      <Styles.Details hero={hero}>
+      <Styles.Details $hero={hero}>
         <Styles.Meta>
           <Styles.Header>
             <PostInfo post={post} />
@@ -43,7 +43,7 @@ export function PostCard({ post, hero }: PostCardProps): JSX.Element {
             </TransparentLink>
           </Styles.Header>
           <TransparentLink ariaLabel={post.title} to={post.slug}>
-            <Styles.DescriptionText hero={hero}>
+            <Styles.DescriptionText $hero={hero}>
               {post.description}
             </Styles.DescriptionText>
           </TransparentLink>

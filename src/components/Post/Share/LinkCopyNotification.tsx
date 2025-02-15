@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { keyframes, css } from 'styled-components'
+import { styled, keyframes, css } from 'styled-components'
 
 import { Caption } from '@/styles/Primitives'
 
@@ -67,7 +67,7 @@ interface SnackbarProps {
 
 export function LinkCopyNotification({
   onAnimationEnd,
-}: SnackbarProps): JSX.Element {
+}: SnackbarProps): React.JSX.Element {
   return (
     <PopUp onAnimationEnd={onAnimationEnd}>
       <Caption>Link copied to clipboard</Caption>

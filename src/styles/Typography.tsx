@@ -315,7 +315,7 @@ export const typographyStyles = {
 }
 
 // TODO replace with preload link
-export function Typography(): JSX.Element {
+export function Typography(): React.JSX.Element {
   return (
     <>
       <Helmet>

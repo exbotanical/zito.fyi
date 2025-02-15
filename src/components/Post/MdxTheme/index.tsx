@@ -19,24 +19,21 @@ function getComponentMapping(post: Post) {
   const headings = TextComponents.generateHeadings(post.slug)
 
   return {
-    wrapper: ({ children }: { children: React.ReactNode }) => {
-      const updatedChildren = React.Children.map(children, child => {
-        if (!React.isValidElement(child)) {
+    wrapper: ({ children }: { children: React.ReactNode }): React.ReactNode =>
+      // eslint-disable-next-line @typescript-eslint/promise-function-async
+      React.Children.map(children, child => {
+        if (!React.isValidElement<{ className?: string }>(child)) {
           return child
         }
 
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        if (child.props?.className === 'footnotes') {
+        if (child.props.className === 'footnotes') {
           // the key is of negligible consequence given we've only one element that will ever match
           // however, react requires one, so...
           return <Footnote key={1} {...child.props} />
         }
 
         return child
-      })
-
-      return updatedChildren as unknown as React.ReactElement
-    },
+      }),
     // p: TextComponents.Paragraph,
     h1: headings.H1,
     h2: headings.H2,
@@ -66,12 +63,12 @@ function getComponentMapping(post: Post) {
     hr: MiscComponents.Break,
     thematicBreak: MiscComponents.Break,
 
-    // a: MiscComponents.Link,
+    a: MiscComponents.Link,
     img: MiscComponents.MdxImage,
   }
 }
 
-export function MDXTheme({ children, post }: MdxThemeProps): JSX.Element {
+export function MDXTheme({ children, post }: MdxThemeProps): React.JSX.Element {
   return (
     <>
       <MiscComponents.GlobalGatsbyImageStyle />

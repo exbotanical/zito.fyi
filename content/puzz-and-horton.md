@@ -3,7 +3,7 @@ title: 'In Progress'
 cover: images/mythologies.jpg
 coverAlt: The cover of Roland Barthes' Mythologies
 description: 'Thoughts on learning Ocaml; Kotlin, v8, and other affairs'
-datePublished: '2024-04-22T08:00:00.000Z'
+datePublished: '2025-04-22T08:00:00.000Z'
 category: 'programming'
 tags:
   - programming languages

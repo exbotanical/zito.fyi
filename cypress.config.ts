@@ -7,13 +7,18 @@ interface RssData {
   }
 }
 
-interface SiteMapData {
+export interface SiteMapUrl {
+  loc: string[]
+  changefreq: string[]
+  priority: string[]
+}
+
+export interface SiteMapData {
   urlset: {
-    url: {
-      loc: string[]
-      changefreq: string[]
-      priority: string[]
-    }[]
+    url: SiteMapUrl[]
+  }
+  sitemapindex: {
+    sitemap: { loc: string[] }[]
   }
 }
 
@@ -54,13 +59,12 @@ export default defineConfig({
           })
         },
 
-        async parseSitemap({ siteUrl, sitemapString }: ParseSitemapArgs) {
-          return parseStringPromise(sitemapString).then(res => {
-            const siteMapData = res as SiteMapData
-            const urls = siteMapData.urlset.url
-
-            return urls.map(url => url.loc[0].replace(siteUrl, ''))
-          })
+        async parseSitemap({
+          sitemapString,
+        }: ParseSitemapArgs): Promise<SiteMapData> {
+          return parseStringPromise(sitemapString).then(
+            res => res as SiteMapData,
+          )
         },
       })
     },

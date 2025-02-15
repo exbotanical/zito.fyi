@@ -25,7 +25,8 @@ export function generateRssFeed(config: SiteConfig) {
         categories: node.frontmatter?.tags,
         custom_elements: [
           {
-            'content:encoded': node.html,
+            // TODO: Validate
+            'content:encoded': node.body,
           },
           {
             author: config.user.email,

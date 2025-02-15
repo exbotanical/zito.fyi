@@ -10,15 +10,6 @@ module.exports = {
     // aliases
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@@/(.*)$': '<rootDir>/test/$1',
-
-    // workarounds for https://github.com/facebook/jest/issues/9771
-    // @see https://github.com/gatsbyjs/gatsby/discussions/34803
-    '^gatsby-page-utils/(.*)$': `gatsby-page-utils/dist/$1`,
-    '^gatsby-core-utils/(.*)$': `gatsby-core-utils/dist/$1`,
-    '^gatsby-plugin-utils/(.*)$': [
-      // `gatsby-plugin-utils/dist/$1`,
-      `gatsby-plugin-utils/$1`,
-    ],
   },
   setupFiles: [path.join(__dirname, './loader.shim.js')],
   setupFilesAfterEnv: [path.join(__dirname, './setupTests.js')],
@@ -31,5 +22,5 @@ module.exports = {
     '^.+\\.tsx?$': 'ts-jest',
   },
   // https://github.com/facebook/jest/issues/2081#issuecomment-699558143
-  transformIgnorePatterns: ['node_modules/(?!.*(gatsby|gatsby-plugin-mdx)/)'],
+  transformIgnorePatterns: ['node_modules/(?!.*(@mdx-js)/)'],
 }

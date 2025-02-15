@@ -5,9 +5,8 @@ import type {
   PostBySlugQueryResult,
   UserQueryResult,
   UserMetadata,
+  QueryAllPostsResult,
 } from '@/types'
-
-import type { GetMdxPostsQueryResult } from '../../node/types'
 
 export function mdxNodeToPost(mdxNode: MdxNode): Post {
   const { frontmatter } = mdxNode
@@ -66,7 +65,7 @@ export function mdxNodeToPost(mdxNode: MdxNode): Post {
     )
   }
 
-  if (!mdxNode.timeToRead?.text) {
+  if (!mdxNode.fields.timeToRead?.text) {
     throw Error(
       `[mdxNodeToPost] Post missing timeToRead. Post slug: ${mdxNode.fields.slug}.`,
     )
@@ -111,14 +110,13 @@ export function mdxNodeToPost(mdxNode: MdxNode): Post {
     ),
     datePublished: new Date(frontmatter.datePublished),
     description: frontmatter.description,
-    // TODO: CHECK THIS AGAINST mdxNode.internal.content
     internalContent: mdxNode.body,
     contentFilePath: mdxNode.internal?.contentFilePath,
     pathName: mdxNode.fields.pathName,
     route: mdxNode.fields.route,
     slug: mdxNode.fields.slug,
     tags: tagList,
-    timeToRead: mdxNode.timeToRead.text,
+    timeToRead: mdxNode.fields.timeToRead.text,
     title: frontmatter.title,
     url: mdxNode.fields.url,
   }
@@ -145,7 +143,7 @@ export function jsonToPost(meta: PostJson): Post {
   }
 }
 
-export function queryToPostsList(res: GetMdxPostsQueryResult): Post[] {
+export function queryToPostsList(res: QueryAllPostsResult): Post[] {
   const { edges } = res.allMdx
 
   return edges.map(edge => mdxNodeToPost(edge.node))

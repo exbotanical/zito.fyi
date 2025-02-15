@@ -11,7 +11,7 @@ interface PostInfoProps {
 
 const N_TAGS = 2
 
-export function PostInfo({ post }: PostInfoProps): JSX.Element {
+export function PostInfo({ post }: PostInfoProps): React.JSX.Element {
   const categoryUrl = post.category ? `/category/${post.category}` : undefined
 
   const publicationDate = `${categoryUrl ? '\u00A0⋅ ' : ''}${format(

@@ -13,7 +13,7 @@ interface SeoProps {
   readonly post?: Post
 }
 
-export function SEO({ post }: SeoProps): JSX.Element {
+export function SEO({ post }: SeoProps): React.JSX.Element {
   const config = useConfig()
 
   const postData = post ? generatePostData(post) : undefined

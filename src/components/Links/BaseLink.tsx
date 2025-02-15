@@ -17,7 +17,7 @@ export function BaseLink({
   activeClassName,
   sansBasePath,
   ariaLabel,
-}: LinkProps): JSX.Element {
+}: LinkProps): React.JSX.Element {
   const config = useConfig()
   const url = href || to
 

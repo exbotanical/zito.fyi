@@ -1,13 +1,21 @@
-import path from 'path'
+import path from 'node:path'
 
 import remarkA11yEmoji from '@fec/remark-a11y-emoji'
 import remarkExternalLinks from 'remark-external-links'
 // https://github.com/gatsbyjs/gatsby/issues/16239
 // must be < v3 due to ESM only support therein
+import remarkGfm from 'remark-gfm'
 import unwrapImages from 'remark-unwrap-images'
+// mustb be < v1 for the same stupid reason
 import urljoin from 'url-join'
 
-import { withBasePath, generateRssFeed, setupRssFeed } from '../node'
+import {
+  withBasePath,
+  generateRssFeed,
+  setupRssFeed,
+  generateSitemapData,
+  type ResolvedSitemapPage,
+} from '../node'
 
 import { config } from '.'
 
@@ -17,14 +25,6 @@ const adjustedPathPRefix = !config.pathPrefix ? '/' : config.pathPrefix
 const gatsbyConfig: GatsbyConfig = {
   pathPrefix: adjustedPathPRefix,
   plugins: [
-    // {
-    //   resolve: 'gatsby-plugin-react-svg',
-    //   options: {
-    //     rule: {
-    //       include: /\.svg$/,
-    //     },
-    //   },
-    // },
     {
       // https://github.com/jacobmischka/gatsby-plugin-react-svg/issues/59#issuecomment-2580080274
       resolve: 'gatsby-plugin-svgr-svgo',
@@ -32,17 +32,6 @@ const gatsbyConfig: GatsbyConfig = {
         inlineSvgOptions: [
           {
             test: /\.svg$/,
-            // svgoConfig: {
-            //   plugins: [
-            //     {
-            //       name: 'preset-default',
-            //       params: {
-            //         overrides: { removeViewBox: false },
-            //       },
-            //     },
-            //     'prefixIds',
-            //   ],
-            // },
           },
         ],
       },
@@ -66,6 +55,12 @@ const gatsbyConfig: GatsbyConfig = {
       options: {
         name: 'posts',
         path: path.join(__dirname, '../', config.contentDir || 'content'),
+      },
+    },
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: ['remark-comment'],
       },
     },
     {
@@ -117,7 +112,12 @@ const gatsbyConfig: GatsbyConfig = {
           },
         ],
         mdxOptions: {
-          remarkPlugins: [unwrapImages, remarkA11yEmoji, remarkExternalLinks],
+          remarkPlugins: [
+            unwrapImages,
+            remarkA11yEmoji,
+            remarkExternalLinks,
+            remarkGfm,
+          ],
         },
       },
     },
@@ -133,7 +133,45 @@ const gatsbyConfig: GatsbyConfig = {
       : []),
     'gatsby-plugin-catch-links',
     'gatsby-plugin-twitter',
-    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        resolveSiteUrl: () => config.site.url,
+        // I had to read the source-code for this plugin because the docs were vague and there's no type declarations.
+        // Basically resolvePages receives the query result as input, and its output is mapped into serialize.
+        // The only hard requirement I saw was that each entry in the resolvePages output must have a `path` field.
+        resolvePages: generateSitemapData(config),
+        serialize: (page: ResolvedSitemapPage) => ({
+          ...page,
+          url: page.path,
+        }),
+        query: `{
+          allMdx {
+            edges {
+              node {
+                frontmatter {
+                  title
+                  category
+                  tags
+                  datePublished
+                  dateModified
+                }
+                fields {
+                  slug
+                  route
+                }
+              }
+            }
+          }
+          allCategories: allMdx {
+            distinct(field: {frontmatter: {category: SELECT}})
+          }
+          allTags: allMdx {
+            distinct(field: {frontmatter: {tags: SELECT}})
+          }
+        }`,
+      },
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -168,12 +206,12 @@ const gatsbyConfig: GatsbyConfig = {
               allMdx(limit: 1000, sort: {frontmatter: {datePublished: DESC}}) {
                 edges {
                   node {
-                    html
-                    timeToRead {
-                      text
-                    }
+                    body
                     fields {
                       slug
+                      timeToRead {
+                        text
+                      }
                     }
                     frontmatter {
                       title

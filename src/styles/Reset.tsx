@@ -1,7 +1,9 @@
 import { createGlobalStyle } from 'styled-components'
 
+import type { Theme } from './Theme'
+
 export const Reset = createGlobalStyle<{
-  theme: { colorbg: string; colortext: string }
+  theme: Theme
 }>`
 html {
 	box-sizing: border-box;
@@ -16,14 +18,14 @@ html {
 }
 
 body {
+	/* needed for absolute pos static noise div */
+	position: relative;
 	min-width: 100%;
 	min-height: 100%;
 	padding: 0;
 	margin: 0;
 	background: ${({ theme }) => theme.colors.bg.primary};
 	color: ${({ theme }) => theme.colors.font.primary};
-	/* needed for absolute pos static noise div */
-	position: relative;
 }
 
 #___gatsby #gatsby-focus-wrapper {
@@ -32,7 +34,7 @@ body {
 }
 
 a,
-a:vSited,
+a:visited,
 a:hover,
 a:active {
 	color: inherit;
@@ -45,12 +47,12 @@ p {
 
 .noise {
 	position: absolute;
-	height: 100%;
 	z-index: 980;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
+	height: 100%;
 	animation: fade-in 4s;
 	background-size: calc(2px * 64);
 	opacity: 0.012;
@@ -64,6 +66,6 @@ p {
 }
 
 img:not([src*=".svg"]) {
-  ${({ theme }) => (theme.dark ? 'filter: brightness(75%)' : '')};
+	${({ theme }) => (theme.dark ? 'filter: brightness(75%)' : '')};
 }
 `

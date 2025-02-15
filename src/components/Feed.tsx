@@ -1,5 +1,4 @@
-import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { LayoutWidthContainer } from '@/components//LayoutWidthContainer'
 import { PostCard } from '@/components/PostCard'

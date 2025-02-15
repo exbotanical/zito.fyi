@@ -1,4 +1,6 @@
-export const postsListQueryResponse = {
+import { QueryAllPostsResult } from "@/types";
+
+export const postsListQueryResponse: QueryAllPostsResult = {
   allMdx: {
     totalCount: 2,
     edges: [
@@ -9,8 +11,8 @@ export const postsListQueryResponse = {
             route: '/test-one',
             pathName: '/test-one',
             url: 'https://zito.fyi/test-one',
+            timeToRead: {text:'1 min read'},
           },
-          timeToRead: '1 min read',
           frontmatter: {
             title: 'Test One',
             tags: ['programming', 'cate', 'ee'],
@@ -65,8 +67,8 @@ export const postsListQueryResponse = {
             route: '/test-ones',
             pathName: '/test-ones',
             url: 'https://zito.fyi/test-ones',
+            timeToRead: { text:'1 min read' },
           },
-          timeToRead: '1 min read',
           frontmatter: {
             title: 'Test Ones',
             tags: ['programming', 'writing'],

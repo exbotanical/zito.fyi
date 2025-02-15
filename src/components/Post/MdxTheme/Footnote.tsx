@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { SIDE_PADDING } from '@/components/Post/PostSpacing'
 
@@ -8,15 +8,14 @@ const FOOTNOTE_SIZE = `calc(${FOOTNOTE_CONTENT_WIDTH} + 2 * ${SIDE_PADDING})`
 
 interface FootnoteProps {
   readonly className?: string
-  readonly children: React.ReactChildren
+  readonly children?: React.ReactNode
 }
 
 export const Wrapper = styled.div`
-  width: 100%;
-  max-width: 100%;
-
   /* Ensure li is centered with article content */
   display: flex;
+  width: 100%;
+  max-width: 100%;
   flex-direction: column;
   align-items: center;
 
@@ -27,7 +26,10 @@ export const Wrapper = styled.div`
   }
 `
 
-export function Footnote({ className, children }: FootnoteProps): JSX.Element {
+export function Footnote({
+  className,
+  children,
+}: FootnoteProps): React.JSX.Element {
   return (
     <Wrapper className={className} tabIndex={0}>
       {children}

@@ -1,13 +1,14 @@
 import { LinkedinSquare, Github, Youtube } from '@styled-icons/boxicons-logos'
 import { MailSend, Rss } from '@styled-icons/boxicons-regular'
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { useConfig } from '@/config'
 import type { SiteConfig } from '@/types'
 
 import { IconLink } from '../Links'
-import { type StyledIcon } from '@styled-icons/styled-icon'
+
+import type { StyledIcon } from '@styled-icons/styled-icon'
 
 function generateLink(
   url: string,
@@ -85,7 +86,7 @@ const LinkGrid = styled.div`
 export function Socials({
   includeRss,
   className,
-}: IconLinksProps = defaultProps): JSX.Element | null {
+}: IconLinksProps = defaultProps): React.JSX.Element | null {
   const config = useConfig()
 
   return (

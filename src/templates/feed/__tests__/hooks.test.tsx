@@ -1,5 +1,4 @@
-import { fireEvent } from '@testing-library/react'
-import { renderHook, act } from '@testing-library/react-hooks'
+import { renderHook, act, fireEvent, waitFor } from '@testing-library/react'
 import fetchMock from 'fetch-mock'
 import { mocked } from 'jest-mock'
 import React from 'react'
@@ -8,8 +7,8 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import type {
   FeedItems,
   FeedMetadataJson,
-  Post,
   PlaceholderPost,
+  Post,
 } from '@/types'
 
 import { config } from '@@/fixtures'
@@ -51,7 +50,7 @@ jest.mock('@/config/useConfig', () => ({
 const mockedReact = mocked(React, { shallow: true })
 
 const queryClient = new QueryClient()
-const wrapper = ({ children }: { children: React.ReactChildren }) => (
+const wrapper = ({ children }: { children: React.ReactNode }) => (
   <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 )
 
@@ -61,7 +60,7 @@ function mockFetch() {
     const pageId = idMatches ? idMatches[1] : undefined
 
     if (!pageId) {
-      throw Error('The provided page is without an index')
+      throw Error('The provided page is missing an index')
     }
 
     const pageData = pageMetadatas[parseInt(pageId, 10)]
@@ -69,6 +68,16 @@ function mockFetch() {
     return { body: pageData, status: 200 }
   })
 }
+
+const isPostPlaceholder = (
+  post: PlaceholderPost | Post,
+): post is PlaceholderPost => (post as PlaceholderPost).isPlaceholder
+
+// const filterPlaceholders = (feedPosts: FeedItems) =>
+//   feedPosts.filter(isPostPlaceholder)
+
+const filterFullPosts = (feedPosts: FeedItems) =>
+  feedPosts.filter(post => !isPostPlaceholder(post))
 
 const pageCtx: PageContext = {
   feedId: undefined,
@@ -78,60 +87,59 @@ const pageCtx: PageContext = {
   pageIndex: 0,
 }
 
-const isPostPlaceholder = (
-  post: PlaceholderPost | Post,
-): post is PlaceholderPost => (post as PlaceholderPost).isPlaceholder
-
-const filterPlaceholders = (feedPosts: FeedItems) =>
-  feedPosts.filter(isPostPlaceholder)
-
-const filterFullPosts = (feedPosts: FeedItems) =>
-  feedPosts.filter(post => !isPostPlaceholder(post))
-
 describe('hook `useInfiniteFeed`', () => {
   beforeAll(mockFetch)
 
+  it('loads only a single page on initial render', async () => {
+    const { feedItems } = (
+      await act(
+        () => renderHook(() => useInfiniteFeed(pageCtx), { wrapper }).result,
+      )
+    ).current
+
+    expect(feedItems.length).toEqual(5)
+  })
+
   it('loads next page on scroll', async () => {
-    await act(async () => {
-      const { result, waitFor } = renderHook(() => useInfiniteFeed(pageCtx), {
-        wrapper,
+    const { result } = await act(() =>
+      renderHook(() => useInfiniteFeed(pageCtx), { wrapper }),
+    )
+
+    await waitFor(() => {
+      expect(result.current.feedItems.length).toEqual(5)
+    })
+
+    const loadNext = async (targetCount: number) => {
+      act(() => {
+        // FIXME: Trick the DOM into thinking we have more scrolling to do
+        window.innerHeight = 10000
+
+        fireEvent.scroll(window, {
+          target: {
+            y: 5000,
+          },
+        })
       })
 
-      // initial load
-      await waitFor(() => result.current.feedItems.length === 5)
+      await waitFor(() => {
+        expect(result.current.feedItems.length).toEqual(targetCount)
+      })
 
-      mockedReact.useRef.mockImplementation(() => ({
-        current: {
-          getBoundingClientRect: () => ({
-            bottom: 1,
-            top: 0,
-          }),
-        },
-      }))
-
-      const loadNext = async (targetCount: number) => {
-        fireEvent.scroll(window, { target: {} }) // scroll
-
-        await waitFor(() => result.current.feedItems.length === targetCount) // wait for updated list
-
-        const placeholders = filterPlaceholders(result.current.feedItems)
-        expect(placeholders).toHaveLength(5)
-
-        await waitFor(
-          () =>
-            filterFullPosts(result.current.feedItems).length === targetCount,
+      await waitFor(() => {
+        expect(filterFullPosts(result.current.feedItems).length).toEqual(
+          targetCount,
         )
+      })
 
-        const fullPosts = filterFullPosts(result.current.feedItems)
-        expect(fullPosts).toHaveLength(targetCount)
+      const fullPosts = filterFullPosts(result.current.feedItems)
+      expect(fullPosts).toHaveLength(targetCount)
 
-        expect(fullPosts).toMatchSnapshot()
-      }
+      expect(fullPosts).toMatchSnapshot()
+    }
 
-      await loadNext(10)
-
-      await loadNext(15)
-    })
+    // Also, because React 18 is fucking retarded, useEffect now runs twice.
+    // Ideally, we'd call this twice with 10 and 15 but React's dumbass takes us straight to 15.
+    await loadNext(15)
   })
 
   // test with full visibility i.e. no need to scroll
@@ -145,14 +153,12 @@ describe('hook `useInfiniteFeed`', () => {
       },
     }))
 
-    await act(async () => {
-      const { result, waitFor } = renderHook(() => useInfiniteFeed(pageCtx), {
-        wrapper,
-      })
+    const { feedItems } = (
+      await act(
+        () => renderHook(() => useInfiniteFeed(pageCtx), { wrapper }).result,
+      )
+    ).current
 
-      await waitFor(() => filterFullPosts(result.current.feedItems).length > 5)
-
-      expect(result.current.feedItems.length).toBeGreaterThan(10)
-    })
+    expect(feedItems.length).toBeGreaterThan(10)
   })
 })

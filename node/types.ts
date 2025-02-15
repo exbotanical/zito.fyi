@@ -1,3 +1,4 @@
+// TODO: Consolidate types and queries
 export interface GetMdxPostsQueryResult {
   allMdx: {
     edges: {
@@ -8,6 +9,7 @@ export interface GetMdxPostsQueryResult {
           category?: string
           tags?: string[]
           datePublished?: string
+          dateModified?: string
         }
       }
     }[]
@@ -39,12 +41,12 @@ export interface MdxFeedQueryResult {
   edges?: [
     {
       node: {
-        html?: string
-        timeToRead?: {
-          text?: string
-        }
+        body?: string
         fields?: {
           slug?: string
+          timeToRead?: {
+            text?: string
+          }
         }
         frontmatter?: {
           title?: string

@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sitemap build util \`generateSitemapData\` generates the sitemap config 1`] = `
+[
+  {
+    "changefreq": "weekly",
+    "lastmod": "2023-03-04T08:00:00.000Z",
+    "path": "https://zito.fyi/a-complete-guide-to-make",
+    "priority": 0.7,
+  },
+  {
+    "changefreq": "weekly",
+    "lastmod": "2023-10-17T07:00:00.000Z",
+    "path": "https://zito.fyi/choreographic-programming",
+    "priority": 0.7,
+  },
+  {
+    "changefreq": "weekly",
+    "lastmod": "2022-04-19T07:00:00.000Z",
+    "path": "https://zito.fyi/rules-to-die-on-a-hill-by-a-decisive-java-script-style-guide",
+    "priority": 0.7,
+  },
+  {
+    "changefreq": "weekly",
+    "lastmod": "2023-07-02T07:00:00.000Z",
+    "path": "https://zito.fyi/chromophores",
+    "priority": 0.7,
+  },
+  {
+    "changefreq": "weekly",
+    "lastmod": "2024-04-22T08:00:00.000Z",
+    "path": "https://zito.fyi/corundum-and-the-dromedary",
+    "priority": 0.7,
+  },
+  {
+    "changefreq": "weekly",
+    "lastmod": "2024-04-22T08:00:00.000Z",
+    "path": "https://zito.fyi/in-progress",
+    "priority": 0.7,
+  },
+  {
+    "changefreq": "weekly",
+    "lastmod": "2024-01-13T00:00:00.000Z",
+    "path": "https://zito.fyi/internet-archives-i",
+    "priority": 0.7,
+  },
+  {
+    "changefreq": "weekly",
+    "lastmod": "2024-02-12T00:00:00.000Z",
+    "path": "https://zito.fyi/ucontext-and-coroutines",
+    "priority": 0.7,
+  },
+  {
+    "changefreq": "monthly",
+    "lastmod": "2025-01-01T12:00:00.000Z",
+    "path": "https://zito.fyi/category/culture",
+    "priority": 0.5,
+  },
+  {
+    "changefreq": "monthly",
+    "lastmod": "2025-01-01T12:00:00.000Z",
+    "path": "https://zito.fyi/category/programming",
+    "priority": 0.5,
+  },
+  {
+    "changefreq": "monthly",
+    "lastmod": "2025-01-01T12:00:00.000Z",
+    "path": "https://zito.fyi/category/record collecting",
+    "priority": 0.5,
+  },
+  {
+    "changefreq": "monthly",
+    "lastmod": "2025-01-01T12:00:00.000Z",
+    "path": "https://zito.fyi/tag/build tools",
+    "priority": 0.5,
+  },
+  {
+    "changefreq": "monthly",
+    "lastmod": "2025-01-01T12:00:00.000Z",
+    "path": "https://zito.fyi/tag/concurrency",
+    "priority": 0.5,
+  },
+  {
+    "changefreq": "monthly",
+    "lastmod": "2025-01-01T12:00:00.000Z",
+    "path": "https://zito.fyi/tag/coroutines",
+    "priority": 0.5,
+  },
+  {
+    "changefreq": "monthly",
+    "lastmod": "2025-01-01T12:00:00.000Z",
+    "path": "https://zito.fyi/tag/fluxus",
+    "priority": 0.5,
+  },
+  {
+    "changefreq": "monthly",
+    "lastmod": "2025-01-01T12:00:00.000Z",
+    "path": "https://zito.fyi/tag/frontend",
+    "priority": 0.5,
+  },
+  {
+    "changefreq": "monthly",
+    "lastmod": "2025-01-01T12:00:00.000Z",
+    "path": "https://zito.fyi/tag/internet",
+    "priority": 0.5,
+  },
+  {
+    "changefreq": "monthly",
+    "lastmod": "2025-01-01T12:00:00.000Z",
+    "path": "https://zito.fyi/tag/javascript",
+    "priority": 0.5,
+  },
+  {
+    "changefreq": "monthly",
+    "lastmod": "2025-01-01T12:00:00.000Z",
+    "path": "https://zito.fyi/tag/kotlin",
+    "priority": 0.5,
+  },
+  {
+    "changefreq": "monthly",
+    "lastmod": "2025-01-01T12:00:00.000Z",
+    "path": "https://zito.fyi/tag/ocaml",
+    "priority": 0.5,
+  },
+  {
+    "changefreq": "monthly",
+    "lastmod": "2025-01-01T12:00:00.000Z",
+    "path": "https://zito.fyi/tag/programming languages",
+    "priority": 0.5,
+  },
+  {
+    "changefreq": "monthly",
+    "lastmod": "2025-01-01T12:00:00.000Z",
+    "path": "https://zito.fyi/tag/programming paradigms",
+    "priority": 0.5,
+  },
+  {
+    "changefreq": "monthly",
+    "lastmod": "2025-01-01T12:00:00.000Z",
+    "path": "https://zito.fyi/tag/software engineering",
+    "priority": 0.5,
+  },
+  {
+    "changefreq": "monthly",
+    "lastmod": "2025-01-01T12:00:00.000Z",
+    "path": "https://zito.fyi/tag/source code review",
+    "priority": 0.5,
+  },
+  {
+    "changefreq": "monthly",
+    "lastmod": "2025-01-01T12:00:00.000Z",
+    "path": "https://zito.fyi/tag/static analysis",
+    "priority": 0.5,
+  },
+  {
+    "changefreq": "monthly",
+    "lastmod": "2025-01-01T12:00:00.000Z",
+    "path": "https://zito.fyi/tag/vinyl records",
+    "priority": 0.5,
+  },
+  {
+    "changefreq": "monthly",
+    "lastmod": "2025-01-01T12:00:00.000Z",
+    "path": "https://zito.fyi/tag/wasm",
+    "priority": 0.5,
+  },
+  {
+    "changefreq": "daily",
+    "path": "https://zito.fyi/",
+    "priority": 1,
+  },
+]
+`;

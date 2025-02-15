@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { PrimaryLink } from '@/components/Links'
 import { typographyStyles, Caption } from '@/styles'

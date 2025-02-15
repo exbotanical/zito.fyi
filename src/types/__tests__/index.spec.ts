@@ -56,7 +56,7 @@ describe('`mdxNodeToPost`', () => {
   it('throws when missing MDX data', () => {
     const invalidMdx = cloneDeep(postQueryResult.mdx)!
 
-    invalidMdx.timeToRead = undefined
+    invalidMdx.fields!.timeToRead = undefined
 
     expect(() => mdxNodeToPost(invalidMdx)).toThrow()
   })

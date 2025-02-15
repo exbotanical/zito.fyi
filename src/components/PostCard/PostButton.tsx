@@ -1,6 +1,6 @@
 import { Link as GatsbyLink } from 'gatsby'
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { typographyStyles } from '@/styles'
 import { BREAKPOINTS } from '@/styles/constants'
@@ -26,7 +26,7 @@ export const ReadButton = styled(GatsbyLink)`
   }
 `
 
-export function PostButton({ to }: PostButtonProps): JSX.Element {
+export function PostButton({ to }: PostButtonProps): React.JSX.Element {
   return (
     <ReadButton to={to}>
       <PromptIcon direction="left" />

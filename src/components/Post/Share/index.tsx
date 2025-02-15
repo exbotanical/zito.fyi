@@ -11,7 +11,7 @@ import {
   TwitterShareButton,
   RedditShareButton,
 } from 'react-share'
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 
 import { useConfig } from '@/config'
 import type { Post, SiteConfig } from '@/types'
@@ -65,7 +65,7 @@ const LinkedinShare = styled(LinkedinShareButton)`
   ${HoverStyle}
 `
 
-export function PostShare({ post }: PostShareProps): JSX.Element {
+export function PostShare({ post }: PostShareProps): React.JSX.Element {
   const { title, description, url } = post
 
   const [showLinkNotification, setShowLinkNotification] = useState(false)
@@ -76,12 +76,14 @@ export function PostShare({ post }: PostShareProps): JSX.Element {
   return (
     <S.Wrapper aria-label="Share on social media">
       <S.LinkWrapper>
+        <S.Label>SHARE</S.Label>
         <S.LinkGrid>
-          <FacebookShare url={url}>
+          <FacebookShare aria-label="facebook" url={url}>
             <FacebookIcon fill="rgb(66, 103, 178)" size={ICON_SIZE} />
           </FacebookShare>
 
           <TwitterShare
+            aria-label="twitter"
             related={relatedTwitterHandles}
             title={title}
             url={url}
@@ -89,10 +91,11 @@ export function PostShare({ post }: PostShareProps): JSX.Element {
           >
             <TwitterIcon fill="rgb(29, 161, 242)" size={ICON_SIZE} />
           </TwitterShare>
-          <RedditShare title={title} url={url}>
+          <RedditShare aria-label="reddit" title={title} url={url}>
             <RedditIcon fill="rgb(255, 86, 0)" size={ICON_SIZE} />
           </RedditShare>
           <LinkedinShare
+            aria-label="linkedin"
             source={config.site.name}
             summary={description}
             title={title}

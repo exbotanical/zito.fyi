@@ -85,6 +85,7 @@ describe('onCreateNode', () => {
         title: 'Test Title',
         slug: 'Test Slug',
       },
+      body: 'blablabla',
     } as Node
 
     const nodeArgs = {
@@ -134,6 +135,7 @@ describe('onCreateNode', () => {
       frontmatter: {
         title: 'Test Title',
       },
+      body: 'blablabla',
     } as Node
 
     const nodeArgs = {
@@ -161,6 +163,7 @@ describe('onCreateNode', () => {
         owner: 'testOwner',
       },
       frontmatter: {},
+      body: 'blablabla',
     } as Node
 
     const nodeArgs = {

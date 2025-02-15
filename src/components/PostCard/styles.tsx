@@ -1,11 +1,11 @@
 import { GatsbyImage } from 'gatsby-plugin-image'
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 
 import { ImageShadow } from '@/components/Image'
 import { Body, BREAKPOINTS } from '@/styles'
 
 interface CardStyleProps {
-  hero?: boolean
+  $hero?: boolean
 }
 
 export const Cover = styled(GatsbyImage)`
@@ -32,8 +32,8 @@ export const Wrapper = styled.div<CardStyleProps>`
   display: grid;
   grid-gap: 8px;
 
-  ${({ hero }) =>
-    hero &&
+  ${({ $hero }) =>
+    $hero &&
     css`
       @media (min-width: ${BREAKPOINTS.lg}) {
         grid-column: span 2;
@@ -54,7 +54,7 @@ export const DescriptionText = styled(Body)<CardStyleProps>`
   display: box;
   overflow: hidden;
   box-orient: vertical;
-  -webkit-line-clamp: ${({ hero }) => (hero ? 5 : 2)};
+  -webkit-line-clamp: ${({ $hero }) => ($hero ? 5 : 2)};
 `
 
 export const Meta = styled.div`
@@ -67,8 +67,8 @@ export const Meta = styled.div`
 export const Details = styled.div<CardStyleProps>`
   display: grid;
 
-  ${({ hero }) =>
-    hero &&
+  ${({ $hero }) =>
+    $hero &&
     css`
       @media (min-width: var(--breakpoint-lg)) {
         align-content: space-between;

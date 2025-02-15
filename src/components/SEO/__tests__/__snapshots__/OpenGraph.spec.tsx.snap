@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`\`OpenGraphTags\` generates correct tags for pages 1`] = `
-Array [
+[
   <meta
     content="Site title"
     property="og:title"
@@ -34,7 +34,7 @@ Array [
 `;
 
 exports[`\`OpenGraphTags\` generates correct tags for posts 1`] = `
-Array [
+[
   <meta
     content="Post title"
     property="og:title"
@@ -103,7 +103,7 @@ Array [
 `;
 
 exports[`\`OpenGraphTags\` generates correct tags when missing \`description\` 1`] = `
-Array [
+[
   <meta
     content="Post title"
     property="og:title"
@@ -168,7 +168,7 @@ Array [
 `;
 
 exports[`\`OpenGraphTags\` generates correct tags when missing user data 1`] = `
-Array [
+[
   <meta
     content="Post title"
     property="og:title"

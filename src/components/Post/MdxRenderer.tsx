@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import type { Post } from '@/types'
 
@@ -8,7 +8,7 @@ import { WrapperCss } from './PostSpacing'
 
 interface RenderProps {
   readonly post: Post
-  children: any //TODO:
+  readonly children: React.ReactNode
 }
 
 const Wrapper = styled.article`
@@ -17,7 +17,8 @@ const Wrapper = styled.article`
   overflow-x: auto;
 
   /* center and space child els */
-  & > * {
+  & > *,
+  & > span > * {
     margin-right: auto;
     margin-bottom: 24px;
     margin-left: auto;
@@ -49,19 +50,19 @@ const Wrapper = styled.article`
   }
 `
 
-export function Render({ post, children }: RenderProps): JSX.Element {
+export function MdxRenderer({
+  post,
+  children,
+}: RenderProps): React.JSX.Element {
   if (!post.body) {
     throw Error(
-      `[Render] post data does not contain MDX body for rendering. Slug: ${post.slug}`,
+      `[MdxRenderer] post data does not contain MDX body for rendering. Slug: ${post.slug}`,
     )
   }
 
   return (
     <Wrapper>
-      <MDXTheme post={post}>
-        {/* <MDXRenderer>{cy}</MDXRenderer> */}
-        {children}
-      </MDXTheme>
+      <MDXTheme post={post}>{children}</MDXTheme>
     </Wrapper>
   )
 }

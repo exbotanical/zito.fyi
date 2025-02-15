@@ -1,15 +1,20 @@
 {
-  "plugins": [
-    ["@babel/plugin-proposal-class-properties", { "loose": true }]
-  ],
   "presets": [
     [
       "babel-preset-gatsby",
       {
         "targets": {
           "browsers": [">0.25%", "not dead"]
-        }
+        },
+        "reactRuntime": "classic"
+      }
+    ],
+    [
+      "@babel/preset-react",
+      {
+        "runtime": "automatic"
       }
     ]
-  ]
+  ],
+  "plugins": ["@babel/plugin-transform-runtime"]
 }

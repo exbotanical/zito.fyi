@@ -5,7 +5,7 @@ import { Body } from '@/styles'
 
 import * as S from './styles'
 
-export function AuthorCard(): JSX.Element {
+export function AuthorCard(): React.JSX.Element {
   const { user } = useConfig()
   const fullName = `${user.firstName} ${user.surname}`
 

@@ -22,10 +22,9 @@ export interface MdxNode {
     pathName?: string
     route?: string
     url?: string
-  }
-
-  timeToRead?: {
-    text?: string
+    timeToRead?: {
+      text?: string
+    }
   }
 
   frontmatter?: {
@@ -179,6 +178,7 @@ export interface SiteConfig {
 
 export interface QueryAllPostsResult {
   allMdx: {
+    totalCount?: number
     edges: { node: MdxNode }[]
   }
 }

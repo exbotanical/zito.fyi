@@ -1,3 +1,7 @@
+export function prefersDark() {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches
+}
+
 // @see https://github.com/cypress-io/cypress/issues/877#issuecomment-490504922
 Cypress.Commands.add('isInViewport', (element: string) => {
   cy.get(element).then($el => {

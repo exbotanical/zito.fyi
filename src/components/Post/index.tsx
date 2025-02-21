@@ -3,8 +3,8 @@ import { styled } from 'styled-components'
 
 import type { Post as PostType } from '@/types'
 
-import { PostIntro } from './PostIntro'
 import { MdxRenderer } from './MdxRenderer'
+import { PostIntro } from './PostIntro'
 import { PostShare } from './Share'
 
 interface PostProps {

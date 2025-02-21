@@ -14,3 +14,15 @@ Cypress.on('uncaught:exception', err => {
     return false
   }
 })
+
+before(() => {
+  cy.intercept('GET', '**/googleads.g.doubleclick.net/**', {
+    statusCode: 200,
+    body: {},
+  }).as('googleAds')
+
+  cy.intercept('POST', '**/jnn-pa.googleapis.co/**', {
+    statusCode: 200,
+    body: {},
+  }).as('googleTelemetry')
+})

@@ -1,3 +1,5 @@
+import { prefersDark } from 'support/commands'
+
 import { darkTheme, lightTheme } from '@/styles/Theme'
 
 import type { Rule } from 'axe-core'
@@ -42,13 +44,15 @@ testUrls.forEach(url => {
   describe('accessibility', () => {
     beforeEach(() => {
       cy.visit(url).waitForRouteChange()
+      if (!prefersDark()) {
+        cy.getByTestId('theme_btn').click()
+      }
     })
 
     it(`Page ${url} has no detectable accessibility violations on load [dark mode]`, () => {
       // sanity check
       cy.get('body')
         .should('have.css', 'background-color', darkTheme.colors.bg.primary)
-
         .title()
         .should('not.be.empty')
 

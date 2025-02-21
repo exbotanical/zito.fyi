@@ -43,10 +43,11 @@ describe('mdx rendering', () => {
 
   it('has a table of contents', () => {
     const testHeaderAnchor = (headerName: string, headerId: string) => {
+      // eslint-disable-next-line cypress/no-unnecessary-waiting
       cy.get(`p > a[href="#${headerId}"]`)
         .contains(headerName)
         .click()
-
+        .wait(100) // Sometimes cypress borks on DOM rerender
         .isInViewport(`#${headerId}`)
     }
 

@@ -10,12 +10,7 @@ import { IconLink } from '../Links'
 
 import type { StyledIcon } from '@styled-icons/styled-icon'
 
-function generateLink(
-  url: string,
-  label: string,
-  Icon: StyledIcon,
-  sansBasePath = true,
-) {
+function generateLink(url: string, label: string, Icon: StyledIcon, sansBasePath = true) {
   return (
     <IconLink ariaLabel={label} sansBasePath={sansBasePath} to={url}>
       <Icon size={48} />

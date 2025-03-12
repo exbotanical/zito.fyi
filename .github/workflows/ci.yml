@@ -34,4 +34,4 @@ jobs:
           build: npm run build
           start: npm run serve
         env:
-          CYPRESS_SUPPORT: 'y'
+          CYPRESS_SUPPORT: y

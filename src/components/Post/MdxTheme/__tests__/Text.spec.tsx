@@ -14,7 +14,7 @@ describe('utility `generateHeadings`', () => {
   it('generates linked heading components for markdown content', () => {
     const headings = generateHeadings('/test')
 
-    Object.values(headings).forEach(heading => {
+    for (const heading of Object.values(headings)) {
       const HeadingComponent = heading
 
       RenderStyled(<HeadingComponent>Test</HeadingComponent>)
@@ -26,6 +26,6 @@ describe('utility `generateHeadings`', () => {
       expect(headingLink).toHaveAttribute('href', '/test#test')
 
       cleanup()
-    })
+    }
   })
 })

@@ -40,7 +40,7 @@ function checkA11y() {
   cy.checkA11y()
 }
 
-testUrls.forEach(url => {
+for (const url of testUrls) {
   describe('accessibility', () => {
     beforeEach(() => {
       cy.visit(url).waitForRouteChange()
@@ -50,7 +50,7 @@ testUrls.forEach(url => {
     })
 
     it(`Page ${url} has no detectable accessibility violations on load [dark mode]`, () => {
-      // sanity check
+      // Sanity check
       cy.get('body')
         .should('have.css', 'background-color', darkTheme.colors.bg.primary)
         .title()
@@ -60,15 +60,14 @@ testUrls.forEach(url => {
     })
 
     it(`Page ${url} has no detectable accessibility violations on load [light mode]`, () => {
-      cy.getByTestId('theme_btn')
-        .click()
-        .get('body')
-        .should('have.css', 'background-color', lightTheme.colors.bg.primary)
+      cy.getByTestId('theme_btn').click()
 
+      cy.get('body')
+        .should('have.css', 'background-color', lightTheme.colors.bg.primary)
         .title()
         .should('not.be.empty')
 
       checkA11y()
     })
   })
-})
+}

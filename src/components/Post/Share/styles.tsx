@@ -8,8 +8,7 @@ export const Wrapper = styled.section`
   justify-content: flex-start;
   margin: 1rem auto;
   grid-auto-flow: row;
-  stroke: ${({ theme }) =>
-    theme.dark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)'};
+  stroke: ${({ theme }) => (theme.dark ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)')};
 `
 
 export const LinkWrapper = styled.div`

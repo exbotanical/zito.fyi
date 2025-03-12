@@ -3,11 +3,7 @@ import { css, createGlobalStyle } from 'styled-components'
 
 import { BaseImage } from '@/components/Image'
 import { AnimatedLink } from '@/components/Links'
-import {
-  PostImage,
-  PostImageSpacing,
-  FigCaptionCss,
-} from '@/components/Post/PostImage'
+import { PostImage, PostImageSpacing, FigCaptionCss } from '@/components/Post/PostImage'
 import { ExtensionWrapper } from '@/components/Post/PostSpacing'
 import { Separator } from '@/components/Separator'
 
@@ -34,16 +30,10 @@ export function Link({
   rel,
   style,
 }: LinkProps): React.JSX.Element {
-  // allow `gatsby-remark-images` to handle its own links
+  // Allow `gatsby-remark-images` to handle its own links
   if (className === 'gatsby-resp-image-link') {
     return (
-      <a
-        className={className}
-        href={href}
-        rel={rel}
-        style={style}
-        target={target}
-      >
+      <a className={className} href={href} rel={rel} style={style} target={target}>
         {children}
       </a>
     )
@@ -103,7 +93,7 @@ export function MdxImage({
   }
 
   if (!alt) {
-    throw Error(
+    throw new Error(
       `MDX image is missing an alt tag. Image source: ${src || ''}, title: ${
         title || ''
       }.`,

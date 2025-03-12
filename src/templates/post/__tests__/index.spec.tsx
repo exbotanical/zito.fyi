@@ -8,7 +8,7 @@ import { RenderStyled } from '@@/utils/styled'
 
 import { PostTemplate } from '..'
 
-const postFromJson = JSON.parse(JSON.stringify(post)) as PostJson
+const postFromJson = structuredClone(post) as unknown as PostJson
 
 const postData = postQueryResult
 

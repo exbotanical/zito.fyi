@@ -32,7 +32,7 @@ describe('`PostInfo` component', () => {
     // TODO fix dates so we don't need to do this
     // but for now, due to local OS tz, the date will be different
     // locally versus in GitHub's task runner
-    const infoSpan = await screen.findByText(/⋅ Jan [0-9], 2021 ⋅ 3 min read/)
+    const infoSpan = await screen.findByText(/⋅ Jan \d, 2021 ⋅ 3 min read/)
 
     expect(infoSpan).toBeInTheDocument()
   })

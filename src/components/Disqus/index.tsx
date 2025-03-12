@@ -8,9 +8,7 @@ interface DisqusPluginProps {
   readonly post: Post
 }
 
-export function DisqusPlugin({
-  post,
-}: DisqusPluginProps): React.JSX.Element | null {
+export function DisqusPlugin({ post }: DisqusPluginProps): React.JSX.Element | null {
   const config = useConfig()
 
   if (!config.site.disqusShortname) {

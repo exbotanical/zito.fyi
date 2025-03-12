@@ -172,11 +172,7 @@ describe('component Link', () => {
     cleanup()
 
     RenderStyled(
-      <BaseLink
-        activeClassName="test-active-class"
-        ariaLabel="test-label"
-        to={testLink}
-      >
+      <BaseLink activeClassName="test-active-class" ariaLabel="test-label" to={testLink}>
         Test
       </BaseLink>,
     )

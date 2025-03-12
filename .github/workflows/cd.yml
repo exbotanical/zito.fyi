@@ -1,8 +1,6 @@
 name: Continuous Deployment
 
 on:
-  # a push always happens when we merge, ergo this is the
-  # equivalent of `on.merge.branches.master`
   push:
     branches:
       - master
@@ -18,4 +16,4 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}}
-          vercel-args: '--prod'
+          vercel-args: --prod

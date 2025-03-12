@@ -8,11 +8,7 @@ interface SeoArgs {
   siteData: BaseSiteMetadata
 }
 
-export function TwitterTags({
-  seoData,
-  userData,
-  siteData,
-}: SeoArgs): TwitterTagList {
+export function TwitterTags({ seoData, userData, siteData }: SeoArgs): TwitterTagList {
   const { title, description, imageUrl, imageAlt } = seoData
   const userTwitterHandle = userData?.twitterHandle
   const siteTwitterHandle = siteData.twitterHandle

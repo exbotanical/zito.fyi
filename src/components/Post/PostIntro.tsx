@@ -34,13 +34,13 @@ const Cover = styled.div`
 
 export function PostIntro({ post }: PostIntroProps): React.JSX.Element {
   if (!post.coverImg) {
-    throw Error('[PostIntro] Cannot render `PostIntro` without `coverImg`')
+    throw new Error('[PostIntro] Cannot render `PostIntro` without `coverImg`')
   }
 
   const imgData = getImage(post.coverImg)
 
   if (!imgData) {
-    throw Error('[PostIntro] `getImage` failed to resolve `post.coverImg`')
+    throw new Error('[PostIntro] `getImage` failed to resolve `post.coverImg`')
   }
 
   return (

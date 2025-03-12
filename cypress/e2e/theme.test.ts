@@ -11,7 +11,7 @@ function getTheme() {
   return theme ? JSON.parse(theme) : null
 }
 
-themeTestPages.forEach(url => {
+for (const url of themeTestPages) {
   describe(`Theme on page ${url}`, () => {
     beforeEach(() => {
       // TODO: Use this when it actually works in the Cypress gh action
@@ -39,12 +39,9 @@ themeTestPages.forEach(url => {
     })
 
     it('toggles the theme mode', () => {
-      cy.getByTestId('theme_btn')
-        .as('theme_btn')
-
-        .get('@theme_btn')
-        .click()
-
+      cy.getByTestId('theme_btn').as('theme_btn')
+      cy.get('@theme_btn').click()
+      cy.get('@theme_btn')
         .get('body')
         .should('have.css', 'background-color', lightTheme.colors.bg.primary)
         .should(() => {
@@ -53,8 +50,7 @@ themeTestPages.forEach(url => {
 
         .get('@theme_btn')
         .click()
-
-        .get('body')
+      cy.get('body')
         .should('have.css', 'background-color', darkTheme.colors.bg.primary)
         .should(() => {
           expect(getTheme()).to.eq('dark')
@@ -62,21 +58,16 @@ themeTestPages.forEach(url => {
     })
 
     it('persists the theme selection across refreshes', () => {
-      cy.getByTestId('theme_btn')
-        .as('theme_btn')
-
-        .get('@theme_btn')
-        .click()
-
-        .get('body')
+      cy.getByTestId('theme_btn').as('theme_btn')
+      cy.get('@theme_btn').click()
+      cy.get('body')
         .should('have.css', 'background-color', lightTheme.colors.bg.primary)
         .should(() => {
           expect(getTheme()).to.eq('light')
         })
 
         .reload()
-
-        .get('body')
+      cy.get('body')
         .should('have.css', 'background-color', lightTheme.colors.bg.primary)
         .should(() => {
           expect(getTheme()).to.eq('light')
@@ -84,16 +75,14 @@ themeTestPages.forEach(url => {
 
         .get('@theme_btn')
         .click()
-
-        .get('body')
+      cy.get('body')
         .should('have.css', 'background-color', darkTheme.colors.bg.primary)
         .should(() => {
           expect(getTheme()).to.eq('dark')
         })
 
         .reload()
-
-        .get('body')
+      cy.get('body')
         .should('have.css', 'background-color', darkTheme.colors.bg.primary)
         .should(() => {
           expect(getTheme()).to.eq('dark')
@@ -106,8 +95,7 @@ themeTestPages.forEach(url => {
 
         .get('@theme_btn')
         .click()
-
-        .get('img:not([src*=".svg"]')
+      cy.get('img:not([src*=".svg"]')
         .first()
         .should('not.have.css', 'filter', 'brightness(0.75)')
         .should(() => {
@@ -116,10 +104,9 @@ themeTestPages.forEach(url => {
 
         .get('@theme_btn')
         .click()
-
-        .get('img:not([src*=".svg"]')
+      cy.get('img:not([src*=".svg"]')
         .first()
         .should('have.css', 'filter', 'brightness(0.75)')
     })
   })
-})
+}

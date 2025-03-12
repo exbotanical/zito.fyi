@@ -2,7 +2,7 @@ const PAGE_POST_COUNT = 5
 
 const feedUrls = ['/', '/category/technology', '/tag/programming'] // , '/category/technology',
 
-feedUrls.forEach(url => {
+for (const url of feedUrls) {
   describe(`feed (${url})`, () => {
     beforeEach(() => {
       cy.visit(url).waitForRouteChange()
@@ -35,13 +35,19 @@ feedUrls.forEach(url => {
     })
 
     it('navigates to a post via its title', () => {
-      cy.findByText('Andrea Zittel').click().waitForRouteChange()
+      cy.findByText('Andrea Zittel').as('zittel')
+
+      cy.get('@zittel').click()
+      cy.get('@zittel').waitForRouteChange()
 
       cy.url().should('contain', '/andrea-zittel')
     })
 
     it('navigates to a post via its cover image', () => {
-      cy.findByAltText('a painting by HR Giger').click().waitForRouteChange()
+      cy.findByAltText('a painting by HR Giger').as('giger')
+
+      cy.get('@giger').click()
+      cy.get('@giger').waitForRouteChange()
 
       cy.url().should('contain', '/lorem-ipsum-3000')
     })
@@ -54,8 +60,7 @@ feedUrls.forEach(url => {
       cy.get('@feed').children().should('have.length', PAGE_POST_COUNT)
 
       cy.scrollTo('bottom')
-
-        .get('@feed')
+      cy.get('@feed')
         .children()
         .should('have.length', PAGE_POST_COUNT * 2)
     })
@@ -80,4 +85,4 @@ feedUrls.forEach(url => {
         .should('have.length', PAGE_POST_COUNT * 2)
     })
   })
-})
+}

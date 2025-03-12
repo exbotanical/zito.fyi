@@ -1,3 +1,3 @@
-global.___loader = {
-	enqueue: jest.fn()
-};
+globalThis.___loader = {
+  enqueue: jest.fn(),
+}

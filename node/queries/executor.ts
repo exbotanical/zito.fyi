@@ -12,6 +12,7 @@ interface QueryResult {
   data?: QueryAllPostsResult
 }
 
+// eslint-disable-next-line ts/no-explicit-any -- this is how gatsby types it
 type GraphqlType = <TData, TVariables = any>(
   query: string,
   variables?: TVariables,
@@ -21,12 +22,9 @@ type GraphqlType = <TData, TVariables = any>(
 }>
 
 export async function getAllPostsByTag(graphql: GraphqlType, tag: string) {
-  const tagQueryResult = await graphql<QueryAllPostsResult>(
-    allPostsByTagQuery,
-    {
-      tag,
-    },
-  )
+  const tagQueryResult = await graphql<QueryAllPostsResult>(allPostsByTagQuery, {
+    tag,
+  })
 
   return processQueryResult(tagQueryResult)
 }
@@ -52,14 +50,12 @@ export function resolveAllPostsFromQuery(allPosts: QueryAllPostsResult) {
 
 function processQueryResult(result: QueryResult) {
   if (result.errors) {
-    console.error(
-      '[processQueryResult] Error while processing query results. See:',
-    )
+    console.error('[processQueryResult] Error while processing query results. See:')
 
     console.error(result.errors)
 
     // @ts-expect-error serialize array of error strings
-    throw Error(result.errors)
+    throw new Error(result.errors)
   }
 
   if (!result.data) {

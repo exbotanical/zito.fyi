@@ -1,11 +1,13 @@
+/* eslint-disable ts/no-explicit-any -- needed for heading components */
 import kebabCase from 'lodash.kebabcase'
 import React from 'react'
 import { styled } from 'styled-components'
-import { IStyledComponentBase } from 'styled-components/dist/types'
 
 import { HeadingLink } from '@/components/Links'
 import { ExtensionWrapper } from '@/components/Post/PostSpacing'
 import * as styles from '@/styles'
+
+import type { IStyledComponentBase } from 'styled-components/dist/types'
 
 interface HeadingProps {
   readonly children: React.ReactNode
@@ -33,7 +35,7 @@ interface BlockquoteProps {
  */
 function getHeaderHashLink(children: React.ReactNode) {
   if (Array.isArray(children)) {
-    return kebabCase(children.filter(child => typeof child === 'string').join())
+    return kebabCase(children.filter(child => typeof child === 'string').join(','))
   }
 
   if (typeof children === 'string') {

@@ -53,10 +53,7 @@ describe('page template FeedTemplate', () => {
     }
 
     assertTitle(indexFeedContext, config.site.title)
-    assertTitle(
-      categoryFeedContext,
-      `Posts in category "test" | ${config.site.title}`,
-    )
+    assertTitle(categoryFeedContext, `Posts in category "test" | ${config.site.title}`)
     assertTitle(tagFeedContext, `Posts tagged as "test" | ${config.site.title}`)
   })
 

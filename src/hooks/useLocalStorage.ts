@@ -9,16 +9,16 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
     }
 
     try {
-      const item = window.localStorage.getItem(key)
+      const item = globalThis.localStorage.getItem(key)
       if (!item) {
-        window.localStorage.setItem(key, JSON.stringify(initialValue))
+        globalThis.localStorage.setItem(key, JSON.stringify(initialValue))
 
         return initialValue
       }
 
       return JSON.parse(item)
-    } catch (ex: unknown) {
-      console.error(ex)
+    } catch (error: unknown) {
+      console.error(error)
 
       return initialValue
     }
@@ -27,15 +27,16 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
   function setValue(value: T | ((value: T) => T)) {
     try {
       const valueToPersist =
+        // eslint-disable-next-line unicorn/no-instanceof-builtins -- need for type checking
         value instanceof Function ? value(persistedValue) : value
 
       setPersistedValue(valueToPersist)
 
       if (isBrowserRuntime) {
-        window.localStorage.setItem(key, JSON.stringify(valueToPersist))
+        globalThis.localStorage.setItem(key, JSON.stringify(valueToPersist))
       }
-    } catch (ex: unknown) {
-      console.error(ex)
+    } catch (error: unknown) {
+      console.error(error)
     }
   }
 

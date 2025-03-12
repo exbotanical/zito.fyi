@@ -15,9 +15,9 @@ if (Cypress.env('STAGE') !== 'dev') {
 
             const links = rssLinks as string[]
 
-            links.forEach(link => {
+            for (const link of links) {
               cy.visit(link)
-            })
+            }
           })
         })
     })

@@ -1,6 +1,6 @@
-import { SiteConfig } from '@/types'
+import type { SiteConfig } from '@/types'
 
-import { GetMdxPostsQueryResult } from './types'
+import type { GetMdxPostsQueryResult } from './types'
 
 export interface ResolvedSitemapPage {
   path: string
@@ -23,9 +23,8 @@ export function generateSitemapData(config: SiteConfig) {
     const now = new Date().toISOString()
 
     const posts = allMdx.edges.map(({ node }) => ({
-      path: `${config.site.url}${node.fields!.slug}`,
-      lastmod:
-        node.frontmatter!.dateModified || node.frontmatter!.datePublished,
+      path: `${config.site.url}${node.fields?.slug}`,
+      lastmod: node.frontmatter?.dateModified || node.frontmatter?.datePublished,
       changefreq: 'weekly',
       priority: 0.7,
     }))
@@ -51,7 +50,7 @@ export function generateSitemapData(config: SiteConfig) {
       {
         path: `${basePath}/`,
         changefreq: 'daily',
-        priority: 1.0,
+        priority: 1,
       },
     ]
   }

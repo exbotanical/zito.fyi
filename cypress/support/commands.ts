@@ -1,12 +1,15 @@
 export function prefersDark() {
-  return window.matchMedia('(prefers-color-scheme: dark)').matches
+  return globalThis.matchMedia('(prefers-color-scheme: dark)').matches
 }
 
 // @see https://github.com/cypress-io/cypress/issues/877#issuecomment-490504922
 Cypress.Commands.add('isInViewport', (element: string) => {
   cy.get(element).then($el => {
     cy.window().then(window => {
-      const bottom = Cypress.$(window).height()!
+      const bottom = Cypress.$(window).height()
+      if (!bottom) {
+        throw new Error('expected to find height / bottom of window')
+      }
 
       const rect = $el[0].getBoundingClientRect()
 
@@ -33,14 +36,12 @@ Cypress.Commands.add('getByTestIdLike', (selector: string) =>
 /**
  * Assert element contains a given class
  */
-Cypress.Commands.add(
-  'containsClass',
-  (selector: string, expectedClass: string) =>
-    cy.get(selector).should('satisfy', ($el: { classList: string[] }[]) => {
-      const classList = Array.from($el[0].classList)
+Cypress.Commands.add('containsClass', (selector: string, expectedClass: string) =>
+  cy.get(selector).should('satisfy', ($el: { classList: string[] }[]) => {
+    const classList = [...$el[0].classList]
 
-      return classList.includes(expectedClass)
-    }),
+    return classList.includes(expectedClass)
+  }),
 )
 
 /**
@@ -48,7 +49,7 @@ Cypress.Commands.add(
  */
 Cypress.Commands.add('omitsClass', (selector: string, expectedClass: string) =>
   cy.get(selector).should('satisfy', ($el: { classList: string[] }[]) => {
-    const classList = Array.from($el[0].classList)
+    const classList = [...$el[0].classList]
 
     return !classList.includes(expectedClass)
   }),

@@ -21,7 +21,7 @@ export function generatePostData(post: Post): AbridgedPost {
   } = post
 
   if (!internalContent) {
-    throw Error(
+    throw new Error(
       `[generatePostData] Post does not contain internal content necessary for Rich Tags. ${description} ${title}`,
     )
   }

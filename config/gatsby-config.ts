@@ -1,3 +1,5 @@
+/* eslint-disable camelcase -- required for RSS etc */
+/* eslint-disable unicorn/prefer-module -- using cjs module type */
 import path from 'node:path'
 
 import remarkA11yEmoji from '@fec/remark-a11y-emoji'
@@ -6,22 +8,17 @@ import remarkExternalLinks from 'remark-external-links'
 // must be < v3 due to ESM only support therein
 import remarkGfm from 'remark-gfm'
 import unwrapImages from 'remark-unwrap-images'
-// mustb be < v1 for the same stupid reason
+// Mustb be < v1 for the same stupid reason
 import urljoin from 'url-join'
 
-import {
-  withBasePath,
-  generateRssFeed,
-  setupRssFeed,
-  generateSitemapData,
-  type ResolvedSitemapPage,
-} from '../node'
+import { withBasePath, generateRssFeed, setupRssFeed, generateSitemapData } from '../node'
 
 import { config } from '.'
 
+import type { ResolvedSitemapPage } from '../node'
 import type { GatsbyConfig } from 'gatsby'
 
-const adjustedPathPRefix = !config.pathPrefix ? '/' : config.pathPrefix
+const adjustedPathPRefix = config.pathPrefix ?? '/'
 const gatsbyConfig: GatsbyConfig = {
   pathPrefix: adjustedPathPRefix,
   plugins: [
@@ -112,12 +109,7 @@ const gatsbyConfig: GatsbyConfig = {
           },
         ],
         mdxOptions: {
-          remarkPlugins: [
-            unwrapImages,
-            remarkA11yEmoji,
-            remarkExternalLinks,
-            remarkGfm,
-          ],
+          remarkPlugins: [unwrapImages, remarkA11yEmoji, remarkExternalLinks, remarkGfm],
         },
       },
     },
@@ -255,9 +247,7 @@ const gatsbyConfig: GatsbyConfig = {
       copyright: `Licensed under ${config.site.copyright.name}`,
       description: config.site.description,
       feed_url: urljoin(config.site.url, config.pathPrefix, config.site.rss),
-      image_url: `${urljoin(config.site.url, config.pathPrefix)}${
-        config.site.logoUrl
-      }`,
+      image_url: `${urljoin(config.site.url, config.pathPrefix)}${config.site.logoUrl}`,
       site_url: urljoin(config.site.url, config.pathPrefix),
       title: config.site.title,
     },

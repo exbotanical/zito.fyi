@@ -35,17 +35,13 @@ export function Feed({ feedItems, hideHero }: FeedProps) {
     <WidthLimitedGrid>
       <Wrapper>
         {feedItems.map((feedItem, idx) => {
-          // it may be a placeholder post
+          // It may be a placeholder post
           if ('isPlaceholder' in feedItem) {
             return <PostCard key={feedItem.key} />
           }
 
           return (
-            <PostCard
-              hero={idx === 0 && !hideHero}
-              key={feedItem.slug}
-              post={feedItem}
-            />
+            <PostCard hero={idx === 0 && !hideHero} key={feedItem.slug} post={feedItem} />
           )
         })}
       </Wrapper>

@@ -5,7 +5,7 @@ const POST_CONTENT_WIDTH = '736px'
 export const SIDE_PADDING = '16px'
 export const POST_WIDTH = `calc(${POST_CONTENT_WIDTH} + 2 * ${SIDE_PADDING})`
 
-// equivalent to `WrapperCss` save for the removal of padding once under max-width
+// Equivalent to `WrapperCss` save for the removal of padding once under max-width
 const ExtensionCss = css`
   width: 100%;
   padding: 0;

@@ -12,7 +12,7 @@ export function mdxNodeToPost(mdxNode: MdxNode): Post {
   const { frontmatter } = mdxNode
 
   if (!frontmatter) {
-    throw Error(
+    throw new Error(
       `[mdxNodeToPost] Post missing frontmatter. Post slug: ${
         mdxNode.fields?.slug || 'was not provided'
       }.`,
@@ -20,7 +20,7 @@ export function mdxNodeToPost(mdxNode: MdxNode): Post {
   }
 
   if (!frontmatter.title) {
-    throw Error(
+    throw new Error(
       `[mdxNodeToPost] Post missing title. Post slug: ${
         mdxNode.fields?.slug || 'was not provided'
       }.`,
@@ -28,7 +28,7 @@ export function mdxNodeToPost(mdxNode: MdxNode): Post {
   }
 
   if (!frontmatter.datePublished) {
-    throw Error(
+    throw new Error(
       `[mdxNodeToPost] Post missing publication date. Post slug: ${
         mdxNode.fields?.slug || 'was not provided'
       }.`,
@@ -36,43 +36,43 @@ export function mdxNodeToPost(mdxNode: MdxNode): Post {
   }
 
   if (!mdxNode.fields) {
-    throw Error(
+    throw new Error(
       `[mdxNodeToPost] Post missing fields. Post title: ${frontmatter.title}.`,
     )
   }
 
   if (!mdxNode.fields.slug) {
-    throw Error(
+    throw new Error(
       `[mdxNodeToPost] Post missing slug. Post title: ${frontmatter.title}.`,
     )
   }
 
   if (!mdxNode.fields.pathName) {
-    throw Error(
+    throw new Error(
       `[mdxNodeToPost] Post missing pathName. Post slug: ${mdxNode.fields.slug}.`,
     )
   }
 
   if (!mdxNode.fields.url) {
-    throw Error(
+    throw new Error(
       `[mdxNodeToPost] Post missing url. Post slug: ${mdxNode.fields.slug}.`,
     )
   }
 
   if (!mdxNode.fields.route) {
-    throw Error(
+    throw new Error(
       `[mdxNodeToPost] Post missing route. Post slug: ${mdxNode.fields.slug}.`,
     )
   }
 
   if (!mdxNode.fields.timeToRead?.text) {
-    throw Error(
+    throw new Error(
       `[mdxNodeToPost] Post missing timeToRead. Post slug: ${mdxNode.fields.slug}.`,
     )
   }
 
   if (!frontmatter.cover) {
-    throw Error(
+    throw new Error(
       `[mdxNodeToPost] Post missing cover image. Post slug: ${
         mdxNode.fields.slug || 'was not provided'
       }.`,
@@ -80,7 +80,7 @@ export function mdxNodeToPost(mdxNode: MdxNode): Post {
   }
 
   if (!frontmatter.coverAlt) {
-    throw Error(
+    throw new Error(
       `[mdxNodeToPost] Post missing cover alt. Post slug: ${
         mdxNode.fields.slug || 'was not provided'
       }.`,
@@ -95,8 +95,6 @@ export function mdxNodeToPost(mdxNode: MdxNode): Post {
     )
   }
 
-  const tagsFilter = (tag: string | undefined): tag is string =>
-    typeof tag !== 'undefined'
   const tagList = frontmatter.tags ? frontmatter.tags.filter(tagsFilter) : []
 
   return {
@@ -105,9 +103,7 @@ export function mdxNodeToPost(mdxNode: MdxNode): Post {
     coverImageAlt: frontmatter.coverAlt,
     coverImageUrl: frontmatter.cover.publicURL,
     coverImg: frontmatter.cover.childImageSharp?.gatsbyImageData,
-    dateModified: new Date(
-      frontmatter.dateModified || frontmatter.datePublished,
-    ),
+    dateModified: new Date(frontmatter.dateModified || frontmatter.datePublished),
     datePublished: new Date(frontmatter.datePublished),
     description: frontmatter.description,
     internalContent: mdxNode.body,
@@ -126,12 +122,13 @@ export function queryToPost(data: PostBySlugQueryResult): Post {
   const postData = data.mdx
 
   if (!postData) {
-    throw Error('[queryToPost]: Query does not contain post data')
+    throw new Error('[queryToPost]: Query does not contain post data')
   }
 
   return mdxNodeToPost(postData)
 }
 
+// TODO: Do we need this?
 export function jsonToPost(meta: PostJson): Post {
   const { relatedPosts } = meta
 
@@ -151,4 +148,8 @@ export function queryToPostsList(res: QueryAllPostsResult): Post[] {
 
 export function queryToUser(data: UserQueryResult): UserMetadata {
   return data.site.siteMetadata.config.user
+}
+
+function tagsFilter(tag: string | undefined): tag is string {
+  return tag !== undefined
 }

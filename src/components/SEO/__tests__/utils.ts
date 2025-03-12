@@ -6,23 +6,22 @@ import type { UserMetadata, BaseSiteMetadata, OrgMetadata } from '@/types'
 
 import type { SeoData, AbridgedPost } from '../types'
 
-// recursively scan for nullish values
+// Recursively scan for nullish values
 export function containsEmptyValues(data: unknown): boolean {
   if (Array.isArray(data)) {
-    return !!data.find(item => containsEmptyValues(item))
+    return data.some(item => containsEmptyValues(item))
   }
 
   if (isObject(data)) {
     return containsEmptyValues(Object.values(data))
   }
 
-  return !data
+  // eslint-disable-next-line eqeqeq -- we want type-coercion to check for null
+  return data == undefined
 }
 
 export const tagListHasEmptyValues = (tagList: React.ReactElement[]) =>
-  !!tagList.find(
-    tag => containsEmptyValues(tag.type) || containsEmptyValues(tag.props),
-  )
+  tagList.some(tag => containsEmptyValues(tag.type) || containsEmptyValues(tag.props))
 
 export function tagListHasUniqueKeys(tagList: React.ReactElement[]) {
   const keys = tagList.map(tag => tag.key)

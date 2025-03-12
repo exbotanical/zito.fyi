@@ -27,9 +27,7 @@ const mockedGatsby = mocked(gatsby, { shallow: false })
 
 describe('hook `useConfig`', () => {
   it('correctly queries and provides site configuration data', () => {
-    mockedGatsby.useStaticQuery.mockImplementation(
-      () => siteConfigQueryResponse as any,
-    )
+    mockedGatsby.useStaticQuery.mockImplementation(() => siteConfigQueryResponse as any)
 
     const result = useConfig()
 
@@ -40,9 +38,7 @@ describe('hook `useConfig`', () => {
   })
 
   it('throws an error if site configuration is not extant', () => {
-    mockedGatsby.useStaticQuery.mockImplementation(
-      () => ({ site: undefined }) as any,
-    )
+    mockedGatsby.useStaticQuery.mockImplementation(() => ({ site: undefined }) as any)
 
     expect(useConfig).toThrow()
 

@@ -17,9 +17,7 @@ export const GeneralTags = (
   ]
 
   if (description) {
-    tags.push(
-      <meta content={description} key="z_description" name="description" />,
-    )
+    tags.push(<meta content={description} key="z_description" name="description" />)
   }
 
   if (imageUrl) {

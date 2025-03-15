@@ -1,17 +1,18 @@
 import kebabCase from 'lodash.kebabcase'
 import React from 'react'
-import styled, { type AnyStyledComponent } from 'styled-components'
+import { styled } from 'styled-components'
+import { IStyledComponentBase } from 'styled-components/dist/types'
 
 import { HeadingLink } from '@/components/Links'
 import { ExtensionWrapper } from '@/components/Post/PostSpacing'
 import * as styles from '@/styles'
 
 interface HeadingProps {
-  children: React.ReactNode
+  readonly children: React.ReactNode
 }
 
 interface HeadingComponent {
-  (props: HeadingProps): JSX.Element
+  (props: any): React.JSX.Element
 }
 
 interface Headings {
@@ -24,7 +25,7 @@ interface Headings {
 }
 
 interface BlockquoteProps {
-  children?: React.ReactNode
+  readonly children?: React.ReactNode
 }
 
 /**
@@ -47,9 +48,9 @@ function getHeaderHashLink(children: React.ReactNode) {
  */
 function generateHeading(
   slug: string,
-  HeadingComponent: AnyStyledComponent,
+  HeadingComponent: IStyledComponentBase<any, any>,
 ): HeadingComponent {
-  function GeneratedHeader({ children }: HeadingProps): JSX.Element {
+  function GeneratedHeader({ children }: HeadingProps): React.JSX.Element {
     const hashLink = getHeaderHashLink(children)
 
     return hashLink ? (
@@ -81,7 +82,7 @@ export const generateHeadings = (slug: string): Headings => ({
   H6: generateHeading(slug, styles.H6),
 })
 
-export function Blockquote({ children }: BlockquoteProps): JSX.Element {
+export function Blockquote({ children }: BlockquoteProps): React.JSX.Element {
   return (
     <ExtensionWrapper>
       <BlockquoteStyle>{children}</BlockquoteStyle>

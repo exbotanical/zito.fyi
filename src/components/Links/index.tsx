@@ -11,7 +11,7 @@ export function IconLink({
   activeClassName,
   sansBasePath,
   ariaLabel,
-}: LinkProps): JSX.Element {
+}: LinkProps): React.JSX.Element {
   return (
     <S.IconLink
       activeClassName={activeClassName}
@@ -34,7 +34,7 @@ export function PrimaryLink({
   activeClassName,
   sansBasePath,
   ariaLabel,
-}: LinkProps): JSX.Element {
+}: LinkProps): React.JSX.Element {
   return (
     <S.PrimaryLink
       activeClassName={activeClassName}
@@ -57,7 +57,7 @@ export function AnimatedLink({
   activeClassName,
   sansBasePath,
   ariaLabel,
-}: LinkProps): JSX.Element {
+}: LinkProps): React.JSX.Element {
   return (
     <S.AnimatedLink
       activeClassName={activeClassName}
@@ -80,7 +80,7 @@ export function TransparentLink({
   activeClassName,
   sansBasePath,
   ariaLabel,
-}: LinkProps): JSX.Element {
+}: LinkProps): React.JSX.Element {
   return (
     <S.TransparentLink
       activeClassName={activeClassName}
@@ -103,7 +103,7 @@ export function HeadingLink({
   activeClassName,
   sansBasePath,
   ariaLabel,
-}: LinkProps): JSX.Element {
+}: LinkProps): React.JSX.Element {
   return (
     <S.HeadingLink
       activeClassName={activeClassName}

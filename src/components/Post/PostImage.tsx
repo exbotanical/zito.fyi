@@ -1,27 +1,25 @@
-import { GatsbyImage } from 'gatsby-plugin-image'
+import { GatsbyImage, type IGatsbyImageData } from 'gatsby-plugin-image'
 import React, { useEffect, useRef } from 'react'
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 
 import { BaseImage, ImageShadow } from '@/components/Image'
 import { typographyStyles } from '@/styles'
 
 import { POST_WIDTH } from './PostSpacing'
 
-import type { IGatsbyImageData } from 'gatsby-plugin-image'
-
 interface FigureProps {
-  cover?: boolean
+  $cover?: boolean
 }
 
 interface ImageProps {
-  src?: string
-  title?: string
-  alt: string
+  readonly src?: string
+  readonly title?: string
+  readonly alt: string
 }
 
 interface CoverImageProps {
-  image: IGatsbyImageData
-  alt: string
+  readonly image: IGatsbyImageData
+  readonly alt: string
 }
 
 export const PostImageSpacing = css`
@@ -42,7 +40,7 @@ const Figure = styled.figure<FigureProps>`
   width: 100%;
   grid-gap: 8px;
   justify-items: center;
-  ${({ cover }) => (!cover ? PostImageSpacing : '')};
+  ${({ $cover }) => (!$cover ? PostImageSpacing : '')};
 `
 
 const Img = styled(BaseImage)`
@@ -69,7 +67,7 @@ const FigCaption = styled.figcaption`
   ${typographyStyles.Caption}
 `
 
-export function PostImage({ src, alt, title }: ImageProps): JSX.Element {
+export function PostImage({ src, alt, title }: ImageProps): React.JSX.Element {
   const ref = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -88,9 +86,9 @@ export function PostImage({ src, alt, title }: ImageProps): JSX.Element {
   )
 }
 
-export function CoverImage({ image, alt }: CoverImageProps): JSX.Element {
+export function CoverImage({ image, alt }: CoverImageProps): React.JSX.Element {
   return (
-    <Figure cover>
+    <Figure $cover>
       <StyledGatsbyImage alt={alt} image={image} />
       <FigCaption>{alt}</FigCaption>
     </Figure>

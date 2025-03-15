@@ -10,10 +10,10 @@ import { useConfig } from '@/config'
 import type { Post } from '@/types'
 
 interface SeoProps {
-  post?: Post
+  readonly post?: Post
 }
 
-export function SEO({ post }: SeoProps): JSX.Element {
+export function SEO({ post }: SeoProps): React.JSX.Element {
   const config = useConfig()
 
   const postData = post ? generatePostData(post) : undefined

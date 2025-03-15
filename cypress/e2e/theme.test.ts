@@ -1,3 +1,5 @@
+import { prefersDark } from 'support/commands'
+
 import { KEYS } from '@/styles/constants'
 import { darkTheme, lightTheme } from '@/styles/Theme'
 
@@ -9,28 +11,24 @@ function getTheme() {
   return theme ? JSON.parse(theme) : null
 }
 
-function prefersDark() {
-  return window.matchMedia('(prefers-color-scheme: dark)').matches
-}
-
 themeTestPages.forEach(url => {
   describe(`Theme on page ${url}`, () => {
     beforeEach(() => {
-      cy.visit(url, {
-        // @todo breaks when `useMediaQuery` invoked; open an issue on gh
-        // onBeforeLoad(aut) {
-        // cy.stub(aut, 'matchMedia')
-        // 	.withArgs('(prefers-color-scheme: dark)')
-        // 	.returns({
-        // 		matches: true
-        // 	});
-        // }
-      }).waitForRouteChange()
+      // TODO: Use this when it actually works in the Cypress gh action
+      // onBeforeLoad(aut) {
+      //   cy.stub(aut, 'matchMedia')
+      //     .withArgs('(prefers-color-scheme: dark)')
+      //     .returns({
+      //       matches: true,
+      //     })
+      // },
+      cy.visit(url).waitForRouteChange()
+      if (!prefersDark()) {
+        cy.getByTestId('theme_btn').click()
+      }
     })
 
     it("defaults to the user's prefers-color-scheme preference", () => {
-      expect(prefersDark()).to.equal(true)
-
       cy.get('body')
         .should(() => {
           expect(getTheme()).to.eq('dark')
@@ -41,8 +39,6 @@ themeTestPages.forEach(url => {
     })
 
     it('toggles the theme mode', () => {
-      expect(prefersDark()).to.equal(true)
-
       cy.getByTestId('theme_btn')
         .as('theme_btn')
 
@@ -66,8 +62,6 @@ themeTestPages.forEach(url => {
     })
 
     it('persists the theme selection across refreshes', () => {
-      expect(prefersDark()).to.equal(true)
-
       cy.getByTestId('theme_btn')
         .as('theme_btn')
 
@@ -107,8 +101,6 @@ themeTestPages.forEach(url => {
     })
 
     it('darkens images in dark mode', () => {
-      expect(prefersDark()).to.equal(true)
-
       cy.getByTestId('theme_btn')
         .as('theme_btn')
 

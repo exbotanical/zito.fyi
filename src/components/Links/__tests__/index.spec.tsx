@@ -2,7 +2,6 @@ import { screen, cleanup } from '@testing-library/react'
 import * as gatsby from 'gatsby'
 import { mocked } from 'jest-mock'
 import cloneDeep from 'lodash.clonedeep'
-import React from 'react'
 
 import { useConfig } from '@/config'
 import type { SiteConfig } from '@/types'
@@ -31,7 +30,7 @@ jest.mock('gatsby', () => {
   }
 })
 
-const mockedGatsby = mocked(gatsby, true)
+const mockedGatsby = mocked(gatsby, { shallow: true })
 
 describe('component Link', () => {
   afterEach(() => {

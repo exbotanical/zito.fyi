@@ -1,7 +1,7 @@
 import { LinkedinSquare, Github, Youtube } from '@styled-icons/boxicons-logos'
 import { MailSend, Rss } from '@styled-icons/boxicons-regular'
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { useConfig } from '@/config'
 import type { SiteConfig } from '@/types'
@@ -61,8 +61,8 @@ function renderRssLink(config: Readonly<SiteConfig>) {
 }
 
 interface IconLinksProps {
-  className?: string
-  includeRss?: boolean
+  readonly className?: string
+  readonly includeRss?: boolean
 }
 
 const defaultProps: IconLinksProps = {
@@ -86,7 +86,7 @@ const LinkGrid = styled.div`
 export function Socials({
   includeRss,
   className,
-}: IconLinksProps): JSX.Element | null {
+}: IconLinksProps = defaultProps): React.JSX.Element | null {
   const config = useConfig()
 
   return (
@@ -95,9 +95,7 @@ export function Socials({
       {renderGitHubLink(config)}
       {generateLinkedInLink(config)}
       {renderEmailLink(config)}
-      {includeRss && renderRssLink(config)}
+      {includeRss ? renderRssLink(config) : null}
     </LinkGrid>
   )
 }
-
-Socials.defaultProps = defaultProps

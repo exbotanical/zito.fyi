@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { Layout } from '@/components/Layout'
 import { Post } from '@/components/Post'
@@ -12,8 +12,9 @@ interface PageContext {
 }
 
 interface PostTemplateProps {
-  data: PostBySlugQueryResult
-  pageContext: PageContext
+  readonly data: PostBySlugQueryResult
+  readonly pageContext: PageContext
+  readonly children?: React.ReactNode
 }
 
 const Wrapper = styled.div`
@@ -24,13 +25,14 @@ const Wrapper = styled.div`
 export function PostTemplate({
   data,
   pageContext,
-}: PostTemplateProps): JSX.Element {
+  children,
+}: PostTemplateProps): React.JSX.Element {
   const post = queryToPost(data)
 
   return (
     <Layout post={post}>
       <Wrapper>
-        <Post post={post} />
+        <Post post={post}>{children}</Post>
         <RelatedPosts posts={pageContext.relatedPosts.map(jsonToPost)} />
       </Wrapper>
     </Layout>

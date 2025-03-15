@@ -10,8 +10,8 @@ const queryClient = new QueryClient()
 export function QueryWrapper({
   element,
 }: {
-  element: React.ReactChild
-}): JSX.Element {
+  readonly element: React.ReactNode
+}): React.JSX.Element {
   return (
     <QueryClientProvider client={queryClient}>
       {element}

@@ -1,8 +1,8 @@
 import kebabCase from 'lodash.kebabcase'
 import urlJoin from 'url-join'
 
-import type { SiteConfig } from '../src/types'
 import type { BaseFrontmatter } from './types'
+import type { SiteConfig } from '../src/types'
 
 export function generateSlug(
   frontmatter?: BaseFrontmatter,

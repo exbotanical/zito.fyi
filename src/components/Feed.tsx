@@ -1,5 +1,4 @@
-import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { LayoutWidthContainer } from '@/components//LayoutWidthContainer'
 import { PostCard } from '@/components/PostCard'
@@ -7,8 +6,8 @@ import { BREAKPOINTS } from '@/styles/constants'
 import type { FeedItems } from '@/types'
 
 interface FeedProps {
-  feedItems: FeedItems
-  hideHero?: boolean
+  readonly feedItems: FeedItems
+  readonly hideHero?: boolean
 }
 
 const Wrapper = styled.div`

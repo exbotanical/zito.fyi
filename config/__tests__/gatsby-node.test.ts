@@ -19,7 +19,7 @@ import type {
   CreatePagesArgs,
 } from 'gatsby'
 
-const mockedGatsbyActions = mocked(GatsbyActionsMock, true)
+const mockedGatsbyActions = mocked(GatsbyActionsMock, { shallow: true })
 
 // because Gatsby's `GatsbyNode` interface properties are optional,
 // our types get picked up as being possibly undefined...
@@ -45,14 +45,14 @@ jest.mock('../config', () => ({
     },
   },
 }))
-const mockedConsole = mocked(global.console, true)
+const mockedConsole = mocked(global.console, { shallow: true })
 
 jest.mock('../../node/feed', () => ({
   createFeed: jest.fn(),
   setupFeedMetadataDir: jest.fn(),
 }))
 
-const feedUtilsMock = mocked(feedUtils, true)
+const feedUtilsMock = mocked(feedUtils, { shallow: true })
 
 jest.mock('../../node/queries', () => {
   const postsList =
@@ -85,6 +85,7 @@ describe('onCreateNode', () => {
         title: 'Test Title',
         slug: 'Test Slug',
       },
+      body: 'blablabla',
     } as Node
 
     const nodeArgs = {
@@ -134,6 +135,7 @@ describe('onCreateNode', () => {
       frontmatter: {
         title: 'Test Title',
       },
+      body: 'blablabla',
     } as Node
 
     const nodeArgs = {
@@ -161,6 +163,7 @@ describe('onCreateNode', () => {
         owner: 'testOwner',
       },
       frontmatter: {},
+      body: 'blablabla',
     } as Node
 
     const nodeArgs = {

@@ -3,6 +3,6 @@ import React from 'react'
 
 import { ThemeProvider } from '@/styles'
 
-export function RenderStyled(children: JSX.Element) {
+export function RenderStyled(children: React.ReactNode) {
   return render(<ThemeProvider>{children}</ThemeProvider>)
 }

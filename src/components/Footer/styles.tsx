@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 export const Wrapper = styled.footer`
   display: grid;
@@ -19,7 +19,7 @@ export const LinkGrid = styled.section`
 export const Info = styled.div`
   display: grid;
   align-items: center;
+  color: ${({ theme }) => theme.colors.font.secondary};
   gap: 8px;
   justify-items: center;
-  color: ${({ theme }) => theme.colors.font.secondary};
 `

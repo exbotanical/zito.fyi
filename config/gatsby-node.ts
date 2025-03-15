@@ -1,3 +1,4 @@
+import readingTime from 'reading-time'
 import urlJoin from 'url-join'
 
 import { MdxNode } from '@/types'
@@ -13,14 +14,12 @@ import {
   getAllPostsByCategory,
   ConfigSchema,
 } from '../node'
-import { StreamLogger } from '../node/logger'
 
 import { config } from './config'
 
 import type { BaseFrontmatter } from '../node/types'
 import type { GatsbyNode } from 'gatsby'
 
-StreamLogger.init()
 const POST_PAGE_COMPONENT = require.resolve('../src/templates/post/queries.ts')
 
 export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions }) => {
@@ -67,6 +66,16 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions }) => {
       name: 'url',
       node,
       value: url,
+    })
+
+    if (!node.body || typeof node.body !== 'string') {
+      throw Error(`Expected node.body to be a string (node ${node.id})`)
+    }
+
+    actions.createNodeField({
+      node,
+      name: 'timeToRead',
+      value: readingTime(node.body),
     })
   }
 }
@@ -128,7 +137,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
     const relatedPosts = getNRelatedPosts(post, allPosts)
 
     actions.createPage({
-      component: POST_PAGE_COMPONENT,
+      component: `${POST_PAGE_COMPONENT}?__contentFilePath=${post.contentFilePath}`,
       context: {
         nextslug: nextPost.slug,
         nexttitle: nextPost.title,

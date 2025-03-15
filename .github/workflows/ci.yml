@@ -6,45 +6,32 @@ on:
       - master
 
 jobs:
-  lint:
-    uses: exbotanical/.github/.github/workflows/pnpm_script_run.yml@master
-    with:
-      script_name: lint
-
-  stylelint:
-    uses: exbotanical/.github/.github/workflows/pnpm_script_run.yml@master
-    with:
-      script_name: lint:css
-
-  typecheck:
-    uses: exbotanical/.github/.github/workflows/pnpm_script_run.yml@master
-    with:
-      script_name: typecheck
-
-  unit_test:
-    uses: exbotanical/.github/.github/workflows/pnpm_script_run.yml@master
-    with:
-      script_name: test:unit
-
-  # TODO run in parallel
-  # TODO test on different browsers
-  integration_test:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
-          run_install: true
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Lint
+        run: npm run lint
+
+      - name: Run Stylelint
+        run: npm run lint:css
+
+      - name: Run Typecheck
+        run: npm run typecheck
+
+      - name: Run Unit Tests
+        run: npm run test:unit
 
       - name: Run Integration tests
-        uses: cypress-io/github-action@v4.1.0
+        uses: cypress-io/github-action@v6
         with:
           install: false
-          build: pnpm build
-          start: pnpm serve
+          build: npm run build
+          start: npm run serve
         env:
           CYPRESS_SUPPORT: 'y'

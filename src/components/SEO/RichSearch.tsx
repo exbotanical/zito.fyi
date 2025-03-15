@@ -1,5 +1,3 @@
-import React from 'react'
-
 import type { UserMetadata, OrgMetadata } from '@/types'
 
 import type {

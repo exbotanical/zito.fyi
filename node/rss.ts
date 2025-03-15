@@ -1,5 +1,5 @@
-import type { SiteConfig } from '../src/types'
 import type { FeedPluginData, FeedPluginItem } from './types'
+import type { SiteConfig } from '../src/types'
 
 export function generateRssFeed(config: SiteConfig) {
   return function mapEdges(data: FeedPluginData) {
@@ -25,7 +25,8 @@ export function generateRssFeed(config: SiteConfig) {
         categories: node.frontmatter?.tags,
         custom_elements: [
           {
-            'content:encoded': node.html,
+            // TODO: Validate
+            'content:encoded': node.body,
           },
           {
             author: config.user.email,

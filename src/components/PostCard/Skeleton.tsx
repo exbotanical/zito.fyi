@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { keyframes } from 'styled-components'
+import { styled, keyframes } from 'styled-components'
 
 import { BREAKPOINTS } from '@/styles/constants'
 
@@ -93,7 +93,7 @@ const DescriptionSkeleton = styled(SkeletonBlock)`
   }
 `
 
-export function PostCardSkeleton(): JSX.Element {
+export function PostCardSkeleton(): React.JSX.Element {
   return (
     <Wrapper>
       <Cover />

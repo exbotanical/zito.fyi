@@ -1,4 +1,4 @@
-const POST_PATH = '/my-favorite-soft-machine-records'
+const POST_PATH = '/my-favorite-soft-machine-records/'
 
 describe('mdx rendering', () => {
   before(() => {
@@ -43,10 +43,11 @@ describe('mdx rendering', () => {
 
   it('has a table of contents', () => {
     const testHeaderAnchor = (headerName: string, headerId: string) => {
+      // eslint-disable-next-line cypress/no-unnecessary-waiting
       cy.get(`p > a[href="#${headerId}"]`)
         .contains(headerName)
         .click()
-
+        .wait(100) // Sometimes cypress borks on DOM rerender
         .isInViewport(`#${headerId}`)
     }
 
@@ -124,6 +125,7 @@ describe('mdx rendering', () => {
 
   it('renders links', () => {
     cy.get('@post')
+
       .find('a[href="https://www.google.com"]')
       .contains(/^I'm an inline-style link$/)
 
@@ -148,7 +150,7 @@ describe('mdx rendering', () => {
 
   it('renders code blocks', () => {
     cy.get('@post')
-      .find('p > code[class*="language-text"]')
+      .find('span > code[class*="language-text"]')
       .contains(/back-ticks around/)
 
       .get('@post')
@@ -206,7 +208,9 @@ describe('mdx rendering', () => {
       .contains(/^Still$/)
 
       .get('@post')
-      .find('div > table > tbody > tr > td > code[class*="language-text"]')
+      .find(
+        'div > table > tbody > tr > td > span > code[class*="language-text"]',
+      )
       .contains(/^renders$/)
 
       .get('@post')
@@ -257,7 +261,7 @@ describe('mdx rendering', () => {
 
   it('renders videos', () => {
     cy.get('@post').find(
-      'p > div.gatsby-resp-iframe-wrapper > div.embedVideo-container > iframe[src="https://www.youtube.com/embed/8AkLfYOgIrE?rel=0"]',
+      'p > span > div.gatsby-resp-iframe-wrapper > div.embedVideo-container > iframe[src="https://www.youtube.com/embed/8AkLfYOgIrE?rel=0"]',
     )
   })
 })

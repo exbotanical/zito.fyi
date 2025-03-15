@@ -11,72 +11,70 @@ interface UserConfigQueryResult {
 }
 
 export const useConfig = (): SiteConfig => {
-  const data = useStaticQuery<UserConfigQueryResult>(
-    graphql`
-      query UserConfig {
-        site {
-          siteMetadata {
-            config {
-              contentDir
-              assetDir
-              embeddedImageWidth
-              embeddedVideoWidth
-              basePath
-              iconPath
-              iconCachePaths
-              iconList {
-                src
-                sizes
-                type
-                purpose
-              }
-              organization {
-                description
-                logoUrl
+  const data = useStaticQuery<UserConfigQueryResult>(graphql`
+    query UserConfig {
+      site {
+        siteMetadata {
+          config {
+            contentDir
+            assetDir
+            embeddedImageWidth
+            embeddedVideoWidth
+            basePath
+            iconPath
+            iconCachePaths
+            iconList {
+              src
+              sizes
+              type
+              purpose
+            }
+            organization {
+              description
+              logoUrl
+              name
+              url
+            }
+            pathPrefix
+            user {
+              about
+              avatar
+              firstName
+              github
+              email
+              id
+              surname
+              linkedIn
+              location
+              twitterHandle
+              youtubeUrl
+            }
+            site {
+              backgroundColor
+              copyright {
+                link
                 name
-                url
               }
-              pathPrefix
-              user {
-                about
-                avatar
-                firstName
-                github
-                email
-                id
-                surname
-                linkedIn
-                location
-                twitterHandle
-                youtubeUrl
-              }
-              site {
-                backgroundColor
-                copyright {
-                  link
-                  name
-                }
-                description
-                language
-                facebookAppId
-                googleAnalyticsId
-                disqusShortname
-                logoUrl
-                name
-                rss
-                rssTitle
-                themeColor
-                title
-                titleAbridged
-                twitterHandle
-                url
-              }
+              description
+              language
+              facebookAppId
+              googleAnalyticsId
+              disqusShortname
+              logoUrl
+              name
+              rss
+              rssTitle
+              themeColor
+              title
+              titleAbridged
+              twitterHandle
+              url
             }
           }
         }
       }
-    `,
-  )
+    }
+  `)
 
   const config = data.site?.siteMetadata?.config
   if (!config) {

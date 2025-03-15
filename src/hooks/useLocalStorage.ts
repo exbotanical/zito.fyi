@@ -1,6 +1,5 @@
 import { useState } from 'react'
 
-import { logger } from '@/services/logger'
 import { isBrowserRuntime } from '@/utils'
 
 export function useLocalStorage<T>(key: string, initialValue: T) {
@@ -19,7 +18,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
 
       return JSON.parse(item)
     } catch (ex: unknown) {
-      logger.error(ex)
+      console.error(ex)
 
       return initialValue
     }
@@ -36,7 +35,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
         window.localStorage.setItem(key, JSON.stringify(valueToPersist))
       }
     } catch (ex: unknown) {
-      logger.error(ex)
+      console.error(ex)
     }
   }
 

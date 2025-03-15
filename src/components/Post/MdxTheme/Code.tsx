@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { createGlobalStyle, css } from 'styled-components'
+import { styled, createGlobalStyle, css } from 'styled-components'
 
 import { SIDE_PADDING } from '@/components/Post/PostSpacing'
 import { typographyStyles } from '@/styles'
@@ -8,8 +8,8 @@ const CODE_CONTENT_WIDTH = '736px'
 const CODE_BLOCK_SIZE = `calc(${CODE_CONTENT_WIDTH} + 2 * ${SIDE_PADDING})`
 
 interface CodeProps {
-  className?: string
-  children?: React.ReactChildren
+  readonly className?: string
+  readonly children?: React.ReactNode
 }
 
 export const InlineCode = undefined
@@ -50,7 +50,7 @@ export const StyledCode = styled.code`
   max-width: 100%;
 `
 
-export function Code({ className, children }: CodeProps): JSX.Element {
+export function Code({ className, children }: CodeProps): React.JSX.Element {
   return (
     <StyledCode className={className} tabIndex={0}>
       {children}

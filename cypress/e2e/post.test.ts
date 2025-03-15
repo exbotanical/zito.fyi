@@ -23,18 +23,18 @@ describe('post page', () => {
 
   it('renders post metadata (post info)', () => {
     cy.get('p')
-      .contains(/⋅ Jan [0-9], 2021 ⋅ 2 min read/)
+      .contains(/⋅ Jan [0-9], 2021 ⋅ 7 min read/)
 
       .get('main')
       .then(container => {
         cy.findByRole('link', { name: 'music', container })
-          .should('have.attr', 'href', '/category/music')
+          .should('have.attr', 'href', '/category/music/')
 
           .findByRole('link', { name: 'progrock', container })
-          .should('have.attr', 'href', '/tag/progrock')
+          .should('have.attr', 'href', '/tag/progrock/')
 
           .findByRole('link', { name: 'vinyl', container })
-          .should('have.attr', 'href', '/tag/vinyl')
+          .should('have.attr', 'href', '/tag/vinyl/')
       })
   })
 
@@ -61,8 +61,8 @@ describe('post page', () => {
 
   it('renders related Posts', () => {
     const expected: [string, RegExp][] = [
-      ['a[href="/andrea-zittel"]', /^Andrea Zittel$/],
-      ['a[href="/lorem-ipsum-3001"]', /^Lorem Ipsum 3001$/],
+      ['a[href="/andrea-zittel/"]', /^Andrea Zittel$/],
+      ['a[href="/lorem-ipsum-3001/"]', /^Lorem Ipsum 3001$/],
     ]
     cy.get('[data-testid=related-posts] > div > div')
       .children()

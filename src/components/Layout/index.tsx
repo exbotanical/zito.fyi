@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-pascal-case */
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { Footer } from '@/components/Footer'
 import { LayoutWidthContainer } from '@/components/LayoutWidthContainer'
@@ -10,8 +10,8 @@ import { ThemeProvider, BREAKPOINTS } from '@/styles'
 import type { Post } from '@/types'
 
 interface LayoutProps {
-  children?: React.ReactNode
-  post?: Post
+  readonly children?: React.ReactNode
+  readonly post?: Post
 }
 
 const LayoutGrid = styled.div`
@@ -28,7 +28,7 @@ const LayoutGrid = styled.div`
   }
 `
 
-export function Layout({ children, post }: LayoutProps): JSX.Element {
+export function Layout({ children, post }: LayoutProps): React.JSX.Element {
   return (
     <ThemeProvider>
       <SEO post={post} />

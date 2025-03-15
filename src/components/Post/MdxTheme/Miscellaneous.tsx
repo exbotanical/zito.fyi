@@ -12,11 +12,11 @@ import { ExtensionWrapper } from '@/components/Post/PostSpacing'
 import { Separator } from '@/components/Separator'
 
 interface LinkProps extends React.HTMLProps<HTMLAnchorElement> {
-  activeClassName?: string
-  to: string
+  readonly activeClassName?: string
+  readonly to: string
 }
 
-export function Break(): JSX.Element {
+export function Break(): React.JSX.Element {
   return (
     <ExtensionWrapper>
       <Separator />
@@ -33,7 +33,7 @@ export function Link({
   target,
   rel,
   style,
-}: LinkProps): JSX.Element {
+}: LinkProps): React.JSX.Element {
   // allow `gatsby-remark-images` to handle its own links
   if (className === 'gatsby-resp-image-link') {
     return (
@@ -86,7 +86,7 @@ export function MdxImage({
   sizes,
   loading,
   style,
-}: React.ImgHTMLAttributes<HTMLImageElement>): JSX.Element {
+}: React.ImgHTMLAttributes<HTMLImageElement>): React.JSX.Element {
   if (className === 'gatsby-resp-image-image') {
     return (
       <BaseImage

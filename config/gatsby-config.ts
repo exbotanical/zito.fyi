@@ -1,13 +1,21 @@
-import path from 'path'
+import path from 'node:path'
 
 import remarkA11yEmoji from '@fec/remark-a11y-emoji'
 import remarkExternalLinks from 'remark-external-links'
 // https://github.com/gatsbyjs/gatsby/issues/16239
 // must be < v3 due to ESM only support therein
+import remarkGfm from 'remark-gfm'
 import unwrapImages from 'remark-unwrap-images'
+// mustb be < v1 for the same stupid reason
 import urljoin from 'url-join'
 
-import { withBasePath, generateRssFeed, setupRssFeed } from '../node'
+import {
+  withBasePath,
+  generateRssFeed,
+  setupRssFeed,
+  generateSitemapData,
+  type ResolvedSitemapPage,
+} from '../node'
 
 import { config } from '.'
 
@@ -17,13 +25,15 @@ const adjustedPathPRefix = !config.pathPrefix ? '/' : config.pathPrefix
 const gatsbyConfig: GatsbyConfig = {
   pathPrefix: adjustedPathPRefix,
   plugins: [
-    'gatsby-plugin-pnpm',
     {
-      resolve: 'gatsby-plugin-react-svg',
+      // https://github.com/jacobmischka/gatsby-plugin-react-svg/issues/59#issuecomment-2580080274
+      resolve: 'gatsby-plugin-svgr-svgo',
       options: {
-        rule: {
-          include: /\.svg$/,
-        },
+        inlineSvgOptions: [
+          {
+            test: /\.svg$/,
+          },
+        ],
       },
     },
     'gatsby-plugin-react-helmet',
@@ -45,6 +55,12 @@ const gatsbyConfig: GatsbyConfig = {
       options: {
         name: 'posts',
         path: path.join(__dirname, '../', config.contentDir || 'content'),
+      },
+    },
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: ['remark-comment'],
       },
     },
     {
@@ -76,7 +92,7 @@ const gatsbyConfig: GatsbyConfig = {
             resolve: 'gatsby-remark-responsive-iframe',
           },
           {
-            resolve: 'gatsby-remark-relative-images',
+            resolve: 'gatsby-remark-relative-images-v2',
           },
           {
             resolve: 'gatsby-remark-images',
@@ -95,18 +111,67 @@ const gatsbyConfig: GatsbyConfig = {
             },
           },
         ],
-        remarkPlugins: [unwrapImages, remarkA11yEmoji, remarkExternalLinks],
+        mdxOptions: {
+          remarkPlugins: [
+            unwrapImages,
+            remarkA11yEmoji,
+            remarkExternalLinks,
+            remarkGfm,
+          ],
+        },
       },
     },
-    {
-      resolve: 'gatsby-plugin-google-gtag',
-      options: {
-        trackingIds: [config.site.googleAnalyticsId],
-      },
-    },
+    ...(config.site.googleAnalyticsId
+      ? [
+          {
+            resolve: 'gatsby-plugin-google-gtag',
+            options: {
+              trackingIds: [config.site.googleAnalyticsId],
+            },
+          },
+        ]
+      : []),
     'gatsby-plugin-catch-links',
     'gatsby-plugin-twitter',
-    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        resolveSiteUrl: () => config.site.url,
+        // I had to read the source-code for this plugin because the docs were vague and there's no type declarations.
+        // Basically resolvePages receives the query result as input, and its output is mapped into serialize.
+        // The only hard requirement I saw was that each entry in the resolvePages output must have a `path` field.
+        resolvePages: generateSitemapData(config),
+        serialize: (page: ResolvedSitemapPage) => ({
+          ...page,
+          url: page.path,
+        }),
+        query: `{
+          allMdx {
+            edges {
+              node {
+                frontmatter {
+                  title
+                  category
+                  tags
+                  datePublished
+                  dateModified
+                }
+                fields {
+                  slug
+                  route
+                }
+              }
+            }
+          }
+          allCategories: allMdx {
+            distinct(field: {frontmatter: {category: SELECT}})
+          }
+          allTags: allMdx {
+            distinct(field: {frontmatter: {tags: SELECT}})
+          }
+        }`,
+      },
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -137,30 +202,27 @@ const gatsbyConfig: GatsbyConfig = {
         feeds: [
           {
             output: withBasePath(config, config.site.rss),
-            query: `
-                {
-                  allMdx(
-                    limit: 1000,
-                    sort: { order: DESC, fields: [frontmatter___datePublished] },
-                  ) {
-                    edges {
-                      node {
-                        html
-                        timeToRead
-                        fields {
-                          slug
-                        }
-                        frontmatter {
-                          title
-                          datePublished
-                          category
-                          tags
-                        }
+            query: `{
+              allMdx(limit: 1000, sort: {frontmatter: {datePublished: DESC}}) {
+                edges {
+                  node {
+                    body
+                    fields {
+                      slug
+                      timeToRead {
+                        text
                       }
+                    }
+                    frontmatter {
+                      title
+                      datePublished
+                      category
+                      tags
                     }
                   }
                 }
-              `,
+              }
+            }`,
             serialize: generateRssFeed(config),
             site_url: config.site.url,
             title: config.site.rssTitle,

@@ -1,6 +1,6 @@
 import { getImage } from 'gatsby-plugin-image'
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import { PostInfo } from '@/components/PostInfo'
 import { H1, Body } from '@/styles'
@@ -10,7 +10,7 @@ import { CoverImage } from './PostImage'
 import { WidthWrapper } from './PostSpacing'
 
 interface PostIntroProps {
-  post: Post
+  readonly post: Post
 }
 
 const Wrapper = styled.section`
@@ -32,7 +32,7 @@ const Cover = styled.div`
   justify-items: center;
 `
 
-export function PostIntro({ post }: PostIntroProps): JSX.Element {
+export function PostIntro({ post }: PostIntroProps): React.JSX.Element {
   if (!post.coverImg) {
     throw Error('[PostIntro] Cannot render `PostIntro` without `coverImg`')
   }

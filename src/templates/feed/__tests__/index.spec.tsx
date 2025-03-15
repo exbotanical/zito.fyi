@@ -1,5 +1,4 @@
 import { cleanup, screen } from '@testing-library/react'
-import React from 'react'
 import { Helmet } from 'react-helmet'
 import 'jest-styled-components'
 

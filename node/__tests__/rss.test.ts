@@ -1,12 +1,12 @@
 import { mocked } from 'jest-mock'
 
-import { generateRssFeed, setupRssFeed } from '../'
+import { generateRssFeed, setupRssFeed } from '..'
 import { config, postQueryResult } from '../../test/fixtures'
 
 import type { FeedQueryResult, FeedPluginData } from '../types'
 jest.spyOn(global.console, 'warn').mockImplementation()
 
-const mockedConsole = mocked(global.console, true)
+const mockedConsole = mocked(global.console, { shallow: true })
 
 const testQuery = {
   ...postQueryResult,

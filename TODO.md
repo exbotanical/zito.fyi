@@ -44,6 +44,7 @@
 - [ ] add copy tooltip to code blocks
 - [px] do not use solid black font color in light mode
 - [ ] fix wrap on tags and categories caption
+- [ ] Why is css lint changing spaces to tabs?
 
 ## Content
 

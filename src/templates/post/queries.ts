@@ -8,7 +8,7 @@ export const PostTemplateQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
       body
-      timeToRead
+
       frontmatter {
         title
         description
@@ -29,6 +29,9 @@ export const PostTemplateQuery = graphql`
         route
         pathName
         url
+        timeToRead {
+          text
+        }
       }
       internal {
         content

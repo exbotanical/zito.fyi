@@ -1,14 +1,12 @@
 /**
  * Feed queries
  */
-
-export const allPostsQuery = `#graphql
-query AllPostsList($skip: Int, $limit: Int) {
+export const allPostsQuery = `query AllPostsList($skip: Int, $limit: Int) {
   allMdx(
-    sort: { fields: [frontmatter___datePublished], order: DESC }
+    sort: {frontmatter: {datePublished: DESC}}
     limit: $limit
-    skip: $skip,
-    filter: { isNotPublishedYet: { eq: false } }
+    skip: $skip
+    filter: {isNotPublishedYet: {eq: false}}
   ) {
     edges {
       node {
@@ -17,8 +15,13 @@ query AllPostsList($skip: Int, $limit: Int) {
           route
           pathName
           url
+          timeToRead {
+            text
+          }
         }
-        timeToRead
+        internal {
+          contentFilePath
+        }
         frontmatter {
           title
           description
@@ -36,15 +39,13 @@ query AllPostsList($skip: Int, $limit: Int) {
       }
     }
   }
-}
-`
+}`
 // @todo finalize
-export const allPostsByTagQuery = `#graphql
-query AllPostsByTag($tag: String) {
+export const allPostsByTagQuery = `query AllPostsByTag($tag: String) {
   allMdx(
     limit: 1000
-    sort: { fields: [frontmatter___datePublished], order: DESC }
-    filter: { isNotPublishedYet: { eq: false }, frontmatter: { tags: { in: [$tag] } } }
+    sort: {frontmatter: {datePublished: DESC}}
+    filter: {isNotPublishedYet: {eq: false}, frontmatter: {tags: {in: [$tag]}}}
   ) {
     totalCount
     edges {
@@ -54,8 +55,10 @@ query AllPostsByTag($tag: String) {
           route
           pathName
           url
+          timeToRead {
+            text
+          }
         }
-        timeToRead
         frontmatter {
           title
           tags
@@ -73,15 +76,13 @@ query AllPostsByTag($tag: String) {
       }
     }
   }
-}
-`
+}`
 
-export const allPostsByCategoryQuery = `#graphql
-query AllPostsByCategory($category: String) {
+export const allPostsByCategoryQuery = `query AllPostsByCategory($category: String) {
   allMdx(
     limit: 1000
-    sort: { fields: [frontmatter___datePublished], order: DESC }
-    filter: { isNotPublishedYet: { eq: false }, frontmatter: { category: { eq: $category } } }
+    sort: {frontmatter: {datePublished: DESC}}
+    filter: {isNotPublishedYet: {eq: false}, frontmatter: {category: {eq: $category}}}
   ) {
     totalCount
     edges {
@@ -91,8 +92,10 @@ query AllPostsByCategory($category: String) {
           route
           pathName
           url
+          timeToRead {
+            text
+          }
         }
-        timeToRead
         frontmatter {
           title
           tags
@@ -110,5 +113,4 @@ query AllPostsByCategory($category: String) {
       }
     }
   }
-}
-`
+}`

@@ -1,5 +1,4 @@
 import { screen } from '@testing-library/react'
-import React from 'react'
 import { Helmet } from 'react-helmet'
 
 import type { PostJson } from '@/types'
@@ -17,24 +16,11 @@ const pageContext = {
   relatedPosts: [postFromJson, { ...postFromJson, slug: '/related-post' }],
 }
 
-const originalError = console.error.bind(console.error)
-
 jest.mock('@/config/useConfig', () => ({
   useConfig: jest.fn(() => config),
 }))
 
 describe('`PostTemplate`', () => {
-  beforeAll(() => {
-    console.error = msg => {
-      !msg.toString().includes('Warning: validateDOMNesting') &&
-        originalError(msg)
-    }
-  })
-
-  afterAll(() => {
-    console.error = originalError
-  })
-
   it('renders the expected SEO tags', () => {
     RenderStyled(<PostTemplate data={postData} pageContext={pageContext} />)
 

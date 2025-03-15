@@ -1,14 +1,15 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 import type { Post as PostType } from '@/types'
 
+import { MdxRenderer } from './MdxRenderer'
 import { PostIntro } from './PostIntro'
-import { Render } from './Render'
 import { PostShare } from './Share'
 
 interface PostProps {
-  post: PostType
+  readonly post: PostType
+  readonly children?: React.ReactNode
 }
 
 const Wrapper = styled.main`
@@ -18,11 +19,11 @@ const Wrapper = styled.main`
   justify-items: center;
 `
 
-export function Post({ post }: PostProps): JSX.Element {
+export function Post({ post, children }: PostProps): React.JSX.Element {
   return (
     <Wrapper>
       <PostIntro post={post} />
-      <Render post={post} />
+      <MdxRenderer post={post}>{children}</MdxRenderer>
       <PostShare post={post} />
     </Wrapper>
   )

@@ -1,4 +1,4 @@
-import { MDXProvider, type MDXProviderComponents } from '@mdx-js/react'
+import { MDXProvider } from '@mdx-js/react'
 import React from 'react'
 
 import type { Post } from '@/types'
@@ -11,33 +11,30 @@ import * as TableComponents from './Table'
 import * as TextComponents from './Text'
 
 interface MdxThemeProps {
-  children: React.ReactNode
-  post: Post
+  readonly children: React.ReactNode
+  readonly post: Post
 }
 
-function getComponentMapping(post: Post): MDXProviderComponents {
+function getComponentMapping(post: Post) {
   const headings = TextComponents.generateHeadings(post.slug)
 
   return {
-    wrapper: ({ children }: { children: React.ReactNode }) => {
-      const updatedChildren = React.Children.map(children, child => {
-        if (!React.isValidElement(child)) {
+    wrapper: ({ children }: { children: React.ReactNode }): React.ReactNode =>
+      // eslint-disable-next-line @typescript-eslint/promise-function-async
+      React.Children.map(children, child => {
+        if (!React.isValidElement<{ className?: string }>(child)) {
           return child
         }
 
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        if (child.props?.className === 'footnotes') {
+        if (child.props.className === 'footnotes') {
           // the key is of negligible consequence given we've only one element that will ever match
           // however, react requires one, so...
           return <Footnote key={1} {...child.props} />
         }
 
         return child
-      })
-
-      return updatedChildren as unknown as React.ReactElement
-    },
-    p: TextComponents.Paragraph,
+      }),
+    // p: TextComponents.Paragraph,
     h1: headings.H1,
     h2: headings.H2,
     h3: headings.H3,
@@ -54,13 +51,14 @@ function getComponentMapping(post: Post): MDXProviderComponents {
     table: TableComponents.Table,
     thead: TableComponents.Head,
     tbody: TableComponents.Body,
-    tr: TableComponents.Row,
+    // tr: TableComponents.Row,
     td: TableComponents.BodyCell,
     th: TableComponents.HeadCell,
 
     pre: CodeComponents.Pre,
     code: CodeComponents.Code,
-    inlineCode: CodeComponents.InlineCode,
+
+    // inlineCode: CodeComponents.InlineCode,
 
     hr: MiscComponents.Break,
     thematicBreak: MiscComponents.Break,
@@ -70,7 +68,7 @@ function getComponentMapping(post: Post): MDXProviderComponents {
   }
 }
 
-export function MDXTheme({ children, post }: MdxThemeProps): JSX.Element {
+export function MDXTheme({ children, post }: MdxThemeProps): React.JSX.Element {
   return (
     <>
       <MiscComponents.GlobalGatsbyImageStyle />

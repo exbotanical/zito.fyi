@@ -1,11 +1,11 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import { styled, css } from 'styled-components'
 
 import { WidthWrapper } from '@/components/Post/PostSpacing'
 import { typographyStyles } from '@/styles'
 
 interface TableProps {
-  children?: React.ReactNode
+  readonly children?: React.ReactNode
 }
 
 interface CellProps {
@@ -57,7 +57,7 @@ export const Body = styled.tbody`
   ${typographyStyles.Body}
 `
 
-export function Table({ children }: TableProps): JSX.Element {
+export function Table({ children }: TableProps): React.JSX.Element {
   return (
     <TableWrapper>
       <TableStyled>{children}</TableStyled>

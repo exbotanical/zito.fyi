@@ -17,7 +17,7 @@ const categoryQueryResponse = {
   data: {
     allMdx: {
       edges: postsListQueryResponse.allMdx.edges.filter(
-        edge => edge.node.frontmatter.category === 'category',
+        edge => edge.node.frontmatter?.category === 'category',
       ),
     },
   },
@@ -26,7 +26,7 @@ const tagQueryResponse = {
   data: {
     allMdx: {
       edges: postsListQueryResponse.allMdx.edges.filter(edge =>
-        edge.node.frontmatter.tags.includes('tag'),
+        edge.node.frontmatter?.tags?.includes('tag'),
       ),
     },
   },

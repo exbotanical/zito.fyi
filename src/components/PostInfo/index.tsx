@@ -6,12 +6,12 @@ import type { Post } from '@/types'
 import * as S from './styles'
 
 interface PostInfoProps {
-  post: Post
+  readonly post: Post
 }
 
 const N_TAGS = 2
 
-export function PostInfo({ post }: PostInfoProps): JSX.Element {
+export function PostInfo({ post }: PostInfoProps): React.JSX.Element {
   const categoryUrl = post.category ? `/category/${post.category}` : undefined
 
   const publicationDate = `${categoryUrl ? '\u00A0⋅ ' : ''}${format(
@@ -19,7 +19,7 @@ export function PostInfo({ post }: PostInfoProps): JSX.Element {
     'LLL d, y',
   )}`
 
-  const timeToRead = ` ⋅ ${post.timeToRead} min read`
+  const timeToRead = ` ⋅ ${post.timeToRead}`
 
   const infoCaption = `${publicationDate}${timeToRead}`
 
@@ -32,9 +32,9 @@ export function PostInfo({ post }: PostInfoProps): JSX.Element {
   return (
     <S.Wrapper>
       <S.InfoGrid>
-        {categoryUrl && (
+        {categoryUrl ? (
           <S.CategoryLink to={categoryUrl}>{post.category}</S.CategoryLink>
-        )}
+        ) : null}
         <S.PostCaption>{infoCaption}</S.PostCaption>
       </S.InfoGrid>
       <S.TagGrid>{tagLinks}</S.TagGrid>

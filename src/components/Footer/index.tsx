@@ -9,7 +9,7 @@ import { Socials } from '../Socials'
 
 import * as S from './styles'
 
-export function Footer(): JSX.Element {
+export function Footer(): React.JSX.Element {
   const config = useConfig()
 
   return (

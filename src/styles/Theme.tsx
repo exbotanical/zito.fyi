@@ -50,7 +50,7 @@ interface ThemeContext {
 }
 
 interface ThemeProps {
-  children: React.ReactNode
+  readonly children: React.ReactNode
 }
 
 const { darkTheme, lightTheme } = themes.nordTheme
@@ -58,7 +58,7 @@ export { darkTheme, lightTheme }
 
 export const ThemeToggleContext = createContext({} as ThemeContext)
 
-export function ThemeProvider({ children }: ThemeProps): JSX.Element {
+export function ThemeProvider({ children }: ThemeProps): React.JSX.Element {
   const prefersDark =
     isBrowserRuntime &&
     window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -78,11 +78,12 @@ export function ThemeProvider({ children }: ThemeProps): JSX.Element {
   }, [theme, setTheme])
 
   const ctx = useMemo(() => ({ theme, toggleTheme }), [theme, toggleTheme])
+  const currentTheme = theme === 'dark' ? darkTheme : lightTheme
 
   return (
     <ThemeToggleContext.Provider value={ctx}>
-      <StyledThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
-        <Reset />
+      <StyledThemeProvider theme={currentTheme}>
+        <Reset theme={currentTheme} />
         <Typography />
         <ScrollbarStyles />
         {children}

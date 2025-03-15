@@ -12,10 +12,10 @@ import { useInfiniteFeed } from './hooks'
 import type { PageContext } from './types'
 
 interface FeedTemplateProps {
-  pageContext: PageContext
+  readonly pageContext: PageContext
 }
 
-function FeedTemplate({ pageContext }: FeedTemplateProps): JSX.Element {
+function FeedTemplate({ pageContext }: FeedTemplateProps): React.JSX.Element {
   const { feedItems, feedElementRef } = useInfiniteFeed(pageContext)
 
   const config = useConfig()

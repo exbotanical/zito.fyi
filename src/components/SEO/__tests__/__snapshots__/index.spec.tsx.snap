@@ -5,7 +5,7 @@ exports[`component SEO renders correctly for posts 1`] = `
   defer={true}
   encodeSpecialCharacters={true}
   htmlAttributes={
-    Object {
+    {
       "lang": "en",
     }
   }
@@ -134,7 +134,7 @@ exports[`component SEO renders correctly on pages 1`] = `
   defer={true}
   encodeSpecialCharacters={true}
   htmlAttributes={
-    Object {
+    {
       "lang": "en",
     }
   }

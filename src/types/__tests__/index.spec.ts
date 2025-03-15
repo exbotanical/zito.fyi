@@ -1,4 +1,3 @@
-/* eslint-disable jest/no-conditional-in-test */
 import { mocked } from 'jest-mock'
 import cloneDeep from 'lodash.clonedeep'
 
@@ -23,7 +22,9 @@ const consoleWarnSpy = jest
   .mockImplementation(() => {})
 
 jest.mock('@/config')
-const mockedConfig = mocked(config, true)
+const mockedConfig = mocked(config, {
+  shallow: true,
+})
 mockedConfig.site.url = 'http://test.com'
 mockedConfig.pathPrefix = '/test'
 
@@ -39,10 +40,7 @@ describe('`mdxNodeToPost`', () => {
   it('falls back to `datePublished` if `dateModified` has not been set', () => {
     const mdxNodeSansDateModified = cloneDeep(postQueryResult.mdx)!
 
-    if (
-      !mdxNodeSansDateModified.frontmatter ||
-      !mdxNodeSansDateModified.frontmatter.datePublished
-    ) {
+    if (!mdxNodeSansDateModified.frontmatter?.datePublished) {
       throw testError
     }
 
@@ -58,7 +56,7 @@ describe('`mdxNodeToPost`', () => {
   it('throws when missing MDX data', () => {
     const invalidMdx = cloneDeep(postQueryResult.mdx)!
 
-    invalidMdx.timeToRead = undefined
+    invalidMdx.fields!.timeToRead = undefined
 
     expect(() => mdxNodeToPost(invalidMdx)).toThrow()
   })

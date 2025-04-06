@@ -1,25 +1,13 @@
 import { mocked } from 'jest-mock'
 import cloneDeep from 'lodash.clonedeep'
 
-import {
-  mdxNodeToPost,
-  queryToPost,
-  jsonToPost,
-  queryToPostsList,
-} from '@/utils'
+import { mdxNodeToPost, queryToPost, jsonToPost, queryToPostsList } from '@/utils'
 
-import {
-  postsListQueryResponse,
-  postQueryResult,
-  post,
-  config,
-} from '@@/fixtures'
+import { postsListQueryResponse, postQueryResult, post, config } from '@@/fixtures'
 
 import type { PostJson } from '..'
 
-const consoleWarnSpy = jest
-  .spyOn(global.console, 'warn')
-  .mockImplementation(() => {})
+const consoleWarnSpy = jest.spyOn(globalThis.console, 'warn').mockImplementation(() => {})
 
 jest.mock('@/config')
 const mockedConfig = mocked(config, {
@@ -28,7 +16,7 @@ const mockedConfig = mocked(config, {
 mockedConfig.site.url = 'http://test.com'
 mockedConfig.pathPrefix = '/test'
 
-const testError = Error('Invalid `postQueryResult` object used in a test')
+const testError = new Error('Invalid `postQueryResult` object used in a test')
 
 describe('`mdxNodeToPost`', () => {
   it('generates correct post data', () => {
@@ -154,7 +142,8 @@ describe('`queryToPostsList`', () => {
 
 describe('`jsonToPost`', () => {
   it('converts JSON based post metadata into a post', () => {
-    const jsonPost = JSON.parse(JSON.stringify(post)) as PostJson
+    // TODO: Remove
+    const jsonPost = structuredClone(post) as unknown as PostJson
 
     const generatedPost = jsonToPost(jsonPost)
 
@@ -163,9 +152,7 @@ describe('`jsonToPost`', () => {
     const postWithRelated = cloneDeep(post)
     postWithRelated.relatedPosts = [post]
 
-    const jsonPostWithRelated = JSON.parse(
-      JSON.stringify(postWithRelated),
-    ) as PostJson
+    const jsonPostWithRelated = structuredClone(postWithRelated) as unknown as PostJson
 
     const generatedPostWithRelated = jsonToPost(jsonPostWithRelated)
 

@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prefer-node-protocol -- TODO: fix this */
 import fs from 'fs'
 import path from 'path'
 
@@ -6,17 +7,13 @@ import { constants, withBasePath } from '.'
 import type { FeedMetadata, Post, SiteConfig } from '../src/types'
 import type { Actions } from 'gatsby'
 
+// eslint-disable-next-line unicorn/prefer-module -- using cjs module type
 const FEED_COMPONENT = require.resolve('../src/templates/feed/index.tsx')
 const FEED_METADATA_DIR = `${constants.baseMetaDirectory}/${constants.feedMetaDirectory}/`
 const POSTS_PER_PAGE = constants.postsPerFeedPage
 
-export function resolveFeedPath(
-  config: SiteConfig,
-  feedType: string,
-  feedId?: string,
-) {
-  const slug =
-    feedType === 'index' ? '/' : `/${feedType}${feedId ? `/${feedId}` : ''}`
+export function resolveFeedPath(config: SiteConfig, feedType: string, feedId?: string) {
+  const slug = feedType === 'index' ? '/' : `/${feedType}${feedId ? `/${feedId}` : ''}`
 
   return withBasePath(config, slug)
 }
@@ -53,10 +50,9 @@ export function createFeedMetadata(
   const nextPage = pageIdx + 1 < pageCount ? pageIdx + 1 : undefined
   const prevPage = pageIdx > 0 ? pageIdx - 1 : undefined
 
-  // calculate the number of pages in the next batch
+  // Calculate the number of pages in the next batch
   const postsRemaining = feedPosts.length - skip - limit
-  const nextCount =
-    postsRemaining > 0 ? Math.min(postsRemaining, limit) : undefined
+  const nextCount = postsRemaining > 0 ? Math.min(postsRemaining, limit) : undefined
   const prevCount = typeof prevPage === 'number' ? limit : undefined
 
   return {
@@ -86,11 +82,11 @@ export async function createFeed(
 ) {
   const pageCount = Math.ceil(feedPosts.length / POSTS_PER_PAGE)
 
-  const tasks = [...Array(pageCount).keys()].map(async pageIdx => {
+  const tasks = [...new Array(pageCount).keys()].map(async pageIdx => {
     const pageMeta = createFeedMetadata(pageIdx, pageCount, feedPosts)
     await persistFeedMetadata(feedType, pageIdx, pageMeta, feedId)
 
-    // create an index page that resides at `<feedId>/`
+    // Create an index page that resides at `<feedId>/`
     if (pageIdx === 0) {
       const path = resolveFeedPath(config, feedType, feedId)
 

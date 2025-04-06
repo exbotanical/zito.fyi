@@ -42,7 +42,7 @@ export default defineConfig({
   video: false,
   screenshotOnRunFailure: false,
   retries: 1,
-  defaultCommandTimeout: 10000,
+  defaultCommandTimeout: 10_000,
 
   e2e: {
     baseUrl: 'http://localhost:9000',
@@ -59,12 +59,8 @@ export default defineConfig({
           })
         },
 
-        async parseSitemap({
-          sitemapString,
-        }: ParseSitemapArgs): Promise<SiteMapData> {
-          return parseStringPromise(sitemapString).then(
-            res => res as SiteMapData,
-          )
+        async parseSitemap({ sitemapString }: ParseSitemapArgs): Promise<SiteMapData> {
+          return parseStringPromise(sitemapString).then(res => res as SiteMapData)
         },
       })
     },

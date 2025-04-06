@@ -1,5 +1,5 @@
 import { useEffect, useRef, useMemo } from 'react'
-import { useInfiniteQuery, type UseInfiniteQueryResult } from 'react-query'
+import { useInfiniteQuery } from 'react-query'
 
 import { useConfig } from '@/config'
 import type {
@@ -14,6 +14,7 @@ import { jsonToPost } from '@/utils'
 import { constants } from '../../../node'
 
 import type { PageContext } from './types'
+import type { UseInfiniteQueryResult } from 'react-query'
 
 /**
  * Calculate the base URL for a given feed
@@ -26,23 +27,18 @@ const resolveBaseUrl = (pageContext: PageContext, config: SiteConfig) =>
 /**
  * Generate placeholders for currently loading posts
  */
-const generatePostPlaceholders = (
-  keyPrefix: string,
-  count?: number,
-): PlaceholderPost[] =>
-  Array(count || constants.postsPerFeedPage)
-    .fill(0)
-    .map((_, idx) => ({
-      isPlaceholder: true,
-      key: `${keyPrefix}-${idx}`,
-    }))
+const generatePostPlaceholders = (keyPrefix: string, count?: number): PlaceholderPost[] =>
+  new Array(count || constants.postsPerFeedPage).fill(0).map((_, idx) => ({
+    isPlaceholder: true,
+    key: `${keyPrefix}-${idx}`,
+  }))
 
 /**
  * Generate a fetch handler for use by a feed
  */
 function generateFetchHandler(baseUrl: string) {
   return async function fetchHandler({ pageParam = 0 }) {
-    // kind of a hack but w/e, it's what Gatsby is doing under the hood
+    // Kind of a hack but w/e, it's what Gatsby is doing under the hood
     const response = await fetch(`${baseUrl}-${pageParam}.json`)
     if (!response.ok) {
       throw new Error(`Failed to fetch ${baseUrl}-${pageParam}.json`)
@@ -57,27 +53,21 @@ function generateFetchHandler(baseUrl: string) {
  * Effectively an infinite scroll utility
  */
 function useScrollContingentFetch(feedQuery: UseInfiniteQueryResult) {
-  // ref to the feed wrapper el; tracks scroll progress
+  // Ref to the feed wrapper el; tracks scroll progress
   const feedElementRef = useRef<HTMLDivElement>(null)
   // Helpers for loading pages
   const loadNext = async () => {
-    if (
-      feedQuery.hasNextPage &&
-      !feedQuery.isFetchingNextPage &&
-      !feedQuery.error
-    ) {
+    if (feedQuery.hasNextPage && !feedQuery.isFetchingNextPage && !feedQuery.error) {
       await feedQuery.fetchNextPage()
     }
   }
 
   async function checkScrollState() {
-    if (feedElementRef.current) {
-      if (
-        feedElementRef.current.getBoundingClientRect().bottom <=
-        window.innerHeight
-      ) {
-        await loadNext()
-      }
+    if (
+      feedElementRef.current &&
+      feedElementRef.current.getBoundingClientRect().bottom <= window.innerHeight
+    ) {
+      await loadNext()
     }
   }
 
@@ -92,7 +82,7 @@ function useScrollContingentFetch(feedQuery: UseInfiniteQueryResult) {
     }
   })
 
-  // check state on rerenders to prevent edge cases
+  // Check state on rerenders to prevent edge cases
   // e.g. scrollbar is not extant but all data is loaded
   checkScrollState()
 
@@ -124,23 +114,18 @@ export function useInfiniteFeed(pageContext: PageContext) {
 
   const feedItems = useMemo(() => {
     const jsonPostList: PostJson[] =
-      feedQuery.data?.pages.map(page => page.posts).flat() ||
-      pageContext.feedMetadata.posts
+      feedQuery.data?.pages.flatMap(page => page.posts) || pageContext.feedMetadata.posts
 
     const list: FeedItems = jsonPostList.map(jsonToPost)
 
-    // when loading the next page, we want to show placeholder posts
+    // When loading the next page, we want to show placeholder posts
     if (feedQuery.isFetchingNextPage) {
-      const lastPage = feedQuery.data?.pages[feedQuery.data.pages.length - 1]
+      const lastPage = feedQuery.data?.pages.at(-1)
       list.push(...generatePostPlaceholders('next', lastPage?.nextCount))
     }
 
     return list
-  }, [
-    feedQuery.data,
-    pageContext.feedMetadata.posts,
-    feedQuery.isFetchingNextPage,
-  ])
+  }, [feedQuery.data, pageContext.feedMetadata.posts, feedQuery.isFetchingNextPage])
 
   return {
     feedElementRef,

@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-pascal-case */
 import React from 'react'
 import { styled } from 'styled-components'
 

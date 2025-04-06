@@ -40,12 +40,7 @@ export function BaseLink({
   const internalUrl = sansBasePath ? url : withBasePath(config, url)
 
   return isAnchor ? (
-    <a
-      aria-label={ariaLabel}
-      className={className}
-      href={internalUrl}
-      rel="noreferrer"
-    >
+    <a aria-label={ariaLabel} className={className} href={internalUrl} rel="noreferrer">
       {children}
     </a>
   ) : (

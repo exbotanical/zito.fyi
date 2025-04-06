@@ -4,7 +4,7 @@ describe('post page', () => {
   })
 
   it('renders a post intro', () => {
-    // recall, Zito, we don't chain these assertions because we'd have to re-invoke `cy.get('body')` for each
+    // Recall, Zito, we don't chain these assertions because we'd have to re-invoke `cy.get('body')` for each
     cy.findByText('My Favorite Soft Machine Records', {
       selector: 'h1',
     }).should('exist')
@@ -23,7 +23,7 @@ describe('post page', () => {
 
   it('renders post metadata (post info)', () => {
     cy.get('p')
-      .contains(/⋅ Jan [0-9], 2021 ⋅ 7 min read/)
+      .contains(/⋅ Jan \d, 2021 ⋅ 7 min read/)
 
       .get('main')
       .then(container => {

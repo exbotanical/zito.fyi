@@ -1,7 +1,7 @@
 import readingTime from 'reading-time'
 import urlJoin from 'url-join'
 
-import { MdxNode } from '@/types'
+import type { MdxNode } from '@/types'
 
 import {
   generateSlug,
@@ -20,6 +20,7 @@ import { config } from './config'
 import type { BaseFrontmatter } from '../node/types'
 import type { GatsbyNode } from 'gatsby'
 
+// eslint-disable-next-line unicorn/prefer-module -- using cjs module type
 const POST_PAGE_COMPONENT = require.resolve('../src/templates/post/queries.ts')
 
 export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions }) => {
@@ -34,16 +35,16 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions }) => {
       return
     }
 
-    // pathName sans the pathPrefix, used for creating pages
+    // PathName sans the pathPrefix, used for creating pages
     const route = withBasePath(config, slug)
 
-    // for internal linking
+    // For internal linking
     const pathName = urlJoin(config.pathPrefix, route)
 
-    // absolute path of the post
+    // Absolute path of the post
     const url = urlJoin(config.site.url, pathName)
 
-    // set fields route, url, pathName, slug
+    // Set fields route, url, pathName, slug
     actions.createNodeField({
       name: 'slug',
       node,
@@ -69,7 +70,7 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions }) => {
     })
 
     if (!node.body || typeof node.body !== 'string') {
-      throw Error(`Expected node.body to be a string (node ${node.id})`)
+      throw new Error(`Expected node.body to be a string (node ${node.id})`)
     }
 
     actions.createNodeField({
@@ -80,37 +81,35 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions }) => {
   }
 }
 
-export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] =
-  ({ actions, schema }) => {
-    actions.createTypes(`#graphql
+export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = ({
+  actions,
+  schema,
+}) => {
+  actions.createTypes(`#graphql
 			${ConfigSchema}
 		`)
 
-    /**
-     * Create an `isNotPublishedYet` helper for filtering `datePublished`.
-     */
-    actions.createTypes([
-      schema.buildObjectType({
-        name: 'Mdx',
-        interfaces: ['Node'],
-        fields: {
-          isNotPublishedYet: {
-            type: 'Boolean!',
-            resolve: (source: MdxNode) =>
-              source.frontmatter?.datePublished &&
-              process.env.NODE_ENV === 'production'
-                ? new Date(source.frontmatter.datePublished) > new Date()
-                : false,
-          },
+  /**
+   * Create an `isNotPublishedYet` helper for filtering `datePublished`.
+   */
+  actions.createTypes([
+    schema.buildObjectType({
+      name: 'Mdx',
+      interfaces: ['Node'],
+      fields: {
+        isNotPublishedYet: {
+          type: 'Boolean!',
+          resolve: (source: MdxNode) =>
+            source.frontmatter?.datePublished && process.env.NODE_ENV === 'production'
+              ? new Date(source.frontmatter.datePublished) > new Date()
+              : false,
         },
-      }),
-    ])
-  }
+      },
+    }),
+  ])
+}
 
-export const createPages: GatsbyNode['createPages'] = async ({
-  graphql,
-  actions,
-}) => {
+export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions }) => {
   const uniqueTags = new Set<string>()
   const uniqueCategories = new Set<string>()
 
@@ -118,12 +117,12 @@ export const createPages: GatsbyNode['createPages'] = async ({
 
   const allPosts = await getAllPosts(graphql)
 
-  allPosts.forEach((post, index) => {
+  for (const [index, post] of allPosts.entries()) {
     const { tags, category } = post
     if (tags) {
-      tags.forEach(tag => {
+      for (const tag of tags) {
         uniqueTags.add(tag)
-      })
+      }
     }
 
     if (category) {
@@ -148,13 +147,13 @@ export const createPages: GatsbyNode['createPages'] = async ({
       },
       path: post.route,
     })
-  })
+  }
 
-  // create primary posts feed
+  // Create primary posts feed
   await createFeed(config, actions, allPosts, 'index')
 
-  // tasks to create 'posts by tag' feeds
-  const tagTasks = Array.from(uniqueTags.keys()).map(async tag => {
+  // Tasks to create 'posts by tag' feeds
+  const tagTasks = [...uniqueTags.keys()].map(async tag => {
     const postsByTag = await getAllPostsByTag(graphql, tag)
 
     await createFeed(config, actions, postsByTag, 'tag', tag)
@@ -162,14 +161,12 @@ export const createPages: GatsbyNode['createPages'] = async ({
 
   await Promise.all(tagTasks)
 
-  // tasks to create 'posts by category' feeds
-  const categoryTasks = Array.from(uniqueCategories.keys()).map(
-    async category => {
-      const postsByCategory = await getAllPostsByCategory(graphql, category)
+  // Tasks to create 'posts by category' feeds
+  const categoryTasks = [...uniqueCategories.keys()].map(async category => {
+    const postsByCategory = await getAllPostsByCategory(graphql, category)
 
-      await createFeed(config, actions, postsByCategory, 'category', category)
-    },
-  )
+    await createFeed(config, actions, postsByCategory, 'category', category)
+  })
 
   await Promise.all(categoryTasks)
 }

@@ -4,9 +4,10 @@ import { generateRssFeed, setupRssFeed } from '..'
 import { config, postQueryResult } from '../../test/fixtures'
 
 import type { FeedQueryResult, FeedPluginData } from '../types'
-jest.spyOn(global.console, 'warn').mockImplementation()
 
-const mockedConsole = mocked(global.console, { shallow: true })
+jest.spyOn(globalThis.console, 'warn').mockImplementation()
+
+const mockedConsole = mocked(globalThis.console, { shallow: true })
 
 const testQuery = {
   ...postQueryResult,
@@ -21,6 +22,7 @@ const testQuery = {
 
 const testFeedData: FeedPluginData = {
   title: 'test',
+  // eslint-disable-next-line camelcase -- need for RSS
   site_url: 'https://example.com/',
   plugins: [],
   generator: 'TestGen',
@@ -30,6 +32,7 @@ const testFeedData: FeedPluginData = {
 }
 
 const statefulSetup = setupRssFeed(config)
+const throwFunc = () => statefulSetup({ ...testFeedData, query: {} })
 
 describe('rss build util `generateRssFeed`', () => {
   it('correctly maps graphql data to a feed', () => {
@@ -53,14 +56,10 @@ describe('rss build util `setupRssFeed`', () => {
   it('sets the correct feed generator name', () => {
     const serializedData = statefulSetup(testFeedData)
 
-    expect(serializedData.generator).toBe(
-      config.site.url.replace('https://', ''),
-    )
+    expect(serializedData.generator).toBe(config.site.url.replace('https://', ''))
   })
 
   it('throws when missing rssMetadata', () => {
-    const throwFunc = () => statefulSetup({ ...testFeedData, query: {} })
-
     expect(throwFunc).toThrow()
   })
 })

@@ -2,20 +2,18 @@ import type { FeedPluginData, FeedPluginItem } from './types'
 import type { SiteConfig } from '../src/types'
 
 export function generateRssFeed(config: SiteConfig) {
-  return function mapEdges(data: FeedPluginData) {
+  return function mapEdges(data: FeedPluginData): FeedPluginItem[] {
     const {
       query: { allMdx },
     } = data
 
     const edges = allMdx?.edges
     if (!edges) {
-      console.warn(
-        '[generateRssFeed] No MDX edges available for feed generation.',
-      )
-      return undefined
+      console.warn('[generateRssFeed] No MDX edges available for feed generation.')
+      return []
     }
 
-    const res = edges.map((edge): FeedPluginItem | undefined => {
+    const res = edges.map((edge): FeedPluginItem => {
       const { node } = edge
 
       const slug = node.fields?.slug
@@ -23,6 +21,7 @@ export function generateRssFeed(config: SiteConfig) {
 
       return {
         categories: node.frontmatter?.tags,
+        // eslint-disable-next-line camelcase -- required for RSS
         custom_elements: [
           {
             // TODO: Validate
@@ -49,7 +48,7 @@ export function setupRssFeed(config: SiteConfig) {
     const ret = ref.query.site?.siteMetadata?.rssMetadata
 
     if (!ret) {
-      throw Error('`gatsby-plugin-feed` rssMetadata is not defined')
+      throw new Error('`gatsby-plugin-feed` rssMetadata is not defined')
     }
 
     ret.generator = config.site.url.replace('https://', '')

@@ -26,10 +26,7 @@ describe('component Socials', () => {
       name: 'GitHub Profile',
     })
 
-    expect(githubLink).toHaveAttribute(
-      'href',
-      `https://github.com/${user.github}`,
-    )
+    expect(githubLink).toHaveAttribute('href', `https://github.com/${user.github}`)
 
     const linkedInLink = await screen.findByRole('link', {
       name: 'LinkedIn Profile',

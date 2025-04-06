@@ -4,12 +4,7 @@ import { mocked } from 'jest-mock'
 import React from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
-import type {
-  FeedItems,
-  FeedMetadataJson,
-  PlaceholderPost,
-  Post,
-} from '@/types'
+import type { FeedItems, FeedMetadataJson, PlaceholderPost, Post } from '@/types'
 
 import { config } from '@@/fixtures'
 import Index0 from '@@/fixtures/feedMetadata/index-0.json'
@@ -60,20 +55,19 @@ function mockFetch() {
     const pageId = idMatches ? idMatches[1] : undefined
 
     if (!pageId) {
-      throw Error('The provided page is missing an index')
+      throw new Error('The provided page is missing an index')
     }
 
-    const pageData = pageMetadatas[parseInt(pageId, 10)]
+    const pageData = pageMetadatas[Number.parseInt(pageId, 10)]
 
     return { body: pageData, status: 200 }
   })
 }
 
-const isPostPlaceholder = (
-  post: PlaceholderPost | Post,
-): post is PlaceholderPost => (post as PlaceholderPost).isPlaceholder
+const isPostPlaceholder = (post: PlaceholderPost | Post): post is PlaceholderPost =>
+  (post as PlaceholderPost).isPlaceholder
 
-// const filterPlaceholders = (feedPosts: FeedItems) =>
+// Const filterPlaceholders = (feedPosts: FeedItems) =>
 //   feedPosts.filter(isPostPlaceholder)
 
 const filterFullPosts = (feedPosts: FeedItems) =>
@@ -92,9 +86,7 @@ describe('hook `useInfiniteFeed`', () => {
 
   it('loads only a single page on initial render', async () => {
     const { feedItems } = (
-      await act(
-        () => renderHook(() => useInfiniteFeed(pageCtx), { wrapper }).result,
-      )
+      await act(() => renderHook(() => useInfiniteFeed(pageCtx), { wrapper }).result)
     ).current
 
     expect(feedItems.length).toEqual(5)
@@ -112,8 +104,9 @@ describe('hook `useInfiniteFeed`', () => {
     const loadNext = async (targetCount: number) => {
       act(() => {
         // FIXME: Trick the DOM into thinking we have more scrolling to do
-        window.innerHeight = 10000
+        window.innerHeight = 10_000
 
+        // eslint-disable-next-line unicorn/prefer-global-this -- needs window; rule cannot infer
         fireEvent.scroll(window, {
           target: {
             y: 5000,
@@ -126,9 +119,7 @@ describe('hook `useInfiniteFeed`', () => {
       })
 
       await waitFor(() => {
-        expect(filterFullPosts(result.current.feedItems).length).toEqual(
-          targetCount,
-        )
+        expect(filterFullPosts(result.current.feedItems).length).toEqual(targetCount)
       })
 
       const fullPosts = filterFullPosts(result.current.feedItems)
@@ -142,7 +133,7 @@ describe('hook `useInfiniteFeed`', () => {
     await loadNext(15)
   })
 
-  // test with full visibility i.e. no need to scroll
+  // Test with full visibility i.e. no need to scroll
   it('loads feed pages upon initial load without waiting for a scroll event', async () => {
     mockedReact.useRef.mockImplementation(() => ({
       current: {
@@ -154,9 +145,7 @@ describe('hook `useInfiniteFeed`', () => {
     }))
 
     const { feedItems } = (
-      await act(
-        () => renderHook(() => useInfiniteFeed(pageCtx), { wrapper }).result,
-      )
+      await act(() => renderHook(() => useInfiniteFeed(pageCtx), { wrapper }).result)
     ).current
 
     expect(feedItems.length).toBeGreaterThan(10)

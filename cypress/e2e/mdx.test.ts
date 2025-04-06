@@ -1,5 +1,15 @@
 const POST_PATH = '/my-favorite-soft-machine-records/'
 
+const testHeaderAnchor = (headerName: string, headerId: string) => {
+  cy.get(`p > a[href="#${headerId}"]`).as('header')
+
+  cy.get('@header').contains(headerName).click()
+  // eslint-disable-next-line cypress/no-unnecessary-waiting -- needed due to load latency
+  cy.get('@header')
+    .wait(100) // Sometimes cypress borks on DOM rerender
+    .isInViewport(`#${headerId}`)
+}
+
 describe('mdx rendering', () => {
   before(() => {
     cy.visit(POST_PATH).waitForRouteChange()
@@ -42,24 +52,12 @@ describe('mdx rendering', () => {
   })
 
   it('has a table of contents', () => {
-    const testHeaderAnchor = (headerName: string, headerId: string) => {
-      // eslint-disable-next-line cypress/no-unnecessary-waiting
-      cy.get(`p > a[href="#${headerId}"]`)
-        .contains(headerName)
-        .click()
-        .wait(100) // Sometimes cypress borks on DOM rerender
-        .isInViewport(`#${headerId}`)
-    }
-
     testHeaderAnchor('Headers', 'headers')
     testHeaderAnchor('Emphasis', 'emphasis')
     testHeaderAnchor('Lists', 'lists')
     testHeaderAnchor('Links', 'links')
     testHeaderAnchor('Images', 'images')
-    testHeaderAnchor(
-      'Code and Syntax Highlighting',
-      'code-and-syntax-highlighting',
-    )
+    testHeaderAnchor('Code and Syntax Highlighting', 'code-and-syntax-highlighting')
     testHeaderAnchor('Blockquotes', 'blockquotes')
     testHeaderAnchor('Inline HTML', 'inline-html')
     testHeaderAnchor('Horizontal Rule', 'horizontal-rule')
@@ -141,11 +139,7 @@ describe('mdx rendering', () => {
 
       .get('@post')
       .findByAltText('nature photo of crashing waves')
-      .should(
-        'have.attr',
-        'src',
-        'https://source.unsplash.com/1600x900/?nature,water',
-      )
+      .should('have.attr', 'src', 'https://source.unsplash.com/1600x900/?nature,water')
   })
 
   it('renders code blocks', () => {
@@ -154,9 +148,7 @@ describe('mdx rendering', () => {
       .contains(/back-ticks around/)
 
       .get('@post')
-      .find(
-        'pre[class*="language-javascript"] > code[class*="language-javascript"]',
-      )
+      .find('pre[class*="language-javascript"] > code[class*="language-javascript"]')
       .contains('JavaScript syntax highlighting')
 
       .get('@post')
@@ -168,9 +160,7 @@ describe('mdx rendering', () => {
       .contains('Go syntax highlighting')
 
       .get('@post')
-      .find(
-        'pre[class*="language-no-highlight"] > code[class*="language-no-highlight"]',
-      )
+      .find('pre[class*="language-no-highlight"] > code[class*="language-no-highlight"]')
       .contains('No language indicated, so no syntax highlighting')
   })
 
@@ -208,9 +198,7 @@ describe('mdx rendering', () => {
       .contains(/^Still$/)
 
       .get('@post')
-      .find(
-        'div > table > tbody > tr > td > span > code[class*="language-text"]',
-      )
+      .find('div > table > tbody > tr > td > span > code[class*="language-text"]')
       .contains(/^renders$/)
 
       .get('@post')

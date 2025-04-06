@@ -83,8 +83,7 @@ export const config: SiteConfig = isTestEnv
         /**
          * Site description; used for RSS feeds, description meta tag
          */
-        description:
-          "Matthew Zito's blog about software development and programming",
+        description: "Matthew Zito's blog about software development and programming",
 
         /**
          * Facebook Application Id; used for app insights, Facebook-specific OpenGraph features

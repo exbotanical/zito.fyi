@@ -60,8 +60,7 @@ export const ThemeToggleContext = createContext({} as ThemeContext)
 
 export function ThemeProvider({ children }: ThemeProps): React.JSX.Element {
   const prefersDark =
-    isBrowserRuntime &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches
+    isBrowserRuntime && globalThis.matchMedia('(prefers-color-scheme: dark)').matches
 
   const [theme, setTheme] = useLocalStorage<Themes>(
     KEYS.THEME_STORAGE_KEY,

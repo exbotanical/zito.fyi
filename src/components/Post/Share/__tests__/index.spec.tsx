@@ -29,22 +29,16 @@ describe('component `PostShare`', () => {
   it('renders social links', () => {
     const { container } = RenderStyled(<PostShare post={post} />)
 
-    const facebookButton = container.querySelector(
-      'button[aria-label="facebook"]',
-    )
+    const facebookButton = container.querySelector('button[aria-label="facebook"]')
     expect(facebookButton).toBeInTheDocument()
 
-    const twitterButton = container.querySelector(
-      'button[aria-label="twitter"]',
-    )
+    const twitterButton = container.querySelector('button[aria-label="twitter"]')
     expect(twitterButton).toBeInTheDocument()
 
     const redditButton = container.querySelector('button[aria-label="reddit"]')
     expect(redditButton).toBeInTheDocument()
 
-    const linkedinButton = container.querySelector(
-      'button[aria-label="linkedin"]',
-    )
+    const linkedinButton = container.querySelector('button[aria-label="linkedin"]')
     expect(linkedinButton).toBeInTheDocument()
 
     const linkButton = container.querySelector('div > svg')

@@ -26,10 +26,7 @@ export const Wrapper = styled.div`
   }
 `
 
-export function Footnote({
-  className,
-  children,
-}: FootnoteProps): React.JSX.Element {
+export function Footnote({ className, children }: FootnoteProps): React.JSX.Element {
   return (
     <Wrapper className={className} tabIndex={0}>
       {children}

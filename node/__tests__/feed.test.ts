@@ -16,7 +16,7 @@ const longPostsList = [...postsList, ...postsList]
 
 const FEED_METADATA_DIR = `${constants.baseMetaDirectory}/${constants.feedMetaDirectory}/`
 
-// redirect all `fs` operations to a virtual fs
+// Redirect all `fs` operations to a virtual fs
 jest.mock('fs', () => ({ ...memfs.fs, rmSync: memfs.fs.rmdirSync }))
 
 describe('build util `persistFeedMetadata`', () => {

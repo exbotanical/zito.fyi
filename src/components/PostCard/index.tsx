@@ -22,16 +22,17 @@ export function PostCard({ post, hero }: PostCardProps): React.JSX.Element {
 
   if (!post.coverImg) {
     // TODO placeholder
-    throw Error('Cannot render `PostCard` without `coverImg`')
+    throw new Error('Cannot render `PostCard` without `coverImg`')
   }
 
+  const image = getImage(post.coverImg)
+  if (!image) {
+    throw new Error('Expected image to be generated')
+  }
   return (
     <Styles.Wrapper $hero={hero}>
       <TransparentLink ariaLabel={post.title} to={post.slug}>
-        <Styles.Cover
-          alt={post.coverImageAlt}
-          image={getImage(post.coverImg)!}
-        />
+        <Styles.Cover alt={post.coverImageAlt} image={image} />
       </TransparentLink>
       <Styles.Details $hero={hero}>
         <Styles.Meta>

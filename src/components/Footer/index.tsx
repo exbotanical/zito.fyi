@@ -21,9 +21,7 @@ export function Footer(): React.JSX.Element {
       <S.Info>
         <Caption>
           Licensed under{' '}
-          <Link to={config.site.copyright.link}>
-            {config.site.copyright.name}
-          </Link>
+          <Link to={config.site.copyright.link}>{config.site.copyright.name}</Link>
         </Caption>
       </S.Info>
     </S.Wrapper>

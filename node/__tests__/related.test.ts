@@ -1,9 +1,5 @@
 import { getNRelatedPosts } from '../'
-import {
-  edgeCaseTargetPost,
-  poolOfPosts,
-  poolOfPostsFull,
-} from '../../test/fixtures'
+import { edgeCaseTargetPost, poolOfPosts, poolOfPostsFull } from '../../test/fixtures'
 
 const targetPost = poolOfPosts[0]
 
@@ -28,10 +24,7 @@ describe('build util `getNRelatedPosts`', () => {
   })
 
   it('correctly determines related posts when target is missing tags', () => {
-    const relatedPosts = getNRelatedPosts(
-      { ...targetPost, tags: undefined },
-      poolOfPosts,
-    )
+    const relatedPosts = getNRelatedPosts({ ...targetPost, tags: undefined }, poolOfPosts)
 
     expect(relatedPosts).toHaveLength(2)
     expect(relatedPosts[0]?.title).toBe('Test Four')
@@ -81,7 +74,7 @@ describe('build util `getNRelatedPosts`', () => {
   })
 
   it('works with scarce amount of posts', () => {
-    // edge case whereby no posts are in the secondary tag ranking
+    // Edge case whereby no posts are in the secondary tag ranking
     const relatedPosts = getNRelatedPosts(
       { ...targetPost, category: 'more' },
       poolOfPosts.slice(0, 2),
@@ -92,15 +85,12 @@ describe('build util `getNRelatedPosts`', () => {
   })
 
   it('does not include the target post in the results', () => {
-    // we had an edge case whereby `getPostsOfCategory` used a cache which often included duplicates
+    // We had an edge case whereby `getPostsOfCategory` used a cache which often included duplicates
     // thus, we invoke `getNRelatedPosts` here as a precursor step, to populate the cache
 
-    getNRelatedPosts(poolOfPostsFull[1], [
-      ...poolOfPostsFull,
-      edgeCaseTargetPost,
-    ])
+    getNRelatedPosts(poolOfPostsFull[1], [...poolOfPostsFull, edgeCaseTargetPost])
 
-    // that said, the cache has been removed because it was another Zitonian pre-optimization
+    // That said, the cache has been removed because it was another Zitonian pre-optimization
     // I need to be better about that...
     const relatedPosts = getNRelatedPosts(edgeCaseTargetPost, poolOfPostsFull)
 

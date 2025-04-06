@@ -1,5 +1,3 @@
-import Lambda from './lambda.svg'
-import Moon from './moon.svg'
-import Sun from './sun2.svg'
-
-export { Moon, Sun, Lambda }
+export { default as Lambda } from './lambda.svg'
+export { default as Moon } from './moon.svg'
+export { default as Sun } from './sun2.svg'

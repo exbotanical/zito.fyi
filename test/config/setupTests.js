@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 
 beforeEach(() => {
   // @see https://stackoverflow.com/a/53449595/15159240
-  Object.defineProperty(window, 'matchMedia', {
+  Object.defineProperty(globalThis, 'matchMedia', {
     writable: true,
     value: jest.fn().mockImplementation(query => ({
       matches: false,

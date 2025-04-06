@@ -20,21 +20,20 @@ function getComponentMapping(post: Post) {
 
   return {
     wrapper: ({ children }: { children: React.ReactNode }): React.ReactNode =>
-      // eslint-disable-next-line @typescript-eslint/promise-function-async
       React.Children.map(children, child => {
         if (!React.isValidElement<{ className?: string }>(child)) {
           return child
         }
 
         if (child.props.className === 'footnotes') {
-          // the key is of negligible consequence given we've only one element that will ever match
+          // The key is of negligible consequence given we've only one element that will ever match
           // however, react requires one, so...
           return <Footnote key={1} {...child.props} />
         }
 
         return child
       }),
-    // p: TextComponents.Paragraph,
+    // P: TextComponents.Paragraph,
     h1: headings.H1,
     h2: headings.H2,
     h3: headings.H3,
@@ -51,14 +50,14 @@ function getComponentMapping(post: Post) {
     table: TableComponents.Table,
     thead: TableComponents.Head,
     tbody: TableComponents.Body,
-    // tr: TableComponents.Row,
+    // Tr: TableComponents.Row,
     td: TableComponents.BodyCell,
     th: TableComponents.HeadCell,
 
     pre: CodeComponents.Pre,
     code: CodeComponents.Code,
 
-    // inlineCode: CodeComponents.InlineCode,
+    // InlineCode: CodeComponents.InlineCode,
 
     hr: MiscComponents.Break,
     thematicBreak: MiscComponents.Break,
@@ -73,9 +72,7 @@ export function MDXTheme({ children, post }: MdxThemeProps): React.JSX.Element {
     <>
       <MiscComponents.GlobalGatsbyImageStyle />
       <CodeComponents.GlobalCodeStyle />
-      <MDXProvider components={getComponentMapping(post)}>
-        {children}
-      </MDXProvider>
+      <MDXProvider components={getComponentMapping(post)}>{children}</MDXProvider>
     </>
   )
 }

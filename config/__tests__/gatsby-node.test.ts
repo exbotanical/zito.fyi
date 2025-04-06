@@ -5,11 +5,7 @@ import { GatsbyActionsMock } from '@@/utils/gatsbyActions'
 import { GatsbySchemaMock } from '@@/utils/gatsbySchema'
 
 import * as feedUtils from '../../node'
-import {
-  onCreateNode,
-  createSchemaCustomization,
-  createPages,
-} from '../gatsby-node'
+import { onCreateNode, createSchemaCustomization, createPages } from '../gatsby-node'
 
 import type {
   Node,
@@ -21,7 +17,7 @@ import type {
 
 const mockedGatsbyActions = mocked(GatsbyActionsMock, { shallow: true })
 
-// because Gatsby's `GatsbyNode` interface properties are optional,
+// Because Gatsby's `GatsbyNode` interface properties are optional,
 // our types get picked up as being possibly undefined...
 // we'd want to use type guards if this was a plugin / library, but it's not,
 // and we can be assured that if we're importing these implementations, they
@@ -34,7 +30,7 @@ const [onCreateNodeImpl, createSchemaCustomizationImpl, createPagesImpl] = [
 
 type NodeArgs = CreateNodeArgs
 
-jest.spyOn(global.console, 'error').mockImplementation()
+jest.spyOn(globalThis.console, 'error').mockImplementation()
 
 jest.mock('../config', () => ({
   config: {
@@ -45,7 +41,7 @@ jest.mock('../config', () => ({
     },
   },
 }))
-const mockedConsole = mocked(global.console, { shallow: true })
+const mockedConsole = mocked(globalThis.console, { shallow: true })
 
 jest.mock('../../node/feed', () => ({
   createFeed: jest.fn(),

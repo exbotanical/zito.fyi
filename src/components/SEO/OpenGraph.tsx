@@ -9,11 +9,7 @@ interface SeoArgs {
   postData?: AbridgedPost
 }
 
-function addTypeSafeTag(
-  tagList: OpenGraphTagList,
-  property: string,
-  content: string,
-) {
+function addTypeSafeTag(tagList: OpenGraphTagList, property: string, content: string) {
   tagList.push(<meta content={content} property={property} />)
 }
 
@@ -23,16 +19,8 @@ function createPostTagList(
 ): OpenGraphTagList {
   const metaTags: OpenGraphTagList = []
 
-  addTypeSafeTag(
-    metaTags,
-    'article:published_time',
-    postData.datePublished.toISOString(),
-  )
-  addTypeSafeTag(
-    metaTags,
-    'article:modified_time',
-    postData.dateModified.toISOString(),
-  )
+  addTypeSafeTag(metaTags, 'article:published_time', postData.datePublished.toISOString())
+  addTypeSafeTag(metaTags, 'article:modified_time', postData.dateModified.toISOString())
   addTypeSafeTag(
     metaTags,
     'article:author',
@@ -47,9 +35,9 @@ function createPostTagList(
 
   addTypeSafeTag(metaTags, 'article:section', postData.category)
 
-  postData.tags.forEach(tag => {
+  for (const tag of postData.tags) {
     addTypeSafeTag(metaTags, 'article:tag', tag)
-  })
+  }
 
   return metaTags
 }
@@ -87,7 +75,7 @@ export function OpenGraphTags({
     metaTags.push(...createPostTagList(postData, userData))
   }
 
-  // return w/ unique keys
+  // Return w/ unique keys
   return metaTags.map(tag => ({
     ...tag,
     key: `${tag.props.property}-${tag.props.content}`,

@@ -22,23 +22,23 @@ function getRankedPostsOfTag(targetPost: Post, posts: Post[]) {
     rank: number
   }[] = []
 
-  // increment the ranking once per tag match
-  posts.forEach(post => {
+  // Increment the ranking once per tag match
+  for (const post of posts) {
     let rank = 0
 
     if (post.tags) {
-      post.tags.forEach(tag => {
-        if (targetPost.tags!.includes(tag)) {
+      for (const tag of post.tags) {
+        if (targetPost.tags?.includes(tag)) {
           rank += 1
         }
-      })
+      }
     }
 
     rankedPosts.push({
       post,
       rank,
     })
-  })
+  }
 
   rankedPosts.sort((a, b) => {
     if (a.rank > b.rank) return -1
@@ -46,7 +46,7 @@ function getRankedPostsOfTag(targetPost: Post, posts: Post[]) {
     return 0
   })
 
-  // extract the posts
+  // Extract the posts
   return rankedPosts.map(rankedPost => rankedPost.post)
 }
 
@@ -54,7 +54,7 @@ function getRankedPostsOfTag(targetPost: Post, posts: Post[]) {
  * Get n posts related to a given post
  */
 export function getNRelatedPosts(targetPost: Post, posts: Post[]) {
-  // exclude the target post from the posts
+  // Exclude the target post from the posts
   const filteredPosts = posts.filter(post => post.slug !== targetPost.slug)
   const relatedPosts: Post[] = []
 
@@ -63,25 +63,24 @@ export function getNRelatedPosts(targetPost: Post, posts: Post[]) {
 
     const rankedMatches = getRankedPostsOfTag(targetPost, categoryPosts)
 
-    // select top N posts
+    // Select top N posts
     relatedPosts.push(...rankedMatches.slice(0, N_RELATED_POSTS))
   }
 
-  // return if sufficient matches
+  // Return if sufficient matches
   if (relatedPosts.length > 1) return relatedPosts
 
-  // add one more tag match if only a single category match
+  // Add one more tag match if only a single category match
   if (relatedPosts.length === 1) {
     const rankedTagMatches = getRankedPostsOfTag(targetPost, filteredPosts)
 
-    // filter out the existing related post
-    const tagMatchesSansExistingMatch = rankedTagMatches.filter(
+    // Filter out the existing related post
+    const tagMatchesSansExistingMatch = rankedTagMatches.find(
       tagMatch => tagMatch.slug !== relatedPosts[0]?.slug,
     )
 
-    const highestRankedMatch = tagMatchesSansExistingMatch[0]
+    const highestRankedMatch = tagMatchesSansExistingMatch
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (highestRankedMatch) {
       relatedPosts.push(highestRankedMatch)
 
@@ -89,9 +88,6 @@ export function getNRelatedPosts(targetPost: Post, posts: Post[]) {
     }
   }
 
-  // we've no category matches; get a tag-based ranking of all posts
-  return getRankedPostsOfTag(targetPost, filteredPosts).slice(
-    0,
-    N_RELATED_POSTS,
-  )
+  // We've no category matches; get a tag-based ranking of all posts
+  return getRankedPostsOfTag(targetPost, filteredPosts).slice(0, N_RELATED_POSTS)
 }

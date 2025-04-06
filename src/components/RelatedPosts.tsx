@@ -14,7 +14,7 @@ const Wrapper = styled.aside`
 `
 
 export function RelatedPosts({ posts }: RelatedPostsProps) {
-  return posts.length ? (
+  return posts.length > 0 ? (
     <Wrapper data-testid="related-posts">
       <Feed feedItems={posts} hideHero />
     </Wrapper>

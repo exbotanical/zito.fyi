@@ -1,9 +1,9 @@
 import { REL_CANONICAL } from '../../config'
-import { SiteMapData } from '../../cypress.config'
 
+import type { SiteMapData } from '../../cypress.config'
 import type { ResponseData } from '../types'
 
-// skip dev given the dev server does not build RSS assets
+// Skip dev given the dev server does not build RSS assets
 if (Cypress.env('STAGE') !== 'dev') {
   describe('sitemap', () => {
     it('contains the main sitemap index', () => {
@@ -27,15 +27,13 @@ if (Cypress.env('STAGE') !== 'dev') {
         }).then(({ urlset: { url } }) => {
           const links = url.map(({ loc }) => loc[0])
 
-          expect(links).to.include(
-            `${REL_CANONICAL}/my-favorite-soft-machine-records`,
-          )
+          expect(links).to.include(`${REL_CANONICAL}/my-favorite-soft-machine-records`)
           // TODO: Are these safely URL-encoded?
           // TODO: Snapshot
 
-          links.forEach(link => {
+          for (const link of links) {
             cy.visit(link.replace(REL_CANONICAL, Cypress.config('baseUrl')!))
-          })
+          }
         })
       })
     })

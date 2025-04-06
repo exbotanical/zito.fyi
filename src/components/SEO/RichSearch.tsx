@@ -16,9 +16,7 @@ interface SeoArgs {
   userData?: UserMetadata
 }
 
-export const getAuthorMetadata = (
-  userData: UserMetadata,
-): JsonLdAuthorMetadata => ({
+export const getAuthorMetadata = (userData: UserMetadata): JsonLdAuthorMetadata => ({
   '@type': 'Person',
   'address': userData.location,
   'email': userData.email,
@@ -93,9 +91,7 @@ export function RichSearchTags({
   const { isPost } = seoData
 
   const postJsonLd =
-    isPost && postData
-      ? getPostMetadata(postData, orgData, userData)
-      : undefined
+    isPost && postData ? getPostMetadata(postData, orgData, userData) : undefined
 
   const orgJsonLd = orgData ? getOrgMetadata(orgData) : undefined
 

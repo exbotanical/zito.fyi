@@ -67,9 +67,7 @@ export interface FeedQueryResult {
 }
 
 export interface FeedConfig {
-  serialize: (
-    data: FeedPluginData,
-  ) => (FeedPluginItem | undefined)[] | undefined
+  serialize: (data: FeedPluginData) => (FeedPluginItem | undefined)[] | undefined
   query: string
   output: string
   title: string

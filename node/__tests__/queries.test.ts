@@ -4,14 +4,10 @@ import {
   allPostsQuery,
 } from '../../src/templates/feed/queries'
 import { postsListQueryResponse } from '../../test/fixtures'
-import {
-  getAllPostsByCategory,
-  getAllPostsByTag,
-  getAllPosts,
-} from '../queries'
+import { getAllPostsByCategory, getAllPostsByTag, getAllPosts } from '../queries'
 
-jest.spyOn(global.console, 'warn').mockImplementation()
-jest.spyOn(global.console, 'error').mockImplementation()
+jest.spyOn(globalThis.console, 'warn').mockImplementation()
+jest.spyOn(globalThis.console, 'error').mockImplementation()
 
 const categoryQueryResponse = {
   data: {

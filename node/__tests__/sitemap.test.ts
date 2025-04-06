@@ -23,11 +23,7 @@ const testData = {
           frontmatter: {
             title: 'Choreographic Programming',
             category: 'programming',
-            tags: [
-              'programming paradigms',
-              'concurrency',
-              'software engineering',
-            ],
+            tags: ['programming paradigms', 'concurrency', 'software engineering'],
             datePublished: '2023-10-17T07:00:00.000Z',
           },
           fields: {
@@ -39,21 +35,14 @@ const testData = {
       {
         node: {
           frontmatter: {
-            title:
-              'Rules to Die on a Hill By: A Decisive JavaScript Style Guide',
+            title: 'Rules to Die on a Hill By: A Decisive JavaScript Style Guide',
             category: 'programming',
-            tags: [
-              'frontend',
-              'javascript',
-              'software engineering',
-              'static analysis',
-            ],
+            tags: ['frontend', 'javascript', 'software engineering', 'static analysis'],
             datePublished: '2022-04-19T07:00:00.000Z',
           },
           fields: {
             slug: '/rules-to-die-on-a-hill-by-a-decisive-java-script-style-guide',
-            route:
-              '/rules-to-die-on-a-hill-by-a-decisive-java-script-style-guide',
+            route: '/rules-to-die-on-a-hill-by-a-decisive-java-script-style-guide',
           },
         },
       },
@@ -156,9 +145,7 @@ const testData = {
 
 describe('sitemap build util `generateSitemapData`', () => {
   beforeAll(() => {
-    jest
-      .spyOn(Date.prototype, 'toISOString')
-      .mockReturnValue('2025-01-01T12:00:00.000Z')
+    jest.spyOn(Date.prototype, 'toISOString').mockReturnValue('2025-01-01T12:00:00.000Z')
   })
 
   afterAll(() => {

@@ -50,12 +50,9 @@ const Wrapper = styled.article`
   }
 `
 
-export function MdxRenderer({
-  post,
-  children,
-}: RenderProps): React.JSX.Element {
+export function MdxRenderer({ post, children }: RenderProps): React.JSX.Element {
   if (!post.body) {
-    throw Error(
+    throw new Error(
       `[MdxRenderer] post data does not contain MDX body for rendering. Slug: ${post.slug}`,
     )
   }

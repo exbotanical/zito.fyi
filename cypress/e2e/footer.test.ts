@@ -2,7 +2,7 @@ import { config } from '@@/fixtures'
 
 const footerTestPages = ['/', '/my-favorite-soft-machine-records']
 
-footerTestPages.forEach(url => {
+for (const url of footerTestPages) {
   describe(`Footer on page ${url}`, () => {
     beforeEach(() => {
       cy.visit(url).waitForRouteChange()
@@ -24,11 +24,7 @@ footerTestPages.forEach(url => {
 
           .findByRole('link', { name: 'GitHub Profile', container })
           .closest('a')
-          .should(
-            'have.attr',
-            'href',
-            `https://github.com/${config.user.github}`,
-          )
+          .should('have.attr', 'href', `https://github.com/${config.user.github}`)
 
           .findByRole('link', { name: 'LinkedIn Profile', container })
           .closest('a')
@@ -60,4 +56,4 @@ footerTestPages.forEach(url => {
       })
     })
   })
-})
+}

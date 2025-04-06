@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "jsx": "react",
-    "strict": true,
     "target": "es5",
+    "jsx": "react",
     "lib": ["es5", "dom"],
-    "types": ["cypress", "cypress-axe", "@testing-library/cypress"],
+    "baseUrl": ".",
     "paths": {
       "@/*": ["../src/*"],
       "@@/*": ["../test/*"]
-    }
+    },
+    "types": ["cypress", "cypress-axe", "@testing-library/cypress"],
+    "strict": true
   },
   "include": ["./**/*.ts", "../cypress.config.ts"]
 }

@@ -10,7 +10,7 @@ tags:
   - coroutines
 ---
 
-Recommended listening: [Gétatchèw Mèkurya - Ethiopian Urban Modern Music Vol. 5 (1972)](https://www.youtube.com/watch?v=6ihmscLSb6A)
+Recommended listening: [Gétatchèw Mèkurya - Ethiopian Urban Modern Music Vol. 5 (1972)](https://www.youtube.com/watch?v=a4Uvr5tIIoU)
 
 Here's my source code review of the `coroutine` C library by an author called cloudwu. Figuring out this code was a great exercise in understanding cooperative scheduling, coroutines/fibers, and handling stacks in user-space. We'll focus on these concepts during the review. There's some clever bits that I absolutely loved as well, and about which I'm excited to share.
 

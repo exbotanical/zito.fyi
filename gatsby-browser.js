@@ -1,4 +1,4 @@
-import 'prism-themes/themes/prism-nord.css'
+import 'prism-themes/themes/prism-dracula.css'
 
 function initNoiseEffect() {
   const black = new Uint8ClampedArray([0, 0, 0, 255])

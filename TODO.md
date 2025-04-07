@@ -82,6 +82,7 @@
 - [ ] ezra pound
 - [ ] andy kaufman
 - [ ] htx redline
+- [ ] viper/darger/wolfli
 - [ ] transatlantic accent
 - [ ] bucking
 - [ ] AI
@@ -95,3 +96,28 @@
 - [ ] Learning Rust, round 2
 - [ ] lucrecia dalt and ben bertrand
 - [ ] stupid tiktok videos of people getting fired (cloudflare dummy?)
+- [ ] Krautrock
+- [ ] Art Brut & Outsider Art
+- [ ] net.art
+- [ ] New PostModern (zs etc)
+- [ ] Rock in Opposition
+- [ ] Prog-folk
+- [ ] Skating and Rodney Mullen
+- [ ] Basketball and Wilt Chamberlain
+- [ ] Choreo - Martha Graham/Merce Cunningham/Candela Capitan
+- [ ] No Wave & TV Party
+- [ ] American Minimalism: La Monte Young, Angus Maclise, Velvet Underground
+- [ ] Lucrecia Dalt
+- [ ] Hermann Hesse
+- [ ] Mishima
+- [ ] Cassette Culture
+- [ ] Rat Fink
+- [ ] Weird CompSci (Quines)
+- [ ] Lambda Calculus
+- [ ] Bodybuilding: Dorian Yates/Franco Columbu/Bostin Loyd
+- [ ] Weird Angels and Demons fan art
+- [ ] Red Line/DJ Screw/Staccing
+- [ ] Funkadelic/EarthWindFire/KoolGang/etc https://www.youtube.com/watch?v=0eR4aQrYozY&list=PL88764F7B0789C85E&index=1
+- [ ] That Marvin Gaye collab w/ Diana Ross I'll keep a light in my window holy fuck that is good
+- [ ] Best drummers
+- [ ] polyrhythms

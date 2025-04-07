@@ -33,60 +33,26 @@ export const invertTheme: Record<'darkTheme' | 'lightTheme', Theme> = {
     colors: {
       font: {
         heading: 'inherit',
-        primary: 'rgb(206, 166, 186)',
-        secondary: 'rgb(206, 166, 186)',
+        primary: 'rgb(216, 222, 233)',
+        secondary: 'rgb(216, 222, 233)',
         hover: 'rgb(47, 43, 69)',
       },
       bg: {
-        primary: 'rgb(17, 16, 21)',
+        primary: '#282A36',
         secondary: 'rgb(37, 35, 47)',
-        tertiary: 'rgb(214, 102, 149)',
-        quaternary: 'rgb(47, 43, 69)',
+        tertiary: 'rgb(206, 166, 186)',
+        quaternary: 'rgb(68, 71, 90)',
       },
 
       border: {
         primary: 'rgb(100, 102, 140)',
       },
-
-      link: 'rgb(249, 255, 250)',
+      link: 'rgb(163, 249, 184)',
       scroll: {
-        fg: 'rgb(211, 103, 135)',
+        fg: 'rgb(206, 166, 186)',
         bg: 'rgb(99, 105, 109)',
       },
       base: 'rgb(255, 255, 255)',
-    },
-  },
-}
-
-export const nordTheme = {
-  ...invertTheme,
-
-  darkTheme: {
-    dark: true,
-    colors: {
-      font: {
-        heading: 'inherit',
-        primary: 'rgb(216, 222, 233)',
-        secondary: 'rgb(129, 161, 193)',
-        hover: 'rgb(163, 190, 140)',
-      },
-      bg: {
-        primary: 'rgb(35, 39, 49)',
-        secondary: 'rgb(41, 45, 56)',
-        tertiary: 'rgb(163, 190, 140)',
-        quaternary: 'rgb(59, 66, 82)',
-      },
-
-      border: {
-        primary: 'rgb(136, 192, 208)',
-      },
-
-      link: 'rgb(136, 192, 208)',
-      scroll: {
-        fg: 'rgb(180, 142, 173)',
-        bg: 'rgb(67, 76, 94)',
-      },
-      base: 'rgb(229, 233, 240)',
     },
   },
 }

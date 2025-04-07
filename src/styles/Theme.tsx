@@ -53,7 +53,7 @@ interface ThemeProps {
   readonly children: React.ReactNode
 }
 
-const { darkTheme, lightTheme } = themes.nordTheme
+const { darkTheme, lightTheme } = themes.invertTheme
 export { darkTheme, lightTheme }
 
 export const ThemeToggleContext = createContext({} as ThemeContext)

@@ -55,6 +55,10 @@ export const GlobalGatsbyImageStyle = createGlobalStyle`${css`
   .gatsby-resp-image-figure {
     width: 100%;
 
+    & img {
+      object-fit: cover !important;
+    }
+
     ${PostImageSpacing}
   }
 

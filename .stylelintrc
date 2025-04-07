@@ -1,5 +1,6 @@
 {
-  "extends": [
-    "@magister_zito/stylelint-config/styled-components"
-  ]
+  "extends": ["@magister_zito/stylelint-config/styled-components"],
+  "rules": {
+    "indentation": 2
+  }
 }

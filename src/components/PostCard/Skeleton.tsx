@@ -4,13 +4,13 @@ import { styled, keyframes } from 'styled-components'
 import { BREAKPOINTS } from '@/styles/constants'
 
 const SkeletonAnimation = keyframes`
-	from {
-		background-position: var(--loading-position);
-	}
+  from {
+    background-position: var(--loading-position);
+  }
 
-	to {
-		background-position: var(--loading-position-end);
-	}
+  to {
+    background-position: var(--loading-position-end);
+  }
 `
 
 const SkeletonBlock = styled.div`

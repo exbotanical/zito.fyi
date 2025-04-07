@@ -14,27 +14,27 @@ const popUpEndState = css`
 `
 
 const popUpAnimation = keyframes`
-	from {
-		${popUpStartState}
-	}
+  from {
+    ${popUpStartState}
+  }
 
-	10% {
-		${popUpEndState}
-	}
+  10% {
+    ${popUpEndState}
+  }
 
-	to {
-		${popUpEndState}
-	}
+  to {
+    ${popUpEndState}
+  }
 `
 
 const reducedPopUpAnimation = keyframes`
-	from {
-		${popUpEndState}
-	}
+  from {
+    ${popUpEndState}
+  }
 
-	to {
-		${popUpEndState}
-	}
+  to {
+    ${popUpEndState}
+  }
 `
 
 const PopUp = styled.div`

@@ -263,41 +263,41 @@ const ButtonLabelWithStyle = css`
 `
 
 const TypographyStyles = createGlobalStyle`
-	h1 {
-		${H1WithStyle}
-	}
+  h1 {
+    ${H1WithStyle}
+  }
 
-	h2 {
-		${H2WithStyle}
-	}
+  h2 {
+    ${H2WithStyle}
+  }
 
-	h3 {
-		${H3WithStyle}
-	}
+  h3 {
+    ${H3WithStyle}
+  }
 
-	h4 {
-		${H4WithStyle}
-	}
+  h4 {
+    ${H4WithStyle}
+  }
 
-	h5 {
-		${H5WithStyle}
-	}
+  h5 {
+    ${H5WithStyle}
+  }
 
-	h6 {
-		${H6WithStyle}
-	}
+  h6 {
+    ${H6WithStyle}
+  }
 
-	p {
-		${BodyWithStyle}
-	}
+  p {
+    ${BodyWithStyle}
+  }
 
-	button {
-		${ButtonLabelWithStyle}
-	}
+  button {
+    ${ButtonLabelWithStyle}
+  }
 
-	code {
-		${CodeWithStyle}
-	}
+  code {
+    ${CodeWithStyle}
+  }
 `
 
 export const typographyStyles = {
